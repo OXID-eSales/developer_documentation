@@ -16,6 +16,10 @@ import sys
 import os
 import shlex
 
+# adding PhpLexer
+from sphinx.highlighting import lexers
+from pygments.lexers.web import PhpLexer
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
@@ -103,6 +107,10 @@ pygments_style = 'sphinx'
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
 
+# -- Settings for PHP highlighting ----------------------------------------
+
+lexers['php'] = PhpLexer(startinline=True)
+lexers['php-annotations'] = PhpLexer(startinline=True)
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -282,3 +290,6 @@ texinfo_documents = [
 
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
+
+# Use PHP syntax highlighting in code examples by default
+highlight_language='php'
