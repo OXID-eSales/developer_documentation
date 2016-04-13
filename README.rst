@@ -5,6 +5,8 @@ This is OXID eShop developer documentation. It should provide necessary up to da
 
 Currently this repository contains skeleton for documentation which should become useful documentation for developers.
 
+Generated documentation can be found here: http://oxid-eshop-developer-documentation.readthedocs.org/en/latest/
+
 Generating docs locally
 -----------------------
 
