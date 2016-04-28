@@ -8,6 +8,63 @@ Sections
   Otherwise last one would be as document name in Sphinx menu.
 - `Subsequent headers <http://docutils.sourceforge.net/docs/user/rst/quickref.html#section-structure>`__ should be marked with ``---``, ``^^^``, ``"""``, ``~~~`` etc.
 
+**Good examples**:
+
+.. code::
+
+   Title
+   =====
+
+   First level
+   -----------
+
+   Second level
+   ^^^^^^^^^^^^
+
+   First level
+   -----------
+
+   Second level
+   ^^^^^^^^^^^^
+
+   Third level
+   """""""""""
+
+   Forth level
+   ~~~~~~~~~~~
+
+**Bad examples**:
+
+-  Inconsistent headers:
+
+.. code::
+
+   First level
+   -----------
+
+   Second level
+   """"""""""""
+
+   Third level
+   ^^^^^^^^^^^
+
+-  Two titles in a page:
+
+.. code::
+
+   Title
+   =====
+
+   First level
+   -----------
+
+   Title
+   =====
+
+   First level
+   -----------
+
+
 External links
 --------------
 
