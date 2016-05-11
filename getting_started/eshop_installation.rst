@@ -9,30 +9,9 @@ Steps for installing OXID eShop compilation via composer
 
 #. Create a composer.json file with contents:
 
-   .. code:: json
 
-      {
-        "name": "vendor-name/oxideshop-compilation",
-        "type": "project",
-        "minimum-stability": "dev",
-        "prefer-stable": true,
-        "repositories": {
-          "oxid-esales/oxideshop-metapackage-ce": {
-            "type": "vcs",
-            "url": "https://github.com/OXID-eSales/oxideshop_metapackage_ce"
-          },
-          "oxid-esales/oxideshop-composer-plugin": {
-            "type": "vcs",
-            "url": "https://github.com/OXID-eSales/oxideshop_composer_plugin"
-          }
-        },
-        "config": {
-          "vendor-dir": "source/vendor"
-        },
-        "require": {
-          "oxid-esales/oxideshop-metapackage-ce": "*"
-        }
-      }
+.. include:: ./resources/composer.json
+   :code: json
 
 #. Setup web server
 
