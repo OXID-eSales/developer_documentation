@@ -9,9 +9,9 @@ Steps for installing OXID eShop compilation via composer
 
 #. Create a composer.json file with contents:
 
-
-.. include:: ./resources/ce/composer.json
-   :code: json
+   #. :doc:`Composer file for CE Shop <resources/ce/composer>`
+   #. :doc:`Composer file for PE Shop <resources/pe/composer>`
+   #. :doc:`Composer file for EE Shop <resources/ee/composer>`
 
 #. Setup web server
 
