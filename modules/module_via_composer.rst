@@ -1,5 +1,5 @@
-Installable via composer module
-===============================
+How to create a module installable via composer?
+================================================
 
 .. important:: Currently installation process which is described bellow doesn't work. This note will be removed when
    this way of installing OXID eShop integrations will be finished.
