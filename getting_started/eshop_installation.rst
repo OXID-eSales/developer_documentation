@@ -1,6 +1,9 @@
 eShop installation via composer
 ===============================
 
+.. important:: Currently installation process which is described bellow doesn't work. This note will be removed when
+   this way of installing OXID eShop will be finished.
+
 There are several ways to get OXID eShop source code, one of the simplest is to use composer. Information how to install
 composer you can find `here <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx>`_.
 
