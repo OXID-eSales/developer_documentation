@@ -13,9 +13,6 @@
       "url": "https://github.com/OXID-eSales/oxideshop_composer_plugin"
     }
   },
-  "config": {
-    "vendor-dir": "source/vendor"
-  },
   "require": {
     "oxid-esales/oxideshop-metapackage-ce": "*"
   }
