@@ -21,9 +21,6 @@
       "url": "https://github.com/OXID-eSales/oxideshop_pe"
     }
   },
-  "config": {
-    "vendor-dir": "source/vendor"
-  },
   "require": {
     "oxid-esales/oxideshop-metapackage-pe": "*"
   }
