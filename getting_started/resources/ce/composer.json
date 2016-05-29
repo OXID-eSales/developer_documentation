@@ -1,19 +1,31 @@
 {
-  "name": "vendor-name/oxideshop-compilation",
-  "type": "project",
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "repositories": {
-    "oxid-esales/oxideshop-metapackage-ce": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_metapackage_ce"
+    "name": "vendor-name/oxideshop-compilation",
+    "type": "project",
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": {
+        "oxid-esales/oxideshop-metapackage-ce": {
+            "type": "vcs",
+            "url": "https://github.com/OXID-eSales/oxideshop_metapackage_ce"
+        },
+        "oxid-esales/oxideshop-composer-plugin": {
+            "type": "vcs",
+            "url": "https://github.com/OXID-eSales/oxideshop_composer_plugin"
+        },
+        "oxid-esales/paypal-module": {
+            "type": "vcs",
+            "url": "https://github.com/OXID-eSales/paypal"
+        },
+        "oxid-esales/paymorrow-module": {
+            "type": "path",
+            "url": "../paymorrow"
+        },
+        "oxid-esales/flow-theme": {
+            "type": "vcs",
+            "url": "https://github.com/OXID-eSales/flow_theme"
+        }
     },
-    "oxid-esales/oxideshop-composer-plugin": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_composer_plugin"
+    "require": {
+        "oxid-esales/oxideshop-metapackage-ce": "*"
     }
-  },
-  "require": {
-    "oxid-esales/oxideshop-metapackage-ce": "*"
-  }
 }
