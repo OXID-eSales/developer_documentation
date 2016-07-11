@@ -16,6 +16,16 @@ Steps for installing OXID eShop compilation via composer
    #. :doc:`Composer file for PE Shop <resources/pe/composer>`
    #. :doc:`Composer file for EE Shop <resources/ee/composer>`
 
+#. Run ``composer install`` to download compilation
+
+   .. note::
+      Enter credentials to access PE or EE repositories.
+
+   .. note::
+      Dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
+      Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
+      Have in mind that credentials to access private repositories will be needed.
+
 #. Setup web server
 
    OXID eShop document root is under `source/`, so define it in web configuration.

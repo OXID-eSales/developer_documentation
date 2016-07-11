@@ -3,25 +3,18 @@
   "type": "project",
   "minimum-stability": "dev",
   "prefer-stable": true,
-  "repositories": {
-    "oxid-esales/oxideshop-metapackage-ce": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_metapackage_ce"
-    },
-    "oxid-esales/oxideshop-composer-plugin": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_composer_plugin"
-    },
-    "oxid-esales/oxideshop-metapackage-pe": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_metapackage_pe"
-    },
-    "oxid-esales/oxideshop-pe": {
-      "type": "vcs",
-      "url": "https://github.com/OXID-eSales/oxideshop_pe"
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packages.oxid-esales.com/professional_edition/unencoded/"
     }
-  },
+  ],
   "require": {
     "oxid-esales/oxideshop-metapackage-pe": "*"
+  },
+  "config": {
+    "preferred-install": {
+      "*": "dist"
+    }
   }
 }
