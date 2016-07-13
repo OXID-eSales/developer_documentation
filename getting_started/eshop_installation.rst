@@ -1,14 +1,13 @@
-eShop installation via composer
-===============================
+OXID eShop installation via Composer
+====================================
 
-.. important:: Currently installation process which is described bellow doesn't work. This note will be removed when
+.. important:: Currently installation process which is described below doesn't work. This note will be removed when
    this way of installing OXID eShop will be finished.
 
-There are several ways to get OXID eShop source code, one of the simplest is to use composer. Information how to install
-composer you can find `here <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx>`_.
+There are multiple ways to get the OXID eShop source code, one of the simplest is to use Composer. You can find details how to install Composer `here <https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx>`_.
 
-Steps for installing OXID eShop compilation via composer
---------------------------------------------------------
+How to install OXID eShop compilation via Composer
+--------------------------------------------------
 
 #. Create a composer.json file with contents:
 
@@ -28,7 +27,7 @@ Steps for installing OXID eShop compilation via composer
 
 #. Setup web server
 
-   OXID eShop document root is under `source/`, so define it in web configuration.
+   The document root of your webserver should point to the `source/` directory.
 
 #. Open web server URL and go though setup steps.
 
@@ -42,7 +41,7 @@ library like monolog run:
 
    composer require monolog/monolog
 
-If there is a need to add development dependency like OXID eShop testing library:
+If there is a need to add a development dependency like the OXID eShop testing library:
 
 .. code:: bash
 
