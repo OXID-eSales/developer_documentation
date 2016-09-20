@@ -1,0 +1,17 @@
+@startuml
+
+node "Doctrine 2 Migrations" {
+  [doctrine/migrations]
+}
+
+node "OXID eShop migration components" {
+  [oxid-esales/eshop-db-migration-wrapper] --> [oxid-esales/eshop-doctrine-migration-wrapper]
+  [oxid-esales/eshop-doctrine-migration-wrapper] --> [doctrine/migrations]
+  [oxid-esales/eshop-doctrine-migration-wrapper] --> [oxid-esales/eshop-migration-facts]
+  [oxid-esales/eshop-migration-facts] --> [oxid-esales/eshop-edition-facts]
+  [oxid-esales/eshop-edition-facts] --> [oxid-esales/eshop-facts]
+}
+
+[OXID eShop] --> [oxid-esales/eshop-db-migration-wrapper]
+
+@enduml

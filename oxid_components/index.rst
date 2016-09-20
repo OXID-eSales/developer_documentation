@@ -1,26 +1,8 @@
-OXID eShop structure
-====================
+OXID eShop components
+=====================
 
-Directories structure
----------------------
+.. toctree::
+    :titlesonly:
+    :glob:
 
-Components
-----------
-
-Widgets
--------
-
-Controllers
------------
-
-Models
-------
-
-Views
------
-
-Translations
-------------
-
-Core
-----
+    *
