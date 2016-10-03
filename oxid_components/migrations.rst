@@ -59,6 +59,15 @@ This variable defines what type of migration it is. There are 4 types:
    It's possible to overwrite more environment variables. Check OXID eShop migration components documentation which
    is in component repositories. List of component repositories can be found :ref:`here <migrations_infrastructure-20160920>`.
 
+Views creation/regeneration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: bash
+
+   composer oe:views:regenerate
+
+This command will create shop views by current eShop version, edition and configuration. It is a good practice to run it right after migrations command.
+
 Generating migrations
 ^^^^^^^^^^^^^^^^^^^^^
 
