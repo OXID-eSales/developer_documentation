@@ -3,18 +3,10 @@
     "type": "project",
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.oxid-esales.com/community_edition/"
-        }
-    ],
     "require": {
         "oxid-esales/oxideshop-metapackage-ce": "*"
     },
-    "config": {
-        "preferred-install": {
-            "*": "dist"
-        }
+    "require-dev": {
+        "oxid-esales/oxideshop-composer-plugin": "dev-master"
     }
 }

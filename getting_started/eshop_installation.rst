@@ -21,7 +21,7 @@ How to install OXID eShop compilation via Composer
       Enter credentials to access PE or EE repositories.
 
    .. note::
-      Dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
+      When installing PE and EE dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
       Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
       Have in mind that credentials to access private repositories will be needed.
 

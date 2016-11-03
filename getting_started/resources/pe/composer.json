@@ -12,6 +12,9 @@
   "require": {
     "oxid-esales/oxideshop-metapackage-pe": "*"
   },
+  "require-dev": {
+    "oxid-esales/oxideshop-composer-plugin": "dev-master"
+  },
   "config": {
     "preferred-install": {
       "*": "dist"
