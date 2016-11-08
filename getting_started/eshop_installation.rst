@@ -32,6 +32,12 @@ How to install OXID eShop compilation via Composer
 
       Enter credentials to access PE or EE repositories.
 
+   .. note::
+
+      When installing PE and EE dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
+      Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
+      Have in mind that credentials to access private repositories will be needed.
+
 #. Setup web server
 
    The document root of your webserver should point to the `source/` directory.
@@ -53,3 +59,54 @@ If there is a need to add a development dependency like the OXID eShop testing l
 .. code:: bash
 
    composer require --dev oxid-esales/testing-library
+
+Change versions of already existing components
+----------------------------------------------
+
+Metapackage defines with which exact version of dependency was the Shop tested.
+Having same version in project ensure that Shop always works as predicted.
+Sometimes one needs to change dependency.
+To do that add alias in the project composer file to the needed version as it is in example:
+
+    {
+        "require": {
+            "doctrine/cache":"v1.6.0 as v1.6.1"
+        }
+    }
+
+  This lowers doctrine cache version to v1.6.0 even while metapackage require v1.6.1.
+
+To read more check `the documentation <https://getcomposer.org/doc/articles/aliases.md#require-inline-alias>`__
+or `this issue in GitHub <https://github.com/composer/composer/issues/3387>`__
+
+Building your own metapackage
+-----------------------------
+
+Metapackage is a composer file which contains information about dependencies between components.
+One can create it's own metapackage for two reasons:
+
+**To change predefined dependencies:**
+
+* Create new metapackage by using existing one as a template
+* Define needed components together with their versions
+
+  * Define different version of existing component
+  * Remove default component
+  * Add new component
+
+**To add new dependencies to compilation:**
+
+* Create new metapackage
+* Require new dependencies
+* Require existing metapackage
+
+Make this new metapackage available through
+`Packagist <https://getcomposer.org/doc/05-repositories.md#packages>`__,
+`GitHub <https://getcomposer.org/doc/05-repositories.md#vcs>`__,
+`file system <https://getcomposer.org/doc/05-repositories.md#path>`__
+or `any other supported way <https://getcomposer.org/doc/05-repositories.md#git-alternatives>`__.
+Edit existing composer.json by adding requirement to your metapackage instead of default one.
+
+.. NOTE::
+
+   Leave Satis repository if you use Professional or Enterprise version.
