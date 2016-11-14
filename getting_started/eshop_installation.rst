@@ -9,27 +9,34 @@ There are multiple ways to get the OXID eShop source code, one of the simplest i
 How to install OXID eShop compilation via Composer
 --------------------------------------------------
 
-#. Create a composer.json file with contents:
+#. Depending on OXID eShop edition run script bellow to download compilation:
 
-   #. :doc:`Composer file for CE Shop <resources/ce/composer>`
-   #. :doc:`Composer file for PE Shop <resources/pe/composer>`
-   #. :doc:`Composer file for EE Shop <resources/ee/composer>`
+   * For Community Edition:
 
-#. Run ``composer install`` to download compilation
+     .. code:: bash
 
-   .. note::
+        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-ce
+   * For Professional Edition:
+
+     .. code:: bash
+
+        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-pe
+
+   * For Enterprise Edition:
+
+     .. code:: bash
+
+        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-ee
+
+    .. note::
+
       Enter credentials to access PE or EE repositories.
-
-   .. note::
-      When installing PE and EE dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
-      Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
-      Have in mind that credentials to access private repositories will be needed.
 
 #. Setup web server
 
    The document root of your webserver should point to the `source/` directory.
 
-#. Open web server URL and go though setup steps.
+#. Open web server URL and go through setup steps.
 
 Adding 3-rd party dependencies
 ------------------------------
