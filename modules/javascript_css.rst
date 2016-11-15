@@ -1,2 +1,0 @@
-Including Javascript/CSS files
-==============================
