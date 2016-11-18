@@ -42,6 +42,37 @@ How to install OXID eShop compilation via Composer
 
    The document root of your webserver should point to the `source/` directory.
 
+#. Change files permissions.
+
+   Those and subdirectories must be writable all the time:
+
+      * ./source/out/pictures/ (including files, which are inside this directory)
+      * ./source/out/media/
+      * ./source/log/
+      * ./source/tmp/
+
+   During installation those must be writable
+
+      * ./source/config.inc.php
+      * ./source/.htaccess
+
+   After installation those must be read-only
+
+      * ./source/config.inc.php
+      * ./source/.htaccess
+
+   and set the export dir to writable
+
+      * ./source/export
+
+   .. note::
+
+      For development purposes, easiest way to add permissions, is to run this command:
+
+      .. code:: bash
+
+         sudo chmod 777 -R source/config.inc.php source/.htaccess source/tmp/ source/log/ source/out/pictures/ source/out/media/ source/export
+
 #. Open web server URL and go through setup steps.
 
 Adding 3-rd party dependencies
