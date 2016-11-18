@@ -35,12 +35,11 @@ To generate diagrams using plantUml, use this command:
 .. code:: bash
 
    java -jar /opt/plantuml.jar -svg -o ./ **.puml
+   
+*/opt/plantuml.jar - path to your plantUml file.*
 
 PlantUml will generate .svg files, which can be used in documentation.
 
-.. note::
-
-   `/opt/plantuml.jar` - path to your plantUml file.
 
 Contribution
 ------------
