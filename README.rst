@@ -27,6 +27,21 @@ Section describes how to generate documentation locally.
 
 #. Open `build/index.html` file with your browser.
 
+Generating diagrams
+-------------------
+
+To generate diagrams using plantUml, use this command:
+
+.. code:: bash
+
+   java -jar /opt/plantuml.jar -svg -o ./ **.puml
+
+PlantUml will generate .svg files, which can be used in documentation.
+
+.. note::
+
+   `/opt/plantuml.jar` - path to your plantUml file.
+
 Contribution
 ------------
 
