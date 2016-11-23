@@ -1,7 +1,8 @@
 OXID eShop developer documentation
 ==================================
 
-[![Build Status](https://travis-ci.org/OXID-eSales/oxideshop_ce.svg?branch=master)](https://travis-ci.org/OXID-eSales/oxideshop_ce)
+.. image:: https://travis-ci.org/OXID-eSales/developer_documentation.svg?branch=master
+   :target: https://travis-ci.org/OXID-eSales/developer_documentation
 
 This is OXID eShop developer documentation. It should provide necessary up to date information for developers.
 
