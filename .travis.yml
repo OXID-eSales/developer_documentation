@@ -1,0 +1,10 @@
+language: python
+python:
+  - "2.7"
+# command to install dependencies
+install:
+  - pip install sphinx
+  - pip install sphinx_rtd_theme
+before_script: mkdir build
+# command to run tests
+script: sphinx-build  -b html . ./build
