@@ -1,9 +1,6 @@
 How to create a module installable via composer?
 ================================================
 
-.. important:: Currently installation process which is described bellow doesn't work. This note will be removed when
-   this way of installing OXID eShop integrations will be finished.
-
 Modules are installed via Composer by using OXID `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
 In order to install module correctly this plugin requires two fields to be described in module ``composer.json`` file:
