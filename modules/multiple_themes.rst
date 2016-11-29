@@ -4,7 +4,7 @@ Multiple themes
 Short description
 -----------------
 
-Metadata v2.0 introduces possibility for a module to define templates for different Shop themes.
+Metadata v1.3 introduces possibility for a module to define templates for different Shop themes.
 It also allows to define templates for all themes (define in a same way as in old metadata).
 
 - Specific templates will be used if defined theme is the active one in Shop.
