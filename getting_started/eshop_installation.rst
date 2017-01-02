@@ -86,7 +86,14 @@ If there is a need to add a development dependency like the OXID eShop testing l
 
 .. code:: bash
 
-   composer require --dev oxid-esales/testing-library
+   composer require oxid-esales/testing-library:dev-master --dev
+   
+In case you would get conflicts because of already installed dependencies, it's possible to add additional dependency without installing it and later on run update command:
+
+.. code:: bash
+
+   composer require oxid-esales/testing-library:dev-master --dev --no-update
+   composer update
 
 Change versions of already existing components
 ----------------------------------------------
