@@ -5,6 +5,4 @@ Theme resources
     :titlesonly:
     :glob:
 
-    theme_configuration
-    blocks
     *

@@ -103,13 +103,15 @@ Having same version in project ensure that Shop always works as predicted.
 Sometimes one needs to change dependency.
 To do that add alias in the project composer file to the needed version as it is in example:
 
+.. code:: bash
+
     {
         "require": {
             "doctrine/cache":"v1.6.0 as v1.6.1"
         }
     }
 
-  This lowers doctrine cache version to v1.6.0 even while metapackage require v1.6.1.
+This lowers doctrine cache version to v1.6.0 even while metapackage require v1.6.1.
 
 To read more check `the documentation <https://getcomposer.org/doc/articles/aliases.md#require-inline-alias>`__
 or `this issue in GitHub <https://github.com/composer/composer/issues/3387>`__
