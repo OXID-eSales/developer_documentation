@@ -45,7 +45,7 @@ extra: {oxideshop}
 target-directory
 ^^^^^^^^^^^^^^^^
 
-``target-director`` value will be used to create a folder inside the Shop ``modules`` directory.
+``target-directory`` value will be used to create a folder inside the Shop ``modules`` directory.
 This folder will be used to place all files of the module.
 
 .. note:: It is strongly recommended to use same target directory value as ID plus vendor of the module.
