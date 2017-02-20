@@ -1,3 +1,5 @@
+.. _copy_module_via_composer-20170217:
+
 How to create a module installable via composer?
 ================================================
 

@@ -5,4 +5,5 @@ Module resources
     :titlesonly:
     :glob:
 
+    */index
     *
