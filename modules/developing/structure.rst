@@ -20,8 +20,8 @@ So the final structure of a module should be:
   .
   └── source
       └── modules
-          └── vendor
-              └── module_id
+          └── <vendor>
+              └── <module_id>
                   ├── composer.json
                   ├── Controller
                   ├── metadata.php
