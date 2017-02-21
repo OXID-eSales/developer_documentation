@@ -133,6 +133,68 @@ Not suffixed with date:
 
    .. _conventions_for_development_wiki_rst_document:
 
+Tables
+------
+
+.. code::
+
+  +-------------------+--------------------+
+  | Column 1 Heading  | Column 2 Heading   |
+  +===================+====================+
+  | Column 1 Cell 1   | Column 2 Cell1     |
+  +-------------------+--------------------+
+  | Column 1 Cell 2   | Column 2 Cell 2    |
+  +-------------------+--------------------+
+
+results in
+
++-------------------+--------------------+
+| Column 1 Heading  | Column 2 Heading   |
++===================+====================+
+| Column 1 Cell 1   | Column 2 Cell1     |
++-------------------+--------------------+
+| Column 1 Cell 2   | Column 2 Cell 2    |
++-------------------+--------------------+
+
+Code
+----
+
+See `http://docutils.sourceforge.net/docs/ref/rst/directives.html#code <http://docutils.sourceforge.net/docs/ref/rst/directives.html#code>`__.
+Be sure to indent the code with spaces.
+
+Example:
+
+.. code::
+
+  .. code:: php
+
+    namespace \OxidEsales\Eshop\Community;
+
+    class Example {}
+
+results in
+
+.. code:: php
+
+  namespace \OxidEsales\Eshop\Community;
+
+  class Example {}
+
+
+Highlight Text
+--------------
+
+E.g. for highlighting a PHP class name in a running text.
+
+.. code::
+
+  Use the function ``Regististry::set()`` here.
+
+results in
+
+Use the function ``Regististry::set()`` here.
+
+
 Images
 ------
 
