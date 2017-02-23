@@ -46,6 +46,8 @@ These steps describes how to add module dependency to OXID eShop project.
     - System does not meet the requirement.
     - After composer install older module without requirements will be taken by composer.
 
+  `Disable usage of Packagist <https://getcomposer.org/doc/05-repositories.md#disabling-packagist-org>`__ to avoid this situation.
+
 Why in this way
 ---------------
 
