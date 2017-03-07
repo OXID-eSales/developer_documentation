@@ -7,18 +7,19 @@ This page describes how to override default OXID eShop functionality.
 
 .. _extending-add-to-basket-functionality-20170228:
 
-Extending add to basket functionality
--------------------------------------
+Extending 'add to basket' functionality
+---------------------------------------
 
-In this section it will be used existing `demo module <https://github.com/OXID-eSales/loggerdemo>`__ which logs
-product id when product is added to basket.
+In this section the existing `"loggerdemo" module <https://github.com/OXID-eSales/loggerdemo>`__ will be used which logs
+a product's id when it is added to the basket.
 
 Override functionality
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To override functionality there is a need to create a module class. Logger demo module example will be used as an example:
+To override functionality there is a need to create a module class.
+Here, the "loggerdemo" module will be used as an example.
 
-There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket`` which should override OXID eShop class
+There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket`` - which should override OXID eShop class
 ``OxidEsales\EshopCommunity\Application\Model\Basket`` method ``addToBasket``:
 
 .. code::
@@ -35,7 +36,7 @@ There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket``
 
   Here ``oe`` - module developer vendor name, ``loggerdemo`` - module name.
 
-``OxidEsales\LoggerDemo\Model\Basket`` class could have contents like this:
+The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
 
 .. code:: php
 
@@ -59,19 +60,19 @@ There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket``
       }
   }
 
-In this example method ``addToBasket`` is overrided and it adds additional functionality - logging.
-To override class method there is a need:
+In this example method ``addToBasket`` is overridden and it adds logging functionality.
+To override the method one needs to:
 
-- To extend a virtual class - ``className_parent``, in this case it is ``Basket_parent``.
-- To call parent method, so the chain would not be broken.
+- Extend a virtual class - ``<className>_parent``, in this case it is ``Basket_parent``.
+- Call parent method, so the chain would not be broken.
 
 Autoload module classes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-`composer.json` in module root directory must be created as described :ref:`here <copy_module_via_composer-20170217>`
-and module namespace must be defined as described :ref:`here <namespace-20170218>`.
+The file `composer.json` in module root directory must be created (see ":ref:`How to create a module installable via composer? <copy_module_via_composer-20170217>`")
+and module namespace must be defined (see ":ref:`Add dependencies and autoload via composer: Namespace <namespace-20170218>`").
 
-`composer.json` file in module root directory could look like this:
+The `composer.json` file in module root directory could look like this:
 
 .. code:: json
 
@@ -102,7 +103,7 @@ and module namespace must be defined as described :ref:`here <namespace-20170218
     }
   }
 
-Project composer.json file should have an entries looking like this:
+The project `composer.json` file should have entries looking like this:
 
 .. code:: json
 
@@ -122,11 +123,11 @@ To register a namespace and download dependencies there is a need to run compose
 
   composer update
 
-Composer will generate psr 4 autoload file with included module. So at this point OXID eShop will be able to autoload
+Composer will generate the PSR-4 autoload file with included module. So at this point OXID eShop will be able to autoload
 classes.
 
-Add entry to metadata.php
-^^^^^^^^^^^^^^^^^^^^^^^^^
+Add entry to module metadata file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 OXID eShop needs to know which class should be extended, to do this there is a need to add a record in `metadata.php`
 file:
