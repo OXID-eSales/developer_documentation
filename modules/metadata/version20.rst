@@ -184,6 +184,7 @@ Module templates array. All module templates should be registered here, so on re
 
   'templates' => array('order_dhl.tpl' => 'oe/efi_dhl/out/admin/tpl/order_dhl.tpl')
 
+.. _events-20170307:
 
 events
 ------
