@@ -57,10 +57,12 @@ Why in this way
   - Add all the dependencies of the module to the project.
   - Register module namespace so composer autoloader could be used to load objects.
 
+.. _namespace-20170218:
+
 Namespace
 ---------
 
-Composer autoloader is used to load objects. In order to load module files
+Composer autoloader is used to load classes. In order to load module classes
 the module needs to register it's namespace to the modules path:
 
 ::
