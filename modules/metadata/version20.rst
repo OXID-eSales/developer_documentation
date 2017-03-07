@@ -6,7 +6,7 @@ Changes compared to version 1.1
 
 To be able to use namespaces for module controllers, we introduce
 module's metadata.php version 2.0 with a new section ``controllers``.
-Note that the support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
+The support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
 If you use your own namespace, register it in the module's composer.json file.
 
 .. important::
@@ -22,7 +22,7 @@ The extension id must be unique. It is recommended to use vendor prefix + module
 
 .. note::
 
-  the extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
+  the extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
 
 title
 -----
@@ -67,30 +67,19 @@ Module vendor email.
 extend
 ------
 
-On this place shall be defined which shop classes are extended by this module. Here is an example:
+On this place shall be defined which shop classes are extended by this module.
+You can use metadata version 2.0 with :ref:`controllers<controllers-20170307>` only for modules using namespaces.
 
 .. code:: php
 
   'extend'       => array(
-        'order'        => 'oe/oepaypal/controllers/oepaypalorder',
-        'payment'      => 'oe/oepaypal/controllers/oepaypalpayment',
-        'wrapping'     => 'oe/oepaypal/controllers/oepaypalwrapping',
-        'oxviewconfig' => 'oe/oepaypal/controllers/oepaypaloxviewconfig',
-        'oxaddress'    => 'oe/oepaypal/models/oepaypaloxaddress',
-        'oxuser'       => 'oe/oepaypal/models/oepaypaloxuser',
-        'oxorder'      => 'oe/oepaypal/models/oepaypaloxorder',
-        'oxbasket'     => 'oe/oepaypal/models/oepaypaloxbasket',
-        'oxbasketitem' => 'oe/oepaypal/models/oepaypaloxbasketitem',
-        'oxarticle'    => 'oe/oepaypal/models/oepaypaloxarticle',
-        'oxcountry'    => 'oe/oepaypal/models/oepaypaloxcountry',
-        'oxstate'      => 'oe/oepaypal/models/oepaypaloxstate',
+        \OxidEsales\Eshop\Application\Model\Payment::class => MyVendor\MyModuleNamespace\Application\Model\MyModulePayment::class,
+        \OxidEsales\Eshop\Application\Model\Article::class => MyVendor\MyModuleNamespace\Application\Model\MyModuleArticle::class
     ),
 
 This information is used for activating/deactivating extension.
-Take care you declare the keys (e.g. oxorder) always in lower case!
-Take care you declare the file names case sensitive!
-It is suggested to use lower case for file names, to avoid difficulties.
 
+.. _controllers-20170307:
 
 controllers
 -----------
@@ -127,7 +116,7 @@ Now you can route requests to the module controller e.g. in a template:
         </div>
     </form>
 
-If the controller key is not found within the shop or modules, it is assumed that the controller keys is a class with this name.
+If the controller key is not found within the shop or modules, it is assumed that the controller key is a class with this name.
 If there is no class with this name present, the OXID eShop will redirect to the shop front page.
 
 
@@ -147,15 +136,7 @@ In this array are registered all module templates blocks. On module activation t
     ),
     )
 
-Differences in block file definition per shop/metadata version.
-
-In OXID eShop >= 4.6 with metadata version 1.0 template block ``file`` value was relative to ``out/blocks`` directory inside module root.
-
-In OXID eShop 4.7 / 5.0 with metadata version 1.1 template block ``file`` value has to be specified directly from module root.
-
-To maintain compatibility with older shop versions, template block files will work using both notations.
-
-Template block ``file`` value holding path to your customized block should be defined using full path from module directory, earlier it was a sub path from modules ``out/blocks`` directory.
+The template block ``file`` value has to be specified directly from module root.
 
 settings
 --------
@@ -173,14 +154,6 @@ There are registered all module configuration options. On activation they are in
         array('group' => 'main', 'name' => 'sPassword',                'type' => 'password', 'value' => 'changeMe')
     )
 
-  /* Entries in lang.php for constraints example:
-  'SHOP_MODULE_sConfigTest'        => 'Field Label',
-  'SHOP_MODULE_sConfigTest_0'      => '',
-  'SHOP_MODULE_sConfigTest_1'      => 'Value x',
-  'SHOP_MODULE_sConfigTest_2'      => 'Value y',
-  'SHOP_MODULE_sConfigTest_3'      => 'Value z'
-  */
-
 Each setting belongs to a group. In this case its called ``main``. Then follows the name of the setting which is the variable name in oxconfig/oxconfigdisplay table. It is best practice to prefix it with your moduleid to avoid name collisions with other modules. Next part is the type of the parameter and last part is the default value.
 
 In order to get correct translations of your settings names in admin one should create views/admin//module_options.php where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
@@ -193,28 +166,23 @@ In order to get correct translations of your settings names in admin one should 
   'HELP_SHOP_MODULE_dMaxPayPalDeliveryAmount' => 'A help text for this setting',
 
 So the shop looks in the file for a language constant like ``SHOP_MODULE_GROUP_`` and for the single setting for a language constant like ``SHOP_MODULE_``.
-In php classes you can query your module settings by using the ``function getParameter()`` of ``oxConfig`` class:
+In php classes you can query your module settings by using the ``function getConfigParam()`` of ``Config`` class:
+
 
 .. code:: php
 
-  $myconfig = $this->getConfig();
+  $myconfig = Registry::getConfig();
   $myconfig->getConfigParam("dMaxPayPalDeliveryAmount");
 
-or since OXID 4.7 you can also use
-
-.. code:: php
-
-  $myconfig = oxRegistry::get("oxConfig");
-  $myconfig->getConfigParam("dMaxPayPalDeliveryAmount");
 
 templates
 ---------
 
 Module templates array. All module templates should be registered here, so on requiring template shop will search template path in this array.
 
+.. code:: php
 
   'templates' => array('order_dhl.tpl' => 'oe/efi_dhl/out/admin/tpl/order_dhl.tpl')
-
 
 
 events
@@ -244,7 +212,7 @@ Metadata file version
 
 .. code:: php
 
-  $sMetadataVersion = '1.1';
+  $sMetadataVersion = '2.0';
 
 
 
@@ -292,21 +260,11 @@ Vendor directory structure example:
       module3
         module3 files
 
-In case of using a vendor directory you still need to describe file paths relatively to the modules directory:
-
-.. code:: php
-
-  'extend' => array(
-        'some_class' => 'oxid/module1/my_class'
-  ),
-  'templates' => array(
-        'my_template.tpl' => 'oxid/module1/my_template.tpl'
-  )
 
 Example of metadata.php
 -----------------------
 
-Here is an example of PayPal module metadata file:
+Here is an example of a module metadata file:
 
 .. code:: php
 
@@ -325,7 +283,7 @@ Here is an example of PayPal module metadata file:
         'title'        => 'Test metadata controllers feature',
         'description'  => '',
         'thumbnail'    => 'picture.png',
-        'version'      => '1.0',
+        'version'      => '2.0',
         'author'       => 'OXID eSales AG',
         'controllers'  => [
             'myvendor_mytestmodule_MyModuleController' => MyVendor\mytestmodule\MyModuleController::class,

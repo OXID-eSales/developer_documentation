@@ -12,7 +12,9 @@ id
 
 The extension id must be unique. It is recommended to use vendor prefix + module root directory name. Module ID is used for getting all needed information about extension. If this module has defined config variables in ``oxconfig`` and ``oxconfigdisplay`` tables (e.g. ``module:efifactfinder``), the extension id used in these tables should match extension id defined in metadata file. Also same id (``efifactfinder``) must be used when defining extension templates blocks in ``oxtplblocks`` table.
 
-Please note: the extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
+.. note::
+
+  The extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
 
 title
 -----
