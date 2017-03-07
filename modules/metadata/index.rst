@@ -1,3 +1,5 @@
+.. _metadata-20170307:
+
 Metadata
 ========
 

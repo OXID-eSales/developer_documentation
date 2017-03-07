@@ -16,7 +16,8 @@ Steps for creating a module
 
 - Initiate the repository
 - :ref:`Create composer.json file<copy_module_via_composer-20170217>`
-- Create metadata file (Information is available in `blog post <https://oxidforge.org/en/extension-metadata-file.html>`__)
+- Create metadata file (Information is available in `blog post <https://oxidforge.org/en/extension-metadata-file.html>`__
+  and in :ref:`documentation metadata page<metadata-20170307>`)
 - :ref:`Override existing OXID eShop functionality<override_eshop_functionality-20170227>`
 - :ref:`Create module structure<modules_structure-20170217>`
 - :ref:`Add dependencies and autoload via composer<add_dependencies_and_autoload_via_composer-20170217>`
