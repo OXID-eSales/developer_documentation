@@ -9,8 +9,10 @@ module's metadata.php version 2.0 with a new section ``controllers``.
 Note that the support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
 If you use your own namespace, register it in the module's composer.json file.
 
-**IMPORTANT** You can use metadata version 2.0 with controllers only for modules using namespaces. When using modules
-without a namespace you will have to use metadata version 1.0 with the 'files' section to register your module controllers.
+.. important::
+
+  You can use metadata version 2.0 with controllers only for modules using namespaces. When using modules
+  without a namespace you will have to use metadata version 1.0 with the 'files' section to register your module controllers.
 
 
 id
@@ -18,7 +20,9 @@ id
 
 The extension id must be unique. It is recommended to use vendor prefix + module root directory name. Module ID is used for getting all needed information about extension. If this module has defined config variables in ``oxconfig`` and ``oxconfigdisplay`` tables (e.g. ``module:efifactfinder``), the extension id used in these tables should match extension id defined in metadata file. Also same id (``efifactfinder``) must be used when defining extension templates blocks in ``oxtplblocks`` table.
 
-Please note: the extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
+.. note::
+
+  the extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
 
 title
 -----
