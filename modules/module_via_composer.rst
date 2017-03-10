@@ -50,4 +50,20 @@ target-directory
 ``target-directory`` value will be used to create a folder inside the Shop ``modules`` directory.
 This folder will be used to place all files of the module.
 
-.. note:: It is strongly recommended to use same target directory value as ID plus vendor of the module.
+.. important::
+
+  It is strongly recommended to set the target directory value to ``<vendor of the module>`` + ``<module ID>``,
+  e.g. ``oe/oepaypal``.
+
+source-directory
+^^^^^^^^^^^^^^^^
+
+If ``source-directory`` is given, the value defines which directory will be used to define where the files and directories
+will be picked from.
+When the parameter is not given, the root directory of the module is used instead.
+
+.. note::
+
+  Usually this parameter should not be used if all files are placed in the module's root directory.
+
+
