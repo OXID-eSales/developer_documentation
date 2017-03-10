@@ -28,7 +28,7 @@ More information how to write a module for older OXID eShop versions could be fo
 
 
 Demo Logger module could be used as a simple example
-`from GitHub repository. <https://github.com/OXID-eSales/loggerdemo>`__
+`from GitHub repository. <https://github.com/OXID-eSales/logger-demo-module>`__
 
 PayPal module could be used as an advanced example
 `from GitHub repository. <https://github.com/OXID-eSales/PayPal>`__

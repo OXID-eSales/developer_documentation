@@ -10,7 +10,7 @@ This page describes how to override default OXID eShop functionality.
 Extending 'add to basket' functionality
 ---------------------------------------
 
-In this section the existing `"loggerdemo" module <https://github.com/OXID-eSales/loggerdemo>`__ will be used which logs
+In this section the existing `"loggerdemo" module <https://github.com/OXID-eSales/logger-demo-module>`__ will be used which logs
 a product's id when it is added to the basket.
 
 Override functionality
