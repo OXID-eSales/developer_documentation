@@ -4,15 +4,19 @@ Version 2.0
 Changes compared to version 1.1
 -------------------------------
 
-To be able to use namespaces for module controllers, we introduce
-module's metadata.php version 2.0 with a new section ``controllers``.
-The support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
-If you use your own namespace, register it in the module's composer.json file.
+* New Section Controllers: To be able to use namespaces for module controllers, we introduce
+  module's metadata.php version 2.0 with a new section ``controllers``.
+  The support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
+  If you use your own namespace, :doc:`register it in the module's composer.json file </modules/module_via_composer>`.
 
 .. important::
 
   You can use metadata version 2.0 with controllers only for modules using namespaces. When using modules
   without a namespace you will have to use metadata version 1.0 with the 'files' section to register your module controllers.
+
+* Templates and blocks for different Shop themes.
+  It also allows to define templates and blocks for all themes (define in the same way as in old metadata).
+
 
 
 id
@@ -154,6 +158,103 @@ The template block ``file`` value has to be specified directly from module root.
 You can define a position of a block if a template block is extended multiple (by different modules).
 So you can sort the block extensions. This is done via the optional template block ``position`` value.
 
+To describe block or overwrite default block template for specific theme, use theme attribute in block description.
+
+.. code::
+
+    'blocks' => array(
+        array(
+            'theme' => 'shop_theme_id'
+            'template' => 'name_off_shop_template_which_contains_block',
+            'block'=>'name_off_shop_block',
+            'file'=>'path_to_module_block_file'
+        ),
+
+.. note::
+    - To override default block use same template and block values.
+    - Specific block will override all files for specific block.
+    - It is not allowed to use `admin` as a theme id.
+
+**Example**
+
+.. code::
+
+    'blocks' => array(
+        array(
+            'template' => 'deliveryset_main.tpl',
+            'block'=>'admin_deliveryset_main_form',
+            'file'=>'/views/blocks/deliveryset_main.tpl',
+        ),
+        array(
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=>'partner_logos',
+            'file'=>'/views/blocks/widget/sidebar/oepaypalpartnerbox1.tpl',
+        ),
+        array(
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=>'partner_logos',
+            'file'=>'/views/blocks/widget/sidebar/oepaypalpartnerbox2.tpl',
+        ),
+        array(
+            'theme' => 'flow_theme',
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=>'partner_logos',
+            'file'=>'/views/blocks/widget/sidebar/oepaypalpartnerboxForFlow.tpl',
+        ),
+    )
+
+In this particular example:
+
+    * If `flow_theme` theme is active, the contents of `oepaypalpartnerboxForFlow.tpl` file would be loaded in `partners.tpl` partner_logos block.
+    * For other then `flow_theme` theme, the `oepaypalpartnerbox1.tpl` and `oepaypalpartnerbox2.tpl` files contents
+      would be shown in `partners.tpl partner_logos block`.
+
+Custom blocks
+^^^^^^^^^^^^^
+
+It is possible to reuse template blocks for parent theme when child theme extends parent theme.
+
+.. code::
+
+    'blocks' => array(
+        array(
+            'template' => 'widget/minibasket/minibasket.tpl',
+            'block'=>'widget_minibasket_total',
+            'file'=> '/views/blocks/widget/minibasket/oepaypalexpresscheckoutminibasket.tpl',
+        ),
+        array(
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=> 'partner_logos',
+            'file'=>'/views/blocks/widget/sidebar/oepaypalpartnerbox.tpl',
+        ),
+        array(
+            'theme' => 'flow_theme',
+            'template' => 'widget/minibasket/minibasket.tpl',
+            'block'=> 'widget_minibasket_total',
+            'file'=> '/views/blocks/widget/minibasket/oepaypalexpresscheckoutminibasketFlow.tpl',
+        ),
+        array(
+            'theme' => 'flow_theme',
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=> 'partner_logos',
+            'file'=> '/views/blocks/widget/sidebar/oepaypalpartnerboxForFlow.tpl',
+        ),
+        array(
+            'theme' => 'flow_theme_child',
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=> 'partner_logos',
+            'file'=> '/views/blocks/widget/sidebar/oepaypalpartnerboxForMyCustomFlow.tpl',
+        ),
+    )
+
+In this particular example `flow_theme_child` extends `flow_theme`. If `flow_theme_child` theme would be active:
+
+    * `oepaypalpartnerboxForMyCustomFlow.tpl` template block would be used instead of `partner_logos`.
+    * `oepaypalexpresscheckoutminibasketFlow.tpl` template would be used instead of `widget_minibasket_total`.
+
+
+
+
 
 .. _settings-20170316:
 
@@ -197,11 +298,76 @@ In php classes you can query your module settings by using the ``function getCon
 templates
 ---------
 
-Module templates array. All module templates should be registered here, so on requiring template shop will search template path in this array.
+All module templates should be registered here, so on requiring template shop will search template path in this array.
+Default template (for all themes) are described in same way as in metadata v1.*
 
-.. code:: php
+.. code::
 
-  'templates' => array('order_dhl.tpl' => 'oe/efi_dhl/out/admin/tpl/order_dhl.tpl')
+    'templates' => array(
+        'module_template_name'   => 'path_to_module_template',
+    )
+
+To have template for specific theme, define it in an array with the key equal to theme id.
+
+.. code::
+
+    'templates' => array(
+        'theme_id' => array(
+            'module_template_name'   => 'path_to_module_template',
+        )
+    )
+
+.. note::
+
+    - Its possible to use any theme id, even default one, if you want to specify some template for the theme.
+    - It is not allowed to use `admin` as a theme id.
+
+**Example**
+
+.. code::
+
+    'templates' => array(
+        'order_paypal.tpl' => 'oe/oepaypal/views/admin/tpl/order_paypal.tpl',
+        'ipnhandler.tpl'   => 'oe/oepaypal/views/tpl/ipnhandler.tpl',
+        'more.tpl'         => 'oe/oepaypal/views/tpl/moreDefault.tpl',
+
+        'flow_theme' => array(
+            'more.tpl' => 'oe/oepaypal/views/tpl/moreFlow.tpl',
+        )
+    )
+
+Templates for child theme
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+It is possible to reuse templates for parent theme when child theme extends parent theme.
+This mechanism is especially useful in project scope when needs to customize an already existing theme.
+
+.. code::
+
+    'templates' => array(
+        'order_paypal.tpl' => 'oe/oepaypal/views/admin/tpl/order_paypal.tpl',
+        'ipnhandler.tpl'   => 'oe/oepaypal/views/tpl/ipnhandler.tpl',
+        'more.tpl'         => 'oe/oepaypal/views/tpl/moreDefault.tpl',
+
+        'flow_theme' => array(
+            'ipnhandler.tpl' => 'oe/oepaypal/views/tpl/ipnhandlerFlow.tpl',
+            'more.tpl'       => 'oe/oepaypal/views/tpl/moreFlow.tpl',
+        ),
+
+        'flow_theme_child' => array(
+            'more.tpl'   => 'oe/oepaypal/views/tpl/moreMyCustomFlow.tpl',
+        )
+    )
+
+
+In this particular example `flow_theme_child` extends `flow_theme`.
+If `flow_theme_child` theme would be active:
+
+    * `moreMyCustomFlow.tpl` template would be used instead of `more.tpl`.
+    * `ipnhandlerFlow.tpl` template would be used instead of `ipnhandler.tpl`.
+
+
+
 
 .. _events-20170307:
 
