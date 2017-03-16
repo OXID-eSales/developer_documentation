@@ -32,7 +32,7 @@ Used to display extension title in the extensions list and detail information.
 description
 -----------
 
-Used to display extension description in the extension detail information page. This field is multilang capable.
+Used to display extension description in the extension detail information page. This field is :ref:`multilang capable<multilanguage_fields-20170316>`
 
 lang
 ----
@@ -124,19 +124,38 @@ If there is no class with this name present, the OXID eShop will redirect to the
 blocks
 ------
 
-In this array are registered all module templates blocks. On module activation they are automaticly inserted into database. On activating/deactivating module, all module blocks also are activated/deactivated
+In this array are registered all module templates blocks. On module activation they are automaticly inserted into database.
+On activating/deactivating module, all module blocks also are activated/deactivated.
 
 .. code:: php
 
   'blocks' => array(
-        array('template' => 'widget/sidebar/partners.tpl', 'block'=>'partner_logos',                     'file'=>'/views/blocks/oepaypalpartnerbox.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_top',               'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_bottom',            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/payment.tpl',   'block'=>'select_payment',                    'file'=>'/views/blocks/oepaypalpaymentselector.tpl'),
+        array(
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=>'partner_logos',
+            'file'=>'/views/blocks/oepaypalpartnerbox.tpl'
+            'position' => '2'
+        ),
+        array(
+            'template' => 'page/checkout/basket.tpl',
+            'block'=>'basket_btn_next_top',
+            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
+            'position' => '1'
+        ),
+        array(
+            'template' => 'page/checkout/basket.tpl',
+            'block'=>'basket_btn_next_bottom',
+            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
+        ),
     ),
     )
 
 The template block ``file`` value has to be specified directly from module root.
+You can define a position of a block if a template block is extended multiple (by different modules).
+So you can sort the block extensions. This is done via the optional template block ``position`` value.
+
+
+.. _settings-20170316:
 
 settings
 --------
@@ -156,7 +175,7 @@ There are registered all module configuration options. On activation they are in
 
 Each setting belongs to a group. In this case its called ``main``. Then follows the name of the setting which is the variable name in oxconfig/oxconfigdisplay table. It is best practice to prefix it with your moduleid to avoid name collisions with other modules. Next part is the type of the parameter and last part is the default value.
 
-In order to get correct translations of your settings names in admin one should create views/admin//module_options.php where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
+In order to get correct translations of your settings names in admin one should create ``views/admin/module_options.php`` where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
 
 .. code:: php
 
@@ -216,6 +235,7 @@ Metadata file version
   $sMetadataVersion = '2.0';
 
 
+.. _multilanguage_fields-20170316:
 
 Multilanguage fields
 --------------------
@@ -232,17 +252,6 @@ Extension description is a multilanguage field. This should be an array with a d
 
 The field value also can be a simple string. If this field value is not an array but simple text, this text string will be displayed in all languages.
 
-Mandatory fields
-----------------
-
-The list of fields that are mandatory for metadata file:
-
-* metadata version
-* id
-* title
-* extend
-* blocks (if module has any templates blocks)
-* settings (if module has any settings)
 
 Vendor directory support
 ------------------------

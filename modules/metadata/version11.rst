@@ -24,7 +24,7 @@ Used to display extension title in the extensions list and detail information.
 description
 -----------
 
-Used to display extension description in the extension detail information page. This field is multilang capable.
+Used to display extension description in the extension detail information page. This field is :ref:`multilang capable<multilanguage_fields-20170315>`
 
 lang
 ----
@@ -112,10 +112,23 @@ In this array are registered all module templates blocks. On module activation t
 .. code:: php
 
   'blocks' => array(
-        array('template' => 'widget/sidebar/partners.tpl', 'block'=>'partner_logos',                     'file'=>'/views/blocks/oepaypalpartnerbox.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_top',               'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_bottom',            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/payment.tpl',   'block'=>'select_payment',                    'file'=>'/views/blocks/oepaypalpaymentselector.tpl'),
+        array(
+            'template' => 'widget/sidebar/partners.tpl',
+            'block'=>'partner_logos',
+            'file'=>'/views/blocks/oepaypalpartnerbox.tpl'
+            'position' => '2'
+        ),
+        array(
+            'template' => 'page/checkout/basket.tpl',
+            'block'=>'basket_btn_next_top',
+            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
+            'position' => '1'
+        ),
+        array(
+            'template' => 'page/checkout/basket.tpl',
+            'block'=>'basket_btn_next_bottom',
+            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
+        ),
     ),
     )
 
@@ -128,6 +141,9 @@ In OXID eShop 4.7 / 5.0 with metadata version 1.1 template block ``file`` value 
 To maintain compatibility with older shop versions, template block files will work using both notations.
 
 Template block ``file`` value holding path to your customized block should be defined using full path from module directory, earlier it was a sub path from modules ``out/blocks`` directory.
+
+You can define a position of a block if a template block is extended multiple (by different modules).
+So you can sort the block extensions. This is done via the optional template block ``position`` value.
 
 settings
 --------
@@ -155,7 +171,7 @@ There are registered all module configuration options. On activation they are in
 
 Each setting belongs to a group. In this case its called ``main``. Then follows the name of the setting which is the variable name in oxconfig/oxconfigdisplay table. It is best practice to prefix it with your moduleid to avoid name collisions with other modules. Next part is the type of the parameter and last part is the default value.
 
-In order to get correct translations of your settings names in admin one should create views/admin//module_options.php where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
+In order to get correct translations of your settings names in admin one should create `views/admin/module_options.php`` where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
 
 .. code:: php
 
@@ -285,6 +301,7 @@ Here is an example of PayPal module metadata file:
     )
   );
 
+.. _multilanguage_fields-20170315:
 
 Multilanguage fields
 --------------------
@@ -300,19 +317,6 @@ Extension description is a multilanguage field. This should be an array with a d
 
 
 The field value also can be a simple string. If this field value is not an array but simple text, this text string will be displayed in all languages.
-
-Mandatory fields
-----------------
-
-The list of fields that are mandatory for metadata file:
-
-* metadata version
-* id
-* title
-* extend
-* files (if module has any php files which are used only in module, and does not extends shop classes)
-* blocks (if module has any templates blocks)
-* settings (if module has any settings)
 
 Vendor directory support
 ------------------------
