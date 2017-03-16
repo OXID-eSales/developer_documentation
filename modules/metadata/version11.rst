@@ -306,6 +306,11 @@ Here is an example of PayPal module metadata file:
 Multilanguage fields
 --------------------
 
+.. note::
+    This section is about multilanguage fields of strings introduced in the metadata.php file itself. If you want
+    to use translations in your module for frontend or backend, you should place them in your module according
+    the :ref:`module structure conventions <modules_structure_language_files_20170316>`
+
 Extension description is a multilanguage field. This should be an array with a defined key as language abbervation and the value of it's translation.
 
 .. code:: php

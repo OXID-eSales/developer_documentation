@@ -383,16 +383,6 @@ Module events were introduced in metadata version 1.1. Currently there are only 
         'onDeactivate' => 'oepaypalevents::onDeactivate'
     ),
 
-custom JavaScript / CSS / Images
---------------------------------
-
-Create out/src/js/, out/src/img/ and out/src/css/ directories so it fit Shop structure and would be easier to debug for other people. You can use something like this to include your scripts in to templates:
-
-.. code:: php
-
-  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "out/src/js/{js_fle_name}.js")}]
-
-
 Metadata file version
 ---------------------
 
@@ -405,6 +395,11 @@ Metadata file version
 
 Multilanguage fields
 --------------------
+
+.. note::
+    This section is about multilanguage fields of strings introduced in the metadata.php file itself. If you want
+    to use translations in your module for frontend or backend, you should place them in your module according
+    the :ref:`module structure conventions <modules_structure_language_files_20170316>`.
 
 Extension description is a multilanguage field. This should be an array with a defined key as language abbervation and the value of it's translation.
 
