@@ -127,6 +127,9 @@ formerly known as ``oxarticle`` for example), you need to extend the module clas
 (``MyVendorMyModuleArticle_parent``). The shop creates the class chain in such a way that once your module is activated, all methods
 from the ``OxidEsales\Eshop\Application\Model\Article`` are available in ``MyVendorMyModuleArticle`` and can be overwritten with module functionality.
 
+**IMPORTANT**: It is only possible to patch shop BC and virtual namespace classes. Directly patching classes from the shop edition
+namespaces is not allowed and such a module can not be activated. Trying to activate it gives an error in the admin backend.
+
 No own module namespace
 ^^^^^^^^^^^^^^^^^^^^^^^
 
