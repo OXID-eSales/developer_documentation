@@ -12,18 +12,18 @@ How to install OXID eShop compilation via Composer
 
      .. code:: bash
 
-        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-ce
+        composer create-project --no-dev oxid-esales/oxideshop-project project_name dev-b-6.0-ce
    * For Professional Edition:
 
      .. code:: bash
 
-        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-pe
+        composer create-project --no-dev oxid-esales/oxideshop-project project_name dev-b-6.0-pe
 
    * For Enterprise Edition:
 
      .. code:: bash
 
-        composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-ee
+        composer create-project --no-dev oxid-esales/oxideshop-project project_name dev-b-6.0-ee
 
     .. note::
 
@@ -34,6 +34,30 @@ How to install OXID eShop compilation via Composer
       When installing PE and EE dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
       Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
       Have in mind that credentials to access private repositories will be needed.
+
+#. Project with development components
+
+    ##. Installation
+
+        To install the OXID eShop version with our provided development tools, use `--dev` option (or no options) on project installation e.g. :
+
+         .. code:: bash
+
+            composer create-project --dev oxid-esales/oxideshop-project project_name dev-b-6.0-ce
+
+        Development components will be installed together with OXID eShop:
+
+            * OXID eShop Testing Library (https://github.com/OXID-eSales/testing_library)
+            * IDE code completion support for OXID eShop (https://github.com/OXID-eSales/oxid-eshop-ide-helper)
+            * OXID Coding Standards (https://github.com/OXID-eSales/coding_standards)
+
+    ##. Running the tests
+
+        To run the OXID eShop Testing Library, ensure:
+
+            * the `shop_tests_path` value in `test_config.yml` file has `vendor/oxid-esales/oxideshop-ce/Tests` as value
+            * database credentials are filled in `source/config.inc.php` file
+            * the `blDelSetupDir` parameter value in `source/config.inc.php` has value of `false` (to disable setup directory removal after setup)
 
 #. Setup web server
 
