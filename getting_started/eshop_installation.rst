@@ -37,7 +37,7 @@ How to install OXID eShop compilation via Composer
 
 #. Project with development components
 
-    ##. Installation
+    #. Installation
 
         To install the OXID eShop version with our provided development tools, use `--dev` option (or no options) on project installation e.g. :
 
@@ -51,7 +51,7 @@ How to install OXID eShop compilation via Composer
             * IDE code completion support for OXID eShop (https://github.com/OXID-eSales/oxid-eshop-ide-helper)
             * OXID Coding Standards (https://github.com/OXID-eSales/coding_standards)
 
-    ##. Running the tests
+    #. Running the tests
 
         To run the OXID eShop Testing Library, ensure:
 
