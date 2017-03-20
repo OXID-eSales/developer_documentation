@@ -53,11 +53,11 @@ How to install OXID eShop compilation via Composer
 
     #. Running the tests
 
-        To run the OXID eShop Testing Library, ensure:
+        To run tests with OXID eShop Testing Library, ensure:
 
-            * the `shop_tests_path` value in `test_config.yml` file has `vendor/oxid-esales/oxideshop-ce/tests` as value
-            * database credentials are filled in `source/config.inc.php` file
-            * the `blDelSetupDir` parameter value in `source/config.inc.php` has value of `false` (to disable setup directory removal after setup)
+            * The ``shop_tests_path`` parameter has the value - ``vendor/oxid-esales/oxideshop-ce/tests`` in `test_config.yml`.
+            * Database credentials are filled in `source/config.inc.php` file.
+            * The ``blDelSetupDir`` parameter in `source/config.inc.php` has value of ``false`` (to disable setup directory removal after setup).
 
 #. Setup web server
 
