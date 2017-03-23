@@ -1,5 +1,5 @@
-Namespaces with OXID eShop V6 and modules
-=========================================
+Namespaces with OXID eShop and modules
+======================================
 
 Topics to be covered
     - The backwards compatibility layer
@@ -9,25 +9,22 @@ Topics to be covered
     - Module installation
         * old style (copy & paste)
         * new style (via composer)
-    - How to patch the shop's namespace classes
+    - How to extend the shop's namespace classes
         * in case your module does not yet use a namespace
         * in case your module does use it's own namespace
-    - Use your own namespaces in a module with OXID eShop V6
+    - Use your own namespaces in a module with OXID eShop
         * Install the module via composer or alternatively how to register your namespace in the main composer.json
         * Use own module classes
-        * Use module controllers that do not simply patch existing shop functionality
+        * Use module controllers that do not simply extend existing shop functionality
 
 
-Something old, something new in OXID eShop V6
----------------------------------------------
+Introduction
+------------
 
-A lot has changed since OXID eShop 5.x, just check the information about
-`changes in OXID eShop 6.0 Beta1 release <https://oxidforge.org/en/oxid-eshop-v6-0-0-beta1-released.html>`__.
-The following part of the documentation will cover the namespaces and what the changes mean for a module developer.
+The following part of the documentation will cover the namespaces and what this means for a module developer.
 In short: we introduced namespaces in all the OXID eShop's core classes so that composer autoloader can be used.
 
-We tried to make the change from an OXID eShop 5.3 to V6 as easy as possible, but we could not prevent
-some BC breaks. You will still be able to extend the oxSomething classes (like oxarticle) in your module but we do not
+You are able to extend the oxSomething classes (like oxarticle) in your module but we do not
 recommend this for new code. When we moved the OXID eShop's oxSomething classes under namespace we not only removed the 'ox'
 Prefix from the class name but gave some classes better suited names.
 (e.g. the former ``sysreq`` class now is named ``OxidEsales\Eshop\Application\Controller\Admin\SystemRequirements``, all
@@ -73,18 +70,18 @@ Virtual namespace equivalents for the old bc classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See CE file ``Core\Autoload\BackwardsCompatibilityClassMap.php``, which is an array mapping the virtual namespace
-class names to the pre OXID eShop V6 class names (what we call the bc class names here). If you write a new module,
+class names to the pre OXID eShop namespace class names (what we call the bc class names here). If you write a new module,
 please use the virtual namespace class names as the bc class names are deprecated and should not be used for new code.
 
 The OXID eShop itself still uses the old bc class names in some places but this will change in the near future.
 
 
-Classes that are not to be patched by a module
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Classes that are not to be extended by a module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In OXID eShop V6 we marked all classes that are not to be overwritten by a module with **@internal** but apart from that
-there is currently no mechanism that prevents a module developer from trying to patch such a shop class. We do not guarantee
-that the shop will work as expected if you try to do that though. What is definitely not patchable by a module is the
+We mark all classes that are not to be overwritten by a module with **@internal** but apart from that
+there is currently no mechanism that prevents a module developer from trying to extend such a shop class. We do not guarantee
+that the shop will work as expected if you try to do that though. What can definitely not be extended by a module is the
 ``OxidEsales\Eshop\Core\UtilsObject`` class.
 
 
@@ -92,7 +89,7 @@ Module installation
 -------------------
 
 Installing a module can be done as before by copying the module sources into the shop's module directory (old style)
-and then activating the module in the shop admin backend. With OXID eShop V6 we now also have the possibility
+and then activating the module in the shop admin backend. With namespaces in OXID eShop we have the possibility
 to let composer handle retrieving and copying the module sources to the correct location for you.
 You still have to activate the module in the shop admin either way.
 
@@ -119,21 +116,21 @@ in the module directory itself will be overwritten with the next call to compose
 (composer prompts for confirm though).
 
 
-Patch an OXID eShop class with a module
----------------------------------------
+Extend an OXID eShop class with a module
+----------------------------------------
 
 If you want to adjust a standard OXID eShop class with a module (let's chose ``OxidEsales\Eshop\Application\Model\Article``
 formerly known as ``oxarticle`` for example), you need to extend the module class (let's say ``MyVendorMyModuleArticle``) from a virtual parent class
 (``MyVendorMyModuleArticle_parent``). The shop creates the class chain in such a way that once your module is activated, all methods
 from the ``OxidEsales\Eshop\Application\Model\Article`` are available in ``MyVendorMyModuleArticle`` and can be overwritten with module functionality.
 
-**IMPORTANT**: It is only possible to patch shop BC and virtual namespace classes. Directly patching classes from the shop edition
+**IMPORTANT**: It is only possible to extend shop BC and virtual namespace classes. Directly extending classes from the shop edition
 namespaces is not allowed and such a module can not be activated. Trying to activate it gives an error in the admin backend.
 
 No own module namespace
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Create a module class that patches ``OxidEsales\Eshop\Application\Model\Article``, for example
+Create a module class that extends ``OxidEsales\Eshop\Application\Model\Article``, for example
 
 .. code:: php
 
@@ -156,7 +153,7 @@ Backwards compatible way, not recommended when writing new code:
 
 .. code:: php
 
-    # Register the patch class in the module's metadata.php
+    # Register the extend class in the module's metadata.php
     # Here we extend the shop's OxidEsales\Eshop\Application\Model\Article via the bc class name
     //.....
     'extend'      => array(
@@ -165,12 +162,12 @@ Backwards compatible way, not recommended when writing new code:
     //.....
 
 
-The **recommended way to patch a shop core class with a module** in OXID eShop V6 when the module does not support namespaces yet
+The **recommended way to extend a shop core class with a module** in OXID eShop when the module does not support namespaces yet
 is as follows:
 
 .. code:: php
 
-    # Register the patch class in the module's metadata.php
+    # Register the extend class in the module's metadata.php
     //.....
     'extend'      => array(
          \OxidEsales\Eshop\Application\Model\Article::class =>
@@ -179,10 +176,10 @@ is as follows:
     //.....
 
 
-Use your own namespaces with OXID eShop V6
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use your own namespaces with OXID eShop
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Now create a class like before to patch a shop class but this time give it a namespace:
+Now create a class like before to extend a shop class but this time give it a namespace:
 
 .. code:: php
 
@@ -208,7 +205,7 @@ Register the class in the module's metadata,php:
 
 .. code:: php
 
-    # Register the patch class in the module's metadata.php
+    # Register the extend class in the module's metadata.php
     //.....
     'extend'      => array(
          \OxidEsales\Eshop\Application\Model\Article::class =>
@@ -218,7 +215,7 @@ Register the class in the module's metadata,php:
 
 
 Install and register your module with composer
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To have the composer autoloader find your module file via namespace, create a composer.json file in the module's
 root directory.
@@ -263,8 +260,8 @@ register your module namespace directly in the shop's main composer.json:
 And then run composer update so composer can update it's autoload file.
 
 
-Using namespaces in module classes that do not patch OXID eShop classes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using namespaces in module classes that do not extend OXID eShop classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Add for example a model class to your module:
 
@@ -329,12 +326,12 @@ or with oxNew instead of new
             return $template;
         }
 
-In the module's metadata you only need to register the class patching the shop's payment controller but not your module's
+In the module's metadata you only need to register the class extending the shop's payment controller but not your module's
 new model class.
 
 .. code:: php
 
-    # Register the patch class in the module's metadata.php
+    # Register the extend class in the module's metadata.php
     //.....
     'extend'      => array(
          \OxidEsales\Eshop\Application\Controller\PaymentController::class
@@ -343,13 +340,13 @@ new model class.
     //.....
 
 
-Use module controllers that do not simply patch existing shop functionality
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use module controllers that do not simply extend existing shop functionality
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case you want to not only patch shop functionality in a module but for example want to introduce
+In case you want to not only extend shop functionality in a module but for example want to introduce
 a new controller that handles own form data we recommend you have a look into what changed with module
 metadata version 2.0. In short: in case you want introduce controllers in your module that support namespaces
-and that do not simply patch shop functionality, you need to use metadata version 2.0
+and that do not simply extend shop functionality, you need to use metadata version 2.0
 and register these controller classes in the module's metadata.php file.
 
 More information regarding this topic can be found `here <metadata/version20.html>`__.
