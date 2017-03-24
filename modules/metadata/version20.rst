@@ -374,7 +374,7 @@ If `flow_theme_child` theme would be active:
 events
 ------
 
-Module events were introduced in metadata version 1.1. Currently there are only 2 of them (onActivate and onDeactivate), more events will be added in future releases.
+Module events were introduced in metadata version 1.1. There are 2 events: onActivate and onDeactivate.
 
 .. code:: php
 
@@ -417,7 +417,7 @@ The field value also can be a simple string. If this field value is not an array
 Vendor directory support
 ------------------------
 
-All modules can be placed not directly in shop modules directory, but also in vendor directory. In this case the ``vendormetadata.php`` file must be placed in the vendor directory root. If the modules handler finds this file on scanning the shop modules directory, it knows that this is vendor directory and all subdirectories in this directory should be scanned also. Currently the ``vendormetadata.php`` file can be empty, in future here will be added some additional information about the module vendor.
+All modules can be placed not directly in shop modules directory, but also in vendor directory.
 Vendor directory structure example:
 
 .. code::
