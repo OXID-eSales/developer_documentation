@@ -97,11 +97,12 @@ Just create a composer.json in the module's root directory
 ::
 
   {
-    "name": "myvendor/mymodule",
-    "extra": {
-    "oxideshop": {
-      "target-directory": "myvendor/mymodule"
-    }
+      "name": "myvendor/mymodule",
+      "extra": {
+          "oxideshop": {
+              "target-directory": "myvendor/mymodule"
+          }
+      }
   }
 
 
@@ -223,15 +224,17 @@ root directory.
 ::
 
   {
-    "name": "myvendor/mymodule",
-    "autoload": {
-        "psr-4": {
-            "MyVendor\\MyModuleNamespace\\": "./"
-        }
-    "extra": {
-    "oxideshop": {
-      "target-directory": "myvendor/mymodule"
-    }
+      "name": "myvendor/mymodule",
+      "autoload": {
+          "psr-4": {
+              "MyVendor\\MyModuleNamespace\\": "./"
+          }
+      },
+      "extra": {
+          "oxideshop": {
+              "target-directory": "myvendor/mymodule"
+          }
+      }
   }
 
 Then in the shop's root directory do
