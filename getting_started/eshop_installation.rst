@@ -43,7 +43,7 @@ How to install OXID eShop compilation via Composer
 
          .. code:: bash
 
-            composer create-project --dev oxid-esales/oxideshop-project project_name dev-b-6.0-ce
+            composer create-project oxid-esales/oxideshop-project project_name dev-b-6.0-ce
 
         Development components will be installed together with OXID eShop:
 
