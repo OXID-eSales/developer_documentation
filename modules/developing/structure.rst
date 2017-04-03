@@ -61,6 +61,25 @@ Language files
 
 Language files are not specified inside the metadata.php but searched by naming conventions inside the module directory.
 
+Example language file:
+
+.. code::
+
+  <?php
+
+    $sLangName = 'English';
+
+    $aLang = array(
+        'charset'                     => 'UTF-8',
+
+        'VENDORMYMODULEIDLANGUAGEKEY' => 'my translation of VENDORMYMODULEIDLANGUAGEKEY',
+    );
+
+UTF-8 is the only possible charset for language files as the OXID eShop runs by default with UTF-8 itself and
+does not convert charsets. If you use any other charset for your language files, you have to use html codes for
+special characters.
+
+
 Frontend
 ^^^^^^^^
 
