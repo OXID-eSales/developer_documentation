@@ -33,7 +33,7 @@ These steps describes how to add module dependency to OXID eShop project.
 
 .. code:: bash
 
-  composer require <module-vendor/module-name>:dev-<branch_name>
+  composer require <module-vendor/module-name>:*
 
 
 .. Note::
