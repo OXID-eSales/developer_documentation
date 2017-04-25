@@ -17,6 +17,7 @@ Topics to be covered
         * Use own module classes
         * Use module controllers that do not simply extend existing shop functionality
 
+.. _bclayer-20170426:
 
 Introduction
 ------------
