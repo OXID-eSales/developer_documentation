@@ -4,6 +4,9 @@ Demo data
 Users predefined in demo data
 -----------------------------
 
+If you are running tests or using ``resetshop`` functionality of testing library, it's possible to use these credentials
+in OXID eShop:
+
 ::
 
   Rights: admin
@@ -13,5 +16,5 @@ Users predefined in demo data
 ::
 
    Rights: buyer
-   User name: user@oxi-esales.com
+   User name: user@oxid-esales.com
    Password: user
