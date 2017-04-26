@@ -381,8 +381,8 @@ Module events were introduced in metadata version 1.1. There are 2 events: onAct
 .. code:: php
 
   'events'       => array(
-        'onActivate'   => 'oepaypalevents::onActivate',
-        'onDeactivate' => 'oepaypalevents::onDeactivate'
+        'onActivate'   => '\OxidEsales\PayPalModule\Core\Events::onActivate',
+        'onDeactivate' => '\OxidEsales\PayPalModule\Core\Events::onDeactivate'
     ),
 
 Metadata file version
