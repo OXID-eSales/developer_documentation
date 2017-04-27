@@ -1,3 +1,5 @@
+.. _modules-20170527:
+
 Module resources
 ================
 

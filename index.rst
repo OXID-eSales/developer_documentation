@@ -18,6 +18,7 @@ Table of Contents
    oxid_components/index
    modules/index
    themes/index
+   glossary
 
 .. toctree::
    :hidden:

@@ -1,3 +1,5 @@
+.. _metadata_version2-20170427:
+
 Version 2.0
 ===========
 
@@ -81,7 +83,7 @@ You can use metadata version 2.0 with :ref:`controllers<controllers-20170307>` o
         \OxidEsales\Eshop\Application\Model\Article::class => MyVendor\MyModuleNamespace\Application\Model\MyModuleArticle::class
     ),
 
-You should extend only OXID eShop classes within the virtual namespace (``\OxidEsales\Eshop``). If you try to extend
+You should extend only OXID eShop classes within the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` (``\OxidEsales\Eshop``). If you try to extend
 e.g a class of the namespace ``\OxidEsales\EshopCommunity``, you are not able to activate the module and get a warning
 message in the OXID eShop admin.
 

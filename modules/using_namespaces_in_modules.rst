@@ -1,15 +1,17 @@
+.. _namespaces_shop_and_modules-20170427:
+
 Namespaces with OXID eShop and modules
 ======================================
 
 Topics to be covered
     - The backwards compatibility layer
-        * virtual namespaces
-        * find the virtual namespace equivalents for the old bc classes (like oxarticle)
+        * the :ref:`Unified Namespace <modules-unified_namespaces-20170526>`
+        * find the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` equivalents for the old bc classes (like oxarticle)
         * how we marked classes that are not intended to be extended by a module
     - Module installation
         * old style (copy & paste)
         * new style (via composer)
-    - How to extend the shop's namespace classes
+    - How to extend the OXID eShop's namespaced classes
         * in case your module does not yet use a namespace
         * in case your module does use it's own namespace
     - Use your own namespaces in a module with OXID eShop
@@ -40,16 +42,16 @@ you will have more than enough time to port your modules before that will happen
 **NOTE:** In order to use composer autoload, folder structure and class files needs to match the namespace (``UpperCamelCase``).
 
 
-The Virtual Namespace (``OxidEsales\Eshop``)
+.. _modules-unified_namespaces-20170526:
+
+The Unified Namespace (``OxidEsales\Eshop``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The virtual namespace (``OxidEsales\Eshop``) was introduced to provide an edition independent namespace for module and core developers.
-So disregarding if the shop edition is CE/PE/EE, the virtual namespace class name is to be used in code (core and modules).
+The :ref:`Unified Namespace <modules-unified_namespaces-20170526>` (``OxidEsales\Eshop``) was introduced to provide an edition independent namespace for module and core developers.
+So disregarding if the shop edition is CE/PE/EE, the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class name is to be used in code (core and modules).
 The shop classes live in their edition related namespaces (``OxidEsales\EshopCommunity``, ``OxidEsales\EshopProfessional``, ``OxidEsales\EshoEnterprise``)
 but depending on the current edition, the autoloader makes sure to alias the edition namespace classes and the bc classes
-to the correct virtual namespace class names. **Please do not use the shop classes from the edition namespaces in your code.**
-
-We introduced the ``OxidEsales\Eshop\Core\Autoload\VirtualNameSpaceClassMap`` to map the virtual namespace class to the related edition's namespace class.
+to the correct :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names. **Please do not use the shop classes from the edition namespaces in your code.**
 
 **NOTE**: If you want to refer to a class name, always use the '::class' notation instead of using a plain string.
 
@@ -57,7 +59,7 @@ We introduced the ``OxidEsales\Eshop\Core\Autoload\VirtualNameSpaceClassMap`` to
 
     Example:
 
-    $articleFromVirtualNamespace = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
+    $articleFromUnifiedNamespace = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
     //which is equivalent to the old style
     $articleFromBcClass = oxNew('oxarticle');
 
@@ -67,12 +69,12 @@ We introduced the ``OxidEsales\Eshop\Core\Autoload\VirtualNameSpaceClassMap`` to
     EE OxidEsales\EshopEnterprise\Application\Model\Article
 
 
-Virtual namespace equivalents for the old bc classes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+:ref:`Unified Namespace <modules-unified_namespaces-20170526>` equivalents for the old bc classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See CE file ``Core\Autoload\BackwardsCompatibilityClassMap.php``, which is an array mapping the virtual namespace
+See CE file ``Core\Autoload\BackwardsCompatibilityClassMap.php``, which is an array mapping the :ref:`Unified Namespace <modules-unified_namespaces-20170526>`
 class names to the pre OXID eShop namespace class names (what we call the bc class names here). If you write a new module,
-please use the virtual namespace class names as the bc class names are deprecated and should not be used for new code.
+please use the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names as the bc class names are deprecated and should not be used for new code.
 
 The OXID eShop itself still uses the old bc class names in some places but this will change in the near future.
 
@@ -122,11 +124,11 @@ Extend an OXID eShop class with a module
 ----------------------------------------
 
 If you want to adjust a standard OXID eShop class with a module (let's chose ``OxidEsales\Eshop\Application\Model\Article``
-formerly known as ``oxarticle`` for example), you need to extend the module class (let's say ``MyVendorMyModuleArticle``) from a virtual parent class
+formerly known as ``oxarticle`` for example), you need to extend the module class (let's say ``MyVendorMyModuleArticle``) from a :ref:`Unified Namespace <modules-unified_namespaces-20170526>` parent class
 (``MyVendorMyModuleArticle_parent``). The shop creates the class chain in such a way that once your module is activated, all methods
 from the ``OxidEsales\Eshop\Application\Model\Article`` are available in ``MyVendorMyModuleArticle`` and can be overwritten with module functionality.
 
-**IMPORTANT**: It is only possible to extend shop BC and virtual namespace classes. Directly extending classes from the shop edition
+**IMPORTANT**: It is only possible to extend shop BC and :ref:`Unified Namespace <modules-unified_namespaces-20170526>` classes. Directly extending classes from the shop edition
 namespaces is not allowed and such a module can not be activated. Trying to activate it gives an error in the admin backend.
 
 No own module namespace

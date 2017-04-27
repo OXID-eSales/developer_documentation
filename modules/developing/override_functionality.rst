@@ -63,7 +63,7 @@ The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
 In this example method ``addToBasket`` is overridden and it adds logging functionality.
 To override the method one needs to:
 
-- Extend a virtual class - ``<className>_parent``, in this case it is ``Basket_parent``.
+- Extend a :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class - ``<className>_parent``, in this case it is ``Basket_parent``.
 - Call parent method, so the chain would not be broken.
 
 Autoload module classes
