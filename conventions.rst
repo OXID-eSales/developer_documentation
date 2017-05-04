@@ -184,23 +184,56 @@ results in
 Highlight Text
 --------------
 
-E.g. for highlighting a PHP class name in a running text.
+Inline markup for menu navigation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-  Use the function ``Regististry::set()`` here.
+    :menuselection:`Artikel verwalten -->  Artikel`
 
-results in
+results in: :menuselection:`Artikel verwalten -->  Artikel`
 
-Use the function ``Regististry::set()`` here.
+Inline markup for file names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :file:`/usr/lib/python2.{x}/site-packages`
+
+results in: :file:`/usr/lib/python2.{x}/site-packages`
 
 
-Images
-------
+Inline markup for controls
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To be done...
+.. code::
 
-Diagrams
---------
+    :guilabel:`Cancel`
 
-To be done...
+results in: :guilabel:`Cancel`
+
+Inline markup for code
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    ``exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']``
+
+results in: ``exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']``
+
+Inline markup for commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :command:`cd ..\\GitHub\\Dokumentation-und-Hilfe`
+
+results in: :command:`cd ..\\GitHub\\Dokumentation-und-Hilfe`
+
+
+Inline markup for downloads
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :download:`/downloads/varnish/6.0.0/default.vcl`
