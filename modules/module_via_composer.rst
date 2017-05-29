@@ -14,22 +14,25 @@ In order to install module correctly this plugin requires two fields to be descr
 
 .. code:: json
 
-    {
-       "name": "oxid-esales/paypal-module",
-       "description": "This is PayPal module for OXID eShop.",
-       "type": "oxideshop-module",
-       "keywords": ["oxid", "modules", "eShop"],
-       "homepage": "https://www.oxid-esales.com/en/home.html",
-       "license": [
-           "GPL-3.0",
-           "proprietary"
-       ],
-       "extra": {
-         "oxideshop": {
-           "target-directory": "oe/oepaypal"
-         }
-       }
+  {
+    "name": "oxid-esales/paypal-module",
+    "description": "This is PayPal module for OXID eShop.",
+    "type": "oxideshop-module",
+    "keywords": ["oxid", "modules", "eShop"],
+    "homepage": "https://www.oxid-esales.com/en/home.html",
+    "license": [
+      "GPL-3.0",
+      "proprietary"
+    ],
+    "extra": {
+      "oxideshop": {
+        "target-directory": "oe/oepaypal",
+        "blacklist-filter": [
+          "documentation/**/*.*"
+        ]
+      }
     }
+  }
 
 .. _module_type-20160524:
 
@@ -66,4 +69,34 @@ When the parameter is not given, the root directory of the module is used instea
 
   Usually this parameter should not be used if all files are placed in the module's root directory.
 
+blacklist-filter
+^^^^^^^^^^^^^^^^
+
+If ``blacklist-filter`` is given, it will be used to filter out unwanted files
+and directories while the copy from ``source-directory`` to
+``target-directory`` takes place. The value of ``blacklist-filter`` must be a
+list of strings where each item represents a glob filter entry and is described
+as a relative path (relative to ``source-directory``).
+
+Below is a list of **valid** entries:
+
+* ``README.md`` - will filter one specific file ``README.md``;
+* ``*.pdf`` - will filter all PDF documents from the source root directory;
+* ``**/*.pdf`` - will filter all PDF documents from the source root directory
+  and all of it's child directories;
+* ``example/path/**/*`` - will filter all files and directories from the
+  directory ``example/path``, including the given directory itself.
+
+Below is a list of **non-valid** entries:
+
+* ``/an/absolute/path/to/file`` - absolute paths are not allowed, only relative
+  paths are accepted;
+* ``some/path/`` - ambigious description of directory to filter, it's not clear
+  if only the files are needed to be filtered or directories have to be included
+  as well.
+
+For the most up-to-date definition of what can be accepted as an argument,
+please follow the
+`tests <https://github.com/OXID-eSales/oxideshop_composer_plugin/blob/master/tests/Unit/Utilities/CopyFileManager/CopyGlobFilteredFileManagerTest.php>`_
+which covers the behaviour.
 
