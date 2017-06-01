@@ -1,7 +1,7 @@
 .. _port_to_v6-20170427:
 
-Porting guideline to version 6.0
-================================
+Guideline for porting modules to OXID eShop version 6.0
+=======================================================
 
 
 This section contains guidelines about how to port modules from OXID eShop 5.x to OXID eShop 6.0.
