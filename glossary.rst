@@ -37,4 +37,4 @@ Vendor Id
 Its necessary to make e.g. names or the namespace of an OXID eShop extensions unique.
 Therefor you should register an id for your company
 `here <https://github.com/OXIDprojects/OXIDforge-pages/blob/master/extension_acronyms.md>`__.
-This is called a vendor id. More information regarding the vendor id can be found on https://oxidforge.org/de/modulkurzel
+This is called a vendor id. More information regarding the vendor id can be found on https://oxidforge.org/en/extension-acronyms
