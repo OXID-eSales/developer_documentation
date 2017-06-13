@@ -21,6 +21,13 @@ When we talk about the OXID Compilation, or just the compilation, we think of a 
 * some OXID eShop Themes (e.g. `the Flow Theme <https://github.com/OXID-eSales/flow_theme>`__)
 * some OXID eShop Modules (e.g. `the PayPal Module <https://github.com/OXID-eSales/paypal>`__)
 
+.. _glossary-edition:
+
+Edition
+^^^^^^^
+
+An edition is child of the OXID eShop family. Editions are differentiated mainly by their feature sets.
+Currently there are the editions Community, Professional, Enterprise and B2B.
 
 .. _glossary-vendor_id:
 
