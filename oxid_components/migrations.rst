@@ -10,28 +10,35 @@ Infrastructure
 --------------
 
 At the moment OXID eShop uses "Doctrine 2 Migrations" and it's integrated via OXID eShop migration components.
-Components schema can be found bellow.
 
+Doctrine Migrations runs migrations with a single configuration. There is a need to run several configurations (suites)
+of migrations for OXID eShop project. For example one for Community Edition, one for Enterprise Edition and one for a project.
+For this reason `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__
+was created.
 
-.. image:: resources/infrastructure.svg
+Doctrine Migration Wrapper needs some information about the OXID eShop installation like:
 
-OXID tools which are displayed in diagram can be found here:
+- what edition is active
+- what are credentials for database
 
-* https://github.com/OXID-eSales/eshop-db_migration_wrapper
-* https://github.com/OXID-eSales/eshop-doctrine_migration_wrapper
-* https://github.com/OXID-eSales/eshop-migration_facts
-* https://github.com/OXID-eSales/eshop-edition_facts
-* https://github.com/OXID-eSales/eshop-facts
+This information is gathered from `OXID eShop Facts <https://github.com/OXID-eSales/oxideshop-facts>`__.
+Facts has a class which can provide an information about OXID eShop and it's environment. This component is Shop
+independent and can be used without bootstrap. The only restriction is to have config.inc.php file configured.
 
 Usage
 -----
 
-Running migrations
-^^^^^^^^^^^^^^^^^^
+Running migrations - CLI
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Script to run migrations is registered to composer bin directory. It accept two parameters:
+
+- Doctrine command
+- Edition
 
 .. code:: bash
 
-   composer oe:migration:run
+   vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 This command will run all the migrations which are in OXID eShop specific directories. For example if you have
 OXID eShop Enterprise edition, migration tool will run migrations in this order:
@@ -54,49 +61,49 @@ This variable defines what type of migration it is. There are 4 types:
 * **PE** - Generates migration file for OXID eShop Professional Edition. **It's used for product development only**.
 * **EE** - Generates migration file for OXID eShop Enterprise Edition. **It's used for product development only**.
 
-.. note::
-
-   It's possible to overwrite more environment variables. Check OXID eShop migration components documentation which
-   is in component repositories. List of component repositories can be found :ref:`here <migrations_infrastructure-20160920>`.
-
-Views creation/regeneration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Generate migration
+^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
 
-   composer oe:views:regenerate
+   vendor/bin/oe-eshop-db_migrate migrations:generate
 
-This command will create shop views by current eShop version, edition and configuration. It is a good practice to run it right after migrations command.
+This command will create shop views by current eShop version, edition and configuration.
+It is a good practice to run it right after migrations command.
 
-Generating migrations
-^^^^^^^^^^^^^^^^^^^^^
+Generate migration for a single suite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code:: bash
 
-   MIGRATION_SUITE=PR composer oe:migration:new
+   vendor/bin/oe-eshop-db_migrate migrations:generate PR
 
 This command will generate new migration. Migration class will be generated to specific directory according **MIGRATION_SUITE**
 variable. In this case it will be generated in `source/migration/project_data/` directory.
 
-Running Doctrine 2 Migrations commands
---------------------------------------
+Run Doctrine 2 Migrations commands
+----------------------------------
 
-Sometimes there will be a need to run doctrine specific commands. For example, you would like to get the list of
-doctrine migrations available commands:
-
-.. code:: bash
-
-   MIGRATION_SUITE=PR ./vendor/bin/oe-eshop-facts oe-eshop-doctrine_migration
-
-Or revert to the first migration:
+Sometimes there will be a need to run doctrine specific commands. To do so run Doctrine Migrations command:
 
 .. code:: bash
 
-   MIGRATION_SUITE=PR ./vendor/bin/oe-eshop-facts oe-eshop-doctrine_migration migrations:migrate first
+   vendor/bin/oe-eshop-db_migrate DOCTRINE_COMMAND
 
-.. important::
+For example, you would like to get the list of doctrine migrations available commands:
 
-   If **MIGRATION_SUITE** variable will not be defined, command will run through all suites.
+.. code:: bash
+
+   vendor/bin/oe-eshop-db_migrate
 
 More information on how to use Doctrine 2 Migrations can be found in official documentation page:
 http://docs.doctrine-project.org/projects/doctrine-migrations/en/latest/
+
+Using Doctrine Migrations Wrapper
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Doctrine Migration Wrapper is written in PHP and could be used without command line interface.
+To do so:
+
+- Create ``Migrations`` object with ``MigrationsBuilder->build()``
+- Call ``execute`` method with needed parameters
