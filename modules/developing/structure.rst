@@ -116,7 +116,7 @@ Admin
 
 Translation files can be placed in
 
-* ``views/admin/``
+* ``Application/views/admin/``
 
 Example:
 
@@ -127,12 +127,13 @@ Example:
       └── modules
           └── <vendor>
               └── <module_id>
-                  └── views
-                      └── admin
-                          └── de
-                              └── myvendormymodule_admin_de_lang.php
-                          └── en
-                              └── myvendormymodule_admin_en_lang.php
+                  └── Application
+                      └── views
+                          └── admin
+                              └── de
+                                  └── myvendormymodule_admin_de_lang.php
+                              └── en
+                                  └── myvendormymodule_admin_en_lang.php
 
 For translations of module settings, have a look at the section :ref:`settings of the metadata file <settings-20170316>`.
 
