@@ -47,11 +47,11 @@ you will have more than enough time to port your modules before that will happen
 The Unified Namespace (``OxidEsales\Eshop``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The :ref:`Unified Namespace <modules-unified_namespaces-20170526>` (``OxidEsales\Eshop``) was introduced to provide an edition independent namespace for module and core developers.
-So disregarding if the shop edition is CE/PE/EE, the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class name is to be used in code (core and modules).
-The shop classes live in their edition related namespaces (``OxidEsales\EshopCommunity``, ``OxidEsales\EshopProfessional``, ``OxidEsales\EshoEnterprise``)
-but depending on the current edition, the autoloader makes sure to alias the edition namespace classes and the bc classes
-to the correct :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names. **Please do not use the shop classes from the edition namespaces in your code.**
+The :doc:`Unified Namespace <../system_architecture/namespaces>` (``OxidEsales\Eshop``) provides an edition independent namespace for module and core developers.
+
+.. important::
+
+ Please do not use the shop classes from the edition namespaces in your code!
 
 **NOTE**: If you want to refer to a class name, always use the '::class' notation instead of using a plain string.
 
@@ -63,16 +63,11 @@ to the correct :ref:`Unified Namespace <modules-unified_namespaces-20170526>` cl
     //which is equivalent to the old style
     $articleFromBcClass = oxNew('oxarticle');
 
-    Depending on the current edition, the class that is in fact loaded is
-    CE OxidEsales\EshopCommunity\Application\Model\Article
-    PE OxidEsales\EshopProfessional\Application\Model\Article
-    EE OxidEsales\EshopEnterprise\Application\Model\Article
 
+Equivalents for the old bc classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-:ref:`Unified Namespace <modules-unified_namespaces-20170526>` equivalents for the old bc classes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-See CE file ``Core\Autoload\BackwardsCompatibilityClassMap.php``, which is an array mapping the :ref:`Unified Namespace <modules-unified_namespaces-20170526>`
+See CE file :file:`Core\Autoload\BackwardsCompatibilityClassMap.php`, which is an array mapping the :doc:`Unified Namespace <../system_architecture/namespaces>`
 class names to the pre OXID eShop namespace class names (what we call the bc class names here). If you write a new module,
 please use the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names as the bc class names are deprecated and should not be used for new code.
 

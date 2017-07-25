@@ -6,7 +6,7 @@ There are multiple ways to get the OXID eShop source code, one of the simplest i
 How to install OXID eShop compilation via Composer
 --------------------------------------------------
 
-#. Depending on OXID eShop edition run script bellow to download compilation:
+#. Depending on OXID eShop edition run script below to download compilation:
 
    * For Community Edition:
 
@@ -25,7 +25,7 @@ How to install OXID eShop compilation via Composer
 
         composer create-project --no-dev oxid-esales/oxideshop-project project_name dev-b-6.0-ee
 
-    .. note::
+   .. note::
 
       Enter credentials to access PE or EE repositories.
 
@@ -34,6 +34,14 @@ How to install OXID eShop compilation via Composer
       When installing PE and EE dist will be used instead of sources for this compilation. This is done because only Dist are available in Satis server.
       Run ``composer install --prefer-source`` if you want to take sources directly from GitHub.
       Have in mind that credentials to access private repositories will be needed.
+
+   .. note::
+
+      After composer downloads and installs all dependencies, it executes several tasks: one of them is to
+      generate the `unified namespace classes` (classes in the namespace `\OxidEsales\Eshop`,
+      see :doc:`unified namespace <../system_architecture/namespaces>`) If the generation of the `unified namespace classes`
+      fails, :doc:`look here for possible fixes <../oxid_components/unified_namespace_generator>`.
+
 
 #. Project with development components
 

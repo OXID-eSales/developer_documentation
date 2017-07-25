@@ -1,0 +1,11 @@
+.. uml::
+
+   @startuml
+
+   OxidEsales\EshopCommunity\Application\Model\Article <|-- OxidEsales\EshopProfessional\Application\Model\Article
+   OxidEsales\EshopProfessional\Application\Model\Article <|-- OxidEsales\EshopEnterprise\Application\Model\Article
+   OxidEsales\EshopEnterprise\Application\Model\Article <|-- OxidEsales\Eshop\Application\Model\Article
+
+   OxidEsales\Eshop\Application\Model\Article - oxarticle : class_alias
+
+   @enduml

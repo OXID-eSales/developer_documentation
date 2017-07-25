@@ -1,5 +1,5 @@
-Upgrade
-=======
+System Architecture
+===================
 
 .. toctree::
     :titlesonly:
