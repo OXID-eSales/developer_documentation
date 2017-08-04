@@ -179,3 +179,19 @@ Edit existing composer.json by adding requirement to your metapackage instead of
 .. NOTE::
 
    Leave Satis repository if you use Professional or Enterprise version.
+
+Known issue with MacOS
+----------------------
+
+If you get the following error in the migrations while installing the OXID eShop on a MAMP
+[PDOException] 
+SQLSTATE[HY000] [2002] No such file or directory
+
+Look at `this blog entry <https://andreys.info/blog/2007-11-07/configuring-terminal-to-work-with-mamp-mysql-on-leopard>`__ and do the following steps:
+
+.. code::
+  
+    sudo mkdir /var/mysql
+    sudo ln -s /Applications/MAMP/tmp/mysql/mysql.sock /var/mysql/mysql.sock
+    sudo chown _mysql /var/mysql/mysql.sock
+    sudo chmod 777 /var/mysql/mysql.sock
