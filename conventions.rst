@@ -237,3 +237,31 @@ Inline markup for downloads
 .. code::
 
     :download:`/downloads/varnish/6.0.0/default.vcl`
+
+.. _conventions_images:
+
+Images
+------
+
+-  Do not commit big files or images. Use a link to an external source inside repository. This will help to keep repository small.
+
+.. raw:: html
+
+   <p>
+      <img width="100" src="https://www.google.co.uk/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+   </p>
+
+.. code:: html
+
+   .. raw:: html
+
+      <p>
+         <img width="100" src="https://www.google.co.uk/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+      </p>
+
+UML diagrams
+------------
+
+Please do not commit big files or images. Use .svg images and include them like described in the
+section :ref:`Images <conventions_images>`. If you created the UML diagram with `PlantUml <http://plantuml.com>`__,
+its good to also add the .puml file to the repository into a separate directory :file:`resources`.
