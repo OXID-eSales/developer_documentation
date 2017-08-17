@@ -1,5 +1,5 @@
-Upgrade
-=======
+Update
+======
 
 .. toctree::
     :titlesonly:

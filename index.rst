@@ -19,7 +19,7 @@ Table of Contents
    modules/index
    themes/index
    system_architecture/index
-   upgrade/index
+   update/index
    glossary
 
 .. toctree::
