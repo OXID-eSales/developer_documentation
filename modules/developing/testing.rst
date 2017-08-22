@@ -47,3 +47,21 @@ Possible structure of module tests:
 Possible example in `PayPal GitHub repository. <https://github.com/OXID-eSales/paypal/tree/a4770a7da0d1b13dc4e8be4f8bc30abf7d418d03/tests>`__
 
 Testing library and it's documentation `in GitHub. <https://github.com/OXID-eSales/testing_library/>`__
+
+Users predefined in demo data
+-----------------------------
+
+If you are running tests or using ``reset-shop`` functionality of testing library, it's possible to use these credentials
+in OXID eShop:
+
+::
+
+  Rights: admin
+  User name: admin
+  Password: admin
+
+::
+
+   Rights: buyer
+   User name: user@oxid-esales.com
+   Password: user

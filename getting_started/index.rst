@@ -9,5 +9,6 @@ This section describes how to prepare environment to start develop using OXID eS
 
    environment_preparation
    eshop_installation
-   demodata
-   *
+   eshop_installation_without_composer
+   troubleshooting
+   what_is_next
