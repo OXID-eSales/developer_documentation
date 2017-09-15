@@ -208,11 +208,11 @@ Replace all OXID eShop backwards compatibility classes (e.g. ``oxArticle``) in y
 
        // Old style (using BC Layer)
        $article = oxNew('oxarticle');
-       $field = new oxField;
+       $field = new oxField();
 
        // New style:
        $article = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
-       $field   = new \OxidEsales\Eshop\Core\Field($text);
+       $field   = new \OxidEsales\Eshop\Core\Field();
 
 * Use the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names for calls to Registry::set() and Registry::get().
     .. code::
