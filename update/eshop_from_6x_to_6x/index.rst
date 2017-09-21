@@ -1,7 +1,5 @@
-Update the OXID eShop to a new 6.x version
-==========================================
-
-This guide is only valid if you want to update your shop within a 6.x-version.
+Update OXID eShop from a 6.x version to a 6.x version
+=====================================================
 
 1. For updating your project from any 6.0 version to another 6.x version, please edit the metapackage version
    requirement in your root :file:`composer.json` file to the desired version, e.g. ``^v6.0.0-rc.2``
@@ -16,7 +14,6 @@ This guide is only valid if you want to update your shop within a 6.x-version.
 .. code ::
 
     composer update
-
 
 Change dependencies
 -------------------
@@ -38,4 +35,3 @@ for changing existing requirements.
 
    composer update --no-plugins --no-scripts
    composer update
-

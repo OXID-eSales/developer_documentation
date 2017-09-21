@@ -1,11 +1,12 @@
 .. _port_to_v6-20170427:
 
-Guideline for porting modules to OXID eShop version 6.0
-=======================================================
+Modules
+=======
 
+For updating existing modules from OXID eShop 5.4 to OXID eShop 6, either
 
-This section contains guidelines about how to port modules from OXID eShop 5.x to OXID eShop 6.0.
-
+* get an OXID eShop 6 compatible version of your modules or
+* update the modules by yourself. Please have a look at the following sections on how to update by yourself.
 
 Overview about the steps to port a module to the OXID eShop version 6.0
 -----------------------------------------------------------------------
@@ -35,6 +36,8 @@ We strongly recommend you to do the "Full" steps now, or as soon as possible. We
 | :ref:`Adjust the code style of your modules code <port_to_v6-code_style-20170427>`     |           | ✔      |
 +----------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`Exchange BC Layer classes <port_to_v6-bc_layer-20170427>`                        |           | ✔      |
++----------------------------------------------------------------------------------------+-----------+--------+
+| :ref:`Remove deprecated code <remove_deprecated_code-20171012>`                        |           | ✔      |
 +----------------------------------------------------------------------------------------+-----------+--------+
 | :ref:`Installable via composer* <port_to_v6-composer-20170427>`                        |           | ✔      |
 +----------------------------------------------------------------------------------------+-----------+--------+
@@ -224,6 +227,18 @@ Replace all OXID eShop backwards compatibility classes (e.g. ``oxArticle``) in y
        \OxidEsales\Eshop\Core\Registry::get(\OxidEsales\Eshop\Application\Model\SeoEncoderVendor::class);
 
 
+
+.. _remove_deprecated_code-20171012:
+
+Remove deprecated code
+^^^^^^^^^^^^^^^^^^^^^^
+
+Besides the usage of :ref:`backwards compatibility classes <port_to_v6-bc_layer-20170427>`
+there might exist more usages of deprecated code in your modules. Choose your favourite IDE (integrated development environment)
+and do a code analysis on deprecations. Additionally you can have a look to a list of all deprecations in the
+`source code documentation <http://docu.oxid-esales.com/CE/sourcecodedocumentation>`.
+
+
 .. _port_to_v6-composer-20170427:
 
 Make module installable via composer
@@ -233,6 +248,10 @@ We recommend that the module is made installable via composer. Modules that will
 be installable via composer. Information what needs to be done (the keyword is composer.json) can be found
 :ref:`here <copy_module_via_composer-20170217>`. Verify that composer correctly installs it.
 
+.. important::
+
+    if you made changes to the file :file:`modules/composer.json` in OXID eShop 4.10 / 5.3, port those changes into the
+    root :file:`composer.json` file in OXID eShop 6 or into a modules :file:`composer.json` file
 
 .. _port_to_v6-namespace-20170427:
 
