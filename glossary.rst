@@ -30,11 +30,13 @@ file of the OXID eShop Community Edition meta package for an example.
 OXID Compilation
 ^^^^^^^^^^^^^^^^
 
-The OXID eShop compilation consists of a certain edition of OXID eShop, which is bundled with the following modules:
+The OXID eShop compilation consists of a certain edition of OXID eShop, which is bundled with the following modules/themes:
 
+* `Flow theme <https://github.com/OXID-eSales/flow_theme/>`__
 * `Paymorrow Module <https://github.com/OXID-eSales/paymorrow-module>`__
 * `PayPal Module <https://github.com/OXID-eSales/paypal>`__
 * `PayOne Module <https://github.com/payone-gmbh/oxid-6>`__
+* `Summernote WYSIWYG Editor <https://github.com/OXID-eSales/ddoe-wysiwyg-editor-module>`__
 
 The components of a OXID Compilation are defined in a `Meta Package`_
 To ensure the best stability and interoperability, in a compilation, the versions of all components are pinned to a specific
