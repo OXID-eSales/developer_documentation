@@ -78,4 +78,4 @@ solution.
 WYSIWYG Pro
 -----------
 
-@todo
+This section will be added later.

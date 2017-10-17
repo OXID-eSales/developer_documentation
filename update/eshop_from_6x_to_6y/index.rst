@@ -1,4 +1,4 @@
-Update OXID eShop from a 6.x version to a 6.x version
+Update OXID eShop from a 6.x version to a 6.y version
 =====================================================
 
 1. For updating your project from any 6.0 version to another 6.x version, please edit the metapackage version
