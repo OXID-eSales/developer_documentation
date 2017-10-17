@@ -14,8 +14,30 @@ You should also take care that your own tables use UTF-8. There are also excepti
 database tables (e.g. the column ``OXID`` which is latin1 in most tables). If you refer to those columns from your
 own tables, you also have to use latin1.
 
-See update scripts in https://oxid-esales.atlassian.net/browse/OXDEV-83
-There are two different update sql files... @todo
+We provide update SQL scripts for each OXID eShop edition. We divided them into two files:
+
+* one file with queries, where you can not loose data while the execution and
+* one file with queries, where you can actually lose data while the execution.
+
+So we expect, that you read the second file especially carefully!
+
+You will recognize the second file on its postfix '_cleanup'.
+
+**OXID eShop Community Edition:**
+
+* :download:`migrate_ce_5_3_to_6_0.sql <resources/ce/migrate_ce_5_3_to_6_0.sql>`
+* :download:`migrate_ce_5_3_to_6_0_cleanup.sql <resources/ce/migrate_ce_5_3_to_6_0_cleanup.sql>`
+
+**OXID eShop Professional Edition:**
+
+
+* :download:`migrate_pe_5_3_to_6_0.sql <resources/pe/migrate_pe_5_3_to_6_0.sql>`
+* :download:`migrate_pe_5_3_to_6_0_cleanup.sql <resources/pe/migrate_pe_5_3_to_6_0_cleanup.sql>`
+
+**OXID eShop Enterprise Edition**
+
+* :download:`migrate_ee_5_3_to_6_0.sql <resources/ee/migrate_ee_5_3_to_6_0.sql>`
+* :download:`migrate_ee_5_3_to_6_0_cleanup.sql <resources/ee/migrate_ee_5_3_to_6_0_cleanup.sql>`
 
 
 InnoDb: Change of database engine
@@ -24,7 +46,7 @@ InnoDb: Change of database engine
 The database engine in OXID eShop 4.10 / 5.3 is mostly MyISAM. In OXID eShop 6, the database engine
 is InnoDB for all database tables.
 
-* Migrating the database with the scripts (@todo add scripts from https://oxid-esales.atlassian.net/browse/OXDEV-83)
+* Migrating the database with the scripts (see the previous section)
   from MyISAM to InnoDb may need some time, additional disk space and RAM. Be sure to plan a maintenance window
   in your production shop, provide enough disk space and RAM on your MySQL server.
 * If you implemented your own queries to OXID eShop database tables, be sure to sort the results explicitely
