@@ -55,3 +55,6 @@ DROP TABLE IF EXISTS `oxcaptcha`;
 
 /* Delete stale config value */
 DELETE FROM `oxconfig` WHERE `OXVARNAME` = "blLoadDynContents";
+
+/* Delete old InvoicePDF template hook */
+DELETE FROM `oxtplblocks` WHERE `OXMODULE` = 'invoicepdf';
