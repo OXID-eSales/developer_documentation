@@ -15,6 +15,13 @@ Update OXID eShop from a 6.x version to a 6.y version
 
     composer update
 
+4. Execute the OXID eShop migrations
+
+.. code ::
+
+    vendor/bin/oe-eshop-db_migrate migrations:migrate
+
+
 Change dependencies
 -------------------
 
