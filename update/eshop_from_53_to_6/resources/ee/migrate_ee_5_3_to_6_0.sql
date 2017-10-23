@@ -230,21 +230,7 @@ INSERT INTO `oxconfig` (`OXID`, `OXSHOPID`, `OXMODULE`, `OXVARNAME`, `OXVARTYPE`
 
 
 /*
- Add new unique index.
- There might be a problem creating this index, if the values in the table are not unique.
- Moved to bottom as this might cause the script to exit here
-*/
-ALTER TABLE `oxobject2group`
-  DROP INDEX OXGROUPSID,
-  DROP INDEX OXOBJECTID,
-  ADD UNIQUE INDEX `UNIQ_OBJECTGROUP` (`OXGROUPSID`,`OXOBJECTID`,`OXSHOPID`),
-  ADD INDEX OXOBJECTID (OXOBJECTID)
-;
-
-
-/*
  Fix order of keys and indexes. We need this to be able to compare the database structures without having too much noise.
- This section should be extracted in the integration task.
 */
 ALTER TABLE `oxarticles`
   DROP INDEX OXACTIVEFROM,
@@ -372,4 +358,16 @@ ALTER TABLE `oxwrapping`
   DROP INDEX OXMAPID,
   ADD INDEX OXMAPID (OXMAPID),
   ADD INDEX OXSHOPID (OXSHOPID)
+;
+
+
+/*
+ Add new unique index.
+ There might be a problem creating this index, if the values in the table are not unique.
+*/
+ALTER TABLE `oxobject2group`
+  DROP INDEX OXGROUPSID,
+  DROP INDEX OXOBJECTID,
+  ADD UNIQUE INDEX `UNIQ_OBJECTGROUP` (`OXGROUPSID`,`OXOBJECTID`,`OXSHOPID`),
+  ADD INDEX OXOBJECTID (OXOBJECTID)
 ;

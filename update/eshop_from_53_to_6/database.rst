@@ -16,8 +16,8 @@ own tables, you also have to use latin1.
 
 We provide update SQL scripts for each OXID eShop edition. We divided them into two files:
 
-* one file with queries, where you can not loose data while the execution and
-* one file with queries, where you can actually lose data while the execution.
+* one file with queries, where you can not lose data while the execution and
+* one file with queries, where you will lose data while the execution.
 
 So we expect, that you read the second file especially carefully!
 

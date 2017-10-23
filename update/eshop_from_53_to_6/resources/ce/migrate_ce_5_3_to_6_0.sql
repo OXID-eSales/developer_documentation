@@ -156,7 +156,6 @@ INSERT INTO `oxconfig` (`OXID`, `OXSHOPID`, `OXMODULE`, `OXVARNAME`, `OXVARTYPE`
 /*
  Add new unique index.
  There might be a problem creating this index, if the values in the table are not unique.
- Moved to bottom as this might cause the script to exit here
 */
 ALTER TABLE `oxobject2group`
   DROP INDEX OXOBJECTID,
