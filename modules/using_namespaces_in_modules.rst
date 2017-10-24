@@ -51,7 +51,7 @@ The :doc:`Unified Namespace <../system_architecture/namespaces>` (``OxidEsales\E
 
 .. important::
 
- Please do not use the shop classes from the edition namespaces in your code!
+ Please do not use the shop classes from the edition namespaces in your code! (`More info <https://oxidforge.org/en/namespaces-in-oxid-eshop-6.html>`__)
 
 **NOTE**: If you want to refer to a class name, always use the '::class' notation instead of using a plain string.
 
