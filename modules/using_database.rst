@@ -12,7 +12,7 @@ Let's take one of them, for example the ``Article`` model, and try to fetch the 
 
 .. code:: php
 
-    $product = oxNew(\OxidEsales\Eshop\Application\Model::class); // creating model's object
+    $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class); // creating model's object
     $product->load( 'demoId' ); // loading data
     //getting some informations
     echo $product->oxarticles__oxtitle->value;
@@ -30,7 +30,7 @@ To set data to a model and store it, database magic setters (with the same appro
 
 .. code:: php
 
-    $product = oxNew(\OxidEsales\Eshop\Application\Model::class);
+    $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
     $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field ( 'productTitle' );
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
     $product->save();
@@ -39,7 +39,7 @@ In this example the new record will be inserted into the table. To update an inf
 
 .. code:: php
 
-    $product = oxNew(\OxidEsales\Eshop\Application\Model::class);
+    $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
     $product->load( 'demoId' );
     $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field ( 'productTitle' );
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
@@ -49,7 +49,7 @@ There are other ways to do the same - without loading the data - just simply set
 
 .. code:: php
 
-    $product = oxNew(\OxidEsales\Eshop\Application\Model::class);
+    $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
     $product->setId( 'demoId' );
     $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field( 'productTitle' );
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
