@@ -132,10 +132,6 @@ CREATE TABLE IF NOT EXISTS `oxmigrations_ce` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 ;
 
-INSERT IGNORE INTO `oxmigrations_ce` (`version`) VALUES
-  ('20170718124421')
-;
-
 
 /*
   Insert new config value

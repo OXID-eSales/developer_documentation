@@ -138,8 +138,6 @@ CREATE TABLE `oxmigrations_pe` (
   `version` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-INSERT IGNORE INTO `oxmigrations_pe` (`version`) VALUES
-  ('20160919103142_ce_to_pe');
 
 
 /* Insert new config value */

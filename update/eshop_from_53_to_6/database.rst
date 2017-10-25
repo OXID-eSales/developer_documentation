@@ -14,10 +14,20 @@ You should also take care that your own tables use UTF-8. There are also excepti
 database tables (e.g. the column ``OXID`` which is latin1 in most tables). If you refer to those columns from your
 own tables, you also have to use latin1.
 
-We provide update SQL scripts for each OXID eShop edition. We divided them into two files:
+In order to do update the database the update, you have to
 
-* one file with queries, where you can not lose data while the execution and
-* one file with queries, where you will lose data while the execution.
+1. Execute the :file:`migrate_XXX.sql` files described in the following
+2. Run :doc:`database migrations <../../oxid_components/migrations>` in OXID eShop 6 via the command
+
+    .. code ::
+
+        vendor/bin/oe-eshop-db_migrate migrations:migrate
+
+
+For step 1, we provide update SQL scripts for each OXID eShop edition. We divided them into two files:
+
+1. queries, where you can not lose data while the execution and
+2. queries, where you will lose data while the execution.
 
 So we expect, that you read the second file especially carefully!
 
@@ -25,19 +35,19 @@ You will recognize the second file on its postfix '_cleanup'.
 
 **OXID eShop Community Edition:**
 
-* :download:`migrate_ce_5_3_to_6_0.sql <resources/ce/migrate_ce_5_3_to_6_0.sql>`
-* :download:`migrate_ce_5_3_to_6_0_cleanup.sql <resources/ce/migrate_ce_5_3_to_6_0_cleanup.sql>`
+1. :download:`migrate_ce_5_3_to_6_0.sql <resources/ce/migrate_ce_5_3_to_6_0.sql>`
+2. :download:`migrate_ce_5_3_to_6_0_cleanup.sql <resources/ce/migrate_ce_5_3_to_6_0_cleanup.sql>`
 
 **OXID eShop Professional Edition:**
 
 
-* :download:`migrate_pe_5_3_to_6_0.sql <resources/pe/migrate_pe_5_3_to_6_0.sql>`
-* :download:`migrate_pe_5_3_to_6_0_cleanup.sql <resources/pe/migrate_pe_5_3_to_6_0_cleanup.sql>`
+1. :download:`migrate_pe_5_3_to_6_0.sql <resources/pe/migrate_pe_5_3_to_6_0.sql>`
+2. :download:`migrate_pe_5_3_to_6_0_cleanup.sql <resources/pe/migrate_pe_5_3_to_6_0_cleanup.sql>`
 
 **OXID eShop Enterprise Edition**
 
-* :download:`migrate_ee_5_3_to_6_0.sql <resources/ee/migrate_ee_5_3_to_6_0.sql>`
-* :download:`migrate_ee_5_3_to_6_0_cleanup.sql <resources/ee/migrate_ee_5_3_to_6_0_cleanup.sql>`
+1. :download:`migrate_ee_5_3_to_6_0.sql <resources/ee/migrate_ee_5_3_to_6_0.sql>`
+2. :download:`migrate_ee_5_3_to_6_0_cleanup.sql <resources/ee/migrate_ee_5_3_to_6_0_cleanup.sql>`
 
 
 InnoDb: Change of database engine
