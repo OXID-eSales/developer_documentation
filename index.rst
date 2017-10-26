@@ -26,6 +26,7 @@ Table of Contents
    :hidden:
 
    conventions
+   other_resources
 
 - :doc:`Conventions for writing developer documentation <conventions>`
-- `Other resources <http://wiki.oxidforge.org/Tutorials>`_
+- :doc:`Other resources <other_resources>`
