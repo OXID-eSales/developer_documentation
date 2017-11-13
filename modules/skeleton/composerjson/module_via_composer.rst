@@ -1,7 +1,7 @@
 .. _copy_module_via_composer-20170217:
 
-How to make an OXID eShop module installable via composer?
-===========================================================
+Install a module with composer
+==============================
 
 OXID eShop modules are installed via Composer by using the `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 

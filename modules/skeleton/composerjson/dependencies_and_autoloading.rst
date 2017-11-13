@@ -1,6 +1,6 @@
 .. _add_dependencies_and_autoload_via_composer-20170217:
 
-Add dependencies and autoload via composer
+Dependencies and autoloading with composer
 ==========================================
 
 **Glossary:**

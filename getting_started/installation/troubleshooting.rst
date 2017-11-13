@@ -32,4 +32,4 @@ There was an error during the execution of the unified namespace generator
 --------------------------------------------------------------------------
 
 If the generation of the `unified namespace classes` fails, OXID eShop will not run properly.
-In this case you should look :doc:`here<../oxid_components/unified_namespace_generator>` for possible fixes.
+In this case you should look :doc:`here<../../oxid_components/unified_namespace_generator>` for possible fixes.

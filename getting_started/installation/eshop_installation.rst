@@ -76,7 +76,7 @@ Technical details
     edition of OXID eShop.
 
     After Composer installed all dependencies, it executes several tasks. One of them is to generate the classes of the
-    :doc:`unified namespace <../system_architecture/namespaces>` `\\OxidEsales\\Eshop`.
+    :doc:`unified namespace <../../system_architecture/namespaces>` `\\OxidEsales\\Eshop`.
 
 
 Step 2: Configure the HTTP server

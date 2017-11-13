@@ -1,31 +1,44 @@
 Welcome to OXID eShop developer documentation!
 ==============================================
 
-This is OXID eShop developer documentation. It should provide necessary up to date information for developers.
+Reading this documentation
+--------------------------
 
-Currently this repository contains skeleton for documentation which should become useful documentation for developers.
-
-Conventions how to write documentation can be found :doc:`here <conventions>`.
+We use some OXID specific term in this documentation. Please have a look at the :doc:`Glossary for terms used in
+this documentation <glossary>`.
 
 Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 1
    :glob:
 
    getting_started/index
+   system_architecture/index
    oxid_components/index
    modules/index
    themes/index
-   system_architecture/index
    update/index
-   glossary
+
 
 .. toctree::
    :hidden:
 
    conventions
+   glossary
 
-- :doc:`Conventions for writing developer documentation <conventions>`
-- `Other resources <http://wiki.oxidforge.org/Tutorials>`_
+
+Help improving this documentation
+---------------------------------
+
+You can contribute to this documentation by creating a pull request on `the repository of this
+documentation <https://github.com/OXID-eSales/developer_documentation>`__. Conventions for writing documentation
+can be found :doc:`here <conventions>`.
+
+Useful links
+------------
+
+- `Oxidforge Tutorials <http://wiki.oxidforge.org/Tutorials>`__
+- `Forum OXID-Esales <http://forum.oxid-esales.com>`__
+- `OXID eShop source code documentation <http://docu.oxid-esales.com/CE/sourcecodedocumentation>`__

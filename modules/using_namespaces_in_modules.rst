@@ -1,7 +1,7 @@
 .. _namespaces_shop_and_modules-20170427:
 
-Namespaces with OXID eShop and modules
-======================================
+Using namespaces
+================
 
 Topics to be covered
     - The backwards compatibility layer
@@ -47,7 +47,7 @@ you will have more than enough time to port your modules before that will happen
 The Unified Namespace (``OxidEsales\Eshop``)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The :doc:`Unified Namespace <../system_architecture/namespaces>` (``OxidEsales\Eshop``) provides an edition independent namespace for module and core developers.
+The :doc:`Unified Namespace </system_architecture/namespaces>` (``OxidEsales\Eshop``) provides an edition independent namespace for module and core developers.
 
 .. important::
 
@@ -67,7 +67,7 @@ The :doc:`Unified Namespace <../system_architecture/namespaces>` (``OxidEsales\E
 Equivalents for the old bc classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-See CE file :file:`Core\Autoload\BackwardsCompatibilityClassMap.php`, which is an array mapping the :doc:`Unified Namespace <../system_architecture/namespaces>`
+See CE file :file:`Core\Autoload\BackwardsCompatibilityClassMap.php`, which is an array mapping the :doc:`Unified Namespace </system_architecture/namespaces>`
 class names to the pre OXID eShop namespace class names (what we call the bc class names here). If you write a new module,
 please use the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class names as the bc class names are deprecated and should not be used for new code.
 

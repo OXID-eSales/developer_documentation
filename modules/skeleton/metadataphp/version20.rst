@@ -9,7 +9,7 @@ Changes compared to version 1.1
 * New Section Controllers: To be able to use namespaces for module controllers, we introduce
   module's metadata.php version 2.0 with a new section ``controllers``.
   The support for ``files`` was dropped in Module's metadata version 2.0. Classes in a namespace will be found by the autoloader.
-  If you use your own namespace, :doc:`register it in the module's composer.json file </modules/module_via_composer>`.
+  If you use your own namespace, :doc:`register it in the module's composer.json file </modules/skeleton/composerjson/module_via_composer>`.
 
 .. important::
 

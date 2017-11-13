@@ -1,14 +1,13 @@
 Getting started
 ===============
 
-This section describes how to prepare environment to start develop using OXID eShop.
+This section describes the main steps you have to follow in order to install an OXID the eShop and get familiar with it.
 
 .. toctree::
    :titlesonly:
    :glob:
 
-   environment_preparation
-   eshop_installation
-   eshop_installation_without_composer
-   troubleshooting
-   what_is_next
+   installation/index
+
+In order to extend the OXID eShop with modules and themes or know how to use a module and theme, have a look at the
+sections :doc:`/modules/index` and :doc:`/themes/index`.

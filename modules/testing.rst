@@ -1,7 +1,7 @@
 .. _test_module-20170217:
 
-Module testing
-==============
+Testing
+=======
 
 It is recommended to write tests by using `OXID Testing Library. <https://github.com/OXID-eSales/testing_library/>`__
 

@@ -1,5 +1,5 @@
-Interacting with database
-=========================
+Interacting with the database
+=============================
 
 Active records and magic getters
 --------------------------------

@@ -1,7 +1,7 @@
 .. _modules_structure-20170217:
 
-Module Structure
-================
+File and folder structure
+=========================
 
 Module structure in OXID eShop
 ------------------------------
