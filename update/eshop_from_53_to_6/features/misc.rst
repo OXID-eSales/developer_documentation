@@ -74,8 +74,3 @@ The DynPages are not available for OXID eShop 6 anymore. If you extended it, sea
 solution.
 
 .. _update_eshop_from_53_to_6_misc:
-
-WYSIWYG Pro
------------
-
-This section will be added later.
