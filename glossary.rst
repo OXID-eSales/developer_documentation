@@ -37,9 +37,14 @@ The OXID eShop compilation consists of a certain edition of OXID eShop, which is
 * `PayPal Module <https://github.com/OXID-eSales/paypal>`__
 * `PayOne Module <https://github.com/payone-gmbh/oxid-6>`__
 * `Summernote WYSIWYG Editor <https://github.com/OXID-eSales/ddoe-wysiwyg-editor-module>`__
+* `Amazon Pay & Login for OXID eShop <https://github.com/bestit/amazon-pay-oxid>`__
+
+Profesional Edition and Enterprise Edition compilations additionally contains module:
+
+* Visual CMS module for easy management of CMS content via drag and drop functionality.
 
 The components of a OXID Compilation are defined in a `Meta Package`_
-To ensure the best stability and interoperability, in a compilation, the versions of all components are pinned to a specific
+to ensure the best stability and interoperability, in a compilation, the versions of all components are pinned to a specific
 patch release.
 
 .. _glossary-vendor_id:
