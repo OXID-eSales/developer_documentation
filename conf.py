@@ -137,7 +137,7 @@ html_context = {
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
-    'github_version': '6.0/' 
+    'github_version': 'b-6.0/'
 
 }
 
