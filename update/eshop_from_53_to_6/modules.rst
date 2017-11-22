@@ -18,7 +18,7 @@ All to-dos are marked as "Full". This tells you, that you are not done after the
 We strongly recommend you to do the "Full" steps now, or as soon as possible. We do so, cause
 
 * you will fit better in OXIDs long term stable investment strategy and
-* with the next (major) versions there will be more changes, which wll add up to a bigger amount of open to-dos.
+* with the next (major) versions there will be more changes, which will add up to a bigger amount of open to-dos.
 
 +----------------------------------------------------------------------------------------+-----------+--------+
 |  Topic                                                                                 |  Minimal  |  Full  |
