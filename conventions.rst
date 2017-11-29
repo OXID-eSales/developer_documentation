@@ -262,6 +262,77 @@ Images
 UML diagrams
 ------------
 
-Please do not commit big files or images. Use .svg images and include them like described in the
-section :ref:`Images <conventions_images>`. If you created the UML diagram with `PlantUml <http://plantuml.com>`__,
-its good to also add the .puml file to the repository into a separate directory :file:`resources`.
+Please do not commit big files or images.
+
+Use UML source written with `Plant UML <http://plantuml.com/>`__ or a similar tool instead of an UML image.
+
+.. note::
+
+   PHPStorm has `Plant UML plugin <https://plugins.jetbrains.com/plugin/7017>`__ which generates UML on the fly.
+   Look for "PlantUML tab" at the right upper corner near "Remote Host" to see generated result.
+
+**Example**:
+
+**- Rendered result**:
+
+.. uml::
+
+   @startuml
+   :functions.php oxNew('oxArticle');
+   :oxUtilsObject::oxNew('oxArticle');
+   if (Find real class name in cache) then
+      ->found;
+      :Get class name from static cache;
+   else
+      ->not found;
+      :oxUtilsObject::getClassName();
+      :oxEditionCodeHandler::getClassName();
+      if (shop edition check) then
+         ->Enterprise;
+         :OxidEsales\Enterprise\ClassMap;
+      else
+         ->Professional;
+         :OxidEsales\Professional\ClassMap;
+      endif
+      :oxModuleChainsGenerator::createClassChain('\Enterprise\Article', 'oxArticle');
+      :$extensionsList = oxModuleVariablesLocator::getModuleVariable('aModules');
+      :oxModuleChainsGenerator:filterInactiveExtensions($extensionsList);
+      :$classExtensionsList = $extensionsList['oxArticle'];
+      :oxModuleChainsGenerator:createClassExtensions($classExtensionsList, '\Enterprise\Article');
+
+   endif
+   :Create class with new \Enterprise\Article;
+   @enduml
+
+**- Code**:
+
+.. code::
+
+   .. uml::
+
+      @startuml
+      :functions.php oxNew('oxArticle');
+      :oxUtilsObject::oxNew('oxArticle');
+      if (Find real class name in cache) then
+         ->found;
+         :Get class name from static cache;
+      else
+         ->not found;
+         :oxUtilsObject::getClassName();
+         :oxEditionCodeHandler::getClassName();
+         if (shop edition check) then
+            ->Enterprise;
+            :OxidEsales\Enterprise\ClassMap;
+         else
+            ->Professional;
+            :OxidEsales\Professional\ClassMap;
+         endif
+         :oxModuleChainsGenerator::createClassChain('\Enterprise\Article', 'oxArticle');
+         :$extensionsList = oxModuleVariablesLocator::getModuleVariable('aModules');
+         :oxModuleChainsGenerator:filterInactiveExtensions($extensionsList);
+         :$classExtensionsList = $extensionsList['oxArticle'];
+         :oxModuleChainsGenerator:createClassExtensions($classExtensionsList, '\Enterprise\Article');
+
+      endif
+      :Create class with new \Enterprise\Article;
+      @enduml
