@@ -61,10 +61,7 @@ This section describes the minimum changes, which are necessary to make an exist
 Cover your code with tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Make sure that you have all logic covered by tests - Unit, Integration, Acceptance. Let them run once after every step in this guide.
-We will not go into detail why this is important for you and the health of your module, cause this question was discussed millions of times.
-You can easily find stuff about this topic.
-
+Make sure that you have all important logic covered by tests - Unit, Integration and Acceptance. Let them run once after every step in this guide.
 
 .. _port_to_v6-utf8-20170427:
 
