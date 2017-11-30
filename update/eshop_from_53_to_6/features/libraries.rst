@@ -54,7 +54,7 @@ There are two main steps required for the migration:
 
   #. Activate the module `WYSIWYG Editor + Mediathek` in your OXID eShop 6.
      (:menuselection:`Extensions --> Modules --> WYSIWYG Editor + Mediathek --> Activate`).
-  #. Go to a random text field managed by the `WYSIWYG Editor`, e.g. the description text of an article.
+  #. Go to a any text field managed by the `WYSIWYG Editor`, e.g. the description text of an article.
      Click the button of the `WYSIWYG Editor` to insert a picture.
 
      .. image:: https://user-images.githubusercontent.com/12152978/33273789-9fb0ea74-d38e-11e7-83bc-6055b045219b.png
