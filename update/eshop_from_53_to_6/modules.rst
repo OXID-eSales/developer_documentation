@@ -3,7 +3,7 @@
 Modules
 =======
 
-For updating existing modules from OXID eShop 5.4 to OXID eShop 6, either
+For updating existing modules from OXID eShop 5.3 to OXID eShop 6, either
 
 * get an OXID eShop 6 compatible version of your modules or
 * update the modules by yourself. Please have a look at the following sections on how to update by yourself.
