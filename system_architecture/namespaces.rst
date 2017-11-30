@@ -21,19 +21,52 @@ Inheritance chain of unified namespace classes
 Example OXID eShop Professional Edition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: resources/namespaces_inheritance_chain_pe.svg
+.. uml::
+
+   @startuml
+
+   OxidEsales\EshopCommunity\Application\Model\Article <|-- OxidEsales\EshopProfessional\Application\Model\Article
+   OxidEsales\EshopProfessional\Application\Model\Article <|-- OxidEsales\Eshop\Application\Model\Article
+
+   OxidEsales\Eshop\Application\Model\Article - oxarticle : class_alias
+
+   @enduml
 
 
 Example OXID eShop Enterprise Edition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: resources/namespaces_inheritance_chain_ee.svg
+.. uml::
+
+   @startuml
+
+   OxidEsales\EshopCommunity\Application\Model\Article <|-- OxidEsales\EshopProfessional\Application\Model\Article
+   OxidEsales\EshopProfessional\Application\Model\Article <|-- OxidEsales\EshopEnterprise\Application\Model\Article
+   OxidEsales\EshopEnterprise\Application\Model\Article <|-- OxidEsales\Eshop\Application\Model\Article
+
+   OxidEsales\Eshop\Application\Model\Article - oxarticle : class_alias
+
+   @enduml
 
 
 Example OXID eShop Enterprise Edition with 2 modules activated
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: resources/namespaces_inheritance_chain_ee_and_two_modules.svg
+.. uml::
+
+   @startuml
+
+
+   OxidEsales\EshopCommunity\Application\Model\Article <|-- OxidEsales\EshopProfessional\Application\Model\Article
+   OxidEsales\EshopProfessional\Application\Model\Article <|-- OxidEsales\EshopEnterprise\Application\Model\Article
+   OxidEsales\EshopEnterprise\Application\Model\Article <|-- OxidEsales\Eshop\Application\Model\Article
+
+   OxidEsales\Eshop\Application\Model\Article <|-- Vendor1\Module1\Application\Model\Article
+   Vendor1\Module1\Application\Model\Article <|-- Vendor1\Module2\Application\Model\Article
+
+   OxidEsales\Eshop\Application\Model\Article - oxarticle : class_alias
+
+   @enduml
 
 .. warning::
 

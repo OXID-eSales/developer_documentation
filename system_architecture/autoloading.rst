@@ -11,7 +11,38 @@ General workflow
 If you request a class, then first the Composer autoloader is asked, after that the Backwards Compatibility Autoloader
 and in the end the Module Autoloader:
 
-.. image:: resources/autoloading.svg
+.. uml::
+
+    @startuml
+    start
+    :<b>Composer Autoloader</b>;
+       if (is there a autoload section in a composer.json?) then (true)
+           :Load class according composer.json autolaod section;
+           stop
+       else (false)
+           :<b>Backwards Compatibility Autoloader</b>;
+           -->
+           if (class can be resolved to the unified namespace equivalent class) then (true)
+               :trigger Compsoer Autoloader;
+               stop
+           else (false)
+               :<b>Module Autoloader</b>;
+               if (class found in module metadata files array?) then (true)
+                   :Load class from path defined in metadata;
+                   stop
+               else (false)
+                   if (class found in module metadata extends array?) then (true)
+                       :Create extension chains;
+                       stop
+                   else (false)
+                       :Loads any other registered autoloader or a
+                       Class not found fatal error is thrown;
+                       stop
+                   endif
+               endif
+           endif
+       endif
+    @enduml
 
 Composer Autoloader
 ^^^^^^^^^^^^^^^^^^^
