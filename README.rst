@@ -4,11 +4,12 @@ OXID eShop developer documentation
 .. image:: https://travis-ci.org/OXID-eSales/developer_documentation.svg?branch=master
    :target: https://travis-ci.org/OXID-eSales/developer_documentation
 
-This is OXID eShop developer documentation. It should provide necessary up to date information for developers.
+This is the OXID eShop developer documentation.
 
-Currently this repository contains skeleton for documentation which should become useful documentation for developers.
+The generated documentation can be found here: https://docs.oxid-esales.com/developer/en/6.0/
 
-Generated documentation can be found here: http://oxid-eshop-developer-documentation.readthedocs.io/en/latest/
+If you want to contribute, please read https://docs.oxid-esales.com/developer/en/6.0/index.html#help-improving-this-documentation.
+Generate the documentation locally in order to test your changes as described in the following section.
 
 Generating docs locally
 -----------------------
@@ -42,13 +43,3 @@ To generate diagrams using plantUml, use this command:
 */opt/plantuml.jar - path to your plantUml file.*
 
 PlantUml will generate .svg files, which can be used in documentation.
-
-
-Contribution
-------------
-
-Rules for writing documentation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Conventions for writing documentation can be found `here <http://oxid-eshop-developer-documentation.readthedocs.io/en/latest/conventions.html>`_.
-
