@@ -16,8 +16,11 @@ Generating docs locally
 
 Section describes how to generate documentation locally.
 
-#. First of all you'll need to install `sphinx <http://www.sphinx-doc.org/>`_.
-#. Install PHP highlighting extensions: https://github.com/fabpot/sphinx-php
+#. First of all you'll need to install `sphinx <http://www.sphinx-doc.org/>`__
+#. Install the `PHP highlighting extensions <https://github.com/fabpot/sphinx-php>`__
+#. Install the `plantuml extension <https://pypi.python.org/pypi/sphinxcontrib-plantuml>`__.
+   Either configure the path to the file `plantuml.jar` in the file `config.py` or put a wrapper script in your path
+   like described in the link above.
 #. Clone documentation repository:
     .. code:: bash
 

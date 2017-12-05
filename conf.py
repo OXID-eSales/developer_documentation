@@ -314,5 +314,9 @@ texinfo_documents = [
 # If true, do not generate a @detailmenu in the "Top" node's menu.
 #texinfo_no_detailmenu = False
 
+# Either configure this path or make sure a plantuml wrapper script is in our path like described on
+# https://pypi.python.org/pypi/sphinxcontrib-plantuml
+# plantuml = 'java -jar /path/to/plantuml.jar'
+
 # Use PHP syntax highlighting in code examples by default
 highlight_language='php'
