@@ -40,4 +40,48 @@ Cause we sticked to the version of this library, there will be nothing to do lef
 WysiwygPro and the out/pictures/wysiwygpro directory
 ----------------------------------------------------
 
-This section will follow soon.
+The `WysiwygPro` html editor in OXID eShop 5 Professional Edition and Enterprise Edition was replaced with the module
+`WYSIWYG Editor` in OXID eShop 6. You have to read this section and take actions if you either:
+
+* uploaded files (e.g. images) in any input field managed by the `WysiwygPro` editor. This can be the
+  long description of an article or any field managed by a 3rd party module.
+* or used the `WysiwygPro` directory :file:`out/pictures/wysiwygpro` directly.
+
+In this case you have to run the following steps:
+
+1. Move the files from the old directory to the new directory:
+
+  #. Create the folder :file:`out/pictures/ddmedia` in your OXID eShop 6 and make it writable.
+
+  #. Move all files from the folder :file:`out/pictures/wysiwygpro` of your OXID eShop 5 to the folder
+     :file:`out/pictures/ddmedia` in your OXID eShop 6.
+
+2. Index the files inside the directory :file:`out/pictures/ddmedia` in order to use them with the `WYSIWYG Editor`:
+
+  #. The PHP script :download:`index_files_for_mediagallery <../resources/wysiwygpro/index_files_for_mediagallery>`
+     read all files inside the directory :file:`out/pictures/ddmedia` and creates an index in the database. Download it.
+  #. Copy the script to the folder :file:`out/pictures/ddmedia`.
+  #. Make the script executable.
+  #. Edit the script and configure your database connection at the top.
+  #. Execute the script:
+
+     * Go to a shell
+     * Change your directory to :file:`out/pictures/ddmedia`
+     * Execute ``./index_files_for_mediagallery``
+
+  #. Delete the script.
+
+3. Update existing contents in the database to use the new directory:
+
+  #. Download the PHP script :download:`migrate_existing_wysiwygpro_contents <../resources/wysiwygpro/migrate_existing_wysiwygpro_contents>`
+     The goal of this script is to replace all occurences of the directory :file:`out/pictures/wysiwygpro` with
+     :file:`out/pictures/ddmedia` in all possible database tables.
+  #. Open this file and configure the database connection to your OXID eShop 4.10 / 5.3 database at the top.
+  #. If you have configured additional languages or use own tables storing contents of `WysiwygPro`, you may have to
+     configure additional fields and tables inside the script. Please see the instructions inside the script.
+  #. Execute the script:
+
+     * Go to a shell
+     * Execute ``/path/to/the/script/migrate_existing_wysiwygpro_contents``
+
+  #. Delete the script.
