@@ -1,3 +1,8 @@
+/**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
 /*!40101 SET character_set_client = utf8 */;
 
 UPDATE oxshops SET OXVERSION = '6.0.0', OXNAME = 'OXID eShop 6';

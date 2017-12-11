@@ -1,4 +1,9 @@
 /**
+ * Copyright © OXID eSales AG. All rights reserved.
+ * See LICENSE file for license details.
+ */
+
+/**
  YOU WILL LOSE DATA WHEN EXECUTING THESE QUERIES!
 
  Some functionality has been removed in OXID eShop version 6.0 and the data is no longer used by OXID eShop.
