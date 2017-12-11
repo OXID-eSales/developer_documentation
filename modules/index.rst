@@ -20,3 +20,4 @@ The following sections all refer to implementing, understanding or using modules
     skeleton/index
     *
     tutorials/index
+    certification/index
