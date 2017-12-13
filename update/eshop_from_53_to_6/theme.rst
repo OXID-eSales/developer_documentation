@@ -12,10 +12,11 @@ If you use or extend the deprecated theme azure in OXID eShop 4.10 / 5.3,
 we recommend to use or extend the new standard theme flow instead.
 
 If you want to use still the theme azure,
-you have to include azure first in OXID eShop 6 `like described here <https://github.com/OXID-eSales/azure-theme/>`__
+you have to include azure first in OXID eShop 6
+`like described in the azure installation instructions <https://github.com/OXID-eSales/azure-theme/>`__
 as it is not delivered by default any more. There is an version of the flow
 theme compatible to OXID eShop 4.10 / 5.3 and a version compatible  to OXID eShop 6
-`like described here <https://github.com/OXID-eSales/azure-theme/>`__.
+`like described here <https://github.com/OXID-eSales/flow_theme>`__.
 
 If you extended the azure theme with a custom theme, you have to update your custom theme
 as described in the section :ref:`Updating a custom theme <update-eshop_from_53_to_6_theme_custom_theme>`.
