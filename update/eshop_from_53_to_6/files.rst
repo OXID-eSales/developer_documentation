@@ -16,12 +16,12 @@ Own Scripts And / Or Configuration
 * if you made changes to :file:`.htaccess` files in OXID eShop 4.10 / 5.3, port them to the equivalent :file:`.htaccess` files in OXID eShop 6.
   Pay attention to the fact that the :file:`.htaccess` files in OXID eShop 6 are compatible with Apache 2.2 and 2.4 where
   OXID eShop 4.10 / 5.3 :file:`.htaccess` file were only compatible with Apache 2.2.
-* if you made changes to the file :file:`config.inc.php` in OXID eShop 4.10 / 5.3, port them to the file :file:`config.inc.php` in OXID eShop 6
+* port your changes from :file:`config.inc.php` of OXID eShop 4.10 / 5.3 to the :file:`config.inc.php` file of OXID eShop 6.
 
 Languages
 ---------
 If you added a new language (additionally to the languages ``de`` and ``en``) in OXID eShop 4.10 / 5.3, you have to
-port this language to OXID eShop 6 because many language constants changed. In order to port the language, you have to either
+port this language to OXID eShop 6 because many language constants changed. In order to port the language, you have to either:
 
 * replace the language files by downloading an OXID eShop 6 compatible language pack. E.g. from a 3rd party vendor or via `translate.oxidforge.org <http://translate.oxidforge.org>`__.
 * or copy and update the language files manually.
@@ -45,21 +45,14 @@ folder :file:`core/smarty/plugins`, move them to the folder :file:`Core/Smarty/P
 Folder out
 ----------
 
-Copy the files from the folders
+Copy the files from the folders:
 
 * :file:`out/downloads`
 * :file:`out/media`
 * :file:`out/pictures` (except :file:`out/pictures/wysiwygpro` and :file:`out/pictures/generated`)
 
 to the equivalent folders in OXID eShop 6. For updating the images used in WYSIWYG Pro,
-:ref:`see this section.<update_eshop_from_53_to_6_misc>`
-
-
-Log-Files
----------
-
-Copy all log files from the directory :file:`log`. Do not copy the standard :file:`.htaccess` files. If you made changes
-to :file:`.htaccess` files in OXID eShop 4.10 / 5.3, port them to the equivalent :file:`.htaccess` files in OXID eShop 6.
+:ref:`see this section <update-eshop53_to_6-wysiwygpro>`
 
 
 Folders bin / export / log / export
@@ -77,6 +70,3 @@ Modules
   equivalent file :file:`modules/functions.php` file in OXID eShop 6
 
 For updating a module itself, have a look at the :doc:`Guideline for porting modules to OXID eShop version 6.0 <../../modules/index>`
-
-
-

@@ -16,17 +16,28 @@ own tables, you also have to use latin1.
 
 In order to do update the database the update, you have to
 
-1. Execute the :file:`migrate_XXX.sql` files described in the following
-2. Run :doc:`database migrations <../../oxid_components/migrations>` in OXID eShop 6 via the command
+1. Use your OXID eShop 4.10 / 5.3 database as a starting point for this update.
 
-    .. code ::
+2. Execute the :file:`migrate_{YOUR_EDITION}_5_3_to_6_0.sql` and :file:`migrate_{YOUR_EDITION}_5_3_to_6_0_cleanup.sql`
+   files described in the following (have in mind, that cleanup file will delete data, so SQL file contents must be
+   checked before executing).
 
-        vendor/bin/oe-eshop-db_migrate migrations:migrate
+3. Run :doc:`database migrations <../../oxid_components/migrations>` in OXID eShop 6 via the command:
+
+  .. code ::
+
+    vendor/bin/oe-eshop-db_migrate migrations:migrate
+
+4. Generate database views  in OXID eShop 6 via the command:
+
+  .. code ::
+
+    vendor/bin/oe-eshop-db_views_generate
 
 
-For step 1, we provide update SQL scripts for each OXID eShop edition. We divided them into two files:
+For step 2, we provide update SQL scripts for each OXID eShop edition. We divided them into two files:
 
-1. queries, where you can not lose data while the execution and
+1. queries, where you can not lose data while the execution and.
 2. queries, where you will lose data while the execution.
 
 So we expect, that you read the second file especially carefully!

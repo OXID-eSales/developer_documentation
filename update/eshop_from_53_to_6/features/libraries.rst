@@ -37,6 +37,8 @@ PHPMailer
 We exchanged the PHPMailer library from our code base with a `composer required package <https://packagist.org/packages/phpmailer/phpmailer>`__.
 Cause we sticked to the version of this library, there will be nothing to do left for you.
 
+.. _update-eshop53_to_6-wysiwygpro:
+
 WysiwygPro and the out/pictures/wysiwygpro directory
 ----------------------------------------------------
 
