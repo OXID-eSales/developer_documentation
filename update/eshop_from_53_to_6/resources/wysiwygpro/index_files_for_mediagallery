@@ -393,6 +393,18 @@ class MediaGalleryIndexer
         }
     }
 
+    /**
+     * @throws Exception if the table ddmedia was not found
+     */
+    public function checkTableDdmediaExists()
+    {
+        $sqlToCheckTableDdmediaExists = 'SELECT 1 FROM `ddmedia`';
+        $tableDdmediaExists = $this->pdo->query($sqlToCheckTableDdmediaExists);
+        if ($tableDdmediaExists === false) {
+            throw new Exception("The table ddmedia was not found. Please go to the OXID eShop admin and activate the WYSIWYG Editor.");
+        }
+    }
+
 }
 
 try {
@@ -400,6 +412,7 @@ try {
     $mediaGalleryIndexer->createDirs();
     $mediaGalleryIndexer->checkLocationOfThisScript();
     $mediaGalleryIndexer->connectToDatabase($dbHost, $dbUser, $dbPassword, $dbName);
+    $mediaGalleryIndexer->checkTableDdmediaExists();
     $mediaGalleryIndexer->index();
 } catch (PDOException $pdoException) {
     echo "Please configure your database correctly" . PHP_EOL;

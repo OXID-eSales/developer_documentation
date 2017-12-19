@@ -60,6 +60,8 @@ In this case you have to run the following steps:
 
 2. Index the files inside the directory :file:`out/pictures/ddmedia` in order to use them with the `WYSIWYG Editor`:
 
+  #. Activate the module `WYSIWYG Editor + Mediathek` in your OXID eShop 6.
+     (:menuselection:`Extensions --> Modules --> WYSIWYG Editor + Mediathek --> Activate`).
   #. The PHP script :download:`index_files_for_mediagallery <../resources/wysiwygpro/index_files_for_mediagallery>`
      read all files inside the directory :file:`out/pictures/ddmedia` and creates an index in the database. Download it.
   #. Copy the script to the folder :file:`out/pictures/ddmedia`.
