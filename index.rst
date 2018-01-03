@@ -41,4 +41,4 @@ Useful links
 
 - `Oxidforge Tutorials <http://wiki.oxidforge.org/Tutorials>`__
 - `Forum OXID-Esales <http://forum.oxid-esales.com>`__
-- `OXID eShop source code documentation <http://docu.oxid-esales.com/CE/sourcecodedocumentation>`__
+- `OXID eShop source code documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>`__
