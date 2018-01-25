@@ -1,5 +1,5 @@
-Automated scripts for applying full port to any OXID eShop module
-=================================================================
+Scripts to help porting any module to OXID eShop 6
+==================================================
 
 This document provides a complementary information to the previously written "`Steps to port a module for the OXID eShop version 6.0`_". It describes how it's possible to automate the majority of module porting actions by using the scripts written below. Feel free to use the provided information as an additional aid to reduce the time needed and increase the quality of the outcome while porting old OXID eShop modules.
 
