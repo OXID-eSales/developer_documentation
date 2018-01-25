@@ -68,7 +68,7 @@ Full porting
 ^^^^^^^^^^^^
 
 6. Adjust the code style of your modules code
-7. Exchange BC Layer classes
+7. Replace BC Layer classes
 8. Installable via composer
 9. Introduce a namespace in your module
 
@@ -216,18 +216,18 @@ Given command will trigger the execution of OXID eShop code sniffer against prov
 
 In case the output is not empty, please follow the given messages and apply the necessary changes.
 
-7. Exchange BC Layer classes
-----------------------------
+7. Replace BC Layer classes
+---------------------------
 
 BC layer classes
 ^^^^^^^^^^^^^^^^
 
-Starting from OXID eShop `v6.0.0`_ a `BC layer`_ was introduced, which allows old modules to work with the updated OXID eShop core. `BC layer`_ is a collection of class aliases which maps old OXID eShop classes (e.g. `oxArticle`) into new namespaced classes (e.g. `OxidEsales\Eshop\Application\Model\Article`). Keep in mind that the solution is temporary and is included to allow for an easy transition into the new OXID eShop version. All these `BC classes`_ are considered as deprecated thus it's highly recommended to exchange old classes with the namespaced equivalents.
+Starting from OXID eShop `v6.0.0`_ a `BC layer`_ was introduced, which allows old modules to work with the updated OXID eShop core. `BC layer`_ is a collection of class aliases which maps old OXID eShop classes (e.g. `oxArticle`) into new namespaced classes (e.g. `OxidEsales\Eshop\Application\Model\Article`). Keep in mind that the solution is temporary and is included to allow for an easy transition into the new OXID eShop version. All these `BC classes`_ are considered as deprecated thus it's highly recommended to replace old classes with the namespaced equivalents.
 
 **Note**: Before proceeding with the commands below please make sure you have have your environment variables prepared (`ESHOP_PATH` and `MODULE_NAME`).
-**Note**: After execution of automated exchange for `BC classes`_ it might happen that the alignment of variables within comment blocks are broken thus it might be a good idea to re-run code style check.
+**Note**: After execution of automated replace for `BC classes`_ it might happen that the alignment of variables within comment blocks are broken thus it might be a good idea to re-run code style check.
 
-In order to automate the exchange of `BC classes`_ consider using the following command which will create a script responsible for PHP file update at ``/tmp/bc_change.php``:
+In order to automate the replacing of `BC classes`_ consider using the following command which will create a script responsible for PHP file update at ``/tmp/bc_change.php``:
 
 ::
 
@@ -280,7 +280,7 @@ In order to apply the above script for all PHP files inside a module consider us
     php /tmp/bc_change.php "$ESHOP_PATH/source/modules/$MODULE_NAME/$MODULE_FILE_NAME"
   done
 
-Unfortunately it's not possible to automate every case of `BC classes`_ exchange. To be able to manually evaluate every ambiguous `BC class`_ usage consider using the following snippet:
+Unfortunately it's not possible to automate every case of `BC classes`_ replacement. To be able to manually evaluate every ambiguous `BC class`_ usage consider using the following snippet:
 
 ::
 
@@ -304,7 +304,7 @@ In case there are a lot of false positive results within given test suites consi
   SEARCH_FILE_LIST_WO_TESTS=$(find "$ESHOP_PATH/source/modules/$MODULE_NAME/" -type f -iregex '.*/.*\.\(php\|tpl\)' -not -iregex '.*/metadata\.php' -not -iregex '.*Test\.php' -not -iregex '.*/tests/.*')
   echo "$SEARCH_FILE_LIST_WO_TESTS" | xargs -n1 grep --color=always -iP -H -n "$BC_CLASS_SEARCH_PATTERN"
 
-In order to pass the given porting criteria please exchange every found old BC class usage into the namespaced one. Consider using `BC class map`_ as a guide to know which class to exchange into.
+In order to pass the given porting criteria please replace every found old BC class usage into the namespaced one. Consider using `BC class map`_ as a guide to know which class to replace into.
 
 8. Installable via composer
 ---------------------------
