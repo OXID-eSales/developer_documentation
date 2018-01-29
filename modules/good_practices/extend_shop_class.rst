@@ -108,10 +108,23 @@ At the end assertion is done that module functionality works as expected. This m
         $this->assertLogContentCorrect($fileContents, $productId);
     }
 
+.. important::
+
+  In case OXID eShop class is extended via module class and it should be used somewhere in the code,
+  objects must be created not from module class, but from OXID eShop class.
+
+  **Use case:**
+  module class `\\OxidEsales\\LoggerDemo\\Model\\Basket` extends OXID eShop class `\\OxidEsales\\Eshop\\Application\\Model\\Basket`,
+  new object must be created from `\\OxidEsales\\Eshop\\Application\\Model\\Basket`.
+
+  **Good example:**
+  `$basket = oxNew(\\OxidEsales\\Eshop\\Application\\Model\\Basket::class);`
+
+  **Bad example:**
+  `$basket = oxNew(\\OxidEsales\\LoggerDemo\\Model\\Basket::class);`
+
 Example module
 --------------
 
 - https://github.com/OXID-eSales/logger-demo-module
 - https://github.com/OXID-eSales/event_logger_demo
-
-
