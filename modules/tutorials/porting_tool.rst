@@ -380,7 +380,7 @@ To get a better understanding consider this visual example from `oxid-esales/pay
 `controllers` field
 ^^^^^^^^^^^^^^^^^^^
 
-As it's described in `V2 metadata details`_ please make sure that all keys in `controllers` field are written in lowercase:
+As it's described in :ref:`V2 metadata details <metadata_version2-20170427>` please make sure that all keys in `controllers` field are written in lowercase:
 
 ::
   
@@ -425,7 +425,7 @@ List of documentation which explores module porting process with more details:
 * `Quick guide to port a module for OXID eShop version 6.0`_
 * `Guide to make a full port of a module for OXID eShop version 6.0`_
 * `How to make OXID eShop module installable via composer?`_
-* `V2 metadata details`_
+* :ref:`V2 metadata details <metadata_version2-20170427>`
 * `Module structure`_
 
 .. _v6.0.0: https://github.com/OXID-eSales/oxideshop_ce/tree/v6.0.0
@@ -433,7 +433,6 @@ List of documentation which explores module porting process with more details:
 .. _oxid-esales/testing-library: https://github.com/OXID-eSales/testing_library
 .. _PSR-1: http://www.php-fig.org/psr/psr-1/
 .. _official OXID eShop VM: https://github.com/OXID-eSales/oxvm_eshop
-.. _V2 metadata details: https://docs.oxid-esales.com/developer/en/6.0/modules/metadata/version20.html
 .. _BC classes: https://github.com/OXID-eSales/oxideshop_ce/blob/v6.0.0/source/Core/Autoload/BackwardsCompatibilityClassMap.php#L12-L572
 .. _BC class: `BC classes`_
 .. _BC class map: `BC classes`_
