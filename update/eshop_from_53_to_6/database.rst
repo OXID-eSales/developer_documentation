@@ -9,7 +9,7 @@ Tables and fields
 
 Before starting with the changes described in the following sections, you should make sure that your OXID eShop 4.10 / 5.3
 is running on utf-8 database tables. `See here for migration
-instructions <https://en.oxid-esales.com/en/support-services/documentation-and-help/oxid-eshop/installation/oxid-eshop-update-installation/update-eshop-to-utf-8-encoding.html>`__.
+instructions <https://docs.oxid-esales.com/eshop/de/5.3/installation/update-installation/auf-utf-8-umstellen.html>`__.
 You should also take care that your own tables use UTF-8. There are also exceptions from utf-8 in the OXID eShop
 database tables (e.g. the column ``OXID`` which is latin1 in most tables). If you refer to those columns from your
 own tables, you also have to use latin1.
