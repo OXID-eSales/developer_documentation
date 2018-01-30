@@ -1,5 +1,7 @@
-OXID eShop 6 minor and patch version updates
-==============================================
+:orphan:
+
+OXID eShop 6 compilation minor and patch version updates
+========================================================
 
 .. toctree::
     :titlesonly:

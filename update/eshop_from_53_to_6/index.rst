@@ -1,5 +1,5 @@
-Update OXID eShop from version 4.10 / 5.3 to version 6.0.0
-==========================================================
+Major update from  4.10 / 5.3 to version 6.0.0
+==============================================
 
 This guide acts on the assumption you have an already running OXID eShop 4.10 / 5.3 and want to update it to OXID
 eShop 6.0.0. If you do not have the newest patch release of 4.10 / 5.3, you should first update to this patch release.

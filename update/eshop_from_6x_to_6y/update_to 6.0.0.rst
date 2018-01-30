@@ -1,5 +1,5 @@
-Update from pre-release versions to OXID eShop 6.0.0
-====================================================
+Update from 6.0.0 beta or release candidates to 6.0.0 final
+===========================================================
 
 Prepare update of OXID eShop Compilation to v6.0.0
 --------------------------------------------------
