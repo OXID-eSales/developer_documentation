@@ -24,7 +24,7 @@ In order to install a module correctly, this plugin requires four fields to be d
         "keywords": ["oxid", "modules", "eShop"],
         "homepage": "https://www.oxid-esales.com/en/home.html",
         "license": [
-            "GPL-3.0",
+            "GPL-3.0-only",
             "proprietary"
         ],
         "extra": {

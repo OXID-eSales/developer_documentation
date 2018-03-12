@@ -19,7 +19,7 @@ In order to install theme correctly this plugin requires two fields to be descri
        "keywords": ["oxid", "themes", "eShop"],
        "homepage": "https://www.oxid-esales.com/en/home.html",
        "license": [
-           "GPL-3.0",
+           "GPL-3.0-only",
            "proprietary"
        ],
        "extra": {

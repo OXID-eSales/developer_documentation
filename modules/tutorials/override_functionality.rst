@@ -83,7 +83,7 @@ The `composer.json` file in module root directory could look like this:
     "keywords": ["oxid", "modules", "eShop", "demo"],
     "homepage": "https://www.oxid-esales.com/en/home.html",
     "license": [
-      "GPL-3.0",
+      "GPL-3.0-only",
       "proprietary"
     ],
     "require": {
