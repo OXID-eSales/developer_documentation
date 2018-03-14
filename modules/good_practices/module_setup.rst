@@ -1,5 +1,5 @@
-Best practice module development with composer
-==============================================
+Best practice module setup with composer
+========================================
 
 There are several ways how to setup your module development environment with OXID eShop. The most common way is to
 clone your composer module repository directly to the ``source/modules`` folder and register the namespace.
