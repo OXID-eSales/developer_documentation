@@ -28,3 +28,14 @@ Like this all changes to your module will take place immediately.
 .. code:: bash
 
   composer dump-autoload
+
+
+Dealing with other libraries
+----------------------------
+
+If your module has dependencies to other libraries they need to be registered as well in the project ``composer.json``
+
+.. code:: bash
+
+    cd <shop_directory>
+    composer require package-vendor/package-name
