@@ -1,5 +1,5 @@
 /**
- * Copyright © OXID eSales AG. All rights reserved.
+ * Copyright Â© OXID eSales AG. All rights reserved.
  * See LICENSE file for license details.
  */
 
