@@ -122,7 +122,11 @@ if (empty($dbUser) || empty($dbPassword) || empty($dbName)) {
 }
 
 try {
-    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName", $dbUser, $dbPassword);
+    $pdo = new PDO("mysql:host=$dbHost;dbname=$dbName;charset=utf8",
+                        $dbUser,
+                        $dbPassword,
+                        [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET @@SESSION.sql_mode=\'\'']
+    );
 } catch (PDOException $e) {
     echo "Connection to database not successful." . "\n";
     $pdo = null;
