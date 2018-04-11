@@ -11,6 +11,12 @@
  please double check everything and comment the lines, if needed or if you have any doubts.
 */
 
+SET @@session.character_set_client = 'utf8';
+SET @@session.character_set_results  = 'utf8';
+SET @@session.character_set_connection = 'utf8';
+SET @@session.character_set_server = 'utf8';
+SET @@session.sql_mode = '';
+
 /* Unify shop IDs. The new default shop ID is 1. If you somehow changed the shop ID, you should adjust this queries! */
 UPDATE `oxacceptedterms` SET `OXSHOPID` = 1;
 UPDATE `oxactions` SET `OXSHOPID` = 1;

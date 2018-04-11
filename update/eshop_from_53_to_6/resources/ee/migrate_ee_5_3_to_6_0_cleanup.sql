@@ -11,6 +11,12 @@
  please double check everything and comment the lines, if needed or if you have any doubts.
 */
 
+SET @@session.character_set_client = 'utf8';
+SET @@session.character_set_results  = 'utf8';
+SET @@session.character_set_connection = 'utf8';
+SET @@session.character_set_server = 'utf8';
+SET @@session.sql_mode = '';
+
 /* The facebook functionality was moved to a module. */
 ALTER TABLE `oxuser` DROP `OXFBID`;
 DELETE FROM `oxconfig` WHERE OXVARNAME = 'blFacebookConfirmEnabled' AND (OXMODULE IS NULL OR OXMODULE = '');
