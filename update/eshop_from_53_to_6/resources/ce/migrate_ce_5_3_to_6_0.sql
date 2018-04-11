@@ -9,7 +9,7 @@ SET @@session.character_set_connection = 'utf8';
 SET @@session.character_set_server = 'utf8';
 SET @@session.sql_mode = '';
 
-UPDATE oxshops SET OXVERSION = '6.0.0', OXNAME = 'OXID eShop 6';
+UPDATE oxshops SET OXVERSION = '6.0.0';
 
 
 /*
