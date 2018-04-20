@@ -30,7 +30,7 @@ If you already use the theme ``flow`` in OXID eShop 4.10 / 5.3, you don't have t
 by default with OXID eShop 6.
 
 There is an OXID eShop 6 compatible version of the flow theme which has some differences
-to the version delivered in OXID eShop 4.10 / 5.3 `like described here <https://github.com/OXID-eSales/azure-theme/>`__.
+to the version delivered in OXID eShop 4.10 / 5.3 `like described here <https://github.com/OXID-eSales/flow_theme>`__.
 
 If you extended the flow theme in OXID eShop 4.10 / 5.3 you have to check the differences between the OXID
 eShop 4.10 / 5.3 compatible flow version and the OXID eShop 6 compatible flow version. Afterwards, update
