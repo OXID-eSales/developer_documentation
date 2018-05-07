@@ -13,7 +13,7 @@ Overview about the steps to port a module to the OXID eShop version 6.0
 
 In the table below you can find an overview what steps you can, and at least have to do, to port your module to the OXID eShop version 6.0.
 Every line of the table represents a step or an adaption. As you see, there are two columns named "Minimal" and "Full".
-Your absolute to-dos for now are marked as "Minimal" with a "✔". They tell you, that you have to do them in order to end up with a module which works with the OXID eShop version 6.0.
+Your absolute to-dos for now are marked as "Minimal" with a "x". They tell you, that you have to do them in order to end up with a module which works with the OXID eShop version 6.0.
 All to-dos are marked as "Full". This tells you, that you are not done after the "Minimal" porting of your module. There are more steps to make to be fully aligned with the version 6.0.
 We strongly recommend you to do the "Full" steps now, or as soon as possible. We do so, cause
 
@@ -23,25 +23,25 @@ We strongly recommend you to do the "Full" steps now, or as soon as possible. We
 +----------------------------------------------------------------------------------------+-----------+--------+
 |  Topic                                                                                 |  Minimal  |  Full  |
 +========================================================================================+===========+========+
-| :ref:`Assure test coverage for your code <port_to_v6-coverage-20170427>`               |  ✔        | ✔      |
+| :ref:`Assure test coverage for your code <port_to_v6-coverage-20170427>`               |  x        | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Convert all files to UTF-8 <port_to_v6-utf8-20170427>`                           |  ✔        | ✔      |
+| :ref:`Convert all files to UTF-8 <port_to_v6-utf8-20170427>`                           |  x        | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Adjust PHP version <port_to_v6-php_version-20170427>`                            |  ✔        | ✔      |
+| :ref:`Adjust PHP version <port_to_v6-php_version-20170427>`                            |  x        | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Adjust removed functionality <port_to_v6-removed-20170427>`                      |  ✔        | ✔      |
+| :ref:`Adjust removed functionality <port_to_v6-removed-20170427>`                      |  x        | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Adjust your database code to the new DB Layer <stick_to_db_interfaces-20170426>` |  ✔        | ✔      |
+| :ref:`Adjust your database code to the new DB Layer <stick_to_db_interfaces-20170426>` |  x        | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Adjust the code style of your modules code <port_to_v6-code_style-20170427>`     |           | ✔      |
+| :ref:`Adjust the code style of your modules code <port_to_v6-code_style-20170427>`     |           | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Exchange BC Layer classes <port_to_v6-bc_layer-20170427>`                        |           | ✔      |
+| :ref:`Exchange BC Layer classes <port_to_v6-bc_layer-20170427>`                        |           | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Remove deprecated code <remove_deprecated_code-20171012>`                        |           | ✔      |
+| :ref:`Remove deprecated code <remove_deprecated_code-20171012>`                        |           | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Installable via composer* <port_to_v6-composer-20170427>`                        |           | ✔      |
+| :ref:`Installable via composer* <port_to_v6-composer-20170427>`                        |           | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
-| :ref:`Introduce a namespace in your module <port_to_v6-namespace-20170427>`            |           | ✔      |
+| :ref:`Introduce a namespace in your module <port_to_v6-namespace-20170427>`            |           | x      |
 +----------------------------------------------------------------------------------------+-----------+--------+
 
 (*) If you are maintaining a module which is part of the :ref:`OXID eShop Compilation <glossary-oxid_compilation>` the installation has to work via composer!

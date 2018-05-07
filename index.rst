@@ -17,6 +17,7 @@ Table of Contents
    getting_started/index
    system_architecture/index
    oxid_components/index
+   project/index
    modules/index
    themes/index
    update/index
