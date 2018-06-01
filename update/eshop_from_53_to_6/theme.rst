@@ -16,7 +16,7 @@ you have to include azure first in OXID eShop 6
 `like described in the azure installation instructions <https://github.com/OXID-eSales/azure-theme/>`__
 as it is not delivered by default any more. There is an version of the flow
 theme compatible to OXID eShop 4.10 / 5.3 and a version compatible  to OXID eShop 6
-`like described here <https://github.com/OXID-eSales/flow_theme>`__.
+`like described here <https://github.com/OXID-eSales/azure-theme/>`__.
 
 If you extended the azure theme with a custom theme, you have to update your custom theme
 as described in the section :ref:`Updating a custom theme <update-eshop_from_53_to_6_theme_custom_theme>`.
@@ -30,7 +30,7 @@ If you already use the theme ``flow`` in OXID eShop 4.10 / 5.3, you don't have t
 by default with OXID eShop 6.
 
 There is an OXID eShop 6 compatible version of the flow theme which has some differences
-to the version delivered in OXID eShop 4.10 / 5.3 `like described here <https://github.com/OXID-eSales/azure-theme/>`__.
+to the version delivered in OXID eShop 4.10 / 5.3 `like described here <https://github.com/OXID-eSales/flow_theme>`__.
 
 If you extended the flow theme in OXID eShop 4.10 / 5.3 you have to check the differences between the OXID
 eShop 4.10 / 5.3 compatible flow version and the OXID eShop 6 compatible flow version. Afterwards, update
