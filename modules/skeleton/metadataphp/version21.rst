@@ -65,7 +65,8 @@ extend
 ------
 
 On this place shall be defined which shop classes are extended by this module.
-You can use metadata version 2.0 with :ref:`controllers<modules_metadata_version21_controllers>` only for modules using namespaces.
+You can use metadata version greater 2.0 with :ref:`controllers<modules_metadata_version21_controllers>` only
+for modules using namespaces.
 
 .. code:: php
 
@@ -405,7 +406,7 @@ Metadata file version
 
 .. code:: php
 
-  $sMetadataVersion = '2.0';
+  $sMetadataVersion = '2.1';
 
 
 .. _modules_metadata_version21_multilanguagefields:
@@ -462,7 +463,7 @@ Here is an example of a module metadata file:
     /**
      * Metadata version
      */
-    $sMetadataVersion = '2.0';
+    $sMetadataVersion = '2.1';
     /**
      * Module information
      */
