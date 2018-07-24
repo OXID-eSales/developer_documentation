@@ -140,8 +140,8 @@ Install more modules and module dependencies
     After the installation, you may proceed with the installation of some of the many modules the OXID eco system provides.
     Refer to the installation instructions of each of the modules.
 
-    Keep in mind that some OXID eShop modules may have special requirements, which may go beyond the system requirements of
-    a standard installation of OXID eShop.
+    Keep in mind that some OXID eShop modules may have special requirements, which may go beyond the
+    `system requirements of a standard installation of OXID eShop. <https://docs.oxid-esales.com/eshop/de/6.1/installation/neu-installation/server-und-systemvoraussetzungen.html>`__
     These requirements may either be installable via Composer or may require the installation of certain PHP extensions or even system
     libraries.
     In any case, the authors of the modules will have provided you with all necessary information about these requirements and

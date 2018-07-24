@@ -32,7 +32,7 @@ PHP code
 ^^^^^^^^
 
 Object-oriented programming is highly preferred.
-Your code should be compatible with the PHP versions described in the `system requirements <https://oxidforge.org/en/oxid-eshop-v6-0-0-beta-system-requirements.html>`__.
+Your code should be compatible with the PHP versions described in the `system requirements <https://docs.oxid-esales.com/eshop/de/6.1/installation/neu-installation/server-und-systemvoraussetzungen.html>`__.
 
 OXID standards
 --------------
