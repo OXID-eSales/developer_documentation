@@ -35,19 +35,19 @@ Step 1: Deploy source code and install project dependencies
 
     .. code:: bash
 
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.0-ce
+        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-ce
 
     * For Professional Edition:
 
     .. code:: bash
 
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.0-pe
+        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-pe
 
     * For Enterprise Edition:
 
     .. code:: bash
 
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.0-ee
+        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-ee
 
     When the Composer has finished successfully, a new directory will have been created in your working directory.
     It is called *your_project_name* in this example and it is referred to as *project root directory*.
