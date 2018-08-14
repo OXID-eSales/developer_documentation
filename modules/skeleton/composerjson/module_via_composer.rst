@@ -3,7 +3,8 @@
 Composer.json for an OXID eShop Module
 ======================================
 
-OXID eShop modules are installed via Composer by using the `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
+OXID eShop modules with :doc:`metadata version greater 2.0 </modules/skeleton/metadataphp/index>` are installed via Composer by using the
+`OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
 In order to install a module correctly, this plugin requires four fields to be described in module ``composer.json`` file:
 
@@ -169,9 +170,3 @@ autoload path you define here.
 In our PayPal example the PSR-4 autoload path points to a path inside the OXID eShop source/modules directory.
 This path must match the path of the :ref:`target-directory <module_target-directory-20170926>` as defined in the extra: {oxideshop}
 section, as the files will be copied there.
-
-.. Note::
-
-  Shop v6 still supports modules for Shop v5.3.
-  Classes without namespaces might be registered in the module metadata file.
-  `Read more in OXID Forge. <https://oxidforge.org/en/extension-metadata-file.html>`__
