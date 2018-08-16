@@ -6,7 +6,7 @@ Steps for creating a basic module
 - :doc:`Create a file metadata.php </modules/skeleton/metadataphp/index>`
 - :ref:`Override existing OXID eShop functionality<override_eshop_functionality-20170227>`
 - :ref:`Create the necessary module structure<modules_structure-20170217>`
-- :ref:`Add dependencies and autoload via composer<add_dependencies_and_autoload_via_composer-20170217>`
+- :doc:`Add dependencies and autoload via composer</modules/skeleton/composerjson/module_via_composer>`
 - :ref:`Test your module<test_module-20170217>`
 
 Demo Logger module could be used as a simple example
