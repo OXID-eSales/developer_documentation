@@ -443,7 +443,7 @@ List of documentation which explores module porting process with more details:
 .. _Guide to make a full port of a module for OXID eShop version 6.0: https://oxidforge.org/en/how-to-fully-port-a-module-to-oxid-eshop-6-0.html
 .. _register a class under the namespace: http://php.net/manual/en/language.namespaces.rationale.php
 .. _Module structure: https://docs.oxid-esales.com/developer/en/6.0/modules/developing/structure.html
-.. _system requirements: https://docs.oxid-esales.com/eshop/de/6.1/installation/neu-installation/server-und-systemvoraussetzungen.html
+.. _system requirements: https://docs.oxid-esales.com/eshop/de/6.0/installation/neu-installation/server-und-systemvoraussetzungen.html
 .. _old and new notation of arrays: http://php.net/manual/en/language.types.array.php
 .. _OXID eShop v6.0.0 changelog: https://oxidforge.org/en/oxid-eshop-v6-0-0-beta1-detailed-code-changelog.html
 .. _How to make OXID eShop module installable via composer?: https://docs.oxid-esales.com/developer/en/6.0/modules/module_via_composer.html
