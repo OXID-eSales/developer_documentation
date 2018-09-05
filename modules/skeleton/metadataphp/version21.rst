@@ -133,13 +133,13 @@ On activating/deactivating module, all module blocks also are activated/deactiva
         [
             'template' => 'widget/sidebar/partners.tpl',
             'block'=>'partner_logos',
-            'file'=>'/views/blocks/oepaypalpartnerbox.tpl'
+            'file'=>'/views/blocks/oepaypalpartnerbox.tpl',
             'position' => '2'
         ],
         [
             'template' => 'page/checkout/basket.tpl',
             'block'=>'basket_btn_next_top',
-            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
+            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl',
             'position' => '1'
         ],
         [
