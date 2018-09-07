@@ -1,9 +1,10 @@
 .. _copy_module_via_composer-20170217:
 
-Install a module with composer
-==============================
+Composer.json for an OXID eShop Module
+======================================
 
-OXID eShop modules are installed via Composer by using the `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
+OXID eShop modules with :doc:`metadata version greater 2.0 </modules/skeleton/metadataphp/index>` are installed via Composer by using the
+`OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
 In order to install a module correctly, this plugin requires four fields to be described in module ``composer.json`` file:
 
@@ -146,18 +147,26 @@ You must define:
 * the required PHP extension and their versions, if applicable. In the example the PHP extensions curl and openssl must be activated
 * the required composer components, if applicable. In the example the are no requirements defined
 
+
+
 .. _module_autoload-20170926:
 
-autoload
-------------------
+Autoload
+--------
 
-It is necessary to define a PSR-4 compatible auto loading mechanism.
-For an easier development, we recommend to use "../../../source/modules/vendorname/moduleid".
-You will find more detailed development related information :ref:`here<add_dependencies_and_autoload_via_composer-20170217>`
+Composer autoloader is used to load classes. In order to load module classes
+the module needs to register it's namespace to the modules path:
+
+::
+
+  "autoload": {
+    "psr-4": {
+      "<vendor>\\<module-name>\\": "../../../source/modules/<vendor>/<module-name>"
+    }
+  },
 
 Keep in mind, that the :ref:`target-directory <module_target-directory-20170926>` in the section extra: {oxideshop} has to fit the
 autoload path you define here.
 In our PayPal example the PSR-4 autoload path points to a path inside the OXID eShop source/modules directory.
 This path must match the path of the :ref:`target-directory <module_target-directory-20170926>` as defined in the extra: {oxideshop}
 section, as the files will be copied there.
-

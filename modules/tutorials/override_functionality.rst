@@ -69,8 +69,8 @@ To override the method one needs to:
 Autoload module classes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The file `composer.json` in module root directory must be created (see ":ref:`How to create a module installable via composer? <copy_module_via_composer-20170217>`")
-and module namespace must be defined (see ":ref:`Add dependencies and autoload via composer: Namespace <namespace-20170218>`").
+The file `composer.json` in module root directory must be created,
+:ref:`the modules namespace and autoloading must be defined <module_autoload-20170926>`.
 
 The `composer.json` file in module root directory could look like this:
 
