@@ -4,7 +4,7 @@ Files
 This section describes the steps to update the file structure from a OXID eShop version 4.10 / 5.3 to version 6. As there are
 many changes in the file structure, the approach for the update is:
 
-1. setup an OXID eShop 6 in parallel to your existing OXID eShop 4.10 / 5.3
+1. `setup an OXID eShop 6 <https://docs.oxid-esales.com/developer/en/6.0/getting_started/installation/eshop_installation.html>`_ in parallel to your existing OXID eShop 4.10 / 5.3
 2. copy the files described in the following sections from the OXID eShop 4.10 / 5.3 to the OXID eShop 6
 
 Please always pay attention to upper and lower case letters in file and directory names.
