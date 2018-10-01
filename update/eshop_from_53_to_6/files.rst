@@ -40,7 +40,7 @@ Smarty Plugins
 --------------
 
 If you created own Smarty plugins in OXID eShop 4.10 / 5.3 and installed them by copying them to the
-folder :file:`core/smarty/plugins`, move them to the folder :file:`Core/Smarty/Plugins` in OXID eShop 6.
+folder :file:`core/smarty/plugins`, move them to the folder :file:`Core/Smarty/Plugin` in OXID eShop 6.
 
 Folder out
 ----------
