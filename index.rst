@@ -39,7 +39,7 @@ can be found :doc:`here <conventions>`.
 Useful links
 ------------
 
-- `OXIDforge Tutorials <http://wiki.oxidforge.org/Tutorials>`__
+- `OXIDforge Tutorials <https://oxidforge.org/en/shop/tutorial>`__
 - `OXID eShop Forum <http://forum.oxid-esales.com>`__
 - `OXID eShop source code documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>`__
 
