@@ -1,7 +1,7 @@
 Getting started
 ===============
 
-This section describes the main steps you have to follow in order to install an OXID the eShop and get familiar with it.
+This section describes the main steps you have to follow in order to install an OXID eShop and get familiar with it.
 
 .. toctree::
    :titlesonly:
