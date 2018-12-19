@@ -23,3 +23,4 @@ The following sections all refer to implementing, understanding or using modules
     tutorials/index
     best_practices/index
     certification/index
+    events/index
