@@ -39,7 +39,7 @@ The OXID eShop compilation consists of a certain edition of OXID eShop, which is
 * `Summernote WYSIWYG Editor <https://github.com/OXID-eSales/ddoe-wysiwyg-editor-module>`__
 * `Amazon Pay & Login for OXID eShop <https://github.com/bestit/amazon-pay-oxid>`__
 
-Profesional Edition and Enterprise Edition compilations additionally contains module:
+Professional Edition and Enterprise Edition compilations additionally contains module:
 
 * Visual CMS module for easy management of CMS content via drag and drop functionality.
 
@@ -56,3 +56,8 @@ For module developers it is necessary to use unique names for namespaces or clas
 One way to achieve this is using an unique ID for your company, which you can register by making a pull request to
 `here <https://github.com/OXIDprojects/OXIDforge-pages/blob/master/extension_acronyms.md>`__.
 This is ID called a *Vendor ID*. More information regarding the *Vendor ID* can be found on https://oxidforge.org/en/extension-acronyms
+
+OXID eShop component
+^^^^^^^^^^^^^^^^^^^^
+
+Component installed via composer which has type `oxideshop-component`.
