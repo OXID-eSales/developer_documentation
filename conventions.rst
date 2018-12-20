@@ -68,7 +68,18 @@ Sections
 External links
 --------------
 
-To be done...
+External links can be used as described in example.
+
+**Example**:
+
+- Code:
+   .. code::
+
+      `OXID eSales website <https://www.oxid-esales.com/>`__
+
+
+- Rendered result:
+   `OXID eSales website <https://www.oxid-esales.com/>`__
 
 Use Ref or Doc for links
 ------------------------
