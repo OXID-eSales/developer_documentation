@@ -1,0 +1,8 @@
+Templating
+==========
+
+.. toctree::
+    :titlesonly:
+    :glob:
+
+    *
