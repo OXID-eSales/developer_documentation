@@ -19,6 +19,10 @@ In case you are using Enterprise Edition subshops feature, to get list of specif
 
     vendor/bin/oe-console --shop-id=<shop-id>
 
+.. note::
+
+    If <shop-id> will not be defined: shop 1, going to be used.
+
 Some other commands examples:
 
 .. code:: bash
