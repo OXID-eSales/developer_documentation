@@ -10,17 +10,17 @@ Usage
 
 The convert command tries to fix as much coding standards problems as possible on a given file or directory:
 
-``php toTwig convert /path/to/dir``
-``php toTwig convert /path/to/file``
+``php toTwig convert /path/to/dir  --ext=.html.twig``
+``php toTwig convert /path/to/file  --ext=.html.twig``
 
 The ``--converters`` option lets you choose the exact converters to apply (the converter names must be separated by a
 comma):
 
-``php toTwig convert /path/to/dir --converters=for,if,misc``
+``php toTwig convert /path/to/dir --converters=for,if,misc  --ext=.html.twig``
 
 You can also blacklist the converters you don't want if this is more convenient, using -name:
 
-``php toTwig.phar convert /path/to/dir --converters=-for,-if``
+``php toTwig convert /path/to/dir --converters=-for,-if  --ext=.html.twig``
 
 A combination of ``--dry-run``, ``--verbose`` and ``--diff`` will display summary of proposed changes, leaving your
 files unchanged.
