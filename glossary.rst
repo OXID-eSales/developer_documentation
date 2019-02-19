@@ -33,6 +33,7 @@ OXID Compilation
 The OXID eShop compilation consists of a certain edition of OXID eShop, which is bundled with the following modules/themes:
 
 * `Flow theme <https://github.com/OXID-eSales/flow_theme/>`__
+* `Wave theme <https://github.com/OXID-eSales/wave-theme/>`__ (since 6.1.2)
 * `Paymorrow Module <https://github.com/OXID-eSales/paymorrow-module>`__
 * `PayPal Module <https://github.com/OXID-eSales/paypal>`__
 * `PayOne Module <https://github.com/payone-gmbh/oxid-6>`__

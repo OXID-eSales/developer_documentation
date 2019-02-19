@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'OXID eShop developer documentation'
-copyright = '2018, OXID eSales AG'
+copyright = '2018 - 2019, OXID eSales AG'
 author = 'OXID eSales AG'
 
 # The version info for the project you're documenting, acts as replacement for
