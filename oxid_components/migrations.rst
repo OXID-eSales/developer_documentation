@@ -69,7 +69,7 @@ Generate migration
    vendor/bin/oe-eshop-db_migrate migrations:generate
 
 This command will create shop views by current eShop version, edition and configuration.
-It is a good practice to run it right after migrations command.
+It is a best practice to run it right after migrations command.
 
 Generate migration for a single suite
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
