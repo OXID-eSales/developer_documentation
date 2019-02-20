@@ -127,6 +127,6 @@ the installation instructions of the module and then copy the newly installed fi
 
 All files, which are managed by Composer live inside a subdirectory of *project root directory* called *vendor*.
 The contents of this directory and all its subdirectories may completely change with every execution of :command:`composer require`
-or :command:`composer update`, so it is a good practice to always completely replace this directory on the server.
+or :command:`composer update`, so it is a best practice to always completely replace this directory on the server.
 
 Continue the installation procedure (copy modules files, configure module, etc.) on the application server.

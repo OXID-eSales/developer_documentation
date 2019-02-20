@@ -169,7 +169,7 @@ Hints for development
 Always use Composers' --no-plugins switch
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    It is a good practice to run all Composer commands, which update components with the --no-plugins option and
+    It is a best practice to run all Composer commands, which update components with the --no-plugins option and
     to run update action in a separate command.
     Like this it is ensured, that the latest versions of the plugins are used.
 
