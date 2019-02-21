@@ -4,7 +4,6 @@ Interacting with the database
 Active records and magic getters
 --------------------------------
 
-Oxid uses active record to work with database.
 The OXID eShop architecture is based on MVC patterns. To implement models, active record pattern is used. So in general, each model class is linked with a database
 table. For example, the ``Article`` model is linked with the ``oxarticles`` table, Order with the ``oxorders`` table etc.
 All models are stored in the directory Application/Models.
