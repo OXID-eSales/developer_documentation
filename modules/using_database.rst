@@ -13,7 +13,7 @@ Let's take one of them, for example the ``Article`` model, and try to fetch the 
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class); // creating model's object
     $product->load( 'demoId' ); // loading data
-    //getting some informations
+    //getting some information
     echo $product->oxarticles__oxtitle->value;
     echo $product->oxarticles__oxshortdesc->value;
 
@@ -83,7 +83,7 @@ Using the method ``ResultsetInterface::fetchAll()``:
          //Fetch all at once (beware of big arrays)
          $allResults = $resultSet->fetchAll()
          foreach($allResults as $row) {
-            //do something
+             //do something
          };
 
 
@@ -95,7 +95,7 @@ Using the method ``ResultsetInterface::fetchAll()``:
 
          $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
          while ($row = $resultSet->fetchRow()) {
-                //do something
+             //do something
          };
 
         The point is: the ResultSet immediately executes the first call to ResultSet::fetchRow() in its constructor, and
@@ -123,7 +123,7 @@ An example how to catch exceptions inside a database transaction:
     } catch (\Exception $exception) {
         $database->rollbackTransaction();
         if (!$exception instanceof DatabaseException) {
-        throw $exception;
+            throw $exception;
         }
     }
 
