@@ -14,7 +14,7 @@ Let's take one of them, for example the ``Article`` model, and try to fetch the 
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class); // creating model's object
     $product->load( 'demoId' ); // loading data
-    //getting some informations
+    //getting some information
     echo $product->oxarticles__oxtitle->value;
     echo $product->oxarticles__oxshortdesc->value;
 
