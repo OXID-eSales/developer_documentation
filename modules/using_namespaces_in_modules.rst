@@ -350,4 +350,4 @@ metadata version 2.0. In short: in case you want introduce controllers in your m
 and that do not simply extend shop functionality, you need to use metadata version 2.0
 and register these controller classes in the module's metadata.php file.
 
-More information regarding this topic can be found `here <metadata/version20.html>`__.
+More information regarding this topic can be found `here <skeleton/metadataphp/version20.html>`__.
