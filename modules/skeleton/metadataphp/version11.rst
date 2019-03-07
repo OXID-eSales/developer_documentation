@@ -7,14 +7,120 @@ Changes compared to version 1.0
 * :ref:`Module events <events>`
 
 
+General
+-------
+
+On the top level of the PHP file metadata.php, there have to be exactly 2 variables: $sMetadataVersion (string) and $aModule (array):
+
+.. code:: php
+
+    <?php
+
+    $sMetadataVersion = '2.0';
+    $aModule = [
+        'id' => ...
+        ...
+    ]
+
+
+Metadata file version
+^^^^^^^^^^^^^^^^^^^^^
+
+Type: string
+Mandatory: yes
+
+.. code:: php
+
+  $sMetadataVersion = '1.1';
+
+Example
+^^^^^^^
+
+.. code:: php
+
+  /**
+   * Metadata version
+   */
+  $sMetadataVersion = '1.1';
+
+  /**
+   * Module information
+   */
+  $aModule = array(
+    'id'           => 'oepaypal',
+    'title'        => 'PayPal',
+    'description'  => array(
+        'de' => 'Modul fuer die Zahlung mit PayPal. Erfordert einen OXID eFire Account und die abgeschlossene Aktivierung des Portlets "PayPal".',
+        'en' => 'Module for PayPal payment. An OXID eFire account is required as well as the finalized activation of the portlet "PayPal".',
+    ),
+    'thumbnail'    => 'logo.jpg',
+    'version'      => '2.0.3',
+    'author'       => 'OXID eSales AG',
+    'url'          => 'http://www.oxid-esales.com',
+    'email'        => 'info@oxid-esales.com',
+    'extend'       => array(
+        'order'        => 'oe/oepaypal/controllers/oepaypalorder',
+        'payment'      => 'oe/oepaypal/controllers/oepaypalpayment',
+        'wrapping'     => 'oe/oepaypal/controllers/oepaypalwrapping',
+        'oxviewconfig' => 'oe/oepaypal/controllers/oepaypaloxviewconfig',
+        'oxaddress'    => 'oe/oepaypal/models/oepaypaloxaddress',
+        'oxuser'       => 'oe/oepaypal/models/oepaypaloxuser',
+        'oxorder'      => 'oe/oepaypal/models/oepaypaloxorder',
+        'oxbasket'     => 'oe/oepaypal/models/oepaypaloxbasket',
+        'oxbasketitem' => 'oe/oepaypal/models/oepaypaloxbasketitem',
+        'oxarticle'    => 'oe/oepaypal/models/oepaypaloxarticle',
+        'oxcountry'    => 'oe/oepaypal/models/oepaypaloxcountry',
+        'oxstate'      => 'oe/oepaypal/models/oepaypaloxstate',
+    ),
+    'files' => array(
+        'oePayPalException'                 => 'oe/oepaypal/core/exception/oepaypalexception.php',
+        'oePayPalCheckoutService'           => 'oe/oepaypal/core/oepaypalcheckoutservice.php',
+        'oePayPalLogger'                    => 'oe/oepaypal/core/oepaypallogger.php',
+        'oePayPalPortlet'                   => 'oe/oepaypal/core/oepaypalportlet.php',
+        'oePayPalDispatcher'                => 'oe/oepaypal/controllers/oepaypaldispatcher.php',
+        'oePayPalExpressCheckoutDispatcher' => 'oe/oepaypal/controllers/oepaypalexpresscheckoutdispatcher.php',
+        'oePayPalStandardDispatcher'        => 'oe/oepaypal/controllers/oepaypalstandarddispatcher.php',
+        'oePaypal_EblLogger'                => 'oe/oepaypal/core/oeebl/oepaypal_ebllogger.php',
+        'oePaypal_EblPortlet'               => 'oe/oepaypal/core/oeebl/oepaypal_eblportlet.php',
+        'oePaypal_EblSoapClient'            => 'oe/oepaypal/core/oeebl/oepaypal_eblsoapclient.php',
+        'oepaypalevents'                    => 'oe/oepaypal/core/oepaypalevents.php',
+    ),
+    'events'       => array(
+        'onActivate'   => 'oepaypalevents::onActivate',
+        'onDeactivate' => 'oepaypalevents::onDeactivate'
+    ),
+    'blocks' => array(
+        array('template' => 'widget/sidebar/partners.tpl', 'block'=>'partner_logos',                     'file'=>'/views/blocks/oepaypalpartnerbox.tpl'),
+        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_top',               'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
+        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_bottom',            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
+        array('template' => 'page/checkout/payment.tpl',   'block'=>'select_payment',                    'file'=>'/views/blocks/oepaypalpaymentselector.tpl'),
+    ),
+   'settings' => array(
+        array('group' => 'main', 'name' => 'dMaxPayPalDeliveryAmount', 'type' => 'str',  'value' => '30'),
+        array('group' => 'main', 'name' => 'blPayPalLoggerEnabled',    'type' => 'bool', 'value' => 'false'),
+    )
+  );
+
+
 id
 --
 
-The extension id must be unique. It is recommended to use vendor prefix + module root directory name. Module ID is used for getting all needed information about extension. If this module has defined config variables in ``oxconfig`` and ``oxconfigdisplay`` tables (e.g. ``module:efifactfinder``), the extension id used in these tables should match extension id defined in metadata file. Also same id (``efifactfinder``) must be used when defining extension templates blocks in ``oxtplblocks`` table.
+Type
+    string
+Mandatory
+    yes
+
+The extension id must be unique. It is recommended to use vendor prefix + module root directory name. Module ID is used for getting all needed information about extension. If this module has defined config variables in ``oxconfig`` and ``oxconfigdisplay`` tables (e.g. ``module:oepaypal``), the extension id used in these tables should match extension id defined in metadata file. Also same id (``oepaypal``) must be used when defining extension templates blocks in ``oxtplblocks`` table.
+
+.. code:: php
+
+    'id'           => 'oepaypal',
+
+
 
 .. note::
 
-  The extension id for modules written for OXID eShop versions >= 4.7.0 mustn't be > 25 characters. The extension id for modules written for OXID eShop versions >= 4.9.0 mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
+  The extension id mustn't be > 93 characters. Please also see https://bugs.oxid-esales.com/view.php?id=5549.
 
 title
 -----
@@ -227,79 +333,7 @@ Create out/src/js/, out/src/img/ and out/src/css/ directories so it fit Shop str
   [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "out/src/js/{js_fle_name}.js")}]
 
 
-Metadata file version
----------------------
 
-.. code:: php
-
-  $sMetadataVersion = '1.1';
-
-Here is an example of PayPal module metadata file:
-
-.. code:: php
-
-  /**
-   * Metadata version
-   */
-  $sMetadataVersion = '1.1';
-
-  /**
-   * Module information
-   */
-  $aModule = array(
-    'id'           => 'oepaypal',
-    'title'        => 'PayPal',
-    'description'  => array(
-        'de' => 'Modul fuer die Zahlung mit PayPal. Erfordert einen OXID eFire Account und die abgeschlossene Aktivierung des Portlets "PayPal".',
-        'en' => 'Module for PayPal payment. An OXID eFire account is required as well as the finalized activation of the portlet "PayPal".',
-    ),
-    'thumbnail'    => 'logo.jpg',
-    'version'      => '2.0.3',
-    'author'       => 'OXID eSales AG',
-    'url'          => 'http://www.oxid-esales.com',
-    'email'        => 'info@oxid-esales.com',
-    'extend'       => array(
-        'order'        => 'oe/oepaypal/controllers/oepaypalorder',
-        'payment'      => 'oe/oepaypal/controllers/oepaypalpayment',
-        'wrapping'     => 'oe/oepaypal/controllers/oepaypalwrapping',
-        'oxviewconfig' => 'oe/oepaypal/controllers/oepaypaloxviewconfig',
-        'oxaddress'    => 'oe/oepaypal/models/oepaypaloxaddress',
-        'oxuser'       => 'oe/oepaypal/models/oepaypaloxuser',
-        'oxorder'      => 'oe/oepaypal/models/oepaypaloxorder',
-        'oxbasket'     => 'oe/oepaypal/models/oepaypaloxbasket',
-        'oxbasketitem' => 'oe/oepaypal/models/oepaypaloxbasketitem',
-        'oxarticle'    => 'oe/oepaypal/models/oepaypaloxarticle',
-        'oxcountry'    => 'oe/oepaypal/models/oepaypaloxcountry',
-        'oxstate'      => 'oe/oepaypal/models/oepaypaloxstate',
-    ),
-    'files' => array(
-        'oePayPalException'                 => 'oe/oepaypal/core/exception/oepaypalexception.php',
-        'oePayPalCheckoutService'           => 'oe/oepaypal/core/oepaypalcheckoutservice.php',
-        'oePayPalLogger'                    => 'oe/oepaypal/core/oepaypallogger.php',
-        'oePayPalPortlet'                   => 'oe/oepaypal/core/oepaypalportlet.php',
-        'oePayPalDispatcher'                => 'oe/oepaypal/controllers/oepaypaldispatcher.php',
-        'oePayPalExpressCheckoutDispatcher' => 'oe/oepaypal/controllers/oepaypalexpresscheckoutdispatcher.php',
-        'oePayPalStandardDispatcher'        => 'oe/oepaypal/controllers/oepaypalstandarddispatcher.php',
-        'oePaypal_EblLogger'                => 'oe/oepaypal/core/oeebl/oepaypal_ebllogger.php',
-        'oePaypal_EblPortlet'               => 'oe/oepaypal/core/oeebl/oepaypal_eblportlet.php',
-        'oePaypal_EblSoapClient'            => 'oe/oepaypal/core/oeebl/oepaypal_eblsoapclient.php',
-        'oepaypalevents'                    => 'oe/oepaypal/core/oepaypalevents.php',
-    ),
-    'events'       => array(
-        'onActivate'   => 'oepaypalevents::onActivate',
-        'onDeactivate' => 'oepaypalevents::onDeactivate'
-    ),
-    'blocks' => array(
-        array('template' => 'widget/sidebar/partners.tpl', 'block'=>'partner_logos',                     'file'=>'/views/blocks/oepaypalpartnerbox.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_top',               'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/basket.tpl',    'block'=>'basket_btn_next_bottom',            'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'),
-        array('template' => 'page/checkout/payment.tpl',   'block'=>'select_payment',                    'file'=>'/views/blocks/oepaypalpaymentselector.tpl'),
-    ),
-   'settings' => array(
-        array('group' => 'main', 'name' => 'dMaxPayPalDeliveryAmount', 'type' => 'str',  'value' => '30'),
-        array('group' => 'main', 'name' => 'blPayPalLoggerEnabled',    'type' => 'bool', 'value' => 'false'),
-    )
-  );
 
 .. _multilanguage_fields-20170315:
 
