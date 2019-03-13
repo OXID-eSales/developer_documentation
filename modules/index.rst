@@ -20,5 +20,5 @@ The following sections all refer to implementing, understanding or using modules
     skeleton/index
     *
     tutorials/index
-    good_practices/index
+    best_practices/index
     certification/index

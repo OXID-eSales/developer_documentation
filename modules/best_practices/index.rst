@@ -1,7 +1,7 @@
-Good practices
+Best practices
 ==============
 
-Several good practices one could use in order to have module which is:
+Several best practices one could use in order to have a module which is:
 
 - Easier to maintain
 - Easier to test
