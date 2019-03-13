@@ -6,7 +6,7 @@ compatible logger implementation, which is provided by ``Registry::getLogger()``
 the :doc:`system architecture </system_architecture/logging>` and :doc:`configuration / extension in your project </project/index>`.
 
 The following code example uses different logger methods, which correspond to different log levels.
-It is a good practice to pass some context information to the logger.
+It is a best practice to pass some context information to the logger.
 In the case of an exception, this is the only way to get information about the stack trace.
 
 .. code:: php

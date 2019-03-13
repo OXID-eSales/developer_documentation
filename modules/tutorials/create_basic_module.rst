@@ -10,7 +10,7 @@ Steps for creating a basic module
 - :ref:`Test your module<test_module-20170217>`
 
 In case you have already existing module in git repository and you want to introduce modifications, steps how to
-setup for development can be found :doc:`here </modules/good_practices/module_setup>`.
+setup for development can be found :doc:`here </modules/best_practices/module_setup>`.
 
 Demo Logger module could be used as a simple example
 `from GitHub repository. <https://github.com/OXID-eSales/logger-demo-module>`__
