@@ -1,8 +1,9 @@
 Twig in OXID eShop
 ###################
 
-Twig documentation can be found here: https://twig.symfony.com/
-Information about converting existing templates from Smarty to Twig can be found here: [[link to doc]]
+Twig documentation can be found on `official Twig website <https://twig.symfony.com/>`__.
+Information about converting existing templates from Smarty to Twig can be found in
+:doc:`OXID e-shop to Twig converter documentation <converting_smarty_to_twig>`
 
 OXID eShop is introducing Twig templating engine. So far Smarty 2 engine was used with some Smarty 3 elements. Engine
 was supported by many plugins which also has been reimplemented or migrated to Twig extensions. In this documentation
@@ -296,8 +297,8 @@ If needed extensions can replaced or new extension can be added.
 Replacing existing extensions
 =============================
 
-Replacing extension can be done in two ways. The first one is to simply add extension to Twig environment
-[https://twig.symfony.com/doc/2.x/advanced.html#overloading].
+Replacing extension can be done in two ways. The first one is to simply
+`add extension to Twig environment <https://twig.symfony.com/doc/2.x/advanced.html#overloading>`__.
 The other way is to override extension service. Every extension is a service, so redefining particular service in custom
 services.yaml file does the job.
 

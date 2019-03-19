@@ -1,26 +1,44 @@
 Converting Smarty templates to Twig
 ###################################
 
-Converting tool located at https://github.com/OXID-eSales/oxideshop-to-twig-converter allows to convert existing Smarty
-template files to Twig syntax. The tool besides standard Smarty syntax is adjusted to handle custom OXID modifications
-and extensions.
+Converting tool located at `GitHub <https://github.com/OXID-eSales/oxideshop-to-twig-converter>`__ allows to convert
+existing Smarty template files to Twig syntax. The tool besides standard Smarty syntax is adjusted to handle custom OXID
+modifications and extensions.
 
 Usage
 *****
 
 The convert command tries to fix as much coding standards problems as possible on a given file or directory:
 
-``php toTwig convert /path/to/dir  --ext=.html.twig``
-``php toTwig convert /path/to/file  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir  --ext=.html.twig``
+``php toTwig convert --path=/path/to/file  --ext=.html.twig``
+
+It also can work with databases:
+
+``php toTwig convert --database="mysql://user:password@localhost/db"``
+
+The ``--database`` parameter gets
+`database doctrine-like URL <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.9/reference/configuration.html#connecting-using-a-url>`__
+Converter by default converts following tables columns: ``oxactions.OXLONGDESC``, ``oxactions.OXLONGDESC_1``,
+``oxcontents.OXCONTENT``, ``oxcontents.OXCONTENT_1``.
+
+The ``--database-columns`` option lets you choose tables columns to be converted (the table column names has to be
+specified in table_a.column_b format and separated by comma):
+
+``php toTwig convert --database="..." --database-columns=oxactions.OXLONGDESC,oxcontents.OXCONTENT``
+
+You can also blacklist the table columns you don't want using -table_a.column_b:
+
+``php toTwig convert --database="..." --database-columns=-oxactions.OXLONGDESC_1,-oxcontents.OXCONTENT_1``
 
 The ``--converters`` option lets you choose the exact converters to apply (the converter names must be separated by a
 comma):
 
-``php toTwig convert /path/to/dir --converters=for,if,misc  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir --converters=for,if,misc  --ext=.html.twig``
 
 You can also blacklist the converters you don't want if this is more convenient, using -name:
 
-``php toTwig convert /path/to/dir --converters=-for,-if  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir --converters=-for,-if  --ext=.html.twig``
 
 A combination of ``--dry-run``, ``--verbose`` and ``--diff`` will display summary of proposed changes, leaving your
 files unchanged.
@@ -29,7 +47,7 @@ All converters apply by default.
 
 The ``--dry-run`` option displays the files that need to be fixed but without actually modifying them:
 
-``php toTwig convert /path/to/code --dry-run``
+``php toTwig convert --path=/path/to/code --dry-run --ext=.html.twig``
 
 
 Converted plugins and syntax pieces
