@@ -10,15 +10,15 @@ Usage
 
 The convert command tries to fix as much coding standards problems as possible on a given file or directory:
 
-``php toTwig convert --path=/path/to/dir  --ext=.html.twig``
-``php toTwig convert --path=/path/to/file  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir --ext=.html.twig``
+``php toTwig convert --path=/path/to/file --ext=.html.twig``
 
 It also can work with databases:
 
 ``php toTwig convert --database="mysql://user:password@localhost/db"``
 
 The ``--database`` parameter gets
-`database doctrine-like URL <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.9/reference/configuration.html#connecting-using-a-url>`__
+`database doctrine-like URL <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.9/reference/configuration.html#connecting-using-a-url>`__.
 Converter by default converts following tables columns: ``oxactions.OXLONGDESC``, ``oxactions.OXLONGDESC_1``,
 ``oxcontents.OXCONTENT``, ``oxcontents.OXCONTENT_1``.
 
@@ -34,11 +34,11 @@ You can also blacklist the table columns you don't want using -table_a.column_b:
 The ``--converters`` option lets you choose the exact converters to apply (the converter names must be separated by a
 comma):
 
-``php toTwig convert --path=/path/to/dir --converters=for,if,misc  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir --ext=.html.twig --converters=for,if,misc``
 
 You can also blacklist the converters you don't want if this is more convenient, using -name:
 
-``php toTwig convert --path=/path/to/dir --converters=-for,-if  --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir --ext=.html.twig --converters=-for,-if``
 
 A combination of ``--dry-run``, ``--verbose`` and ``--diff`` will display summary of proposed changes, leaving your
 files unchanged.
@@ -47,7 +47,7 @@ All converters apply by default.
 
 The ``--dry-run`` option displays the files that need to be fixed but without actually modifying them:
 
-``php toTwig convert --path=/path/to/code --dry-run --ext=.html.twig``
+``php toTwig convert --path=/path/to/code --ext=.html.twig --dry-run``
 
 
 Converted plugins and syntax pieces
