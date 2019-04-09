@@ -16,6 +16,7 @@ Table of Contents
 
    getting_started/index
    system_architecture/index
+   Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
    oxid_components/index
    modules/index
    themes/index
