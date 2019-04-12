@@ -8,10 +8,18 @@ modifications and extensions.
 Usage
 *****
 
-The convert command tries to fix as much coding standards problems as possible on a given file or directory:
+The convert command tries to fix as much coding standards problems as possible on a given file, directory or database.
+
+path and ext parameters
+=======================
+
+Converter can work with files and directories:
 
 ``php toTwig convert --path=/path/to/dir --ext=.html.twig``
 ``php toTwig convert --path=/path/to/file --ext=.html.twig``
+
+database and database-columns parameters
+========================================
 
 It also can work with databases:
 
@@ -31,6 +39,9 @@ You can also blacklist the table columns you don't want using -table_a.column_b:
 
 ``php toTwig convert --database="..." --database-columns=-oxactions.OXLONGDESC_1,-oxcontents.OXCONTENT_1``
 
+converters parameter
+====================
+
 The ``--converters`` option lets you choose the exact converters to apply (the converter names must be separated by a
 comma):
 
@@ -40,6 +51,9 @@ You can also blacklist the converters you don't want if this is more convenient,
 
 ``php toTwig convert --path=/path/to/dir --ext=.html.twig --converters=-for,-if``
 
+dry-run, verbose and diff parameters
+====================================
+
 A combination of ``--dry-run``, ``--verbose`` and ``--diff`` will display summary of proposed changes, leaving your
 files unchanged.
 
@@ -48,6 +62,38 @@ All converters apply by default.
 The ``--dry-run`` option displays the files that need to be fixed but without actually modifying them:
 
 ``php toTwig convert --path=/path/to/code --ext=.html.twig --dry-run``
+
+config-path parameter
+=====================
+
+Instead of building long line commands it is possible to inject PHP configuration code. Two example files are included
+in main directory: ``config_file.php`` and ``config_database.php``. To include config file use --config-path parameter:
+
+``php toTwig convert --config-path=config_file.php``
+
+Config script should return instance of ``toTwig\Config\ConfigInterface``. It can be created using
+``toTwig\Config\Config::create()`` static method.
+
+Known issues
+************
+
+- In Twig by default all variables are escaped. Some of variables should be filtered with ``|raw`` filter to avoid this.
+
+- Variable scope. In Twig variables declared in templates have scopes limited by block (``{% block %}``, ``{% for %}``
+  and so on). Some variables should be declared outside these blocks if they are used outside.
+
+- Redeclaring blocks - it’s forbidden in Twig.
+
+- Access to array item ``$myArray.$itemIndex`` should be manually translated to ``myArray[itemIndex]``
+
+- Problem with checking non existing (null) properties. E.g. we want to check the value of non-existing property
+  ``oxarticles__oxunitname``. Twig checks with ``isset`` if this property exists and it’s not, so Twig assumes that
+  property name is function name and tries to call it.
+
+- Uses of regex string in templates - the tool can break or work incorrectly on so complex cases - it’s safer to
+  manually copy&paste regular expression.
+
+- ``[{section}]`` - ``loop`` is array or integer - different behaviors. The tool is not able to detect variable type.
 
 
 Converted plugins and syntax pieces
