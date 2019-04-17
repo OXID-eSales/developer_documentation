@@ -15,8 +15,12 @@ path and ext parameters
 
 Converter can work with files and directories:
 
-``php toTwig convert --path=/path/to/dir --ext=.html.twig``
-``php toTwig convert --path=/path/to/file --ext=.html.twig``
+``php toTwig convert --path=/path/to/dir``
+``php toTwig convert --path=/path/to/file``
+
+By default files with ``.html.twig`` extension will be created. To specify different extensions use ``--ext`` parameter:
+
+``php toTwig convert --path=/path/to/dir --ext=.js.twig``
 
 database and database-columns parameters
 ========================================
