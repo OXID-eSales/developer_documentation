@@ -90,7 +90,8 @@ Step 3: Adapt file and directory permissions
 
    The following directories and its subdirectories must always be writable by the HTTP server during the run time:
 
-      * ./source/export
+      * ./var/
+      * ./source/export/
       * ./source/log/
       * ./source/out/pictures/
       * ./source/out/media/
@@ -108,7 +109,7 @@ Step 3: Adapt file and directory permissions
 
         .. code:: bash
 
-            sudo chmod 777 -R source/config.inc.php source/.htaccess source/tmp/ source/log/ source/out/pictures/ source/out/media/ source/export
+            sudo chmod 777 -R var source/config.inc.php source/.htaccess source/tmp/ source/log/ source/out/pictures/ source/out/media/ source/export
 
 Step 4: Run the graphical setup
 ----------------------------------------------
