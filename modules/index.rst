@@ -17,6 +17,7 @@ The following sections all refer to implementing, understanding or using modules
     :titlesonly:
     :glob:
 
+    installation/index
     skeleton/index
     *
     tutorials/index
