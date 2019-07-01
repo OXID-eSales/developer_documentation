@@ -1,19 +1,17 @@
-
-
 settings
-""""""""
+========
 
-Description:
+Description
     In this section all module configuration options are registered. In the eShop admin, users can configure
     modules according these settings.
     The settings can be translated and you can access the values in your php code.
 
-Type:
-    array of arrays with subkeys:
+Type
+    Array of associative arrays. Array keys:
 
     * Each module setting belongs to a group (mandatory key ``group``).
     * The mandatory key ``name`` is used for getting and storing the setting.
-      It is best practice to prefix it with your :ref:`module id <modules_skeleton_metadata_id>` to avoid name
+      It is best practice to prefix it with your :doc:`module id <id>` to avoid name
       collisions with other modules.
     * The key ``type`` is mandatory. Possible values are ``str``, ``bool``, ``arr`` (array),
       ``aarr`` (associative array), ``select`` (multiple options, translation possible), ``password``.
@@ -22,10 +20,10 @@ Type:
       example below.
     * The optional parameter ``position`` sets the order of module settings shown in the eShop admin.
 
-Mandatory:
-    no
+Mandatory
+    No
 
-Usage:
+Usage
     In php classes you can query your module settings by:
 
     .. code:: php
@@ -82,7 +80,7 @@ Example
                 'group' => 'main',
                 'name' => 'blOEPayPalLoggerEnabled',
                 'type' => 'bool',
-                'value' => 'false'
+                'value' => false
             ],
             [
                 'group' => 'main',

@@ -1,5 +1,5 @@
 blocks
-""""""
+======
 
 Description:
     In this array are registered all module templates blocks. On module activation they are automaticly inserted into

@@ -1,22 +1,17 @@
 Version 1.1
 ===========
 
-.. contents::
-    :depth: 3
-    :local:
-
 Changes compared to version 1.0
 -------------------------------
 
-* :ref:`Module events <modules_skeleton_metadata_version11_events>`
+* :doc:`Module events <amodule/events>` introduced.
 
 
 Structure
 ---------
 
 On the top level of the PHP file metadata.php, there have to be exactly 2 variables:
-:ref:`$sMetadataVersion (string) <modules_skeleton_metadata_version11_metadataversion>` and :ref:`$aModule (array) <modules_skeleton_metadata_version11_amodule>`.
-$aModule has multiple sub keys.
+``$sMetadataVersion (String)`` and ``$aModule (Array)``. No other variables or code are allowed.
 
 .. code:: php
 
@@ -28,61 +23,44 @@ $aModule has multiple sub keys.
         ...
     ]
 
-.. _modules_skeleton_metadata_version11_metadataversion:
+The array ``$aModule`` can contain multiple sub keys:
 
-sMetadataVersion
-^^^^^^^^^^^^^^^^
+    .. toctree::
+       :maxdepth: 1
 
-Type:
-    string
+       amodule/id
 
-Mandatory:
-    yes
+       amodule/title
 
-Example:
-    .. code:: php
+       amodule/description
 
-        $sMetadataVersion = '1.1';
+       amodule/lang
 
-.. _modules_skeleton_metadata_version11_amodule:
+       amodule/thumbnail
 
-aModule
-^^^^^^^
+       amodule/version
 
-.. _modules_skeleton_metadata_id:
+       amodule/author
 
-.. include:: resources/id.rst
+       amodule/url
 
-.. include:: resources/title.rst
+       amodule/email
 
-.. include:: resources/description.rst
+       amodule/extend
 
-.. include:: resources/lang.rst
+       amodule/files
 
-.. include:: resources/thumbnail.rst
+       amodule/blocks
 
-.. include:: resources/version.rst
+       amodule/settings
 
-.. include:: resources/author.rst
+       amodule/templates
 
-.. include:: resources/url.rst
+       amodule/events
 
-.. include:: resources/email.rst
 
-.. include:: resources/extend_non_namespaced.rst
 
-.. include:: resources/files.rst
-
-.. include:: resources/blocks.rst
-
-.. _modules_skeleton_metadata_version11_settings:
-.. include:: resources/settings.rst
-
-.. include:: resources/templates.rst
-
-.. _modules_skeleton_metadata_version11_events:
-.. include:: resources/events.rst
-
+.. _metadata_11_example:
 
 Example
 -------

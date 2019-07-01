@@ -1,14 +1,14 @@
 url
-"""
+===
 
-Description:
+Description
     Link to module writer web page.
 
-Type:
-    string
+Type
+    String
 
-Mandatory:
-    no
+Mandatory
+    No
 
 Example
     .. code:: php

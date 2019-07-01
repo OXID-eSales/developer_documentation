@@ -1,14 +1,14 @@
 email
-"""""
+=====
 
 Description:
     Module vendor email.
 
 Type:
-    string
+    String
 
 Mandatory:
-    no
+    No
 
 Example
     .. code:: php

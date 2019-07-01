@@ -1,16 +1,16 @@
 title
-"""""
+=====
 
-Description:
+Description
     Used to display extension title in the extensions list and detail information. If the value is an array,
     the sub keys have to be a language abbreviation and the values the according translations.
     If this field value is a string, this text string will be displayed in all languages.
 
-Type:
-    string or array of strings
+Type
+    String or associative array
 
-Mandatory:
-    no
+Mandatory
+    No
 
 Example
     .. code:: php

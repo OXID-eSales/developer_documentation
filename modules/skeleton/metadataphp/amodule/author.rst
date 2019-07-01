@@ -1,14 +1,14 @@
 author
-""""""
+======
 
 Description:
     The author/developer of this extension.
 
 Type:
-    string
+    String
 
 Mandatory:
-    no
+    No
 
 Example
     .. code:: php

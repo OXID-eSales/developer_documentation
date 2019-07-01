@@ -1,7 +1,7 @@
 id
-""
+==
 
-Description:
+Description
     The extension id must be unique. It is recommended to use `vendor prefix <https://oxidforge.org/de/modulkurzel>`__
     + module root directory name. Module ID is used for getting all needed information about extension. The directory of
     the module has to equal the module_id. If this module
@@ -10,13 +10,13 @@ Description:
     Also same id (``oepaypal``) must be used when defining extension templates blocks in ``oxtplblocks`` table.
 
 
-Type:
-    string
+Type
+    String
 
-Mandatory:
-    yes
+Mandatory
+    Yes
 
-Example:
+Example
     .. code:: php
 
         'id'           => 'oepaypal',

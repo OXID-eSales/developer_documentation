@@ -9,8 +9,8 @@ Preparation
 -----------
 
 For having additional input field in user form first of all there will be a need to create new column in user table.
-This can be achieved by using module :ref:`events <events-20170307>` which would create a column. In this page
-an example of database table column called ``EXTENDUSER_ADDITIONALCONTACTINFO`` will be used.
+This can be achieved by using module :doc:`events </modules/skeleton/metadataphp/amodule/events>` which would create a column.
+In this page an example of database table column called ``EXTENDUSER_ADDITIONALCONTACTINFO`` will be used.
 
 Template
 --------

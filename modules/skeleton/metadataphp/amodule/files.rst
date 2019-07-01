@@ -1,15 +1,14 @@
 files
-"""""
+=====
 
-Description:
+Description
     All module php files that do not extend any shop class. On request shop autoloader checks this array and if class
-    name is registered in this array, loads class. So now no need to copy module classes to shop ``core`` or ``view``
-    folder and all module files can be in module folder.
+    name is registered in this array, loads class. If you use namespaced classes, autoloading is done via composer.
 
-Type:
-    array of strings
+Type
+    Associative array
 
-Mandatory:
+Mandatory
     no
 
 Example
