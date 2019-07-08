@@ -1,74 +1,13 @@
 Install OXID eShop compilation
 ==============================
 
-Please, install the OXID eShop compilation performing the following steps:
-
-* `Step 1: Deploy source code and install project dependencies`_
-* `Step 2: Configure the HTTP server`_
-* `Step 3: Adapt file and directory permissions`_
-* `Step 4: Run the graphical setup`_
+The general installation is described in the `User documentation <https://docs.oxid-esales.com/en/>`__.
+On this page, additional developer specific information is provided.
 
 .. _eshop_installation_deploy_source_code:
 
-Step 1: Deploy source code and install project dependencies
---------------------------------------------------------------
-
-    The recommended way to obtain the source code of OXID eShop and to install the project dependencies is to use Composer.
-    You will find details how to install and use Composer `here <https://getcomposer.org/doc/00-intro.md>`__. Please make sure
-    to have a sufficient understanding of how Composer works before proceeding.
-
-    If by any reason you are not able to use Composer to install OXID eShop or one of its modules on a specific application
-    server, please skip this step and read :doc:`these instructions<eshop_installation_without_composer>` to learn how to
-    deploy the source code using an alternative way.
-
-    Depending on the edition of OXID eShop you want to install, run one the following commands in the command line interface
-    of your operating system.
-
-    If you install OXID eShop for module development, remember we recommend using oxVM for development, but if by any reason
-    you need the OXID eSales development tools to be installed, remove  the `--no-dev` option in the commands below.
-
-    .. note::
-        For OXID eShop Professional Edition or OXID eShop Enterprise Edition, you need to enter the credentials you should
-        have received when purchasing the product.
-
-    * For Community Edition:
-
-    .. code:: bash
-
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-ce
-
-    * For Professional Edition:
-
-    .. code:: bash
-
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-pe
-
-    * For Enterprise Edition:
-
-    .. code:: bash
-
-        composer create-project --no-dev oxid-esales/oxideshop-project your_project_name dev-b-6.1-ee
-
-    When the Composer has finished successfully, a new directory will have been created in your working directory.
-    It is called *your_project_name* in this example and it is referred to as *project root directory*.
-
-    The *project root directory* contains all files, which are needed to continue with the installation of OXID eShop.
-
-    **Watch out for error messages during the installation progress.**
-
-    See our :doc:`troubleshooting <./troubleshooting>` section for solutions.
-
-.. note::
-
-        If you install the compilation **without** the `--no-dev` option, the following development tools will be installed together with OXID eShop:
-
-        * OXID eShop `Testing Library <https://github.com/OXID-eSales/testing_library>`__
-        * `IDE code completion support <https://github.com/OXID-eSales/oxid-eshop-ide-helper>`__ for OXID eShop
-        * OXID `Coding Standards <https://github.com/OXID-eSales/coding_standards>`__
-        * `Azure Theme <https://github.com/OXID-eSales/azure_theme>`__ for selenium tests
-
-Technical details
-^^^^^^^^^^^^^^^^^
+Providing shop files
+--------------------
 
     Composer will automatically download the source files of the specified version and edition of OXID eShop.
 
@@ -79,74 +18,21 @@ Technical details
     :doc:`unified namespace <../../system_architecture/namespaces>` `\\OxidEsales\\Eshop`.
 
 
-Step 2: Configure the HTTP server
-------------------------------------
+    **Watch out for error messages during the installation procress.**
 
-    Move the *project root directory* to a directory accessible by your HTTP server.
-    Configure the servers public document root to point to the `source` directory of the *project root directory*
+    See our :doc:`troubleshooting <./troubleshooting>` section for solutions.
 
-Step 3: Adapt file and directory permissions
-----------------------------------------------------
+    If by any reason you are not able to use Composer to install OXID eShop or one of its modules on a specific application
+    server, please skip this step and read :doc:`these instructions<eshop_installation_without_composer>` to learn how to
+    deploy the source code using an alternative way.
 
-   The following directories and its subdirectories must always be writable by the HTTP server during the run time:
+.. note::
 
-      * ./var/
-      * ./source/export/
-      * ./source/log/
-      * ./source/out/pictures/
-      * ./source/out/media/
-      * ./source/tmp/
+        If you install the compilation **without** the `--no-dev` option, the following development tools will be installed together with OXID eShop:
 
-   For the next step, the graphical setup, the following files and directories must be writable for the HTTP server:
-
-      * ./source/Setup
-      * ./source/config.inc.php
-      * ./source/.htaccess
-
-   .. note::
-
-        In a development environment, the easiest way to adapt permissions, is to run
-
-        .. code:: bash
-
-            sudo chmod 777 -R var source/config.inc.php source/.htaccess source/tmp/ source/log/ source/out/pictures/ source/out/media/ source/export
-
-Step 4: Run the graphical setup
-----------------------------------------------
-
-   Open **http(s)://<your shop URL>/Setup** in your browser and follow the instructions of the graphical setup.
-
-   At the end of the installation process, the directory ./source/Setup is deleted.
-
-   After the graphical setup, please set the following files to read-only for the HTTP server:
-
-      * ./source/config.inc.php
-      * ./source/.htaccess
-
-   .. note::
-
-        As the file ./source/config.inc.php contains database credentials, you should consider to restrict read access to
-        the HTTP server.
-
-Activate pre-installed modules
-------------------------------
-
-    None of the bundled modules is activated by default during the setup.
-    Please refer to the documentation you find inside the module directory about system requirements and configuration of
-    each module.
-
-Install more modules and module dependencies
---------------------------------------------
-
-    After the installation, you may proceed with the installation of some of the many modules the OXID eco system provides.
-    Refer to the installation instructions of each of the modules.
-
-    Keep in mind that some OXID eShop modules may have special requirements, which may go beyond the
-    `system requirements of a standard installation of OXID eShop. <https://docs.oxid-esales.com/eshop/de/6.1/installation/neu-installation/server-und-systemvoraussetzungen.html>`__
-    These requirements may either be installable via Composer or may require the installation of certain PHP extensions or even system
-    libraries.
-    In any case, the authors of the modules will have provided you with all necessary information about these requirements and
-    how to install them on your application server.
+        * OXID eShop `Testing Library <https://github.com/OXID-eSales/testing_library>`__
+        * `IDE code completion support <https://github.com/OXID-eSales/oxid-eshop-ide-helper>`__ for OXID eShop
+        * `Azure Theme <https://github.com/OXID-eSales/azure_theme>`__ for selenium tests
 
 Known issue on MacOS
 --------------------
@@ -164,11 +50,8 @@ Known issue on MacOS
         sudo chown _mysql /var/mysql/mysql.sock
         sudo chmod 777 /var/mysql/mysql.sock
 
-Hints for development
----------------------
-
 Always use Composers' --no-plugins switch
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------------------
 
     It is a best practice to run all Composer commands, which update components with the --no-plugins option and
     to run update action in a separate command.
@@ -192,7 +75,7 @@ Always use Composers' --no-plugins switch
 
 
 Temporarily add Composer dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-------------------------------------
 
     In general you should extended the functionality of OXID eShop by writing modules, which provide there own dependency
     management. See :ref:`module section <modules-20170527>` for details.
@@ -215,7 +98,7 @@ Temporarily add Composer dependencies
 
 
 Resolving Composer dependency conflicts
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------------------
 
 The meta package defines, which exact versions of the components will be installed by Composer.
 These versions have been tested by OXID eSales to ensure, that OXID eShop works as expected and to avoid security issues.
@@ -236,7 +119,7 @@ See `the documentation <https://getcomposer.org/doc/articles/aliases.md#require-
 or `this issue in GitHub <https://github.com/composer/composer/issues/3387>`__ for details
 
 Building your own compilation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+-----------------------------
 
 A meta package defines the kind and versions of components of a compilation.
 You may want build your own compilation for two reasons:
