@@ -3,8 +3,8 @@ Installation
 
 Module installation contains 2 parts:
 
-* copying all necessary module files to the source modules directory
-* installing module configuration
+# copying all necessary module files to the source modules directory
+# installing module configuration
 
 .. important::
 
@@ -24,12 +24,17 @@ Manual installation
 
 .. code:: bash
 
-    oe:module:install-configuration source/modules/oe/oepaypal
+    vendor/bin/oe-console oe:module:install-configuration source/modules/oe/oepaypal
 
 Activation
 ----------
 
-After the installation module can be activated from the admin backend or via console command: oe:module:activate <module-id>.
+After the installation module can be activated from the admin backend or via console command:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:module:activate <module-id>.
+
 During the module activation all necessary data from the module configuration will be written in the database and module cache will be reset.
 
 .. note::
