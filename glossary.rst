@@ -15,6 +15,16 @@ Edition
 An edition is child of the OXID eShop family. Editions are differentiated mainly by their feature sets.
 Currently there are the editions Community, Professional, Enterprise and B2B.
 
+.. _glossary-installation:
+
+Installation
+^^^^^^^^^^^^
+
+The term installation is used for modules as well as for OXID eShop itself.
+After the installation, the :ref:`Setup<glossary-setup>` can be done.
+
+.. include:: media/installationActivation.rst
+
 
 .. _glossary-meta_package:
 
@@ -62,3 +72,14 @@ OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
 
 Component installed via composer which has type `oxideshop-component`.
+
+.. _glossary-setup:
+
+Setup
+^^^^^
+
+The term setup is used for modules as well as for OXID eShop itself. After setup of the eShop, the eShop is launched and
+can be used. After setup of a module, the module will be used by the eShop. The :ref:`Installation<glossary-installation>`
+has to be done first before setup can be done.
+
+.. include:: media/installationActivation.rst

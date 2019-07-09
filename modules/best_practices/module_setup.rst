@@ -17,7 +17,13 @@ file. Like this all changes to your module will take place immediately.
   * ``<module-name>`` - Is your module name, for example "oeloggerdemo".
   * ``<git-url-to-module-repository>`` - Is your module git URL, for example "https://github.com/OXID-eSales/logger-demo-module.git".
 
-2. Register module package in project ``composer.json``.
+2. Install module configuration.
+
+  .. code:: bash
+
+    oe:module:install-configuration source/modules/<module-vendor>/<module-name>
+
+3. Register module package in project ``composer.json``.
 
   .. code:: bash
 

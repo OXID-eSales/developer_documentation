@@ -7,6 +7,7 @@ and use certain metadata files.
 .. toctree::
     :titlesonly:
     :glob:
+    :maxdepth: 2
 
     metadataphp/index
     composerjson/index
