@@ -1,7 +1,7 @@
 Installation
 ===================
 
-Module installation contains 2 parts:
+Module :ref:`installation <glossary-installation>` contains 2 parts:
 
 #. copying all necessary module files to the source modules directory
 #. installing module configuration
