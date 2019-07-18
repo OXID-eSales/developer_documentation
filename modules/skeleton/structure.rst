@@ -52,7 +52,7 @@ Possible structure of the module in the repository:
 Module transformation
 ---------------------
 
-:ref:`OXID Composer Plugin<copy_module_via_composer-20170217>` could be used in order to to create vendor and module_id directories
+:ref:`OXID Composer Plugin<copy_module_via_composer-20170217>` could be used in order to create vendor and module_id directories
 
 .. _modules_structure_language_files_20170316:
 

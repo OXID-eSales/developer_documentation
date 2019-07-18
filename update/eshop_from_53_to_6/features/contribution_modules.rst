@@ -25,7 +25,7 @@ Migration
 Possible places for data migrations:
 
 * In OXID eShop 4.10 / 5.3, the database table ``oxartextends`` had the columns ``OXTAGS_*``. In order to migrate your
-  existing tags, simply rename these columns in OXID eShop 6 to to ``OETAGS_*``
+  existing tags, simply rename these columns in OXID eShop 6 to ``OETAGS_*``
 * related functionality like the search might also be affected as it relies on the tags feature in OXID eShop 4.10 / 5.3
 * the tag categories (``http://myoxideshop.com/tags/*``) are not available any more in OXID eShop 6
 * regeneration of seo links (table ``oxseo``) might be necessary

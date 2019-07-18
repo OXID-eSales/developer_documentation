@@ -47,7 +47,7 @@ and in the end the Module Autoloader:
 Composer Autoloader
 ^^^^^^^^^^^^^^^^^^^
 
-It is the first autoloader in line and tries to to autoload all namespaced
+It is the first autoloader in line and tries to autoload all namespaced
 classes, which are configured in the root :file:`composer.json` file
 or child :file:`composer.json` files. An example of a class which would be
 resolved by this autoloader is ``OxidEsales\Eshop\Application\Model\Article``.
