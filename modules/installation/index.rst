@@ -24,7 +24,7 @@ Manual installation
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:install-configuration source/modules/oe/oepaypal
+    oe-console oe:module:install-configuration source/modules/oe/oepaypal
 
 Activation
 ----------
@@ -33,7 +33,7 @@ After the installation module can be activated from the admin backend or via con
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:activate <module-id>.
+    oe-console oe:module:activate <module-id>.
 
 During the module activation all necessary data from the module configuration will be written in the database and module cache will be reset.
 
