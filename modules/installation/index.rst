@@ -40,3 +40,48 @@ During the module activation all necessary data from the module configuration wi
 .. note::
 
   Module data and extensions chains in the database will be overwritten after every module activation/deactivation with the data from the module configuration.
+
+Activate configured modules
+---------------------------
+
+Each module configuration in the shop configuration yml file has ``configured``
+option (false by default) which means that module is in configured state and prepared
+for the activation.
+
+Example of the shop configuration yml file:
+
+.. code:: yaml
+
+    modules:
+        oegdproptin:
+            id: oegdproptin
+            path: oe/gdproptin
+            configured: true
+            ...
+        oevarnish:
+            id: oevarnish
+            path: oe/varnish
+            configured: false
+            ...
+
+You can activate all configured modules for all available shops via the console command:
+
+.. code:: bash
+
+    oe-console oe:module:activate-configured-modules
+
+or only for the one shop if `--shop-id` option is provided:
+
+.. code:: bash
+
+    oe-console oe:module:activate-configured-modules --shop-id=1
+
+The ``configured`` option will be set to true after the module activation and set back to false
+after the module deactivation. You can also set the option manually in the shop configuration
+yml file.
+
+After shop or database reset modules will be not active, but the ``configured`` option
+stays and it's easily possible to activate all previously active modules via the command.
+
+If you need to set up the shop in another environment and get active the same modules
+you can copy the configuration file and run the command.
