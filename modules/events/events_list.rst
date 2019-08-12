@@ -117,13 +117,13 @@ Takes the model object as constructor argument.
 Usage example: reverse proxy (varnish) can use this event to handle caching.
 
 
-**AfterModelUdateEvent**
+**AfterModelUpdateEvent**
 
 Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelUdateEvent
+    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelUpdateEvent
 
 This event will be dispatched after the model data is updated in database.
 Takes the model object as constructor argument.
@@ -315,13 +315,13 @@ Usage example: reverse proxy (varnish) can use this event to invalidate parts of
 affected by configuration change.
 
 
-**ShopModuleSettingChangedEvent**
+**SettingChangedEvent**
 
 Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\Module\ShopModuleSetting\Event\ShopModuleSettingChangedEvent
+    Namespace: OxidEsales\EshopCommunity\Internal\Module\Setting\Event\SettingChangedEvent
 
 This event will be triggered when shop module settings have been changed in database.
 It takes the configuration variable name, shop id and module string (prefixed like used in oxconfig.oxmodule)
@@ -389,17 +389,8 @@ This event will be dispatched by shop to inform services that a request has been
 Usage example: reverse proxy (varnish) can use this event to execute cache before shop redirects.
 
 
-**ModuleVariablesResettedEvent**
+**ConfigurationErrorEvent**
 
-NOTE: This event is temporary, marked as deprecated and will be replaced as soon as module installation
-services are in use.
+**ProjectYamlChangedEvent**
 
-Namespace:
-
-.. code-block:: php
-
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\ModuleVariablesResettedEvent
-
-This event will be dispatched when module variables have been reset (ModuleVariablesLocator::resetModuleVariables()).
-
-Usage example: reverse proxy (varnish) can use this event to figure out whether it might have to flush the cache.
+**ModuleSetupEvent**
