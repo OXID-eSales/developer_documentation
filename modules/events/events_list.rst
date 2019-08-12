@@ -393,4 +393,16 @@ Usage example: reverse proxy (varnish) can use this event to execute cache befor
 
 **ProjectYamlChangedEvent**
 
+Namespace:
+
+.. code-block:: php
+
+	Namespace: OxidEsales\EshopCommunity\Internal\Application\Events
+	
+This event will be dispatched after the generated services file for the DI container changed.
+This happens for example when a module, that has its own `services.yaml` file, is activated.
+
+Usage example: Reset the DI container when the `generated_services.yaml` file changes (there
+is probably no other use case).
+
 **ModuleSetupEvent**
