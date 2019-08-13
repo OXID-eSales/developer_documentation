@@ -85,3 +85,27 @@ stays and it's easily possible to activate all previously active modules via the
 
 If you need to set up the shop in another environment and get active the same modules
 you can copy the configuration file and run the command.
+
+.. note::
+
+  You can override the shop configuration yml file by creating environment yml file
+  using the same file structure. This allows you to have different configurations in different environments
+  without changing the original shop configuration.
+
+Example of the shop environment yml file:
+
+.. code:: yaml
+
+    modules:
+        oegdproptin:
+            id: oegdproptin
+            path: oe/gdproptin
+            configured: true
+            ...
+        oevarnish:
+            id: oevarnish
+            path: oe/varnish
+            configured: false
+            ...
+
+
