@@ -391,13 +391,24 @@ Usage example: reverse proxy (varnish) can use this event to execute cache befor
 
 **ConfigurationErrorEvent**
 
+Namespace:
+
+.. code-block:: php
+
+	Namespace: OxidEsales\EshopCommunity\Internal\Application\Events\ConfigurationErrorEvent
+
+This is a generic event that should never be dispatched as itself. This event should
+be subclassed for various configuration errors (an example is the `ServicesYamlConfigurationErrorEvent`).
+This parent class defines an error level that can be called with `getErrorLevel()`. This error level
+may for example be mapped to a log level.
+
 **ProjectYamlChangedEvent**
 
 Namespace:
 
 .. code-block:: php
 
-	Namespace: OxidEsales\EshopCommunity\Internal\Application\Events
+	Namespace: OxidEsales\EshopCommunity\Internal\Application\Events\ProjectYamlChangedEvent
 	
 This event will be dispatched after the generated services file for the DI container changed.
 This happens for example when a module, that has its own `services.yaml` file, is activated.
@@ -405,4 +416,17 @@ This happens for example when a module, that has its own `services.yaml` file, i
 Usage example: Reset the DI container when the `generated_services.yaml` file changes (there
 is probably no other use case).
 
-**ModuleSetupEvent**
+**ServicesYamlConfigurationErrorEvent**
+
+Namespace:
+
+.. code-block:: php
+
+	Namespace: OxidEsales\EshopCommunity\Internal\Module\Setup\Event\ServicesYamlConfigurationErrorEvent
+
+Extends the `ConfigurationErrorEvent`.
+
+This event will be dispatched when there are classes referenced in a `services.yaml` file of a module
+that are not loadable.
+
+Usage example: The EventLoggingSubscriber writes this error to the log file.
