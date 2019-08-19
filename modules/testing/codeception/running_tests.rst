@@ -1,7 +1,7 @@
 Running codeception tests
 -------------------------
 
-To run Codeception tests go to the shop directory and adapt the test_config.yml fileto your needs.
+To run Codeception tests go to the shop directory and adapt the test_config.yml file to your needs.
 For example to only run module codeception tests
 
 ::
@@ -28,7 +28,7 @@ Example:
 
   cd /var/www/oxideshop && PARTIAL_MODULE_PATHS=oe/geoblocking ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception
 
-How to run a single test file:
+**How to run a single test file:**
 ::
 
   cd <shop_dir> && PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception <test_file_name_without_extension>
@@ -38,7 +38,7 @@ Example:
 
   cd /var/www/oxideshop && PARTIAL_MODULE_PATHS=oe/geoblocking ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception FrontendCest
 
-How to run a single test:
+**How to run a single test:**
 ::
 
   cd <shop_dir> && PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception <test_file_name_without_extension>:<test_method_name>
@@ -49,13 +49,20 @@ Example:
   cd /var/www/oxideshop && PARTIAL_MODULE_PATHS=oe/geoblocking ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception FrontendCest:registerUserWithCountryWhichIsInvoiceOnly
 
 
-How to run test group:
+**How to run a test group:**
 ::
 
   cd <shop_dir> && PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception -g <group_name>
 
-How to run tests excluding a group:
+**How to run tests excluding a group:**
 ::
 
   cd <shop_dir> && PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception -x <group_name>
 
+
+Run with PHPStorm
+^^^^^^^^^^^^^^^^^
+
+The description how to setup Codeception on PHPStorm you can find `here <https://www.jetbrains.com/help/phpstorm/using-codeception-framework.html/>`__.
+
+**Note:** The default configuration file for the test runner is located in ``<shop_dir>/tests/codeception.yml``.
