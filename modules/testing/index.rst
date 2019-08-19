@@ -21,3 +21,4 @@ OXID Testing Library helps to test single module by:
     :glob:
 
     *
+    codeception/index
