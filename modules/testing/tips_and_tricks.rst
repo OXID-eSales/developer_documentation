@@ -1,3 +1,5 @@
+.. _predefined-test-user:
+
 Users predefined in demo data
 -----------------------------
 
@@ -14,4 +16,4 @@ in OXID eShop:
 
    Rights: buyer
    User name: user@oxid-esales.com
-   Password: user
+   Password: useruser

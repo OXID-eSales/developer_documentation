@@ -1,3 +1,5 @@
+.. _codeception-modules:
+
 OXID Codeception modules and helpers
 ====================================
 

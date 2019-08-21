@@ -1,3 +1,5 @@
+.. _codeception-page_objects:
+
 OXID Codeception page and step objects
 ======================================
 
@@ -129,7 +131,8 @@ The instance of an Actor class (``AcceptanceTester $this->I``) will be passed to
 The Step Object class
 ---------------------
 
-For the recurring test actions like opening a product details page please use the StepObjects classes.
+For the recurring test actions like opening a product details page or adding a product to basket and then open basket
+please use the StepObjects classes.
 The Step Object classes extend the Actor (``AcceptanceTester``) class, meaning they can access all the methods
 and properties of it:
 
@@ -187,5 +190,91 @@ page object. Create Page Components or Page Object classes as you need them and 
 please send us a Pull Request. We will greatly apppreciate help from the OXID Community
 to add to our testing environment.
 
+.. _codeception-write_own_page_objects:
+
+Create own PageObject
+=====================
+
+As a simple example we will create a PageObject for the contact page. Our ``ContactPage`` extends from
+``OxidEsales\Codeception\Page\Page`` and uses the OXID Codeception Translator module. Then we need to figure out all
+CSS or XPath locators we will need and assemble a method ``sendContactForm`` which takes the form data as input
+and returns the contact page in the state from after contact form is sent.
+
+.. code:: php
+
+    <?php
+
+    namespace MyVendor\MyModule\Tests\Codeception\Acceptance;
+
+    use OxidEsales\Codeception\Page\Page;
+    use OxidEsales\Codeception\Module\Translation\Translator;
+
+    class ContactPage extends Page
+    {
+        // include url of current page
+        public $URL = '/en/contact';
+
+        public $userFirstName = 'editval[oxuser__oxfname]';
+
+        public $userLastName = 'editval[oxuser__oxlname]';
+
+        public $userEmail = 'editval[oxuser__oxusername]';
+
+        public $messageSubject= 'c_subject';
+
+        public $messageBody= 'c_message';
+
+        /**
+         * @param string $userFirstName
+         * @param string $userLastName
+         * @param string $userEmail
+         * @param string $subject
+         * @param string $body
+         *
+         * @return $this
+         */
+        public function sendContactForm($userFirstName, $userLastName, $userEmail, $subject, $body)
+        {
+            $I = $this->user;
+
+            $this->selectSalutation();
+            $I->fillField($this->userFirstName, $userFirstName);
+            $I->fillField($this->userLastName, $userLastName);
+            $I->fillField($this->userEmail, $userEmail);
+            $I->fillField($this->messageSubject, $subject);
+            $I->fillField($this->messageBody, $body);
+            $I->click("//button[contains(., '" . Translator::translate('SEND') . "')]");
+            $I->waitForPageLoad();
+
+            return $this;
+        }
+
+        /**
+         * Select salutation.
+         */
+        private function selectSalutation()
+        {
+            $locator = "//button[@title='" . Translator::translate('DD_CONTACT_SELECT_SALUTATION') . "']";
+
+            $I = $this->user;
+            $I->seeElement($locator);
+            $I->click($locator);
+            $I->click("//li[@data-original-index='1']");
+        }
+    }
 
 
+Here we use this Contact PageObject in a test. Contact form is sent and test asserts, that we see the correct thank you message.
+
+.. code:: php
+
+     public function sendContactFormSuccess(AcceptanceTester $I)
+        {
+            $I->wantToTest('sending a contact message');
+
+            $contactPage = new \MyVendor\MyModule\Tests\Codeception\Acceptance\ContactPage($I);
+            $I->amOnPage($contactPage->URL);
+            $contactPage->sendContactForm('Max', 'Muster',  'user@oxid-esales.com', 'subject', 'body');
+
+            $I->see(\OxidEsales\Codeception\Module\Translation\Translator::translate('DD_CONTACT_THANKYOU1'));
+        }

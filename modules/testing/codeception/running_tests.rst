@@ -1,4 +1,6 @@
-Running codeception tests
+.. _running-codeception-tests:
+
+Running Codeception Tests
 -------------------------
 
 To run Codeception tests go to the shop directory and adapt the test_config.yml file to your needs.

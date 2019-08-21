@@ -10,9 +10,11 @@ or `wave <https://github.com/OXID-eSales/wave_theme/>`__ theme.
     :glob:
 
     introduction
-    shop_acceptance_tests
+    write_new_test
+    example_module_test
+    running_tests
     oxid_codeception_modules
     oxid_codeception_page_objects
-    running_tests
-    write_new_test
+
+
 
