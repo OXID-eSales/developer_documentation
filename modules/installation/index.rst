@@ -82,7 +82,7 @@ file and used throughout the module activation process.
    merged into the base configuration and the environment configuration will be removed.
    Then your manual changes will be applied to the base configuration and then to the
    modules.
-   
+
    This in itself is not a problem, but when you redeploy the configuration, all your
    manual changes will be overwritten. We will show a warning in the backend
    if there is an environment specific configuration found in `var/configuration` and
