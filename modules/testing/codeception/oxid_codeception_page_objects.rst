@@ -3,11 +3,11 @@
 OXID Codeception page and step objects
 ======================================
 
-Usually when writing acceptance tests it's a hassle to get all the locators right. And it should be avoided to use
-hard-coded XPath and CSS locators directly in tests as this will make tests hard to maintain.
+Usually when writing acceptance tests it's a hassle to get all the locators right. We should avoid
+hard-coding XPath and CSS locators directly in tests as this will make them hard to maintain.
 At least for the standard themes, those locators usually do not change very often so if we had a list of them this
-would speed up test writing a lot. Even better not having to bother with locators them at all if possible but
-simply ``login``, ``openBasket`` etc. not having to reinvent standard actions on every test.
+would speed up test writing a lot. Even better not having to bother with locators at all if possible but
+simply use ``login``, ``openBasket`` etc. not having to reinvent standard actions on every test.
 
 That's where the Page Objects come into play. We are using the Page Object pattern which allows us
 to organize variables in a more structured way. Page Objects include UI locators which are represented

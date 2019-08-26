@@ -6,7 +6,7 @@ OXID Codeception modules and helpers
 All actions and assertions that can be performed by the Actor object (``AcceptanceTester $I``) are defined in modules.
 We will show later how you can extend the testing suite with your own actions by writing own Codeception modules.
 
-To be able to use a Codeception module in a test suite it needs to be registered in the ``acceptance.suite.yml``.
+To be able to use a Codeception module in a test suite it should be registered in the ``acceptance.suite.yml``.
 
 .. code::
 

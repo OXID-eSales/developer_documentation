@@ -91,56 +91,63 @@ Add test for logged in user case
 --------------------------------
 
 Now let's check the case of a logged in user. See :ref:`here <predefined-test-user>` for test user credentials.
-We will need to open the shop, open the login box, enter user credentials, check the main page for the expected message.
-This will be easier by using :ref:`OXID Codeception Page Objects <codeception-page_objects>`
 
-To be able to use the OXID page objects, we also need to enable the :ref:`OXID Codeception Modules <codeception-modules>`
-in the codeception.yaml in module enabled section. When doing so, we also need parameters. Quickest way ist to
+We will need to:
+
+* open the shop
+* open the login box
+* enter user credentials
+* check the main page for the expected message.
+
+Some of those steps can be skipped by using :ref:`OXID Codeception Page Objects <codeception-page_objects>`
+
+To be able to use the OXID page objects, first, :ref:`OXID Codeception Modules <codeception-modules>`
+should be enabled in your module codeception configuration.  Simpliest way to do this -
 copy/paste the config directory from ``<shop_dir>/Tests/Codeception/config`` into ``<shop_dir>/source/modules/<vendor_name>/<module_name>/Tests/Codeception/``
-and change ``params`` section of codeception.yaml to use it.
+and change ``params`` section of module codeception.yaml to use it:
 
 ::
 
     params:
     - Codeception/config/params.php
 
-Then we can register the OXID codeception modules in the codeception.yaml.
+Then we can register the OXID codeception modules in the codeception.yaml as well:
 
 ::
 
-   suites:
-    acceptance:
-        actor: AcceptanceTester
-        path: .
-        modules:
-            enabled:
-                - \Helper\Acceptance
-                - WebDriver:
-                    url: '%SHOP_URL%'
-                    browser: firefox
-                    port: '%SELENIUM_SERVER_PORT%'
-                    window_size: 1920x1080
-                    clear_cookies: true
-                - Db:
-                    dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
-                    user: '%DB_USERNAME%'
-                    password: '%DB_PASSWORD%'
-                    port: '%DB_PORT%'
-                    dump: '%DUMP_PATH%'
-                    mysql_config: '%MYSQL_CONFIG_PATH%'
-                    populate: true # run populator before all tests
-                    cleanup: true # run populator before each test
-                    populator: '%PHP_BIN% %VENDOR_PATH%/bin/reset-shop && mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
-                - \OxidEsales\Codeception\Module\Oxideshop:
-                    depends:
-                      - WebDriver
-                      - Db
-                - \OxidEsales\Codeception\Module\Database:
-                    config_key: 'fq45QS09_fqyx09239QQ'
-                    depends: Db
-                - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
-                    shop_path: '%SHOP_SOURCE_PATH%'
-                    paths: 'Application/views/flow'
+    suites:
+        acceptance:
+            actor: AcceptanceTester
+            path: .
+            modules:
+                enabled:
+                    - \Helper\Acceptance
+                    - WebDriver:
+                        url: '%SHOP_URL%'
+                        browser: firefox
+                        port: '%SELENIUM_SERVER_PORT%'
+                        window_size: 1920x1080
+                        clear_cookies: true
+                    - Db:
+                        dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
+                        user: '%DB_USERNAME%'
+                        password: '%DB_PASSWORD%'
+                        port: '%DB_PORT%'
+                        dump: '%DUMP_PATH%'
+                        mysql_config: '%MYSQL_CONFIG_PATH%'
+                        populate: true # run populator before all tests
+                        cleanup: true # run populator before each test
+                        populator: '%PHP_BIN% %VENDOR_PATH%/bin/reset-shop && mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
+                    - \OxidEsales\Codeception\Module\Oxideshop:
+                        depends:
+                          - WebDriver
+                          - Db
+                    - \OxidEsales\Codeception\Module\Database:
+                        config_key: 'fq45QS09_fqyx09239QQ'
+                        depends: Db
+                    - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
+                        shop_path: '%SHOP_SOURCE_PATH%'
+                        paths: 'Application/views/flow'
 
 and add the next test:
 
@@ -162,9 +169,9 @@ and add the next test:
 
 So now instead of manually trying to figure out all locators, forms, buttons, we just use the
 ``\OxidEsales\Codeception\Page\Home`` PageObject which is providing all this wrapped up in method ``loginUser``.
-In this test we can also see an example for OXID's Codeception translation module. Let it translate the language
-constant to be independent from chosen language.
+
+In this test we can also see an example of using the ``OXID's Codeception Translation module``. It will
+translate the language constant to be independent from chosen language.
 
 In section :ref:`Create own PageObject <codeception-write_own_page_objects>` you can find an example
 how to create your own PageObjects,
-

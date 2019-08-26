@@ -27,7 +27,8 @@ application (shop in our case).
     }
 
 
-Please also see `Codeception documentation GettingStarted section <https://codeception.com/docs/02-GettingStarted/>`__
-if you are interested in further details about Codeception. We will guide you through running and writing
-acceptance tests with Codeception for OXID eShop and OXID eShop modules in the following sections
-of this documentation.
+Please also see `Codeception documentation GettingStarted section <https://codeception.com/docs/02-GettingStarted>`__
+if you are interested in further details about Codeception.
+
+We will guide you through running and writing of acceptance tests with Codeception for
+OXID eShop and OXID eShop modules in the following sections of this documentation.

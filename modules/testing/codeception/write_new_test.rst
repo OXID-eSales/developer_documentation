@@ -173,7 +173,7 @@ Codeception configuration
 -------------------------
 
 The codeception suite configuration file for the newly created module tests is the **codeception.yaml** which is
-located in the ``<vendor_name>/<module_name>/Tests`` directory.
+located in the ``<vendor_name>/<module_name>/Tests`` directory:
 
 ::
 
@@ -211,4 +211,4 @@ located in the ``<vendor_name>/<module_name>/Tests`` directory.
 
 
 For further details regarding the configuration of Codeception tests please refer to the
-`Codeception documentation <https://codeception.com/docs/reference/Configuration/>`__.
+`Codeception documentation <https://codeception.com/docs/reference/Configuration>`__.

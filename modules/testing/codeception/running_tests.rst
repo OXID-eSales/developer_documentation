@@ -4,7 +4,7 @@ Running Codeception Tests
 -------------------------
 
 To run Codeception tests go to the shop directory and adapt the test_config.yml file to your needs.
-For example to only run module codeception tests
+For example to only run your module codeception tests, check these parameters:
 
 ::
 
