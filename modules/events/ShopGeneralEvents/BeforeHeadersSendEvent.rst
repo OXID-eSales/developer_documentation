@@ -8,23 +8,9 @@ Namespace:
     Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\BeforeHeadersSendEvent
 
 This event will be dispatched before the shop sends the headers.
-The event takes the shopcontrol and current view object as constructor argument.
 
-.. code-block:: php
-
-    /**
-     * @param \OxidEsales\Eshop\Core\ShopControl               $shopControl ShopControl object
-     * @param \OxidEsales\Eshop\Core\Controller\BaseController $controller  Controller
-     */
-    public function __construct(
-        \OxidEsales\Eshop\Core\ShopControl $shopControl,
-        \OxidEsales\Eshop\Core\Controller\BaseController $controller
-    ) {
-        $this->shopControl = $shopControl;
-        $this->controller = $controller;
-    }
-
-NOTE: modules should only register headers in
+.. Note::
+ modules should only register headers in
 
 .. code-block:: php
 
