@@ -48,13 +48,30 @@ them here.
 But what is really happening is quite different from former versions of the module subsystem in
 the OXID eShop. In previous version these edits went straight to the database. This is no longer
 the case. They now are written to the file system in the installation base directory under
-`var/configuration/shops`. For each shop id there is one file with the complete configuration
+`var/configuration/shops`.For each shop id there is one file with the complete configuration
 for the shop. So if the shop has id 1, the file would be named 1.yaml.
 On activation the values are read from these files and then transferred to the
 database. But the single source of truth regarding the module configuration is this configuration
-based on yaml files.
+based on yaml files. See the example below:
 
-Skript based configuration
+.. code::
+
+  .
+  └── var
+      └── configuration
+          └── shops
+             └──1.yml
+             └──2.yml
+             └── ...
+
+
+.. note::
+
+    If var directory has not found in the project directory.
+    ``composer update`` must be executed or it must created manually.
+    Also, each shop must have their own separate yml file.
+
+Script based configuration
 ..........................
 
 Since the complete configuration is in configuration files, you can make it part of the
@@ -67,11 +84,26 @@ it is possible to overwrite values in the base configuration. The procedure is q
 simple: Create the directory `var/configuration/environment` and put stripped down versions
 of `<shop id>.yaml` in there. Here you may configure environment specific values, for example
 credentials for payment providers. These files will be merged with the base configuration
-file and used throughout the module activation process.
+file and used throughout the module activation process. see the example below:
+
+.. code::
+
+  .
+  └── var
+      └── configuration
+          └── shops
+             └──1.yml
+             └──2.yml
+             └── ...
+          └── environment
+             └──1.yml
+             └──2.yml
+             └── ...
 
 .. note::
 
-   It is recommended that in your VCS repository you keep diffent environment configurations,
+   Environment files for each shop must be created manually at the first time.
+   It is recommended that in your VCS repository you keep different environment configurations,
    for example 1.yaml.productive, 1.yaml.staging, 1.yaml.testing and on deployment rename
    the files for the actual environment to 1.yaml.
 
@@ -89,6 +121,47 @@ file and used throughout the module activation process.
    advise you not to change configuration values manually. But in case of an
    emergency you can do this, if you really need to. But ensure that these changes
    are reflected in the VCS version of the configuration to avoid trouble on redeployment.
+
+Example of overriding shop configuration file with an environment file
+----------------------------------------------------------------------
+
+Lets assume you have on shop and you would like to deploy you configuration from you development
+environment to production environment. Also, you installed paypal module but
+in the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` needs a different credentials.
+So follow these steps:
+
+1. Create environment folder under the configuration directory and create 1.yml file inside this folder.
+2. You need copy and paste the part of your module you need to change. For our example, we want to change moduleSettings section that contains these credentials.
+3. Write your new values  for ``sOEPayPalUsername`` and ``sOEPayPalPassword`` and save your file.
+
+.. note::
+    We have the same shop configuration for the production environment but
+    we have environment file only in production environment. you only need to copy the part that you want to override
+    in the environment file. the whole module structure is not necessary but the content formatting is the same.
+
+environment file:
+
+.. code:: yaml
+
+    modules:
+      oepaypal:
+        moduleSettings:
+          -
+            group: oepaypal_api
+            name: sOEPayPalUsername
+            type: str
+            value: 'production'
+          -
+            group: oepaypal_api
+            name: sOEPayPalPassword
+            type: password
+            value: 'xxxxxxxx'
+          -
+            group: oepaypal_api
+            name: sOEPayPalSignature
+            type: str
+            value: ''
+          -
 
 Activation
 ----------
@@ -146,30 +219,3 @@ yml file.
 
 After shop or database reset modules will be not active, but the ``configured`` option
 stays and it's easily possible to activate all previously active modules via the command.
-
-If you need to set up the shop in another environment and get active the same modules
-you can copy the configuration file and run the command.
-
-.. note::
-
-  You can override the shop configuration yml file by creating environment yml file
-  using the same file structure. This allows you to have different configurations in different environments
-  without changing the original shop configuration.
-
-Example of the shop environment yml file:
-
-.. code:: yaml
-
-    modules:
-        oegdproptin:
-            id: oegdproptin
-            path: oe/gdproptin
-            configured: true
-            ...
-        oevarnish:
-            id: oevarnish
-            path: oe/varnish
-            configured: false
-            ...
-
-
