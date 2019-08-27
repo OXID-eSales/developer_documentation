@@ -44,6 +44,8 @@ the `EventSubscriberInterface` and register this
 class with the `kernel.event_subscriber` tag in
 the DI container.
 
+An example may be found here: :ref:`event_example`.
+
 .. Important:: 
 
   **Make module event subscribers shop aware**
