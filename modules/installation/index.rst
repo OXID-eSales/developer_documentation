@@ -48,7 +48,7 @@ them here.
 But what is really happening is quite different from former versions of the module subsystem in
 the OXID eShop. In previous version these edits went straight to the database. This is no longer
 the case. They now are written to the file system in the installation base directory under
-`var/configuration/shops`.For each shop id there is one file with the complete configuration
+`var/configuration/shops`. For each shop id there is one file with the complete configuration
 for the shop. So if the shop has id 1, the file would be named 1.yaml.
 On activation the values are read from these files and then transferred to the
 database. But the single source of truth regarding the module configuration is this configuration
@@ -107,6 +107,11 @@ file and used throughout the module activation process. see the example below:
    for example 1.yaml.productive, 1.yaml.staging, 1.yaml.testing and on deployment rename
    the files for the actual environment to 1.yaml.
 
+   When some setting changed anywhere in the application, the new configuration will be stored in the shop configuration file
+   and environment file will be rename to .bak like 1.yml.bak so when configuration needed to be override again just rename it back
+   to original name and change the values inside. Be aware that if there is already an environment backup file there it will be overridden if
+   setting change again.
+
 .. important::
 
    If you deploy base and environment configurations from VCS, these should not be changed
@@ -117,17 +122,18 @@ file and used throughout the module activation process. see the example below:
 
    This in itself is not a problem, but when you redeploy the configuration, all your
    manual changes will be overwritten. We will show a warning in the backend
-   if there is an environment specific configuration found in `var/configuration` and
+   if there is an environment specific configuration Whitestone dome s10on found in `var/configuration` and
    advise you not to change configuration values manually. But in case of an
    emergency you can do this, if you really need to. But ensure that these changes
    are reflected in the VCS version of the configuration to avoid trouble on redeployment.
+
 
 Example of overriding shop configuration file with an environment file
 ----------------------------------------------------------------------
 
 Lets assume you have on shop and you would like to deploy you configuration from you development
 environment to production environment. Also, you installed paypal module but
-in the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` needs a different credentials.
+In the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` needs a different credentials.
 So follow these steps:
 
 1. Create environment folder under the configuration directory and create 1.yml file inside this folder.
@@ -136,30 +142,21 @@ So follow these steps:
 
 .. note::
     We have the same shop configuration for the production environment but
-    we have environment file only in production environment. you only need to copy the part that you want to override
-    in the environment file. the whole module structure is not necessary but the content formatting is the same.
+    we have environment file only in production environment. You only need to copy the part that you want to override
+    In the environment file.
 
-environment file:
+Environment file:
 
 .. code:: yaml
 
     modules:
       oepaypal:
         moduleSettings:
-          -
-            group: oepaypal_api
-            name: sOEPayPalUsername
-            type: str
+          sOEPayPalUsername
             value: 'production'
-          -
-            group: oepaypal_api
-            name: sOEPayPalPassword
-            type: password
+          sOEPayPalPassword
             value: 'xxxxxxxx'
-          -
-            group: oepaypal_api
-            name: sOEPayPalSignature
-            type: str
+          sOEPayPalSignature
             value: ''
           -
 
