@@ -122,7 +122,7 @@ file and used throughout the module activation process. see the example below:
 
    This in itself is not a problem, but when you redeploy the configuration, all your
    manual changes will be overwritten. We will show a warning in the backend
-   if there is an environment specific configuration Whitestone dome s10on found in `var/configuration` and
+   if there is an environment specific configuration found in `var/configuration` and
    advise you not to change configuration values manually. But in case of an
    emergency you can do this, if you really need to. But ensure that these changes
    are reflected in the VCS version of the configuration to avoid trouble on redeployment.
