@@ -84,7 +84,7 @@ it is possible to overwrite values in the base configuration. The procedure is q
 simple: Create the directory `var/configuration/environment` and put stripped down versions
 of `<shop id>.yaml` in there. Here you may configure environment specific values, for example
 credentials for payment providers. These files will be merged with the base configuration
-file and used throughout the module activation process. see the example below:
+file and used throughout the module activation process. See the example below:
 
 .. code::
 
@@ -112,16 +112,12 @@ file and used throughout the module activation process. see the example below:
    If you deploy base and environment configurations from VCS, these should not be changed
    through the admin backend. If you do this, the environment specific values will be
    merged into the base configuration and the environment configuration will be renamed to .bak file like 1.yml.bak.
-   Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
    Then your manual changes will be applied to the base configuration and then to the
-   modules.
+   modules. Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
 
    This in itself is not a problem, but when you redeploy the configuration, all your
-   manual changes will be overwritten. We will show a warning in the backend
-   if there is an environment specific configuration found in `var/configuration` and
-   advise you not to change configuration values manually. But in case of an
-   emergency you can do this, if you really need to. But ensure that these changes
-   are reflected in the VCS version of the configuration to avoid trouble on redeployment.
+   changes in base configuration will be overwritten. If you change settings through the admin backend
+   ensure that these changes are reflected in the VCS version of the configuration to avoid trouble on redeployment.
 
 
 Example of overriding shop configuration file with an environment file
@@ -154,7 +150,7 @@ Environment file:
             value: 'xxxxxxxx'
           sOEPayPalSignature
             value: ''
-          -
+          ...
 
 Activation
 ----------
