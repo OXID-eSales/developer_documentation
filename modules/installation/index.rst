@@ -107,16 +107,12 @@ file and used throughout the module activation process. see the example below:
    for example 1.yaml.productive, 1.yaml.staging, 1.yaml.testing and on deployment rename
    the files for the actual environment to 1.yaml.
 
-   When some setting changed anywhere in the application, the new configuration will be stored in the shop configuration file
-   and environment file will be rename to .bak like 1.yml.bak so when configuration needed to be override again just rename it back
-   to original name and change the values inside. Be aware that if there is already an environment backup file there it will be overridden if
-   setting change again.
-
 .. important::
 
    If you deploy base and environment configurations from VCS, these should not be changed
    through the admin backend. If you do this, the environment specific values will be
-   merged into the base configuration and the environment configuration will be removed.
+   merged into the base configuration and the environment configuration will be renamed to .bak file like 1.yml.bak.
+   Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
    Then your manual changes will be applied to the base configuration and then to the
    modules.
 
