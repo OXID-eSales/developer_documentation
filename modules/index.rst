@@ -17,10 +17,11 @@ The following sections all refer to implementing, understanding or using modules
     :titlesonly:
     :glob:
 
-    installation/index
+    installation_setup/index
     skeleton/index
     *
     tutorials/index
     best_practices/index
     certification/index
     events/index
+    installation/index
