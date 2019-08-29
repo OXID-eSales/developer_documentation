@@ -1,7 +1,5 @@
-.. _event_example:
-
-An event example
-================
+Event example
+=============
 
 There are three steps:
 
