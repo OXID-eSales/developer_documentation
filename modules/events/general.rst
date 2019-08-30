@@ -1,8 +1,7 @@
 General information
 ===================
 
-The version 6.2 of the OXID eShop introduces events as
-an additional way to enhance the functionality of the
+Events are an additional way to enhance the functionality of the
 shop. On certain occasions - for example, when a model
 object is stored to the database - an event is sent out.
 This event may have a payload, for example the object
