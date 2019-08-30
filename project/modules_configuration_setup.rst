@@ -115,9 +115,9 @@ file and used throughout the module activation process. See the example below:
 Example of overriding shop configuration file with an environment file
 ----------------------------------------------------------------------
 
-Lets assume you have on shop and you would like to deploy you configuration from you development
+Lets assume you have a shop and you would like to deploy your configuration from your development
 environment to production environment. Also, you installed paypal module but
-In the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` needs a different credentials.
+in the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` need a different credentials.
 So follow these steps:
 
 1. Create environment folder under the configuration directory and create 1.yml file inside this folder.
