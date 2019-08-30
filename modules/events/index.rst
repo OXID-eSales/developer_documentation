@@ -1,10 +1,11 @@
 Events
 ======
 
-Events List and How to Use Them
-
 .. toctree::
-    :titlesonly:
-    :glob:
+   :titlesonly:
+   :glob:
+   :maxdepth: 1
 
-    *
+   general
+   event_example
+   list
