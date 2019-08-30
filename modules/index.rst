@@ -24,4 +24,3 @@ The following sections all refer to implementing, understanding or using modules
     best_practices/index
     certification/index
     events/index
-    installation/index
