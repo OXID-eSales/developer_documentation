@@ -13,10 +13,9 @@ That's where the Page Objects come into play. We are using the Page Object patte
 to organize variables in a more structured way. Page Objects include UI locators which are represented
 with public static properties.
 
-**NOTE:** As these UI locators depend on the theme, we need different PageObjects per theme.
+Following components are shipped with testing library.
 
-A Page Object represents a page (or a component of the page) and some actions of it. The page will be implemented as
-a class.
+**NOTE:** As these UI locators depend on the theme, we need different PageObjects per theme.
 
 
 Layout component
@@ -65,6 +64,9 @@ Example:
 Page object class
 -----------------
 
+A Page Object represents a page (or a component of the page) and some actions of it. The page will be implemented as
+a class.
+
 The instance of an Actor class (``AcceptanceTester $this->I``) will be passed to each Page Object class.
 
 .. code:: php
@@ -88,6 +90,8 @@ The instance of an Actor class (``AcceptanceTester $this->I``) will be passed to
   the page, and possibly critical elements on the page, were loaded correctly.
 
 * Page Objects should be used only **in tests and helpers.**
+
+* For more detailed information you can head to Codeception documentation page on `Codeception page objects <https://codeception.com/docs/06-ReusingTestCode#PageObjects>`__
 
 
 **Example for the user login page**
