@@ -101,6 +101,8 @@ We will need to:
 
 Some of those steps can be skipped by using :ref:`OXID Codeception Page Objects <codeception-page_objects>`
 
+.. _oxid_codeception_module_parameters:
+
 To be able to use the OXID page objects, first, :ref:`OXID Codeception Modules <codeception-modules>`
 should be enabled in your module codeception configuration.  Simpliest way to do this -
 copy/paste the config directory from ``<shop_dir>/Tests/Codeception/config`` into ``<shop_dir>/source/modules/<vendor_name>/<module_name>/Tests/Codeception/``
