@@ -26,7 +26,7 @@ This module will be used for some common actions like clean up database, clear c
 waiting for ajax etc.
 
 NOTE: This codeception module needs the WebDriver and the Db module to be enabled as well.
-WebDriver and Db module are standardCodeception modules. They need some parameters like the shop url or database
+WebDriver and Db module are standard Codeception modules. They need some parameters like the shop url or database
 credentials to work. Parameters can be supplied as :ref:`described here <oxid_codeception_module_parameters>`.
 
 .. code::
@@ -135,3 +135,174 @@ Example for ``_bootstrap.php``:
         $helper = new \OxidEsales\Codeception\Module\FixturesHelper();
         $helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/fixtures.php');
         $helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/additionaldata.php');
+
+
+.. _write-own-codeception-module:
+
+
+
+Create own Codeception module
+=============================
+
+
+    "All actions and assertions that can be performed by the Tester object in a class are defined in modules.
+    You can extend the testing suite with your own actions and assertions by writing them into a custom module."
+
+The `Codeception documentation <https://codeception.com/docs/06-ModulesAndHelpers/>`__ gives detailed information
+about how Codeception modules work. So here we will only give a short example of how to write and use a custom Codeception
+module for testing an OXID eShop module.
+
+Let's again take our :ref:`example module <_codeception_example_module>` and add a module setting to the metadata.php.
+
+.. code:: php
+
+    'settings' => [
+        [
+            'group' => 'main',
+            'name'  => 'myModuleSetting',
+            'type'  => 'str',
+            'value' => ''
+        ]
+    ],
+
+Then show this string in the module message in frontend.
+
+.. code:: php
+
+    <?php
+
+    namespace MyVendor\MyModule;
+
+    class ShopControl extends ShopControl_parent
+    {
+        protected function processOutput($view, $output)
+        {
+            $output = parent::processOutput($view, $output);
+
+            $salutation = 'Hello';
+            if (\OxidEsales\Eshop\Core\Registry::getConfig()->getConfigParam('myModuleSetting')) {
+                $salutation .= ' ' . \OxidEsales\Eshop\Core\Registry::getConfig()->getConfigParam('myModuleSetting');
+            }
+
+            $message = $salutation . ', my shopid is ' . \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
+            $user = \OxidEsales\Eshop\Core\Registry::getSession()->getUser();
+            if ($user && $user->getId()) {
+                $message .= ' and you are ' . $user->getFieldData('oxusername') . ' ;) ';
+            } else {
+                $message .= '! ';
+            }
+            $output = !isAdmin() ? $message . $output : $output;
+
+            return $output;
+        }
+    }
+
+
+As the string is empty so far, this will not change anything for our already existing tests. We will now write another
+test that checks the message with non empty setting.
+And we'd like to change the setting by calling something like ``$I->changeMyModuleSettingTo('Dude')``.
+Before each test, we will reset the setting to an empty string.
+
+.. code:: php
+
+    <?php
+
+    class CheckShopFrontendCest
+    {
+        public function _before(AcceptanceTester $I)
+        {
+            $I->changeMyModuleSettingTo('myvendor/mymodule', 'myModuleSetting', '');
+        }
+
+
+Add a test case for not empty setting:
+
+.. code:: php
+
+    public function notLoggedInUserMessageSetting(AcceptanceTester $I)
+    {
+        $I->wantToTest('message for not logged in user with module setting');
+        $I->changeMyModuleSettingTo('myvendor/mymodule', 'myModuleSetting', 'Dude');
+
+        $homePage = new \OxidEsales\Codeception\Page\Home($I);
+        $I->amOnPage($homePage->URL);
+        $I->see('Hello Dude, my shopid is 1!');
+    }
+
+To be able to have the Actor change the module setting, let's add the following Codeception module class
+
+.. code:: php
+
+    <?php
+    namespace MyVendor\MyModule\Tests\Codeception;
+
+    use OxidEsales\EshopCommunity\Internal\Module\Setup\Bridge\ModuleActivationBridgeInterface;
+    use OxidEsales\EshopCommunity\Internal\Module\Configuration\Bridge\ModuleConfigurationDaoBridgeInterface;
+    use OxidEsales\EshopCommunity\Internal\Application\ContainerFactory;
+
+    class SettingsModule extends \Codeception\Module
+    {
+        /**
+         * @param string $moduleId
+         * @param string $name
+         * @param string $value
+         */
+        public function changeMyModuleSettingTo($moduleId, $name, $value)
+        {
+            $this->ensureModuleState($moduleId);
+
+            $container = ContainerFactory::getInstance()->getContainer();
+            $moduleConfigurationDaoBridge = $container->get(ModuleConfigurationDaoBridgeInterface::class);
+            $moduleConfiguration = $moduleConfigurationDaoBridge->get($moduleId);
+
+            if (!empty($moduleConfiguration->getModuleSettings())) {
+                foreach ($moduleConfiguration->getModuleSettings() as $moduleSetting) {
+                    if ($moduleSetting->getName() === $name) {
+                        if ($moduleSetting->getType() === 'aarr') {
+                            $value = $this->_multilineToAarray($value);
+                        }
+                        if ($moduleSetting->getType() === 'bool') {
+                            $value = filter_var($value, FILTER_VALIDATE_BOOLEAN);
+                        }
+                        $moduleSetting->setValue($value);
+                    }
+                }
+
+                $moduleConfigurationDaoBridge->save($moduleConfiguration);
+                $moduleConfigurationDaoBridge->get($moduleId);
+            }
+
+            $this->ensureModuleState($moduleId);
+        }
+
+        /**
+         * Ensure module is deactivated if active, activated if inactive.
+         *
+         * @param string $moduleId
+         */
+        private function ensureModuleState($moduleId)
+        {
+            $container = ContainerFactory::getInstance()->getContainer();
+            $shopId = \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
+
+            $moduleActivationBridge = $container->get(ModuleActivationBridgeInterface::class);
+            $moduleWasActiveBeforeSaving = $moduleActivationBridge->isActive($moduleId, $shopId);
+
+            if ($moduleWasActiveBeforeSaving) {
+                $moduleActivationBridge->deactivate($moduleId, $shopId);
+            } else {
+                $moduleActivationBridge->activate($moduleId, $shopId);
+            }
+        }
+    }
+
+and enable it in the ``codeception.yml``:
+
+.. code::
+
+    modules:
+        enabled:
+            - \MyVendor\MyModule\Tests\Codeception\SettingsModule
+
+
+Then run the codeception tests.
