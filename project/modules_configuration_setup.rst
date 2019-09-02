@@ -1,12 +1,20 @@
 Modules configuration and setup
 ===============================
 
+.. contents ::
+    :local:
+    :depth: 2
+
+Overview
+--------
+
 In most cases modules need to be configured before you can proceed with setup and activate it. There
 are two ways of configuring modules:
 
-1. Configuring the module in the admin backend.
+1. :ref:`Configuring modules via admin interface <configuring_module_via_admin-20190829>`
 
-2. The automatic deployment friendly way by providing configuration files.
+2. The automatic deployment friendly way
+   by :ref:`Configuring modules via providing configuration files <configuring_module_via_configuration_files-20190829>`
 
 .. uml::
 
@@ -30,10 +38,13 @@ are two ways of configuring modules:
         stop
     @enduml
 
-We will describe both ways in the following sections.
+Configuration
+-------------
+
+.. _configuring_module_via_admin-20190829:
 
 Configuring modules via admin interface
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To configure modules via admin interface, please open OXID eShop administration panel
 To configure modules via admin interface, please open OXID eShop administration panel
@@ -62,14 +73,18 @@ During the module setup/activation all of the values are being transferred from 
     ``composer update`` must be executed or it must created manually.
     Also, each shop must have their own separate yml file.
 
+.. _configuring_module_via_configuration_files-20190829:
 
-Script based configuration
---------------------------
+Configuring modules via providing configuration files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since the complete configuration is in configuration files, you can make it part of the
 VCS repository of your project and deploy it to your testing, staging and productive
 systems and then activate the modules through the command line as described below in the
-section `activate all configured modules`_.
+section :ref:`activate all configured modules<activate_configured_modules-20190829>`.
+
+Overriding a shop configuration file with an environment file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since configuration might differ for the different testing, staging or productive environments
 it is possible to overwrite values in the base configuration. The procedure is quite
@@ -112,8 +127,8 @@ file and used throughout the module activation process. See the example below:
    ensure that these changes are reflected in the VCS version of the configuration to avoid trouble on redeployment.
 
 
-Example of overriding shop configuration file with an environment file
-----------------------------------------------------------------------
+Example of overriding a shop configuration file with an environment file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Lets assume you have a shop and you would like to deploy your configuration from your development
 environment to production environment. Also, you installed paypal module but
@@ -144,9 +159,12 @@ Environment file:
             value: ''
           ...
 
+Activation
+----------
 
-Activate single module
-----------------------
+
+Activate a single module
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 After the installation module can be activated. Description how to activate module can be found in
 :doc:`module setup document </modules/installation_setup/setup>`.
@@ -158,7 +176,7 @@ After the installation module can be activated. Description how to activate modu
 .. _activate_configured_modules-20190829:
 
 Activate all configured modules
--------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each module configuration in the shop configuration yml file has a ``configured``
 option (false by default) which means that the module is in configured state and prepared
