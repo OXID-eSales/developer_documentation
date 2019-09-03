@@ -21,12 +21,26 @@ Installation
 ^^^^^^^^^^^^
 
 The term installation is used for modules as well as for OXID eShop itself.
-After the installation, the :ref:`Setup<glossary-setup>` can be done.
+Installation covers only files operation. To get more information how module installation works, please
+read document:
+:doc:`Module installation and setup states </system_architecture/module_installation_activation>`.
 
-.. include:: media/installationActivation.rst
+Module configuration
+^^^^^^^^^^^^^^^^^^^^
 
+The term module configuration is used to describe module configuration only in configuration files scope.
+When module is being configured, database is not affected.
+To get more information how module configuration works, please read document:
+:doc:`Module installation and setup states </system_architecture/module_installation_activation>`.
 
-.. _glossary-meta_package:
+Setup
+^^^^^
+
+The term setup is used for modules as well as for OXID eShop itself. After setup of the eShop, the eShop is launched and
+can be used. After setup/activation of a module, the module will be used by the eShop.
+The :ref:`Installation<glossary-installation>` has to be done first before setup can be done.
+To get more information how module setup works, please read document:
+:doc:`Module installation and setup states </system_architecture/module_installation_activation>`.
 
 Meta Package
 ^^^^^^^^^^^^
@@ -72,14 +86,3 @@ OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
 
 Component installed via composer which has type `oxideshop-component`.
-
-.. _glossary-setup:
-
-Setup
-^^^^^
-
-The term setup is used for modules as well as for OXID eShop itself. After setup of the eShop, the eShop is launched and
-can be used. After setup of a module, the module will be used by the eShop. The :ref:`Installation<glossary-installation>`
-has to be done first before setup can be done.
-
-.. include:: media/installationActivation.rst

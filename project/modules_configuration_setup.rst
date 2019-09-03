@@ -1,58 +1,59 @@
-Installation
-============
+Modules configuration and setup
+===============================
 
-Module :ref:`installation <glossary-installation>` contains 2 parts:
+.. contents ::
+    :local:
+    :depth: 2
 
-#. copying all necessary module files to the source modules directory
-#. installing module configuration
+Overview
+--------
 
-.. important::
+In most cases modules need to be configured before you can proceed with setup and activate it. There
+are two ways of configuring modules:
 
-  Only installed modules appear on the admin modules page and can be activated from the admin backend or the command line.
+1. :ref:`Configuring modules via admin interface <configuring_module_via_admin-20190829>`
 
-Composer installation
----------------------
+2. The automatic deployment friendly way
+   by :ref:`Configuring modules via providing configuration files <configuring_module_via_configuration_files-20190829>`
 
-Module can be installed with regular composer installation. Composer performs all necessary installation steps.
+.. uml::
 
-Manual installation
--------------------
+    @startuml
+        start
+        partition "Configuration   " {
+            if (How?) then (Configure module via\nweb interface)
+              :Configures module via WEB interface;
+            else (Script based\nconfiguration)
+              :Change values in configuration files;
+            endif
+            :Configuration file is updated;
+        }
+        partition "Setup   " {
+            if (Action) then (Activate)
+                :Insert database entries;
+            else (Deactivate)
+                :Remove database entries;
+            endif
+        }
+        stop
+    @enduml
 
-1. Copy or clone your module to the source/modules directory.
+Configuration
+-------------
 
-2. Install module configuration via oe:module:install-configuration console command. An example:
+.. _configuring_module_via_admin-20190829:
 
-.. code:: bash
+Configuring modules via admin interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    oe-console oe:module:install-configuration source/modules/oe/oepaypal
+To configure modules via admin interface, please open OXID eShop administration panel
+To configure modules via admin interface, please open OXID eShop administration panel
+and got to :menuselection:`Extensions --> Modules`, you will see modules list, please select module you want to
+configure click :menuselection:`Settings`, you will see list of settings which is possible to change.
 
-Configuring modules
--------------------
-
-In most cases modules need to be configured before they can be activated. One of the major benefits
-of the new module setup is that there are two ways of configuring modules:
-
-1. The traditional way of configuring the module in the admin backend.
-
-2. The automatic deployment friendly way by providing configuration files.
-
-We will describe both ways in the following sections.
-
-Configuring modules manually
-............................
-
-On the surface this has not changed at all. You see the installed modules in the admin backend
-and if the module defines some configuration options in the `metadata.php` file, you can edit
-them here.
-
-But what is really happening is quite different from former versions of the module subsystem in
-the OXID eShop. In previous version these edits went straight to the database. This is no longer
-the case. They now are written to the file system in the installation base directory under
-`var/configuration/shops`. For each shop id there is one file with the complete configuration
-for the shop. So if the shop has id 1, the file would be named 1.yaml.
-On activation the values are read from these files and then transferred to the
-database. But the single source of truth regarding the module configuration is this configuration
-based on yaml files. See the example below:
+Entries in the settings list are loaded and saved in file located in `var/configuration/shops`.
+For each shop id there is one file with the complete configuration
+for the shop. So if the shop has id 1, the file would be named 1.yaml. See the example below:
 
 .. code::
 
@@ -64,6 +65,7 @@ based on yaml files. See the example below:
              └──2.yml
              └── ...
 
+During the module setup/activation all of the values are being transferred from file to database.
 
 .. note::
 
@@ -71,13 +73,18 @@ based on yaml files. See the example below:
     ``composer update`` must be executed or it must created manually.
     Also, each shop must have their own separate yml file.
 
-Script based configuration
-..........................
+.. _configuring_module_via_configuration_files-20190829:
+
+Configuring modules via providing configuration files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since the complete configuration is in configuration files, you can make it part of the
-VCS repository of your project and deploy it somehow to your testing, staging and productive
+VCS repository of your project and deploy it to your testing, staging and productive
 systems and then activate the modules through the command line as described below in the
-section `Activate configured modules`_.
+section :ref:`activate all configured modules<activate_configured_modules-20190829>`.
+
+Overriding a shop configuration file with an environment file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Since configuration might differ for the different testing, staging or productive environments
 it is possible to overwrite values in the base configuration. The procedure is quite
@@ -111,7 +118,7 @@ file and used throughout the module activation process. See the example below:
 
    If you deploy base and environment configurations from VCS, these should not be changed
    through the admin backend. If you do this, the environment specific values will be
-   merged into the base configuration and the environment configuration will be renamed to .bak file like 1.yml.bak.
+   merged into the base configuration and the environment configuration will be renamed to `.bak` file like `1.yml.bak`.
    Then your manual changes will be applied to the base configuration and then to the
    modules. Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
 
@@ -120,12 +127,12 @@ file and used throughout the module activation process. See the example below:
    ensure that these changes are reflected in the VCS version of the configuration to avoid trouble on redeployment.
 
 
-Example of overriding shop configuration file with an environment file
-----------------------------------------------------------------------
+Example of overriding a shop configuration file with an environment file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Lets assume you have on shop and you would like to deploy you configuration from you development
+Lets assume you have a shop and you would like to deploy your configuration from your development
 environment to production environment. Also, you installed paypal module but
-In the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` needs a different credentials.
+in the production environment ``sOEPayPalUsername`` and ``sOEPayPalPassword`` need a different credentials.
 So follow these steps:
 
 1. Create environment folder under the configuration directory and create 1.yml file inside this folder.
@@ -155,20 +162,21 @@ Environment file:
 Activation
 ----------
 
-After the installation module can be activated from the admin backend or via console command:
 
-.. code:: bash
+Activate a single module
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-    oe-console oe:module:activate <module-id>.
-
-During the module activation all necessary data from the module configuration will be written in the database and module cache will be reset.
+After the installation module can be activated. Description how to activate module can be found in
+:doc:`module setup document </modules/installation_setup/setup>`.
 
 .. note::
 
   Module data and extensions chains in the database will be overwritten after every module activation/deactivation with the data from the module configuration.
 
-Activate configured modules
----------------------------
+.. _activate_configured_modules-20190829:
+
+Activate all configured modules
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Each module configuration in the shop configuration yml file has a ``configured``
 option (false by default) which means that the module is in configured state and prepared
@@ -194,13 +202,13 @@ You can activate all configured modules for all available shops via the console 
 
 .. code:: bash
 
-    oe-console oe:module:activate-configured-modules
+    vendor/bin/oe-console oe:module:activate-configured-modules
 
 or only for the one shop if `--shop-id` option is provided:
 
 .. code:: bash
 
-    oe-console oe:module:activate-configured-modules --shop-id=1
+    vendor/bin/oe-console oe:module:activate-configured-modules --shop-id=1
 
 The ``configured`` option will be set to true after the module activation and set back to false
 after the module deactivation. You can also set the option manually in the shop configuration
