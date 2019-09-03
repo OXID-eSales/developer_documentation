@@ -12,9 +12,10 @@ or `wave <https://github.com/OXID-eSales/wave_theme/>`__ theme.
     introduction
     write_new_test
     example_module_test
-    running_tests
-    oxid_codeception_modules
     oxid_codeception_page_objects
+    oxid_codeception_modules
+    running_tests
+
 
 
 

@@ -15,9 +15,9 @@ directory:
 
 .. code:: php
 
-    php <shop_dir>/vendor/bin/codecept generate:cest acceptance CheckShopFrontend
+    <shop_dir>/vendor/bin/codecept generate:cest acceptance CheckShopFrontend
 
-No we have the ``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/CheckShopFrontendCest.php`` Cest.
+No we have the ``<vendor_name>/<module_name>/Tests/Codeception/acceptance/CheckShopFrontendCest.php`` Cest.
 
 .. code:: php
 
@@ -69,22 +69,22 @@ Running the test should look like
 
     vagrant@oxideshop:/var/www/oxideshop$ vendor/bin/runtests-codeception
     Building Actor classes for suites: acceptance
-     -> AcceptanceTesterActions.php generated successfully. 95 methods added
-    \AcceptanceTester includes modules: WebDriver, \Helper\Acceptance
+     -> AcceptanceTesterActions.php generated successfully. 150 methods added
+    \AcceptanceTester includes modules: Asserts, WebDriver, Db, \OxidEsales\Codeception\Module\Oxideshop, \OxidEsales\Codeception\Module\Database, \OxidEsales\Codeception\Module\Translation\TranslationsModule
     Codeception PHP Testing Framework v2.5.6
     Powered by PHPUnit 6.5.14 by Sebastian Bergmann and contributors.
     Running with seed:
 
 
     Acceptance Tests (1) ----------------------------------------------------------------------------------------------------------------------------------------------
-    ✔ CheckShopFrontendCest: Test message for not logged in user (6.97s)
+    ✔ CheckShopFrontendCest: Test message for not logged in user (8.72s)
     -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-    Time: 8.52 seconds, Memory: 4.00MB
+    Time: 55.12 seconds, Memory: 12.00MB
 
     OK (1 test, 1 assertion)
-    - XML report generated in file:///var/www/oxideshop/source/modules/myvendor/mymodule/tests/Codeception/Acceptance/_output/report.xml
+    - XML report generated in file:///var/www/oxideshop/source/modules/myvendor/mymodule/tests/Codeception/_output/report.xml
 
 
 Add test for logged in user case
@@ -99,59 +99,12 @@ We will need to:
 * enter user credentials
 * check the main page for the expected message.
 
-Some of those steps can be skipped by using :ref:`OXID Codeception Page Objects <codeception-page_objects>`
-
-.. _oxid_codeception_module_parameters:
+Some of those steps can be skipped by using :ref:`OXID Codeception Page Objects <codeception-page_objects>`.
 
 To be able to use the OXID page objects, first, :ref:`OXID Codeception Modules <codeception-modules>`
-should be enabled in your module codeception configuration.  Simpliest way to do this -
-copy/paste the config directory from ``<shop_dir>/Tests/Codeception/config`` into ``<shop_dir>/source/modules/<vendor_name>/<module_name>/Tests/Codeception/``
-and change ``params`` section of module codeception.yaml to use it:
-
-::
-
-    params:
-    - Codeception/config/params.php
-
-Then we can register the OXID codeception modules in the codeception.yaml as well:
-
-::
-
-    suites:
-        acceptance:
-            actor: AcceptanceTester
-            path: .
-            modules:
-                enabled:
-                    - \Helper\Acceptance
-                    - WebDriver:
-                        url: '%SHOP_URL%'
-                        browser: firefox
-                        port: '%SELENIUM_SERVER_PORT%'
-                        window_size: 1920x1080
-                        clear_cookies: true
-                    - Db:
-                        dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
-                        user: '%DB_USERNAME%'
-                        password: '%DB_PASSWORD%'
-                        port: '%DB_PORT%'
-                        dump: '%DUMP_PATH%'
-                        mysql_config: '%MYSQL_CONFIG_PATH%'
-                        populate: true # run populator before all tests
-                        cleanup: true # run populator before each test
-                        populator: '%PHP_BIN% %VENDOR_PATH%/bin/reset-shop && mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
-                    - \OxidEsales\Codeception\Module\Oxideshop:
-                        depends:
-                          - WebDriver
-                          - Db
-                    - \OxidEsales\Codeception\Module\Database:
-                        config_key: 'fq45QS09_fqyx09239QQ'
-                        depends: Db
-                    - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
-                        shop_path: '%SHOP_SOURCE_PATH%'
-                        paths: 'Application/views/flow'
-
-and add the next test:
+need to be enabled in your module codeception configuration. When initializing the codeception tests as
+described in section :ref:`Creating test structure in a module <codeception_initialization>` this is already taken care of.
+Let's just add the next test:
 
 .. code:: php
 

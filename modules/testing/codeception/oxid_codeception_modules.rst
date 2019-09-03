@@ -7,7 +7,7 @@ All actions and assertions that can be performed by the Actor object (``Acceptan
 We will show later how you can extend the testing suite with your own actions by writing own Codeception modules.
 
 To be able to use a Codeception module in a test suite it should be registered in the respective suite configuration yaml file.
-In our case when writing Codeception tests for a module, this is the ``codeception.yml`` file.
+In our case when writing Codeception tests for a module, this is the ``accceptance.suite.yml`` file.
 
 .. code::
 
@@ -27,7 +27,7 @@ waiting for ajax etc.
 
 NOTE: This codeception module needs the WebDriver and the Db module to be enabled as well.
 WebDriver and Db module are standard Codeception modules. They need some parameters like the shop url or database
-credentials to work. Parameters can be supplied as :ref:`described here <oxid_codeception_module_parameters>`.
+credentials to work. Parameters can be supplied in ``<myvendor>/<mymodule>/Tests/Codeception/config/params.php``.
 
 .. code::
 
@@ -119,8 +119,8 @@ Fixtures Helper
 
 With this helper class, test fixtures can be loaded during test bootstrap and used later while testing.
 Please register the bootstrap file in the ``codeception.yml`` file.
-In our :ref:`example  <_codeception_example_module>` the  ``_bootstrap.php`` has to be located in
-``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/_bootstrap.php``.
+In our :ref:`example  <_codeception_example_module>` the  ``_bootstrap.php`` is located in
+``<vendor_name>/<module_name>/Tests/Codeception/acceptance/_bootstrap.php``.
 
 .. code::
 
@@ -152,7 +152,7 @@ The `Codeception documentation <https://codeception.com/docs/06-ModulesAndHelper
 about how Codeception modules work. So here we will only give a short example of how to write and use a custom Codeception
 module for testing an OXID eShop module.
 
-Let's again take our :ref:`example module <_codeception_example_module>` and add a module setting to the metadata.php.
+Let's again take our :ref:`example module <_codeception-example-module>` and add a module setting to the metadata.php.
 
 .. code:: php
 
@@ -296,7 +296,7 @@ To be able to have the Actor change the module setting, let's add the following 
         }
     }
 
-and enable it in the ``codeception.yml``:
+and enable it in the ``acceptance.suite.yml``:
 
 .. code::
 
