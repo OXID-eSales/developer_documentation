@@ -16,7 +16,7 @@ application (shop in our case).
 
 ::
 
-    class MainCest
+    class ExampleCest
     {
         public function frontPageWorks(AcceptanceTester $I)
         {
