@@ -235,7 +235,7 @@ For Actor to be able changing the module setting, let's add the following Codece
 .. code:: php
 
     <?php
-    namespace MyVendor\MyModule\Tests\Codeception;
+    namespace MyVendor\MyModule\Tests\Codeception\Module;
 
     use OxidEsales\EshopCommunity\Internal\Module\Setup\Bridge\ModuleActivationBridgeInterface;
     use OxidEsales\EshopCommunity\Internal\Module\Configuration\Bridge\ModuleConfigurationDaoBridgeInterface;
@@ -250,10 +250,9 @@ For Actor to be able changing the module setting, let's add the following Codece
          */
         public function changeMyModuleSettingTo($moduleId, $name, $value)
         {
-            $this->ensureModuleState($moduleId);
+            $this->ensureModuleIsInactive($moduleId);
 
-            $container = ContainerFactory::getInstance()->getContainer();
-            $moduleConfigurationDaoBridge = $container->get(ModuleConfigurationDaoBridgeInterface::class);
+            $moduleConfigurationDaoBridge = $this->getModuleConfigurationDaoBridge();
             $moduleConfiguration = $moduleConfigurationDaoBridge->get($moduleId);
 
             if (!empty($moduleConfiguration->getModuleSettings())) {
@@ -268,31 +267,58 @@ For Actor to be able changing the module setting, let's add the following Codece
                         $moduleSetting->setValue($value);
                     }
                 }
-
                 $moduleConfigurationDaoBridge->save($moduleConfiguration);
             }
 
-            $this->ensureModuleState($moduleId);
+            $this->ensureModuleIsActive($moduleId);
         }
 
         /**
-         * Ensure module is deactivated if active, activated if inactive.
+         * Ensure module is activated if inactive.
          *
          * @param string $moduleId
          */
-        private function ensureModuleState($moduleId)
+        private function ensureModuleIsActive($moduleId)
         {
-            $container = ContainerFactory::getInstance()->getContainer();
             $shopId = \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
+            $moduleActivationBridge = $this->getModuleActivationBridge();
 
-            $moduleActivationBridge = $container->get(ModuleActivationBridgeInterface::class);
-            $moduleWasActiveBeforeSaving = $moduleActivationBridge->isActive($moduleId, $shopId);
-
-            if ($moduleWasActiveBeforeSaving) {
-                $moduleActivationBridge->deactivate($moduleId, $shopId);
-            } else {
+            if (!$moduleActivationBridge->isActive($moduleId, $shopId)) {
                 $moduleActivationBridge->activate($moduleId, $shopId);
             }
+        }
+
+        /**
+         * Ensure module is deactivated if active.
+         *
+         * @param string $moduleId
+         */
+        private function ensureModuleIsInactive($moduleId)
+        {
+            $shopId = \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
+            $moduleActivationBridge = $this->getModuleActivationBridge();
+
+            if ($moduleActivationBridge->isActive($moduleId, $shopId)) {
+                $moduleActivationBridge->deactivate($moduleId, $shopId);
+            }
+        }
+
+        /**
+         * @return ModuleConfigurationDaoBridgeInterface
+         */
+        private function getModuleConfigurationDaoBridge()
+        {
+            $container = ContainerFactory::getInstance()->getContainer();
+            return $container->get(ModuleConfigurationDaoBridgeInterface::class);
+        }
+
+        /**
+         * @return ModuleActivationBridgeInterface
+         */
+        private function getModuleActivationBridge()
+        {
+            $container = ContainerFactory::getInstance()->getContainer();
+            return $container->get(ModuleActivationBridgeInterface::class);
         }
     }
 
@@ -302,7 +328,7 @@ and enable it in the ``acceptance.suite.yml``:
 
     modules:
         enabled:
-            - \MyVendor\MyModule\Tests\Codeception\SettingsModule
+            - \MyVendor\MyModule\Tests\Codeception\Module\SettingsModule
 
 
 Then run the codeception tests.
