@@ -3,7 +3,7 @@ Creating Codeception acceptance tests from scratch
 
 We will use a simple example module to explain how to write a Codeception acceptance test.
 
-.. _codeception-example-module:
+.. _codeception_example_module:
 
 Example module
 --------------
@@ -112,7 +112,8 @@ The module chain extends the ShopControl class and adds some information to outp
 Creating test structure in a module
 -----------------------------------
 
-To start with acceptance tests using Codeception you have to initialize them with running the following command:
+To start with acceptance tests using Codeception in your module for the first time, you have to initialize
+it by running the following command once:
 ::
 
   cd <shop_dir>
@@ -126,26 +127,18 @@ Example:
 
 
 
-When prompted confirm :guilabel:`Codeception` as test folder's name, :guilabel:`firefox` as webdriver or change to
+When prompted, confirm :guilabel:`Codeception` as test folder's name and :guilabel:`firefox` as a webdriver or change to
 better suited values in case you need it.
 
-`Note: Run this command in case you want to initialize the tests for the first time.`
+This command creates basic structure for starting with Codeception Acceptance tests for your module: tests directory (in
+our current case :guilabel:`Tests/Codeception`), a configuration file :guilabel:`codeception.yml` and a preconfigured
+acceptance test suite :guilabel:`acceptance.suite.yml`.
 
-This command creates a configuration file :guilabel:`codeception.yml`, tests directory (in our current case :guilabel:`Tests/Codeception`)
-and acceptance test suites. The acceptance tests come with their own configuration file named :guilabel:`acceptance.suite.yml`.
-
+.. Important::
+    The ``ModuleAcceptance`` keyword in command is responsible for triggering usage of template for
+    generating the preconfigured starting tests directory structure prepared by OXID.
 
 The general structure of the module's test folder looks as follows:
-::
-
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance/_data/
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance/_output/
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance/_support/
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance/config/
-  <vendor_name>/<module_name>/Tests/Codeception/acceptance.suite.yml
-  <vendor_name>/<module_name>/Tests/codeception.yml
-
 
 Example:
     ::
@@ -205,8 +198,8 @@ located in the ``<vendor_name>/<module_name>/Tests`` directory:
         - Codeception\Extension\RunFailed
 
 
-Then there is an additional configuration file (we only have **acceptance.suite.yml** for now) for each suite
-containing information like enabled Codeception modules.
+There is an additional configuration file for each suite (we only have **acceptance.suite.yml** for now)
+containing information about enabled Codeception modules, Actor and so.
 
 ::
 

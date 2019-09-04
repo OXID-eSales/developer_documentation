@@ -3,21 +3,21 @@ Example Module test
 
 Let's assume the :ref:`example module <codeception_example_module>` is installed in your shop,
 :ref:`Codeceptions initialization <codeception_initialization>`
-as described is done and you'd like to write a Codeception acceptance test verifying that
+is done as described and you'd like to write a Codeception acceptance test verifying that
 you see a "Hello, my shopid is 1" on the shop's start page with activated module.
 
 
 Create a Cest
 -------------
 
-You can create a Cest by running the following command from inside the ``<vendor_name>/<module_name>/Tests``
-directory:
+You can create a Cest by running the following command from inside the module ``Tests`` directory (``<vendor_name>/<module_name>/Tests``):
 
 .. code:: php
 
     <shop_dir>/vendor/bin/codecept generate:cest acceptance CheckShopFrontend
 
-No we have the ``<vendor_name>/<module_name>/Tests/Codeception/acceptance/CheckShopFrontendCest.php`` Cest.
+The empty ``<vendor_name>/<module_name>/Tests/Codeception/acceptance/CheckShopFrontendCest.php`` Cest will be
+automatically created.
 
 .. code:: php
 
@@ -35,7 +35,7 @@ No we have the ``<vendor_name>/<module_name>/Tests/Codeception/acceptance/CheckS
         }
     }
 
-It is not yet testing anything, but we can already run it. How to run codeception tests is explained in
+It is not yet testing anything, but we can already run it. Running the codeception tests is explained in
 section :ref:`Running Codeception Tests <running-codeception-tests>`.
 
 

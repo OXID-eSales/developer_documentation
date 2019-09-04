@@ -65,6 +65,6 @@ Example:
 Run with PHPStorm
 ^^^^^^^^^^^^^^^^^
 
-The description how to setup Codeception on PHPStorm you can find `here <https://www.jetbrains.com/help/phpstorm/using-codeception-framework.html/>`__.
+The description how to setup Codeception on PHPStorm you can find `here <https://www.jetbrains.com/help/phpstorm/using-codeception-framework.html>`__.
 
 **Note:** The default configuration file for the test runner is located in ``<shop_dir>/tests/codeception.yml``.
