@@ -28,7 +28,7 @@ waiting for ajax etc.
 .. NOTE::
     This codeception module needs the WebDriver and the Db module to be enabled as well.
     WebDriver and Db module are standard Codeception modules. They need some parameters like the shop url or database
-    credentials to work. Parameters can be supplied in ``<myvendor>/<mymodule>/Tests/Codeception/config/params.php``.
+    credentials to work. Parameters can be supplied in ``<myvendor>/<mymodule>/Tests/Codeception/Config/params.php``.
 
 .. code::
 
@@ -121,7 +121,7 @@ Fixtures Helper
 With this helper class, test fixtures can be loaded during test bootstrap and used later while testing.
 Please register the bootstrap file in the ``codeception.yml`` file.
 In our :ref:`example  <codeception_example_module>` the  ``_bootstrap.php`` is located in
-``<vendor_name>/<module_name>/Tests/Codeception/acceptance/_bootstrap.php``.
+``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/_bootstrap.php``.
 
 .. code::
 

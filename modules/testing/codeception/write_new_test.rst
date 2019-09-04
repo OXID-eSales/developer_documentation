@@ -150,16 +150,18 @@ Example:
             ├── ShopControl.php
             └── Tests
                 ├── Codeception
-                │   ├── acceptance
+                │   ├── Acceptance
                 │   │   ├── _bootstrap.php
                 │   │   └── ExampleCest.php
                 │   ├── acceptance.suite.yml
-                │   ├── config
+                │   ├── Config
                 │   │   └── params.php
                 │   ├── _data
                 │   │   ├── dump.sql
                 │   │   └── fixtures.php
+                │   ├── Module
                 │   ├── _output
+                │   ├── Page
                 │   └── _support
                 │       ├── _generated
                 │       └── Helper
@@ -179,7 +181,7 @@ located in the ``<vendor_name>/<module_name>/Tests`` directory:
 ::
 
     params:
-      - Codeception/config/params.php
+      - Codeception/Config/params.php
     paths:
       tests: Codeception
       output: Codeception/_output

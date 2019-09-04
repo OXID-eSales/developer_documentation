@@ -16,7 +16,7 @@ You can create a Cest by running the following command from inside the module ``
 
     <shop_dir>/vendor/bin/codecept generate:cest acceptance CheckShopFrontend
 
-The empty ``<vendor_name>/<module_name>/Tests/Codeception/acceptance/CheckShopFrontendCest.php`` Cest will be
+The empty ``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/CheckShopFrontendCest.php`` Cest will be
 automatically created.
 
 .. code:: php

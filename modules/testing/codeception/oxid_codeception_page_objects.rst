@@ -204,7 +204,7 @@ and returns the contact page in the state from after contact form is sent.
 
     <?php
 
-    namespace MyVendor\MyModule\Tests\Codeception\acceptance;
+    namespace MyVendor\MyModule\Tests\Codeception\Page;
 
     use OxidEsales\Codeception\Page\Page;
     use OxidEsales\Codeception\Module\Translation\Translator;
@@ -272,7 +272,7 @@ Here we use this Contact PageObject in a test. Contact form is sent and test ass
         {
             $I->wantToTest('sending a contact message');
 
-            $contactPage = new \MyVendor\MyModule\Tests\Codeception\acceptance\ContactPage($I);
+            $contactPage = new \MyVendor\MyModule\Tests\Codeception\Page\ContactPage($I);
             $I->amOnPage($contactPage->URL);
             $contactPage->sendContactForm('Max', 'Muster',  'user@oxid-esales.com', 'subject', 'body');
 
