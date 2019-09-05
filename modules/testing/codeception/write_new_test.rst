@@ -175,11 +175,12 @@ We'll come to actually writing tests in the next section.
 Codeception configuration
 -------------------------
 
-The codeception main configuration file for the newly created module tests is the **codeception.yaml** which is
+The codeception main configuration file for the newly created module tests is the **codeception.yml** which is
 located in the ``<vendor_name>/<module_name>/Tests`` directory:
 
 ::
 
+    namespace: MyVendor\MyModule\Tests\Codeception
     params:
       - Codeception/Config/params.php
     paths:
