@@ -196,9 +196,45 @@ to add to our testing environment.
 Create own PageObject
 =====================
 
-As a simple example we will create a PageObject for the contact page. Our ``ContactPage`` extends from
-``OxidEsales\Codeception\Page\Page`` and uses the OXID Codeception Translator module. Then we need to figure out all
-CSS or XPath locators we will need and assemble a method ``sendContactForm`` which takes the form data as input
+As a simple example we will create a PageObject for the contact page.
+Run the following command from inside the module ``Tests`` directory (``<vendor_name>/<module_name>/Tests``):
+
+.. code:: php
+
+    <shop_dir>/vendor/bin/codecept generate:pageobject ContactPage
+
+The empty ``<vendor_name>/<module_name>/Tests/Codeception/_support/Page/ContactPage.php`` PageObject will be created.
+
+.. code:: php
+
+    <?php
+    namespace MyVendor\MyModule\Tests\Codeception\Page;
+
+    class ContactPage
+    {
+        // include url of current page
+        public static $URL = '';
+
+        /**
+         * Declare UI map for this page here. CSS or XPath allowed.
+         * public static $usernameField = '#username';
+         * public static $formSubmitButton = "#mainForm input[type=submit]";
+         */
+
+        /**
+         * Basic route example for your current URL
+         * You can append any additional parameter to URL
+         * and use it in tests like: Page\Edit::route('/123-post');
+         */
+        public static function route($param)
+        {
+            return static::$URL.$param;
+        }
+    }
+
+
+We adapt this ``ContactPage`` to extend from ``OxidEsales\Codeception\Page\Page`` and it uses the OXID Codeception Translator module.
+Then we need to figure out all CSS or XPath locators we will need and assemble a method ``sendContactForm`` which takes the form data as input
 and returns the contact page in the state from after contact form is sent.
 
 .. code:: php
@@ -269,13 +305,13 @@ Here we use this Contact PageObject in a test. Contact form is sent and test ass
 
 .. code:: php
 
-     public function sendContactFormSuccess(AcceptanceTester $I)
-        {
-            $I->wantToTest('sending a contact message');
+    public function sendContactFormSuccess(AcceptanceTester $I)
+    {
+        $I->wantToTest('sending a contact message');
 
-            $contactPage = new \MyVendor\MyModule\Tests\Codeception\Page\ContactPage($I);
-            $I->amOnPage($contactPage->URL);
-            $contactPage->sendContactForm('Max', 'Muster',  'user@oxid-esales.com', 'subject', 'body');
+        $contactPage = new \MyVendor\MyModule\Tests\Codeception\Page\ContactPage($I);
+        $I->amOnPage($contactPage->URL);
+        $contactPage->sendContactForm('Max', 'Muster',  'user@oxid-esales.com', 'subject', 'body');
 
-            $I->see(\OxidEsales\Codeception\Module\Translation\Translator::translate('DD_CONTACT_THANKYOU1'));
-        }
+        $I->see(\OxidEsales\Codeception\Module\Translation\Translator::translate('DD_CONTACT_THANKYOU1'));
+    }
