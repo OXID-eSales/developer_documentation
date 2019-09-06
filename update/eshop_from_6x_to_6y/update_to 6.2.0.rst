@@ -33,11 +33,11 @@ activation status of your current modules. :doc:`Read here for background inform
       oe-console oe:oxideshop-update-component:transfer-module-data
 
    After this step, all modules which were previously active, should have set the option `configured` to `true` in the
-   :file:`.yml` configuraton files. Also settings you have done previously to your modules, should be visible in the
+   :file:`.yml` configuration files. Also settings you have done previously to your modules, should be visible in the
    OXID eShop admin and the :file:`.yml` configuraton files.
 
 4. Activate all configured modules which were previously active .
-   On the command line, exectute the :doc:`console command </modules/console>`:
+   On the command line, execute the :doc:`console command </modules/console>`:
 
    .. code:: bash
 
