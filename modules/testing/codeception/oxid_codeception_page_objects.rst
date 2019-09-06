@@ -186,8 +186,9 @@ test:
 
 We got the most relevant pages and steps already represented as `Codeception page objects <https://github.com/OXID-eSales/codeception-page-objects/>`__.
 Our recommendation is that you stick to this concept even in case the page you need does not yet have a
-page object. Create Page Components or Page Object classes as you need them and then
-please send us a Pull Request. We will greatly apppreciate help from the OXID Community
+page object. Create Page Components or Page Object classes as you need them. For everything module specific please use the module namespace.
+In case of Page Components or Objects that could be reused by other module writers, please send us a Pull Request.
+We will greatly apppreciate help from the OXID Community
 to add to our testing environment.
 
 .. _codeception-write_own_page_objects:
