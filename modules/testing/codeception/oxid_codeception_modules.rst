@@ -139,3 +139,48 @@ Example for ``_bootstrap.php``:
         $helper = new \OxidEsales\Codeception\Module\FixturesHelper();
         $helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/fixtures.php');
         $helper->loadRuntimeFixtures(dirname(__FILE__).'/../_data/additionaldata.php');
+
+
+Let's assume you'd like to have and additonal test user for your module so you add the following data
+into ``fixtures.php`` file.
+
+.. code:: php
+
+        <?php
+        return [
+            'myUser' => [
+                'oxid' => '_myuser',
+                'oxfname' => 'Milo',
+                'oxlname' => 'MyUser',
+                'oxusername' => 'myuser@myvendor.com',
+                'oxactive' => 1,
+                'oxshopid' => 1,
+                'oxstreet' => 'MeineStrasse',
+                'oxstreetnr' => '56',
+                'oxzip' => '79098',
+                'oxcity' => 'Freiburg',
+                'oxcountryid' => 'a7c40f631fc920687.20179984',
+                'oxboni' => '600',
+                'oxcreate' => date("Y-m-d"),
+                'OXREGISTER' => date("Y-m-d"),
+                'OXBIRTHDATE' => date("Y-m-d"),
+                'oxpassword' => md5('myuser'),
+                'OXRIGHTS' => 'user'
+            ],
+            'myUserPassword' => [
+                'password' => 'myuser'
+            ]
+        ];
+
+During test bootstrap, the fixture data is loaded and ready to be used. Either write it into database
+(you need the OXID Database Codeception module for this) in a Cest
+
+.. code:: php
+
+   $I->haveInDatabase('oxuser', \Codeception\Util\Fixtures::get('myUser'));
+
+or access the data like
+
+.. code:: php
+
+   $password = \Codeception\Util\Fixtures::get('myUserPassword')['password'];
