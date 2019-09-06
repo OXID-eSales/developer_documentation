@@ -16,7 +16,10 @@ Let's assume we have a simple test module ``myvendor/mymodule`` with the followi
     └── mymodule
         ├── composer.json
         ├── metadata.php
-        └── ShopControl.php
+        ├── StartController.php
+        └── views
+            └── blocks
+                └── mymodule_block.tpl
 
 
 Example module's composer.json
@@ -70,17 +73,23 @@ Example module's metadata.php
         'url'          => 'https://github.com/myvendor',
         'email'        => 'myvendor@mymodule.com',
         'extend'       => [
-            \OxidEsales\Eshop\Core\ShopControl::class => \MyVendor\MyModule\ShopControl::class,
+            \OxidEsales\Eshop\Application\Controller\StartController::class => \MyVendor\MyModule\StartController::class,
         ],
         'controllers' => [],
         'events' => [],
         'templates' => [],
-        'blocks' => [],
+        'blocks' => [
+            [
+                'template' => 'page/shop/start.tpl',
+                'block'    => 'start_welcome_text',
+                'file'     => 'views/blocks/mymodule_block.tpl'
+            ],
+        ],
         'settings' => [],
         'smartyPluginDirectories' => []
-    ];
+        ];
 
-The module chain extends the ShopControl class and adds some information to output.
+The module chain extends the StartController class and adds a greeting message.
 
 .. code:: php
 
@@ -88,12 +97,10 @@ The module chain extends the ShopControl class and adds some information to outp
 
     namespace MyVendor\MyModule;
 
-    class ShopControl extends ShopControl_parent
+    class StartController extends StartController_parent
     {
-        protected function processOutput($view, $output)
+        public function getMyModuleGreeting()
         {
-            $output = parent::processOutput($view, $output);
-
             $message = 'Hello, my shopid is ' . \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
             $user = \OxidEsales\Eshop\Core\Registry::getSession()->getUser();
             if ($user && $user->getId()) {
@@ -101,11 +108,18 @@ The module chain extends the ShopControl class and adds some information to outp
             } else {
                 $message .= '! ';
             }
-            $output = !isAdmin() ? $message . $output : $output;
 
-            return $output;
+            return $message;
         }
     }
+
+Example module template ``mymodule_block.tpl``:
+
+.. code:: php
+
+    [{$oView->getMyModuleGreeting()}]
+    [{$smarty.block.parent}]
+
 
 .. _codeception_initialization:
 
@@ -143,31 +157,35 @@ The general structure of the module's test folder looks as follows:
 Example:
     ::
 
-        myvendor
-        └── mymodule
-            ├── composer.json
-            ├── metadata.php
-            ├── ShopControl.php
-            └── Tests
-                ├── Codeception
-                │   ├── Acceptance
-                │   │   ├── _bootstrap.php
-                │   │   └── ExampleCest.php
-                │   ├── acceptance.suite.yml
-                │   ├── Config
-                │   │   └── params.php
-                │   ├── _data
-                │   │   ├── dump.sql
-                │   │   └── fixtures.php
-                │   ├── Module
-                │   ├── _output
-                │   ├── Page
-                │   └── _support
-                │       ├── _generated
-                │       └── Helper
-                │           └── Acceptance.php
-                └── codeception.yml
-
+        source/modules/myvendor/
+            └── mymodule
+                ├── composer.json
+                ├── metadata.php
+                ├── StartController.php
+                ├── Tests
+                │   ├── Codeception
+                │   │   ├── Acceptance
+                │   │   │   ├── _bootstrap.php
+                │   │   │   └── ExampleCest.php
+                │   │   ├── acceptance.suite.yml
+                │   │   ├── Config
+                │   │   │   └── params.php
+                │   │   ├── _data
+                │   │   │   ├── dump.sql
+                │   │   │   └── fixtures.php
+                │   │   ├── Module
+                │   │   ├── _output
+                │   │   ├── Page
+                │   │   └── _support
+                │   │       ├── AcceptanceTester.php
+                │   │       ├── _generated
+                │   │       │   └── AcceptanceTesterActions.php
+                │   │       └── Helper
+                │   │           └── Acceptance.php
+                │   └── codeception.yml
+                └── views
+                    └── blocks
+                        └── mymodule_block.tpl
 
 An example Cest named ``ExampleCest`` is created automatically which verifies that the shop frontend is working.
 We'll come to actually writing tests in the next section.
