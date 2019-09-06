@@ -48,6 +48,9 @@ Let us add test code to check the front page.
 
     <?php
 
+    namespace MyVendor\MyModule\Tests\Codeception;
+    use MyVendor\MyModule\Tests\Codeception\AcceptanceTester;
+
     class CheckShopFrontendCest
     {
         public function _before(AcceptanceTester $I)
