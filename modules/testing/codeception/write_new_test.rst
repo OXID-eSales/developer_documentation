@@ -173,9 +173,7 @@ Example:
                 │   │   ├── _data
                 │   │   │   ├── dump.sql
                 │   │   │   └── fixtures.php
-                │   │   ├── Module
                 │   │   ├── _output
-                │   │   ├── Page
                 │   │   └── _support
                 │   │       ├── AcceptanceTester.php
                 │   │       ├── _generated
