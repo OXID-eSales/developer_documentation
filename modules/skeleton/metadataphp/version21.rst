@@ -8,6 +8,8 @@ Changes compared to version 2.0
   the metadata.php. Read the section :doc:`smartyPluginDirectories <amodule/smartyPluginDirectories>` for
   details.
 
+.. _modules_skeleton_metadata_v21_structure:
+
 Structure
 ---------
 
