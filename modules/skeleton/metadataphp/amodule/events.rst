@@ -1,3 +1,5 @@
+.. _metadataphpversion-events-20190911:
+
 events
 ======
 

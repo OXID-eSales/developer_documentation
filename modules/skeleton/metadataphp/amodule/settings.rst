@@ -1,3 +1,5 @@
+.. _metadataphpversion-settings-20190911:
+
 settings
 ========
 
