@@ -1,6 +1,12 @@
 Update from 6.1.x to 6.2.0
 ==========================
 
+Depending on your existing OXID eShop installation, you need to perform one or more of the following actions:
+
+.. contents ::
+    :local:
+    :depth: 1
+
 Default update via composer
 ---------------------------
 
@@ -57,3 +63,27 @@ activation status of your current modules. :doc:`Read here for background inform
    After this step, all modules which were previously active, should be active and have the correct configuration set.
 
 6. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
+
+Troubleshooting
+---------------
+
+* **Error message: `Module directory of ModuleX could not be installed due to The variable $sMetadataVersion must be
+  present in ModuleX/metadata.php and it must be a scalar.`**
+
+  * Up to OXID eShop 6.1, modules without a metadata version in the file :file:`metadata.php` were accepted.
+    OXID eShop 6.2 requires to set a
+    :ref:`metadata version <modules_skeleton_metadata_v21_structure>` in ModuleX :file:`metadata.php`.
+
+* **Error message `The metadata key constrains is not supported in metadata version 2.0.`**
+
+  * Up to OXID eShop 6.1, the array keys `constraints` and `constrains` were accepted in the file :file:`metadata.php`.
+    OXID eShop 6.2 only allows the key `constraints`. Please refer to
+    :doc:`the metadata documentation of settings </modules/skeleton/metadataphp/amodule/settings>`.
+
+* **The extension chain in the OXID eShop admin in :menuselection:`Extension -->  Modules --> Installed Shop Modules` is
+  partly highlighted red and crossed out.**
+
+  * This must not be an error. Up to OXID eShop 6.1, only extensions of active modules were shown. OXID eShop 6.2 shows
+    extensions of all installed modules (active and inactive). If a module is inactive, the extensions of this module
+    are highlighted red and crossed out. This new behavior means, you can configure the extension chain of modules which
+    are not activated yet.
