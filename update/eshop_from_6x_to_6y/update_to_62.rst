@@ -19,7 +19,7 @@ The outcome of the following steps is that you are able to configure, activate a
 Therefor the :doc:`new module configuration .yml </project/modules_configuration_setup>` files need to be synchronized with the configuration and
 activation status of your current modules. :doc:`Read here for background information </modules/installation_setup/index>`.
 
-1. Install `the update component via composer <https://github.com/OXID-eSales/oxideshop-update-component#installation>`__
+1. Install the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component#installation>`__
 
 2. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
    On the command line, execute the :doc:`console command </modules/console>`:
