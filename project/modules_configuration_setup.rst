@@ -47,7 +47,6 @@ Configuring modules via admin interface
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To configure modules via admin interface, please open OXID eShop administration panel
-To configure modules via admin interface, please open OXID eShop administration panel
 and got to :menuselection:`Extensions --> Modules`, you will see modules list, please select module you want to
 configure click :menuselection:`Settings`, you will see list of settings which is possible to change.
 
