@@ -7,8 +7,6 @@ Namespace:
 
 	Namespace: OxidEsales\EshopCommunity\Internal\Module\Setup\Event\ServicesYamlConfigurationErrorEvent
 
-Extends the `ConfigurationErrorEvent`.
-
 This event will be dispatched when there are classes referenced in a `services.yaml` file of a module
 that are not loadable.
 
