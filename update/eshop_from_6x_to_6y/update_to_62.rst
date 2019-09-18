@@ -16,8 +16,10 @@ Update of the module configurations
 -----------------------------------
 
 The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
-Therefor the :doc:`new module configuration .yml </project/modules_configuration_setup>` files need to be synchronized with the configuration and
-activation status of your current modules. :doc:`Read here for background information </modules/installation_setup/index>`.
+Therefor the :doc:`new module configuration .yml </project/module_configuration/modules_configuration>` files need
+to be synchronized with the configuration and
+activation status of your current modules.
+:doc:`Read here for background information </modules/installation_setup/index>`.
 
 1. Install the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component#installation>`__
 
