@@ -5,16 +5,28 @@ If module was :doc:`installed <installation>` successfully, next step is activat
 
 There are 3 ways of activating a module:
 
+.. _modules_installation_activate_via_admin-20190917:
+
 **1. Activate a module through OXID eShop admin panel:**
 
 Open OXID eShop administration panel and got to :menuselection:`Extensions --> Modules`,
 select a module and click activation button.
 
+.. _modules_installation_activate_via_command-20190917:
+
 **2. Activate a module via OXID eShop command:**
+
+To activate module you need to execute command:
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:activate <module-id>
+
+For module deactivation you would need to execute this command:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:module:deactivate <module-id>
 
 .. note::
 
@@ -22,5 +34,5 @@ select a module and click activation button.
 
 **3. Activate all configured modules at once:**
 
-How to activate all modules at once please read
-:ref:`modules configuration and setup document <activate_configured_modules-20190829>`.
+All modules activation usually should be used during deployment phase. How to activate all modules at once please read
+:ref:`modules configuration and deployment document <activate_configured_modules-20190829>`.

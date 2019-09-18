@@ -18,6 +18,8 @@ There are 2 ways of :ref:`installing <glossary-installation>` a module:
         if (How?) then (Manual installation\ncopy/clone files\nmanually)
           :Copy/clone module files;
           :Execute installation command;
+          :Register module in \nproject composer.json;
+          :Execute registered module \ncomposer installation;
         else (Composer installation)
           :Execute composer installation;
         endif

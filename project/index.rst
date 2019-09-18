@@ -9,3 +9,4 @@ There are certain cases where it makes sense to extend and customize the OXID eS
     :glob:
 
     *
+    module_configuration/index
