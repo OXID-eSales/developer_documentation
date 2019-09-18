@@ -66,6 +66,13 @@ activation status of your current modules.
 
 6. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
 
+Remove old files
+----------------
+
+There is a list of files that are not used anymore by OXID eShop, and those files can be removed manually. If you are not using them, its recommended to remove listed files.
+
+* source/xd_receiver.htm
+
 Troubleshooting
 ---------------
 
