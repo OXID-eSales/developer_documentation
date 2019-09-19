@@ -113,3 +113,25 @@ Example
                 'position' => 3
             ]
         ]
+
+Hiding settings
+---------------
+
+It is possible to hide module settings so they wouldn't be displayed in module settings tab.
+This might be useful when you have custom settings page
+and you want that the module would use all necessary OXID eShop functionality like storing settings data in
+project configuration files. More information about this feature please read
+:ref:`modules configuration documentation <configuring_module_via_configuration_files-20190829>`).
+
+You can hide module setting by simply not adding ``group`` when describing setting in :file:`metadata.php` file.
+
+Example
+
+    .. code:: php
+
+        'settings' => [
+            [
+                'name' => 'sOEPayPalBrandName',
+                'type' => 'str',
+                'value' => 'PayPal Testshop'
+            ],
