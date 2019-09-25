@@ -60,72 +60,36 @@ In this example, it will be checked if this ID exists and if so, the record in t
 Making a query
 --------------
 
-Using the ``ResultsetInterface``:
+To make a query, firstly an instance of ``QueryBuilderFactoryInterface`` must be retrieved:
 
-.. code:: php
+   .. code:: bash
 
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
-         //Fetch the results row by row
-         if ($resultSet != false && $resultSet->count() > 0) {
-             while (!$resultSet->EOF) {
-                 $row = $resultSet->getFields();
-                 //do something
-                 $resultSet->fetchRow();
-             }
-         }
+      $container = ContainerFactory::getInstance()->getContainer();
+      $queryBuilderFactory = $container->get(QueryBuilderFactoryInterface::class);
 
-Using the method ``ResultsetInterface::fetchAll()``:
+Now database connection is ready and ``create`` method must be called to create a ``queryBuilder``.
 
+   .. code:: bash
 
-.. code:: php
+      $queryBuilder = $queryBuilderFactory->create();
 
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
-         //Fetch all at once (beware of big arrays)
-         $allResults = $resultSet->fetchAll()
-         foreach($allResults as $row) {
-             //do something
-         };
+Now all types of SQL queries can be generated, based on the `Doctrine DBAL Documentation <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.5/reference/query-builder.html#sql-query-builder>`__.
 
+Sample:
+   .. code:: bash
 
-.. important::
+      $queryBuilder
+            ->select('*')
+            ->from('oxtplblocks')
+            ->where('oxshopid = :shopId')
+            ->andWhere('oxblockname = :name')
+            ->setParameters([
+                'shopId'    => $shopId,
+                'name'      => $name,
+            ]);
 
-    do not try something like this, you will lose the first result row:
-
-    .. code:: php
-
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
-         while ($row = $resultSet->fetchRow()) {
-             //do something
-         };
-
-        The point is: the ResultSet immediately executes the first call to ResultSet::fetchRow() in its constructor, and
-        each following call to ResultSet::fetchRow() advances the content of ResultSet::fields to the next row.
-        Do always access ResultSet::fields before calling ResultSet::fetchRow() again.
-
-
-
-.. _modules-database-transactions:
-
-Transactions
-------------
-
-If one transaction fails, the whole chain of nested transactions is rolled back
-completely. In some cases it might not be evident that your transaction is already running within an other transaction.
-
-An example how to catch exceptions inside a database transaction:
-
-.. code:: php
-
-    // Start transaction outside try/catch block
-    $database->startTransaction();
-    try {
-        $database->commitTransaction();
-    } catch (\Exception $exception) {
-        $database->rollbackTransaction();
-        if (!$exception instanceof DatabaseException) {
-            throw $exception;
-        }
-    }
+      $blocksData = $queryBuilder->execute();
+      $blocksData = $blocksData->fetchAll();
 
 .. _modules-database-master_slave:
 
