@@ -114,6 +114,8 @@ Example
             ]
         ]
 
+.. _metadataphpversion-settings-hiding-settings-20190926:
+
 Hiding settings
 ---------------
 
