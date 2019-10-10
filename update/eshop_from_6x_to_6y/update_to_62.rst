@@ -42,27 +42,6 @@ Composer update
 
       vendor/bin/oe-eshop-db_migrate migrations:migrate
 
-Change in database connection making and queries building
----------------------------------------------------------
-
-Following Classes have been deprecated:
-   .. code:: bash
-
-    OxidEsales\EshopCommunity\Core\DatabaseProvider
-    OxidEsales\EshopCommunity\Core\Database\Adapter\Doctrine\Database
-    OxidEsales\EshopCommunity\Core\Database\Adapter\Doctrine\ResultSet
-    OxidEsales\EshopCommunity\Core\Database\Adapter\DatabaseInterface
-    OxidEsales\EshopCommunity\Core\Database\Adapter\ResultSetInterface
-
-So ``getDb`` method has been deprecated and ``QueryBuilderFactory`` has been provided as a new way to make database connection and build queries.
-
-QueryBuilderFactoryInterface namespace:
-   .. code:: bash
-
-      OxidEsales\EshopCommunity\Internal\Framework\Database\QueryBuilderFactoryInterface
-
-For more details, see :doc:`making a query </modules/using_database>` document
-
 Update of the module configurations
 -----------------------------------
 
