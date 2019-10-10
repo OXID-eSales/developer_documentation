@@ -81,8 +81,8 @@ Configuring modules via providing configuration files
 
 Since the complete configuration is in configuration files, you can make it part of the
 VCS repository of your project and deploy it to your testing, staging and productive
-systems and then activate the modules through the command line as described below in the
-section :ref:`activate all configured modules<activate_configured_modules-20190829>`.
+systems and then apply configuration for the modules through the command line as described below in the
+section :ref:`apply configuration configured modules<apply_configuration_configured_modules-20190829>`.
 
 Project configuration files are located in project directory `var/shops/<shop-id>.yaml`, here "<shop-id>" represents
 Sub-shop ID. In case you don't use Sub-shop functionality, it will always be only one file with name `1.yaml`.
@@ -175,4 +175,4 @@ Option- `configured`
 As you can see in example, most of the things are just reflection of module `metadata.php` except ``configured``
 option. This option shows if module activated or must be activated (`true` or `false`).
 More about the usage of this parameter, please read
-:ref:`module configuration deployment documentation <activate_configured_modules-20190829>`.
+:ref:`module configuration deployment documentation <apply_configuration_configured_modules-20190829>`.
