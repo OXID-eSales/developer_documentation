@@ -7,10 +7,40 @@ Depending on your existing OXID eShop installation, you need to perform one or m
     :local:
     :depth: 1
 
-Default update via composer
----------------------------
+Composer update
+---------------
 
-Execute :doc:`the default update for a minor version <update_default>` first.
+#. Please edit the `oxid-esales/oxideshop-metapackage` version requirement in your root :file:`composer.json` file:
+
+   .. code:: bash
+
+        "oxid-esales/oxideshop-metapackage-ce": "v6.2.0",
+
+   Other editions like OXID eShop Enterprise Edition accordingly.
+
+#. For updating dependencies (necessary to update all libraries), in the project folder run:
+
+   .. code:: bash
+
+      composer update --no-plugins --no-scripts
+
+#. Copy the file :file:`overridablefunctions.php` from the :file:`vendor` directory to the OXID eShop :file:`source` directory:
+
+   .. code:: bash
+
+      cp vendor/oxid-esales/oxideshop-ce/source/overridablefunctions.php source/
+
+#. For executing all necessary scripts to actually gather the new compilation, in the project folder run:
+
+   .. code:: bash
+
+      composer update #(You will be prompted wether to overwrite existing code for several components. The default value is N [no] but of course you should take care to reply with y [yes].)
+
+#. For executing possible database migrations, in the project folder run:
+
+   .. code:: bash
+
+      vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 Change in database connection making and queries building
 ---------------------------------------------------------
