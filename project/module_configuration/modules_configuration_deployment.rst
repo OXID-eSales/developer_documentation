@@ -17,7 +17,7 @@ Workflow can be seen in image bellow, schema steps are described in following se
     "environment/staging.1.yaml" --> "Uploads files to servers"
     "environment/testing.1.yaml" --> "Uploads files to servers"
     --> "Copy files according current\n environment to environment/1.yaml"
-    --> "Executes module \nactivation command(s)"
+    --> "Run apply-configuration command"
     --> (*)
 
     @enduml
@@ -94,6 +94,15 @@ In described files structure you can see that there are multiple
 files per shop in :file:`var/configuration/environment` directory. This might be useful when deploying files to some
 specific environment.
 
+.. important::
+
+    If you have environment configuration files in the OXID eShop you should not save settings via admin backend.
+    If you do this, the environment specific values will be
+    merged into the base configuration and the environment configuration will be renamed to `.bak` file like `1.yml.bak`.
+    Then your manual changes will be applied to the base configuration and then to the
+    modules.
+    Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
+
 Next steps would be:
 
 * **Upload** files to the production server.
@@ -103,33 +112,18 @@ Next steps would be:
 
         cp var/configuration/environment/production.1.yml var/configuration/environment/1.yml
 
-* **Activate** modules. More information can be found in following sections.
+* **Apply configuration** for all configured modules. More information can be found in following section.
 
-Activating modules
-------------------
+.. _apply_configuration_configured_modules-20190829:
 
-When modules are installed and configured they can be activated. There are few ways how to achieve this, check sections
-bellow.
-
-Manual module activation
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-In case you activate module manually (:ref:`via admin <modules_installation_activate_via_admin-20190917>`
-or via :ref:`single module activation command <modules_installation_activate_via_command-20190917>`)
-the ``configured`` option in configuration file will be set to ``true`` and after the module deactivation:
-set back to ``false``. More about the ``configured`` option please read
-:ref:`section above <activate_configured_modules-20190829>`.
-
-.. _activate_configured_modules-20190829:
-
-Activate all configured modules
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Apply configuration
+-------------------
 
 Each module configuration in the shop configuration yml file has a ``configured``
-option (``false`` by default). If it's ``true``, it means that the module is in configured state and prepared
-for the activation/reactivation.
+option and It can have two states:
 
-The option can be set manually or by changing configuration file or by activating a module manually.
+* ``true`` means that the module is prepared for the activation.
+* ``false`` means that the module is prepared for the deactivation.
 
 Example of the shop configuration yml file:
 
@@ -147,32 +141,19 @@ Example of the shop configuration yml file:
             configured: false
             ...
 
-You can activate/reactivate all configured modules for all available shops via the console command:
+This option can be set manually by changing configuration file.
+Also this will be changed if module will be activated or deactivated manually.
+
+To apply configuration use the following command:
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:activate-configured-modules
+    vendor/bin/oe-console oe:module:apply-configuration
 
-or only for the one shop if `--shop-id` option is provided:
+Provide ``--shop-id`` option if it is only for one shop.
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:activate-configured-modules --shop-id=1
+    vendor/bin/oe-console oe:module:apply-configuration --shop-id=1
 
-.. note::
-
-  Module data and extensions chains in the database will be overwritten after every module
-  activation/deactivation with the data from the module configuration.
-
-Changing settings when environment files are present
-----------------------------------------------------
-
-If you deploy base and environment configurations from VCS, these should not be changed
-through the admin backend. If you do this, the environment specific values will be
-merged into the base configuration and the environment configuration will be renamed to `.bak` file like `1.yml.bak`.
-Then your manual changes will be applied to the base configuration and then to the
-modules. Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
-
-This in itself is not a problem, but when you redeploy the configuration, all your
-changes in base configuration will be overwritten. If you change settings through the admin backend
-ensure that these changes are reflected in the VCS version of the configuration to avoid trouble on redeployment.
+.. important:: When command is executed module data in configuration files will overwrite data in database.

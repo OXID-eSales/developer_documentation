@@ -90,7 +90,7 @@ activation status of your current modules.
 
    .. code:: bash
 
-      oe-console oe:module:activate-configured-modules
+      oe-console oe:module:apply-configuration
 
    After this step, all modules which were previously active, should be active and have the correct configuration set.
 
