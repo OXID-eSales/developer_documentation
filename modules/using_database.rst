@@ -91,6 +91,30 @@ Sample:
       $blocksData = $queryBuilder->execute();
       $blocksData = $blocksData->fetchAll();
 
+.. _modules-database-transactions:
+
+Transactions
+------------
+
+If one transaction fails, the whole chain of nested transactions is rolled back
+completely. In some cases it might not be evident that your transaction is already running within an other transaction.
+
+An example how to catch exceptions inside a database transaction:
+
+.. code:: php
+
+    // Start transaction outside try/catch block
+    $database->startTransaction();
+    try {
+        $database->commitTransaction();
+    } catch (\Exception $exception) {
+        $database->rollbackTransaction();
+        if (!$exception instanceof DatabaseException) {
+            throw $exception;
+        }
+    }
+
+
 .. _modules-database-master_slave:
 
 MySQL master slave
