@@ -16,7 +16,11 @@ Do not use global variables like
     $_SERVER
     // etc.
 
-In order to receive their represented values, use the methods provided by the shop framework.
+In order to receive their represented values, use the methods provided by the shop framework, e.g.:
+
+.. code:: php
+
+            Registry::getRequest()->getRequestEscapedParameter($name, $defaultValue);
 
 No global functions
 ^^^^^^^^^^^^^^^^^^^
