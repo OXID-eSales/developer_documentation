@@ -7,8 +7,8 @@ Depending on your existing OXID eShop installation, you need to perform one or m
     :local:
     :depth: 1
 
-Composer update
----------------
+1. Composer update
+------------------
 
 #. Please edit the `oxid-esales/oxideshop-metapackage` version requirement in your root :file:`composer.json` file:
 
@@ -17,6 +17,12 @@ Composer update
         "oxid-esales/oxideshop-metapackage-ce": "v6.2.0",
 
    Other editions like OXID eShop Enterprise Edition accordingly.
+
+#. Clean up the :file:`tmp` folder
+
+   .. code:: bash
+
+      rm -rf source/tmp/*
 
 #. For updating dependencies (necessary to update all libraries), in the project folder run:
 
@@ -36,14 +42,22 @@ Composer update
 
       composer update #(You will be prompted wether to overwrite existing code for several components. The default value is N [no] but of course you should take care to reply with y [yes].)
 
+   .. important::
+
+      Composer will ask you to overwrite module and theme files. E.g.: "Update operation will overwrite oepaypal files in
+      the directory source/modules. Do you want to overwrite them? (y/N)"
+      If you include modules by ``"type": "path",`` in your :file:`composer.json` file like described in
+      :doc:`Best practice module setup </modules/best_practices/module_setup>`, answer ``No`` to this question..
+
+
 #. For executing possible database migrations, in the project folder run:
 
    .. code:: bash
 
       vendor/bin/oe-eshop-db_migrate migrations:migrate
 
-Update of the module configurations
------------------------------------
+2. Update of the module configurations
+--------------------------------------
 
 The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
 Therefor the :doc:`new module configuration .yml </project/module_configuration/modules_configuration>` files need
@@ -60,20 +74,12 @@ activation status of your current modules.
 
       oe-console oe:oxideshop-update-component:install-all-modules
 
-   After this step you can visit :menuselection:`Extension -->  Modules` and make sure, all modules
-   which were previously installed, are listed. Also those modules should be found in the new module configuration
-   :file:`.yml` files.
-
 3. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
    database to the :file:`.yml` configuration files.
 
    .. code:: bash
 
       oe-console oe:oxideshop-update-component:transfer-module-data
-
-   After this step, all modules which were previously active, should have set the option `configured` to `true` in the
-   :file:`.yml` configuration files. Also settings you have done previously to your modules, should be visible in the
-   OXID eShop admin and the :file:`.yml` configuration files.
 
 4. Remove modules data which already presents the yml files from the database to avoid duplications and errors
    during the module activation.
@@ -82,8 +88,7 @@ activation status of your current modules.
 
       oe-console oe:oxideshop-update-component:delete-module-data-from-database
 
-   After this step modules data should be removed from the database, modules functionality should not work anymore
-   and all modules should have not active state.
+   After this step modules data should be removed from the database, modules functionality should not work anymore.
 
 5. Activate all configured modules which were previously active .
    On the command line, execute the :doc:`console command </modules/console>`:
@@ -96,8 +101,8 @@ activation status of your current modules.
 
 6. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
 
-Remove old files
-----------------
+3. Remove old files
+-------------------
 
 There is a list of files that are not used anymore by OXID eShop, and those files can be removed manually. If you are not using them, its recommended to remove listed files.
 
