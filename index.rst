@@ -22,6 +22,7 @@ Table of Contents
    modules/index
    themes/index
    update/index
+   di_container/index
 
 
 .. toctree::
