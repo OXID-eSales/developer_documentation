@@ -15,4 +15,5 @@ each module has to have metadata set. This has to be done with a file :file:`met
     :glob:
     :maxdepth: 1
 
+    amodule/index
     *
