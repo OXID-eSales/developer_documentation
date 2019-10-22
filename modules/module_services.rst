@@ -1,0 +1,97 @@
+Module services
+===============
+
+In module you can define and register your own services, inject them as dependencies
+in another service or use shop service in own service via OXID DI Container.
+
+Define service
+--------------
+
+For example, you need to adjust the price calculation of the product. You can define a single
+responsible service for this:
+
+.. code:: php
+
+    interface PriceCalculatorInterface
+    {
+        public function getPrice(string $productId, int $amount): Price {}
+    }
+
+    public class ERPPriceCalculator implements PriceCalculatorInterface
+    {
+        public function getPrice(string $productId, int $amount): Price
+        {
+            $this->doSomeCalculation();
+        }
+    }
+
+Register service
+----------------
+
+Than you can register the service in OXID DI Container. Create in root directory of your module
+services.yaml file and register it there:
+
+.. code:: yaml
+
+    services:
+        SomeCompany/SpecialERPModule/PriceCalculatorInterface:
+            class: /SomeCompany/SpecialERPModule/ERPPriceCalculator
+            autowire: true
+            public: true
+
+.. note::
+
+    We recommend to use the interface namespace as the DI container key for
+    the service if you have only the one implementation for the interface.
+
+Inject own, third party module or shop services
+-----------------------------------------------
+
+You can use you own, shop services or even services of other modules via dependency injection.
+
+.. code:: php
+
+    use Psr\Log\LoggerInterface;
+
+    public class ERPPriceCalculator implements PriceCalculatorInterface
+    {
+        private $shopLogger;
+
+        public function __constructor(LoggerInterface $shopLogger)
+        {
+            $this->shopLogger = $shopLogger;
+        }
+
+        public function getPrice(string $productId, int $amount): Price
+        {
+            $this->shopLogger->info('Log something');
+
+            $this->doSomeCalculation();
+        }
+    }
+
+In this example shop service with id 'Psr\Log\LoggerInterface' will be auto wired and
+no changes in the yaml file are needed, because the key of the logger service is the same as provided
+in the constructor argument type.
+
+Use services in standard classes
+--------------------------------
+
+Now you have a service and want to use it to extend already existing shop functionality.
+You can create own Article class where you overwrite the getPrice() method:
+
+.. code:: yaml
+
+    public class ERPArticle extends Article_parent
+    {
+        public function getPrice($amount = 1)
+        {
+            $container = ContainerFactory::getInstance()→getContainer();
+
+            $erpPriceCalculator = $container→get(PriceCalculatorInterface::class);
+            return $erpPriceCalculator->getPrice($this->getId(), $amount)
+        }
+    }
+
+You just fetch the DI container via the ContainerFactory and then fetch your service.
+In order to obtain the service, it needs to be marked as public.
