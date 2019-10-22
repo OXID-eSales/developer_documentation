@@ -62,7 +62,7 @@ sLogLevel
 
 .. code:: php
 
-    $this->sLogLevel = 'warning'; // default setting 'warning'
+    $this->sLogLevel = 'warning';
 
 You can set the log level to one of the levels defined by `\Psr\Log\LogLevel <https://github.com/php-fig/log/blob/master/Psr/Log/LogLevel.php>`__.
 This level will be used by the default PSR-3 logging implementation of OXID eShop.
