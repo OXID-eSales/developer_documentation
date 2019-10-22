@@ -3,6 +3,46 @@ Configuration file config.inc.php
 
 .. _configincphp_sloglevel:
 
+Database connection
+-------------------
+
+dbType
+^^^^^^
+
+The built-in Doctrine DBAL driver implementation to use. Default is "pdo_mysql": A MySQL driver that uses the pdo_mysql PDO extension.
+
+.. code:: php
+
+    $this->dbType = 'pdo_mysql';
+
+.. warning::
+
+    We cannot guarantee all shop functionality will work if this value is changed.
+
+dbCharset
+^^^^^^^^^
+
+The charset used when connecting to the database. It is highly related with dbType used.
+
+.. code:: php
+
+    $this->dbCharset = 'utf8';
+
+.. warning::
+
+    We cannot guarantee all shop functionality will work if this value is changed.
+
+Other database connection variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code:: php
+
+    $this->dbHost = 'localhost'; // database host name
+    $this->dbPort  = 3306; // tcp port to which the database is bound
+    $this->dbName = 'oxid'; // database name
+    $this->dbUser = 'oxid'; // database user name
+    $this->dbPwd  = 'oxid'; // database user password
+
 sLogLevel
 ---------
 
