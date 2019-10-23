@@ -120,6 +120,21 @@ OXID eShop component commands
 Component commands works similarly as module commands, just one difference, they become active instantly after
 installation via composer.
 
+How is it works
+""""""""""""""""
+
+On installation the OXID composer plugin will include your components :file:`services.yaml` file in a file
+named :file:`generated_services.yaml` that is read when the DI container is assembled.
+You will find this file in var/generated, ``but you should not alter it manually``.
+
+.. important::
+
+    You can't overwrite the definition of services that are already defined in the container
+    in your components :file:`services.yaml` file. The composer plugin will not include your
+    file if you try to do this. Because if several components would override the same definition,
+    It would be completely arbitrary which component would win, depending on the sequence of the installation.
+
+
 Component type
 """"""""""""""
 
@@ -179,3 +194,21 @@ create it in your component root directory.
         class: OxidEsales\DemoComponent\Command\HelloWorldCommand
         tags:
         - { name: 'console.command' }
+
+Overwriting system services
+"""""""""""""""""""""""""""
+
+You can overwrite system services very easily in your project, you need to do this manually.
+For this purpose there is a file named :file:`configurable_services.yaml`,
+that you will find (or can create) under :file:`var/configuration`. This file exists exactly once per project.
+This is only safe way to overwrite system services.
+
+.. important::
+
+    We do not recommend overwrite system services in internal directory,
+    Unless services have ``@stable`` annotation, interfaces or implementations might change
+    in future releases For more information refer to :file:`README.md` file in internal directory.
+
+    So we propose a better way to enhance the shop functionality to
+    use :doc:`events </modules/events/general>`.
+    This is a much more update friendly way to enhance a shop.
