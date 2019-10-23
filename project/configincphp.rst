@@ -54,26 +54,11 @@ Possible options: CE|PE|EE or left empty (will be determined automatically - def
 
     $this->edition = '';
 
-aAllowedUploadTypes
--------------------
-
-File type whitelist for file uploads
-
-.. code:: php
-
-    $this->aAllowedUploadTypes = array('jpg', 'gif', 'png', 'pdf', 'mp3', 'avi', 'mpg', 'mpeg', 'doc', 'xls', 'ppt');
-
-Timezone configuration
-----------------------
-
-Shop timezone can be set with ``date_default_timezone_set``. Europe/Berlin is default value.
-
-.. code:: php
-
-    date_default_timezone_set('Europe/Berlin');
+Debugging
+---------
 
 sLogLevel
----------
+^^^^^^^^^
 
 .. code:: php
 
@@ -99,7 +84,7 @@ This level will be used by the default PSR-3 logging implementation of OXID eSho
 .. _configincphp_iDebug:
 
 iDebug
-------
+^^^^^^
 
 .. code:: php
 
@@ -124,7 +109,7 @@ The different values do not reflect log levels but rather, which part of the OXI
     front page and is not suitable for a productive environment.
 
 blDebugTemplateBlocks
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 Should template blocks be highlighted in frontend?
 
@@ -133,6 +118,25 @@ This is mainly intended for module writers in non productive environment
 .. code:: php
 
     $this->blDebugTemplateBlocks = false;
+
+
+aAllowedUploadTypes
+-------------------
+
+File type whitelist for file uploads
+
+.. code:: php
+
+    $this->aAllowedUploadTypes = array('jpg', 'gif', 'png', 'pdf', 'mp3', 'avi', 'mpg', 'mpeg', 'doc', 'xls', 'ppt');
+
+Timezone configuration
+----------------------
+
+Shop timezone can be set with ``date_default_timezone_set``. Europe/Berlin is default value.
+
+.. code:: php
+
+    date_default_timezone_set('Europe/Berlin');
 
 blSeoLogging
 ------------
@@ -201,65 +205,6 @@ define 'Auth_OpenID_RAND_SOURCE' (filename for a source of   random bytes)
 
     $this->sAuthOpenIdRandSource  = '/dev/urandom';
 
-
-blForceSessionStart
--------------------
-
-Force session start on first page view and for users whose browsers do not accept cookies, append
-sid parameter to URLs. By default it is turned off.
-
-.. code:: php
-
-    $this->blForceSessionStart = false;
-
-blSessionUseCookies
--------------------
-
-Use browser cookies to store session id (no sid parameter in URL)
-
-.. code:: php
-
-    $this->blSessionUseCookies = true;
-
-aCookieDomains
---------------
-
-In case you setup different subdomain for SSL/non-SSL pages cookies may not be shared between them.
-This setting allows to define the domain that the cookie is available in format: array(_SHOP_ID_ => _DOMAIN_);
-
-.. code:: php
-
-    $this->aCookieDomains = [
-        1 => 'mydomainexample.com'
-    ];
-
-.. note::
-
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
-
-
-aCookiePaths
-------------
-
-The path on the server in which the cookie will be available on: array(_SHOP_ID_ => _PATH_);
-
-possibility to define path on the server in which the cookie will be available on.
-
-.. code:: php
-
-    $this->aCookiePaths = [
-        1 => '/dev/urandom'
-    ];
-
-.. note::
-
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
-
-aTrustedIPs
------------
-
-Defines IP addresses, for which session + cookie id match and user agent change checks are off.
-
 blUseTimeCheck
 --------------
 
@@ -319,52 +264,6 @@ Some classes can be overloaded, but only by setting up this information in confi
 
     $this->aModules = array(
         'oxutilsobject' => 'my_oxutilsobject'
-    );
-
-aRequireSessionWithParams
--------------------------
-
-This configuration array specifies additional request parameters, which, if received, forces a new session being started.
-
-This is the default array with the request parameters and their values, which forces a new session:
-
-.. code:: php
-
-    array(
-        'cl' => array(
-            'register' => true,
-            'account'  => true,
-        ),
-        'fnc' => array(
-            'tobasket' => true,
-            'login_noredirect' => true,
-            'tocomparelist'    => true,
-        ),
-        '_artperpage' => true,
-        'ldtype'      => true,
-        'listorderby' => true,
-    );
-
-If you want to extend this array include in config.inc.php file this option:
-
-.. code:: php
-
-    $this->aRequireSessionWithParams = array(
-        'parameter_name' => array(
-            'parameter_value' => true,
-        )
-    );
-
-The keys of the array are the names of parameters and the values of the arrays are the parameter values that lead to the
-session being started, e.g:
-
-.. code:: php
-
-    $this->aRequireSessionWithParams = array(
-        'fnc' => array(
-            'login_noredirect' => true,
-        ),
-        'new_sid' => true
     );
 
 blUseCron
@@ -496,6 +395,114 @@ Control removal of the Setup directory. It will be removed right after the setup
 .. code:: php
 
     $this->blDelSetupDir = false;
+
+
+Session and cookies
+-------------------
+
+blForceSessionStart
+^^^^^^^^^^^^^^^^^^^
+
+Force session start on first page view and for users whose browsers do not accept cookies, append
+sid parameter to URLs. By default it is turned off.
+
+.. code:: php
+
+    $this->blForceSessionStart = false;
+
+blSessionUseCookies
+^^^^^^^^^^^^^^^^^^^
+
+Use browser cookies to store session id (no sid parameter in URL)
+
+.. code:: php
+
+    $this->blSessionUseCookies = true;
+
+aCookieDomains
+^^^^^^^^^^^^^^
+
+In case you setup different subdomain for SSL/non-SSL pages cookies may not be shared between them.
+This setting allows to define the domain that the cookie is available in format: array(_SHOP_ID_ => _DOMAIN_);
+
+.. code:: php
+
+    $this->aCookieDomains = [
+        1 => 'mydomainexample.com'
+    ];
+
+.. note::
+
+    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+
+
+aCookiePaths
+^^^^^^^^^^^^
+
+The path on the server in which the cookie will be available on: array(_SHOP_ID_ => _PATH_);
+
+possibility to define path on the server in which the cookie will be available on.
+
+.. code:: php
+
+    $this->aCookiePaths = [
+        1 => '/dev/urandom'
+    ];
+
+.. note::
+
+    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+
+aTrustedIPs
+^^^^^^^^^^^
+
+Defines IP addresses, for which session + cookie id match and user agent change checks are off.
+
+aRequireSessionWithParams
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This configuration array specifies additional request parameters, which, if received, forces a new session being started.
+
+This is the default array with the request parameters and their values, which forces a new session:
+
+.. code:: php
+
+    array(
+        'cl' => array(
+            'register' => true,
+            'account'  => true,
+        ),
+        'fnc' => array(
+            'tobasket' => true,
+            'login_noredirect' => true,
+            'tocomparelist'    => true,
+        ),
+        '_artperpage' => true,
+        'ldtype'      => true,
+        'listorderby' => true,
+    );
+
+If you want to extend this array include in config.inc.php file this option:
+
+.. code:: php
+
+    $this->aRequireSessionWithParams = array(
+        'parameter_name' => array(
+            'parameter_value' => true,
+        )
+    );
+
+The keys of the array are the names of parameters and the values of the arrays are the parameter values that lead to the
+session being started, e.g:
+
+.. code:: php
+
+    $this->aRequireSessionWithParams = array(
+        'fnc' => array(
+            'login_noredirect' => true,
+        ),
+        'new_sid' => true
+    );
 
 Views
 -----
