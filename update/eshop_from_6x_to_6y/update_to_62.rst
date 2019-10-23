@@ -76,21 +76,21 @@ activation status of your current modules.
 
    .. code:: bash
 
-      oe-console oe:oxideshop-update-component:install-all-modules
+      vendor/bin/oe-console oe:oxideshop-update-component:install-all-modules
 
 3. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
    database to the :file:`.yml` configuration files.
 
    .. code:: bash
 
-      oe-console oe:oxideshop-update-component:transfer-module-data
+      vendor/bin/oe-console oe:oxideshop-update-component:transfer-module-data
 
 4. Remove modules data which already presents the yml files from the database to avoid duplications and errors
    during the module activation.
 
    .. code:: bash
 
-      oe-console oe:oxideshop-update-component:delete-module-data-from-database
+      vendor/bin/oe-console oe:oxideshop-update-component:delete-module-data-from-database
 
    After this step modules data should be removed from the database, modules functionality should not work anymore.
 
@@ -99,7 +99,7 @@ activation status of your current modules.
 
    .. code:: bash
 
-      oe-console oe:module:apply-configuration
+      vendor/bin/oe-console oe:module:apply-configuration
 
    After this step, all modules which were previously active, should be active and have the correct configuration set.
 
