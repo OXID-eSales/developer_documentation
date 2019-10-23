@@ -43,6 +43,35 @@ Other database connection variables
     $this->dbUser = 'oxid'; // database user name
     $this->dbPwd  = 'oxid'; // database user password
 
+edition
+-------
+
+Force shop edition. Even if enterprise or professional packages exists, shop edition can still be forced here.
+
+Possible options: CE|PE|EE or left empty (will be determined automatically - default option).
+
+.. code:: php
+
+    $this->edition = '';
+
+aAllowedUploadTypes
+-------------------
+
+File type whitelist for file uploads
+
+.. code:: php
+
+    $this->aAllowedUploadTypes = array('jpg', 'gif', 'png', 'pdf', 'mp3', 'avi', 'mpg', 'mpeg', 'doc', 'xls', 'ppt');
+
+Timezone configuration
+----------------------
+
+Shop timezone can be set with ``date_default_timezone_set``. Europe/Berlin is default value.
+
+.. code:: php
+
+    date_default_timezone_set('Europe/Berlin');
+
 sLogLevel
 ---------
 
@@ -94,6 +123,48 @@ The different values do not reflect log levels but rather, which part of the OXI
     This setting is for debugging purposes during development ONLY. It prints out a lot of information directly to the
     front page and is not suitable for a productive environment.
 
+blDebugTemplateBlocks
+---------------------
+
+Should template blocks be highlighted in frontend?
+
+This is mainly intended for module writers in non productive environment
+
+.. code:: php
+
+    $this->blDebugTemplateBlocks = false;
+
+blSeoLogging
+------------
+
+Configure if requests, coming via stdurl and not redirected to seo url be logged to seologs db table.
+
+.. code:: php
+
+    $this->blSeoLogging = false;
+
+.. note::
+
+    This is only active in productive mode, as the eShop in non productive more will always log such urls
+
+sAdminEmail
+-----------
+
+Force admin email. Offline warnings are sent with high priority to this address.
+
+.. code:: php
+
+    $this->sAdminEmail = '';
+
+offlineWarningInterval
+----------------------
+
+Defines the time interval in seconds warnings are sent during the shop is offline. 5 minutes is default interval.
+
+.. code:: php
+
+    $this->offlineWarningInterval = 60 * 5;
+
 sCSVSign
 --------
 
@@ -109,7 +180,6 @@ blCheckForUpdates
 
 Shop will be checked for version in admin home page only if this option is checked
 
-
 sAltImageDir / sSSLAltImageUrl
 ------------------------------
 
@@ -122,34 +192,65 @@ If you are using https, you also have to set the sSSLAltImageUrl option.
     $this->sSSLAltImageUrl = "[https://[path_to_images_dir_on_server]/";
 
 
-sCookieDomain
--------------
-
-In case you setup different subdomain for SSL/non-SSL pages cookies may not be shared between them. Defines the domain that the cookie is available.
-
 sAuthOpenIdRandSource
 ---------------------
 
 define 'Auth_OpenID_RAND_SOURCE' (filename for a source of   random bytes)
 <pre>$this->sAuthOpenIdRandSource  = '/dev/urandom';</pre>
 
-sCookiePath
------------
+
+blForceSessionStart
+-------------------
+
+Force session start on first page view and for users whose browsers do not accept cookies, append
+sid parameter to URLs. By default it is turned off.
+
+.. code:: php
+
+    $this->blForceSessionStart = false;
+
+blSessionUseCookies
+-------------------
+
+Use browser cookies to store session id (no sid parameter in URL)
+
+.. code:: php
+
+    $this->blSessionUseCookies = true;
+
+aCookieDomains
+--------------
+
+In case you setup different subdomain for SSL/non-SSL pages cookies may not be shared between them.
+This setting allows to define the domain that the cookie is available in format: array(_SHOP_ID_ => _DOMAIN_);
+
+.. code:: php
+
+    $this->aCookieDomains = [
+        1 => 'mydomainexample.com'
+    ];
+
+.. note::
+
+    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+
+
+aCookiePaths
+------------
+
+The path on the server in which the cookie will be available on: array(_SHOP_ID_ => _PATH_);
 
 possibility to define path on the server in which the cookie will be available on.
 
 .. code:: php
 
-    $this->sCookiePath = '/dev/urandom';
+    $this->aCookiePaths = [
+        1 => '/dev/urandom'
+    ];
 
-blForceSessionStart
--------------------
+.. note::
 
-Force session start on first page view and for users whose browsers do not accept cookies, append sid parameter to URLs.
-
-.. code:: php
-
-    $this->blForceSessionStart = "1";
+    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
 
 aTrustedIPs
 -----------
@@ -180,7 +281,7 @@ Log all modifications performed in Admin (in oxadminlog table)
 
 .. code:: php
 
-    $this->blLogChangesInAdmin = 0;
+    $this->blLogChangesInAdmin = false;
 
 
 blMallSharedBasket
@@ -290,17 +391,6 @@ blEnterNetPrice
 
 Prices will be entered without tax
 
-blSkipViewUsage
----------------
-
-If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temproarily to "true".
-
-Implemented with OXID eShop version 4.7
-
-.. code:: php
-
-    $this->blSkipViewUsage = true;
-
 sShopLogo
 ---------
 
@@ -331,3 +421,180 @@ Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
 .. code:: php
 
     $this->blDoNotDisableModuleOnError = false;
+
+aRobots
+-------
+
+List of all Search-Engine Robots
+
+.. code:: php
+
+    $this->aRobots = [
+        'googlebot',
+        'ultraseek',
+        'crawl',
+        'spider',
+        'fireball',
+        'robot',
+        'slurp',
+        'fast',
+        'altavista',
+        'teoma',
+        'msnbot',
+        'bingbot',
+        'yandex',
+        'gigabot',
+        'scrubby'
+    ];
+
+aRobotsExcept
+-------------
+
+Deactivate Static URL's for the Robots listed in this array
+
+.. code:: php
+
+    $this->aRobotsExcept = array();
+
+iBasketReservationCleanPerRequest
+---------------------------------
+
+Works only if basket reservations feature is enabled in admin.
+
+The number specifies how many expired basket reservations are cleaned per one request (to the eShop).
+Cleaning a reservation basically means returning the reserved stock to the articles.
+
+.. code:: php
+
+    $this->iBasketReservationCleanPerRequest = 200;
+
+.. note::
+
+    Keeping this number too low may cause article stock being returned too
+    slowly, while too high value may have spiking impact on the performance.
+
+aUserComponentNames
+-------------------
+
+To override FrontendController::$_aUserComponentNames use this array option:
+array keys are component(class) names and array values defines if component is cacheable (true/false)
+E.g. array('user_class' => false);
+
+aMultiLangTables
+----------------
+
+Additional multi language tables list.
+
+blDelSetupDir
+-------------
+
+Control removal of the Setup directory. It will be removed right after the setup is completed, if configuration is true.
+
+.. code:: php
+
+    $this->blDelSetupDir = false;
+
+Views
+-----
+
+blSkipViewUsage
+^^^^^^^^^^^^^^^
+
+If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temproarily to "true".
+
+Implemented with OXID eShop version 4.7
+
+.. code:: php
+
+    $this->blSkipViewUsage = true;
+
+blShowUpdateViews
+^^^^^^^^^^^^^^^^^
+
+Show "Update Views" button in admin
+
+.. code:: php
+
+    $this->blShowUpdateViews = true;
+
+
+Password hashing
+----------------
+
+passwordHashingAlgorithm
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Supported values are the strings PASSWORD_BCRYPT, PASSWORD_ARGON2I and PASSWORD_ARGON2ID.
+Some of the hashing algorithms may not be available on your system depending on your PHP version.
+
+.. code:: php
+
+    $this->passwordHashingAlgorithm = 'PASSWORD_BCRYPT';
+
+Algorithm configuration
+^^^^^^^^^^^^^^^^^^^^^^^
+
+See http://php.net/manual/en/function.password-hash.php for options and values
+
+Examples:
+
+.. code:: php
+
+    $this->passwordHashingBcryptCost =  10; // Minimum cost is 4, maximum cost is 31
+    $this->passwordHashingArgon2MemoryCost =  1024;
+    $this->passwordHashingArgon2TimeCost =  2;
+    $this->passwordHashingArgon2Threads =  2;
+
+
+
+Enterprise Edition options
+--------------------------
+
+Enterprise Edition related config options. These options have no effect on Community/Professional Editions.
+
+iDebugSlowQueryTime
+^^^^^^^^^^^^^^^^^^^
+
+Time limit in ms to be notified about slow queries
+
+.. code:: php
+
+    $this->iDebugSlowQueryTime = 20;
+
+blUseRightsRoles
+^^^^^^^^^^^^^^^^
+
+Enables Rights and Roles engine. Possible values:
+
+* 0 - off,
+* 1 - only in admin,
+* 2 - only in shop,
+* 3 - both
+
+.. code:: php
+
+    $this->blUseRightsRoles = 3;
+
+aMultishopArticleFields
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Define oxarticles fields which could be edited individually in subshops.
+
+Do not forget to add these fields to oxfield2shop table.
+
+.. code:: php
+
+    $this->aMultishopArticleFields = array("OXPRICE", "OXPRICEA", "OXPRICEB", "OXPRICEC", "OXUPDATEPRICE", "OXUPDATEPRICEA", "OXUPDATEPRICEB", "OXUPDATEPRICEC", "OXUPDATEPRICETIME");
+
+.. note::
+
+    The field names are case sensitive here
+
+aSlaveHosts
+^^^^^^^^^^^
+
+Database master-slave configuration. Variable contains the list of slave hosts.
+
+.. code:: php
+
+    $this->aSlaveHosts = array('localhost', '10.2.3.12');
