@@ -119,27 +119,8 @@ This is mainly intended for module writers in non productive environment
 
     $this->blDebugTemplateBlocks = false;
 
-
-aAllowedUploadTypes
--------------------
-
-File type whitelist for file uploads
-
-.. code:: php
-
-    $this->aAllowedUploadTypes = array('jpg', 'gif', 'png', 'pdf', 'mp3', 'avi', 'mpg', 'mpeg', 'doc', 'xls', 'ppt');
-
-Timezone configuration
-----------------------
-
-Shop timezone can be set with ``date_default_timezone_set``. Europe/Berlin is default value.
-
-.. code:: php
-
-    date_default_timezone_set('Europe/Berlin');
-
 blSeoLogging
-------------
+^^^^^^^^^^^^
 
 Configure if requests, coming via stdurl and not redirected to seo url be logged to seologs db table.
 
@@ -150,6 +131,16 @@ Configure if requests, coming via stdurl and not redirected to seo url be logged
 .. note::
 
     This is only active in productive mode, as the eShop in non productive more will always log such urls
+
+
+Timezone configuration
+----------------------
+
+Shop timezone can be set with ``date_default_timezone_set``. Europe/Berlin is default value.
+
+.. code:: php
+
+    date_default_timezone_set('Europe/Berlin');
 
 sAdminEmail
 -----------
@@ -169,32 +160,10 @@ Defines the time interval in seconds warnings are sent during the shop is offlin
 
     $this->offlineWarningInterval = 60 * 5;
 
-sCSVSign
---------
-
-Separator for Im/Export in Enterprise Edition
-
-sGiCsvFieldEncloser
--------------------
-
-Encloser for Im/Export
-
 blCheckForUpdates
 -----------------
 
 Shop will be checked for version in admin home page only if this option is checked
-
-sAltImageDir / sSSLAltImageUrl
-------------------------------
-
-In case if pictures for articles should be loaded from separate server and are available only through http - it's enough to include sAltImageDir option in config.inc.php. Then to load picture for article only define the rest http path to the image file. Attention: If this option is set in the configuration file config.inc.php, uploading of product pictures in admin area is not possible!
-If you are using https, you also have to set the sSSLAltImageUrl option.
-
-.. code:: php
-
-    $this->sAltImageDir = "[http://[path_to_images_dir_on_server]/";
-    $this->sSSLAltImageUrl = "[https://[path_to_images_dir_on_server]/";
-
 
 sAuthOpenIdRandSource
 ---------------------
@@ -246,26 +215,6 @@ Switch off SEO URLs
 
     $this->blSeoMode = false;
 
-iPicCount
----------
-
-Change number of item pictures
-
-.. code:: php
-
-    $this->iPicCount = 12;
-
-aModules
---------
-
-Some classes can be overloaded, but only by setting up this information in config.inc.php directly
-
-.. code:: php
-
-    $this->aModules = array(
-        'oxutilsobject' => 'my_oxutilsobject'
-    );
-
 blUseCron
 ---------
 
@@ -293,17 +242,6 @@ blEnterNetPrice
 
 Prices will be entered without tax
 
-sShopLogo
----------
-
-Add your own logo image file, upload it to /out/az ure/img/.
-
-Implemented with OXID eShop version 4.8
-
-.. code:: php
-
-    $this->sShopLogo = 'your_own_image.jpg'
-
 blDemoShop
 ----------
 
@@ -313,50 +251,6 @@ Enables shop demo mode
 
     $this->blDemoShop= true;
 
-blDoNotDisableModuleOnError
----------------------------
-
-Disable module auto deactivation
-
-Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
-
-.. code:: php
-
-    $this->blDoNotDisableModuleOnError = false;
-
-aRobots
--------
-
-List of all Search-Engine Robots
-
-.. code:: php
-
-    $this->aRobots = [
-        'googlebot',
-        'ultraseek',
-        'crawl',
-        'spider',
-        'fireball',
-        'robot',
-        'slurp',
-        'fast',
-        'altavista',
-        'teoma',
-        'msnbot',
-        'bingbot',
-        'yandex',
-        'gigabot',
-        'scrubby'
-    ];
-
-aRobotsExcept
--------------
-
-Deactivate Static URL's for the Robots listed in this array
-
-.. code:: php
-
-    $this->aRobotsExcept = array();
 
 iBasketReservationCleanPerRequest
 ---------------------------------
@@ -395,6 +289,127 @@ Control removal of the Setup directory. It will be removed right after the setup
 .. code:: php
 
     $this->blDelSetupDir = false;
+
+Modules
+-------
+
+blDoNotDisableModuleOnError
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Disable module auto deactivation
+
+Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
+
+.. code:: php
+
+    $this->blDoNotDisableModuleOnError = false;
+
+aModules
+^^^^^^^^
+
+Some classes can be overloaded, but only by setting up this information in config.inc.php directly
+
+.. code:: php
+
+    $this->aModules = array(
+        'oxutilsobject' => 'my_oxutilsobject'
+    );
+
+
+Uploads and images
+------------------
+
+aAllowedUploadTypes
+^^^^^^^^^^^^^^^^^^^
+
+File type whitelist for file uploads
+
+.. code:: php
+
+    $this->aAllowedUploadTypes = array('jpg', 'gif', 'png', 'pdf', 'mp3', 'avi', 'mpg', 'mpeg', 'doc', 'xls', 'ppt');
+
+sShopLogo
+^^^^^^^^^
+
+Add your own logo image file, upload it to /out/az ure/img/.
+
+Implemented with OXID eShop version 4.8
+
+.. code:: php
+
+    $this->sShopLogo = 'your_own_image.jpg'
+
+iPicCount
+^^^^^^^^^
+
+Change number of item pictures
+
+.. code:: php
+
+    $this->iPicCount = 12;
+
+sAltImageDir / sSSLAltImageUrl
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In case if pictures for articles should be loaded from separate server and are available only through http - it's enough to include sAltImageDir option in config.inc.php. Then to load picture for article only define the rest http path to the image file. Attention: If this option is set in the configuration file config.inc.php, uploading of product pictures in admin area is not possible!
+If you are using https, you also have to set the sSSLAltImageUrl option.
+
+.. code:: php
+
+    $this->sAltImageDir = "[http://[path_to_images_dir_on_server]/";
+    $this->sSSLAltImageUrl = "[https://[path_to_images_dir_on_server]/";
+
+
+Import/Export
+-------------
+
+sCSVSign
+^^^^^^^^
+
+Separator for Import/Export
+
+sGiCsvFieldEncloser
+^^^^^^^^^^^^^^^^^^^
+
+Encloser for Import/Export
+
+
+Robots
+------
+
+aRobots
+^^^^^^^
+
+List of all Search-Engine Robots
+
+.. code:: php
+
+    $this->aRobots = [
+        'googlebot',
+        'ultraseek',
+        'crawl',
+        'spider',
+        'fireball',
+        'robot',
+        'slurp',
+        'fast',
+        'altavista',
+        'teoma',
+        'msnbot',
+        'bingbot',
+        'yandex',
+        'gigabot',
+        'scrubby'
+    ];
+
+aRobotsExcept
+^^^^^^^^^^^^^
+
+Deactivate Static URL's for the Robots listed in this array
+
+.. code:: php
+
+    $this->aRobotsExcept = array();
 
 
 Session and cookies
@@ -503,6 +518,7 @@ session being started, e.g:
         ),
         'new_sid' => true
     );
+
 
 Views
 -----
