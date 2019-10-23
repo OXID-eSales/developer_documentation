@@ -196,7 +196,10 @@ sAuthOpenIdRandSource
 ---------------------
 
 define 'Auth_OpenID_RAND_SOURCE' (filename for a source of   random bytes)
-<pre>$this->sAuthOpenIdRandSource  = '/dev/urandom';</pre>
+
+.. code:: php
+
+    $this->sAuthOpenIdRandSource  = '/dev/urandom';
 
 
 blForceSessionStart
