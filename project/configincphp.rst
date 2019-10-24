@@ -43,7 +43,7 @@ Other database connection variables
     $this->dbUser = 'oxid'; // database user name
     $this->dbPwd  = 'oxid'; // database user password
 
-edition
+Edition
 -------
 
 Force shop edition. Even if enterprise or professional packages exists, shop edition can still be forced here.
