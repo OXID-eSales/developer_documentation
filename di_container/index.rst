@@ -7,7 +7,7 @@ more information about DI Container refer to the Symfony ``DI Container`` docume
 https://symfony.com/doc/current/components/dependency_injection.html
 
 Using DI Container
-^^^^^^^^^^^^^^^^^^
+------------------
 
 For using ``DI Container`` there are couple of things you need to know:
 
@@ -25,7 +25,7 @@ For using ``DI Container`` there are couple of things you need to know:
     You will find :file:`services.yaml` file in each of editions.
 
 Creating a service
-^^^^^^^^^^^^^^^^^^
+------------------
 
 A service is any PHP object that
 performs some sort of "global" task such as delivering emails.
@@ -75,7 +75,7 @@ Example: Create a service for activating modules.
 
 
 Registering a service
-^^^^^^^^^^^^^^^^^^^^^^
+---------------------
 
 Example: Register a service into ``DI Container`` using :file:`services.yaml` file:
 
@@ -92,7 +92,7 @@ Example: Register a service into ``DI Container`` using :file:`services.yaml` fi
 
 
 Getting services
-^^^^^^^^^^^^^^^^
+----------------
 
 If you need services configured in the ``DI Container``, There are two ways to do it:
 
@@ -129,3 +129,31 @@ If you need services configured in the ``DI Container``, There are two ways to d
         If this file is not found, the container will be set up fresh from it's configuration.
         If you change something in the container configuration, you need to delete
         :file:`container_cache.php` to get a container that reflects your changes.
+
+Overwriting shop services in a project
+--------------------------------------
+
+In some cases you might need to change system services behaviour, for this reason OXID eShop provides functionality
+to achieve this.
+
+You can overwrite system services in your project.
+For this purpose there is a file named :file:`configurable_services.yaml`, which you will find (or will have to create)
+under :file:`var/configuration`. This file exists exactly once per project.
+
+Example of :file:`var/configuration/configurable_services.yaml` file:
+
+.. code:: yaml
+
+    services:
+      Psr\Log\LoggerInterface:
+        class: MyProject\CustomLogger
+        public: true
+
+In example OXID eShop `Psr\Log\LoggerInterface` service being overwritten by new `CustomLogger`.
+
+Services which are safe to overwrite
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+We do not recommend overwrite system services in :file:`internal` directory, unless services have
+``@stable`` annotation. Services which are not marked as stable might change more often in the future releases.
+For more information refer to :file:`README.md` file in internal directory.
