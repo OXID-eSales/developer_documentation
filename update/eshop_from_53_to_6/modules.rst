@@ -309,7 +309,7 @@ Move the module under a module namespace
 
 * Update metadata.php to version 2.0, see :ref:`here <metadata_version2-20170427>`.
   In case the module uses it's own controllers that do not simply chain extend shop controllers,
-  you need to register a controller key in the :doc:`section controller of metadata.php </modules/skeleton/metadataphp/amodule/controllers>`.
+  you need to register a controller key in the :doc:`section controller of metadata.php </development/module/skeleton/metadataphp/amodule/controllers>`.
 
   .. code::
 

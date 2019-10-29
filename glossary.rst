@@ -85,4 +85,5 @@ This is ID called a *Vendor ID*. More information regarding the *Vendor ID* can 
 OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
 
-Component installed via composer which has type `oxideshop-component`.
+Component installed via composer which has type `oxideshop-component`. More about component please read
+:doc:`here </development/component>`.

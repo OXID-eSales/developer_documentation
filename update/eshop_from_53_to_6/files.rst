@@ -69,4 +69,4 @@ Modules
 * if you made changes to the file :file:`modules/functions.php`  in OXID eShop 4.10 / 5.3, port those changes into the
   equivalent file :file:`modules/functions.php` file in OXID eShop 6
 
-For updating a module itself, have a look at the :doc:`Guideline for porting modules to OXID eShop version 6.0 <../../modules/index>`
+For updating a module itself, have a look at the :doc:`Guideline for porting modules to OXID eShop version 6.0 </development/module/index>`
