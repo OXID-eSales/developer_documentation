@@ -5,4 +5,4 @@ Templating
     :titlesonly:
     :glob:
 
-    *
+    twig/index

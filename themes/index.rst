@@ -8,5 +8,3 @@ Theme resources
     :glob:
 
     *
-
-    templating/index

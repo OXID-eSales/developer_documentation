@@ -1,26 +1,19 @@
-Twig in OXID eShop
-###################
-
-Twig documentation can be found on `official Twig website <https://twig.symfony.com/>`__.
-Information about converting existing templates from Smarty to Twig can be found in
-:doc:`OXID e-shop to Twig converter documentation <converting_smarty_to_twig>`
-
-OXID eShop is introducing Twig templating engine. So far Smarty 2 engine was used with some Smarty 3 elements. Engine
-was supported by many plugins which also has been reimplemented or migrated to Twig extensions. In this documentation
-page will be described how OXID eShop custom plugins were migrated to Twig and how Twig can be extended.
-
 Custom OXID extensions
-**********************
+======================
 
-All extensions can be found in ``source\Internal\Twig\Extensions`` directory.
+All extensions can be found in ``src\Extensions`` directory.
+
+.. contents::
+   :depth: 2
+   :local:
 
 Tags
-====
+----
 
 HasRights
-----------
+^^^^^^^^^
 
-This extension introduces ``{% hasrights %}`` tag which covers ``oxhasrights`` Smarty plugin. Example of use::
+This extension introduces ``{% hasrights %}`` tag which covers the Right and Roles functionality. Example of use::
 
     {% hasrights { "object": "edit", "readonly": "readonly" } %}
         Lorem ipsum
@@ -29,7 +22,7 @@ This extension introduces ``{% hasrights %}`` tag which covers ``oxhasrights`` S
 All parameters are passed as associative array right after the keyword ``hasrights``.
 
 IfContent
----------
+^^^^^^^^^
 
 This extension introduces ``{% ifcontent %}`` tag which covers ``oxifcontent`` Smarty plugin. Opening tag syntax::
 
@@ -45,7 +38,7 @@ ifcontent can work with ident or oxid - depends on word after ``ifcontent`` keyw
 after ``set`` keyword.
 
 IncludeDynamic
---------------
+^^^^^^^^^^^^^^
 
 This extension introduces ``{% include_dynamic %}`` which covers ``oxid_include_dynamic`` Smarty plugin. Syntax is
 similar to Twig ``{% include %}`` tag::
@@ -57,10 +50,10 @@ Example of use::
     {% include_dynamic "widget/product/compare_links.html.twig" with {type: "compare", anid: altproduct } %}
 
 Functions
-=========
+---------
 
 AssignAdvancedExtension
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This extensions introduces ``assign_advanced`` function which covers ``assign_adv`` Smarty plugin. Example of use::
 
@@ -73,7 +66,7 @@ However there is better way of creating arrays using Twig syntax::
 This extension was created to handle template converting and should be avoided.
 
 FormatPriceExtension
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``format_price`` function which covers ``oxprice`` Smarty plugin. Example of use::
 
@@ -82,7 +75,7 @@ This extension introduces ``format_price`` function which covers ``oxprice`` Sma
 First argument is price, and all other parameters are passed in associative array.
 
 IncludeWidgetExtension
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``include_widget`` function which covers ``oxid_include_widget`` Smarty plugin. Example of
 use::
@@ -92,7 +85,7 @@ use::
 All parameters are passed in associative array as first argument.
 
 InputHelpExtension
-------------------
+^^^^^^^^^^^^^^^^^^
 
 This extension introduces 2 helper functions: ``get_help_id`` and ``get_help_text`` which supports covering of Smarty
 ``oxinputhelp`` plugin. Examples of use:
@@ -106,7 +99,7 @@ This extension introduces 2 helper functions: ``get_help_id`` and ``get_help_tex
     {% include "inputhelp.tpl" with {'sHelpId': get_help_id("foo"), 'sHelpText': get_help_text("foo")} %}
 
 MailtoExtension
----------------
+^^^^^^^^^^^^^^^
 
 This extension introduces ``mailto`` function which covers ``mailto`` Smarty plugin. Example of use::
 
@@ -115,14 +108,14 @@ This extension introduces ``mailto`` function which covers ``mailto`` Smarty plu
 Address as mandatory parameter is passed as first argument, all other parameters are passed as second argument in array.
 
 MathExtension
--------------
+^^^^^^^^^^^^^
 
 This extension introduces few math functions not existing in Twig: cos, sin, tan, exp, log, log10, pi, sqrt::
 
     {{ cos(2*pi())/log(3) }}
 
 PhpFunctionExtension
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces few PHP functions not existing in Twig: count, empty, isset. Example of use::
 
@@ -131,7 +124,7 @@ This extension introduces few PHP functions not existing in Twig: count, empty, 
 All of these functions are deprecated and it's better to use ``length`` filter and ``is defined`` Twig test.
 
 ScriptExtension
----------------
+^^^^^^^^^^^^^^^
 
 This extension introduces ``script`` function which covers ``oxscript`` Smarty plugin. Example of use::
 
@@ -140,7 +133,7 @@ This extension introduces ``script`` function which covers ``oxscript`` Smarty p
 All parameters are passed in associative array as first argument.
 
 SmartyCycleExtension
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``smarty_cycle`` function which covers ``cycle`` Smarty plugin. Example of use::
 
@@ -151,7 +144,7 @@ First argument is array of values, and the second one is associative array of pa
 [[link to Twig cycle documentation]]
 
 StyleExtension
---------------
+^^^^^^^^^^^^^^
 
 This extension introduces ``style`` function which covers ``oxcycle`` Smarty plugin. Example of use::
 
@@ -160,7 +153,7 @@ This extension introduces ``style`` function which covers ``oxcycle`` Smarty plu
 All parameters are passed in associative array as a first argument.
 
 TranslateExtension
-------------------
+^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``translate`` function which covers ``oxmultilang`` Smarty plugin. Example of use::
 
@@ -169,7 +162,7 @@ This extension introduces ``translate`` function which covers ``oxmultilang`` Sm
 All parameters are passed in associative array as first argument.
 
 UrlExtension
-------------
+^^^^^^^^^^^^
 
 This extension introduces ``seo_url`` function and ``add_url_parameters`` filter which covers ``oxgetseourl`` and
 ``oxaddparams`` Smarty plugin. Example of use::
@@ -181,10 +174,10 @@ For both all parameters are passed in associative array as first argument and ``
 string.
 
 Filters
-=======
+-------
 
 CatExtension
-------------
+^^^^^^^^^^^^
 
 This extension introduces ``cat`` filter which covers ``cat`` Smarty plugin. Example of use::
 
@@ -195,70 +188,70 @@ This filter is deprecated and it's better to use Twig syntax::
     {{ varA ~ varB }}
 
 DateFormatExtension
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``date_format`` filter which covers ``date_format`` Smarty plugin. Example of use::
 
     {{ review.getCreatedAt()|date_format("%Y-%m- % d") }}
 
 EncloseExtension
-----------------
+^^^^^^^^^^^^^^^^
 
 This extension introduces ``enclose`` filter which covers ``oxenclose`` Smarty plugin. Examples of use::
 
     {{ article.oxarticles__oxartnum.value|enclose(encl) }}
 
 FileSizeExtension
------------------
+^^^^^^^^^^^^^^^^^
 
 This extension introduces ``file_size`` filter which covers ``oxfilesize`` Smarty plugin. Example of use::
 
     {{ oOrderFile.getFileSize()|file_size }}
 
 FormatTimeExtension
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``format_time`` filter which covers ``oxformattime`` Smarty plugin. Example of use::
 
     {{ oViewConf.getBasketTimeLeft()|format_time }}
 
 FormatDateExtension
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``format_date`` filter which covers ``oxformdate`` Smarty plugin. Example of use::
 
     {{ edit.oxorder__oxsenddate|format_date('datetime', true) }}
 
 FormatTimeExtension
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``format_time`` filter which covers ``oxformattime`` Smarty plugin. Example of use::
 
     {{ oViewConf.getBasketTimeLeft()|format_time }}
 
 FormatCurrencyExtension
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``format_currency`` filter which covers ``oxnumberformat`` Smarty plugin. Example of use::
 
     {{ 'EUR@ 1.00@ .@ ,@ EUR@ 2'|number_format(25000000.5584) }}
 
 SmartWordwrapExtension
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``smart_wordwrap`` filter which covers ``smartwordwrap`` Smarty plugin. Example of use::
 
     {{ 'Lorem ipsum'|smart_wordwrap(20) }}
 
 TranslateExtension
-------------------
+^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``translate`` filter which covers ``oxmultilangassign`` Smarty plugin. Example of use::
 
     {{ 'QUESTIONS_ABOUT_THIS_PRODUCT'|translate }}
 
 TranslateSalutationExtension
-----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``translate_salutation`` filter which covers ``oxmultilangsal`` Smarty plugin. Example of
 use::
@@ -266,21 +259,21 @@ use::
     {{ order.oxorder__oxbillsal.value|translate_salutation }}
 
 TruncateExtension
------------------
+^^^^^^^^^^^^^^^^^
 
 This extension introduces ``truncate`` filter which covers ``oxtruncate`` Smarty plugin. Example of use::
 
     {{ review.getObjectTitle()|truncate(60) }}
 
 WordwrapExtension
------------------
+^^^^^^^^^^^^^^^^^
 
 This extension introduces ``wordwrap`` filter which covers ``oxwordwrap`` Smarty plugin. Example of use::
 
     {{ sQuery|wordwrap(100, "<br>", true) }}
 
 Escape
-------
+^^^^^^
 
 Escape is internal Twig filter but it can be extended and so is done in OXID. Custom escapers that have been introduced:
 ``decentity``, ``hexentity``, ``hex``, ``htmlall``, ``mail``, ``nonstd``, ``quotes``, ``urlpathinfo``. All escapers can
@@ -288,40 +281,3 @@ be found under source\Internal\Twig\Escaper directory. Example of use::
 
     {{ 'example@me.com'|escape('mail') }}
 
-
-Extending Twig
-**************
-
-If needed extensions can replaced or new extension can be added.
-
-Replacing existing extensions
-=============================
-
-Replacing extension can be done in two ways. The first one is to simply
-`add extension to Twig environment <https://twig.symfony.com/doc/2.x/advanced.html#overloading>`__.
-The other way is to override extension service. Every extension is a service, so redefining particular service in custom
-services.yaml file does the job.
-
-Adding new extension
-====================
-
-Adding new extension is as simple as defining service. Extension is automatically added to Twig environment if service
-has ``twig.extension`` tag::
-
-  services:
-    OxidEsales\EshopCommunity\Internal\Twig\Extensions\StyleExtension:
-      class: OxidEsales\EshopCommunity\Internal\Twig\Extensions\StyleExtension
-      tags: ['twig.extension']
-
-Adding new escapers
-===================
-
-Every escaper is a class which implements \OxidEsales\EshopCommunity\Internal\Twig\Escaper\EscaperInterface. Escaper is
-registered in Twig as service with ``twig.escaper`` tag::
-
-  services:
-    OxidEsales\EshopCommunity\Internal\Twig\Escaper\MailEscaper:
-      class: OxidEsales\EshopCommunity\Internal\Twig\Escaper\MailEscaper
-      tags: ['twig.escaper']
-
-If needed, escapers can be overloaded by redefining services.

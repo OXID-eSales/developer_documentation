@@ -21,6 +21,7 @@ Table of Contents
    project/index
    modules/index
    themes/index
+   templating/index
    update/index
    di_container/index
 
