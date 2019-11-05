@@ -1,5 +1,5 @@
-Logging
-=======
+Logger Usage
+============
 
 OXID eShop provides a `PSR-3 <https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-3-logger-interface.md>`__
 compatible logging mechanism.
@@ -13,9 +13,6 @@ In a nutshell, you would log something in your code like this:
 
         $logger = Registry::getLogger();
         $logger->warning('Some message ...', [__CLASS__, __FUNCTION__]);
-
-Please, read also the :doc:`detailed usage <logging_usage>` information.
-
 
 Configuration and extension
 ---------------------------

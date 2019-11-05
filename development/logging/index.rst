@@ -6,5 +6,4 @@ Logging
     :glob:
 
     logging
-    logging_usage
     *
