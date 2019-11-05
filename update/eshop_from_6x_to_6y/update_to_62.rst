@@ -47,7 +47,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
       Composer will ask you to overwrite module and theme files. E.g.: "Update operation will overwrite oepaypal files in
       the directory source/modules. Do you want to overwrite them? (y/N)"
       If you include modules by ``"type": "path",`` in your :file:`composer.json` file like described in
-      :doc:`Best practice module setup </modules/best_practices/module_setup>`, answer ``No`` to this question..
+      :doc:`Best practice module setup </development/module/tutorials/module_setup>`, answer ``No`` to this question..
 
 
 #. For executing possible database migrations, in the project folder run:
@@ -60,10 +60,10 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 --------------------------------------
 
 The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
-Therefor the :doc:`new module configuration .yml </project/module_configuration/modules_configuration>` files need
+Therefor the :doc:`new module configuration .yml </development/project/module_configuration/modules_configuration>` files need
 to be synchronized with the configuration and
 activation status of your current modules.
-:doc:`Read here for background information </modules/installation_setup/index>`.
+:doc:`Read here for background information </development/module/installation_setup/index>`.
 
 1. Install the `update component <https://github.com/OXID-eSales/oxideshop-update-component>`__ via composer:
 
@@ -72,7 +72,7 @@ activation status of your current modules.
        composer require --no-interaction oxid-esales/oxideshop-update-component
 
 2. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
-   On the command line, execute the :doc:`console command </modules/console>`:
+   On the command line, execute the :doc:`console command </development/console>`:
 
    .. code:: bash
 
@@ -95,7 +95,7 @@ activation status of your current modules.
    After this step modules data should be removed from the database, modules functionality should not work anymore.
 
 5. Activate all configured modules which were previously active .
-   On the command line, execute the :doc:`console command </modules/console>`:
+   On the command line, execute the :doc:`console command </development/console>`:
 
    .. code:: bash
 
@@ -126,7 +126,7 @@ Troubleshooting
 
   * Up to OXID eShop 6.1, the array keys `constraints` and `constrains` were accepted in the file :file:`metadata.php`.
     OXID eShop 6.2 only allows the key `constraints`. Please refer to
-    :doc:`the metadata documentation of settings </modules/skeleton/metadataphp/amodule/settings>`.
+    :doc:`the metadata documentation of settings </development/module/skeleton/metadataphp/amodule/settings>`.
 
 * **The extension chain in the OXID eShop admin in :menuselection:`Extension -->  Modules --> Installed Shop Modules` is
   partly highlighted red and crossed out.**

@@ -22,7 +22,7 @@ In order to do update the database the update, you have to
    files described in the following (have in mind, that cleanup file will delete data, so SQL file contents must be
    checked before executing).
 
-3. Run :doc:`database migrations <../../oxid_components/migrations>` in OXID eShop 6 via the command:
+3. Run :doc:`database migrations </development/migrations>` in OXID eShop 6 via the command:
 
   .. code ::
 
@@ -161,7 +161,7 @@ ResultSetInterface
 * The methods ``DatabaseInterface::select()`` and ``DatabaseInterface::selectLimit()`` now return
   an object of the type ``ResultSetInterface``.
 
-More examples how to use the database, :doc:`can be found here. <../../modules/using_database>`
+More examples how to use the database, :doc:`can be found here. </development/module/using_database>`
 
 
 .. _update-eshop_53_to_6-database-read_and_write:

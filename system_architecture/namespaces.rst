@@ -8,7 +8,7 @@ So disregarding if the shop edition is CE/PE/EE, the `Unified Namespace` class n
 Generation of unified namespace classes
 ---------------------------------------
 
-The component :doc:`unified-namespace-generator <../oxid_components/unified_namespace_generator>` generates the
+The component :doc:`unified-namespace-generator <unified_namespace_generator>` generates the
 unified namespace classes on the fly, e.g. when you install or update the OXID eShop.
 
 
