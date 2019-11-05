@@ -8,3 +8,4 @@ Theme
     :glob:
 
     *
+    twig/index

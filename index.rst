@@ -11,19 +11,14 @@ Table of Contents
 -----------------
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :glob:
 
    getting_started/index
+   development/index
    system_architecture/index
-   Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
-   oxid_components/index
-   project/index
-   modules/index
-   themes/index
-   templating/index
    update/index
-   di_container/index
+   Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
 
 
 .. toctree::
