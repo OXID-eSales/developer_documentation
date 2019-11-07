@@ -1,7 +1,7 @@
 Custom OXID extensions
 ======================
 
-All extensions can be found in ``src\Extensions`` directory.
+All extensions can be found in ``src\Extensions`` directory of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__
 
 .. contents::
    :depth: 2
@@ -24,7 +24,7 @@ All parameters are passed as associative array right after the keyword ``hasrigh
 IfContent
 ^^^^^^^^^
 
-This extension introduces ``{% ifcontent %}`` tag which covers ``oxifcontent`` Smarty plugin. Opening tag syntax::
+This extension introduces ``{% ifcontent %}`` tag which covers the content loading functionality. Opening tag syntax::
 
     {% ifcontent ident|oxid ... set ... %}
 
@@ -40,8 +40,8 @@ after ``set`` keyword.
 IncludeDynamic
 ^^^^^^^^^^^^^^
 
-This extension introduces ``{% include_dynamic %}`` which covers ``oxid_include_dynamic`` Smarty plugin. Syntax is
-similar to Twig ``{% include %}`` tag::
+This extension introduces ``{% include_dynamic %}`` which renders or leaves dynamic parts with parameters in templates
+used by content caching algorithm. Syntax is similar to Twig ``{% include %}`` tag::
 
     {% include_dynamic ... with { ... } %}
 
@@ -55,7 +55,8 @@ Functions
 AssignAdvancedExtension
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This extensions introduces ``assign_advanced`` function which covers ``assign_adv`` Smarty plugin. Example of use::
+This extensions introduces ``assign_advanced`` function which assigns variables including arrays and range arrays.
+Example of use::
 
     {% set invite_array = assign_advanced("array('0' => '$sender_name', '1' => '$shop_name')") %}
 
@@ -68,7 +69,7 @@ This extension was created to handle template converting and should be avoided.
 FormatPriceExtension
 ^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``format_price`` function which covers ``oxprice`` Smarty plugin. Example of use::
+This extension introduces ``format_price`` function which outputs price in string format. Example of use::
 
     {{ format_price(VATitem, { currency: 'EUR' }) }}
 
@@ -77,8 +78,7 @@ First argument is price, and all other parameters are passed in associative arra
 IncludeWidgetExtension
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``include_widget`` function which covers ``oxid_include_widget`` Smarty plugin. Example of
-use::
+This extension introduces ``include_widget`` function which sets params and renders widget. Example of use::
 
     {{ include_widget({ cl: "oxwCategoryTree", cnid: oView.getCategoryId(), deepLevel: 0, noscript: 1, nocookie: 1 }) }}
 
@@ -87,21 +87,15 @@ All parameters are passed in associative array as first argument.
 InputHelpExtension
 ^^^^^^^^^^^^^^^^^^
 
-This extension introduces 2 helper functions: ``get_help_id`` and ``get_help_text`` which supports covering of Smarty
-``oxinputhelp`` plugin. Examples of use:
-
-* Smarty::
-
-    [{oxinputhelp ident="foo"}]
-
-* Twig::
+This extension introduces 2 helper functions: ``get_help_id`` and ``get_help_text`` which outputs help popup icon and
+help text. Examples of use:
 
     {% include "inputhelp.tpl" with {'sHelpId': get_help_id("foo"), 'sHelpText': get_help_text("foo")} %}
 
 MailtoExtension
 ^^^^^^^^^^^^^^^
 
-This extension introduces ``mailto`` function which covers ``mailto`` Smarty plugin. Example of use::
+This extension introduces ``mailto`` function which covers send email functionality. Example of use::
 
     {{ mailto('me@example.com', { text: 'send me some mail' }) }}
 
@@ -110,14 +104,14 @@ Address as mandatory parameter is passed as first argument, all other parameters
 MathExtension
 ^^^^^^^^^^^^^
 
-This extension introduces few math functions not existing in Twig: cos, sin, tan, exp, log, log10, pi, sqrt::
+This extension introduces few math functions that do not exist by default: cos, sin, tan, exp, log, log10, pi, sqrt::
 
     {{ cos(2*pi())/log(3) }}
 
 PhpFunctionExtension
 ^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces few PHP functions not existing in Twig: count, empty, isset. Example of use::
+This extension introduces few PHP functions that do not exist by default: count, empty, isset. Example of use::
 
     {{ (isset(myArray) and not empty(myArray)) ? count(myArray) : "Array is not set or it's empty" }}
 
@@ -126,7 +120,8 @@ All of these functions are deprecated and it's better to use ``length`` filter a
 ScriptExtension
 ^^^^^^^^^^^^^^^
 
-This extension introduces ``script`` function which covers ``oxscript`` Smarty plugin. Example of use::
+This extension introduces ``script`` function which collects given javascript includes/calls, but includes/calls them
+at the bottom of the page.. Example of use::
 
     {{ script({ include: "js/pages/details.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
@@ -146,7 +141,8 @@ First argument is array of values, and the second one is associative array of pa
 StyleExtension
 ^^^^^^^^^^^^^^
 
-This extension introduces ``style`` function which covers ``oxcycle`` Smarty plugin. Example of use::
+This extension introduces ``style`` function which collects given css files,  but includes them only at the top of
+the page. Example of use::
 
     {{ style({ include: "css/ie8.css", if: "IE 8" }) }}
 
@@ -155,7 +151,7 @@ All parameters are passed in associative array as a first argument.
 TranslateExtension
 ^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``translate`` function which covers ``oxmultilang`` Smarty plugin. Example of use::
+This extension introduces ``translate`` function which is responsible for translation functionality. Example of use::
 
     {{ translate({ ident: "ERROR_404" }) }}
 
@@ -164,8 +160,8 @@ All parameters are passed in associative array as first argument.
 UrlExtension
 ^^^^^^^^^^^^
 
-This extension introduces ``seo_url`` function and ``add_url_parameters`` filter which covers ``oxgetseourl`` and
-``oxaddparams`` Smarty plugin. Example of use::
+This extension introduces ``seo_url`` function and ``add_url_parameters`` filter which outputs SEO style url.
+Example of use::
 
     {{ seo_url({ ident: oViewConf.getSelfLink() }) }}
     {{ _lng.link|add_url_parameters(oView.getDynUrlParams()) }}
@@ -179,7 +175,7 @@ Filters
 CatExtension
 ^^^^^^^^^^^^
 
-This extension introduces ``cat`` filter which covers ``cat`` Smarty plugin. Example of use::
+This extension introduces ``cat`` filter which concatenates two strings. Example of use::
 
     {{ varA|cat(varB) }}
 
@@ -190,85 +186,81 @@ This filter is deprecated and it's better to use Twig syntax::
 DateFormatExtension
 ^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``date_format`` filter which covers ``date_format`` Smarty plugin. Example of use::
+This extension introduces ``date_format`` filter which is responsible for formatting the date into string.
+Example of use::
 
     {{ review.getCreatedAt()|date_format("%Y-%m- % d") }}
 
 EncloseExtension
 ^^^^^^^^^^^^^^^^
 
-This extension introduces ``enclose`` filter which covers ``oxenclose`` Smarty plugin. Examples of use::
+This extension introduces ``enclose`` filter. Examples of use::
 
     {{ article.oxarticles__oxartnum.value|enclose(encl) }}
 
 FileSizeExtension
 ^^^^^^^^^^^^^^^^^
 
-This extension introduces ``file_size`` filter which covers ``oxfilesize`` Smarty plugin. Example of use::
+This extension introduces ``file_size`` filter which converts integer file size to readable format. Example of use::
 
     {{ oOrderFile.getFileSize()|file_size }}
 
 FormatTimeExtension
 ^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``format_time`` filter which covers ``oxformattime`` Smarty plugin. Example of use::
+This extension introduces ``format_time`` filter which converts time to readable format. Example of use::
 
     {{ oViewConf.getBasketTimeLeft()|format_time }}
 
 FormatDateExtension
 ^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``format_date`` filter which covers ``oxformdate`` Smarty plugin. Example of use::
+This extension introduces ``format_date`` filter which converts date to readable format. Example of use::
 
     {{ edit.oxorder__oxsenddate|format_date('datetime', true) }}
-
-FormatTimeExtension
-^^^^^^^^^^^^^^^^^^^
-
-This extension introduces ``format_time`` filter which covers ``oxformattime`` Smarty plugin. Example of use::
-
-    {{ oViewConf.getBasketTimeLeft()|format_time }}
 
 FormatCurrencyExtension
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``format_currency`` filter which covers ``oxnumberformat`` Smarty plugin. Example of use::
+This extension introduces ``format_currency`` filter which formats currency in defined form. Example of use::
 
     {{ 'EUR@ 1.00@ .@ ,@ EUR@ 2'|number_format(25000000.5584) }}
 
 SmartWordwrapExtension
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``smart_wordwrap`` filter which covers ``smartwordwrap`` Smarty plugin. Example of use::
+This extension introduces ``smart_wordwrap`` filter which wraps a string of text at a given length and row count.
+Example of use::
 
     {{ 'Lorem ipsum'|smart_wordwrap(20) }}
 
 TranslateExtension
 ^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``translate`` filter which covers ``oxmultilangassign`` Smarty plugin. Example of use::
+This extension introduces ``translate`` filter which is responsible for translation functionality. Example of use::
 
     {{ 'QUESTIONS_ABOUT_THIS_PRODUCT'|translate }}
 
 TranslateSalutationExtension
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This extension introduces ``translate_salutation`` filter which covers ``oxmultilangsal`` Smarty plugin. Example of
-use::
+This extension introduces ``translate_salutation`` filter which is responsible for salutation translation functionality.
+Example of use::
 
     {{ order.oxorder__oxbillsal.value|translate_salutation }}
 
 TruncateExtension
 ^^^^^^^^^^^^^^^^^
 
-This extension introduces ``truncate`` filter which covers ``oxtruncate`` Smarty plugin. Example of use::
+This extension introduces ``truncate`` filter which truncates a string to a certain length if necessary, optionally
+splitting in the middle of a word, and appending the 'etc' string or inserting 'etc' into the middle. Example of use::
 
     {{ review.getObjectTitle()|truncate(60) }}
 
 WordwrapExtension
 ^^^^^^^^^^^^^^^^^
 
-This extension introduces ``wordwrap`` filter which covers ``oxwordwrap`` Smarty plugin. Example of use::
+This extension introduces ``wordwrap`` filter which wraps a string of text at a given length. Example of use::
 
     {{ sQuery|wordwrap(100, "<br>", true) }}
 

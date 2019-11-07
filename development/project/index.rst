@@ -7,3 +7,4 @@ Project
 
     *
     module_configuration/index
+    twig_template_engine/index
