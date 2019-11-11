@@ -1,8 +1,11 @@
-Module services
-===============
+Services
+========
 
-In module you can define and register your own services, inject them as dependencies
-in another service or use shop service in own service via OXID DI Container.
+In a module, you can:
+
+.. contents::
+    :local:
+
 
 Define service
 --------------
@@ -25,11 +28,13 @@ responsible service for this:
         }
     }
 
+.. _register_services-20191111:
+
 Register service
 ----------------
 
 Than you can register the service in OXID DI Container. Create in root directory of your module
-services.yaml file and register it there:
+:file:`services.yaml` file and register it there:
 
 .. code:: yaml
 
@@ -43,6 +48,8 @@ services.yaml file and register it there:
 
     We recommend to use the interface namespace as the DI container key for
     the service if you have only the one implementation for the interface.
+
+.. _inject_services-20191111:
 
 Inject own, third party module or shop services
 -----------------------------------------------
