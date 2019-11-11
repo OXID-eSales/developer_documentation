@@ -15,7 +15,7 @@ Providing shop files
     edition of OXID eShop.
 
     After Composer installed all dependencies, it executes several tasks. One of them is to generate the classes of the
-    :doc:`unified namespace <../../system_architecture/namespaces>` `\\OxidEsales\\Eshop`.
+    :doc:`unified namespace <../../system_architecture/unified_namespace/index>` `\\OxidEsales\\Eshop`.
 
 
     **Watch out for error messages during the installation procress.**

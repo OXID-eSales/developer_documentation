@@ -3,7 +3,6 @@
 Module
 ======
 
-OXID eShop modules are the prefered way of extending and customizing the OXID eShop to your needs.
 In this section you'll find all the necessary information to use modules, understand how they work
 and how to write a module by yourself.
 

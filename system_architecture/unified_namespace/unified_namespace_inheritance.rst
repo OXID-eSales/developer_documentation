@@ -1,21 +1,7 @@
-Unified Namespace Classes
-=========================
-
-The `Unified Namespace` (``OxidEsales\Eshop``) provides an edition independent namespace for module and core developers.
-So disregarding if the shop edition is CE/PE/EE, the `Unified Namespace` class name is to be used in code (core and modules).
-
-
-Generation of unified namespace classes
----------------------------------------
-
-The component :doc:`unified-namespace-generator <unified_namespace_generator>` generates the
-unified namespace classes on the fly, e.g. when you install or update the OXID eShop.
-
-
 .. _system_architecture-namespaces-inheritiance_chain:
 
 Inheritance chain of unified namespace classes
-----------------------------------------------
+==============================================
 
 
 Example OXID eShop Professional Edition

@@ -1,11 +1,10 @@
 Unified Namespace Generator
 ===========================
 
-See `github-repository <https://github.com/OXID-eSales/oxideshop-unified-namespace-generator>`__
-
-This component is responsible for creating the classes of the namespace ``OxidEsales\Eshop`` which are called
-:doc:`unified namespace classes <../system_architecture/namespaces>`.
-
+The component `unified-namespace-generator <https://github.com/OXID-eSales/oxideshop-unified-namespace-generator>`__
+generates the classes of the namespace ``OxidEsales\Eshop`` which are called
+:doc:`unified namespace classes </system_architecture/unified_namespace/index>`.This is done on the fly, e.g. when you install
+or update the OXID eShop.
 
 .. _system_architecture_unified_namespace_generator_when_unified_namespace_generated:
 
