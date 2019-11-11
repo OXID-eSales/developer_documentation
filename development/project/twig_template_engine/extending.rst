@@ -10,6 +10,7 @@ Replacing extension can be done in two ways.
 
 * The first one is to simply `add extension to Twig environment <https://twig.symfony.com/doc/2.x/advanced.html#overloading>`__.
 * The other way is to override extension service of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__ .
+
 As every extension is a service, so redefining particular service in custom :file:`services.yaml` file does the job.
 
 Adding new extension
