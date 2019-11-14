@@ -1,6 +1,10 @@
 Services
 ========
 
+The OXID eShop uses the Symfony DI Container to handle services. For
+more information about DI Container refer to the
+`Symfony DI Container documentation <https://symfony.com/doc/current/components/dependency_injection.html>`_
+
 In a module, you can:
 
 .. contents::
