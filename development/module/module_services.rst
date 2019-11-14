@@ -33,7 +33,7 @@ responsible service for this:
 Register service
 ----------------
 
-Than you can register the service in OXID DI Container. Create in root directory of your module
+Then you can register the service in OXID DI Container. Create in root directory of your module
 :file:`services.yaml` file and register it there:
 
 .. code:: yaml
@@ -54,7 +54,7 @@ Than you can register the service in OXID DI Container. Create in root directory
 Inject own, third party module or shop services
 -----------------------------------------------
 
-You can use you own, shop services or even services of other modules via dependency injection.
+You can use your own, shop services or even services of other modules via dependency injection.
 
 .. code:: php
 
@@ -77,7 +77,7 @@ You can use you own, shop services or even services of other modules via depende
         }
     }
 
-In this example shop service with id 'Psr\Log\LoggerInterface' will be auto wired and
+In this example a shop service with id 'Psr\Log\LoggerInterface' will be autowired and
 no changes in the yaml file are needed, because the key of the logger service is the same as provided
 in the constructor argument type.
 
