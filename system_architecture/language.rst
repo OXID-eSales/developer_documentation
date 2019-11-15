@@ -73,7 +73,7 @@ After adding (and deleting as well) a language, views have to be regenerated.
 
 Point is now, that when the shop is switched to a certain language (that is active in frontend) and we load
 an article object ``$article``, then when accessing ``$article->oxarticles__oxtitle`` we actually get the data for
-the currently active language. More spcific: assume we have an EE and use subshop 1.
+the currently active language. More specific: assume we have an EE and use subshop 1.
 So when we have language id 9 active (let's name it language de), the article
 title originates from the core table `oxarticles_set1.oxtitle_9`, this info ends up in `oxv_oxarticle_1_de.oxtitle`
 and the article object is loaded from `oxv_oxarticle_1_de`.
