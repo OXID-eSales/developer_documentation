@@ -68,7 +68,18 @@ Sections
 External links
 --------------
 
-To be done...
+External links can be used as described in example.
+
+**Example**:
+
+- Code:
+   .. code::
+
+      `OXID eSales website <https://www.oxid-esales.com/>`__
+
+
+- Rendered result:
+   `OXID eSales website <https://www.oxid-esales.com/>`__
 
 Use Ref or Doc for links
 ------------------------
@@ -85,11 +96,11 @@ Use `Doc` when need to link to another file in same catalog.
 - Code:
    .. code::
 
-      :doc:`Modules <modules/index>`
+      :doc:`Modules <development/module/index>`
 
 
 - Rendered result:
-   :doc:`Modules <modules/index>`
+   :doc:`Modules <development/module/index>`
 
 .. _conventions_for_using_ref-20160419:
 
@@ -184,23 +195,155 @@ results in
 Highlight Text
 --------------
 
-E.g. for highlighting a PHP class name in a running text.
+Inline markup for menu navigation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code::
 
-  Use the function ``Regististry::set()`` here.
+    :menuselection:`Artikel verwalten -->  Artikel`
 
-results in
+results in: :menuselection:`Artikel verwalten -->  Artikel`
 
-Use the function ``Regististry::set()`` here.
+Inline markup for file names
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. code::
+
+    :file:`/usr/lib/python2.{x}/site-packages`
+
+results in: :file:`/usr/lib/python2.{x}/site-packages`
+
+
+Inline markup for controls
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :guilabel:`Cancel`
+
+results in: :guilabel:`Cancel`
+
+Inline markup for code
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    ``exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']``
+
+results in: ``exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']``
+
+Inline markup for commands
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :command:`cd ..\\GitHub\\Dokumentation-und-Hilfe`
+
+results in: :command:`cd ..\\GitHub\\Dokumentation-und-Hilfe`
+
+
+Inline markup for downloads
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. code::
+
+    :download:`/downloads/varnish/6.0.0/default.vcl`
+
+.. _conventions_images:
 
 Images
 ------
 
-To be done...
+-  Do not commit big files or images. Use a link to an external source inside repository. This will help to keep repository small.
 
-Diagrams
---------
+.. raw:: html
 
-To be done...
+   <p>
+      <img width="100" src="https://www.google.co.uk/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+   </p>
+
+.. code:: html
+
+   .. raw:: html
+
+      <p>
+         <img width="100" src="https://www.google.co.uk/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+      </p>
+
+UML diagrams
+------------
+
+Please do not commit big files or images.
+
+Use UML source written with `Plant UML <http://plantuml.com/>`__ or a similar tool instead of an UML image.
+
+.. note::
+
+   PHPStorm has `Plant UML plugin <https://plugins.jetbrains.com/plugin/7017>`__ which generates UML on the fly.
+   Look for "PlantUML tab" at the right upper corner near "Remote Host" to see generated result.
+
+**Example**:
+
+**- Rendered result**:
+
+.. uml::
+
+   @startuml
+   :functions.php oxNew('oxArticle');
+   :oxUtilsObject::oxNew('oxArticle');
+   if (Find real class name in cache) then
+      ->found;
+      :Get class name from static cache;
+   else
+      ->not found;
+      :oxUtilsObject::getClassName();
+      :oxEditionCodeHandler::getClassName();
+      if (shop edition check) then
+         ->Enterprise;
+         :OxidEsales\Enterprise\ClassMap;
+      else
+         ->Professional;
+         :OxidEsales\Professional\ClassMap;
+      endif
+      :oxModuleChainsGenerator::createClassChain('\Enterprise\Article', 'oxArticle');
+      :$extensionsList = oxModuleVariablesLocator::getModuleVariable('aModules');
+      :oxModuleChainsGenerator:filterInactiveExtensions($extensionsList);
+      :$classExtensionsList = $extensionsList['oxArticle'];
+      :oxModuleChainsGenerator:createClassExtensions($classExtensionsList, '\Enterprise\Article');
+
+   endif
+   :Create class with new \Enterprise\Article;
+   @enduml
+
+**- Code**:
+
+.. code::
+
+   .. uml::
+
+      @startuml
+      :functions.php oxNew('oxArticle');
+      :oxUtilsObject::oxNew('oxArticle');
+      if (Find real class name in cache) then
+         ->found;
+         :Get class name from static cache;
+      else
+         ->not found;
+         :oxUtilsObject::getClassName();
+         :oxEditionCodeHandler::getClassName();
+         if (shop edition check) then
+            ->Enterprise;
+            :OxidEsales\Enterprise\ClassMap;
+         else
+            ->Professional;
+            :OxidEsales\Professional\ClassMap;
+         endif
+         :oxModuleChainsGenerator::createClassChain('\Enterprise\Article', 'oxArticle');
+         :$extensionsList = oxModuleVariablesLocator::getModuleVariable('aModules');
+         :oxModuleChainsGenerator:filterInactiveExtensions($extensionsList);
+         :$classExtensionsList = $extensionsList['oxArticle'];
+         :oxModuleChainsGenerator:createClassExtensions($classExtensionsList, '\Enterprise\Article');
+
+      endif
+      :Create class with new \Enterprise\Article;
+      @enduml

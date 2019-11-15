@@ -2,9 +2,15 @@ language: python
 python:
   - "2.7"
 # command to install dependencies
+addons:
+  apt:
+    packages:
+    - graphviz
 install:
   - pip install sphinx
   - pip install sphinx_rtd_theme
+  - pip install git+https://github.com/fabpot/sphinx-php.git
+  - pip install sphinxcontrib-plantuml
 before_script: mkdir build
 # command to run tests
 script: sphinx-build  -b html . ./build
