@@ -63,14 +63,13 @@ Database Module
 ---------------
 
 This module will be used for changing configuration option values of the shop or deleting entries from the
-database. It requires the **Codeception Db** module and the shop's config_key as parameter.
+database. It requires the **Codeception Db** module.
 
 .. code::
 
         modules:
             enabled:
                 - \OxidEsales\Codeception\Module\Database:
-                    config_key: 'fq45QS09_fqyx09239QQ'
                     depends: Db
 
 
