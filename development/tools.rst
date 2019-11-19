@@ -1,8 +1,8 @@
-Developer Toolbox
+Tools
 =================
 Developer Tools component
 -------------------------
-`The Developer Tools component <https://github.com/OXID-eSales/testing_library/>`__ is a collection of utilities added
+`The Developer Tools component <https://github.com/OXID-eSales/developer-tools/>`__ is a collection of utilities added
 to assist during development stage.
 Please follow the link below to find more about available commands and their usage:
 
