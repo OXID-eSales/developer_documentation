@@ -86,4 +86,4 @@ OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
 
 Component installed via composer which has type `oxideshop-component`. More about component please read
-:doc:`here </development/component>`.
+:doc:`here </development/modules_components_themes/component>`.

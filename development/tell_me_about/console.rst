@@ -119,7 +119,7 @@ OXID eShop component commands
 
 Component commands works similarly as module commands, just one difference, they become active instantly after
 installation via composer. For more information refer to
-:doc:`OXID eShop component <component>`.
+:doc:`OXID eShop component </development/modules_components_themes/component>`.
 
 Command class
 ^^^^^^^^^^^^^

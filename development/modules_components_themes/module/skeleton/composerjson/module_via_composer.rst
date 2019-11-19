@@ -3,7 +3,7 @@
 Composer.json for an OXID eShop Module
 ======================================
 
-OXID eShop modules with :doc:`metadata version greater 2.0 </development/module/skeleton/metadataphp/index>` are installed via Composer by using the
+OXID eShop modules with :doc:`metadata version greater 2.0 </development/modules_components_themes/module/skeleton/metadataphp/index>` are installed via Composer by using the
 `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
 In order to install a module correctly, this plugin requires four fields to be described in module ``composer.json`` file:

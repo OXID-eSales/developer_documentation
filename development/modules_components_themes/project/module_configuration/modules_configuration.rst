@@ -109,7 +109,7 @@ Example structure you can see bellow:
 Configuration files
 """""""""""""""""""
 
-These files contains information of all modules which are :doc:`installed </development/module/installation_setup/installation>`.
+These files contains information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
 During the installation process all of the information from module `metadata.php` is being transferred to the
 configuration files. For example you have OXID eShop without any modules, so this file will be empty. When you will run
 installation let's say for OXID eShop PayPal module, files in `var/shops/` will be filled with information from

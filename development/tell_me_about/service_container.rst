@@ -5,8 +5,8 @@ The OXID eShop uses the Symfony DI Container to handle services. For
 more information about DI Container refer to the
 `Symfony DI Container documentation <https://symfony.com/doc/current/components/dependency_injection.html>`_
 
-Services can be used in :doc:`modules </development/module/module_services>` and
-:doc:`OXID eShop components </development/component>`. You can use services in multiple ways:
+Services can be used in :doc:`modules </development/modules_components_themes/module/module_services>` and
+:doc:`OXID eShop components </development/modules_components_themes/component>`. You can use services in multiple ways:
 
 .. contents::
     :local:
@@ -14,7 +14,7 @@ Services can be used in :doc:`modules </development/module/module_services>` and
 Creating services
 -----------------
 
-There is a :doc:`step by step instructions for modules </development/module/module_services>` but the instructions
+There is a :doc:`step by step instructions for modules </development/modules_components_themes/module/module_services>` but the instructions
 are the same for components. Modules need to be activated in order to make the services
 included working in contrast to components which just need to be installed by composer.
 
@@ -45,7 +45,7 @@ Replacing OXID eShop services in a project
 ------------------------------------------
 
 In some cases you might need to change system services behaviour. Creating a replacement for OXID eShop system services
-should be done in a :doc:`/development/component` and not in a module.
+should be done in a :doc:`/development/modules_components_themes/component` and not in a module.
 
 You can overwrite system services in your project.
 For this purpose there is a file named :file:`configurable_services.yaml`, which you will find (or will have to create)

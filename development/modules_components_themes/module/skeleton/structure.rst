@@ -137,7 +137,7 @@ Example:
                                   └── myvendormymodule_admin_en_lang.php
                                   └── module_options.php
 
-For translations of module settings, have a look at the section :doc:`settings of the metadata file </development/module/skeleton/metadataphp/amodule/settings>`.
+For translations of module settings, have a look at the section :doc:`settings of the metadata file </development/modules_components_themes/module/skeleton/metadataphp/amodule/settings>`.
 
 .. note::
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``

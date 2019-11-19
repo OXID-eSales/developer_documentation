@@ -41,5 +41,5 @@ Manual installation
 ^^^^^^^^^^^^^^^^^^^
 
 Manual installation is another way of installing a module, which usually is used for module development.
-The steps can be found in document: :doc:`best practice module setup for development </development/module/tutorials/module_setup>`.
+The steps can be found in document: :doc:`best practice module setup for development </development/modules_components_themes/module/tutorials/module_setup>`.
 

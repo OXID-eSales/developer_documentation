@@ -35,4 +35,4 @@ For module deactivation you would need to execute this command:
 **3. Activate all configured modules at once:**
 
 All modules activation usually should be used during deployment phase. How to activate all modules at once please read
-:doc:`modules configuration and deployment document </development/project/module_configuration/modules_configuration_deployment>`.
+:doc:`modules configuration and deployment document </development/modules_components_themes/project/module_configuration/modules_configuration_deployment>`.
