@@ -1,7 +1,9 @@
 Tools
-=================
+=====
+
 Developer Tools component
 -------------------------
+
 `The Developer Tools component <https://github.com/OXID-eSales/developer-tools/>`__ is a collection of utilities added
 to assist during development stage.
 Please follow the link below to find more about available commands and their usage:
@@ -10,12 +12,13 @@ Please follow the link below to find more about available commands and their usa
 
 The reset-shop command
 ----------------------
+
 The :code:`reset-shop` command is a part of `OXID Testing Library. <https://github.com/OXID-eSales/testing_library/>`__
 It can be used to quickly retrieve a working OXID eShop installation in case the application is failing to start properly
 (e.g. due to misconfiguration).
 
 Running  :code:`reset-shop`:
-    - initiates :doc:`generation of unified namespace classes</system_architecture/unified_namespace_generator>`
+    - initiates :doc:`generation of unified namespace classes</system_architecture/unified_namespace/unified_namespace_generator>`
     - resets project configuration
     - calls ShopInstaller service to:
         - clear temporary files

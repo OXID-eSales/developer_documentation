@@ -96,11 +96,11 @@ Use `Doc` when need to link to another file in same catalog.
 - Code:
    .. code::
 
-      :doc:`Modules <development/module/index>`
+      :doc:`Modules <development/modules_components_themes/module/index>`
 
 
 - Rendered result:
-   :doc:`Modules <development/module/index>`
+   :doc:`Modules <development/modules_components_themes/module/index>`
 
 .. _conventions_for_using_ref-20160419:
 
