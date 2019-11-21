@@ -19,8 +19,10 @@ command line:
 2. Configure PhpStorm to use CodeSniffer
 ----------------------------------------
 
-#. Configure the path to CodeSniffer in PhpStorm. This is described in the
+#. Install and configure PHP CodeSniffer in PhpStorm. This is described in the
    `Jetbrains documentation <https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html>`_
+   (set code sniffer by remote interpreter if CodeSniffer is installed in VM. See
+   `Jetbrains documentation <https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html#configure-php-code-sniffer-script-associated-with-php-interpreter>`_).
 
 #. PhpStorm has multiple profiles where you can configure, how PHP files should be inspected:
 
@@ -28,14 +30,14 @@ command line:
    #. Choose :menuselection:`Editor --> Inspections`
    #. Choose :menuselection:`Profile: Project Default`.
    #. Choose :menuselection:`PHP --> Quality Tools` and enable :menuselection:`PHP Code Sniffer validation`.
-   #. Choose :menuselection:`Coding standard: PSR2`.
+   #. Choose :menuselection:`Coding standard: PSR12` (PSR12 needs CodeSniffer >=3.3.0).
 
 #. Configure the PhpStorm editor to use PSR2 as well:
 
    #. Go to :menuselection:`File --> Settings`.
-   #. Choose :menuselection:`Editor -> Code Style -> PHP`
+   #. Choose :menuselection:`Editor --> Code Style --> PHP`
    #. Select :menuselection:`Scheme: Project`.
-   #. Select :menuselection:`Set from --> Predefined Style --> PSR1/PSR2`.
+   #. Select :menuselection:`Set from --> Predefined Style --> PSR12` (PSR12 needs CodeSniffer >=3.3.0).
 
 3. Coding Style in Action
 -------------------------
