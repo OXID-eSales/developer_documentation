@@ -1,15 +1,5 @@
-Jetbrains PhpStorm
-==================
-
-This howto relies on an :doc:`installed OXID eShop </getting_started/installation/index>` on a running
-`OXID eShop VM <https://github.com/OXID-eSales/oxvm_eshop>`__.
-If you are using a different environment, this documentation might change slightly.
-
-
-
-
-Executing tests
----------------
+Executing Tests
+===============
 
 In order to execute OXID eShop tests (or any tests written with the
 `Testing Library <https://github.com/OXID-eSales/testing_library>`__)
@@ -40,4 +30,3 @@ settings:
   ``Default configuration file``: ``/var/www/oxideshop/vendor/oxid-esales/testing-library/phpunit.xml``
 
   ``Default bootstrap file``: Not configured
-
