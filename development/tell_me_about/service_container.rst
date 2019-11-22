@@ -40,6 +40,7 @@ Getting services
 .. important::
     Please consider the hints in the section :ref:`Stable OXID eShop Core Services <stable_core_services-20191111>`.
 
+.. _how_to_replace_shop_services-20854932:
 
 Replacing OXID eShop services in a project
 ------------------------------------------

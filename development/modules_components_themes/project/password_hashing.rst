@@ -66,9 +66,9 @@ After changing the configuration, you have to delete the container cache.
 
 How can I hash passwords by my own implementation?
 --------------------------------------------------
+If you want to implement password hashing by your own, you have to implement the interfaces:
 
-If you want to implement password hashing by your own, you have to implement the interfaces
-``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordHashServiceInterface``,
-``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordVerificationServiceInterface`` and
-exchange the OXID eShop default services by your implementation in the file
-:file:`var/configuration/configurable_services.yaml`.
+- ``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordHashServiceInterface``,
+- ``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordVerificationServiceInterface``
+
+Then use ':ref:`How to Replacing OXID eShop services <how_to_replace_shop_services-20854932>`' guide to override the OXID eShop default services.
