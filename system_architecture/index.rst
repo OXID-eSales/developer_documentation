@@ -5,4 +5,5 @@ System Architecture
     :titlesonly:
     :glob:
 
+    unified_namespace/index
     *

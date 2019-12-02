@@ -35,11 +35,17 @@ You can contribute to this documentation by creating a pull request on `the repo
 documentation <https://github.com/OXID-eSales/developer_documentation>`__. Conventions for writing documentation
 can be found :doc:`here <conventions>`.
 
+Help improving OXID eShop
+-------------------------
+
+Please read the `documentation how to contribute via pull
+requests <https://github.com/OXID-eSales/oxideshop_ce/blob/master/CONTRIBUTING.md>`__
+
+
 Useful links
 ------------
 
 - `OXIDforge Tutorials <https://oxidforge.org/en/shop/tutorial>`__
 - `OXID eShop Forum <http://forum.oxid-esales.com>`__
-- `OXID eShop source code documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>`__
 
 .. |Home| image:: media/icons-en/home.png
