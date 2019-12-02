@@ -1,25 +1,52 @@
 Update
 ======
 
-This page describes how you can update from OXID eShop version 6.1.x to 6.2.0. If you want to update to any other
+This page describes update process for OXID eShop version 6.2.x to 6.3.0. If you want to update to any other
 version, please switch to the appropriate version of the documentation.
 
+.. warning::
 
-Depending on your existing OXID eShop installation, you need to perform one or more of the following actions:
+    Starting from version 6.3.0, OXID eShop stops using MySQL ENCODE() string encryption. As a consequence - all
+    existing database records, encoded previously with the database-level encryption, will be decoded and stored as plain text.
+    Please consider applying any application-level encryption/decryption, suitable to the needs of your application,
+    before storing/retrieving sensitive data.
 
 .. contents ::
     :local:
     :depth: 1
 
-1. Composer update
-------------------
+.. note::
+    Please complete all update steps in provided order (steps cant not be skipped or swapped) to ensure data consistency.
+    Don't forget to prepare a back-up copy for your database before starting.
 
+
+1. Installing OXID eShop update component
+-----------------------------------------
+Start with installation of necessary version of
+`OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component/tree/b-6.3>`__
+to prepare your application for updating:
+
+    .. code:: bash
+
+        composer require oxid-esales/oxideshop-update-component:^v2.0.0
+
+2. Decoding `oxconfig` values
+-----------------------------
+
+Decode values stored in `oxconfig` database table by running:
+
+    .. code:: bash
+
+        vendor/bin/oe-console oe:oxideshop-update-component:decode-config-values
+
+3. Updating the application
+---------------------------------------
 #. Please edit your root :file:`composer.json` file by updating contents of `require` and `require-dev` nodes:
 
-   .. code:: json
+       .. code:: json
 
         "require": {
-            "oxid-esales/oxideshop-metapackage-ce": "v6.2.0"
+            "oxid-esales/oxideshop-metapackage-ce": "v6.3.0"
         },
         "require-dev": {
             "oxid-esales/testing-library": "^v7.0.1",
@@ -28,17 +55,13 @@ Depending on your existing OXID eShop installation, you need to perform one or m
             "oxid-esales/azure-theme": "^v1.4.2"
         },
 
-`Example: updated values for OXID eShop CE v6.2.0`
+    `Example: updated values for OXID eShop CE v6.3.0`
 
-You can find current :file:`composer.json` values for your shop edition in OXID eShop project repository:
+    You can find current :file:`composer.json` values for your shop edition in OXID eShop project repository:
 
-- CE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ce/composer.json
-- PE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-pe/composer.json
-- EE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ee/composer.json
-
-.. note::
-    New version of testing-library requires php-zip extension.
-    You might need to install it to be able to update OXID eShop from oxvm_eshop.
+    - CE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.3-ce/composer.json
+    - PE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.3-pe/composer.json
+    - EE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.3-ee/composer.json
 
 #. Clean up the :file:`tmp` folder
 
@@ -46,23 +69,20 @@ You can find current :file:`composer.json` values for your shop edition in OXID 
 
       rm -rf source/tmp/*
 
-#. For updating dependencies (necessary to update all libraries), in the project folder run:
+#. Run following to update dependencies:
 
    .. code:: bash
 
       composer update --no-plugins --no-scripts
 
-#. Copy the file :file:`overridablefunctions.php` from the :file:`vendor` directory to the OXID eShop :file:`source` directory:
+#. Run the same command without arguments to initiate all necessary scripts and prepare the compilation:
 
    .. code:: bash
 
-      cp vendor/oxid-esales/oxideshop-ce/source/overridablefunctions.php source/
+        composer update
 
-#. For executing all necessary scripts to actually gather the new compilation, in the project folder run:
-
-   .. code:: bash
-
-      composer update #(You will be prompted wether to overwrite existing code for several components. The default value is N [no] but of course you should take care to reply with y [yes].)
+        #You might be prompted to allow overwriting existing code for several components.
+        #The default value is N [no]
 
    .. important::
 
@@ -72,88 +92,22 @@ You can find current :file:`composer.json` values for your shop edition in OXID 
       :doc:`Best practice module setup </development/modules_components_themes/module/tutorials/module_setup>`, answer ``No`` to this question..
 
 
-#. For executing possible database migrations, in the project folder run:
+#. Run following to start database migration scripts:
 
    .. code:: bash
 
       vendor/bin/oe-eshop-db_migrate migrations:migrate
 
-2. Update of the module configurations
---------------------------------------
+4. Decoding `oxuserpayments` values
+-----------------------------------
 
-The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
-Therefor the :doc:`new module configuration .yml </development/modules_components_themes/project/module_configuration/modules_configuration>` files need
-to be synchronized with the configuration and
-activation status of your current modules.
-:doc:`Read here for background information </development/modules_components_themes/module/installation_setup/index>`.
-
-1. Install the `update component <https://github.com/OXID-eSales/oxideshop-update-component>`__ via composer:
+Complete the decoding process by running:
 
     .. code:: bash
 
-       composer require --no-interaction oxid-esales/oxideshop-update-component
+        vendor/bin/oe-console oe:oxideshop-update-component:decode-user-payment-values
 
-2. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
-   On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
+.. note::
 
-   .. code:: bash
-
-      vendor/bin/oe-console oe:oxideshop-update-component:install-all-modules
-
-3. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
-   database to the :file:`.yml` configuration files.
-
-   .. code:: bash
-
-      vendor/bin/oe-console oe:oxideshop-update-component:transfer-module-data
-
-4. Remove modules data which already presents the yml files from the database to avoid duplications and errors
-   during the module activation.
-
-   .. code:: bash
-
-      vendor/bin/oe-console oe:oxideshop-update-component:delete-module-data-from-database
-
-   After this step modules data should be removed from the database, modules functionality should not work anymore.
-
-5. Activate all configured modules which were previously active .
-   On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
-
-   .. code:: bash
-
-      vendor/bin/oe-console oe:module:apply-configuration
-
-   After this step, all modules which were previously active, should be active and have the correct configuration set.
-
-6. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
-
-3. Remove old files
--------------------
-
-There is a list of files that are not used anymore by OXID eShop, and those files can be removed manually. If you are not using them, its recommended to remove listed files.
-
-* source/xd_receiver.htm
-
-Troubleshooting
----------------
-
-* **Error message: `Module directory of ModuleX could not be installed due to The variable $sMetadataVersion must be
-  present in ModuleX/metadata.php and it must be a scalar.`**
-
-  * Up to OXID eShop 6.1, modules without a metadata version in the file :file:`metadata.php` were accepted.
-    OXID eShop 6.2 requires to set a
-    :ref:`metadata version <modules_skeleton_metadata_v21_structure>` in ModuleX :file:`metadata.php`.
-
-* **Error message `The metadata key constrains is not supported in metadata version 2.0.`**
-
-  * Up to OXID eShop 6.1, the array keys `constraints` and `constrains` were accepted in the file :file:`metadata.php`.
-    OXID eShop 6.2 only allows the key `constraints`. Please refer to
-    :doc:`the metadata documentation of settings </development/modules_components_themes/module/skeleton/metadataphp/amodule/settings>`.
-
-* **The extension chain in the OXID eShop admin in :menuselection:`Extension -->  Modules --> Installed Shop Modules` is
-  partly highlighted red and crossed out.**
-
-  * This must not be an error. Up to OXID eShop 6.1, only extensions of active modules were shown. OXID eShop 6.2 shows
-    extensions of all installed modules (active and inactive). If a module is inactive, the extensions of this module
-    are highlighted red and crossed out. This new behavior means, you can configure the extension chain of modules which
-    are not activated yet.
+    These decoding commands (`decode-config-values` and `decode-user-payment-values`) are applicable only within the scope
+    of this update and are not expected to be run more than once.
