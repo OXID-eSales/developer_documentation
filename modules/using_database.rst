@@ -63,8 +63,8 @@ Making a query
 Using the ``ResultsetInterface``:
 
 .. code:: php
-
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
+         $query = "SELECT myfield FROM mytable WHERE myid = ?";
+         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query, [$parameter]);
          //Fetch the results row by row
          if ($resultSet != false && $resultSet->count() > 0) {
              while (!$resultSet->EOF) {
@@ -79,7 +79,7 @@ Using the method ``ResultsetInterface::fetchAll()``:
 
 .. code:: php
 
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
+         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query, [$parameter]);
          //Fetch all at once (beware of big arrays)
          $allResults = $resultSet->fetchAll()
          foreach($allResults as $row) {
@@ -93,7 +93,7 @@ Using the method ``ResultsetInterface::fetchAll()``:
 
     .. code:: php
 
-         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query);
+         $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query, [$parameter]);
          while ($row = $resultSet->fetchRow()) {
              //do something
          };
