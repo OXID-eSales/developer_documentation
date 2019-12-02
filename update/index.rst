@@ -16,29 +16,29 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 
 #. Please edit your root :file:`composer.json` file by updating contents of `require` and `require-dev` nodes:
 
-   .. code:: json
+       .. code:: json
 
-        "require": {
-            "oxid-esales/oxideshop-metapackage-ce": "v6.2.0"
-        },
-        "require-dev": {
-            "oxid-esales/testing-library": "^v7.0.1",
-            "incenteev/composer-parameter-handler": "^v2.0.0",
-            "oxid-esales/oxideshop-ide-helper": "^v3.1.2",
-            "oxid-esales/azure-theme": "^v1.4.2"
-        },
+            "require": {
+                "oxid-esales/oxideshop-metapackage-ce": "v6.2.0"
+            },
+            "require-dev": {
+                "oxid-esales/testing-library": "^v7.0.1",
+                "incenteev/composer-parameter-handler": "^v2.0.0",
+                "oxid-esales/oxideshop-ide-helper": "^v3.1.2",
+                "oxid-esales/azure-theme": "^v1.4.2"
+            },
 
-`Example: updated values for OXID eShop CE v6.2.0`
+    `Example: updated values for OXID eShop CE v6.2.0`
 
-You can find current :file:`composer.json` values for your shop edition in OXID eShop project repository:
+    You can find current :file:`composer.json` values for your shop edition in OXID eShop project repository:
 
-- CE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ce/composer.json
-- PE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-pe/composer.json
-- EE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ee/composer.json
+    - CE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ce/composer.json
+    - PE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-pe/composer.json
+    - EE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ee/composer.json
 
-.. note::
-    New version of testing-library requires php-zip extension.
-    You might need to install it to be able to update OXID eShop from oxvm_eshop.
+    .. note::
+        New version of testing-library requires php-zip extension.
+        You might need to install it to be able to update OXID eShop from oxvm_eshop.
 
 #. Clean up the :file:`tmp` folder
 
