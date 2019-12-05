@@ -28,7 +28,7 @@ to prepare your application for updating:
 
     .. code:: bash
 
-        composer require oxid-esales/oxideshop-update-component:^v2.0.0
+        composer require --update-no-dev oxid-esales/oxideshop-update-component:^v2.0.0
 
 2. Decoding `oxconfig` values
 -----------------------------
@@ -111,3 +111,10 @@ Complete the decoding process by running:
 
     These decoding commands (`decode-config-values` and `decode-user-payment-values`) are applicable only within the scope
     of this update and are not expected to be run more than once.
+
+5. Removing OXID eShop update component
+---------------------------------------
+
+    .. code:: bash
+
+        composer remove oxid-esales/oxideshop-update-component
