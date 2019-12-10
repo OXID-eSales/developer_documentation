@@ -73,13 +73,13 @@ Decode values stored in `oxconfig` database table by running:
 
    .. code:: bash
 
-      composer update --no-plugins --no-scripts
+      composer update --no-dev --no-plugins --no-scripts
 
 #. Run the same command without arguments to initiate all necessary scripts and prepare the compilation:
 
    .. code:: bash
 
-        composer update
+        composer update --no-dev
 
         #You might be prompted to allow overwriting existing code for several components.
         #The default value is N [no]
