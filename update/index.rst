@@ -117,4 +117,4 @@ Complete the decoding process by running:
 
     .. code:: bash
 
-        composer remove oxid-esales/oxideshop-update-component
+        composer remove --update-no-dev oxid-esales/oxideshop-update-component
