@@ -12,10 +12,10 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-
 import sys
 import os
 import shlex
+import datetime as dt
 
 # adding PhpLexer
 from sphinx.highlighting import lexers
@@ -54,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OXID eShop developer documentation'
-copyright = '2017 - 2019, OXID eSales AG'
+copyright = '2017 - {}, OXID eSales AG'.format(dt.date.today().year)
 author = 'OXID eSales AG'
 
 # The version info for the project you're documenting, acts as replacement for
