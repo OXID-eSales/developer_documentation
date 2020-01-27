@@ -26,7 +26,8 @@ In order to install theme correctly this plugin requires two fields to be descri
          "oxideshop": {
            "target-directory": "flow",
            "assets-directory": "out/flow"
-        }
+         }
+       }
     }
 
 .. _theme_type-20160524:
