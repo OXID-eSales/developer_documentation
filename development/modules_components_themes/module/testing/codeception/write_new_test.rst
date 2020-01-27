@@ -247,7 +247,6 @@ containing information about enabled Codeception modules, Actor and so.
               - WebDriver
               - Db
         - \OxidEsales\Codeception\Module\Database:
-            config_key: 'fq45QS09_fqyx09239QQ'
             depends: Db
         - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
             shop_path: '%SHOP_SOURCE_PATH%'
