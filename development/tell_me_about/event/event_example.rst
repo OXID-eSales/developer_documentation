@@ -81,8 +81,7 @@ a different method for each event. This is completely up to you.
         $id = "unknown";
         try {
             $id = $model->getId();
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             // pass
         }
 
