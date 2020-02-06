@@ -58,9 +58,9 @@ a different method for each event. This is completely up to you.
   <?php declare(strict_types=1);
   namespace OxidEsales\Eventexample;
 
-  use OxidEsales\EshopCommunity\Internal\Application\Events\AbstractShopAwareEventSubscriber;
-  use OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelInsertEvent;
-  use OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelUpdateEvent;
+  use OxidEsales\EshopCommunity\Internal\Framework\Event\AbstractShopAwareEventSubscriber;
+  use OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AfterModelInsertEvent;
+  use OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AfterModelUpdateEvent;
   use Psr\Log\LoggerInterface;
   use Symfony\Component\EventDispatcher\Event;
 
@@ -81,8 +81,7 @@ a different method for each event. This is completely up to you.
         $id = "unknown";
         try {
             $id = $model->getId();
-        } catch (\Exception $e)
-        {
+        } catch (\Exception $e) {
             // pass
         }
 
