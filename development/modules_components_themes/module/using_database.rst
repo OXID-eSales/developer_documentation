@@ -91,6 +91,12 @@ Sample:
       $blocksData = $queryBuilder->execute();
       $blocksData = $blocksData->fetchAll();
 
+
+.. note::
+
+    All interaction with the application's data access layer should occur through DBAL.
+    Usage of direct SQL queries is considered a bad practice and should be avoided.
+
 .. _modules-database-transactions:
 
 Transactions
