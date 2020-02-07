@@ -17,6 +17,7 @@ The following sections all refer to implementing, understanding or using modules
     :glob:
 
     installation_setup/index
+    uninstall/index
     skeleton/index
     *
     testing/index
