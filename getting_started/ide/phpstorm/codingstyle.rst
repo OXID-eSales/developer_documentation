@@ -22,7 +22,7 @@ command line:
 #. Install and configure PHP CodeSniffer in PhpStorm. This is described in the
    `Jetbrains documentation <https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html>`_
    (set code sniffer by remote interpreter if CodeSniffer is installed in VM. See
-   `Jetbrains documentation <https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html#configure-php-code-sniffer-script-associated-with-php-interpreter>`_).
+   `Configure a PHP_CodeSniffer script associated with a PHP interpreter <https://www.jetbrains.com/help/phpstorm/using-php-code-sniffer.html#configure-php-code-sniffer-script-associated-with-php-interpreter>`_).
 
 #. PhpStorm has multiple profiles where you can configure, how PHP files should be inspected:
 
