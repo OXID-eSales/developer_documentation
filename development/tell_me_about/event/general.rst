@@ -32,7 +32,7 @@ not creditworthy.
 The framework used for this is the Symfony
 event handling mechanism. So general information
 may be found in the
-`Symfony Documentation <https://symfony.com/doc/3.4/event_dispatcher.html>`_.
+`Symfony Documentation <https://symfony.com/doc/current/event_dispatcher.html>`_.
 
 Symfony support two ways of registering events,
 the listener and the subscriber model.
