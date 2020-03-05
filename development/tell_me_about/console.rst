@@ -85,7 +85,7 @@ create it in your module root directory.
 .. code:: yaml
 
     services:
-      oxid_esales.demo_module.command.hello_world:
+      OxidEsales\DemoModule\Command\HelloWorld:
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
         - { name: 'console.command' }
@@ -101,7 +101,7 @@ In case you need to change command name, it can be done also via `services.yaml`
 .. code:: yaml
 
     services:
-      oxid_esales.demo_component.command.hello_world:
+      OxidEsales\DemoModule\Command\HelloWorld:
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
         - { name: 'console.command', command: 'demo-module:say-hello-another-command' }
@@ -163,7 +163,7 @@ create it in your component root directory.
 .. code:: yaml
 
     services:
-      oxid_esales.demo_component.command.hello_world:
+      OxidEsales\DemoComponent\Command\HelloWorld:
         class: OxidEsales\DemoComponent\Command\HelloWorldCommand
         tags:
         - { name: 'console.command' }
