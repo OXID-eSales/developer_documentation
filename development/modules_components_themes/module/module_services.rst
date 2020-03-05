@@ -43,8 +43,8 @@ Then you can register the service in OXID DI Container. Create in root directory
 .. code:: yaml
 
     services:
-        SomeCompany/SpecialERPModule/PriceCalculatorInterface:
-            class: /SomeCompany/SpecialERPModule/ERPPriceCalculator
+        SomeCompany\SpecialERPModule\PriceCalculatorInterface:
+            class: SomeCompany\SpecialERPModule\ERPPriceCalculator
             autowire: true
             public: true
 
