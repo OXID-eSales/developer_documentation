@@ -150,7 +150,7 @@ Troubleshooting
     OXID eShop 6.2 only allows the key `constraints`. Please refer to
     :doc:`the metadata documentation of settings </development/modules_components_themes/module/skeleton/metadataphp/amodule/settings>`.
 
-* **The extension chain in the OXID eShop admin in :menuselection:`Extension -->  Modules --> Installed Shop Modules` is
+* **The extension chain in the OXID eShop admin in** :menuselection:`Extension -->  Modules --> Installed Shop Modules` **is
   partly highlighted red and crossed out.**
 
   * This must not be an error. Up to OXID eShop 6.1, only extensions of active modules were shown. OXID eShop 6.2 shows
