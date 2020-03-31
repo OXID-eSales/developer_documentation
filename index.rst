@@ -45,4 +45,6 @@ Useful links
 - `OXID eShop Forum <http://forum.oxid-esales.com>`__
 - `OXID eShop source code documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>`__
 
-.. |Home| image:: media/icons-en/home.png
+.. image:: media/icons-en/home.png
+    :width: 0 px
+    :height: 0 px
