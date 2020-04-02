@@ -122,8 +122,8 @@ Apply configuration
 Each module configuration in the shop configuration yml file has a ``configured``
 option and It can have two states:
 
-* ``true`` means that the module is prepared for the activation.
-* ``false`` means that the module is prepared for the deactivation.
+* ``true`` means that the module is prepared for the activation (or already active).
+* ``false`` means that the module is prepared for the deactivation (or already inactive).
 
 Example of the shop configuration yml file:
 
@@ -142,7 +142,8 @@ Example of the shop configuration yml file:
             ...
 
 This option can be set manually by changing configuration file.
-Also this will be changed if module will be activated or deactivated manually.
+Also the option will be set to ``true`` if you activate a module manually via console or admin backend
+or to false if you deactivate your module.
 
 To apply configuration use the following command:
 
