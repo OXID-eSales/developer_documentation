@@ -173,6 +173,5 @@ Option- `configured`
 """"""""""""""""""""
 
 As you can see in example, most of the things are just reflection of module `metadata.php` except ``configured``
-option. This option shows if module activated or must be activated (`true` or `false`).
-More about the usage of this parameter, please read
+option. If you want to know more about the usage of this parameter, please read
 :ref:`module configuration deployment documentation <apply_configuration_configured_modules-20190829>`.
