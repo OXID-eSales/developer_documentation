@@ -82,7 +82,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 --------------------------------------
 
 The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
-Therefor the :doc:`new module configuration .yml </development/modules_components_themes/project/module_configuration/modules_configuration>` files need
+Therefor the :doc:`new module configuration .yaml </development/modules_components_themes/project/module_configuration/modules_configuration>` files need
 to be synchronized with the configuration and
 activation status of your current modules.
 :doc:`Read here for background information </development/modules_components_themes/module/installation_setup/index>`.
@@ -101,13 +101,13 @@ activation status of your current modules.
       vendor/bin/oe-console oe:oxideshop-update-component:install-all-modules
 
 3. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
-   database to the :file:`.yml` configuration files.
+   database to the :file:`.yaml` configuration files.
 
    .. code:: bash
 
       vendor/bin/oe-console oe:oxideshop-update-component:transfer-module-data
 
-4. Remove modules data which already presents the yml files from the database to avoid duplications and errors
+4. Remove modules data which already presents the yaml files from the database to avoid duplications and errors
    during the module activation.
 
    .. code:: bash
