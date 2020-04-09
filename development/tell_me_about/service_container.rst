@@ -68,7 +68,7 @@ implementation MyProject\CustomLogger, which is specified by the class parameter
 .. note::
 
     There are several possibilities to configure the Symfony DI container.
-    OXID framework only uses and supports the yaml file format.
+    OXID framework only uses and supports the yaml file format. In addition always use file extension .yaml, not .yml.
 
 .. important::
     Please consider the hints in the section :ref:`Stable OXID eShop Core Services <stable_core_services-20191111>`.
