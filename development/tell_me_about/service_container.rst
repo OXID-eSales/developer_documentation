@@ -62,13 +62,13 @@ Example of :file:`var/configuration/configurable_services.yaml` file:
         class: MyProject\CustomLogger
         public: true
 
-In the example, the implementation `MyProject\CustomLogger` is chosen for the service with the key `Psr\Log\LoggerInterface`
-and replaces the original one.
+In the example, the OXID eShop Service PsrLogLoggerInterface is set as the key and will be replaced by our custom
+implementation MyProject\CustomLogger, which is specified by the class parameter.
 
 .. note::
 
     There are several possibilities to configure the Symfony DI container.
-    OXID framework only uses and supports the yaml file format.
+    OXID framework only uses and supports the yaml file format. In addition always use file extension .yaml, not .yml.
 
 .. important::
     Please consider the hints in the section :ref:`Stable OXID eShop Core Services <stable_core_services-20191111>`.

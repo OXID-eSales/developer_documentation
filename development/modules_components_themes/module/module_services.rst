@@ -48,10 +48,23 @@ Then you can register the service in OXID DI Container. Create in root directory
             autowire: true
             public: true
 
-.. note::
+We recommend to use the interface namespace as the DI container key for
+the service if you have only the one implementation for an interface and
+provide ``class`` parameter with the implementation namespace.
+So we can inject with autowiring an interface as dependency in our classes
+and avoid dependencies on implementations (dependency inversion principle).
 
-    We recommend to use the interface namespace as the DI container key for
-    the service if you have only the one implementation for the interface.
+.. code:: php
+
+    public function __constructor(PriceCalculatorInterface $priceCalculator)
+    {
+        $this->priceCalculator = $priceCalculator;
+    }
+
+In this example we have dependency on PriceCalculatorInterface (abstraction),
+but not on ERPPriceCalculator (implementation). PriceCalculatorInterface will be autowired
+and no changes in the yaml file are needed because the key of the service is the same as provided
+in the constructor argument type.
 
 .. _inject_services-20191111:
 

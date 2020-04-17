@@ -54,7 +54,7 @@ So to solve the problem described in the beginning of the section follow these s
    to :file:`var/configuration/environment/1.yaml`.
 3. Write your new values  for ``sOEPayPalUsername`` and ``sOEPayPalPassword`` and save your file.
 
-Environment file :file:`var/configuration/environment/1.yml` should look something like this:
+Environment file :file:`var/configuration/environment/1.yaml` should look something like this:
 
 .. code:: yaml
 
@@ -76,18 +76,18 @@ In case you have 3 environments: testing, staging and production, files structur
   └── var
       └── configuration
           └── shops
-             └──1.yml
-             └──2.yml
+             └──1.yaml
+             └──2.yaml
              └── ...
           └── environment
-             └──1.yml
-             └──production.1.yml
-             └──staging.1.yml
-             └──testing.1.yml
-             └──2.yml
-             └──production.2.yml
-             └──staging.2.yml
-             └──testing.2.yml
+             └──1.yaml
+             └──production.1.yaml
+             └──staging.1.yaml
+             └──testing.1.yaml
+             └──2.yaml
+             └──production.2.yaml
+             └──staging.2.yaml
+             └──testing.2.yaml
              └── ...
 
 In described files structure you can see that there are multiple
@@ -98,7 +98,7 @@ specific environment.
 
     If you have environment configuration files in the OXID eShop you should not save settings via admin backend.
     If you do this, the environment specific values will be
-    merged into the base configuration and the environment configuration will be renamed to `.bak` file like `1.yml.bak`.
+    merged into the base configuration and the environment configuration will be renamed to `.bak` file like `1.yaml.bak`.
     Then your manual changes will be applied to the base configuration and then to the
     modules.
     Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
@@ -110,7 +110,7 @@ Next steps would be:
 
     .. code:: bash
 
-        cp var/configuration/environment/production.1.yml var/configuration/environment/1.yml
+        cp var/configuration/environment/production.1.yaml var/configuration/environment/1.yaml
 
 * **Apply configuration** for all configured modules. More information can be found in following section.
 
@@ -119,13 +119,13 @@ Next steps would be:
 Apply configuration
 -------------------
 
-Each module configuration in the shop configuration yml file has a ``configured``
+Each module configuration in the shop configuration yaml file has a ``configured``
 option and It can have two states:
 
-* ``true`` means that the module is prepared for the activation.
-* ``false`` means that the module is prepared for the deactivation.
+* ``true`` means that the module is prepared for the activation (or already active).
+* ``false`` means that the module is prepared for the deactivation (or already inactive).
 
-Example of the shop configuration yml file:
+Example of the shop configuration yaml file:
 
 .. code:: yaml
 
@@ -142,7 +142,8 @@ Example of the shop configuration yml file:
             ...
 
 This option can be set manually by changing configuration file.
-Also this will be changed if module will be activated or deactivated manually.
+Also the option will be set to ``true`` if you activate a module manually via console or admin backend
+or to false if you deactivate your module.
 
 To apply configuration use the following command:
 

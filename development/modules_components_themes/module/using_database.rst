@@ -60,7 +60,18 @@ In this example, it will be checked if this ID exists and if so, the record in t
 Making a query
 --------------
 
-To make a query, firstly an instance of ``QueryBuilderFactoryInterface`` must be retrieved:
+To make a query, firstly you need an instance of ``QueryBuilderFactoryInterface`` to create your Query Builder afterwards.
+
+Since it is a service, you can use the same methods as with every other service. Simply inject it to your class:
+
+   .. code:: bash
+
+        public function __constructor(QueryBuilderFactoryInterface $queryBuilderFactory)
+        {
+            $this->queryBuilderFactory = $queryBuilderFactory;
+        }
+
+If injecting is not possible, make use of the ``ContainerFactory``:
 
    .. code:: bash
 

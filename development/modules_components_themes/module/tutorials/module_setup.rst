@@ -21,7 +21,7 @@ file. Like this all changes to your module will take place immediately.
 
   .. code:: bash
 
-    oe:module:install-configuration source/modules/<module-vendor>/<module-name>
+     vendor/bin/oe-console oe:module:install-configuration source/modules/<module-vendor>/<module-name>
 
 3. Register module package in project ``composer.json``.
 

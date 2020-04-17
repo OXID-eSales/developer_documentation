@@ -49,7 +49,7 @@ Decode values stored in `oxconfig` database table by running:
             "oxid-esales/oxideshop-metapackage-ce": "v6.3.0"
         },
         "require-dev": {
-            "oxid-esales/testing-library": "^v7.0.1",
+            "oxid-esales/testing-library": "^v7.1.0",
             "incenteev/composer-parameter-handler": "^v2.0.0",
             "oxid-esales/oxideshop-ide-helper": "^v3.1.2",
             "oxid-esales/azure-theme": "^v1.4.2"

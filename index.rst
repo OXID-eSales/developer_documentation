@@ -48,4 +48,6 @@ Useful links
 - `OXIDforge Tutorials <https://oxidforge.org/en/shop/tutorial>`__
 - `OXID eShop Forum <http://forum.oxid-esales.com>`__
 
-.. |Home| image:: media/icons-en/home.png
+.. image:: media/icons-en/home.png
+    :width: 0 px
+    :height: 0 px

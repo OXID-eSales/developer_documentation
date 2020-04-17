@@ -62,8 +62,8 @@ for the shop. So if the shop has id 1, the file would be named 1.yaml. See the e
   └── var
       └── configuration
           └── shops
-             └──1.yml
-             └──2.yml
+             └──1.yaml
+             └──2.yaml
              └── ...
 
 During the module setup/activation all of the values are being transferred from file to database.
@@ -72,7 +72,7 @@ During the module setup/activation all of the values are being transferred from 
 
     If var directory has not found in the project directory.
     ``composer update`` must be executed or it must created manually.
-    Also, each shop must have their own separate yml file.
+    Also, each shop must have their own separate yaml file.
 
 .. _configuring_module_via_configuration_files-20190829:
 
@@ -98,12 +98,12 @@ Example structure you can see bellow:
   └── var
       └── configuration
           └── shops
-             └──1.yml
-             └──2.yml
+             └──1.yaml
+             └──2.yaml
              └── ...
           └── environment
-             └──1.yml
-             └──2.yml
+             └──1.yaml
+             └──2.yaml
              └── ...
 
 Configuration files
@@ -173,6 +173,5 @@ Option- `configured`
 """"""""""""""""""""
 
 As you can see in example, most of the things are just reflection of module `metadata.php` except ``configured``
-option. This option shows if module activated or must be activated (`true` or `false`).
-More about the usage of this parameter, please read
+option. If you want to know more about the usage of this parameter, please read
 :ref:`module configuration deployment documentation <apply_configuration_configured_modules-20190829>`.
