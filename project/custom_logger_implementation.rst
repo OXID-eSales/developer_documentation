@@ -153,3 +153,39 @@ If the configuration options are not sufficient for you needs, you can also impl
     // You would use it instead of the default formatter in the example above
     $exceptionFormatter = new \MyNamespace\ExceptionFormatter();
     $exceptionFormatter->includeStacktraces(true);
+    
+    
+Creating a custom logger for a module
+-------------------------------------
+
+Sometimes you need a custom logger inside a module. You can create a Logger inside the module easily like this:
+
+.. code:: php
+
+    namespace VendorName\ModuleName\Core;
+
+    use Monolog\Handler\StreamHandler;
+    use Monolog\Logger;
+    use OxidEsales\Eshop\Core\Registry;
+    use Psr\Log\LogLevel;
+
+    class MyCustomLogger
+    {
+        public function getLogger(): Logger
+        {
+            $logger = new Logger('mycustomlogger');
+            $logger->pushHandler(
+                new StreamHandler(Registry::getConfig()->getLogsDir() . 'mycustomlogger.log', LogLevel::INFO)
+            );
+
+            return $logger;
+        }
+    }
+    
+
+You can use the logger like this:
+
+.. code:: php
+
+    $logger = (new VendorName\ModuleName\Core\MyCustomLogger())->getLogger();
+    $logger->error('This is an error!');
