@@ -5,14 +5,16 @@ Follow these steps to include twig template engine in OXID eShop:
 
 **1. Install OXID eSales twig components**
 
-First you have to install `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__ which includes twig engine:
+* Installation of the component for OXID eShop Community Edition
 
-.. code:: bash
+    You have to install `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__ which includes twig engine:
 
-    composer require oxid-esales/twig-component
+    .. code:: bash
+
+        composer require oxid-esales/twig-component
 
 
-* (Only for PE) Install OXID eSales twig component for PE
+* Installation of the component for OXID eShop Professional Edition
 
     If you are using Professional Edition, please install Twig component for OXID eShop Professional Edition:
 
@@ -21,7 +23,7 @@ First you have to install `OXID eShop twig component <https://github.com/OXID-eS
         composer require oxid-esales/twig-component-pe
 
 
-* (Only for EE) Install OXID eSales twig component for EE
+* Installation of the component for OXID eShop Enterprise Edition
 
     If you are using Enterprise Edition, please install Twig component for OXID eShop Enterprise Edition:
 
@@ -41,7 +43,8 @@ We also recommend to install `the twig theme for the admin area <https://github.
 .. Note::
 
     The twig theme for admin will be registered during the installation. If you are having some issues, that the wrong Admin
-    theme is loaded, please check if the `oxid_esales.theme.admin.name` parameter is set correctly:
+    theme is loaded, please check if the `oxid_esales.theme.admin.name` parameter in services.yaml of the installed
+    component is set correctly:
 
     .. code:: yaml
 
@@ -60,3 +63,9 @@ We also recommend to install `the twig theme for the admin area <https://github.
 
     Open OXID eShop administration panel and go to :menuselection:`Extensions --> Themes`,
     select a twig theme and click activation button.
+
+**4. Clean up the shop compile directory**
+
+   .. code:: bash
+
+      rm -rf source/tmp/*
