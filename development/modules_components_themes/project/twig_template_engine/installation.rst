@@ -42,9 +42,9 @@ We also recommend to install `the twig theme for the admin area <https://github.
 
 .. Note::
 
-    The twig theme for admin will be registered during the installation. If you are having some issues, that the wrong Admin
-    theme is loaded, please check if the `oxid_esales.theme.admin.name` parameter in services.yaml of the installed
-    component is set correctly:
+    The twig theme for admin will be registered automatically during the installation. If you are having some issues,
+    that the wrong Admin theme is loaded, please check if the `oxid_esales.theme.admin.name` parameter in service yaml
+    of the installed component is set correctly, e.g. in `vendor/oxid-esales/twig-component/services.yaml`:
 
     .. code:: yaml
 
