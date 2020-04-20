@@ -12,7 +12,7 @@ The OXID Testing Library helps to test single module by:
 - Ensuring that tests do not affect each other due to database usage.
 - Stabilizing Selenium tests.
 - Testing compilation intercompatibility:
-    The OXID eShop is able to use several modules simultaneously and they might interact with each other.
+    OXID eShop is able to use several modules simultaneously and they might interact with each other.
     The Testing Library easily runs tests for each module to check intercompatibility.
 
 
