@@ -4,9 +4,9 @@ Interacting with the database
 Active records and magic getters
 --------------------------------
 
-The OXID eShop architecture is based on MVC patterns. To implement models, active record pattern is used. So in general, each model class is linked with a database
-table. For example, the ``Article`` model is linked with the ``oxarticles`` table, Order with the ``oxorders`` table etc.
-All models are stored in the directory Application/Models.
+The OXID eShop architecture is based on an MVC design pattern. To implement models, the Active Record pattern is used. In general, each model class is linked to a database
+table. For example, the ``Article`` model is linked to the ``oxarticles`` table, Order to the ``oxorders`` table etc.
+All models are stored in the Application/Models directory.
 Let's take one of them, for example the ``Article`` model, and try to fetch the product (with the ID ``demoId``) data from database:
 
 .. code:: php
@@ -34,7 +34,7 @@ To set data to a model and store it, database magic setters (with the same appro
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
     $product->save();
 
-In this example the new record will be inserted into the table. To update an information, we have to load the model, set the new data and call the save()-method:
+In this example the new record will be inserted into the table. To update information, we load the model, set the new data and call the save() method:
 
 .. code:: php
 
@@ -44,7 +44,7 @@ In this example the new record will be inserted into the table. To update an inf
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
     $product->save();
 
-There are other ways to do the same - without loading the data - just simply setting the ID with the setId()-method:
+There are other ways to do the same - without loading the data - just by simply setting the ID with the setId()-method:
 
 .. code:: php
 
@@ -54,15 +54,15 @@ There are other ways to do the same - without loading the data - just simply set
     $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
     $product->save();
 
-In this example, it will be checked if this ID exists and if so, the record in the database will be updated with the new record.
+In this example there is a check to determine if this ID exists and if so, the record in the database will be updated with the new record.
 
 
 Making a query
 --------------
 
-To make a query, firstly you need an instance of ``QueryBuilderFactoryInterface`` to create your Query Builder afterwards.
+In order to execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
 
-Since it is a service, you can use the same methods as with every other service. Simply inject it to your class:
+Since it is a service, you can use the same methods as with every other service. Simply inject it into your class:
 
    .. code:: bash
 
@@ -78,7 +78,7 @@ If injecting is not possible, make use of the ``ContainerFactory``:
       $container = ContainerFactory::getInstance()->getContainer();
       $queryBuilderFactory = $container->get(QueryBuilderFactoryInterface::class);
 
-Now database connection is ready and ``create`` method must be called to create a ``queryBuilder``.
+At this point the database connection is ready and the ``create`` method must be called to create a ``queryBuilder``.
 
    .. code:: bash
 
@@ -105,8 +105,8 @@ Sample:
 
 .. note::
 
-    All interaction with the application's data access layer should occur through DBAL.
-    Usage of direct SQL queries is considered a bad practice and should be avoided.
+    The application's data access layer should always be accessed through the DBAL.
+    The use of direct SQL queries is considered a bad practice and should be avoided.
 
 .. _modules-database-transactions:
 
@@ -140,19 +140,18 @@ MySQL master slave
 Doctrine DBAL handles the master slave replication for the OXID eShop on each request. OXID eShop 6
 follows these rules:
 
-* once the request was routed to the master, it stays on the master.
+* once the request is routed to the master, it stays on the master.
 * writes and transactions go to master.
 
-If you are not careful in using the OXID eShop database API, this can lead .e.g to execute more
-requests than necessary on the MySQL master sever and underutilize the MySQL slave server.
-
+Care must be taken when using the OXID eShop database API as this can cause the execution of more
+requests than necessary against the MySQL master server and underutilize the MySQL slave server.
 
 
 Different API methods for read and write
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is a difference between the methods ``DatabaseInterface::select()`` and ``DatabaseInterface::execute()``
-The method ``DatabaseInterface::select()`` can only be used for read alike methods (SELECT, SHOW) that return a kind of result set.
-The method ``DatabaseInterface::execute()`` must be used for write alike methods (INSERT, UPDATE, DELETE) in OXID eShop 6.
+The method ``DatabaseInterface::select()`` can only be used for read methods (SELECT, SHOW) that return a result set.
+The method ``DatabaseInterface::execute()`` must be used for write methods (INSERT, UPDATE, DELETE) in OXID eShop 6.
 
 
