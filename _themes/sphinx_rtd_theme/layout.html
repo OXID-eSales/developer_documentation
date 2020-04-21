@@ -211,6 +211,9 @@
   {% endif %}
 
   {%- block footer %} {% endblock %}
+  
+  {# Add Matomo tracking - https://analytics.oxid-esales.com #}
+  <script src="{{ pathto('_static/js/matomo.js', 1) }}"></script>
 
 </body>
 </html>
