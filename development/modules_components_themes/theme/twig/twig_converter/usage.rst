@@ -8,8 +8,10 @@ path and ext parameters
 
 Converter can work with files and directories:
 
-``php toTwig convert --path=/path/to/dir``
 ``php toTwig convert --path=/path/to/file``
+  
+``php toTwig convert --path=/path/to/dir``  
+
 
 By default files with ``.html.twig`` extension will be created. To specify different extensions use ``--ext`` parameter:
 
