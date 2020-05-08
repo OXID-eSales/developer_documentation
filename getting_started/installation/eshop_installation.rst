@@ -1,7 +1,10 @@
 Install OXID eShop compilation
 ==============================
 
-The general installation is described in the `User documentation <https://docs.oxid-esales.com/en/>`__.
+There are two ways to install the shop which are graphical and command-line tools. In graphical tools, shop can be installed via wizard setup process in browser, and with command-line tools a provided command can be run to install the shop quickly.
+
+More information can be found in the `User documentation <https://docs.oxid-esales.com/eshop/en/6.2/installation/index.html>`__.
+
 On this page, additional developer specific information is provided.
 
 .. _eshop_installation_deploy_source_code:
