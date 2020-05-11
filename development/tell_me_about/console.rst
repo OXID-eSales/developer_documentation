@@ -51,7 +51,7 @@ First of all it's necessary to create a command class. Command class example:
     <?php declare(strict_types=1);
     namespace OxidEsales\DemoModule\Command;
 
-    use OxidEsales\EshopCommunity\Internal\Console\AbstractShopAwareCommand;
+    use OxidEsales\EshopCommunity\Internal\Framework\Console\AbstractShopAwareCommand;
     use Symfony\Component\Console\Input\InputInterface;
     use Symfony\Component\Console\Output\OutputInterface;
 
@@ -72,7 +72,7 @@ First of all it's necessary to create a command class. Command class example:
 
 .. important::
 
-    Module command must extend `\\OxidEsales\\EshopCommunity\\Internal\\Console\\AbstractShopAwareCommand`.
+    Module command must extend `\\OxidEsales\\EshopCommunity\\Internal\\Framework\\Console\\AbstractShopAwareCommand`.
     It's necessary to extend this class otherwise command will not respect OXID eShop modules functionality and
     some features will not work.
 
