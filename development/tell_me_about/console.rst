@@ -167,3 +167,30 @@ create it in your component root directory.
         class: OxidEsales\DemoComponent\Command\HelloWorldCommand
         tags:
         - { name: 'console.command', command: 'demo-module:say-hello' }
+
+Command testing
+---------------
+
+For integration testing commands we recommend to use the symfony CommandTester_. Within this CommandTester the input and output can even be overwritten for your needs.
+
+.. _CommandTester: https://symfony.com/doc/current/console.html#testing-commands
+
+Example for executing and checking if command is present within the container:
+
+.. code:: php
+
+    protected function executeCommand(string $command, array $input = []): string
+    {
+        $commandTester = new CommandTester(
+            $this->get('console.command_loader')->get($command)
+        );
+
+        $commandTester->execute($input);
+        return $commandTester->getDisplay();
+    }
+
+
+Within we use the container console.command_loader to load our command via it's name and execute it with given input and just return the output.
+
+
+
