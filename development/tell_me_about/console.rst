@@ -175,22 +175,34 @@ For integration testing commands we recommend to use the symfony CommandTester_.
 
 .. _CommandTester: https://symfony.com/doc/current/console.html#testing-commands
 
-Example for executing and checking if command is present within the container:
+Example for executing your command within command tester:
 
 .. code:: php
 
-    protected function executeCommand(string $command, array $input = []): string
-    {
-        $commandTester = new CommandTester(
-            $this->get('console.command_loader')->get($command)
-        );
+	class TestCommand extends Command
+	{
+	    protected function configure()
+	    {
+		$this->setName('oe:tests:test-command');
+	    }
 
-        $commandTester->execute($input);
-        return $commandTester->getDisplay();
-    }
+	    protected function execute(InputInterface $input, OutputInterface $output)
+	    {
+		$output->writeln('Command has been executed!');
+		return 0;
+	    }
+	}
 
+	public function testCommandExecution()
+	{
+	    $commandTester = new CommandTester(new TestCommand());
 
-Within we use the container console.command_loader to load our command via it's name and execute it with given input and just return the output.
+	    $commandTester->execute([]);
+
+	    $output = $commandTester->getDisplay();
+
+	    $this->assertSame('Command has been executed!' . PHP_EOL, $output);
+	}
 
 
 
