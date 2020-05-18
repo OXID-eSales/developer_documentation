@@ -88,7 +88,7 @@ create it in your module root directory.
       OxidEsales\DemoModule\Command\HelloWorld:
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
-        - { name: 'console.command' }
+        - { name: 'console.command', command: 'demo-module:say-hello' }
 
 Now after module activation, command will be available in commands list and it can be executed via:
 
@@ -166,4 +166,4 @@ create it in your component root directory.
       OxidEsales\DemoComponent\Command\HelloWorld:
         class: OxidEsales\DemoComponent\Command\HelloWorldCommand
         tags:
-        - { name: 'console.command' }
+        - { name: 'console.command', command: 'demo-module:say-hello' }
