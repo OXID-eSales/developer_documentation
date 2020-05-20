@@ -73,6 +73,9 @@ implementation MyProject\CustomLogger, which is specified by the class parameter
 .. important::
     Please consider the hints in the section :ref:`Stable OXID eShop Core Services <stable_core_services-20191111>`.
 
+.. important::
+
+    If you overwrite already existent service and it's a public service, a new service should be also set as public.
 
 .. _stable_core_services-20191111:
 
