@@ -75,7 +75,8 @@ implementation MyProject\CustomLogger, which is specified by the class parameter
 
 .. important::
 
-    If you overwrite already existent service and it's a public service, a new service should be also set as public.
+    If we want to overwrite already existent service and it is a public service, a new service should be also set as public. In fact the services should have the same visibility.
+    The reason is, it could be used in the shop or modules as before, it means maybe we have already used it as public in the shop or modules and if we make it private in the new service, they will not work any more.
 
 .. _stable_core_services-20191111:
 
