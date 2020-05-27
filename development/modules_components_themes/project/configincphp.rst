@@ -606,11 +606,13 @@ aMultishopArticleFields
 
 Define oxarticles fields which could be edited individually in subshops.
 
-Do not forget to add these fields to oxfield2shop table.
-
 .. code:: php
 
     $this->aMultishopArticleFields = array("OXPRICE", "OXPRICEA", "OXPRICEB", "OXPRICEC", "OXUPDATEPRICE", "OXUPDATEPRICEA", "OXUPDATEPRICEB", "OXUPDATEPRICEC", "OXUPDATEPRICETIME");
+
+.. important::
+
+    Do not forget to add these fields to oxfield2shop table.
 
 .. note::
 
