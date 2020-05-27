@@ -2,7 +2,7 @@ Module configuration deployment
 ===============================
 
 This document describes possible deployment process which could be used for the application.
-Workflow can be seen in image bellow, schema steps are described in following sections.
+Workflow can be seen in image below, schema steps are described in following sections.
 
 .. uml::
 

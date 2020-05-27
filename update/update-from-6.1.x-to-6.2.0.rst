@@ -91,7 +91,7 @@ activation status of your current modules.
 
     .. code:: bash
 
-       composer require --no-interaction oxid-esales/oxideshop-update-component
+       composer require --no-interaction oxid-esales/oxideshop-update-component:"^1.0"
 
 2. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
    On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
