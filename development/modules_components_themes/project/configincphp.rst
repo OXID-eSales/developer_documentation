@@ -191,10 +191,10 @@ Is a global config parameter which activates a template override system for an e
 custom theme directory name in ‘views’ folder. The structure of this custom theme has to be the same as main theme. The
 shop will look up if there is an adapted file in your custom folder; if not it will return to the main folder.
 
-blLogChangesInAdmin
+blLogChangesInAdmin (not implemented in 6.1)
 -------------------
 
-Log all modifications performed in Admin (in oxadminlog table)
+Log all modifications performed in Admin (to oxadmin.log in shop log dir)
 
 .. code:: php
 
