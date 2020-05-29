@@ -194,7 +194,7 @@ shop will look up if there is an adapted file in your custom folder; if not it w
 blLogChangesInAdmin (not implemented in 6.1)
 -------------------
 
-Log all modifications performed in Admin (in oxadmin.log in shop log dir)
+Log all modifications performed in Admin (to oxadmin.log in shop log dir)
 
 .. code:: php
 
