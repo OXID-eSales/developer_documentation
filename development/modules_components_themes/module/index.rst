@@ -21,6 +21,5 @@ The following sections all refer to implementing, understanding or using modules
     skeleton/index
     *
     testing/index
-    database_migration/index
     certification/index
     tutorials/index
