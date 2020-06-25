@@ -21,14 +21,16 @@ responsible service for this:
 
     interface PriceCalculatorInterface
     {
-        public function getPrice(string $productId, int $amount): Price {}
+        public function getPrice(string $productId, int $amount): Price;
     }
 
-    public class ERPPriceCalculator implements PriceCalculatorInterface
+    class ERPPriceCalculator implements PriceCalculatorInterface
     {
         public function getPrice(string $productId, int $amount): Price
         {
             $this->doSomeCalculation();
+            // ...
+            return $price
         }
     }
 
@@ -77,7 +79,7 @@ You can use your own, shop services or even services of other modules via depend
 
     use Psr\Log\LoggerInterface;
 
-    public class ERPPriceCalculator implements PriceCalculatorInterface
+    class ERPPriceCalculator implements PriceCalculatorInterface
     {
         private $shopLogger;
 
@@ -91,6 +93,8 @@ You can use your own, shop services or even services of other modules via depend
             $this->shopLogger->info('Log something');
 
             $this->doSomeCalculation();
+            // ...
+            return $price;
         }
     }
 
@@ -106,13 +110,13 @@ You can create own Article class where you overwrite the getPrice() method:
 
 .. code:: yaml
 
-    public class ERPArticle extends Article_parent
+    class ERPArticle extends Article_parent
     {
         public function getPrice($amount = 1)
         {
-            $container = ContainerFactory::getInstance()→getContainer();
+            $container = ContainerFactory::getInstance()->getContainer();
 
-            $erpPriceCalculator = $container→get(PriceCalculatorInterface::class);
+            $erpPriceCalculator = $container->get(PriceCalculatorInterface::class);
             return $erpPriceCalculator->getPrice($this->getId(), $amount)
         }
     }
