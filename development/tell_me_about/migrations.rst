@@ -119,12 +119,12 @@ Example:
     table_name: oxmigrations_ddoewysiwyg
     migrations_directory: data
 
-Best practice:
+.. tip::
 
-- As you need to know the module_id for several migration commands we recommend to put the module_id in the `name` parameter,
-  like the sample: WYSIWYG module migration (ddoewysiwyg). In fact, you will have module_id (in this case: ddoewysiwyg) in console
-  result and you do not need to lookup the module_id anymore.
-- Use module_id for the `table_name` parameter to avoid conflicts with any other tables in database.
+    - As you need to know the module_id for several migration commands we recommend to put the module_id in the `name` parameter,
+      like the sample: WYSIWYG module migration (ddoewysiwyg). In fact, you will have module_id (in this case: ddoewysiwyg) in console
+      result and you do not need to lookup the module_id anymore.
+    - Use module_id for the `table_name` parameter to avoid conflicts with any other tables in database.
 
 
 Usage
