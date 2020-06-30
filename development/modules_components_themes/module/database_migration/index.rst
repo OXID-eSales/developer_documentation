@@ -6,3 +6,5 @@ and run them, check :doc:`database migrations documentation <../../../tell_me_ab
 
 Also you need to know that module migrations can be generated and executed by using
 `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
+
+Module migrations are available from version 6.2.2
