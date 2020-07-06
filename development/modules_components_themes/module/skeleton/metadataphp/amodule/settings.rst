@@ -26,13 +26,15 @@ Mandatory
     No
 
 Usage
-    In php classes you can query your module settings by:
+    In PHP classes you can query your module settings with the :doc:`settings bridge </development/modules_components_themes/module/module_settings>`.
 
-    .. code:: php
-
-        $myconfig = \OxidEsales\Eshop\Core\Registry::getConfig();
-        $myconfig->getConfigParam("sOEPayPalBrandName");
-
+    In templates you have to use the ``Config`` class:
+    
+    .. code:: smarty
+    
+        [{assign var="oConfig" value=$oViewConf->getConfig()}]
+        [{$oConfig->getConfigParam('nameOfSetting')}]
+    
     In order to get correct translations of your settings names you have to create the file :file:`module_options.php`
     like described in the :ref:`section translations <modules_structure_language_files_20170316>`
     The shop looks inside this file for language constants according the scheme ``SHOP_MODULE_GROUP_``,
