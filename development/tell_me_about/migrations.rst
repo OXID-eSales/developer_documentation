@@ -96,6 +96,8 @@ In this case it will be generated only for Enterprise Edition in `vendor/oxid-es
 Module migrations
 -----------------
 
+Module migrations are available from 6.2.2
+
 Configuration
 ^^^^^^^^^^^^^
 
