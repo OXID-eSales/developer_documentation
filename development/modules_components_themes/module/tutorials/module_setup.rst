@@ -21,14 +21,14 @@ file. Like this all changes to your module will take place immediately.
 
   .. code:: bash
 
-     vendor/bin/oe-console oe:module:install-configuration source/modules/<module-vendor>/<module-name>
+     vendor/bin/oe-console oe:module:install-configuration <module sourcecode path>
 
 3. Register module package in project ``composer.json``.
 
   .. code:: bash
 
     cd <shop_directory>
-    composer config repositories.<package-name> path source/modules/<module-vendor>/<module-name>
+    composer config repositories.<package-name> path <module sourcecode path>
     composer require <package-name>:*
 
   * ``<package-name>`` - Is your module name, which is being used in ``composer.json`` file, for example "oxid-esales/logger-demo-module".
@@ -39,7 +39,7 @@ file. Like this all changes to your module will take place immediately.
   will be corrupted.
 
 If all steps have been completed, module files will be autoloaded and you will be able to introduce
-modifications to the module in ``source/modules/<module-vendor>/<module-name>`` directory.
+modifications to the module in ``<module sourcecode path>`` directory.
 
 .. important::
 

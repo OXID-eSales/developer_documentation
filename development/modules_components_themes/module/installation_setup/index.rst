@@ -1,11 +1,8 @@
 Installation and Activation
 ===========================
 
-To have a working module, you need to pass 3 steps which are described bellow.
-To have rough understanding how module states looks in one picture please have a look to
-the documentation in architecture category:
-:doc:`module installation and activation </system_architecture/module_installation_activation>`,
-otherwise continue with links above:
+To have a working module, you need to pass installation, configuration and setup steps which are described bellow.
+If you have any problem during these three steps, take a look at :ref:`troubleshooting <troubleshooting>` section.
 
 .. toctree::
     :maxdepth: 1
@@ -15,3 +12,14 @@ otherwise continue with links above:
     installation
     configuration
     setup
+    troubleshooting
+
+If you want to know more you could check
+:doc:`module installation and activation </system_architecture/module_installation_activation>` documentation.
+
+.. _troubleshooting :
+
+Troubleshooting
+---------------
+
+- :ref:`Module does not install using composer <module-does-not-install-using-composer>`
