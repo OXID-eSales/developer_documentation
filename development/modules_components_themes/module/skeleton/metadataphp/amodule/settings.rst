@@ -11,14 +11,14 @@ Description
 Type
     Array of associative arrays. Array keys:
 
-    * Each module setting belongs to a group (mandatory key ``group``).
+    * Each module setting belongs to a group (key ``group``). This key is mandatory to display the setting in the default module settings tab. If you want to hide it instead, see :ref:`Hiding settings` for more information.
     * The mandatory key ``name`` is used for getting and storing the setting.
       It is best practice to prefix it with your :doc:`module id <id>` to avoid name
       collisions with other modules.
     * The key ``type`` is mandatory. Possible values are ``str``, ``bool``, ``arr`` (array),
       ``aarr`` (associative array), ``select`` (multiple options, translation possible), ``password``.
       If type is ``select``, you have to define the possible values by another key ``constraints``.
-    * The key the ``value`` sets a default value and is also mandatory. The keys ``type`` and ``value`` have to fit, see
+    * The key ``value`` sets a default value and is also mandatory. The keys ``type`` and ``value`` have to fit, see
       example below.
     * The optional parameter ``position`` sets the order of module settings shown in the eShop admin.
 
@@ -120,8 +120,8 @@ Hiding settings
 ---------------
 
 It is possible to hide module settings so they wouldn't be displayed in module settings tab.
-This might be useful when you have custom settings page
-and you want that the module would use all necessary OXID eShop functionality like storing settings data in
+This might be useful when you have custom settings page, but still want that the module would 
+use all necessary OXID eShop functionality like storing settings data in
 project configuration files. More information about this feature please read
 :ref:`modules configuration documentation <configuring_module_via_configuration_files-20190829>`).
 
