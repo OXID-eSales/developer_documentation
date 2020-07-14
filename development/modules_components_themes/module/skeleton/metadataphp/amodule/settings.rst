@@ -11,14 +11,14 @@ Description
 Type
     Array of associative arrays. Array keys:
 
-    * Each module setting belongs to a group (mandatory key ``group``).
+    * Each module setting belongs to a group (key ``group``). This key is mandatory to display the setting in the default module settings tab. If you want to hide it instead, see :ref:`Hiding settings` for more information.
     * The mandatory key ``name`` is used for getting and storing the setting.
       It is best practice to prefix it with your :doc:`module id <id>` to avoid name
       collisions with other modules.
     * The key ``type`` is mandatory. Possible values are ``str``, ``bool``, ``arr`` (array),
       ``aarr`` (associative array), ``select`` (multiple options, translation possible), ``password``.
       If type is ``select``, you have to define the possible values by another key ``constraints``.
-    * The key the ``value`` sets a default value and is also mandatory. The keys ``type`` and ``value`` have to fit, see
+    * The key ``value`` sets a default value and is also mandatory. The keys ``type`` and ``value`` have to fit, see
       example below.
     * The optional parameter ``position`` sets the order of module settings shown in the eShop admin.
 
@@ -26,13 +26,15 @@ Mandatory
     No
 
 Usage
-    In php classes you can query your module settings by:
+    In PHP classes you can query your module settings with the :doc:`settings bridge </development/modules_components_themes/module/module_settings>`.
 
-    .. code:: php
-
-        $myconfig = \OxidEsales\Eshop\Core\Registry::getConfig();
-        $myconfig->getConfigParam("sOEPayPalBrandName");
-
+    In templates you have to use the ``Config`` class:
+    
+    .. code:: smarty
+    
+        [{assign var="oConfig" value=$oViewConf->getConfig()}]
+        [{$oConfig->getConfigParam('nameOfSetting')}]
+    
     In order to get correct translations of your settings names you have to create the file :file:`module_options.php`
     like described in the :ref:`section translations <modules_structure_language_files_20170316>`
     The shop looks inside this file for language constants according the scheme ``SHOP_MODULE_GROUP_``,
@@ -120,8 +122,8 @@ Hiding settings
 ---------------
 
 It is possible to hide module settings so they wouldn't be displayed in module settings tab.
-This might be useful when you have custom settings page
-and you want that the module would use all necessary OXID eShop functionality like storing settings data in
+This might be useful when you have custom settings page, but still want that the module would 
+use all necessary OXID eShop functionality like storing settings data in
 project configuration files. More information about this feature please read
 :ref:`modules configuration documentation <configuring_module_via_configuration_files-20190829>`).
 

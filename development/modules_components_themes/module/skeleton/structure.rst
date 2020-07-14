@@ -117,6 +117,8 @@ Admin
 Translation files can be placed in
 
 * ``Application/views/admin/``
+* ``application/views/admin/``
+* ``views/admin/``
 
 Example:
 
