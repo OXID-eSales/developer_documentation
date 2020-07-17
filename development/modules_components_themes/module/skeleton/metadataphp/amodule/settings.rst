@@ -11,7 +11,7 @@ Description
 Type
     Array of associative arrays. Array keys:
 
-    * Each module setting belongs to a group (key ``group``). This key is mandatory to display the setting in the default module settings tab. If you want to hide it instead, see :ref:`Hiding settings` for more information.
+    * Each module setting belongs to a group (key ``group``). This key is mandatory to display the setting in the default module settings tab. If you want to hide it instead, see :ref:`hiding settings <metadataphpversion-settings-hiding-settings-20190926>` for more information.
     * The mandatory key ``name`` is used for getting and storing the setting.
       It is best practice to prefix it with your :doc:`module id <id>` to avoid name
       collisions with other modules.
