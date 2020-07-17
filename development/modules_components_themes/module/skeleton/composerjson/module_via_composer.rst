@@ -128,10 +128,11 @@ Below is a list of **non-valid** entries:
 * ``some/path/`` - ambigious description of directory to filter, it's not clear
   if only the files are needed to be filtered or directories have to be included
   as well.
+* ``documentation/**/*.*`` -  Using ``**/*.*`` at the end of the filter string, is not allowed.
 
 For the most up-to-date definition of what can be accepted as an argument,
 please follow the
-`tests <https://github.com/OXID-eSales/oxideshop_composer_plugin/blob/master/tests/Unit/Utilities/CopyFileManager/CopyGlobFilteredFileManagerTest.php>`_
+`blacklist-filter tests <https://github.com/OXID-eSales/oxideshop_ce/blob/b-6.2.x/tests/Integration/Internal/Framework/Module/Install/Service/ModuleFilesInstallerTest.php>`_
 which covers the behaviour.
 
 .. _module_require-20170926:
