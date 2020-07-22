@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\BeforeModelUpdateEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\BeforeModelUpdateEvent
 
 This event will be dispatched before model state is changed in database.
 
