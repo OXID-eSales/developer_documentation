@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\BeforeHeadersSendEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\BeforeHeadersSendEvent
 
 This event will be dispatched before the shop sends the headers.
 
