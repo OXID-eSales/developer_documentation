@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelUpdateEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AfterModelUpdateEvent
 
 This event will be dispatched after the model data is updated in database.
 
