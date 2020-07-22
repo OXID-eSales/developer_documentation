@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\Adapter\Configuration\Event\ShopConfigurationChangedEvent
+    OxidEsales\EshopCommunity\Internal\Framework\Config\Event\ShopConfigurationChangedEvent
 
 This event will be triggered when shop configuration was changed in database.
 
