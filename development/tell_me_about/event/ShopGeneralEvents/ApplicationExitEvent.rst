@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\ApplicationExitEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\ApplicationExitEvent
 
 This event will be dispatched when the shop is preparing for emergency exit.
 
