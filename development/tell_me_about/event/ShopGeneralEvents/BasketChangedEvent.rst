@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\BasketChangedEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\BasketChangedEvent
 
 This event will be dispatched when the basket was changed.
 
