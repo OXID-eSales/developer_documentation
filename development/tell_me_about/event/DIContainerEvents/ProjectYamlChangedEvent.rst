@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-	Namespace: OxidEsales\EshopCommunity\Internal\Application\Events\ProjectYamlChangedEvent
+	OxidEsales\EshopCommunity\Internal\Framework\DIContainer\Event\ProjectYamlChangedEvent;
 
 This event will be dispatched after the generated services file for the DI container has changed.
 This happens when a module that has its own `services.yaml` file is activated, for example.
