@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AfterRequestProcessedEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AfterRequestProcessedEvent
 
 This event will be dispatched by shop to inform services that a request has been processed.
 

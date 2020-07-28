@@ -1,9 +1,11 @@
 SettingChangedEvent
 ===================
 
+Namespace:
+
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\Module\Setting\Event\SettingChangedEvent
+    OxidEsales\EshopCommunity\Internal\Framework\Module\Setting\Event\SettingChangedEvent
 
 This event will be triggered when shop module settings have been changed in database.
 

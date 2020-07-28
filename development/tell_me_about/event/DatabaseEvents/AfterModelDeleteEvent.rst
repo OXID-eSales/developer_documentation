@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AfterModelDeleteEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AfterModelDeleteEvent
 
 This event will be dispatched after the model data is deleted from database.
 

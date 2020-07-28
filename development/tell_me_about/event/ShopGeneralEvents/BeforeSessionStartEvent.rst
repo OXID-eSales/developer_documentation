@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\BeforeSessionStartEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\BeforeSessionStartEvent
 
 This event will be dispatched by shop to inform services that session is about to be started.
 

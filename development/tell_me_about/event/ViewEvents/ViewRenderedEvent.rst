@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\ViewRenderedEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\ViewRenderedEvent
 
 This event will be dispatched after the shop has rendered the current
 page for output. Before this event is sent, all processing of the current request
