@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\ShopEvents\AllCookiesRemovedEvent
+    OxidEsales\EshopCommunity\Internal\Transition\ShopEvents\AllCookiesRemovedEvent
 
 This event will be dispatched after the shop called the cookie removal method. For example in case of cookie note decline,
 shop has to remove all cookies.

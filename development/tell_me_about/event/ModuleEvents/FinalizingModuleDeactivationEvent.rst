@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    OxidEsales\EshopCommunity\Internal\Module\Setup\Event\FinalizingModuleDeactivationEvent
+    OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Event\FinalizingModuleDeactivationEvent
 
 This event will be dispatched at the last step of the module deactivation for a specific shop.
 

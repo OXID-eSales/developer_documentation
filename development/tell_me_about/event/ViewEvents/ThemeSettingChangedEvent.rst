@@ -5,7 +5,7 @@ Namespace:
 
 .. code-block:: php
 
-    Namespace: OxidEsales\EshopCommunity\Internal\Theme\Event\ThemeSettingChangedEvent
+    OxidEsales\EshopCommunity\Internal\Framework\Theme\Event\ThemeSettingChangedEvent
 
 This event will be triggered when theme settings have been changed in database.
 
