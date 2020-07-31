@@ -22,7 +22,7 @@ Writing the subscriber
 ----------------------
 
 We want our subscriber class `ModelLoggerEventSubscriber` to be
-shop-aware, that means, it should be only triggered in sub shops
+shop aware, that means, it should be only triggered in sub shops
 where the module, in which this event subscriber is implemented,
 is activated. To achieve this, we inherit from
 `AbstractShopAwareEventSubscriber`.

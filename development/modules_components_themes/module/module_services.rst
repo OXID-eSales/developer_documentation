@@ -50,21 +50,6 @@ Then you can register the service in OXID DI Container. Create in root directory
             autowire: true
             public: true
 
-.. note:: **class** argument in **services.yaml** is optional and can be omitted
-    (when it's undefined, DI container considers that the ID of the service is the PHP class with fully qualified name).
-    Following 2 examples of service arguments will have the same effect:
-
-.. code:: yaml
-
-    services:
-        SomeCompany\SpecialERPModule\PriceCalculator:
-            class: SomeCompany\SpecialERPModule\PriceCalculator
-            public: true
-
-    services:
-        SomeCompany\SpecialERPModule\PriceCalculator:
-            public: true
-
 We recommend to use the interface namespace as the DI container key for
 the service if you have only the one implementation for an interface and
 provide ``class`` parameter with the implementation namespace.
@@ -82,10 +67,6 @@ In this example we have dependency on PriceCalculatorInterface (abstraction),
 but not on ERPPriceCalculator (implementation). PriceCalculatorInterface will be autowired
 and no changes in the yaml file are needed because the key of the service is the same as provided
 in the constructor argument type.
-
-.. warning:: Your service needs to implement **ShopAwareInterface**, if you want to be able to active it per shop.
-    Otherwise, module services will be active in all subshops, even if the module itself is activated only for one of them!
-
 
 .. _inject_services-20191111:
 
