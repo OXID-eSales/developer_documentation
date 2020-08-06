@@ -45,12 +45,12 @@ the DI container.
 
 .. Important:: 
 
-  **Make module event subscribers shop-aware**
+  **Make module event subscribers shopaware**
     
   If you want to use event subscribers in a
   module that may not be activated in all
   subshops of a project, you should make your
-  subscribers shop-aware. Then they will only
+  subscribers shopaware. Then they will only
   be called for shops where the module is
   activated in. Otherwise the will be called
   regardless of the shop active.
@@ -64,6 +64,4 @@ the DI container.
   also a trait you may use:
   `ShopAwareServiceTrait`. Just include it
   in your class.
-
-  More on shop-aware events :ref:`here<tutorial_shop_aware_events>`.
 
