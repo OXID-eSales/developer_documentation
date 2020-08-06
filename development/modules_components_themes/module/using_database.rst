@@ -71,7 +71,7 @@ Since it is a service, you can use the same methods as with every other service.
             $this->queryBuilderFactory = $queryBuilderFactory;
         }
 
-If injecting is not possible, make use of the ``ContainerFactory``:
+If you want to access it outside of the services where injecting is not possible, make use of the `ContainerFactory` (:ref:`more information <inject_services-20191111>`):
 
    .. code:: bash
 
