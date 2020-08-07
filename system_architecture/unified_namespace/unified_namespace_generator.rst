@@ -1,3 +1,5 @@
+.. _unified_namespace_generator_01:
+
 Unified Namespace Generator
 ===========================
 
