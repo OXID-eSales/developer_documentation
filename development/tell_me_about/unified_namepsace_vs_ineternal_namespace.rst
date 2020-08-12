@@ -42,14 +42,24 @@ Because we use the class interface name as key for the DI container and even if 
 And if there is a service that only exists in the EE edition, then the interface obviously has an EE namespace,
 but this is also okay because there is no corresponding CE or PE service.
 
+Example:
+
 .. code:: php
 
+    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface
+    .
+    .
     public function __contruct(ModuleActivationBridgeInterface $moduleActivationBridge) {
         $this->moduleActivationBridge = $moduleActivationBridge;
     }
 
-    or
+or
 
+.. code:: php
+
+    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface
+    .
+    .
     $containerFactory = ContainerFactory::getInstance();
     $container = $containerFactory->getContainer();
     $moduleActivationService = $container->get(ModuleActivationBridgeInterface::class);
