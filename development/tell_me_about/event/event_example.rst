@@ -32,7 +32,7 @@ a handler method and one static method.
 
 Let's begin with the constructor. The constructor expects a PSR compatible
 logger. Apart from that type hinting is always a good practice, we
-need it here explicitely because we want to autowire the logger in the
+need it here explicitly because we want to autowire the logger in the
 DI container, so this type hint is necessary.
 
 The next method `logDatabaseActivity()` does exactly this: It writes
@@ -124,7 +124,7 @@ a habit to include this in all your `services.yaml` files also.
 Then there is the quite simple service definition. We use the
 class path of the subscriber as key for the service. In principle
 we could have used any string, but it is also good practice to
-use something truely unique, so the fully qualified class name
+use something truly unique, so the fully qualified class name
 is a good choice (if there would be a unique interface, it would
 even be better, but since every event subscriber implements the
 same interface this is not a good choice here).

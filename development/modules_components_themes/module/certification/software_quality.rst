@@ -98,7 +98,7 @@ values are assigned to protected variables.
 Exception handling
 ^^^^^^^^^^^^^^^^^^
 
-Create your own classes for exception handling and therefor use ``StandardException``:
+Create your own classes for exception handling and therefore use ``StandardException``:
 
 .. code:: php
 
@@ -107,7 +107,7 @@ Create your own classes for exception handling and therefor use ``StandardExcept
 Maximum length of methods < 80 lines
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The number of lines of a method should not be higher than 80. The best practice is to stich with values below 40.
+The number of lines of a method should not be higher than 80. The best practice is to stick with values below 40.
 Modules with more than 120 lines of code in a method cannot be certified.
 
 Complexity
@@ -157,7 +157,7 @@ as well as operators like
     xor
 
 in the body of a constructor, method, static initializer, or instance initializer. It is a measure of the minimum number
-of possible paths through the source and therefor the number of required tests. In general, 1-4 is considered
+of possible paths through the source and therefore the number of required tests. In general, 1-4 is considered
 good, 5-7 ok, 8-10 means "consider re-factoring", and 11 and higher tells you "re-factor now!". A hard limit for the
 module certification process is a Cyclomatic Complexity of 8.
 
@@ -189,7 +189,7 @@ inside the module directory, the block file should be located in :file:`views/bl
 When adding contents for blocks in the admin interface, blocks should be located in paths like
 :file:`views/blocks/admin/originalTemplateName_blockname.tpl`.
 
-Blocks sould be used whenever the shop's functionality is extended to the frontend side and a requested function or method
+Blocks should be used whenever the shop's functionality is extended to the frontend side and a requested function or method
 would not be available as long as the module is disabled. Using blocks allows you to move function calls into small snippet
 files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered
 a quality feature of a module.

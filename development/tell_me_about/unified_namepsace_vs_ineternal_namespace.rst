@@ -20,7 +20,7 @@ To create an instance of these classes, we must use `oxnew` function to build th
 .. code:: php
 
     $basketComponent = oxNew(\OxidEsales\Eshop\Application\Component\BasketComponent::class);
-    $basketComponent->tobasket();
+    $basketComponent->toBasket();
 
 More information:
 
