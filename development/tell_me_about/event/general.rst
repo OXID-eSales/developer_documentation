@@ -27,7 +27,7 @@ not creditworthy.
   refactored, the events should stay the same
   over a much longer period of time. So to keep
   you shop upgradable, you should use events
-  whereever possible.
+  where ever possible.
 
 The framework used for this is the Symfony
 event handling mechanism. So general information

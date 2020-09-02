@@ -65,12 +65,12 @@ A simple example:
 PHPDoc
 ^^^^^^
 
-You can provide a HTML document that contains the PHPdoc from the code's comments. See also :ref:`PHP comments <phpcomments-20171213>`. 
+You can provide a HTML document that contains the PHPDoc from the code's comments. See also :ref:`PHP comments <phpcomments-20171213>`.
 
 Documentation directory
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-You can provide additional documentation materials inside a ``documentation`` directory (within the directory structore of
+You can provide additional documentation materials inside a ``documentation`` directory (within the directory structure of
 the module), e.g. in PDF files.
 
 .. _phpcomments-20171213:
@@ -90,7 +90,7 @@ A comment should give additional information and not only repeat the name. See t
     * @package Furniture
     * @version $Revision$
     * @author
-    * @copyright Copyright (C) 2003-2017 Somecompany . All rights reserved.
+    * @copyright Copyright (C) 2003-2017 SomeCompany . All rights reserved.
     * @license http://www.gnu.org/licenses/gpl-3.0.txt GPL
     * @extend Base
     */
