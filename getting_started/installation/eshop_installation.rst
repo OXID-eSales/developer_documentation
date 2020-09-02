@@ -18,7 +18,7 @@ Providing shop files
     :doc:`unified namespace <../../system_architecture/unified_namespace/index>` `\\OxidEsales\\Eshop`.
 
 
-    **Watch out for error messages during the installation procress.**
+    **Watch out for error messages during the installation process.**
 
     See our :doc:`troubleshooting <./troubleshooting>` section for solutions.
 

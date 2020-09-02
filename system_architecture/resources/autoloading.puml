@@ -2,13 +2,13 @@
    start
    :<b>Composer Autoloader</b>;
        if (is there a autoload section in a composer.json?) then (true)
-           :Load class according composer.json autolaod section;
+           :Load class according composer.json autoload section;
            stop
        else (false)
            :<b>Backwards Compatibility Autoloader</b>;
            -->
            if (class can be resolved to the unified namespace equivalent class) then (true)
-               :trigger Compsoer Autoloader;
+               :trigger Composer Autoloader;
                stop
            else (false)
                :<b>Module Autoloader</b>;
