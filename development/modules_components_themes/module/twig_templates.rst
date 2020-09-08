@@ -1,11 +1,10 @@
-
 Twig templates
 ==============
 
 Register module templates
 -------------------------
 
-To register your twig templates you have to put them to `/views/twig/tpl/` directory in your module root directory.
+To register your Twig templates you have to put them to `/views/twig/tpl/` directory in your module root directory.
 After module activation templates will be automatically registred with namespace which equals your module id `@<module-id>/template-name.html.twig`.
 
 For example, PayPal module has module id `oepaypal` and template `/views/twig/tpl/custom-template.html.twig`. This template will be available as
@@ -14,12 +13,13 @@ For example, PayPal module has module id `oepaypal` and template `/views/twig/tp
 Extend template for all themes
 ------------------------------
 
-To extend a shop template you have to create in your module template directory `/views/twig/tpl/` template with the same name
-and the same directory structure as the shop template relative path to theme `tpl` directory and extend template blocks in the standard
-twig way using the relative path.
-For more information about twig inheritance: `twig inheritance documentation <https://twig.symfony.com/doc/3.x/tags/extends.html>`_
+To extend a shop template you have to create in your module's template directory
+`/views/twig/tpl/`
+new file with the same name and directory structure as the path from shop's `tpl` directory,
+and extend template blocks in the standard Twig way, providing the relative path.
+For more information about Twig inheritance: `Twig inheritance documentation <https://twig.symfony.com/doc/3.x/tags/extends.html>`_
 
-.. important::
+.. warning::
 
     Dynamic or conditional inheritance of shop templates is not supported by modules and must not be used.
 
@@ -51,7 +51,7 @@ is `page/details/inc/productmain.html.twig`. You have to create template in your
 Extend template for specific theme
 ----------------------------------
 
-Inheritance for a specific theme is similar to inheritance for the all themes,
+Inheritance for a specific theme is similar to inheritance for all themes,
 but you have to put your template in `/views/twig/tpl/<theme-id>` directory in your module instead of `/views/twig/tpl/`.
 
 Example:
