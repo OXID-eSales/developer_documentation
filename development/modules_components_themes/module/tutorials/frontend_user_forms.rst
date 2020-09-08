@@ -15,6 +15,13 @@ In this page an example of database table column called ``EXTENDUSER_ADDITIONALC
 Template
 --------
 
+.. warning::
+
+    Following information applies to Smarty templates only,
+    please check :doc:`Twig template documentation for modules </development/modules_components_themes/module/using_twig_in_module_templates>`
+    to find out how to extend Twig blocks.
+
+
 The block which will have to be extend is located in template file *form/fieldset/user_billing.tpl*.
 To extend it there will be a need to create a template file and describe it in *metadata.php* file:
 

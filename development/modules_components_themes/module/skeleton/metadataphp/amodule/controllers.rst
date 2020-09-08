@@ -64,3 +64,44 @@ Example
     .. code::
 
         http://<shopurl>/widget.php?cl=graphql
+
+
+
+Define template file in the render method
+-----------------------------------------
+
+To render a smarty template via a frontend controller, we need to define the template file
+in metadata.php in the templates section. For example:
+
+.. code::
+
+    .
+    .
+    'templates' => array(
+        'template-name.tpl' => '.../template-name.tpl'
+    ),
+    .
+    .
+
+and the render method in our controller should return it, but we also support twig engine,
+therefore you should only return **the template name without extension** in the render method,
+then the shop will behave in the same way for both smarty and twig templates. For example:
+
+.. code::
+
+     class MyController extends \OxidEsales\Eshop\Application\Controller\FrontendController
+     {
+         public function render()
+         {
+             .
+             .
+
+             return 'template-name';
+         }
+     .
+     .
+
+.. important::
+
+    For Twig templates we do not need to define them in metadata.php in the templates section.
+    To know how to register and access Twig templates, please follow :ref:`this page <registering-a-new-module-template>`.

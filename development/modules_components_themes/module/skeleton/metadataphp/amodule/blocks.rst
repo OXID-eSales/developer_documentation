@@ -1,6 +1,12 @@
 blocks
 ======
 
+.. warning::
+
+    Section `blocks` in `metadata.php` is used for Smarty templates only,
+    please check :doc:`Twig template documentation for modules </development/modules_components_themes/module/using_twig_in_module_templates>`
+    to find out how to extend Twig blocks.
+
 Description:
     In this array are registered all module templates blocks. On module activation they are automatically inserted into
     database. On activating/deactivating module, all module blocks also are activated/deactivated.
