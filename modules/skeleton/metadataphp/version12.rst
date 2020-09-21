@@ -172,7 +172,9 @@ There are registered all module configuration options. On activation they are in
 
 Each setting belongs to a group. In this case its called ``main``. Then follows the name of the setting which is the variable name in oxconfig/oxconfigdisplay table. It is best practice to prefix it with your moduleid to avoid name collisions with other modules. Next part is the type of the parameter and last part is the default value.
 
-In order to get correct translations of your settings names in admin one should create `views/admin/module_options.php`` where is the language with 2 letters for example ``en`` for english. There should be placed the language constants according to the following scheme:
+Add **translations of you module's settings** into each copy of corresponding :file:`module_options.php` file
+(see :ref:`File and Folder structure <modules_structure_language_files_admin>`)
+using the following format for language constants:
 
 .. code:: php
 

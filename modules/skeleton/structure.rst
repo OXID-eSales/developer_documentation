@@ -111,9 +111,10 @@ Example:
                           └── myvendormymodule_en_lang.php
 
 
+.. _modules_structure_language_files_admin:
+
 Admin
 ^^^^^
-
 Translation files can be placed in
 
 * ``Application/views/admin/``
@@ -131,11 +132,11 @@ Example:
                       └── views
                           └── admin
                               └── de
+                                  └── module_options.php
                                   └── myvendormymodule_admin_de_lang.php
                               └── en
+                                  └── module_options.php
                                   └── myvendormymodule_admin_en_lang.php
-
-For translations of module settings, have a look at the section :ref:`settings of the metadata file <settings-20170316>`.
 
 .. note::
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
