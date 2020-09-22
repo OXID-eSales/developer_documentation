@@ -14,6 +14,12 @@ In order to provide an admin menu entry you need to add a menu.xml in the root f
   ├── menu.xml
   ├── ...
 
+This will be automaticly loaded and added. The order for the admin menu structure:
+
+#. source/Application/views/admin/menu.xml
+#. source/Application/views/admin/user.xml
+#. Module menu.xml
+
 Menu.xml Examples
 ^^^^^^^^^^^^^^^^^
 
