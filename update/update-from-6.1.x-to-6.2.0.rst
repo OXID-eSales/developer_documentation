@@ -18,6 +18,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 
        .. code:: json
 
+        {
             "require": {
                 "oxid-esales/oxideshop-metapackage-ce": "v6.2.0"
             },
@@ -27,6 +28,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
                 "oxid-esales/oxideshop-ide-helper": "^v3.1.2",
                 "oxid-esales/azure-theme": "^v1.4.2"
             },
+        }
 
     `Example: updated values for OXID eShop CE v6.2.0`
 
