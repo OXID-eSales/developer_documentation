@@ -4,7 +4,7 @@ menu.xml
 Menu entry
 ----------
 
-In order to provide an admin menu entry you need to add a menu.xml in the root folder of your module.
+In order to provide an admin menu entry, you need to add a menu.xml in the root folder of your module.
 
 .. code::
 
@@ -14,7 +14,7 @@ In order to provide an admin menu entry you need to add a menu.xml in the root f
   ├── menu.xml
   ├── ...
 
-This will be automaticly loaded and added. The order for the admin menu structure:
+This will be automatically loaded and added. The order for the admin menu structure:
 
 #. source/Application/views/admin/menu.xml
 #. source/Application/views/admin/user.xml
@@ -23,7 +23,7 @@ This will be automaticly loaded and added. The order for the admin menu structur
 Menu.xml Examples
 ^^^^^^^^^^^^^^^^^
 
-Following example is introducing a new main menu point within a new submenu entry:
+The following example is introducing a new main menu point within a new submenu entry:
 
 .. code::
 
@@ -36,7 +36,7 @@ Following example is introducing a new main menu point within a new submenu entr
         </OXMENU>
     </OX>
 
-This example extends a already existing menu entry and listpage with a new tab: 
+This example extends an already existing menu entry and list page with a new tab:
 
 .. code::
 
@@ -51,7 +51,7 @@ This example extends a already existing menu entry and listpage with a new tab:
         </OXMENU>
     </OX>
 
-Next example also adds a new list within one submenu:
+The next example also adds a new list within one submenu:
 
 .. code::
 
