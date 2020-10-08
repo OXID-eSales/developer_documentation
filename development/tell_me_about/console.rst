@@ -82,6 +82,14 @@ Command file registration
 When command file is created, it's necessary to register it as a service. If `services.yaml` file is not present,
 create it in your module root directory.
 
+.. important::
+
+    Do not add a leading backslash to the classname.
+    
+    wrong: `class: \OxidEsales\DemoModule\Command\HelloWorldCommand`
+    
+    correct: `class: OxidEsales\DemoModule\Command\HelloWorldCommand`
+
 .. code:: yaml
 
     services:
@@ -89,6 +97,11 @@ create it in your module root directory.
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
         - { name: 'console.command', command: 'demo-module:say-hello' }
+        
+.. important::
+
+    Despite specifying `command: 'demo-module:say-hello'` explicitly is not needed, we highly recommend to do so,
+    because you will likely run into [this issue](https://stackoverflow.com/a/61655652/2123108) otherwise.
 
 Now after module activation, command will be available in commands list and it can be executed via:
 
