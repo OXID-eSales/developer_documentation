@@ -2,11 +2,13 @@
 Twig templates
 **************
 
+.. _register-module-templates:
+
 Register module templates
 #########################
 
 To register your Twig templates you have to put them to `/views/twig/tpl/` directory in your module root directory.
-After module activation templates will be automatically registred with namespace which equals your module id `@<module-id>/template-name.html.twig`.
+After module activation templates will be automatically registered with namespace which equals your module id `@<module-id>/template-name.html.twig`.
 
 For example, PayPal module has module id `oepaypal` and template `/views/twig/tpl/custom-template.html.twig`. This template will be available as
 `@oepaypal/custom-template.html.twig`.
