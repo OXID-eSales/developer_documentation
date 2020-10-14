@@ -12,8 +12,8 @@ version, please switch to the appropriate version of the documentation.
     before storing/retrieving sensitive data.
 
 .. contents ::
-:local:
-:depth: 1
+    :local:
+    :depth: 1
 
 .. note::
     Please complete all update steps in provided order (steps cant not be skipped or swapped) to ensure data consistency.

@@ -12,8 +12,7 @@ each module has to have metadata set. This has to be done with a file :file:`met
 
 .. note::
 
-    We deprecated supporting metadata version 1, 1.1 and 1.2.
-    Therefore, it is recommended to use version 2 or later.
+    Support of metadata version 1, 1.1 and 1.2 was dropped. Please use version 2 or later.
 
 .. toctree::
     :titlesonly:
