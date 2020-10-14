@@ -10,6 +10,11 @@ each module has to have metadata set. This has to be done with a file :file:`met
   There is already a `blog post <https://oxidforge.org/en/extension-metadata-file.html>`__
   about Module Metadata but this blog post is partly outdated with release of OXID eShop 6.0.
 
+.. note::
+
+    We deprecated supporting metadata version 1, 1.1 and 1.2.
+    Therefore, it is recommended to use version 2 or later.
+
 .. toctree::
     :titlesonly:
     :glob:
