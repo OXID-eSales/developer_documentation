@@ -61,9 +61,9 @@ Environment file :file:`var/configuration/environment/1.yaml` should look someth
     modules:
       oepaypal:
         moduleSettings:
-          sOEPayPalUsername
+          sOEPayPalUsername:
             value: 'staging_environment_username'
-          sOEPayPalPassword
+          sOEPayPalPassword:
             value: 'staging_environment_password'
 
 New values will get into database as soon as module will be **activated**.
