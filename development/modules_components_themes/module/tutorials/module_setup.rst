@@ -56,8 +56,10 @@ modifying it:
 
 .. code:: json
 
-    "require": {
-        "<package-name>": "<version>"
+    {
+        "require": {
+            "<package-name>": "<version>"
+        }
     }
 
 And run update command in project root directory:

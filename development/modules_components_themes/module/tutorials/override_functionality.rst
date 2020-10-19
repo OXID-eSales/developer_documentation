@@ -107,15 +107,17 @@ The project `composer.json` file should have entries looking like this:
 
 .. code:: json
 
-  "repositories": {
-      "oxid-esales/logger-demo-module": {
-          "type": "path",
-          "url": "source/modules/oe/loggerdemo"
+    {
+      "repositories": {
+          "oxid-esales/logger-demo-module": {
+              "type": "path",
+              "url": "source/modules/oe/loggerdemo"
+          }
+      },
+      "require": {
+          "oxid-esales/logger-demo-module": "dev-master"
       }
-  },
-  "require": {
-      "oxid-esales/logger-demo-module": "dev-master"
-  }
+    }
 
 To register a namespace and download dependencies there is a need to run composer update command in project root directory:
 

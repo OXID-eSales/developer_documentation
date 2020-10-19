@@ -12,14 +12,14 @@ which can be translated is the title of an article. In the database the title of
 `oxtitle` of the table `oxarticles`. If you configure two
 languages, `de` and `en`, both the `de` and the `en` contents have to be stored somewhere. This is done by using
 another column, the column `oxtitle_1` in the table `oxarticles`.
-In generel OXID eShop stores translations by adding more columns, tables and views to the database if you configure more languages.
+In general OXID eShop stores translations by adding more columns, tables and views to the database if you configure more languages.
 
 Every language has a numeric id. The data for language id 0 goes into `oxarticles\.oxtitle`, data for language id 1
 into `oxarticles\.oxtitle_1`, language 2 into `oxarticles\.oxtitle_2`, language 3 into `oxarticles\.oxtitle_3`.
 The above mentioned columns are the default available columns of OXID eShop. This means by default, OXID eShop has enough columns
 to handle up to four languages.
 
-If you configure a fith language, the column  `oxarticles\.oxtitle_5` will be added to the database.
+If you configure a fifth language, the column  `oxarticles\.oxtitle_5` will be added to the database.
 
 From language id 9 on, a new extension table for the table `oxarticles` is created. This table is named
 `oxarticles_set1` in our example and has the column `oxarticles_set1\.oxtitle_8`. The column
@@ -56,7 +56,7 @@ From language id 9 on, a new extension table for the table `oxarticles` is creat
 .. note::
 
     If there is no information yet set for the article title in language id >=8 ,
-    there is no entry in the \*_set\* table. So a view trying to use that nonexisting data
+    there is no entry in the \*_set\* table. So a view trying to use that non existing data
     contains NULL value fields.
 
 Accessing values of multilanguage fields

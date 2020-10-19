@@ -6,7 +6,7 @@ Known issues
 - Variable scope. In Twig variables declared in templates have scopes limited by block (``{% block %}``, ``{% for %}``
   and so on). Some variables should be declared outside these blocks if they are used outside.
 
-- Redeclaring blocks - it’s forbidden in Twig.
+- Re-declaring blocks - it’s forbidden in Twig.
 
 - Access to array item ``$myArray.$itemIndex`` should be manually translated to ``myArray[itemIndex]``
 

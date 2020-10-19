@@ -35,10 +35,9 @@ Usage
         [{assign var="oConfig" value=$oViewConf->getConfig()}]
         [{$oConfig->getConfigParam('nameOfSetting')}]
     
-    In order to get correct translations of your settings names you have to create the file :file:`module_options.php`
-    like described in the :ref:`section translations <modules_structure_language_files_20170316>`
-    The shop looks inside this file for language constants according the scheme ``SHOP_MODULE_GROUP_``,
-    ``SHOP_MODULE_`` and ``HELP_MODULE``.
+    Add **translations of your module's settings** into each copy of corresponding :file:`module_options.php` file
+    (see :ref:`File and Folder structure <modules_structure_language_files_admin>`)
+    using the following format for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_MODULE``.
 
     .. code:: php
 

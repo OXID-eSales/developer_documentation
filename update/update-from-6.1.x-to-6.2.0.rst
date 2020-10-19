@@ -18,6 +18,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 
        .. code:: json
 
+        {
             "require": {
                 "oxid-esales/oxideshop-metapackage-ce": "v6.2.0"
             },
@@ -27,6 +28,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
                 "oxid-esales/oxideshop-ide-helper": "^v3.1.2",
                 "oxid-esales/azure-theme": "^v1.4.2"
             },
+        }
 
     `Example: updated values for OXID eShop CE v6.2.0`
 
@@ -62,7 +64,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 
    .. code:: bash
 
-      composer update #(You will be prompted wether to overwrite existing code for several components. The default value is N [no] but of course you should take care to reply with y [yes].)
+      composer update #(You will be prompted whether to overwrite existing code for several components. The default value is N [no] but of course you should take care to reply with y [yes].)
 
    .. important::
 
@@ -82,7 +84,7 @@ Depending on your existing OXID eShop installation, you need to perform one or m
 --------------------------------------
 
 The outcome of the following steps is that you are able to configure, activate and deactivate your current modules again.
-Therefor the :doc:`new module configuration .yaml </development/modules_components_themes/project/module_configuration/modules_configuration>` files need
+Therefore the :doc:`new module configuration .yaml </development/modules_components_themes/project/module_configuration/modules_configuration>` files need
 to be synchronized with the configuration and
 activation status of your current modules.
 :doc:`Read here for background information </development/modules_components_themes/module/installation_setup/index>`.

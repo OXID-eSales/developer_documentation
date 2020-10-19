@@ -61,9 +61,9 @@ Environment file :file:`var/configuration/environment/1.yaml` should look someth
     modules:
       oepaypal:
         moduleSettings:
-          sOEPayPalUsername
+          sOEPayPalUsername:
             value: 'staging_environment_username'
-          sOEPayPalPassword
+          sOEPayPalPassword:
             value: 'staging_environment_password'
 
 New values will get into database as soon as module will be **activated**.
@@ -151,7 +151,7 @@ To apply configuration use the following command:
 
     vendor/bin/oe-console oe:module:apply-configuration
 
-Provide ``--shop-id`` option if it is only for one shop.
+Provide ``--shop-id`` option if you are using an OXID eShop Enterprise Edition and it is only for one shop.
 
 .. code:: bash
 

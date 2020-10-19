@@ -23,7 +23,5 @@ It's necessary that component would have `oxideshop-component` type in `composer
 .. code:: json
 
     {
-        //...
         "type": "oxideshop-component",
-        //...
     }
