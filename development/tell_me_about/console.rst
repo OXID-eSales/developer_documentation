@@ -86,9 +86,9 @@ create it in your module root directory.
 
     Do not add a leading backslash to the classname.
     
-    wrong: `class: \OxidEsales\DemoModule\Command\HelloWorldCommand`
+    wrong: `class: \\OxidEsales\\DemoModule\\Command\\HelloWorldCommand`
     
-    correct: `class: OxidEsales\DemoModule\Command\HelloWorldCommand`
+    correct: `class: OxidEsales\\DemoModule\\Command\\HelloWorldCommand`
 
 .. code:: yaml
 
@@ -101,7 +101,7 @@ create it in your module root directory.
 .. important::
 
     Despite specifying `command: 'demo-module:say-hello'` explicitly is not needed, we highly recommend to do so,
-    because you will likely run into [this issue](https://stackoverflow.com/a/61655652/2123108) otherwise.
+    because you will likely run into `this issue <https://stackoverflow.com/a/61655652/2123108>`__ otherwise.
 
 Now after module activation, command will be available in commands list and it can be executed via:
 
