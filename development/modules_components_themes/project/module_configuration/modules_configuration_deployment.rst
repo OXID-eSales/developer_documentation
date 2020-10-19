@@ -151,7 +151,7 @@ To apply configuration use the following command:
 
     vendor/bin/oe-console oe:module:apply-configuration
 
-Provide ``--shop-id`` option if it is only for one shop.
+Provide ``--shop-id`` option if you are using an OXID eShop Enterprise Edition and it is only for one shop.
 
 .. code:: bash
 
