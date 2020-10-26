@@ -134,7 +134,7 @@ installation let's say for OXID eShop PayPal module, files in `var/shops/` will 
         url: 'https://www.oxid-esales.com'
         email: info@oxid-esales.com
         templates:
-          order_paypal.tpl: oe/oepaypal/views/admin/tpl/order_paypal.tpl
+          order_paypal.tpl: views/admin/tpl/order_paypal.tpl
         templateBlocks:
           -
             template: deliveryset_main.tpl

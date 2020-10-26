@@ -183,5 +183,5 @@ In case of using a vendor directory you still need to describe file paths relati
         'some_class' => 'oxid/module1/my_class'
   ),
   'templates' => array(
-        'my_template.tpl' => 'oxid/module1/my_template.tpl'
+        'my_template.tpl' => 'my_template.tpl'
   )

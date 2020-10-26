@@ -15,5 +15,5 @@ Example
     .. code:: php
 
         'templates' => [
-            'order_dhl.tpl' => 'oe/efi_dhl/out/admin/tpl/order_dhl.tpl'
+            'order_dhl.tpl' => 'out/admin/tpl/order_dhl.tpl'
         ],
