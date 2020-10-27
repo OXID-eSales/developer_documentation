@@ -86,11 +86,10 @@ Frontend
 Translation files can be placed in the folders
 
 * ``Application/translations``
-* ``application/translations``
 * ``translations``
 
 inside your module directory.
-If you have a folder ``Application`` or ``application`` inside your module, translation files are searched
+If you have a folder ``Application`` (first letter is capital) inside your module, translation files are searched
 inside this directory. Otherwise, they are searched inside the folder ``translations``.
 Inside these directory, you have to create a directory for the specific language, e.g. ``de`` or ``en``.
 Inside the language specific, directory, the filename has to be _lang.php.
@@ -119,7 +118,6 @@ Admin
 Translation files can be placed in
 
 * ``Application/views/admin/``
-* ``application/views/admin/``
 * ``views/admin/``
 
 Example:
