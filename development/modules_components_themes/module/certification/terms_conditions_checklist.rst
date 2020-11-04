@@ -33,7 +33,6 @@ Software tests
 
 Software quality
 ^^^^^^^^^^^^^^^^
-* use the Composer blacklist-filter for Composer modules
 * No globals
 * No global functions
 * No business logic in smarty functions

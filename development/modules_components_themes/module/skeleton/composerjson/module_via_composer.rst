@@ -30,9 +30,6 @@ In order to install a module correctly, this plugin requires four fields to be d
         ],
         "extra": {
             "oxideshop": {
-                "blacklist-filter": [
-                    "documentation/**/*.*"
-                ],
                 "target-directory": "oe/oepaypal"
             }
         },
@@ -103,37 +100,6 @@ When the parameter is not given, the root directory of the module is used instea
 
   Usually this parameter should not be used if all files are placed in the module's root directory.
 
-blacklist-filter
-^^^^^^^^^^^^^^^^
-
-If ``blacklist-filter`` is given, it will be used to filter out unwanted files
-and directories while the copy from ``source-directory`` to
-``target-directory`` takes place. The value of ``blacklist-filter`` must be a
-list of strings where each item represents a glob filter entry and is described
-as a relative path (relative to ``source-directory``).
-
-Below is a list of **valid** entries:
-
-* ``README.md`` - will filter files and directories named ``README.md`` from root and all the subdirectories;
-* ``*.pdf`` - will filter all 'pdf' files and also directories which have ``pdf`` at the end of their name from root and all the subdirectories;
-* ``docs`` - will filter files and directories named ``docs`` from root and all the subdirectories;
-* ``docs/dir`` - will filter file or directory named ``dir`` from ``docs`` directory
-* ``docs/dir/test.txt`` - will filter file or directory named ``test.txt`` from ``docs/dir`` directory
-
-Below is a list of **non-valid** entries:
-
-* ``/an/absolute/path`` - absolute paths are not allowed, only relative
-  paths are accepted;
-* ``some/path/`` - ambigious description of directory to filter, it's not clear
-  if only the files are needed to be filtered or directories have to be included
-  as well.
-* ``docs/*.txt`` - using wildcard character * within subdirectories is not allowed.
-
-
-For the most up-to-date definition of what can be accepted as an argument,
-please follow the
-`blacklist-filter tests <https://github.com/OXID-eSales/oxideshop_ce/blob/master/tests/Integration/Internal/Framework/Module/Install/Service/ModuleFilesInstallerTest.php>`_
-which covers the behaviour.
 
 .. _module_require-20170926:
 
