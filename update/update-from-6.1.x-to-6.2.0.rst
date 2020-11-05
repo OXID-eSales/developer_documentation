@@ -91,34 +91,40 @@ activation status of your current modules.
 
 1. Install the `update component <https://github.com/OXID-eSales/oxideshop-update-component>`__ via composer:
 
-    .. code:: bash
+   .. code:: bash
 
        composer require --no-interaction oxid-esales/oxideshop-update-component:"^1.0"
 
-2. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
+2. Clean up the :file:`tmp` folder
+
+   .. code:: bash
+
+      rm -rf source/tmp/*
+
+3. Install a default configuration for all modules which are currently inside the directory :file:`source/modules`.
    On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
 
    .. code:: bash
 
       vendor/bin/oe-console oe:oxideshop-update-component:install-all-modules
 
-3. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
+4. Transfer the existing configuration (module setting values, class extension chain, which modules are active) from the
    database to the :file:`.yaml` configuration files.
 
    .. code:: bash
 
       vendor/bin/oe-console oe:oxideshop-update-component:transfer-module-data
 
-4. Remove modules data which already presents the yaml files from the database to avoid duplications and errors
+5. Remove modules data which already presents the yaml files from the database to avoid duplications and errors
    during the module activation.
 
    .. code:: bash
 
       vendor/bin/oe-console oe:oxideshop-update-component:delete-module-data-from-database
 
-   After this step modules data should be removed from the database, modules functionality should not work anymore.
+   After this step, modules data should be removed from the database so modules functionality should not work anymore.
 
-5. Activate all configured modules which were previously active .
+6. Activate all configured modules which were previously active .
    On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
 
    .. code:: bash
@@ -127,7 +133,7 @@ activation status of your current modules.
 
    After this step, all modules which were previously active, should be active and have the correct configuration set.
 
-6. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
+7. Uninstall the `update component via composer <https://github.com/OXID-eSales/oxideshop-update-component>`__
 
 3. Remove old files
 -------------------
