@@ -91,7 +91,7 @@ activation status of your current modules.
 
 1. Install the `update component <https://github.com/OXID-eSales/oxideshop-update-component>`__ via composer:
 
-    .. code:: bash
+   .. code:: bash
 
        composer require --no-interaction oxid-esales/oxideshop-update-component:"^1.0"
 
@@ -122,7 +122,7 @@ activation status of your current modules.
 
       vendor/bin/oe-console oe:oxideshop-update-component:delete-module-data-from-database
 
-   After this step modules data should be removed from the database, modules functionality should not work anymore.
+   After this step, modules data should be removed from the database so modules functionality should not work anymore.
 
 6. Activate all configured modules which were previously active .
    On the command line, execute the :doc:`console command </development/tell_me_about/console>`:
