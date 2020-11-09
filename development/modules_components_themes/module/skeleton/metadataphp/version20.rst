@@ -97,7 +97,7 @@ Here is an example of a module metadata file:
             'myvendor_mytestmodule_MyOtherModuleController' => MyVendor\mytestmodule\MyOtherModuleController::class,
         ],
         'templates' => [
-            'mytestmodule.tpl' => 'mytestmodule/mytestmodule.tpl',
-            'mytestmodule_other.tpl' => 'mytestmodule/test_module_controller_routing_other.tpl'
+            'mytestmodule.tpl' => 'mytestmodule.tpl',
+            'mytestmodule_other.tpl' => 'test_module_controller_routing_other.tpl'
         ]
     );
