@@ -42,11 +42,6 @@ Example module's composer.json
             "psr-4": {
                 "MyVendor\\MyModule\\": "../../../source/modules/myvendor/mymodule"
             }
-        },
-        "extra": {
-            "oxideshop": {
-                "target-directory": "myvendor/mymodule"
-            }
         }
     }
 

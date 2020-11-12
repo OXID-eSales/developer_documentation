@@ -28,11 +28,6 @@ In order to install a module correctly, this plugin requires four fields to be d
             "GPL-3.0-only",
             "proprietary"
         ],
-        "extra": {
-            "oxideshop": {
-                "target-directory": "oe/oepaypal"
-            }
-        },
         "require": {
             "php": ">=5.6",
             "lib-curl": ">=7.26.0",
@@ -73,19 +68,6 @@ This defines how the repository should be treated by the installer.
 
 extra: {oxideshop}
 ------------------
-
-..  _module_target-directory-20170926:
-
-target-directory
-^^^^^^^^^^^^^^^^
-
-``target-directory`` value will be used to create a folder inside the Shop ``modules`` directory.
-This folder will be used to place all files of the module.
-
-.. important::
-
-  It is strongly recommended to set the target directory value to ``<vendor of the module>`` + ``<module ID>``,
-  e.g. ``oe/oepaypal``.
 
 ..  _module_source-directory-20170926:
 
@@ -132,8 +114,5 @@ the module needs to register it's namespace to the modules path:
     }
   },
 
-Keep in mind, that the :ref:`target-directory <module_target-directory-20170926>` in the section extra: {oxideshop} has to fit the
-autoload path you define here.
+
 In our PayPal example the PSR-4 autoload path points to a path inside the OXID eShop source/modules directory.
-This path must match the path of the :ref:`target-directory <module_target-directory-20170926>` as defined in the extra: {oxideshop}
-section, as the files will be copied there.

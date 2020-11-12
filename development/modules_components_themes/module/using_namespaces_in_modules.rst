@@ -86,24 +86,6 @@ that the shop will work as expected if you try to do that though. What can defin
 Module installation
 -------------------
 
-Installing a module can be done as before by copying the module sources into the shop's module directory (old style)
-and then activating the module in the shop admin backend. With namespaces in OXID eShop we have the possibility
-to let composer handle retrieving and copying the module sources to the correct location for you.
-You still have to activate the module in the shop admin either way.
-
-Just create a composer.json in the module's root directory
-::
-
-  {
-      "name": "myvendor/mymodule",
-      "extra": {
-          "oxideshop": {
-              "target-directory": "myvendor/mymodule"
-          }
-      }
-  }
-
-
 Go to the shop's root directory and configure/require the module in the shop's composer.json.
 ::
 
@@ -226,11 +208,6 @@ root directory.
       "autoload": {
           "psr-4": {
               "MyVendor\\MyModuleNamespace\\": "./"
-          }
-      },
-      "extra": {
-          "oxideshop": {
-              "target-directory": "myvendor/mymodule"
           }
       }
   }

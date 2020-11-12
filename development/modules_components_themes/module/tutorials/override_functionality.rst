@@ -95,11 +95,7 @@ The `composer.json` file in module root directory could look like this:
       }
     },
     "minimum-stability": "dev",
-    "prefer-stable": true,
-    "extra": {
-      "oxideshop": {
-        "target-directory": "oe/loggerdemo"
-      }
+    "prefer-stable": true
     }
   }
 
