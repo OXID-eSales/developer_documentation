@@ -64,25 +64,6 @@ type
 Module must have ``oxideshop-module`` value defined as a type.
 This defines how the repository should be treated by the installer.
 
-.. _module_extra-20160524:
-
-extra: {oxideshop}
-------------------
-
-..  _module_source-directory-20170926:
-
-source-directory
-^^^^^^^^^^^^^^^^
-
-If ``source-directory`` is given, the value defines which directory will be used to define where the files and directories
-will be picked from.
-When the parameter is not given, the root directory of the module is used instead.
-
-.. note::
-
-  Usually this parameter should not be used if all files are placed in the module's root directory.
-
-
 .. _module_require-20170926:
 
 require
