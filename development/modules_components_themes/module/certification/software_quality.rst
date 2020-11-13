@@ -212,8 +212,8 @@ Using JavaScript and including .js files
 
 JavaScript files should be stored into:
 
-* :file:`out/src/js/libs` – if needs to define some additional JS libraries
-* :file:`out/src/js/widgets` – all newly created widgets
+* :file:`assets/js/libs` – if needs to define some additional JS libraries
+* :file:`assets/js/widgets` – all newly created widgets
 
 Naming convention for new widgets:
 :file:`[vendor]_[module]_[widgetName].js`
@@ -227,7 +227,7 @@ In order to include Javascript files in frontend, use:
 
 .. code:: php
 
-    [{oxscript include=$oViewConf->getModuleUrl("[MODULE ID]", "out/src/js/[path where the needed file is] ") priority=10}]
+    [{oxscript include=$oViewConf->getModuleUrl("[MODULE ID]", "js/[path where the needed file is] ") priority=10}]
 
 And for output:
 
@@ -246,7 +246,7 @@ In this way Javascript files will be included correctly within the template.
 Using CSS and including .css files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CSS files should be stored in: :file:`out/src/css/<filename>`
+CSS files should be stored in: :file:`assets/css/<filename>`
 
 CSS file naming convention is: :file:`[vendor]_[module]_[css file name].css`
 
@@ -254,7 +254,7 @@ To include new CSS file from module needs to use:
 
 .. code:: php
 
-    [{oxstyle include=$oViewConf->getModuleUrl("module id", "out/src/css/{FileName}.css")}]
+    [{oxstyle include=$oViewConf->getModuleUrl("module id", "css/{FileName}.css")}]
 
 And for output:
 

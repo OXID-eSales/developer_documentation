@@ -147,12 +147,30 @@ Example:
 Custom JavaScript / CSS / Images
 --------------------------------
 
-Create out/src/js/, out/src/img/ and out/src/css/ directories so it fit Shop structure and would be easier to debug
-for other people. You can use something like this to include your scripts in to templates:
+Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
+all of your files in assets folder will be symlink to ``out/modules/<module-id>/assets/``
+
+Example:
+
+.. code::
+
+  .
+  └── <vendor>
+      └── <module_id>
+          └── assets
+              └── css
+                  └── example.css
+              └── js
+                  └── example.js
+              └── img
+                  └── example.jpg
+
+
+You can use something like this to include your scripts in to templates:
 
 .. code:: php
 
-  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "out/src/js/{js_fle_name}.js")}]
+  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]
 
 .. _modules_skeleton_vendor_directory:
 
