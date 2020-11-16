@@ -1,17 +1,56 @@
 /* OXID Style */
-/* CSS Reference & Properties https://www.w3schools.com/cssref/default.asp */
+
+@font-face {
+    font-family: "DIN Next";
+    font-style: normal;
+    font-weight: 400;
+    src: local("DIN Next Regular"), local("DINNext-Regular"), url(fonts/DINNextLTPro-Regular.otf) format("opentype");
+}
+  
+@font-face {
+    font-family: "DIN Next";
+    font-style: normal;
+    font-weight: 700;
+    src: local("DIN Next Bold"), local("DINNExt-Bold"), url(fonts/DINNextLTPro-Bold.otf) format("opentype");
+}
+
+/* Standardschriftart DIN Next für alles außer Code */
+body {
+    font-family: "DIN Next", "proxima-nova", "Helvetica Neue", Arial, sans-serif;
+    font-weight: normal;
+    color: #404040;
+}
+
+h1, h2, h3, h4, h5 {
+    display: table;
+    padding: 5px 8px 0 0px;
+    font-family: "DIN Next", Arial, sans-serif;
+    text-transform: uppercase;
+  }
+  
+h1 {
+    background: #2C2C2C;
+    color: #fff;
+    letter-spacing: 1px;
+    padding-left: 5px;
+}
 
 .rst-content .guilabel, .menuselection {
     font-weight: bold;
-    border: 0px;
+    border: 0;
     font-size: 100%;
     background: none;
-    padding: 0px;
+    padding: 0;
     margin: 0;
 }
 
+/*  Beschreibung der Steuerelemente ohne Abstand zur Überschrift */
+.rst-content dl dt {
+    margin-bottom: 0px;
+}
+
 .rst-content .file {
-    border: 0px;
+    border: 0;
     background: none;
     color: black;
     font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
@@ -25,24 +64,37 @@
 }
 
 .file .pre{
-    border: 0px;
+    border: 0;
     background: none;
     color: black;
     font-family: "Lato","proxima-nova","Helvetica Neue",Arial,sans-serif;
     font-style: italic;
     font-weight: bold;
+    font-size: 110%; /* 110% passt größenmäßig besser zum Fließtext */
 }
 
 .pre{
-    color: #00008B;
-    background-color: #F8F8FF;
+   color: #00008B; 
+   background-color: #F8F8FF;
 }
 
 code, .rst-content code{
     background: none;
-    border: 0px;
+    border: 0;
     font-size: 90%;
 }
+
+/* Hintergrund für pre, code, code-block */
+.rst-content pre, .rst-content kbd, .rst-content samp {
+    background-color: #F8F8FF;
+}
+
+/*  Überschrift des Inhaltsverzeichnisses in Großschrift */
+.rst-content .toctree-wrapper p.caption {
+    font-family: "DIN Next", Arial, sans-serif;
+    text-transform: uppercase;
+}     
+
 /* Screenshots mit Schatten */
 .with-shadow {
     box-shadow: 0 4px 10px #bababa;
@@ -52,6 +104,7 @@ code, .rst-content code{
 .wy-table-responsive table td {
     white-space: normal;
 }
+
 /* Tabellen immer mit 100% Breite, auch wenn wenig Text */
 div.wy-table-responsive table.colwidths-given.docutils {
     width: 100%;
@@ -100,7 +153,45 @@ div.section img {
     box-shadow: initial !important;
 }
 
-/* vertikale Zentrierung der Texte next/prev in den Buttons der Fußzeile */
-a.btn.btn-neutral {
-    padding-bottom: 4px;
+.headerlink {
+    display: none !important;
+}
+  
+*:hover > .headerlink {
+    display: inline-block !important;
+}
+  
+.wy-side-nav-search {
+    background: #fff;
+    color: #000;
+}
+  
+.wy-side-nav-search > div.version {
+    color: #000;
+}
+  
+.strike {
+    text-decoration: line-through;
+}
+  
+a, a:visited, a:hover {
+    color: #C02124;
+}
+  
+.wy-menu-vertical a {
+    color: #b3b3b3;
+}
+
+.wy-menu-vertical a:active {
+    background-color: inherit;
+}
+
+/*  Überschrift im Navigationsmenü */
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #6f6f6f;	
+   }
+
+   /* Rand des Suchfeldes */
+.wy-side-nav-search input[type="text"] {
+    border-color: #aa1d20;
 }
