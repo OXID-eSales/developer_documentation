@@ -8,7 +8,7 @@ For example to only run your module codeception tests, check these parameters:
 
 ::
 
-  partial_module_paths  = <vendor_name>/<module_name>
+  module_ids = <moduleId-1>,<moduleId-2>
   activate_all_modules = 1
   run_tests_for_shop = 0
   run_tests_for_modules = 1
@@ -23,7 +23,7 @@ Then go to the shop directory (cd ``<shop_dir>``) and run:
 Alternatively the parameters can be supplied via commandline. Commandline parameters override the parameters which are set in the test_config.yaml.
 ::
 
-  PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> \
+  MODULE_IDS=<moduleId-1>,<moduleId-2> \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -33,7 +33,7 @@ Alternatively the parameters can be supplied via commandline. Commandline parame
 Example:
 ::
 
-  PARTIAL_MODULE_PATHS=oe/geoblocking \
+  MODULE_IDS=oegeoblocking \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -43,7 +43,7 @@ Example:
 **How to run a single test file:**
 ::
 
-  PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> \
+  MODILE_IDS=<moduleId-1>,<moduleId-2> \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -53,12 +53,12 @@ Example:
 Example:
 ::
 
-  PARTIAL_MODULE_PATHS=oe/geoblocking ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception FrontendCest
+  MODILE_IDS=oegeoblocking ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests-codeception FrontendCest
 
 **How to run a single test:**
 ::
 
-  PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> \
+  MODILE_IDS=<moduleId-1>,<moduleId-2> \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -68,7 +68,7 @@ Example:
 Example:
 ::
 
-  PARTIAL_MODULE_PATHS=oe/geoblocking \
+  MODILE_IDS=oegeoblocking \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -79,7 +79,7 @@ Example:
 **How to run a test group:**
 ::
 
-  PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> \
+  MODILE_IDS=<moduleId-1>,<moduleId-2> \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \
@@ -89,7 +89,7 @@ Example:
 **How to run tests excluding a group:**
 ::
 
-  PARTIAL_MODULE_PATHS=<vendor_name>/<module_name> \
+  MODILE_IDS=<moduleId-1>,<moduleId-2> \
   ADDITIONAL_TEST_PATHS='' \
   RUN_TESTS_FOR_SHOP=0 \
   RUN_TESTS_FOR_MODULES=1 \

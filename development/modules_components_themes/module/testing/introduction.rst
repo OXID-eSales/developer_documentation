@@ -8,17 +8,21 @@ are based on PHPUnit.
 - AllTestsIntegration
 - AllTestsSelenium
 
-Tests are run by calling
+Unit and Integration are running by calling
+===========================================
 ::
 
    vendor/bin/runtests
 
-to run unit and integration tests and
+Selenium tests are running by calling
+======================================
 ::
 
    vendor/bin/runtests-selenium
 
-to run selenium tests.
+
+Module tests
+=============
 
 These classes define default directories to store tests for a module:
 
@@ -43,11 +47,30 @@ Possible structure of module tests:
 
 Possible example in `PayPal GitHub repository. <https://github.com/OXID-eSales/paypal/tree/a4770a7da0d1b13dc4e8be4f8bc30abf7d418d03/tests>`__
 
-Testing library and it's documentation `in GitHub. <https://github.com/OXID-eSales/testing_library/>`__
+If you want to run only module tests, you should use these parameters in test_config.yml file:
+
+::
+
+  module_ids = <moduleId-1>,<moduleId-2>
+  activate_all_modules = 1
+  run_tests_for_shop = 0
+  run_tests_for_modules = 1
+  additional_test_paths = ''
+
+then run
+::
+
+   vendor/bin/runtests
+
+For more information check testing library documentation `<https://github.com/OXID-eSales/testing_library/>`__
+
+.. note::
+
+    We also have the possibility to run shop acceptance tests based on codeception which is the recommended way to
+    write acceptance tests for OXID eShop and modules. This will be explained in detail in :ref:`Running Codeception Tests <running-codeception-tests>` sections.
 
 
-We also have the possiblity to run shop acceptance tests based on codeception which is the recomended way to
-write acceptance tests for OXID eShop and modules. This will be explained in detail in the following sections.
+
 
 
 
