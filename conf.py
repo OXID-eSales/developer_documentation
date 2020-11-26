@@ -16,6 +16,7 @@ import sys
 import os
 import shlex
 import datetime as dt
+import sphinx_rtd_theme
 
 # adding PhpLexer
 from sphinx.highlighting import lexers
@@ -35,6 +36,7 @@ from pygments.lexers.web import PhpLexer
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'sphinx_rtd_theme',
     'sphinxcontrib.plantuml'
 ]
 
