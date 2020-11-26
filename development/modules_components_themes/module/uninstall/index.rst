@@ -23,3 +23,8 @@ In order to remove module configurations from shop configuration, following comm
     vendor/bin/oe-console oe:module:uninstall-configuration <module-id>
 
 
+.. note::
+
+    This command is available from version `6.2.3 <https://oxidforge.org/en/oxid-eshop-version-6-2-3.html>`_.
+    
+     
