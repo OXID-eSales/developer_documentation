@@ -177,7 +177,8 @@ div.section img {
 a, a:visited, a:hover {
     color: #C02124;
 }
-  
+
+/*  Vertikales Navigationsmenü */
 .wy-menu-vertical a {
     color: #b3b3b3;
 }
@@ -186,12 +187,21 @@ a, a:visited, a:hover {
     background-color: inherit;
 }
 
-/*  Überschrift im Navigationsmenü */
 .wy-menu-vertical header, .wy-menu-vertical p.caption {
     color: #6f6f6f;	
    }
 
-   /* Rand des Suchfeldes */
+/* Rand des Suchfeldes */
 .wy-side-nav-search input[type="text"] {
     border-color: #aa1d20;
+}
+
+/*  Menü der mobilen Ansicht*/
+.wy-nav-top {
+    background: #C02124;
+}
+
+.wy-nav-top a:visited, .wy-nav-top a:hover {
+    color: #fff;
+    font-weight: bold;
 }
