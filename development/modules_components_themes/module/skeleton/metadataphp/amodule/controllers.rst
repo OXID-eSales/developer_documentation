@@ -41,3 +41,24 @@ Example
 
     If the controller key is not found within the shop or modules, it is assumed that the controller key is a class with this name.
     If there is no class with this name present, the OXID eShop will redirect to the shop front page.
+
+.. important::
+
+    If you want to have an endpoint in your module that can be accessed directly, You must use controllers to do it.
+
+    For example, in `GraphQL module <https://github.com/OXID-eSales/graphql-base-module>`_, we have `GraphQL` endpoint
+    which has been created in `src/Component/Widget`, and also has been defined in the controller section in
+    metadata.php as following:
+
+    .. code::
+
+        'controllers' => [
+            // Widget Controller
+            'graphql' => OxidEsales\GraphQL\Base\Component\Widget\GraphQL::class,
+        ]
+
+    Now we can access it via the following URL:
+
+    .. code::
+
+        http://<shopurl>/widget.php?cl=graphql
