@@ -34,7 +34,13 @@ There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket``
 
 .. note::
 
-  Here ``oe`` - module developer vendor name, ``loggerdemo`` - module name.
+  ``oe`` - module developer vendor name
+  ``loggerdemo`` - module name.
+  
+.. note::
+
+  You can also extend module classes, just like shop classes:
+  ``\OxidEsales\PayPalModule\Controller\OrderController::class => \ExampleVendor\ExampleModule\Controller\OrderController::class``
 
 The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
 
