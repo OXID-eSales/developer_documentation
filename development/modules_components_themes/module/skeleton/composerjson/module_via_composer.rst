@@ -10,7 +10,6 @@ In order to install a module correctly, this plugin requires four fields to be d
 
 - :ref:`name <module_name-20170926>`
 - :ref:`type <module_type-20160524>`
-- :ref:`extra <module_extra-20160524>`
 - :ref:`require <module_require-20170926>`
 - :ref:`autoload <module_autoload-20170926>`
 
@@ -37,7 +36,7 @@ In order to install a module correctly, this plugin requires four fields to be d
         },
         "autoload": {
             "psr-4": {
-                "OxidEsales\\PayPalModule\\": "../../../source/modules/oe/oepaypal"
+                "OxidEsales\\PayPalModule\\": ""
             }
         }
     }
@@ -85,15 +84,12 @@ Autoload
 --------
 
 Composer autoloader is used to load classes. In order to load module classes
-the module needs to register it's namespace to the modules path:
+the module needs to register it's namespace to the root module path:
 
 ::
 
   "autoload": {
     "psr-4": {
-      "<vendor>\\<module-name>\\": "../../../source/modules/<vendor>/<module-name>"
+      "<vendor>\\<module-name>\\": ""
     }
   },
-
-
-In our PayPal example the PSR-4 autoload path points to a path inside the OXID eShop source/modules directory.

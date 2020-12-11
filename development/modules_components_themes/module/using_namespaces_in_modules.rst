@@ -92,11 +92,6 @@ Go to the shop's root directory and configure/require the module in the shop's c
     composer config repositories.myvendor/mymodule vcs https://github.com/myvendor/mymodule
     composer require myvendor/mymodule:dev-master
 
-The module sources now are located in the directory modules/myvendor/mymodule. Keep in mind that any changes made
-in the module directory itself will be overwritten with the next call to composer update
-(composer prompts for confirm though).
-
-
 Extend an OXID eShop class with a module
 ----------------------------------------
 
@@ -231,7 +226,7 @@ register your module namespace directly in the shop's main composer.json:
         "psr-4": {
             "OxidEsales\\EshopCommunity\\": "./source",
             ....
-            "MyVendor\\MyModuleNamespace\\": "./source/modules/myvendor/mymodule"
+            "MyVendor\\MyModuleNamespace\\": "<module-source-directory>"
         }
     }
 

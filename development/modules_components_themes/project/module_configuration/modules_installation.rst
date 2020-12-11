@@ -16,7 +16,7 @@ Whole installation workflow can be seen in image bellow:
 
     (*)--> "User executes \n <i>composer require/install</i> \nfor module"
     --> "Module files are downloaded"
-    --> "Module files are copied \n to modules directory"
+    --> "Module assets are linked to the shop out directory"
     --> "configuration file is updated  "
     --> (*)
 
@@ -36,16 +36,14 @@ Files download step
 When composer installation command is executed, composer downloads files
 to `vendor` directory.
 
-Module files are copied
-"""""""""""""""""""""""
-
-This is the step composer triggers
-`OXID eShop composer plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__ which executes
-module files copying from `vendor` directory to `source/modules` directory so OXID eShop could access all module
-files.
-
 Configuration files updated
 """""""""""""""""""""""""""
 
 During this step the data from module `metadata.php` are transferred to configuration files, which are located in
 `var/configuration/shops/`.
+
+Module assets are linked to the public directory
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+During this step files from `<module-root-directory>/assets` are linked to the shop public directory `source/out/modules/<module-id>/assets`.
+

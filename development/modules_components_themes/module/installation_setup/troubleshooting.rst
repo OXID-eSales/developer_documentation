@@ -9,8 +9,6 @@ When you are using composer install or update module then you notice module is n
 
 - Shop configuration file is removed from `var/configuration/shops/` directory or `/var` directory is removed.
 
-- you have already a module in your `source/modules` directory but you do not see your module configuration inside shop configuration yaml file in `var/configuration/shops/`.
-
 Solution
 ^^^^^^^^
 
@@ -27,7 +25,7 @@ Solution
           if (is module configuration exists in var/configuration/shops/1.yaml?) then (yes)
 
           else (no)
-             :run console install module configuration;
+             :run console install module;
           endif
 
       else (no)
@@ -36,7 +34,7 @@ Solution
 
         :var/configuration/shops/1.yaml file will be created;
 
-        :run console install module configuration command;
+        :run console install module command;
 
       endif
 
@@ -57,8 +55,8 @@ Solution
 
 .. Note::
 
-    How to run install module configuration command?
+    How to run install module command?
 
      .. code:: bash
 
-        vendor/bin/oe-console oe:module:install-configuration <module sourcecode path>
+        vendor/bin/oe-console oe:module:install <module sourcecode path>

@@ -5,7 +5,7 @@
 
     state "Non Existing" as NonExisting : State where module\nin OXID eShop does \nnot exist yet.
 
-    state Installed: Module files and \nconfiguration files \nin place.
+    state Installed: Module assets and \nconfiguration \nin place.
 
     state Configured: State where the OXID \neShop administrator \nalready configured a \nmodule via OXID eShop \nadmin, or by editing \nconfiguration files. \nDatabase gets not \ntouched.
 

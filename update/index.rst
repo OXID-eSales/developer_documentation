@@ -87,14 +87,6 @@ Decode values stored in `oxconfig` database table by running:
         #You might be prompted to allow overwriting existing code for several components.
         #The default value is N [no]
 
-   .. important::
-
-      Composer will ask you to overwrite module and theme files. E.g.: "Update operation will overwrite oepaypal files in
-      the directory source/modules. Do you want to overwrite them? (y/N)"
-      If you include modules by ``"type": "path",`` in your :file:`composer.json` file like described in
-      :doc:`Best practice module setup </development/modules_components_themes/module/tutorials/module_setup>`, answer ``No`` to this question..
-
-
 #. Run following to start database migration scripts:
 
    .. code:: bash

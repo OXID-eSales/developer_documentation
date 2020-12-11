@@ -13,18 +13,12 @@ You can easily uninstall module using composer and
 
 then composer will remove module from autoloader and rebuild the autoloader.
 
-Uninstall module configuration
-------------------------------
+Uninstall module without composer
+---------------------------------
 
-In order to remove module configurations from shop configuration, following command has been provided.
+In order to remove module without composer, following command has been provided.
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:uninstall-configuration <module-id>
+    vendor/bin/oe-console oe:module:uninstall <module-id>
 
-
-.. note::
-
-    This command is available from version `6.2.3 <https://oxidforge.org/en/oxid-eshop-version-6-2-3.html>`_.
-    
-     
