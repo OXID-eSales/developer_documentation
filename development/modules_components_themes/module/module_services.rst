@@ -73,6 +73,15 @@ provide ``class`` parameter with the implementation namespace.
 So we can inject with autowiring an interface as dependency in our classes
 and avoid dependencies on implementations (dependency inversion principle).
 
+After registration of the service, you should reinstall the module and clear the services cache
+
+.. code:: install
+    php vendor php vendor/bin/oe-console oe:module:install-configuration source/modules/VENDOR/MODULE_DIR
+    php vendor php vendor/bin/oe-console oe:module:activate MODULE_ID
+    rm -rf var/generated/*
+    
+    
+
 .. code:: php
 
     public function __constructor(PriceCalculatorInterface $priceCalculator)
