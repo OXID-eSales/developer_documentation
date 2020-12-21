@@ -45,5 +45,5 @@ During this step the data from module `metadata.php` are transferred to configur
 Module assets are linked to the public directory
 """"""""""""""""""""""""""""""""""""""""""""""""
 
-During this step files from `<module-root-directory>/assets` are linked to the shop public directory `source/out/modules/<module-id>/assets`.
+During this step files from `<module-root-directory>/assets` are linked to the shop public directory `source/out/modules/<module-id>`.
 

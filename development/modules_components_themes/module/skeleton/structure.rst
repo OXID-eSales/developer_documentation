@@ -110,7 +110,7 @@ Custom JavaScript / CSS / Images
 --------------------------------
 
 Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
-all of your files in assets folder will be symlink to ``out/modules/<module-id>/assets/``
+all of your files in assets folder will be symlink to ``out/modules/<module-id>/``
 
 Example:
 
