@@ -3,58 +3,26 @@
 File and folder structure
 =========================
 
-Module structure in OXID eShop
-------------------------------
-
-All modules exist in the OXID eShop modules directory.
-
 To separate modules it is:
-  - **Recommended** to group them by a unique :ref:`vendor directory <modules_skeleton_vendor_directory>`
   - **Required** to give them a unique id.
-  - **Required** to store module files in a directory with a name equal to **module_id**.
-
-So the final structure of a module should be:
-
-.. code::
-
-  .
-  └── source
-      └── modules
-          └── <vendor>
-              └── <module_id>
-                  ├── composer.json
-                  ├── Controller
-                  ├── metadata.php
-                  ├── Model
-                  ├── README.md
-                  ├── ...
-                  └── tests
 
 Module structure in module repository
 -------------------------------------
 
-In the repository it is recommended to keep module files without vendor or module directory.
-This allows to clone and use module directly in OXID eShop modules directory.
 Possible structure of the module in the repository:
 
 .. code::
 
   .
-  ├── composer.json
-  ├── Controller
-  ├── metadata.php
-  ├── Model
-  ├── README.md
-  ├── ...
-  └── tests
-
-
-Module transformation
----------------------
-
-:ref:`OXID Composer Plugin<copy_module_via_composer-20170217>` could be used in order to create vendor and module_id directories
-
-.. _modules_structure_language_files_20170316:
+   └── <module_directory>
+      ├── composer.json
+      ├── Controller
+      ├── metadata.php
+      ├── Model
+      ├── assets
+      ├── README.md
+      ├── ...
+      └── tests
 
 Language files
 --------------
@@ -99,15 +67,12 @@ Example:
 .. code::
 
   .
-  └── source
-      └── modules
-          └── <vendor>
-              └── <module_id>
-                  └── translations
-                      └── de
-                          └── myvendormymodule_de_lang.php
-                      └── en
-                          └── myvendormymodule_en_lang.php
+   └── <module_directory>
+      └── translations
+          └── de
+              └── myvendormymodule_de_lang.php
+          └── en
+              └── myvendormymodule_en_lang.php
 
 
 .. _modules_structure_language_files_admin:
@@ -125,19 +90,16 @@ Example:
 .. code::
 
   .
-  └── source
-      └── modules
-          └── <vendor>
-              └── <module_id>
-                  └── Application
-                      └── views
-                          └── admin
-                              └── de
-                                  └── module_options.php
-                                  └── myvendormymodule_admin_de_lang.php
-                              └── en
-                                  └── module_options.php
-                                  └── myvendormymodule_admin_en_lang.php
+  └── <module_directory>
+      └── Application
+          └── views
+              └── admin
+                  └── de
+                      └── module_options.php
+                      └── myvendormymodule_admin_de_lang.php
+                  └── en
+                      └── module_options.php
+                      └── myvendormymodule_admin_en_lang.php
 
 .. note::
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
@@ -147,39 +109,26 @@ Example:
 Custom JavaScript / CSS / Images
 --------------------------------
 
-Create out/src/js/, out/src/img/ and out/src/css/ directories so it fit Shop structure and would be easier to debug
-for other people. You can use something like this to include your scripts in to templates:
+Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
+all of your files in assets folder will be symlink to ``out/modules/<module-id>/``
 
-.. code:: php
-
-  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "out/src/js/{js_fle_name}.js")}]
-
-.. _modules_skeleton_vendor_directory:
-
-Vendor directory
-----------------
-
-All modules can be placed not directly in shop modules directory, but also in vendor directory. In this case the ``vendormetadata.php`` file must be placed in the vendor directory root. If the modules handler finds this file on scanning the shop modules directory, it knows that this is vendor directory and all subdirectories in this directory should be scanned also. Currently the ``vendormetadata.php`` file can be empty, in future here will be added some additional information about the module vendor.
-Vendor directory structure example:
+Example:
 
 .. code::
 
-  modules
-    oxid
-      module1
-        module1 files
-      module2
-        module2 files
-      module3
-        module3 files
+  .
+  └── <module_directory>
+      └── assets
+          └── css
+              └── example.css
+          └── js
+              └── example.js
+          └── img
+              └── example.jpg
 
-In case of using a vendor directory you still need to describe file paths relatively to the modules directory:
+
+You can use something like this to include your scripts in to templates:
 
 .. code:: php
 
-  'extend' => array(
-        'some_class' => 'oxid/module1/my_class'
-  ),
-  'templates' => array(
-        'my_template.tpl' => 'my_template.tpl'
-  )
+  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]

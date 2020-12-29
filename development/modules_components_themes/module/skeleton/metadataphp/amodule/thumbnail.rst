@@ -15,3 +15,7 @@ Example
     .. code:: php
 
         'thumbnail'    => 'logo.jpg',
+
+.. important::
+
+    Thumbnail file should be located in module assets directory, for example <module-root-directory>/assets/logo.jpg

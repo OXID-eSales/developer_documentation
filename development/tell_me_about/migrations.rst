@@ -141,7 +141,7 @@ Example:
 
    vendor/bin/oe-eshop-db_migrate migrations:generate ddoewysiwyg
 
-In this case it will be generated only for WYSIWYG module in `source/modules/ddoe/wysiwyg/migration` directory.
+In this case it will be generated only for WYSIWYG module.
 
 Use Migrations Wrapper without CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

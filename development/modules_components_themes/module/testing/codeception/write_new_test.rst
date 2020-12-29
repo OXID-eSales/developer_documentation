@@ -40,7 +40,7 @@ Example module's composer.json
         },
         "autoload": {
             "psr-4": {
-                "MyVendor\\MyModule\\": "../../../source/modules/myvendor/mymodule"
+                "MyVendor\\MyModule\\": ""
             }
         }
     }
@@ -126,13 +126,13 @@ it by running the following command once:
 ::
 
   cd <shop_dir>
-  vendor/bin/codecept init ModuleAcceptance --path source/modules/<vendor_name>/<module_name>/<tests_folder>
+  vendor/bin/codecept init ModuleAcceptance --path <module_source_directory>/<tests_folder>
 
 Example:
 ::
 
   cd <shop_dir>
-  vendor/bin/codecept init ModuleAcceptance --path source/modules/myvendor/mymodule/Tests
+  vendor/bin/codecept init ModuleAcceptance --path <module_source_directory>/Tests
 
 
 
@@ -152,7 +152,6 @@ The general structure of the module's test folder looks as follows:
 Example:
     ::
 
-        source/modules/myvendor/
             └── mymodule
                 ├── composer.json
                 ├── metadata.php

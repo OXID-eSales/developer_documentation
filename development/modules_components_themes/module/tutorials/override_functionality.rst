@@ -25,18 +25,14 @@ There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket``
 .. code::
 
   .
-  └── source
-      └── modules
-          └── oe
-             └──loggerdemo
-                └── Model
-                    └── Basket.php
+         └──loggerdemo
+            └── Model
+                └── Basket.php
 
 .. note::
 
-  ``oe`` - module developer vendor name
   ``loggerdemo`` - module name.
-  
+
 .. note::
 
   You can also extend module classes, just like shop classes:
@@ -97,7 +93,7 @@ The `composer.json` file in module root directory could look like this:
     },
     "autoload": {
       "psr-4": {
-        "OxidEsales\\LoggerDemo\\": "../../../source/modules/oe/loggerdemo"
+        "OxidEsales\\LoggerDemo\\": ""
       }
     },
     "minimum-stability": "dev",
@@ -113,7 +109,7 @@ The project `composer.json` file should have entries looking like this:
       "repositories": {
           "oxid-esales/logger-demo-module": {
               "type": "path",
-              "url": "source/modules/oe/loggerdemo"
+              "url": "loggerdemo-source-path"
           }
       },
       "require": {

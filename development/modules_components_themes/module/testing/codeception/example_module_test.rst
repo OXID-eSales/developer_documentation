@@ -87,7 +87,7 @@ Running the test should look like
     Time: 55.12 seconds, Memory: 12.00MB
 
     OK (1 test, 1 assertion)
-    - XML report generated in file:///var/www/oxideshop/source/modules/myvendor/mymodule/tests/Codeception/_output/report.xml
+    - XML report generated in file:///var/www/oxideshop/vendor/myvendor/mymodule/tests/Codeception/_output/report.xml
 
 
 Add test for logged in user case
