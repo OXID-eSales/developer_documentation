@@ -98,7 +98,6 @@ The `composer.json` file in module root directory could look like this:
     },
     "minimum-stability": "dev",
     "prefer-stable": true
-    }
   }
 
 The project `composer.json` file should have entries looking like this:

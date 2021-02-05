@@ -25,6 +25,6 @@ Example
         ],
 
 .. note::
-    If you want to use translations in your module for frontend or backend, you should place them in your module according
-    the :ref:`module structure conventions <modules_structure-20170217>`
+    If you want to use translations in your module for frontend or backend, you should place them in your module
+    (see :ref:`module structure conventions <modules_structure_language_files>`).
 

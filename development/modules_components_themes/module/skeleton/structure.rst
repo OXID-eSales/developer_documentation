@@ -24,6 +24,8 @@ Possible structure of the module in the repository:
       ├── ...
       └── tests
 
+.. _modules_structure_language_files:
+
 Language files
 --------------
 
@@ -47,6 +49,7 @@ UTF-8 is the only possible charset for language files as the OXID eShop runs by 
 does not convert charsets. If you use any other charset for your language files, you have to use html codes for
 special characters.
 
+.. _modules_structure_language_files_frontend:
 
 Frontend
 ^^^^^^^^
