@@ -1,3 +1,5 @@
+.. _autoloading-of-classes-20170427:
+
 Autoloading Of Classes
 ======================
 

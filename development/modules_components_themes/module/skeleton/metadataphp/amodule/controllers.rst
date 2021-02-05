@@ -1,3 +1,5 @@
+.. _module-controllers-20170427:
+
 controllers
 ===========
 

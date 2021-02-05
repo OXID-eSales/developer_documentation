@@ -1,3 +1,5 @@
+.. _module-templates-20170427:
+
 templates
 =========
 
