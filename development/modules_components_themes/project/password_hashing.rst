@@ -16,7 +16,7 @@ Why should I configure password hashing?
 ----------------------------------------
 
 Security is only a relative term. You should make sure, that your system is as secure as possible. For password
-hashing, security is dependet e.g. on the performance of your server hardware and the PHP version. See the
+hashing, security is dependent e.g. on the performance of your server hardware and the PHP version. See the
 section below for details.
 
 How can I configure password hashing?
@@ -52,10 +52,10 @@ An example how to change the algorithm to Argon2I and configure its options:
       oxid_esales.authentication.service.password_hash.argon2.threads: 2
 
     services:
-      OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordHashServiceInterface:
-        class: OxidEsales\EshopCommunity\Internal\Authentication\Service\Argon2IPasswordHashService
+      OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordHashServiceInterface:
+        class: OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\Argon2IPasswordHashService
         arguments:
-          - '@OxidEsales\EshopCommunity\Internal\Authentication\Policy\PasswordPolicyInterface'
+          - '@OxidEsales\EshopCommunity\Internal\Domain\Authentication\Policy\PasswordPolicyInterface'
           - '%oxid_esales.authentication.service.password_hash.argon2.memory_cost%'
           - '%oxid_esales.authentication.service.password_hash.argon2.time_cost%'
           - '%oxid_esales.authentication.service.password_hash.argon2.threads%'
@@ -68,7 +68,7 @@ How can I hash passwords by my own implementation?
 --------------------------------------------------
 If you want to implement password hashing by your own, you have to implement the interfaces:
 
-- ``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordHashServiceInterface``,
-- ``OxidEsales\EshopCommunity\Internal\Authentication\Service\PasswordVerificationServiceInterface``
+- ``OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordHashServiceInterface``,
+- ``OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordVerificationServiceInterface``
 
 Then use ':ref:`How to Replacing OXID eShop services <how_to_replace_shop_services-20854932>`' guide to override the OXID eShop default services.
