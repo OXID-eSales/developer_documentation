@@ -351,13 +351,39 @@ Change number of item pictures
 sAltImageDir / sSSLAltImageUrl
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case if pictures for articles should be loaded from separate server and are available only through http - it's enough to include sAltImageDir option in config.inc.php. Then to load picture for article only define the rest http path to the image file. Attention: If this option is set in the configuration file config.inc.php, uploading of product pictures in admin area is not possible!
-If you are using https, you also have to set the sSSLAltImageUrl option.
+Use external CDN to deliver images.
+
 
 .. code:: php
 
-    $this->sAltImageDir = "[http://[path_to_images_dir_on_server]/";
-    $this->sSSLAltImageUrl = "[https://[path_to_images_dir_on_server]/";
+    $this->sSSLAltImageUrl = "https://[path_to_images_dir_on_server]/"; //for HTTPS URLS
+    $this->sAltImageDir = "http://[path_to_images_dir_on_server]/"; //for HTTP URLS
+
+If value set, affected images (for Products, Categories, Promotions, Vendors, Manufacturers, etc.)
+will build their paths relative to ``path_to_images_dir_on_server``.
+
+For example:
+
+.. code:: php
+
+    $this->sSSLAltImageUrl = 'https://www.mycdn-server.com/myshop-data/';
+    // Resulting product URL:
+    // https://www.mycdn-server.com/myshops-data/generated/product/1/390_245_75/nopic.jpg
+
+instead of:
+
+.. code:: php
+
+    $this->sSSLAltImageUrl = '';
+    // Resulting product URL:
+    // https://www.myshop.com/out/pictures/generated/product/1/390_245_75/nopic.jpg
+
+
+.. note::
+
+    You will require additional OXID components to be able to upload images affected by this setting from the Admin area
+    to a remote storage.
+    (e.g. `OXID eShop AWS S3 component` for `Amazon Simple Storage Service`, or similar).
 
 
 Import/Export
