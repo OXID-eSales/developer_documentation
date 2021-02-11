@@ -52,10 +52,10 @@ An example how to change the algorithm to Argon2I and configure its options:
       oxid_esales.authentication.service.password_hash.argon2.threads: 2
 
     services:
-      OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordHashServiceInterface:
-        class: OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\Argon2IPasswordHashService
+      OxidEsales\EshopCommunity\Internal\Utility\Hash\Service\PasswordHashServiceInterface:
+        class: OxidEsales\EshopCommunity\Internal\Utility\Hash\Service\Argon2IPasswordHashService
         arguments:
-          - '@OxidEsales\EshopCommunity\Internal\Domain\Authentication\Policy\PasswordPolicyInterface'
+          - '@OxidEsales\EshopCommunity\Internal\Utility\Authentication\Policy\PasswordPolicyInterface'
           - '%oxid_esales.authentication.service.password_hash.argon2.memory_cost%'
           - '%oxid_esales.authentication.service.password_hash.argon2.time_cost%'
           - '%oxid_esales.authentication.service.password_hash.argon2.threads%'
@@ -68,7 +68,7 @@ How can I hash passwords by my own implementation?
 --------------------------------------------------
 If you want to implement password hashing by your own, you have to implement the interfaces:
 
-- ``OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordHashServiceInterface``,
+- ``OxidEsales\EshopCommunity\Internal\Utility\Hash\Service\PasswordHashServiceInterface``,
 - ``OxidEsales\EshopCommunity\Internal\Domain\Authentication\Service\PasswordVerificationServiceInterface``
 
 Then use ':ref:`How to Replacing OXID eShop services <how_to_replace_shop_services-20854932>`' guide to override the OXID eShop default services.
