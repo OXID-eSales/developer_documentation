@@ -31,12 +31,9 @@ Depending on your existing OXID eShop installation, you need to perform one or m
         }
 
     `Example: updated values for OXID eShop CE v6.2.0`
+    
+    Adapt the metapackage according to your edition.
 
-    You can find current :file:`composer.json` values for your shop edition in OXID eShop project repository:
-
-    - CE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ce/composer.json
-    - PE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-pe/composer.json
-    - EE: https://github.com/OXID-eSales/oxideshop_project/blob/b-6.2-ee/composer.json
 
     .. note::
         New version of testing-library requires php-zip extension.
