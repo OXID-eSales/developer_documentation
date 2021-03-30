@@ -6,15 +6,15 @@ You need to perform all of the following actions step by step:
 
 #. Add `oxideshop-metapackage-ee` to your root :file:`composer.json`:
 
-    .. code:: bash
+   .. code:: bash
 
-        composer config repositories.oxid-esales composer https://enterprise-edition.packages.oxid-esales.com
+    composer config repositories.oxid-esales composer https://enterprise-edition.packages.oxid-esales.com
 
 #. install `oxideshop-metapackage-ee` using composer without executing any scripts:
 
-    .. code:: bash
+   .. code:: bash
 
-        composer require oxid-esales/oxideshop-metapackage-ee --no-plugins --no-scripts
+     composer require oxid-esales/oxideshop-metapackage-ee --no-plugins --no-scripts
 
 #. run shop migrations:
 
@@ -26,10 +26,10 @@ You need to perform all of the following actions step by step:
 
    .. code:: bash
 
-      vendor/bin/oe-eshop-db_views_generate
+    vendor/bin/oe-eshop-db_views_generate
 
 #. Update your dependencies for EE shop and modules:
 
    .. code:: bash
 
-      composer update
+    composer update
