@@ -1,11 +1,11 @@
-Update editions
-===============
+Upgrade editions
+================
 
 .. toctree::
    :maxdepth: 1
 
-   upgrade-from-6.2.x-CE-to-6.2.x-PE
-   upgrade-from-6.2.x-PE-to-6.2.x-EE
+   upgrade-from-CE-to-PE
+   upgrade-from-PE-to-EE
 
 .. important::
 

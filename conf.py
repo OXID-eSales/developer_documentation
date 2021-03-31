@@ -129,12 +129,13 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 html_context = {
-    'current_version': '6.3',
+    'current_version': 'master',
     'versions':
         [('6.0', 'https://docs.oxid-esales.com/developer/en/6.0/'),
          ('6.1', 'https://docs.oxid-esales.com/developer/en/6.1/'),
          ('6.2', 'https://docs.oxid-esales.com/developer/en/6.2/'),
          ('6.3', 'https://docs.oxid-esales.com/developer/en/6.3/'),
+         ('master', 'https://docs.oxid-esales.com/developer/en/master/'),
         ],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
