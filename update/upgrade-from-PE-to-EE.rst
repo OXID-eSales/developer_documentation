@@ -1,7 +1,7 @@
 Upgrade from PE edition to EE edition
 =====================================
 
-This page describes how you can upgrade from OXID eShop version PE edition to EE edition.
+This page describes how you can upgrade from OXID eShop PE to EE edition.
 You need to perform all of the following actions step by step:
 
 #. Add `oxideshop-metapackage-ee` to your root :file:`composer.json`:
