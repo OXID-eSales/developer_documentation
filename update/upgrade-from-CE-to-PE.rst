@@ -1,7 +1,7 @@
-Upgrade from 6.2.x CE edition to 6.2.x PE edition
-=================================================
+Upgrade from CE edition to PE edition
+=====================================
 
-This page describes how you can upgrade from OXID eShop version 6.2.x CE edition to 6.2.x PE edition.
+This page describes how you can upgrade from OXID eShop CE to PE edition.
 You need to perform all of the following actions step by step:
 
 #. Add `oxideshop-metapackage-pe` to your root :file:`composer.json`:
