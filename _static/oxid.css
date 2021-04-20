@@ -205,3 +205,8 @@ a, a:visited, a:hover {
     color: #fff;
     font-weight: bold;
 }
+
+/* Scrollen beim Umschalten von Version und Sprache nur wenn notwendig */
+.rst-versions.shift-up {
+    overflow-y: auto;
+}
