@@ -130,8 +130,7 @@ html_context = {
     'current_version': '6.0',
     'versions':
         [('6.0', 'https://docs.oxid-esales.com/developer/en/6.0/'),
-         ('6.1', 'https://docs.oxid-esales.com/developer/en/6.1/'),
-         ('6.2', 'https://docs.oxid-esales.com/developer/en/6.2/')],
+         ('Latest', 'https://docs.oxid-esales.com/developer/en/latest/')],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
     'show_sphinx': False,

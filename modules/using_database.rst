@@ -63,6 +63,7 @@ Making a query
 Using the ``ResultsetInterface``:
 
 .. code:: php
+
          $query = "SELECT myfield FROM mytable WHERE myid = ?";
          $resultSet = \OxidEsales\Eshop\Core\DatabaseProvider::getDb()->select($query, [$parameter]);
          //Fetch the results row by row
