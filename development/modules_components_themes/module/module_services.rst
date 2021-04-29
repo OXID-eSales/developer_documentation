@@ -75,7 +75,7 @@ and avoid dependencies on implementations (dependency inversion principle).
 
 .. code:: php
 
-    public function __constructor(PriceCalculatorInterface $priceCalculator)
+    public function __construct(PriceCalculatorInterface $priceCalculator)
     {
         $this->priceCalculator = $priceCalculator;
     }
@@ -104,7 +104,7 @@ You can use your own, shop services or even services of other modules via depend
     {
         private $shopLogger;
 
-        public function __constructor(LoggerInterface $shopLogger)
+        public function __construct(LoggerInterface $shopLogger)
         {
             $this->shopLogger = $shopLogger;
         }
