@@ -381,9 +381,10 @@ instead of:
 
 .. note::
 
-    You will require additional OXID components to be able to upload images affected by this setting from the Admin area
+    You will require additional OXID component to be able to upload images affected by this setting from the Admin area
     to a remote storage
-    (See `OXID eShop AWS S3 component <https://github.com/OXID-eSales/aws-s3-component>`_ for `Amazon Simple Storage Service`, or similar).
+    (see `OXID eShop Cloud Storage component <https://github.com/OXID-eSales/cloud-storage-component>`_
+    for configuring `Amazon Simple Storage Service`, or similar).
 
 
 Import/Export
