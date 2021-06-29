@@ -37,7 +37,7 @@ Usage
     
     Add **translations of your module's settings** into each copy of corresponding :file:`module_options.php` file
     (see :ref:`File and Folder structure <modules_structure_language_files_admin>`)
-    using the following format for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_MODULE``.
+    using the following format for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_SHOP_MODULE_``.
 
     .. code:: php
 
