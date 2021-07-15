@@ -216,23 +216,6 @@ Then in the shop's root directory do
 
 and run composer update.
 
-In case you do not want to handle module installation with composer but copy & paste it old style into the shop's module directory,
-register your module namespace directly in the shop's main composer.json:
-
-
-::
-
-   "autoload": {
-        "psr-4": {
-            "OxidEsales\\EshopCommunity\\": "./source",
-            ....
-            "MyVendor\\MyModuleNamespace\\": "<module-source-directory>"
-        }
-    }
-
-And then run composer update so composer can update it's autoload file.
-
-
 Using namespaces in module classes that do not extend OXID eShop classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

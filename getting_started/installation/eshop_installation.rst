@@ -3,7 +3,7 @@ Install OXID eShop compilation
 
 There are two ways to install the shop which are graphical and command-line tools. In graphical tools, shop can be installed via wizard setup process in browser, and with command-line tools a provided command can be run to install the shop quickly.
 
-More information can be found in the `User documentation <https://docs.oxid-esales.com/eshop/en/6.2/installation/index.html>`__.
+More information can be found in the `User documentation <https://docs.oxid-esales.com/eshop/en/7.0-rc.1/installation/index.html>`__.
 
 On this page, additional developer specific information is provided.
 
@@ -35,7 +35,7 @@ Providing shop files
 
         * OXID eShop `Testing Library <https://github.com/OXID-eSales/testing_library>`__
         * `IDE code completion support <https://github.com/OXID-eSales/oxid-eshop-ide-helper>`__ for OXID eShop
-        * `Azure Theme <https://github.com/OXID-eSales/azure_theme>`__ for selenium tests
+        * `Azure Theme <https://github.com/OXID-eSales/azure-theme>`__ for selenium tests
 
 Known issue on MacOS
 --------------------
