@@ -52,20 +52,6 @@ Example of use::
 Functions
 ---------
 
-AssignAdvancedExtension
-^^^^^^^^^^^^^^^^^^^^^^^
-
-This extensions introduces ``assign_advanced`` function which assigns variables including arrays and range arrays.
-Example of use::
-
-    {% set invite_array = assign_advanced("array('0' => '$sender_name', '1' => '$shop_name')") %}
-
-However there is better way of creating arrays using Twig syntax::
-
-    {% set invite_array = { '0': sender_name, '1' => shop_name } %}
-
-This extension was created to handle template converting and should be avoided.
-
 FormatPriceExtension
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -272,4 +258,3 @@ Escape is internal Twig filter but it can be extended and so is done in OXID. Cu
 be found under source\Internal\Twig\Escaper directory. Example of use::
 
     {{ 'example@me.com'|escape('mail') }}
-

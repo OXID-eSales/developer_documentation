@@ -202,18 +202,6 @@ Converter name: ``misc``
 OXID custom extensions
 ----------------------
 
-assign_adv => set assign_advanced
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Converter name: ``assign_adv``
-
-| Smarty:
-| ``[{ assign_adv var="name" value="Bob" }]``
-|
-| Twig:
-| ``{% set name = assign_advanced("Bob") %}``
-|
-
 oxcontent => include content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
