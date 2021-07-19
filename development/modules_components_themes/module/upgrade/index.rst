@@ -51,37 +51,36 @@ therefore to make our modules compatible with it, following steps should be done
 
     :ref:`More information <copy_module_via_composer-20170217>`
 
-- Rename the underscore method by removing their prefix underscore
+- Rename the underscore method by removing their prefix underscore:
+    Based on the psr-12 (`more info <https://www.php-fig.org/psr/psr-12>`__), method names MUST NOT be
+    prefixed with a single underscore to indicate protected or private visibility.
+    That is, an underscore prefix explicitly has no meaning.
 
-Based on the psr-12 (`more info <https://www.php-fig.org/psr/psr-12>`__), method names MUST NOT be
-prefixed with a single underscore to indicate protected or private visibility.
-That is, an underscore prefix explicitly has no meaning.
+    In the shop, we have already renamed all the underscore methods by removing their prefix underscore.
+    This step has to be done for modules as well, because if there is any call for the shop underscore methods,
+    they will not work anymore. On the other hand, the modules underscore methods should be
+    also renamed to make them compatible with psr-12.
 
-In the shop, we have already renamed all the underscore methods by removing their prefix underscore.
-This step has to be done for modules as well, because if there is any call for the shop underscore methods,
-they will not work anymore. On the other hand, the modules underscore methods should be
-also renamed to make them compatible with psr-12.
+    It can be done either manually or via rector which helps us to do it faster.
+    We already have provided a rector for this purpose and it can be run with the following steps:
 
-It can be done either manually or via rector which helps us to do it faster.
-We already have provided a rector for this purpose and it can be run with the following steps:
+    - Update composer with adding ``rector/rector`` package:
 
-- Update composer with adding ``rector/rector`` package:
+    .. code::
 
-.. code::
-
-    "require-dev": {
-        "rector/rector": "dev-master"
-    },
-    "repositories": {
-        "rector/rector": {
-            "type": "vcs",
-            "url": "https://github.com/OXID-eSales/rector"
+        "require-dev": {
+            "rector/rector": "dev-master"
+        },
+        "repositories": {
+            "rector/rector": {
+                "type": "vcs",
+                "url": "https://github.com/OXID-eSales/rector"
+            }
         }
-    }
 
-- Renaming underscore methods:
+    - Renaming underscore methods:
 
-.. code::
+    .. code::
 
-    # e.g. for oxid-esales/paypal-module
-    cp vendor/rector/rector/templates/oxidEsales/oxid_V7_underscored_methods_renamer_rector.php.dist  ./rector.php && sed -i 's/MODULE_VENDOR_PATH/oxid-esales\/paypal-module/g' rector.php && vendor/bin/rector process
+        # e.g. for oxid-esales/paypal-module
+        cp vendor/rector/rector/templates/oxidEsales/oxid_V7_underscored_methods_renamer_rector.php.dist  ./rector.php && sed -i 's/MODULE_VENDOR_PATH/oxid-esales\/paypal-module/g' rector.php && vendor/bin/rector process
