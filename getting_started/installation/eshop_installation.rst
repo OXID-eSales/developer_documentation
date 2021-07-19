@@ -1,7 +1,7 @@
 Install OXID eShop compilation
 ==============================
 
-The general installation is described in the `User documentation <https://docs.oxid-esales.com/en/>`__.
+The general installation is described in the `User documentation <https://docs.oxid-esales.com/eshop/en/6.3/installation/index.html>`__.
 On this page, additional developer specific information is provided.
 
 .. _eshop_installation_deploy_source_code:
@@ -32,7 +32,7 @@ Providing shop files
 
         * OXID eShop `Testing Library <https://github.com/OXID-eSales/testing_library>`__
         * `IDE code completion support <https://github.com/OXID-eSales/oxid-eshop-ide-helper>`__ for OXID eShop
-        * `Azure Theme <https://github.com/OXID-eSales/azure_theme>`__ for selenium tests
+        * `Azure Theme <https://github.com/OXID-eSales/azure-theme>`__ for selenium tests
 
 Known issue on MacOS
 --------------------
