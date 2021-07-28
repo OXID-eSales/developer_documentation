@@ -33,3 +33,30 @@ There was an error during the execution of the unified namespace generator
 
 If the generation of the `unified namespace classes` fails, OXID eShop will not run properly.
 In this case you should look :doc:`here</system_architecture/unified_namespace/unified_namespace_generator>` for possible fixes.
+
+PHP8 requests result in empty index.php sent to user
+------------------------------------------------------------
+
+If Apache incorrectly responds to certain requests with
+
+.. code:: shell
+
+    - Content-Length = 0
+    - HTTP response status code = "200 OK"
+
+but works normally for other pages - please make sure the following does not apply to your setup:
+
+    - `Apache2`
+    - `mod_proxy_fcgi`
+    - `PHP8`
+    - `PHP-FPM`
+
+Otherwise you may try to resolve the issue by letting `PHP-FPM` manage `PHP error logs` instead of sending them to `Apache`.
+e.g. by setting:
+
+.. code:: shell
+
+        /usr/local/etc/php-fpm.d/www.conf
+
+        php_admin_value[error_log] = /var/log/fpm-php.www.log
+        php_admin_flag[log_errors] = on
