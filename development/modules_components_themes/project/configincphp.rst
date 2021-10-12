@@ -290,6 +290,17 @@ Control removal of the Setup directory. It will be removed right after the setup
 
     $this->blDelSetupDir = false;
 
+deactivateSmartyForCmsContent
+-----------------------------
+
+Deactivate Smarty for CMS content.
+
+If active, CMS content (e.g. descriptions of products and categories, CMS pages, etc.) will not be processed by Smarty.
+
+.. code:: php
+
+    $this->deactivateSmartyForCmsContent = false;
+
 Modules
 -------
 
@@ -526,7 +537,7 @@ Views
 blSkipViewUsage
 ^^^^^^^^^^^^^^^
 
-If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temproarily to "true".
+If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temporarily to "true".
 
 Implemented with OXID eShop version 4.7
 
