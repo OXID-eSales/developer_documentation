@@ -2,7 +2,7 @@ blocks
 ======
 
 Description:
-    In this array are registered all module templates blocks. On module activation they are automaticly inserted into
+    In this array are registered all module templates blocks. On module activation they are automatically inserted into
     database. On activating/deactivating module, all module blocks also are activated/deactivated.
 
 Type:
@@ -46,3 +46,18 @@ Template block ``file`` value holding path to your customized block should be de
 
 You can define a position of a block if a template block is extended multiple (by different modules).
 So you can sort the block extensions. This is done via the optional template block ``position`` value.
+
+Theme-specific blocks
+---------------------
+To register or extend theme-specific block template, add a `'theme'` key to the block's definition:
+
+.. code:: php
+
+    'blocks' => [
+        [
+            'theme' => 'shop_theme_id'
+            'template' => 'name_off_shop_template_which_contains_block',
+            'block' => 'name_off_shop_block',
+            'file' => 'path_to_module_block_file',
+        ]
+    ]
