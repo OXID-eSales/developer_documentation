@@ -132,7 +132,7 @@ Below is a list of **non-valid** entries:
 
 For the most up-to-date definition of what can be accepted as an argument,
 please follow the
-`blacklist-filter tests <https://github.com/OXID-eSales/oxideshop_ce/blob/b-6.3.x/tests/Integration/Internal/Framework/Module/Install/Service/ModuleFilesInstallerTest.php>`_
+`blacklist-filter tests <https://github.com/OXID-eSales/oxideshop_ce/blob/b-6.4.x/tests/Integration/Internal/Framework/Module/Install/Service/ModuleFilesInstallerTest.php>`_
 which covers the behaviour.
 
 .. _module_require-20170926:
