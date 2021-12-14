@@ -129,7 +129,7 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 html_context = {
-    'current_version': '6.3',
+    'current_version': '6.4',
     'versions':
         [('6.1', 'https://docs.oxid-esales.com/developer/en/6.1/'),
          ('6.2', 'https://docs.oxid-esales.com/developer/en/6.2/'),
@@ -144,7 +144,7 @@ html_context = {
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
-    'github_version': 'b-6.3/'
+    'github_version': 'b-6.4/'
 
 }
 

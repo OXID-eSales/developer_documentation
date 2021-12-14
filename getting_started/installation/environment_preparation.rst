@@ -8,7 +8,7 @@ We encourage users to stick to our recommendations of dependencies for the versi
 to ensure a hassle-free OXID eShop experiences.
 
 You can read more on system requirements for the current release here:
-`Server and system requirements <https://docs.oxid-esales.com/eshop/en/6.3/installation/new-installation/server-and-system-requirements.html>`_
+`Server and system requirements <https://docs.oxid-esales.com/eshop/en/6.4/installation/new-installation/server-and-system-requirements.html>`_
 
 Preparing VM (Vagrant) environment
 ----------------------------------
