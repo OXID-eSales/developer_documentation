@@ -5,6 +5,11 @@ Override existing OXID eShop functionality
 
 This page describes how to override default OXID eShop functionality.
 
+
+.. note::
+
+  Examples described here are made in the already installed module. Module installation procedure is described :doc:`here <module_setup>`.
+
 .. _extending-add-to-basket-functionality-20170228:
 
 Extending 'add to basket' functionality
@@ -72,6 +77,14 @@ To override the method one needs to:
 - Extend a :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class - ``<className>_parent``, in this case it is ``Basket_parent``.
 - Call parent method, so the chain would not be broken.
 
+Override templates or blocks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For some example how to add/modify the template, check our Tutorials and recipes section
+:doc:`here</development/modules_components_themes/module/tutorials/frontend_user_forms>`
+
+Don't forget to register the files to the ``metadata.php`` like described :ref:`here<add_entry_to_module_metadata-20220211>`.
+
 Autoload module classes
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -134,6 +147,8 @@ To register a namespace and download dependencies there is a need to run compose
 Composer will generate the PSR-4 autoload file with included module. So at this point OXID eShop will be able to autoload
 classes.
 
+.. _add_entry_to_module_metadata-20220211:
+
 Add entry to module metadata file
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -145,3 +160,7 @@ file:
   'extend' => [
     \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
   ],
+
+For overwriting the shop templates, or some parts of them (blocks), register your module templates in the
+templates/blocks sections. Read more about the ``metadata.php`` under the link for the
+latest version here: :doc:`here </development/modules_components_themes/module/skeleton/metadataphp/index>`.
