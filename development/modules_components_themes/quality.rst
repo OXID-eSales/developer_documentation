@@ -9,7 +9,7 @@ Main requirements
 
 Any new solution must fulfill the following requirements:
 
-* PHP 7.4 and 8.0 must be supported (8.1 support is a nice to have and will be required quite soon).
+* All PHP version, listed for the used eShop version should be supported.
 * Code should be properly structured and tested.
     - Dependency injection through constructor should be preferred instead of direct/static calls to classes where possible.
     - All main functionality should be implemented as Services and accessed through DI.
@@ -19,6 +19,15 @@ Any new solution must fulfill the following requirements:
     - Module installation process
     - Installation of the module for development purposes
     - Instructions how to run solution tests and other tools
+
+Extending and reusing the shop functionality
+--------------------------------------------
+
+There are several main requirements to shop extended classes and shop method used:
+
+* Hook to shop events in place of direct extension if possible.
+* Extended shop/module classes should be calling parent methods to not destroy a module chain.
+* Deprecated methods should not be used.
 
 Code quality requirements
 -------------------------
