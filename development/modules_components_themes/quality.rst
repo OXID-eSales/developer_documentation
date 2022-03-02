@@ -70,3 +70,20 @@ Development process
 
 * All new code should go through the review process of another team member.
 * The TDD principle should be followed during the development.
+* Commit messages should be informative.
+
+Commit messages
+^^^^^^^^^^^^^^^
+
+Commit messages should describe the changes done in the commit:
+
+    * 1st line: story or task id / bug id / both ids + short title (title of commit, NOT task)
+    * 2nd line: Empty line
+    * 3rd and further lines: Detailed description of commit, intention of commit.
+    * Try to keep within 80 chars width (git console friendly)
+
+Possible good examples:
+
+    * ESDEV-1111 Fix the issue of tracking system (Id of task is used in this example)
+    * 0001243 Update tracking system logic (Id of bug is used in this example)
+    * ESDEV-1111 0001243 Fix the issue of tracking system (In case this is a task for fixing a bug that has known id)
