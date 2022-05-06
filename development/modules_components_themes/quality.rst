@@ -51,15 +51,16 @@ throughout the development process.
 
 * Code C.R.A.P Index is under 30.
 * Methods cyclomatic complexity is under 10.
+* Code style is fitting the PSR-12 standard.
 
 Tools requirements
 ------------------
 
 Every solution should have easy to run, preconfigured, quality tools as dev dependencies.
-We strongly suggest using these:
+We strongly suggest using these (or alternatives):
 
 * The CodeSniffer with PSR-12 standard (https://github.com/squizlabs/PHP_CodeSniffer)
-* PHP Mess Detector (https://phpmd.org/)
+* PHP Mess Detector (https://phpmd.org/) - optional, but powerful
 * One of static analizers, like Psalm or Phpstan:
 
     - Phpstan minimum of level 5 or Higher
