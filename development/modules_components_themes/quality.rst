@@ -1,93 +1,105 @@
 Development quality tools and requirements
 ==========================================
 
-To ensure the quality of the developed modules and tools (next "Solution" will be used instead),
-OXID eSales have several requirements for the newly created solutions code.
+To ensure the quality of your solutions, follow the OXID eSales code requirements.
+
+Goals
+-----
+
+* Ensure security to avoid
+
+    * our customers’ data integrity being compromised, and sensitive information being exposed
+    * lawsuits
+    * harm to our credibility and brand
+* Minimize downtimes, bugs and issues to avoid that customers
+
+    * develop mistrust in our product
+    * search for more reliable solutions from competitors
+* Improve productivity by writing clean code that
+
+    * avoids the accumulation of technical obstacles
+    * does not rely on unstable features of our dependencies
 
 Main requirements
 -----------------
 
-Any new solution must fulfill the following requirements:
+Ensure your solution meets the following requirements:
+* Your code supports all PHP versions listed for the used OXID eShop version.
+* You have properly structured your code:
 
-* All PHP version, listed for the used eShop version should be supported.
-* Code should be properly structured and tested.
+    * Where possible, use dependency injection through constructors instead of direct/static calls to classes.
+    * Implement all main functionality as services to be accessed via Dependency Injection (DI).
+    * Split services into easy to understand, small testable units.
 
-    - Dependency injection through constructor should be preferred instead of direct/static calls to classes where possible.
-    - All main functionality should be implemented as Services and accessed through DI.
-    - Services should be easy to understand, splitted by small testable units.
+* You have thoroughly tested your code.
+* All files use ``strict_types`` flag.
+* A Readme file in the root directory of your solution describes:
 
-* All files should use strict_types flag.
-* Readme file should exist in the root directory of a solution with detailed description of:
+    * which requirements and compatibilities are to be met
+    * how to install your solution for development purposes
+    * how to install your solution for production
+    * how to run the solution tests and other tools
 
-    - Requirements and compatibilities
-    - Solution installation process
-    - Installation of the solution for development purposes
-    - Instructions how to run the solution tests and other tools
+Reuse requirements
+------------------
 
-Extending and reusing the shop functionality
---------------------------------------------
-
-There are several main requirements to shop extended classes and shop method used:
+When reusing shop extended classes and shop methods, follow the rules below:
 
 * Hook to shop events in place of direct extension if possible.
-* Extended shop/module classes should be calling parent methods to not destroy a module chain.
-* Deprecated methods should not be used.
+* To not destroy a module chain, ensure that extended shop/module classes call parent methods.
+* Do not use deprecated methods.
 
-More information about reusing and creating shop modules and themes can be found
-in `developers documentation <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/index.html>`_.
+For more information about reusing and creating shop modules and themes, see the `Developer Documentation <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/index.html>`_.
+
 
 Code quality requirements
 -------------------------
 
-Quality is everyone's responsibility. High quality should be one of the main goals
-throughout the development process.
+Quality is everyone’s responsibility. High quality is one of the main goals throughout the development process.
 
-* Tests should cover be at least 80% of the functionality.
-* Correct type of tests should be used:
+Observe the following quality criteria:
 
-    - Service units tested with phpunit tests
-    - More heavy, integration between the components, tested with phpunit but in separate directory
-    - Frontend workflow chains are tested with acceptance framework
+* Your tests cover at least 80% of the functionality.
+* You use the correct test type:
 
-* Code C.R.A.P Index is under 30.
-* Methods cyclomatic complexity is under 10.
-* Code style is fitting the PSR-12 standard.
+    * Test service units by performing unit tests with PHPUnit.
+    * Test the component integration by performing integration tests with PHPUnit in a separate directory.
+    * Test the frontend workflow chains by performing acceptance tests using a User Acceptance Test Framework.
+* Your code’s C.R.A.P index is below 30.
+* Your code’s methods cyclomatic complexity is below 10.
+* Your code style meets the PSR-12 standard (for more information, see `php-fig.org/psr/psr-12 <https://www.php-fig.org/psr/psr-12/>`_).
 
 Tools requirements
 ------------------
 
-Every solution should have easy to run, preconfigured, quality tools as dev dependencies.
-We strongly suggest using these (or alternatives):
+To meet our standards, ensure your solution has easy to run, preconfigured, quality tools as development dependencies.
 
-* The CodeSniffer with PSR-12 standard (https://github.com/squizlabs/PHP_CodeSniffer)
-* PHP Mess Detector (https://phpmd.org/) - optional, but powerful
-* One of static analizers, like Psalm or Phpstan:
+We strongly recommend using the following ones (or alternatives):
 
-    - Phpstan minimum of level 5 or Higher
-    - Psalm level 4 or Lower
+* PHP_CodeSniffer using PSR-12, to ensure your code is PSR-12-compliant (`github.com/squizlabs/PHP_CodeSniffer <https://github.com/squizlabs/PHP_CodeSniffer>`_)
+* PHP Mess Detector (`phpmd.org <https://phpmd.org/>`_)
+* A static analysis tool, for example one of the following:
 
-Other nice to have points
--------------------------
+    * PHPStan: To ensure your code achieves level 5 or higher
+    * Psalm: To ensure your code achieves level 4 or lower
 
-There are quite a lot of great tools available for us nowadays, and OXID eSales would be happy to see
-them used and publicly available for other developers (those who works with and develops the solution).
+Using nice-to-have tools
+------------------------
 
-* Sonarcloud as a final report point for psalm issues, coverage reports, code duplications analisys.
-* Github actions with all required tools integrated and running constantly during development.
+OXID eSales recommends the following productivity tools and best practices:
+
+* Use Sonarcloud as a final report point for psalm issues, code coverage reports, code duplications analysis.
+* Use Github Actions with all required tools integrated and running constantly during development.
+
+Following best practices
+------------------------
+
+* Ensure that all new code goes through the review process of at least one other team member.
+* Follow Test Driven Development (TDD) principles.
+* Compose meaningful commit messages.
+  |br|
+  Good commit messages describe the changes applied in the commit, “ESDEV-1111 Fix the tracking system issue“, for example.
 
 
-Development process
--------------------
 
-* All new code should go through the review process of another team member.
-* The TDD principle should be followed during the development.
-* Commit messages should be informative.
 
-Commit messages
-^^^^^^^^^^^^^^^
-
-Commit messages should describe the changes done in the commit. Possible good examples:
-
-* ESDEV-1111 Fix the issue of tracking system
-* 0001243 Update tracking system logic
-* ESDEV-1111 0001243 Fix the issue of tracking system
