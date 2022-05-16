@@ -1,14 +1,14 @@
-Third Party Licenses
+Third-Party Licenses
 ====================
 
 
 Licenses used in OXID eShop 6.0 and higher
 ------------------------------------------
 
-To look up the third party libraries and corresponding licenses used in OXID eShop, do the following:
+To look up the third-party libraries and corresponding licenses used in OXID eShop, do the following:
 
 * In the OXID eShop root directory, open the :file:`composer.lock` file.
-* If applicable: In the OXID eShop :file:`>root directory>/vendor` directory, open the correspondiding :file:`license` file or search for a reference in the :file:`readme` file.
+* If applicable: In the OXID eShop :file:`>root directory>/vendor` directory, open the corresponding :file:`license` file or search for a reference in the :file:`readme` file.
 
 
 Licenses used prior to OXID eShop 6.0
@@ -291,7 +291,7 @@ TWITTER BOOTSTRAP
 
 Used in OXID eShop Mobile Theme
 
-Used as a front end framework
+Used as a frontend framework
 
 Licensed under the Apache License, Version 2.0
 
