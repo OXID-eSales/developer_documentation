@@ -15,4 +15,7 @@ features that are described in the section :doc:`Tell Me Something About Topic X
     project/index
     module/index
     theme/index
-    *
+    component
+    quality
+    contribution
+    licenses
