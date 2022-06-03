@@ -16,3 +16,5 @@ features that are described in the section :doc:`Tell Me Something About Topic X
     module/index
     theme/index
     *
+
+What you need to consider if you want to contribute to the development can be found under :doc:`How to contribute </development/contributing/index>`.
