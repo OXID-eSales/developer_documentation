@@ -1,5 +1,5 @@
-Contributing code to OXID eShop
-===============================
+Contributing code: the OXID eSales Contributor Agreement
+========================================================
 
 Oxid contribution and contributor agreement FAQ
 -----------------------------------------------
