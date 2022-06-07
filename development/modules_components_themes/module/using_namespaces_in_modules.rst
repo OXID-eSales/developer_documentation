@@ -49,6 +49,8 @@ The Unified Namespace (``OxidEsales\Eshop``)
 
 The :doc:`Unified Namespace </system_architecture/unified_namespace/index>` (``OxidEsales\Eshop``) provides an edition independent namespace for module and core developers.
 
+.. todo: #VL: Forge-Content in dev-doku?
+
 .. important::
 
  Please do not use the shop classes from the edition namespaces in your code! (`More info <https://oxidforge.org/en/namespaces-in-oxid-eshop-6.html>`__)

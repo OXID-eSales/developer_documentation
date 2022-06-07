@@ -7,6 +7,8 @@ Vendor acronyms and prefixes
 Vendor Prefixes
 ^^^^^^^^^^^^^^^
 
+.. todo: #VL: Ziel-Seite fehlt; wie registriert man sein Kürzel?
+
 A prefix and a vendor namespace should be used consistently, and they should
 be `registered at OXID eSales <https://oxidforge.org/en/extension-acronyms>`__
 to prevent use by others. Use your prefix for your:

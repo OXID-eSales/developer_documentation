@@ -1,6 +1,8 @@
 id
 ==
 
+.. todo #VL: https://oxidforge.org/de/modulkurzel outdated? Wo liegt die Datei jetzt? "This file is outdated for we moved on to another system to display your acronyms, namespaces"
+
 Description
     The extension id must be unique. It is recommended to use `vendor prefix <https://oxidforge.org/de/modulkurzel>`__
     + module root directory name. Module ID is used for getting all needed information about extension. The directory of
