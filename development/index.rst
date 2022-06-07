@@ -23,11 +23,3 @@ Those are the entry points for the use of all other features:
 
     tell_me_about/index
 
-What you need to consider if you want to contribute to the development can be found here:
-
-.. toctree::
-    :titlesonly:
-    :maxdepth: 2
-    :glob:
-
-    contributing/index
