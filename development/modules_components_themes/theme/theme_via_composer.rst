@@ -1,9 +1,9 @@
-How to create a theme installable via composer?
-===============================================
+How to create a theme installable via composer
+==============================================
 
-Themes are installed via Composer by using `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
+Install themes via Composer by using `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
-In order to install theme correctly this plugin requires two fields to be described in theme ``composer.json`` file:
+To install theme correctly, this plugin requires two fields to be described in the ``composer.json`` file:
 
 - :ref:`type <theme_type-20160524>`
 - :ref:`extra <theme_extra-20160524>`

@@ -1,7 +1,7 @@
 Development
 ===========
 
-This section contains development related resources.
+This section contains development-related resources.
 
 :doc:`Project wide development options, modules, themes and components </development/modules_components_themes/index>`
 are the containers with which you can customize, extend or configure the OXID eShop:
