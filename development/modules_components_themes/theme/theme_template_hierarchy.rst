@@ -146,7 +146,7 @@ Product pictures are loaded with article objects (file-based).
 Translations
 ^^^^^^^^^^^^
 
-The main language file (``lang.php``) is loaded using a file-based resource locator, but at a later stage, the directory containing ``lang.php`` is scanned for other ``*_lang.php`` files (like cust_lang.php).
+The main language file (``lang.php``) is loaded using a file-based resource locator, but at a later stage, the directory containing ``lang.php`` is scanned for other ``*_lang.php`` files (like ``cust_lang.php``).
 
 This makes translation file loading behave like a directory-based resource location.
 
