@@ -94,6 +94,10 @@ The line below will initiate execution of tests and generation of code coverage 
 
   (cd "$ESHOP_PATH" && PARTIAL_MODULE_PATHS="$MODULE_NAME" ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests --coverage-html="$ESHOP_PATH/coverage_report/$MODULE_NAME" AllTestsUnit)
 
+.. note::
+
+  Due to the limitation of PHPUnit v8 https://github.com/sebastianbergmann/phpunit/issues/4533 OXID eShop Testing Library can not generate code coverage with PHP v8. Please switch your development environment to PHP v7 if you want to generate code coverage with OXID eShop Testing Library and PHPUnit v8.
+
 2. Convert all files to UTF-8
 -----------------------------
 

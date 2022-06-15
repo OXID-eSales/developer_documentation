@@ -135,6 +135,10 @@ testing (see :ref:`Test creation <testcreation-20180118>` ). In order to start g
 run :command:`vendor/bin/runtests-coverage`. After the script is finished, you will find a directory
 named report inside the module’s tests folder (yourmodule/tests/report) which contains the code coverage files.
 
+.. note::
+
+  Due to the limitation of PHPUnit v8 https://github.com/sebastianbergmann/phpunit/issues/4533 OXID eShop Testing Library can not generate code coverage with PHP v8. Please switch your development environment to PHP v7 if you want to generate code coverage with OXID eShop Testing Library and PHPUnit v8.
+
 Interpreting the code metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
