@@ -78,21 +78,32 @@ Full porting
 Execute tests
 ^^^^^^^^^^^^^
 
-The following line will initiate tests for the given module only. In order to pass this criteria there should **not be** any **failures** or **errors**.
+Initiate the tests for the given module.
 
-::
+To do so, execute the following command:
 
-  (cd "$ESHOP_PATH" && PARTIAL_MODULE_PATHS="$MODULE_NAME" ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests)
+.. code::
+
+   (cd "$ESHOP_PATH" && PARTIAL_MODULE_PATHS="$MODULE_NAME" ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests)
 
 
 Generate code coverage
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The line below will initiate execution of tests and generation of code coverage for given module only. It uses functionality provided by ``xdebug`` so this extension must be loaded and activated in order to proceed. In order to pass this criteria make sure the most important logic is covered by the tests.
+Initiate the execution of tests and generation of code coverage for a given module.
 
-::
+1. Make sure you have loaded and activated the ``xdebug`` extension.
+#. Make sure the logic is covered by the tests.
+#. If you use the Testing Library, switch to PHP 7.
+   |br|
+   Background: Due to a dependency on PHPUnit 8, the Testing Library doesn't support code coverage generation with PHP 8.
+#. Execute the following command:
 
-  (cd "$ESHOP_PATH" && PARTIAL_MODULE_PATHS="$MODULE_NAME" ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests --coverage-html="$ESHOP_PATH/coverage_report/$MODULE_NAME" AllTestsUnit)
+   .. code::
+
+      (cd "$ESHOP_PATH" && PARTIAL_MODULE_PATHS="$MODULE_NAME" ADDITIONAL_TEST_PATHS='' RUN_TESTS_FOR_SHOP=0 RUN_TESTS_FOR_MODULES=1 ACTIVATE_ALL_MODULES=1 vendor/bin/runtests --coverage-html="$ESHOP_PATH/coverage_report/$MODULE_NAME" AllTestsUnit)
+
+
 
 2. Convert all files to UTF-8
 -----------------------------
