@@ -25,6 +25,6 @@ In order to remove module configurations from shop configuration, following comm
 
 .. note::
 
-    This command is available from version `6.2.3 <https://oxidforge.org/en/oxid-eshop-version-6-2-3.html>`_.
+    This command is available from version `6.2.3 <https://docs.oxid-esales.com/en/releases/release-notes.html#oxid-eshop-version-6-2-3>`_.
     
      

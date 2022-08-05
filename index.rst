@@ -45,7 +45,6 @@ requests <https://github.com/OXID-eSales/oxideshop_ce/blob/master/CONTRIBUTING.m
 Useful links
 ------------
 
-- `OXIDforge Tutorials <https://oxidforge.org/en/shop/tutorial>`__
 - `OXID eShop Forum <http://forum.oxid-esales.com>`__
 
 .. image:: media/icons-en/home.png
