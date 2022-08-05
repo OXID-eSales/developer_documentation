@@ -22,3 +22,4 @@ Those are the entry points for the use of all other features:
     :glob:
 
     tell_me_about/index
+
