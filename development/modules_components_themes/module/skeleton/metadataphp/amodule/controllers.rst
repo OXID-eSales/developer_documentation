@@ -67,11 +67,12 @@ Example
 
 
 
-Define template file in the render method
------------------------------------------
+Defining a template file in the render method
+---------------------------------------------
 
-To render a smarty template via a frontend controller, we need to define the template file
-in metadata.php in the templates section. For example:
+To render a smarty template via a frontend controller, in :file:`metadata.php` define the template file in the templates section.
+
+Example:
 
 .. code::
 
@@ -83,9 +84,11 @@ in metadata.php in the templates section. For example:
     .
     .
 
-and the render method in our controller should return it, but we also support twig engine,
+The render method in our controller should return it, but we also support twig engine,
 therefore you should only return **the template name without extension** in the render method,
-then the shop will behave in the same way for both smarty and twig templates. For example:
+then the shop will behave in the same way for both smarty and twig templates.
+
+Example:
 
 .. code::
 
