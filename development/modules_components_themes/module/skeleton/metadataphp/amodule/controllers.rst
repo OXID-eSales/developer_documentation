@@ -70,9 +70,14 @@ Example
 Defining a template file in the render method
 ---------------------------------------------
 
+Make sure you shop behaves in the same way for both smarty and twig templates.
+
+Rendering Smarty templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To render a smarty template via a frontend controller, in :file:`metadata.php` define the template file in the templates section.
 
-Example:
+|example|
 
 .. code::
 
@@ -84,11 +89,19 @@ Example:
     .
     .
 
-The render method in our controller should return it, but we also support twig engine,
-therefore you should only return **the template name without extension** in the render method,
-then the shop will behave in the same way for both smarty and twig templates.
+.. todo: #Vasyl: "... should return it" --  = "returns the template" ?
 
-Example:
+The render method in your controller returns the template.
+
+
+
+Rendering Twig templates
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To render Twig templates, with the render method only return **the template name without extension**.
+
+
+|example|
 
 .. code::
 
@@ -106,5 +119,7 @@ Example:
 
 .. important::
 
-    For Twig templates we do not need to define them in metadata.php in the templates section.
-    To know how to register and access Twig templates, please follow :ref:`this page <registering-a-new-module-template>`.
+    Twig templates are not defined in in the templates section of the :file:`metadata.php` file.
+
+    For more information about registering and accessing Twig templates, see :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Registering a new module's  template`.
+

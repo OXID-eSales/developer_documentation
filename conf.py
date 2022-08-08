@@ -37,8 +37,12 @@ from pygments.lexers.web import PhpLexer
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'sphinxcontrib.plantuml'
+    'sphinxcontrib.plantuml',
+    'sphinx.ext.autosectionlabel',
 ]
+
+# Make sure the target is unique
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -242,6 +246,13 @@ html_show_sphinx = False
 htmlhelp_basename = 'OXIDeShopdeveloperdocumentationdoc'
 
 rst_epilog = """
+
+.. role:: db
+.. |procedure| replace:: **Procedure**
+.. |prerequisites| replace:: **Prerequisites**
+.. |result| replace:: **Result**
+.. |background| replace:: **Background**
+.. |example| replace:: **Example**
 .. |br| raw:: html
 
    <br />
