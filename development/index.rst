@@ -23,4 +23,3 @@ Those are the entry points for the use of all other features:
 
     tell_me_about/index
 
-

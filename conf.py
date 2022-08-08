@@ -241,7 +241,6 @@ html_show_sphinx = False
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OXIDeShopdeveloperdocumentationdoc'
 
-
 rst_epilog = """
 .. |br| raw:: html
 

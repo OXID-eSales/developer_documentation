@@ -126,14 +126,20 @@ Running tests
 
 See `README file of the testing library <https://github.com/OXID-eSales/testing_library#running-tests>`__
 
-Generating code coverage report
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Generating a code coverage report
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In order to run all the tests and generate the coverage report for the module, you need to ensure that all
-directories and files which are not part of the module in particular (e.g. 3rd party libraries) are excluded from
-testing (see :ref:`Test creation <testcreation-20180118>` ). In order to start generating the code coverage report,
-run :command:`vendor/bin/runtests-coverage`. After the script is finished, you will find a directory
-named report inside the module’s tests folder (yourmodule/tests/report) which contains the code coverage files.
+To run all the tests and generate the coverage report for the module, do the following:
+
+1. If you use the Testing Library, switch to PHP 7.
+   |br|
+   Background: Due to a dependency on PHPUnit 8, the Testing Library doesn't support code coverage generation with PHP 8.
+#. Ensure that all directories and files which are not part of the module in particular (3rd party libraries, for example) are excluded from testing (see :ref:`Test creation <testcreation-20180118>`).
+#. To start generating the code coverage report, run :command:`vendor/bin/runtests-coverage`.
+   |br|
+   After the script is finished, you will find a directory named report inside the module’s tests folder (`yourmodule/tests/report`) which contains the code coverage files.
+
+
 
 Interpreting the code metrics
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
