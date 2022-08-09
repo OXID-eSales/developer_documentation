@@ -44,12 +44,21 @@ h1 {
     margin: 0;
 }
 
+.rst-content .productname {
+    font-style: italic;
+    border: 0;
+    font-size: 100%;
+    background: none;
+    padding: 0;
+    margin: 0;
+}
+
 /*  Beschreibung der Steuerelemente ohne Abstand zur Überschrift */
 .rst-content dl dt {
     margin-bottom: 0px;
 }
 
-.rst-content .file {
+.rst-content .file, .technicalname {
     border: 0;
     background: none;
     color: black;

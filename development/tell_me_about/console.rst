@@ -39,12 +39,14 @@ Commands can be created for OXID eShop modules or for OXID eShop components.
 Module commands
 ^^^^^^^^^^^^^^^
 
-OXID eShop allows to create commands for modules. Command will appear in the list only when module going to be activated.
+OXID eShop allows to create commands for modules. Commands will appear in the list only when a module is going to be activated.
 
-Command class
-"""""""""""""
+Creating a command class
+""""""""""""""""""""""""
 
-First of all it's necessary to create a command class. Command class example:
+First of all it's necessary to create a command class.
+
+|example|
 
 .. code:: php
 
@@ -76,10 +78,10 @@ First of all it's necessary to create a command class. Command class example:
     It's necessary to extend this class otherwise command will not respect OXID eShop modules functionality and
     some features will not work.
 
-Command file registration
-"""""""""""""""""""""""""
+Registering a command file
+""""""""""""""""""""""""""
 
-When command file is created, it's necessary to register it as a service. If `services.yaml` file is not present,
+When a command file is created, it's necessary to register it as a service. If `services.yaml` file is not present,
 create it in your module root directory.
 
 .. important::

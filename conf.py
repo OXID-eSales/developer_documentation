@@ -245,6 +245,12 @@ html_show_sphinx = False
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OXIDeShopdeveloperdocumentationdoc'
 
+#custom roles; associated classes are defined in the css
+rst_prolog = """
+.. role:: productname
+.. role:: technicalname
+"""
+
 rst_epilog = """
 
 .. role:: db

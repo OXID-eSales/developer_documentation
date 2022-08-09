@@ -27,8 +27,8 @@ This information is gathered from `OXID eShop Facts <https://github.com/OXID-eSa
 Facts has a class which can provide an information about OXID eShop and it's environment. This component is Shop
 independent and can be used without bootstrap. The only restriction is to have config.inc.php file configured.
 
-Usage
------
+Using migrations
+----------------
 
 Running migrations - CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^

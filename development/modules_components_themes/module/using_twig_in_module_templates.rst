@@ -1,23 +1,19 @@
 Using Twig in module templates
 ==============================
 
-OXID support for Twig template engine allows to:
+Just by following the directory structure conventions, the OXID support for the Twig template engine allows you to
 
- * register own (original) module templates
+ * register custom (original) module templates
  * extend existing templates
 
-just by following the directory structure conventions.
-
-.. note::
-    Having such conventions means that module developers won't have to register their Twig templates or
-    template extensions explicitly (in `metadata.php`).
+So, having directory structure conventions means you don't have to register Twig templates or template extensions in the in :file:`metadata.php` file explicitly.
 
 .. _registering-a-new-module-template:
 
 Registering a new module's  template
 ------------------------------------
 
-To register new Twig templates, simply put them into corresponding directory structure inside your module:
+To register new Twig templates, simply put them into the corresponding directory structure inside your module:
 
 ::
 
@@ -28,16 +24,20 @@ To register new Twig templates, simply put them into corresponding directory str
                 └── page
                     └── module_1_own_template.html.twig
 
-After module activation, templates will be automatically registered with namespace matching the module's ID:
+After module activation, the templates will be automatically registered with the namespace matching the module's ID:
 
 .. code:: shell
 
     @<module-id>/modules_own_template.html.twig
     @<module-id>/page/modules_own_template.html.twig
 
-.. warning::
-    Please note that the word `"extensions"` when used in the following directory structure:
-    ::
+.. attention::
+
+   **Terminology**
+
+   The expression ``extensions``, when used in the following directory structure, is reserved for :emphasis:`template` extensions (see :ref:`extending-existing-templates`).
+
+   ::
 
         └── module-1
                 └── views
@@ -45,8 +45,9 @@ After module activation, templates will be automatically registered with namespa
                         └── extensions
                             └── // <- special location for templates that extend other templates
 
-    is reserved for template extensions (see :ref:`extending-existing-templates`) and as such is not recommended
-    to be used for registration of original (non-extending) module templates.
+
+   Do not use it to register original (non-extending) :emphasis:`module` templates.
+
 
 .. _extending-existing-templates:
 
@@ -54,34 +55,38 @@ Extending existing templates
 ----------------------------
 
 In addition to the out-of-box Twig functionality for template inheritance and reuse
-(see `Twig documentation for extends tag <https://twig.symfony.com/doc/3.x/tags/extends.html>`__)
-OXID eSales supports **multiple inheritance** for Twig templates which allows to have more than one `{% extends %}`
+(see `Twig documentation for extends tag <https://twig.symfony.com/doc/3.x/tags/extends.html>`__),
+OXID eSales supports :emphasis:`multiple inheritance` for Twig templates.
+
+This allows you to have more than one `{% extends %}`
 tag called per rendering.
 
-.. warning::
+:productname:`Multiple inheritance` is an advanced feature that you can use to combine modifications added to a certain template
+from multiple modules into an "inheritance chain".
+
+.. attention::
+    **No dynamic and conditional inheritance**
 
     Multiple inheritance with
     `dynamic <https://twig.symfony.com/doc/3.x/tags/extends.html#dynamic-inheritance>`__ or
     `conditional inheritance <https://twig.symfony.com/doc/3.x/tags/extends.html#conditional-inheritance>`__
-    is not implemented and usage of these Twig features in OXID eShop templates is discouraged!
+    is :emphasis:`not` implemented.
 
-**Multiple inheritance** is an advanced feature that can be used to combine modifications added to a certain template
-from multiple modules into an "inheritance chain".
+    Do not use  these Twig features in OXID eShop templates.
 
-Depending on type of original template, module template extension can be one of the following:
+Depending on the type of the original template, a module template extension can be of one of the following types:
 
- * module extensions for OXID eShop templates
- * module extensions of OXID module templates
+ * module extension for OXID eShop templates
+ * module extension of OXID module templates
 
-.. note::
-    The type of template extension can be easily determined by its directory structure (see examples below).
+Identify the template extension type easily by examining its  directory structure (see the examples under :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID eShop templates` and :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID module templates`).
 
 .. _extending-shop-templates:
 
 Module extensions for OXID eShop templates
-******************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This type of template extensions are located in the `themes/` sub folder of `extensions/`:
+This type of template extensions is located in the :file:`themes/` sub folder of the :file:`extensions/` directory:
 
 ::
 
@@ -95,36 +100,36 @@ This type of template extensions are located in the `themes/` sub folder of `ext
                       └── some-twig-theme
                           └── shop-template.html.twig //put theme-specific templates here
 
-In the example above, result of rendering  *shop-template.html.twig* will depend on active theme's ID:
+In the example above, the result of rendering :file:`shop-template.html.twig` depends on the active theme's ID:
 
-* when **some-twig-theme** theme is active:
+* If :file:`some-twig-theme` theme is active, the extensions/themes/**some-twig-theme**/shop-template.html.twig template is used in the template chain.
 
-    * extensions/themes/**some-twig-theme**/shop-template.html.twig will be used in template chain
+* If the :file:`some-other-twig-theme` theme is active, the extensions/themes/**default**/shop-template.html.twig template is used in the template chain.
 
-* when **some-other-twig-theme** theme is active
-
-    * extensions/themes/**default**/shop-template.html.twig will be used
-
-.. warning::
-    Please note that:
+.. attention::
+    The following paths are reserved:
 
         * `extensions/themes`
         * `extensions/themes/default`
 
-    are reserved paths which have special meaning inside of OXID eShop application (e.g. you should not use "default" as your
-    theme ID if you want to avoid running into problems with template inheritance).
+    They have a special meaning inside of OXID eShop application.
+
+    To avoid running into problems with template inheritance, make sure not to use ``default`` as your
+    theme ID.
 
 .. note::
-    Inheritance for **admin templates** is similar to the theme-specific inheritance, because admin is a theme as well,
-    you just need to use a corresponding ID when creating admin template extensions (e.g. *twig_admin*).
+
+    Inheritance for **admin templates** is similar to the theme-specific inheritance, because admin is a theme as well.
+
+    When creating admin template extensions (:technicalname:`twig_admin`, for example), just use a corresponding ID.
 
 .. _extending-module-templates:
 
 Module extensions for OXID module templates
-*******************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When your module needs to extend a template, originating in other module, the extension template should be placed into
-`modules/` sub folder of `extensions/`:
+When your module needs to extend a template that originates in another module, place the extension template in
+the :file:`modules/` sub folder of the :file:`extensions/` folder:
 
 ::
 
@@ -150,22 +155,35 @@ When your module needs to extend a template, originating in other module, the ex
     Theme-specific template extensions, similar to :ref:`extending-shop-templates` won't work with module template
     extensions!
 
-.. warning::
-    Same as for the previous template extension type: `extensions/modules`
-    is a path, reserved for placing module template extensions and it's not expected to contain any other templates!
+    .. todo: #Vasyl: What exactly do we mean with "similar to :ref:`extending-shop-templates` "?
+
+
+.. attention::
+    :file:`extensions/modules` is a path reserved for placing :emphasis:`module` template extensions.
+
+    Do not store other templates in it.
+
+    .. todo: #Vasyl: what can go wrong?
+
 
 Fine-tuning the template inheritance process
-********************************************
+--------------------------------------------
 
-Controlling the template rendering engine that utilizes multiple inheritance can be a daunting task by itself.
+Controlling a template rendering engine that utilizes multiple inheritance can be a daunting task by itself.
+
 The situation might get even more complicated if you face the necessity to control the order in which each module template
 joins the inheritance chain.
 
-.. note::
-    By default module template loading order (template chain) will depend to the order of modules installation.
+By default, the module template loading order (template chain) depends on the order of module installation.
 
-If your template architecture has to challenge similar problems, inheritance chain can be fine-tuned by usage of a
-specific keys in your shop configuration file (*var/configuration/shops/1.yaml*):
+If your template architecture faces problems, fine-tune the inheritance chain.
+
+.. todo: #Vasyl: how do I identify such problems? What are the symptoms?
+
+To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
+
+
+|example|
 
 ::
 
@@ -178,9 +196,9 @@ specific keys in your shop configuration file (*var/configuration/shops/1.yaml*)
             - module-id-2
             - module-id-4//lowest-priority module ID (template will be loaded earlier in chain)
 
-For the example above, having an OXID eShop application with 4 modules active and extending the same eShop template
-*page/some-template.html.twig*
-will result in the following template chain:
+In our example, having an OXID eShop application with 4 modules active and extending the same eShop template
+:file:`page/some-template.html.twig`
+results in the following template chain:
 
 * CHAIN START
 * shop-template
@@ -190,6 +208,10 @@ will result in the following template chain:
 * module-3-template*
 * CHAIN END
 
-.. note::
-    * Templates for modules, which IDs were not specified in the `templateExtensions` will be put to the chain start (will have the lowest priority).
-    * Any template that closes the inheritance chain have the most of decisive "power", comparing to its predecessors, because it can go as far as to stop the contents of "parent" templates from being displayed!
+.. todo: #Vasyl: why not 1-3-2-4 ? Seems to be counterintuitive
+
+Templates for modules whose IDs are not specified in the `templateExtensions` (:technicalname:`module-1-template`, in our example) will be put to the chain start.
+|br|
+They have the lowest priority.
+
+The template that closes the inheritance chain has highest priority because it can go as far as to stop the contents of "parent" templates from being displayed.

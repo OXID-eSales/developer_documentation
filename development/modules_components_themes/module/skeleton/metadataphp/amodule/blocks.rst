@@ -3,14 +3,20 @@ blocks
 
 .. note::
 
-    The `blocks` section in `metadata.php` is used for Smarty templates only.
+    **Extending Twig blocks**
 
-    To find out how to extend Twig blocks, see :doc:`Twig template documentation for modules </development/modules_components_themes/module/using_twig_in_module_templates>`.
+    The `blocks` section in `metadata.php` is used for :emphasis:`Smarty` templates only.
+
+    To find out how to extend :emphasis:`Twig` blocks, see :doc:`Twig template documentation for modules </development/modules_components_themes/module/using_twig_in_module_templates>`.
 
 
 Description:
-    In this array are registered all module templates blocks. On module activation they are automatically inserted into
-    database. On activating/deactivating module, all module blocks also are activated/deactivated.
+    In this array, all module templates blocks are registered.
+    |br|
+    On module activation, they are automatically inserted into the
+    database.
+    |br|
+    On activating/deactivating the module, all module blocks also are activated/deactivated.
 
 Type:
     array of arrays. Sub keys can be ``template``, ``block``, ``file`` and ``position``.
@@ -19,6 +25,8 @@ Mandatory:
     no
 
 Example
+-------
+
     .. code:: php
 
         'blocks' => [
@@ -41,18 +49,27 @@ Example
             ],
         ],
 
-Differences in block file definition per shop/metadata version.
 
-In OXID eShop >= 4.6 with metadata version 1.0 template block ``file`` value was relative to ``out/blocks`` directory inside module root.
 
-In OXID eShop 4.7 / 5.0 with metadata version 1.1 template block ``file`` value has to be specified directly from module root.
+Differences in block file definition per shop/metadata version
+--------------------------------------------------------------
+
+In OXID eShop >= 4.6 with metadata version 1.0, the template block ``file`` value was relative to ``out/blocks`` directory inside module root.
+
+In OXID eShop 4.7 / 5.0 with metadata version 1.1, the template block ``file`` value has to be specified directly from module root.
 
 To maintain compatibility with older shop versions, template block files will work using both notations.
 
-Template block ``file`` value holding path to your customized block should be defined using full path from module directory, earlier it was a sub path from modules ``out/blocks`` directory.
+.. todo: #Vasyl: Does the following belong to "Differences in block file definition per shop/metadata version*" ?
 
-You can define a position of a block if a template block is extended multiple (by different modules).
-So you can sort the block extensions. This is done via the optional template block ``position`` value.
+Template block ``file`` value holding the path to your customized block should be defined using full path from module directory, earlier it was a sub path of the modules ``out/blocks`` directory.
+
+.. todo: #Vasyl: Does the following belong to "Differences in block file definition per shop/metadata version" ?
+
+You can define a position of a block if a template block is extended several times (by different modules).
+In this way, you can sort the block extensions.
+
+To do this, use the optional template block ``position`` value.
 
 Theme-specific blocks
 ---------------------

@@ -1,29 +1,34 @@
-How to extend frontend user form?
-=================================
+Extending a frontend user form
+==============================
 
-There is a possibility to add additional form input fields in frontend without adding additional logic how to save the field
-data. This page will describe how to achieve this by using
+Add additional form input fields in frontend without need to add additional logic how to save the field
+data.
+
+This page describes how to achieve this by using
 `extend user module example <https://github.com/OXID-eSales/extend-user-demo-module>`__.
 
-Preparation
------------
+Adjusting the user table
+------------------------
 
-For having additional input field in user form first of all there will be a need to create new column in user table.
-This can be achieved by using module :doc:`events </development/modules_components_themes/module/skeleton/metadataphp/amodule/events>` which would create a column.
-In this page an example of database table column called ``EXTENDUSER_ADDITIONALCONTACTINFO`` will be used.
+For having additional input field in user form, first create a new column in the user table.
 
-Template
---------
+Do this by using the :doc:`events </development/modules_components_themes/module/skeleton/metadataphp/amodule/events>` module.
 
-.. warning::
+In our example, we use a database table column called ``EXTENDUSER_ADDITIONALCONTACTINFO``.
 
-    Following information applies to Smarty templates only,
-    please check :doc:`Twig template documentation for modules </development/modules_components_themes/module/using_twig_in_module_templates>`
-    to find out how to extend Twig blocks.
+Extending the template
+----------------------
+
+.. attention::
+
+    Our example applies to :emphasis:`Smarty` templates only.
+
+    To find out how to extend :emphasis:`Twig` blocks, see :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Using Twig in module templates`.
 
 
-The block which will have to be extend is located in template file *form/fieldset/user_billing.tpl*.
-To extend it there will be a need to create a template file and describe it in *metadata.php* file:
+Find the block to be extended in the :file:`form/fieldset/user_billing.tpl` template file.
+
+To extend it, create a template file and describe it in the :file:`metadata.php` file:
 
 .. code:: php
 
@@ -31,7 +36,7 @@ To extend it there will be a need to create a template file and describe it in *
       array('template' => 'form/fieldset/user_billing.tpl', 'block'=>'form_user_billing_country', 'file'=>'/views/user.tpl'),
   ),
 
-*/views/user.tpl* contents could look like this:
+The :file:`/views/user.tpl` template content could look like this:
 
 .. code:: smarty
 
@@ -48,22 +53,26 @@ To extend it there will be a need to create a template file and describe it in *
       </div>
   </div>
 
-Most important thing here is input field with name attribute ``name="invadr[oxuser__extenduser_additionalcontactinfo]"``
-which says for OXID eShop to try write into table ``oxuser`` column ``EXTENDUSER_ADDITIONALCONTACTINFO`` provided value.
+The most important thing here is the input field with the name attribute ``name="invadr[oxuser__extenduser_additionalcontactinfo]"``
+which says for OXID eShop to try to write the provided value into the ``EXTENDUSER_ADDITIONALCONTACTINFO`` column of the ``oxuser`` table.
 
-Modify white listed fields
---------------------------
+Modifying white-listed fields
+-----------------------------
 
-For security reasons there is an array of "white listed" fields. Only those table columns which has equivalent
-field in "white list" array can be updated by submitting form and passing parameters via POST request.
+For security reasons, there is an array of "white-listed" fields. Only those table columns which have the corresponding
+field in the "whitelist" array can be updated by submitting the form and passing parameters via POST requests.
 
-There are two classes which contains white listed fields:
+There are two classes containing white-listed fields:
 
-* For table ``oxusers`` - ``OxidEsales\EshopCommunity\Application\Model\User\UserUpdatableFields``.
-* For table ``oxaddress`` - ``OxidEsales\EshopCommunity\Application\Model\User\UserShippingAddressUpdatableFields``.
+* Table ``oxusers``: ``OxidEsales\EshopCommunity\Application\Model\User\UserUpdatableFields``
+* Table ``oxaddress``: ``OxidEsales\EshopCommunity\Application\Model\User\UserShippingAddressUpdatableFields``
 
-So to add additional field to the white list it's needed to extend one of those classes. In ``oxuser`` table case -
-``OxidEsales\EshopCommunity\Application\Model\User\UserUpdatableFields``. Entry in module metadata file would look like
+So, to add additional field to the whitelist, extend one of those classes.
+
+|example|
+
+In the ``oxuser`` table case -
+``OxidEsales\EshopCommunity\Application\Model\User\UserUpdatableFields``, the entry in module metadata file would look like
 this:
 
 .. code::
@@ -89,6 +98,6 @@ And the contents of file could look like this:
       }
   }
 
-In this way into updatable fields array would be added new field - ``EXTENDUSER_ADDITIONALCONTACTINFO``.
+In this way, the new ``EXTENDUSER_ADDITIONALCONTACTINFO`` field is added to the updatable fields array.
 
-So after module activation new form functioning field will appear in the user form.
+So, after module activation, the  new form field appears in the user form.
