@@ -48,6 +48,7 @@ When reusing shop extended classes and shop methods, follow the rules below:
 * Hook to shop events in place of direct extension if possible.
 * To not destroy a module chain, ensure that extended shop/module classes call parent methods.
 * Do not use deprecated methods.
+* When adding new methods, consider prefixing them with your company abbreviation to not conflict with other modules in chain.
 
 For more information about reusing and creating shop modules and themes, see the `Developer Documentation <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/index.html>`_.
 
