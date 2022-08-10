@@ -66,7 +66,7 @@ Environment file :file:`var/configuration/environment/1.yaml` should look someth
           sOEPayPalPassword:
             value: 'staging_environment_password'
 
-New values will get into database as soon as module will be **activated**.
+Don't forget to clean module cache after updating yml files.
 
 In case you have 3 environments: testing, staging and production, files structure could look like this:
 

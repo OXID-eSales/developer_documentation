@@ -24,29 +24,41 @@ For example you want to have custom settings page for your module.
 To achieve this you still need to define all of the settings in :file:`metadata.php`
 file. If you don't want that these settings would be displayed in :menuselection:`Settings` page, don't add
 :ref:`group <metadataphpversion-settings-hiding-settings-20190926>`.
-To save settings OXID eShop has settings bridge which allows to save them:
+To save settings OXID eShop has settings service which allows to save them:
 
 .. code:: php
 
-        $moduleSettingBridge = ContainerFactory::getInstance()
-            ->getContainer()
-            ->get(ModuleSettingBridgeInterface::class);
-        $moduleSettingBridge->save('setting-name', 'value', 'module-id');
+        use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface;
 
-Settings bridge not only will save data into database, but it will also persist setting into the configuration yaml
+        $moduleSettingService = ContainerFactory::getInstance()
+            ->getContainer()
+            ->get(ModuleSettingServiceInterface::class);
+        $moduleSettingService->saveString('setting-name', 'value', 'module-id');
+
+ModuleSettingServiceInterface has multiple methods for different data types (string, bool, int, collection/array)
+which should be used depending on type of your setting.
+Settings service will persist setting into the configuration yaml
 file. More info about configuration files please read in
 :ref:`module configuration documentation <configuring_module_via_configuration_files-20190829>`.
+
 
 Receiving module setting
 ------------------------
 
-In OXID eShop backend to receive module setting please use settings bridge. Example bellow:
+In OXID eShop backend to receive module setting please use settings service. Example bellow:
 
 .. code:: php
+        
+        use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface;
 
-        $moduleSettingBridge = ContainerFactory::getInstance()
+        $moduleSettingService = ContainerFactory::getInstance()
             ->getContainer()
-            ->get(ModuleSettingBridgeInterface::class);
-        $moduleSettingBridge->get('setting-name', 'module-id');
+            ->get(ModuleSettingServiceInterface::class);
+        $moduleSettingService->getString('setting-name', 'module-id');
 
-The bridge will return setting directly from the configuration file.
+The service will return cached value from the configuration file.
+
+.. important::
+
+  Since v7.0 shop doesn't store module settings in the database. You can't receive a module setting
+  from Config class or oxconfig table.
