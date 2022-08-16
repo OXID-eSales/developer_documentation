@@ -459,7 +459,7 @@ This setting allows to define the domain that the cookie is available in format:
 
 .. note::
 
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+    Check setcookie() documentation for more details: https://php.net/manual/de/function.setcookie.php
 
 
 aCookiePaths
@@ -477,7 +477,7 @@ possibility to define path on the server in which the cookie will be available o
 
 .. note::
 
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+    Check setcookie() documentation for more details: https://php.net/manual/de/function.setcookie.php
 
 aTrustedIPs
 ^^^^^^^^^^^
@@ -576,7 +576,7 @@ Some of the hashing algorithms may not be available on your system depending on 
 Algorithm configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-See http://php.net/manual/en/function.password-hash.php for options and values
+See https://php.net/manual/en/function.password-hash.php for options and values
 
 Examples:
 
