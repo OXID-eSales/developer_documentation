@@ -543,7 +543,12 @@ Implemented with OXID eShop version 4.7
 
 .. code:: php
 
-    $this->blSkipViewUsage = true;
+    $this->blSkipViewUsage = false;
+
+.. warning::
+
+    We cannot guarantee all shop functionality will work if this value is changed and we strongly recommend to use this
+    parameter only for accessing the admin panel, in case the View tables are broken.
 
 blShowUpdateViews
 ^^^^^^^^^^^^^^^^^
