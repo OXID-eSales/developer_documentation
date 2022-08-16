@@ -1,7 +1,7 @@
 Install OXID eShop compilation
 ==============================
 
-The general installation is described in the `User documentation <https://docs.oxid-esales.com/eshop/en/6.4/installation/index.html>`__.
+The general installation is described in the `User documentation <https://docs.oxid-esales.com/eshop/en/latest/installation/index.html>`__.
 On this page, additional developer specific information is provided.
 
 .. _eshop_installation_deploy_source_code:
