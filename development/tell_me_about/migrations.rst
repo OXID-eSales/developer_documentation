@@ -12,9 +12,9 @@ OXID eShop uses database migrations for:
 Infrastructure
 --------------
 
-At the moment OXID eShop uses "Doctrine 2 Migrations" and it's integrated via OXID eShop migration components.
+OXID eShop uses `Doctrine  Migrations <https://www.doctrine-project.org/projects/migrations.html>`__ integrated via OXID eShop migration components.
 
-Doctrine Migrations runs migrations with a single configuration. But there was a need to run migration for one or all the
+Prior to v3.0, Doctrine Migrations was not able to collect migrations from multiple folders/namespaces and to specify dependencies between them. But there was a need to run migration for one or all the
 projects and modules (CE, PE, EE, PR and a specific module). For this reason `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__
 was created.
 
@@ -25,7 +25,7 @@ Doctrine Migration Wrapper needs some information about the OXID eShop installat
 
 This information is gathered from `OXID eShop Facts <https://github.com/OXID-eSales/oxideshop-facts>`__.
 Facts has a class which can provide an information about OXID eShop and it's environment. This component is Shop
-independent and can be used without bootstrap. The only restriction is to have config.inc.php file configured.
+independent and can be used without bootstrap. The only restriction is to have `config.inc.php` file configured.
 
 Usage
 -----
@@ -33,7 +33,7 @@ Usage
 Running migrations - CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Script to run migrations is installed within composer bin directory. It accepts two parameters:
+Script to run migrations is installed within Composer's `bin` directory. It accepts two parameters:
 
 - Doctrine Command
 - :ref:`Suite Type <suite_types>` (CE, PE, EE, PR or a specific module_id)
@@ -44,7 +44,7 @@ Script to run migrations is installed within composer bin directory. It accepts 
 
 .. important::
 
-    To get comprehensive information about Doctrine 2 Migrations and available commands as well, please see `official documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/2.2/index.html>`__.
+    Please consult the `Doctrine Migrations official documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/index.html>`__ for the comprehensive and up-to-date info.
 
 Example:
 
@@ -96,37 +96,26 @@ In this case it will be generated only for Enterprise Edition in `vendor/oxid-es
 Module migrations
 -----------------
 
-Module migrations are available from 6.2.2
-
 Configuration
 ^^^^^^^^^^^^^
-
-There are a few steps need to be done:
-
-- Create a migration folder inside the root directory of the module (migration folder name is case sensitive and must be all lower case).
-- Create a migrations.yml file in migration folder and put at least the following configuration inside. To see the list of available configs, please check `official documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/2.2/reference/configuration.html#configuration>`__.
-
-
-    - **name:** The name that shows at the top of the migrations console application
-    - **migrations_namespace:** The PHP namespace your migration classes are located under
-    - **table_name:** The name of the table to track executed migrations in
-    - **migrations_directory:** The path to a directory where to look for migration classes
-
-Example:
+Put the migration configuration file into `migration` folder inside the module's root directory:
 
 .. code:: bash
 
-    name: WYSIWYG module migration (ddoewysiwyg)
-    migrations_namespace: OxidEsales\WysiwygModule\Migrations
-    table_name: oxmigrations_ddoewysiwyg
-    migrations_directory: data
+    ├── migration
+         └── migrations.yml
+
+Example of `migrations.yml`:
+
+.. code:: yaml
+
+    table_storage:
+      table_name: oxmigrations_ddoewysiwyg
+    migrations_paths:
+      'OxidEsales\WysiwygModule\Migrations': data
 
 .. tip::
-
-    - As you need to know the module_id for several migration commands we recommend to put the module_id in the `name` parameter,
-      like the sample: WYSIWYG module migration (ddoewysiwyg). In fact, you will have module_id (in this case: ddoewysiwyg) in console
-      result and you do not need to lookup the module_id anymore.
-    - Use module_id for the `table_name` parameter to avoid conflicts with any other tables in database.
+    Include your module's ID in `table_name` to prevent database table name conflicts.
 
 
 Usage
