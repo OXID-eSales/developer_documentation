@@ -89,8 +89,6 @@ To render a smarty template via a frontend controller, in :file:`metadata.php` d
     .
     .
 
-.. todo: #Vasyl: "... should return it" --  = "returns the template" ?
-
 The render method in your controller returns the template.
 
 

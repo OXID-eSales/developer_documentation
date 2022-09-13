@@ -51,20 +51,7 @@ Example
 
 
 
-Differences in block file definition per shop/metadata version
---------------------------------------------------------------
-
-In OXID eShop >= 4.6 with metadata version 1.0, the template block ``file`` value was relative to ``out/blocks`` directory inside module root.
-
-In OXID eShop 4.7 / 5.0 with metadata version 1.1, the template block ``file`` value has to be specified directly from module root.
-
-To maintain compatibility with older shop versions, template block files will work using both notations.
-
-.. todo: #Vasyl: Does the following belong to "Differences in block file definition per shop/metadata version*" ?
-
 Template block ``file`` value holding the path to your customized block should be defined using full path from module directory, earlier it was a sub path of the modules ``out/blocks`` directory.
-
-.. todo: #Vasyl: Does the following belong to "Differences in block file definition per shop/metadata version" ?
 
 You can define a position of a block if a template block is extended several times (by different modules).
 In this way, you can sort the block extensions.

@@ -262,6 +262,7 @@ rst_epilog = """
 .. |br| raw:: html
 
    <br />
+
 """
 
 # -- Options for LaTeX output ---------------------------------------------

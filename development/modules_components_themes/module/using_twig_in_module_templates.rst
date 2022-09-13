@@ -152,18 +152,7 @@ the :file:`modules/` sub folder of the :file:`extensions/` folder:
                                 └── module_1_template.html.twig // extension of module-1 template
 
 .. note::
-    Theme-specific template extensions, similar to :ref:`extending-shop-templates` won't work with module template
-    extensions!
-
-    .. todo: #Vasyl: What exactly do we mean with "similar to :ref:`extending-shop-templates` "?
-
-
-.. attention::
-    :file:`extensions/modules` is a path reserved for placing :emphasis:`module` template extensions.
-
-    Do not store other templates in it.
-
-    .. todo: #Vasyl: what can go wrong?
+   For shop templates, we can make theme-specific template extensions (similar to :ref:`extending-shop-templates`), but for module templates it's not supported.
 
 
 Fine-tuning the template inheritance process
@@ -176,11 +165,7 @@ joins the inheritance chain.
 
 By default, the module template loading order (template chain) depends on the order of module installation.
 
-If your template architecture faces problems, fine-tune the inheritance chain.
-
-.. todo: #Vasyl: how do I identify such problems? What are the symptoms?
-
-To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
+If the inheritance chain is not rendered as expected adjust it. To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
 
 
 |example|
@@ -192,13 +177,16 @@ To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml
         classExtensions: {  }
         templateExtensions: //configuration key
             'page/some-template.html.twig': //name of the extended template
-            - module-id-3 //highest-priority module ID (template will be loaded last in chain)
+            - module-id-3 //highest-priority module ID (the template will be loaded last in the chain)
             - module-id-2
-            - module-id-4//lowest-priority module ID (template will be loaded earlier in chain)
+            - module-id-4 //lowest-priority module ID (the template will be loaded earlier in the chain)
 
-In our example, having an OXID eShop application with 4 modules active and extending the same eShop template
-:file:`page/some-template.html.twig`
-results in the following template chain:
+In our example,
+
+* module-id-3 is the highest-priority module ID (the template will be loaded last in the chain)
+* module-id-4 is the lowest-priority module ID (the template will be loaded earlier in the chain)
+
+So, in our example, having an OXID eShop application with 4 modules active and extending the same eShop template :file:`page/some-template.html.twig` results in the following template chain:
 
 * CHAIN START
 * shop-template
@@ -207,8 +195,6 @@ results in the following template chain:
 * module-2-template
 * module-3-template*
 * CHAIN END
-
-.. todo: #Vasyl: why not 1-3-2-4 ? Seems to be counterintuitive
 
 Templates for modules whose IDs are not specified in the `templateExtensions` (:technicalname:`module-1-template`, in our example) will be put to the chain start.
 |br|
