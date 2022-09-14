@@ -149,14 +149,16 @@ When you agree to the OXID-CA, OXID eSales AG gains the right to enforce its cop
 
 However, copyright ownership is shared, and not transferred: The contributor retains the freedom to make additional arrangements for their contributions as they see fit.
 
-.. todo: #VL klärt
-   I’d like OXID eSales AG to give me credit for my contributions. Can I expect this?
-   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-   All OXID project participants receive credit for their contributions, even if their contributions are rewritten or removed.
 
-.. todo: #VL klärt: klärt, wo wir diese Liste künftig pflegen;  die URL it obsolet:
-         A list of contributors can be found at: http://wiki.oxidforge.org/Contributors
+I’d like OXID eSales AG to give me credit for my contributions. Can I expect this?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+All OXID project participants receive credit for their contributions, even if their contributions are rewritten or removed.
+
+Find the contributors
+
+* in the release notes
+* in Github under https://github.com/orgs/OXID-eSales/people
 
 I don’t want my contribution to end up only in a proprietary product. Does OXID eSales AG promise to publish my contribution under an open-source license?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -203,8 +205,6 @@ Sun, the original author of the contributor agreement and FAQ, has graciously ch
 
 Document Provenance and Licensing
 ---------------------------------
-
-.. todo: #VL klärt Lizenzierung
 
 This document is based on the Sun Microsystem’s Contributor Agreement FAQ.
 
