@@ -37,8 +37,12 @@ from pygments.lexers.web import PhpLexer
 # ones.
 extensions = [
     'sphinx_rtd_theme',
-    'sphinxcontrib.plantuml'
+    'sphinxcontrib.plantuml',
+    'sphinx.ext.autosectionlabel',
 ]
+
+# Make sure the target is unique
+autosectionlabel_prefix_document = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -241,10 +245,24 @@ html_show_sphinx = False
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'OXIDeShopdeveloperdocumentationdoc'
 
+#custom roles; associated classes are defined in the css
+rst_prolog = """
+.. role:: productname
+.. role:: technicalname
+"""
+
 rst_epilog = """
+
+.. role:: db
+.. |procedure| replace:: **Procedure**
+.. |prerequisites| replace:: **Prerequisites**
+.. |result| replace:: **Result**
+.. |background| replace:: **Background**
+.. |example| replace:: **Example**
 .. |br| raw:: html
 
    <br />
+
 """
 
 # -- Options for LaTeX output ---------------------------------------------

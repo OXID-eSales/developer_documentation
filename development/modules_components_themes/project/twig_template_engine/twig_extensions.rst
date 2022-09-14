@@ -220,8 +220,8 @@ Example of use::
 
     {{ 'Lorem ipsum'|smart_wordwrap(20) }}
 
-TranslateExtension
-^^^^^^^^^^^^^^^^^^
+TranslateExtension (Filter)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces ``translate`` filter which is responsible for translation functionality. Example of use::
 
@@ -258,3 +258,4 @@ Escape is internal Twig filter but it can be extended and so is done in OXID. Cu
 be found under source\Internal\Twig\Escaper directory. Example of use::
 
     {{ 'example@me.com'|escape('mail') }}
+
