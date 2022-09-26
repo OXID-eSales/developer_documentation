@@ -1,8 +1,6 @@
 Known issues
 ============
 
-- In Twig by default all variables are escaped. Some of variables should be filtered with ``|raw`` filter to avoid this.
-
 - Variable scope. In Twig variables declared in templates have scopes limited by block (``{% block %}``, ``{% for %}``
   and so on). Some variables should be declared outside these blocks if they are used outside.
 
@@ -18,3 +16,6 @@ Known issues
   manually copy&paste regular expression.
 
 - ``[{section}]`` - ``loop`` is array or integer - different behaviors. The tool is not able to detect variable type.
+
+- Use the Twig's `nl2br <https://twig.symfony.com/doc/3.x/filters/nl2br.html>`__ filter if you want to output new lines added by users inside Product reviews
+  (for Smarty similar insertion of the ``<br>`` HTML elements was performed at Model level).
