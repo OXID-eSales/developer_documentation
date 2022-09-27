@@ -1,5 +1,5 @@
-How to extend twig
-==================
+Extending Twig
+==============
 
 If needed twig extensions can be replaced or new extension can be added to the project.
 

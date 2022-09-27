@@ -1,5 +1,5 @@
-Custom OXID extensions
-======================
+Using Custom OXID extensions
+============================
 
 All extensions can be found in ``src\Extensions`` directory of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__
 
