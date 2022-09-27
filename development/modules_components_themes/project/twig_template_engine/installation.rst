@@ -45,21 +45,10 @@ Install the Twig template engine and the Twig admin theme in your OXID eShop.
 
       rm -rf source/tmp/*
 
-   The Twig engine is installed.
+|result|
 
-#. Check if you can access the administration panel.
-
-   If the wrong Admin theme is loaded or you cannot access it, in the component service yaml file :file:`vendor/oxid-esales/twig-component/services.yaml` or in :file:`var/configuration/configurable_services.yaml`, ensure that the :code:`oxid_esales.theme.admin.name` parameter is set as follows:
-
-   .. todo: #Vasyl: what do we mean with "if the file exists:"? The configurable_services.yaml file or the other one? If one of the files doesn't exist, what am I supposed to do?
-
-   .. code:: yaml
-
-       parameters:
-         oxid_esales.theme.admin.name: 'admin_twig'
-
-.. todo: insert picture to illustrate the Twig admin theme
+The Twig engine is installed.
 
 In the next step, install a Twig theme for the frontend of your shop.
 
-For more information, see :doc:`Twig theme installation documentation </development/modules_components_themes/theme/twig/installation>`.
+For more information, see :doc:`Installing the Twig Theme </development/modules_components_themes/theme/twig/installation>`.

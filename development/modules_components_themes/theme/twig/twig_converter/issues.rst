@@ -15,8 +15,6 @@ Known issues
 - Uses of regex strings in templates: The tool can break or work incorrectly in such complex cases, so it’s safer to
   manually copy & paste regular expressions.
 
-- ``[{section}]`` - ``loop`` is array or integer - different behaviors. The tool is not able to detect the variable type.
-
 - If you want to output new lines added by users inside product reviews, use Twig's `nl2br <https://twig.symfony.com/doc/3.x/filters/nl2br.html>`__ filter.
   |br|
   Background: For Smarty, a similar insertion of the ``<br>`` HTML elements was performed at model level.

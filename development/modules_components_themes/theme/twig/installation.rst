@@ -1,27 +1,25 @@
-Twig Theme Installation
-=======================
+Installing the Twig Theme
+=========================
 
-This tutorial explains how to install and activate twig theme on OXID eShop.
+Install and activate the Twig theme for the frontend of your OXID eShop.
 
-**1. Before you install twig theme**
+|prerequisites|
 
-First make sure, that the twig engine and the admin twig theme are installed on your shop. If not, use the following tutorial:
-:doc:`Twig Engine Installation </development/modules_components_themes/project/twig_template_engine/installation>`
+You have installed the Twig engine and the admin Twig theme in your shop.
 
-**2. Install OXID eSales twig theme**
+For more information, see :doc:`Installing the Twig Engine  </development/modules_components_themes/project/twig_template_engine/installation>`.
 
-Install `the twig theme <https://github.com/OXID-eSales/twig-theme>`__ for the frontend, for example:
+|procedure|
+
+1. To install OXID eSales `Twig theme <https://github.com/OXID-eSales/twig-theme>`__ for the frontend, perform the following command:
 
     .. code:: bash
 
         composer require oxid-esales/twig-theme
 
-**3. Activate the twig theme through OXID eShop admin panel**
+#. Under :menuselection:`Extensions --> Themes`, activate the Twig theme.
 
-Open OXID eShop administration panel and go to :menuselection:`Extensions --> Themes`, select a twig theme
-and click activation button.
-
-**4. Clean up the shop compile directory**
+#. To Clean up the shop compile directory, perform the following command:
 
    .. code:: bash
 
