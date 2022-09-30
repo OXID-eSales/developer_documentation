@@ -67,6 +67,8 @@ First of all it's necessary to create a command class. Command class example:
         protected function execute(InputInterface $input, OutputInterface $output)
         {
             $output->writeln('Hello world!');
+            
+            return 0;
         }
     }
 
@@ -160,6 +162,8 @@ Component command example:
         protected function execute(InputInterface $input, OutputInterface $output)
         {
             $output->writeln('Hello World!');
+            
+            return 0;
         }
     }
 
