@@ -100,7 +100,7 @@ Sample:
             ]);
 
       $blocksData = $queryBuilder->execute();
-      $blocksData = $blocksData->fetchAll();
+      $blocksData = $blocksData->fetchAllAssociative();
 
 
 .. note::
