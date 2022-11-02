@@ -15,7 +15,7 @@ Type
     * The mandatory key ``name`` is used for getting and storing the setting.
       It is best practice to prefix it with your :doc:`module id <id>` to avoid name
       collisions with other modules.
-    * The key ``type`` is mandatory. Possible values are ``str``, ``bool``, ``arr`` (array),
+    * The key ``type`` is mandatory. Possible values are ``str``, ``bool``, ``num`` (integer or float), ``arr`` (array),
       ``aarr`` (associative array), ``select`` (multiple options, translation possible), ``password``.
       If type is ``select``, you have to define the possible values by another key ``constraints``.
     * The key ``value`` sets a default value and is also mandatory. The keys ``type`` and ``value`` have to fit, see
@@ -84,6 +84,13 @@ Example
                 'name' => 'blOEPayPalLoggerEnabled',
                 'type' => 'bool',
                 'value' => false
+            ],
+            [
+                'group' => 'main',
+                'name' => 'iOEPayPalTimeout',
+                'type' => 'num',
+                'value' => '30'
+                //'value' => '30.5'
             ],
             [
                 'group' => 'main',

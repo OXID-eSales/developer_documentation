@@ -76,5 +76,5 @@ For creating objects, always use the oxNew() function in order to have the modul
 
 .. code:: php
 
-    $Article = oxNew('Article');
+    $article = oxNew(OxidEsales\Eshop\Application\Model\Article::class);
 

@@ -22,3 +22,9 @@ In order to remove module without composer, following command has been provided.
 
     vendor/bin/oe-console oe:module:uninstall <module-id>
 
+
+.. note::
+
+    This command is available from version `6.2.3 <https://docs.oxid-esales.com/en/releases/release-notes.html#oxid-eshop-version-6-2-3>`_.
+    
+     

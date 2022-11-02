@@ -12,7 +12,8 @@ Description
     Module templates path are relative to module path in vendor directory.
 
 Type
-    array of strings
+    - array of strings
+    - two-dimensional array of strings (in case of theme-specific templates)
 
 Mandatory
     no

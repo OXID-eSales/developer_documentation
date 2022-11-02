@@ -290,6 +290,17 @@ Control removal of the Setup directory. It will be removed right after the setup
 
     $this->blDelSetupDir = false;
 
+deactivateSmartyForCmsContent
+-----------------------------
+
+Deactivate Smarty for CMS content.
+
+If active, CMS content (e.g. descriptions of products and categories, CMS pages, etc.) will not be processed by Smarty.
+
+.. code:: php
+
+    $this->deactivateSmartyForCmsContent = false;
+
 Modules
 -------
 
@@ -475,7 +486,7 @@ This setting allows to define the domain that the cookie is available in format:
 
 .. note::
 
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+    Check setcookie() documentation for more details: https://php.net/manual/de/function.setcookie.php
 
 
 aCookiePaths
@@ -493,7 +504,7 @@ possibility to define path on the server in which the cookie will be available o
 
 .. note::
 
-    Check setcookie() documentation for more details: http://php.net/manual/de/function.setcookie.php
+    Check setcookie() documentation for more details: https://php.net/manual/de/function.setcookie.php
 
 aTrustedIPs
 ^^^^^^^^^^^
@@ -553,13 +564,18 @@ Views
 blSkipViewUsage
 ^^^^^^^^^^^^^^^
 
-If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temproarily to "true".
+If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temporarily to "true".
 
 Implemented with OXID eShop version 4.7
 
 .. code:: php
 
-    $this->blSkipViewUsage = true;
+    $this->blSkipViewUsage = false;
+
+.. warning::
+
+    We cannot guarantee all shop functionality will work if this value is changed and we strongly recommend to use this
+    parameter only for accessing the admin panel, in case the View tables are broken.
 
 blShowUpdateViews
 ^^^^^^^^^^^^^^^^^
@@ -587,7 +603,7 @@ Some of the hashing algorithms may not be available on your system depending on 
 Algorithm configuration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-See http://php.net/manual/en/function.password-hash.php for options and values
+See https://php.net/manual/en/function.password-hash.php for options and values
 
 Examples:
 
