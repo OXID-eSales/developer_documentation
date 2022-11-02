@@ -1,11 +1,11 @@
-Compatible modules with eshop version 7.0-rc.1
+Compatible modules with eshop version 7.0-rc.2
 ==============================================
 
-In eshop version 7.0-rc.1, we do not copy modules files and folder from `vendor` folder to the `source/modules` directory,
+In eshop version 7.0-rc.2, we do not copy modules files and folder from `vendor` folder to the `source/modules` directory,
 therefore to make our modules compatible with it, following steps should be done:
 
 - Metadata version:
-    In version 7.0-rc.1, we only support metadata version >= 2.0. So as the first
+    In version 7.0-rc.2, we only support metadata version >= 2.0. So as the first
     step we should change our metadata structure to use the proper version.
 
     :ref:`More information <metadata_version2-20170427>`
