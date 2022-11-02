@@ -1,4 +1,4 @@
-Update 6.3.x to 7.0-rc.1
+Update 6.5.x to 7.0-rc.2
 ========================
 
 Update component will be provided with 7.0.0 final release.
