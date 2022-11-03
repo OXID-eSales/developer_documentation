@@ -70,7 +70,7 @@ Running the test should look like
 
 ::
 
-    vagrant@oxideshop:/var/www/oxideshop$ vendor/bin/runtests-codeception
+    vagrant@oxideshop:/var/www/oxideshop$ MODULE_IDS=<module_id> vendor/bin/codecept run acceptance -c tests/codeception.yml
     Building Actor classes for suites: acceptance
      -> AcceptanceTesterActions.php generated successfully. 150 methods added
     \AcceptanceTester includes modules: Asserts, WebDriver, Db, \OxidEsales\Codeception\Module\Oxideshop, \OxidEsales\Codeception\Module\Database, \OxidEsales\Codeception\Module\Translation\TranslationsModule
