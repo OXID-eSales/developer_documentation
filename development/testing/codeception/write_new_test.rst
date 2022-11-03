@@ -136,7 +136,7 @@ Example:
 
 
 
-When prompted, confirm :guilabel:`Codeception` as test folder's name and :guilabel:`firefox` as a webdriver or change to
+When prompted, confirm :guilabel:`Codeception` as test folder's name and :guilabel:`chrome` as a webdriver or change to
 better suited values in case you need it.
 
 This command creates basic structure for starting with Codeception Acceptance tests for your module: tests directory (in
@@ -223,19 +223,26 @@ containing information about enabled Codeception modules, Actor and so.
         - Asserts
         - WebDriver:
             url: '%SHOP_URL%'
-            browser: firefox
+            browser: '%BROWSER%'
             port: '%SELENIUM_SERVER_PORT%'
+            host: '%SELENIUM_SERVER_HOST%'
             window_size: 1920x1080
             clear_cookies: true
+        - \OxidEsales\Codeception\Module\ShopSetup:
+            dump: '%DUMP_PATH%'
+            fixtures: '%FIXTURES_PATH%'
         - Db:
             dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
             user: '%DB_USERNAME%'
             password: '%DB_PASSWORD%'
             port: '%DB_PORT%'
             dump: '%DUMP_PATH%'
+            mysql_config: '%MYSQL_CONFIG_PATH%'
             populate: true # run populator before all tests
             cleanup: true # run populator before each test
-            populator: '%PHP_BIN% %VENDOR_PATH%/bin/reset-shop'
+            populator: 'mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
+            initial_queries:
+                - 'SET @@SESSION.sql_mode=""'
         - \OxidEsales\Codeception\Module\Oxideshop:
             depends:
               - WebDriver
@@ -244,8 +251,11 @@ containing information about enabled Codeception modules, Actor and so.
             depends: Db
         - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
             shop_path: '%SHOP_SOURCE_PATH%'
-            paths: 'Application/views/flow'
-
+            paths: 'Application/views/twig'
+        - \OxidEsales\Codeception\Module\SelectTheme:
+              depends:
+                  - \OxidEsales\Codeception\Module\Database
+              theme_id: '%THEME_ID%'
 
 For further details regarding the configuration of Codeception tests please refer to the
 `Codeception documentation <https://codeception.com/docs/reference/Configuration>`__.

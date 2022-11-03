@@ -1,10 +1,7 @@
 Executing Tests
 ===============
 
-In order to execute OXID eShop tests (or any tests written with the
-`Testing Library <https://github.com/OXID-eSales/testing_library>`__)
-you have to configure PhpStorm to use the same PHPUnit settings as e.g. the command :command:`runtests`
-of the testing library.
+In order to execute OXID eShop tests you have to configure PhpStorm to use the same PHPUnit settings.
 
 First make sure that you configured the CLI PHP interpreter from the VM
 (:menuselection:`File --> Settings --> Languages & Frameworks --> PHP`).
@@ -16,8 +13,8 @@ settings:
 
 - PhpUnit library
 
-  Choose ``Use composer autoloader`` and configure
-  ``Path to script: /var/www/oxideshop/vendor/autoload.php``
+  Choose ``Path to phpunit.phar`` and configure
+  ``Path to script: /var/www/oxideshop/vendor/bin/phpunit``
 
 
 .. important::
@@ -27,6 +24,6 @@ settings:
 
 - Test runner
 
-  ``Default configuration file``: ``/var/www/oxideshop/vendor/oxid-esales/testing-library/phpunit.xml``
+  ``Default configuration file``: ``/var/www/oxideshop/phpunit.xml``
 
-  ``Default bootstrap file``: Not configured
+  ``Default bootstrap file``: ``/var/www/oxideshop/tests/bootstrap.php``

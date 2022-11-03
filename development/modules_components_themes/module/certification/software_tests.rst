@@ -49,7 +49,7 @@ The classes should be declared as follows:
 
     namespace VendorNamespace\ModuleName\Tests\Unit;
 
-    class [Class name]Test extends \OxidEsales\TestingLibrary\UnitTestCase
+    class [Class name]Test extends \PHPUnit\Framework\TestCase
     {
 
     }
@@ -70,7 +70,7 @@ An example
 
     namespace OxidProfessionalServices\ModuleGenerator\Tests\Unit;
 
-    class ModuleGeneratorFileSystemTest extends \OxidEsales\TestingLibrary\UnitTestCase
+    class ModuleGeneratorFileSystemTest extends \PHPUnit\Framework\TestCase
     {
     }
 
@@ -106,17 +106,7 @@ OXID test folder usage
 ^^^^^^^^^^^^^^^^^^^^^^
 
 * Sample tests can be found in the
-  `Module Certification Tools repository on GitHub <https://github.com/OXID-eSales/module_certification_tools>`__
-* Use :file:`additional.inc.php` to add additional includes, helpers or startup scripts.
-  The required libraries should be managed by Composer or, if not namespaced, located in the ``Libs`` directory.
-* If you extend the ``OxidTestCase::setUp`` function, you should also call the parent method.
-* All demodata (SQL snippets, files needed for testing) must be stored in :file:`Tests/Unit/Testdata`, for
-  example, if you need some SQL before tests, it is enough to call the function:
-
-.. code:: php
-
-    $DbHandler = new DatabaseHandler();
-    $DbHandler->import(TESTS_DIRECTORY."Unit/Testdata/DemoDataFile.sql");
+  `Module Template repository on GitHub <https://github.com/OXID-eSales/module-template>`__
 
 Running tests, creating and reading reports
 -------------------------------------------
@@ -124,31 +114,7 @@ Running tests, creating and reading reports
 Running tests
 ^^^^^^^^^^^^^
 
-See `README file of the testing library <https://github.com/OXID-eSales/testing_library#running-tests>`__
-
-Generating a code coverage report
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To run all the tests and generate the coverage report for the module, do the following:
-
-1. If you use the Testing Library, switch to PHP 7.
-   |br|
-   Background: Due to a dependency on PHPUnit 8, the Testing Library doesn't support code coverage generation with PHP 8.
-#. Ensure that all directories and files which are not part of the module in particular (3rd party libraries, for example) are excluded from testing (see :ref:`Test creation <testcreation-20180118>`).
-#. To start generating the code coverage report, run :command:`vendor/bin/runtests-coverage`.
-   |br|
-   After the script is finished, you will find a directory named report inside the module’s tests folder (`yourmodule/tests/report`) which contains the code coverage files.
-
-
-
-Interpreting the code metrics
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-* Run :file:`vendor/bin/runmetrics` to generate the metrics information. Two files, :file:`metrics.xml` and
-  :file:`metrics.txt` will be generated. The information needed for certification is stored in the file
-  :file:`metrics.txt`.
-* As a result you will get the total average ("AVG") over all classes and the averages for each class.
-  No class average may be higher than the values listed below in the chapter "Software quality".
+See testing sections :doc:`/development/modules_components_themes/testing/index`
 
 Run module tests before applying for certification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -159,5 +125,5 @@ Before sending module for certification to OXID eSales first follow these steps:
 * Follow the instructions (see Readme file of the OXVM) to install the desired shop version and edition.
   A clean instance will be created automatically on provision (by vagrant).
 * Install your module following the instructions delivered with the module.
-* Run all shop and module tests (:file:`runtests`, :file:`runtests-coverage`, :file:`runmetrics`).
+* Run all shop and module tests.
 * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).

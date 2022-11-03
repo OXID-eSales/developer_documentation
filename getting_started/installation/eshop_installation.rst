@@ -29,13 +29,6 @@ Providing shop files
     server, please skip this step and read :doc:`these instructions<eshop_installation_without_composer>` to learn how to
     deploy the source code using an alternative way.
 
-.. note::
-
-        If you install the compilation **without** the `--no-dev` option, the following development tools will be installed together with OXID eShop:
-
-        * OXID eShop `Testing Library <https://github.com/OXID-eSales/testing_library>`__
-        * `IDE code completion support <https://github.com/OXID-eSales/oxid-eshop-ide-helper>`__ for OXID eShop
-        * `Azure Theme <https://github.com/OXID-eSales/azure-theme>`__ for selenium tests
 
 Known issue on MacOS
 --------------------
@@ -91,14 +84,6 @@ Temporarily add Composer dependencies
 
        composer require --no-plugins monolog/monolog
        composer install
-
-    If there is a need to add a development dependency like the OXID eShop testing library:
-
-    .. code:: bash
-
-       composer require --dev --no-plugins oxid-esales/testing-library:dev-master
-       composer update
-
 
 Resolving Composer dependency conflicts
 ---------------------------------------

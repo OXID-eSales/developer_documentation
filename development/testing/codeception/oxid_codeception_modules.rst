@@ -56,7 +56,9 @@ waiting for ajax etc.
                     mysql_config: '%MYSQL_CONFIG_PATH%'
                     populate: true # run populator before all tests
                     cleanup: true # run populator before each test
-                    populator: '%PHP_BIN% %VENDOR_PATH%/bin/reset-shop && mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
+                    populator: 'mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
+                    initial_queries:
+                        - 'SET @@SESSION.sql_mode=""'
 
 
 Database Module
@@ -102,6 +104,49 @@ whereas
         $I->see(\OxidEsales\Codeception\Module\Translation\Translator::translate('DD_CONTACT_THANKYOU1'));
 
 is language independent and the recommended way to assert texts in a test.
+
+
+
+Select Theme Module
+-------------------
+
+If you use page object pattern in your tests, you can run acceptance tests with different themes. This module
+is responsible for activating the theme in tested shop. The Module requires database module and theme id as parameters.
+
+.. code::
+
+        modules:
+            enabled:
+                - \OxidEsales\Codeception\Module\SelectTheme:
+                    depends:
+                      - \OxidEsales\Codeception\Module\Database
+                    theme_id: '%THEME_ID%'
+
+
+Shop Setup Module
+-----------------
+
+The population of the fixture data has a very specific workflow:
+- Setup the database of the shop with some initial data
+- Import a sql file with data fixtures
+- Create a dump file to populate and to restore the test data
+- Assign the generated dump file to the codeception Db module
+
+All these steps are already implemented in the ShopSetup codeception module and cann be activated
+by adding it to your codeception suite configurations:
+
+.. code::
+
+    modules:
+      enabled:
+        - \OxidEsales\Codeception\Module\ShopSetup:
+            dump: '%DUMP_PATH%'
+            fixtures: '%FIXTURES_PATH%'
+            license: '%license_key%'
+        - Db:
+        .....
+
+**Important: The ShopSetup codeception module has to be activated before Db codeception module.**
 
 
 Context Helper

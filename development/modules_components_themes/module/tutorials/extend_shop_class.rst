@@ -78,7 +78,7 @@ This test assures that all functionality of the module works as expected within 
 This test has to be run:
 
 - Within the OXID eShop
-- With all relevant modules activated (functionality of Testing Library)
+- With all relevant modules activated
 
 OXID eShop class is created with function oxNew. This assures that extension chain is build form all relevant modules.
 At the end assertion is done that module functionality works as expected. This method will break if:
