@@ -43,17 +43,6 @@ Other database connection variables
     $this->dbUser = 'oxid'; // database user name
     $this->dbPwd  = 'oxid'; // database user password
 
-edition
--------
-
-Force shop edition. Even if enterprise or professional packages exists, shop edition can still be forced here.
-
-Possible options: CE|PE|EE or left empty (will be determined automatically - default option).
-
-.. code:: php
-
-    $this->edition = '';
-
 Debugging
 ---------
 
@@ -64,7 +53,7 @@ sLogLevel
 
     $this->sLogLevel = 'warning';
 
-You can set the log level to one of the levels defined by `\Psr\Log\LogLevel <https://www.php-fig.org/psr/psr-3>`__.
+You can set the log level to one of the levels defined by `PsrLogLevel <https://www.php-fig.org/psr/psr-3>`__.
 This level will be used by the default PSR-3 logging implementation of OXID eShop.
 
 .. note::
@@ -92,12 +81,8 @@ iDebug
      * Enable debug mode for template development or bug fixing
      * -1 = Log more messages and throw exceptions on errors (not recommended for production)
      * 0 = off
-     * 1 = smarty
-     * 3 = smarty
-     * 4 = smarty + shoptemplate data
      * 5 = Delivery Cost calculation info
      * 6 = SMTP Debug Messages
-     * 8 = display smarty template names (requires /tmp cleanup)
      */
     $this->iDebug = 0; // default setting 0
 

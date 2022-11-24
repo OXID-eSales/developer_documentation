@@ -1,5 +1,5 @@
-blocks
-======
+blocks (Smarty only)
+====================
 
 .. note::
 
@@ -11,12 +11,8 @@ blocks
 
 
 Description:
-    In this array, all module templates blocks are registered.
-    |br|
-    On module activation, they are automatically inserted into the
-    database.
-    |br|
-    On activating/deactivating the module, all module blocks also are activated/deactivated.
+    In this array are registered all module **Smarty** templates blocks. On module activation they are automatically
+    inserted into database. On activating/deactivating module, all module blocks also are activated/deactivated.
 
 Type:
     array of arrays. Sub keys can be ``template``, ``block``, ``file`` and ``position``.
@@ -49,14 +45,12 @@ Example
             ],
         ],
 
+Differences in block file definition per shop/metadata version.
 
+Template block ``file`` value holding path to your customized block should be defined using full path from module directory, earlier it was a sub path from modules ``out/blocks`` directory.
 
-Template block ``file`` value holding the path to your customized block should be defined using full path from module directory, earlier it was a sub path of the modules ``out/blocks`` directory.
-
-You can define a position of a block if a template block is extended several times (by different modules).
-In this way, you can sort the block extensions.
-
-To do this, use the optional template block ``position`` value.
+You can define a position of a block if a template block is extended multiple (by different modules).
+So you can sort the block extensions. This is done via the optional template block ``position`` value.
 
 Theme-specific blocks
 ---------------------

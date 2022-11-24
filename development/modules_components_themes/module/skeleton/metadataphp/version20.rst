@@ -13,8 +13,7 @@ Changes compared to version 1.1
 
 .. important::
 
-  You can use metadata version 2.0 with controllers only for modules using namespaces. When using modules
-  without a namespace you will have to use metadata version 1.0 with the 'files' section to register your module controllers.
+  Module classes without namespaces can not be register as controllers in the metadata.
 
 Structure
 ---------

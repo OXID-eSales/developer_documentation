@@ -9,15 +9,11 @@ Topics to be covered
         * find the :ref:`Unified Namespace <modules-unified_namespaces-20170526>` equivalents for the old bc classes (like oxarticle)
         * how we marked classes that are not intended to be extended by a module
     - Module installation
-        * old style (copy & paste)
-        * new style (via composer)
     - How to extend the OXID eShop's namespaced classes
-        * in case your module does not yet use a namespace
-        * in case your module does use it's own namespace
     - Use your own namespaces in a module with OXID eShop
-        * Install the module via composer or alternatively how to register your namespace in the main composer.json
+        * Install the module via composer
         * Use own module classes
-        * Use module controllers that do not simply extend existing shop functionality
+        * Add new module controllers
 
 .. _bclayer-20170426:
 
@@ -51,17 +47,13 @@ The :doc:`Unified Namespace </system_architecture/unified_namespace/index>` (``O
 
 .. important::
 
-   Do not use the shop classes from the edition namespaces in your code!
-
-   For more information, see :ref:`development/tell_me_about/unified_namepsace_vs_ineternal_namespace:Unified Namespace vs Internal Namespace`.
-
-   .. todo: #VL verifizieren: Forge-Content: <https://oxidforge.org/en/namespaces-in-oxid-eshop-6.html>`__ entspricht :ref:`development/tell_me_about/unified_namepsace_vs_ineternal_namespace:Unified Namespace vs Internal Namespace`
+ Please do not use the shop classes from the edition namespaces in your code!
 
 **NOTE**: If you want to refer to a class name, always use the ``::class`` notation instead of using a plain string.
 
-.. code::
-
     Example:
+
+.. code:: php
 
     $articleFromUnifiedNamespace = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
     //which is equivalent to the old style
@@ -90,11 +82,14 @@ that the shop will work as expected if you try to do that though. What can defin
 Module installation
 -------------------
 
-Go to the shop's root directory and configure/require the module in the shop's composer.json.
-::
+Go to the shop's root directory and configure/require the module:
+
+.. code:: bash
 
     composer config repositories.myvendor/mymodule vcs https://github.com/myvendor/mymodule
     composer require myvendor/mymodule:dev-master
+
+.. _namespaces_for_modules-20221123:
 
 Extend an OXID eShop class with a module
 ----------------------------------------
@@ -107,59 +102,7 @@ from the ``OxidEsales\Eshop\Application\Model\Article`` are available in ``MyVen
 **IMPORTANT**: It is only possible to extend shop BC and :ref:`Unified Namespace <modules-unified_namespaces-20170526>` classes. Directly extending classes from the shop edition
 namespaces is not allowed and such a module can not be activated. Trying to activate it gives an error in the admin backend.
 
-No own module namespace
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Create a module class that extends ``OxidEsales\Eshop\Application\Model\Article``, for example
-
-.. code:: php
-
-   <?php
-    # Example for a module without own namespace
-    class MyVendorMyModuleArticle extends MyVendorMyModuleArticle_parent {
-
-        public function getSize()
-        {
-            $originalSize = parent::getSize();
-
-            //double the size
-            $newSize = 2 * $originalSize;
-
-            return $newSize;
-        }
-    }
-
-Backwards compatible way, not recommended when writing new code:
-
-.. code:: php
-
-    # Register the extend class in the module's metadata.php
-    # Here we extend the shop's OxidEsales\Eshop\Application\Model\Article via the bc class name
-    //.....
-    'extend'      => array(
-        'oxarticle' => 'myvendor/mymodule/Application/Model/MyVendorMyModuleArticle'
-    )
-    //.....
-
-
-The **recommended way to extend a shop core class with a module** in OXID eShop when the module does not support namespaces yet
-is as follows:
-
-.. code:: php
-
-    # Register the extend class in the module's metadata.php
-    //.....
-    'extend'      => array(
-         \OxidEsales\Eshop\Application\Model\Article::class =>
-                 'myvendor/mymodule/Application/Model/MyVendorMyModuleArticle'
-    )
-    //.....
-
-
-Use your own namespaces with OXID eShop
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Now create a class like before to extend a shop class but this time give it a namespace:
+Now create a class to extend a shop class in your module's namespace:
 
 .. code:: php
 
@@ -181,7 +124,7 @@ Now create a class like before to extend a shop class but this time give it a na
         }
     }
 
-Register the class in the module's metadata,php:
+Register the class in the module's metadata.php:
 
 .. code:: php
 
@@ -193,14 +136,13 @@ Register the class in the module's metadata,php:
     )
     //.....
 
-
 Install and register your module with composer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To have the composer autoloader find your module file via namespace, create a composer.json file in the module's
 root directory.
 
-::
+.. code:: json
 
   {
       "name": "myvendor/mymodule",
@@ -213,7 +155,7 @@ root directory.
 
 Then in the shop's root directory do
 
-::
+.. code:: bash
 
     composer config repositories.myvendor/mymodule vcs https://github.com/myvendor/mymodule
     composer require myvendor/mymodule:dev-master
@@ -300,13 +242,8 @@ new model class.
     //.....
 
 
-Use module controllers that do not simply extend existing shop functionality
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Add new module controllers
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In case you want to not only extend shop functionality in a module but for example want to introduce
-a new controller that handles own form data we recommend you have a look into what changed with module
-metadata version 2.0. In short: in case you want introduce controllers in your module that support namespaces
-and that do not simply extend shop functionality, you need to use metadata version 2.0
-and register these controller classes in the module's metadata.php file.
-
-More information regarding this topic can be found `here <skeleton/metadataphp/version20.html>`__.
+If you want to introduce a new controller that handles own form data you need to register its class in the module's :file:`metadata.php`.
+More information can be found `here <skeleton/metadataphp/version20.html>`__.

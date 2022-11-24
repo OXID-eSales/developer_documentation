@@ -42,26 +42,3 @@ way. You write a subscriber class that implements
 the `EventSubscriberInterface` and register this
 class with the `kernel.event_subscriber` tag in
 the DI container.
-
-.. Important:: 
-
-  **Make module event subscribers shopaware**
-    
-  If you want to use event subscribers in a
-  module that may not be activated in all
-  subshops of a project, you should make your
-  subscribers shopaware. Then they will only
-  be called for shops where the module is
-  activated in. Otherwise the will be called
-  regardless of the shop active.
-	
-  This is easily
-  done: Just inherit from
-  `AbstractShopAwareEventSubscriber` and you
-  are done. If this is for some reasons
-  not possible because you need to inherit
-  from some other parent class, there is
-  also a trait you may use:
-  `ShopAwareServiceTrait`. Just include it
-  in your class.
-

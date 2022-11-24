@@ -1,10 +1,10 @@
 .. _module-templates-20170427:
 
-templates
-=========
+templates (Smarty only)
+=======================
 
 Description
-    Module templates array. All module templates should be registered here, so on requiring template shop will
+    Module templates array. All module Smarty templates should be registered here, so on requiring template shop will
     search template path in this array.
 
 .. note::

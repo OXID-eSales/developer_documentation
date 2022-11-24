@@ -62,7 +62,6 @@ Example of :file:`var/configuration/configurable_services.yaml` file:
     services:
       Psr\Log\LoggerInterface:
         class: MyProject\CustomLogger
-        public: true
 
 In the example, the OXID eShop Service PsrLogLoggerInterface is set as the key and will be replaced by our custom
 implementation MyProject\CustomLogger, which is specified by the class parameter.

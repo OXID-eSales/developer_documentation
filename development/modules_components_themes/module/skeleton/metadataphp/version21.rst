@@ -4,7 +4,7 @@ Version 2.1
 Changes compared to version 2.0
 -------------------------------
 
-* New section ``smartyPluginDirectories``: Its now possible to add smarty plugins into a module by defining them in
+* New section ``smartyPluginDirectories``: Its now possible to add Smarty plugins into a module by defining them in
   the metadata.php. Read the section :doc:`smartyPluginDirectories <amodule/smartyPluginDirectories>` for
   details.
 

@@ -28,11 +28,10 @@ In order to install a module correctly, this plugin requires four fields to be d
             "proprietary"
         ],
         "require": {
-            "php": ">=5.6",
-            "lib-curl": ">=7.26.0",
-            "lib-openssl": ">=1.0.1",
+            "php": ">=8.0",
             "ext-curl": "*",
-            "ext-openssl": "*"
+            "ext-openssl": "*",
+            "symfony/dotenv": "^5.1"
         },
         "autoload": {
             "psr-4": {
@@ -71,8 +70,7 @@ require
 Here you must define all dependencies your module has.
 You must define:
 
-* a minimum PHP version. In the example PHP >=5.6 is required
-* the required system libraries and their versions, if applicable. In the example lib-curl >=7.26.0 and lib-openssl >=1.0.1 are required
+* a minimum PHP version. In the example PHP >=8.0 is required
 * the required PHP extension and their versions, if applicable. In the example the PHP extensions curl and openssl must be activated
 * the required composer components, if applicable. In the example the are no requirements defined
 
