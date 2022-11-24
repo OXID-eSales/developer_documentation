@@ -93,7 +93,7 @@ Running the test should look like
 Add test for logged in user case
 --------------------------------
 
-Now let's check the case of a logged in user. See :ref:`here <predefined-test-user>` for test user credentials.
+Now let's check the case of a logged in user.
 
 We will need to:
 

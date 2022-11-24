@@ -53,11 +53,11 @@ First of all it's necessary to create a command class.
     <?php declare(strict_types=1);
     namespace OxidEsales\DemoModule\Command;
 
-    use OxidEsales\EshopCommunity\Internal\Framework\Console\AbstractShopAwareCommand;
+    use Symfony\Component\Console\Command\Command;
     use Symfony\Component\Console\Input\InputInterface;
     use Symfony\Component\Console\Output\OutputInterface;
 
-    class HelloWorldCommand extends AbstractShopAwareCommand
+    class HelloWorldCommand extends Command
     {
         protected function configure()
         {
@@ -69,16 +69,10 @@ First of all it's necessary to create a command class.
         protected function execute(InputInterface $input, OutputInterface $output)
         {
             $output->writeln('Hello world!');
-            
+
             return 0;
         }
     }
-
-.. important::
-
-    Module command must extend `\\OxidEsales\\EshopCommunity\\Internal\\Framework\\Console\\AbstractShopAwareCommand`.
-    It's necessary to extend this class otherwise command will not respect OXID eShop modules functionality and
-    some features will not work.
 
 Registering a command file
 """"""""""""""""""""""""""
@@ -89,9 +83,9 @@ create it in your module root directory.
 .. important::
 
     Do not add a leading backslash to the classname.
-    
+
     wrong: `class: \\OxidEsales\\DemoModule\\Command\\HelloWorldCommand`
-    
+
     correct: `class: OxidEsales\\DemoModule\\Command\\HelloWorldCommand`
 
 .. code:: yaml
@@ -101,7 +95,7 @@ create it in your module root directory.
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
         - { name: 'console.command', command: 'demo-module:say-hello' }
-        
+
 .. important::
 
     Despite specifying `command: 'demo-module:say-hello'` explicitly is not needed, we highly recommend to do so,
@@ -164,7 +158,7 @@ Component command example:
         protected function execute(InputInterface $input, OutputInterface $output)
         {
             $output->writeln('Hello World!');
-            
+
             return 0;
         }
     }
@@ -222,6 +216,3 @@ Example for executing your command within command tester:
 
 	    $this->assertSame('Command has been executed!' . PHP_EOL, $output);
 	}
-
-
-

@@ -114,7 +114,7 @@ Running tests, creating and reading reports
 Running tests
 ^^^^^^^^^^^^^
 
-See testing sections :doc:`/development/modules_components_themes/testing/index`
+See :doc:`testing sections </development/testing/index>`
 
 Run module tests before applying for certification
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
