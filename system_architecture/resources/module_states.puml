@@ -7,9 +7,9 @@
 
     state Installed: Module assets and \nconfiguration \nin place.
 
-    state Configured: State where the OXID \neShop administrator \nalready configured a \nmodule via OXID eShop \nadmin, or by editing \nconfiguration files. \nDatabase gets not \ntouched.
+    state Configured: State where the OXID \neShop administrator \nalready configured a \nmodule via OXID eShop \nadmin, or by editing \nconfiguration files.
 
-    state Active : When module being \nactivated, the data \ngoes from configuration \nfiles to the database. \nAt this module becomes \nactive.
+    state Active : At this module becomes \nactive.
 
     
     [*] --> NonExisting

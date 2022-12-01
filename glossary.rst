@@ -29,7 +29,6 @@ Module configuration
 ^^^^^^^^^^^^^^^^^^^^
 
 The term module configuration is used to describe module configuration only in configuration files scope.
-When module is being configured, database is not affected.
 To get more information how module configuration works, please read document:
 :doc:`Module installation and setup states </system_architecture/module_installation_activation>`.
 

@@ -30,9 +30,9 @@ are two ways of configuring modules:
         }
         partition "Setup   " {
             if (Action) then (Activate)
-                :Insert database entries;
+                :Execute on activate action/events;
             else (Deactivate)
-                :Remove database entries;
+                :Execute on deactivate action/events;
             endif
         }
         stop
@@ -52,9 +52,9 @@ To configure modules via admin interface, please open OXID eShop administration 
 and got to :menuselection:`Extensions --> Modules`, you will see modules list, please select module you want to
 configure click :menuselection:`Settings`, you will see list of settings which is possible to change.
 
-Entries in the settings list are loaded and saved in file located in `var/configuration/shops`.
-For each shop id there is one file with the complete configuration
-for the shop. So if the shop has id 1, the file would be named 1.yaml. See the example below:
+Entries in the settings list are loaded and saved in configuration files located in `var/configuration/shops`.
+For each shop id there is one directory with the complete configuration
+for the shop. So if the shop has id 1, a directory would be named 1. See the example below:
 
 .. code::
 
@@ -62,17 +62,15 @@ for the shop. So if the shop has id 1, the file would be named 1.yaml. See the e
   └── var
       └── configuration
           └── shops
-             └──1.yaml
-             └──2.yaml
+             └──1
+             └──2
              └── ...
-
-During the module setup/activation all of the values are being transferred from file to database.
 
 .. note::
 
     If var directory has not found in the project directory.
     ``composer update`` must be executed or it must created manually.
-    Also, each shop must have their own separate yaml file.
+    Also, each shop must have their own separate directory.
 
 .. _configuring_module_via_configuration_files-20190829:
 
@@ -81,14 +79,30 @@ Configuring modules via providing configuration files
 
 Since the complete configuration is in configuration files, you can make it part of the
 VCS repository of your project and deploy it to your testing, staging and productive
-systems and then apply configuration for the modules through the command line as described below in the
-section :ref:`apply configuration configured modules<apply_configuration_configured_modules-20190829>`.
+systems and deploy through the command line as described below in the
+section :ref:`deploy module configurations<apply_configuration_configured_modules-20190829>`.
 
-Project configuration files are located in project directory `var/shops/<shop-id>.yaml`, here "<shop-id>" represents
-Sub-shop ID. In case you don't use Sub-shop functionality, it will always be only one file with name `1.yaml`.
+Project configuration files are located in project directory `var/shops/<shop-id>/`, here "<shop-id>" represents
+Sub-shop ID. In case you don't use Sub-shop functionality, it will always be only one directory.
+
+Each directory with a shop configuration has `class_extension_chain.yaml` file with the module class extension chain
+and a separate subdirectory `modules` for module configurations, configuration for every module is in a separate file
+where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.yaml`
+
+.. code::
+
+  .
+  └── var
+      └── configuration
+          └── shops
+             └──1
+                      └──class_extension_chain.yaml
+                      └──modules
+                        └──oepaypal.yaml
+                        └──oegdproptin.yaml
 
 Configuration might be different in different environment (testing, staging or productive). To solve this problem
-OXID eShop uses another file located in `var/environment/<shop-id>.yaml`.
+OXID eShop uses another directory with configuration files located in `var/environment/<shop-id>/`.
 
 Example structure you can see bellow:
 
@@ -98,12 +112,12 @@ Example structure you can see bellow:
   └── var
       └── configuration
           └── shops
-             └──1.yaml
-             └──2.yaml
+             └──1
+             └──2
              └── ...
           └── environment
-             └──1.yaml
-             └──2.yaml
+             └──1
+             └──2
              └── ...
 
 Configuration files
@@ -111,18 +125,18 @@ Configuration files
 
 These files contains information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
 During the installation process all of the information from module `metadata.php` is being transferred to the
-configuration files. For example you have OXID eShop without any modules, so this file will be empty. When you will run
-installation let's say for OXID eShop PayPal module, files in `var/shops/` will be filled with information from
+configuration files. For example you have OXID eShop without any modules, so `var/configuration/shops/modules/` will be empty. When you will run
+installation let's say for OXID eShop PayPal module, files in `var/configuration/shops/` will be filled with information from
 `metadata.php`. An example of stripped down configuration file:
+
+Example: `var/configuration/shops/modules/1/oepaypal.yaml`
 
 .. code:: yaml
 
-    modules:
-      oepaypal:
         id: oepaypal
         path: oe/oepaypal
         version: 6.0.0
-        configured: false
+        activated: false
         title:
           en: PayPal
         description:
@@ -164,14 +178,12 @@ installation let's say for OXID eShop PayPal module, files in `var/shops/` will 
           OxidEsales\Eshop\Core\ViewConfig: OxidEsales\PayPalModule\Core\ViewConfig
           OxidEsales\Eshop\Application\Component\BasketComponent: OxidEsales\PayPalModule\Component\BasketComponent
 
-    moduleChains:
-      classExtensions:
+Also the file with the module class extension chain will be generated.
+
+Example: `var/configuration/shops/1/class_extension_chain.yaml`
+
+.. code:: yaml
+
         OxidEsales\Eshop\Core\ViewConfig:
           - OxidEsales\PayPalModule\Core\ViewConfig
 
-Option- `configured`
-""""""""""""""""""""
-
-As you can see in example, most of the things are just reflection of module `metadata.php` except ``configured``
-option. If you want to know more about the usage of this parameter, please read
-:ref:`module configuration deployment documentation <apply_configuration_configured_modules-20190829>`.

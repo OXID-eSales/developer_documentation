@@ -20,9 +20,9 @@ Solution
 
    if (Module is visible in admin area?) then (no)
 
-      if (Is var/configuration/shops/1.yaml file exists?) then (yes)
+      if (Is var/configuration/shops/1/ directory exists?) then (yes)
 
-          if (is module configuration exists in var/configuration/shops/1.yaml?) then (yes)
+          if (is module configuration exists in var/configuration/shops/1/modules/<module-id>.yaml?) then (yes)
 
           else (no)
              :run console install module;
@@ -32,9 +32,7 @@ Solution
 
         :run composer update;
 
-        :var/configuration/shops/1.yaml file will be created;
-
-        :run console install module command;
+        :var/configuration/shops/1/modules/<module-id>.yaml file will be created;
 
       endif
 
@@ -51,7 +49,7 @@ Solution
 .. Note::
 
     Please check :doc:`modules configuration and setup document </development/modules_components_themes/project/module_configuration/modules_configuration>`
-    for getting more information regarding shop configuration files ( `var/configuration/shops/1.yaml` ) and how to generate them.
+    for getting more information regarding shop configuration files ( `var/configuration/shops/` ) and how to generate them.
 
 .. Note::
 
