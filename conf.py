@@ -142,7 +142,6 @@ html_context = {
          ('7.0-rc.1', 'https://docs.oxid-esales.com/developer/en/7.0-rc.1/'),
          ('7.0-rc.2', 'https://docs.oxid-esales.com/developer/en/7.0-rc.2/'),
          ('master', 'https://docs.oxid-esales.com/developer/en/master/'),
-         ('7.0-rc.1', 'https://docs.oxid-esales.com/developer/en/7.0-rc.2/'),
         ],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
