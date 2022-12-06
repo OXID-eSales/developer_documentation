@@ -1,12 +1,8 @@
-Major update from  6.5.x to version 7.0.0
-=========================================
+Major module update from  6.5.x to version 7.0.0
+================================================
 
-This is a guide for updating OXID eShop 6.5.x to OXID eShop 7.0.0. If you do not have the newest patch release of 6.5,
-you should first update to this patch release. A helping approach regarding the update is to deactivate all modules
-and then successively activate them after the update. Read the documentation about all changes carefully. In some
-cases you have to take actions, in some cases not. This depends on your OXID eShop, the modules, user data or the theme
-you are using.
-The update manual is divided into several chapters:
+We do not recommend to update productive shops to a release candidate. Update instructions for shop will be available
+with the release of the final version. For the module compatibility with the 7.0 version please read the **modules** section.
 
 
 .. toctree::
