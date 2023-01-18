@@ -14,7 +14,9 @@ Infrastructure
 
 OXID eShop uses `Doctrine  Migrations <https://www.doctrine-project.org/projects/migrations.html>`__ integrated via OXID eShop migration components.
 
-Prior to v3.0, Doctrine Migrations was not able to collect migrations from multiple folders/namespaces and to specify dependencies between them. But there was a need to run migration for one or all the projects and modules (CE, PE, EE, PR and a specific module). For this reason, we have created the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
+Prior to v3.0, Doctrine Migrations was not able to collect migrations from multiple folders/namespaces and to specify dependencies between them.
+But there was a need to run migration for one or all the projects and modules (CE, PE, EE, PR and a specific module).
+For this reason, we have created the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
 
 The Doctrine Migration Wrapper needs some information about the OXID eShop installation like:
 
@@ -23,7 +25,8 @@ The Doctrine Migration Wrapper needs some information about the OXID eShop insta
 
 This information is gathered from `OXID eShop Facts <https://github.com/OXID-eSales/oxideshop-facts>`__.
 
-OXID eShop Facts has a class which can provide an information about OXID eShop and its environment. This component is shop-independent and can be used without bootstrap. The only restriction is to have the `config.inc.php` file configured.
+OXID eShop Facts has a class which can provide an information about OXID eShop and its environment.
+This component is shop-independent and can be used without bootstrap. The only restriction is to have the `config.inc.php` file configured.
 
 Using migrations
 ----------------
@@ -50,7 +53,8 @@ Example:
 
    vendor/bin/oe-eshop-db_migrate migrations:migrate
 
-This command will run all the migrations which are in OXID eShop specific directories. If you have the OXID eShop Enterprise edition, for example, the migration tool will run migrations in this order:
+This command will run all the migrations which are in OXID eShop specific directories.
+If you have the OXID eShop Enterprise edition, for example, the migration tool will run migrations in this order:
 
 * Community Edition migrations (executed always)
 * Professional Edition migrations (executed when eShop has PE or EE)
@@ -61,7 +65,7 @@ This command will run all the migrations which are in OXID eShop specific direct
 .. _suite_types:
 
 Suite Types (Generate migration for a single suite)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
 It is also possible to run migrations for a specific suite by defining `<Suite_Type>` parameter in the command.
 This variable defines what type of migration it is. There are 5 suite types:
@@ -87,6 +91,41 @@ Example 2:
    vendor/bin/oe-eshop-db_migrate migrations:generate EE
 
 In this case, it will be generated only for Enterprise Edition in `vendor/oxid-esales/oxideshop_ee/migration` directory.
+
+Calling Doctrine Migrations directly:
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+*OXID Migration Wrapper* makes it easy to manage complete sets of project's migrations with a single command.
+You can always bypass this component and just call *Doctrine Migration's* executable directly
+to use migrations in any other scenario:
+
+.. code:: bash
+
+    # calling OXID Migration Wrapper's executable vs.
+    vendor/bin/oe-eshop-db_migrate
+
+    # calling Doctrine Migration's executable
+    vendor/bin/doctrine-migrations
+
+For example:
+
+-  to execute a single migration file, run:
+
+.. code:: bash
+
+    vendor/bin/doctrine-migrations execute \
+        --up \
+        'OxidEsales\EshopCommunity\Migrations\Version1234567890' \
+        --db-configuration 'vendor/oxid-esales/oxideshop-doctrine-migration-wrapper/src/migrations-db.php' \
+        --configuration source/migration/migrations.yml
+
+Using Migrations Wrapper without CLI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Doctrine Migration Wrapper is written in PHP and also could be used without command line interface. To do so:
+
+- Create ``Migrations`` object with ``MigrationsBuilder->build()``
+- Call ``execute`` method with needed parameters
 
 .. _module_migrations:
 
@@ -128,11 +167,3 @@ Example:
    vendor/bin/oe-eshop-db_migrate migrations:generate ddoewysiwyg
 
 In this case it will be generated only for WYSIWYG module.
-
-Use Migrations Wrapper without CLI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Doctrine Migration Wrapper is written in PHP and also could be used without command line interface. To do so:
-
-- Create ``Migrations`` object with ``MigrationsBuilder->build()``
-- Call ``execute`` method with needed parameters
