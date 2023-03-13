@@ -123,6 +123,45 @@ In the example above, the result of rendering :file:`shop-template.html.twig` de
 
     When creating admin template extensions (:technicalname:`twig_admin`, for example), just use a corresponding ID.
 
+|example|
+
+In this example let's extend the :technicalname:`widget_minibasket_total` block of the mini-basket widget.
+
+**Twig theme structure**
+::
+
+    ├── twig // Shop theme
+        └── tpl
+            └── twig
+                └── widget
+                    └── minibasket
+                        └── minibasket.html.twig // Location of the original widget
+
+**Module views structure**
+::
+
+    ├── module-1 // The module where we want to extend the block
+        └── views
+            └── twig
+                └── extensions
+                    └── themes
+                        └── twig
+                            └── widget
+                                └── minibasket
+                                    └── minibasket.html.twig
+
+**Extended minibasket.html.twig file**
+
+.. code::
+
+    {% extends 'widget/minibasket/minibasket.html.twig' %}
+
+    {% block widget_minibasket_total %}
+        <p>Useful note for customers</p>
+    {% endblock %}
+
+After the :technicalname:`module-1` (re)activation the given note should be visible in a not empty mini-basket drop-down.
+
 .. _extending-module-templates:
 
 Module extensions for OXID module templates
