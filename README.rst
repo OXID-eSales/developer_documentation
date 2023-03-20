@@ -1,9 +1,6 @@
 OXID eShop developer documentation
 ==================================
 
-.. image:: https://travis-ci.org/OXID-eSales/developer_documentation.svg?branch=master
-   :target: https://travis-ci.org/OXID-eSales/developer_documentation
-
 This is the OXID eShop developer documentation.
 
 The generated documentation can be found here: https://docs.oxid-esales.com/developer/en/7.0-rc.1/
