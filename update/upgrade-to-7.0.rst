@@ -21,7 +21,7 @@ If you use third-party modules or themes, ask the third-party vendor if these th
 Ensuring the prerequisites
 --------------------------
 
-.. todo: #VaL: What do I have to consider, depending on my previous version?
+.. todo: #Igor: What do I have to consider, depending on my previous version?
 
 Before you upgrade to OXID eShop version 7, make sure that you meet the technical requirements for the update.
 
@@ -107,9 +107,9 @@ In doing so, before each update step, make sure that you have versions of Compos
 
          composer update --no-plugins --no-scripts --no-dev
 
-      .. todo: #VaL:  -  7.0 requires PHP 8.0 --  which version do I need to upgrade to 7.0? HR: probably 6.5: VaL: verify
-      .. todo: #VaL: dito 6.2.5 required for upgrade to 7.0? Or do I need 6.5 -
-      .. todo: #VaL: How would I upgrade from 5.2.5 to 6.5? As follows?
+      .. todo: #Igor:  -  7.0 requires PHP 8.0 --  which version do I need to upgrade to 7.0? HR: probably 6.5: VaL: verify
+      .. todo: #Igor: dito 6.2.5 required for upgrade to 7.0? Or do I need 6.5 -
+      .. todo: #Igor: How would I upgrade from 5.2.5 to 6.5? As follows?
 
 #. If you have OXID eShop version 6.2.5 or higher, update to version 6.5:
 
@@ -133,19 +133,19 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
 * You have Oxid eShop Version 6.5.
 
-  .. todo: #Val: Do I need 6.5 or is 6.2.5 sufficient?
+  .. todo: #Igor: Do I need 6.5 or is 6.2.5 sufficient?
 
   To get to Oxid eShop Version 6.5, you have performed the necessary incremental updates (see :ref:`update/upgrade-to-7.0:Ensuring the prerequisites`).
 
 
 |procedure|
 
-.. todo: #Val: how do I upgrade to V. 7.0?
+.. todo: #Igor: how do I upgrade to V. 7.0?
 
 
 1. In the :file:`composer.json` file, update the metapackage version.
 
-   .. todo: #Val: how do I upgrade to V. 7.0? -- metapackage name ``7.0.0``?
+   .. todo: #Igor: how do I upgrade to V. 7.0? -- metapackage name ``7.0.0``?
 
    .. code:: bash
 
@@ -200,7 +200,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
         For a list of OXID certified partner agencies, visit `oxid-esales.com/partner/partner-find/ <https://www.oxid-esales.com/partner/partner-finden/>`_.
 
 
-   .. todo: #Val: are the following commands correct?
+   .. todo: #Igor: are the following commands correct?
 
    .. code:: bash
 
