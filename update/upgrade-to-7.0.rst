@@ -1,7 +1,7 @@
 Upgrade to OXID eShop 7.0
 =========================
 
-If you have OXID eShop 6.3 or higher, to upgrade to OXID eShop V 7.0, perform the following instructions.
+If you have OXID eShop 6.3 or higher, to upgrade to OXID eShop v. 7.0, perform the following instructions.
 
 |prerequisites|
 
@@ -133,7 +133,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
 * You have Oxid eShop Version 6.5.
 
-  .. todo: #Igor: Do I need 6.5 or is 6.2.5 sufficient?
+  .. todo: #Igor: Do I need 6.5 or is 6.2.5 sufficient? -- 6.5 OK
 
   To get to Oxid eShop Version 6.5, you have performed the necessary incremental updates (see :ref:`update/upgrade-to-7.0:Ensuring the prerequisites`).
 
@@ -143,7 +143,30 @@ Upgrade your OXID eShop to OXID eShop version 7.
 .. todo: #Igor: how do I upgrade to V. 7.0?
 
 
-1. In the :file:`composer.json` file, update the metapackage version.
+1. Decode the values in the :code:`oxpayment` and :code:`oxconfig` tables.
+   You have the following options:
+
+   .. todo: Igor: What is a possible use case for "Do it on your own.(manually)"? -- How do I know, what and how to do?
+
+   * Do it manually.
+   * Recommended: Do it automatically as described in the following:
+
+     .. note::
+        In the following, make sure that you follow the order of the steps.
+
+        Background: After executing the :code:`decode-config-values` command, the shop and console will be down.
+
+     a. Install the `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
+     b. Execute the :code:`oe:oxideshop-update-component:decode-user-payment-values` command.
+     c. Execute the :code:`oe:oxideshop-update-component:decode-config-values` command.
+     d. Uninstall the OXID eShop update component.
+
+        .. todo: #Igor: How do I uninstall, if the console is down?
+        .. todo: #Igor: for the user's convenience: What is the command to uninstall the OXID eShop update component?
+
+.. todo: #Igor: "Than just a normal update via composer." -- So no composer require --no-update oxid-esales/oxideshop-metapackage-ce:v7.0.0 as in the following step? But rather directly composer update --no-plugins --no-scripts --no-dev?
+
+#. In the :file:`composer.json` file, update the metapackage version.
 
    .. todo: #Igor: how do I upgrade to V. 7.0? -- metapackage name ``7.0.0``?
 
@@ -168,6 +191,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
    To do this, run the following command.
    |br|
 
+   .. todo: #Igor: in this step, we repeat the "composer update --no-dev" step, ut without the --no-plugins --no-scripts params -- which step is the correct one, which info is required?
 
    .. note::
 
@@ -199,12 +223,26 @@ Upgrade your OXID eShop to OXID eShop version 7.
         |br|
         For a list of OXID certified partner agencies, visit `oxid-esales.com/partner/partner-find/ <https://www.oxid-esales.com/partner/partner-finden/>`_.
 
-
-   .. todo: #Igor: are the following commands correct?
-
    .. code:: bash
 
       composer update --no-dev
+
+   .. todo: Igor: Correct place in the sequence for the following: After composer update customers should update module configurations, which we've split  in version 7 as described in https://docs.oxid-esales.com/developer/en/7.0-rc.2/development/modules_components_themes/project/module_configuration/modules_configuration.html#configuring-module-20190910
+
+#. Update the module configurations
+
+   .. todo: #Igor: "update module configurations, which we've split  in version 7" -- do we mean the following?
+
+   * via the admin interface
+
+     -- or --
+
+   * via providing configuration files.
+
+   For more information, see :ref:`development/modules_components_themes/project/module_configuration/modules_configuration:Configuration`.
+
+
+   .. todo: #Igor: are the following steps correct?
 
 #. To ensure that the cached items do not contain incompatibilities, empty the :file:`tmp` directory.
    |br|
