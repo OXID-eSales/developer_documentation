@@ -62,9 +62,14 @@ After doctrine update, you need to adjust your module migrations to a new config
 Adjust removed functionality
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+   .. todo: #II/#HR: Where can we reference to? Release Note?
+        Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
+        You can find a list of changes in `here <?????>`__.
+   .. todo: #tbd: replace 7.0-prelim with 7.0
+
  * Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
-   You can find a list of changes in `here <?????>`__.
- * Besides removed functionality, we also removed `deprecated methods and classes. <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.0.x/CHANGELOG.md#removed>`__
+   You can find a list of changes in the `OXID eShop 7.0 Release Notes <https://docs.oxid-esales.com/eshop/en/7.0-prelim/releases/releases-70/oxid-eshop-700.html>`_.
+ * Besides removed functionality, we also removed `deprecated methods and classes. <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.0.x/CHANGELOG.md#removed>`__.
  * Based on the psr-12 (`more info <https://www.php-fig.org/psr/psr-12>`__), all method names MUST NOT be prefixed with a
    single underscore to indicate protected or private visibility. So, we renamed all the underscore method by removing
    their prefix underscore. Your module also has to be updated accordingly. We also recommend to make your module
@@ -155,13 +160,13 @@ Assets should be copied to <module-root-directory>/assets folder. Module thumbna
 
 .. _port_to_v7-twig-20221123:
 
-Add twig engine support
+Add Twig engine support
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Since version 7.0 `Twig <https://twig.symfony.com>`__ is a default template engine. Please update your modules in order
 to work with it:
 
- * Please update to templating-engine agnostic names in all module controllers, e.g.:
+ * Update to templating-engine agnostic names in all module controllers, e.g.:
 
     .. code::
 
