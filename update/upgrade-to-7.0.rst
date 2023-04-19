@@ -331,5 +331,5 @@ Upgrade your OXID eShop to OXID eShop version 7.
       * :technicalname:`smarty-admin-theme`
       * Depending on your installation: :technicalname:`smarty-component-pe`
       * Depending on your installation: :technicalname:`smarty-component-ee`
-      * a smarty-compatible theme, :technicalname:`flow_theme` or :technicalname:`azure-theme`, for example
+      * a smarty-compatible theme, :technicalname:`flow_theme` or :technicalname:`wave-theme`, for example
 
