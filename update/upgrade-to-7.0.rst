@@ -130,6 +130,8 @@ Upgrade your OXID eShop to OXID eShop version 7.
 1. In the :file:`/source/var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|
    If you don't have subshops, there is only the :file:`source/var/configuration/shops/1.yaml` file to back up.
+   |br|
+   Store the folder/file where it cannot be overwritten by the following upgrade process.
 
 #. Decode the values in the following data table columns:
 
@@ -262,7 +264,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
    d. For each module (GDPR Opt-in, in our following example), do the following:
 
-      1. From the :file:`<shop-id>.yaml` file, copy and paste the :code:`moduleSettings` block (:ref:`upgrade7003`, item 2) into the corresponding :file:`source/var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
+      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`upgrade7003`, item 2) and replace the corresponding block in the corresponding :file:`source/var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
 
          .. _upgrade7003:
 
