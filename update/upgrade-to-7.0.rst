@@ -320,9 +320,9 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
       rm -rf source/tmp/*
 
-#.  If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
+#. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
 
-#. Optional: To use the legacy Smarty template engine, do the following:
+#. Optional: To use the Smarty template engine, do the following:
 
    a. Uninstall Twig.
    b. Install the following components:
