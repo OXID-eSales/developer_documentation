@@ -1,11 +1,7 @@
 Upgrade to OXID eShop 7.0
 =========================
 
-If you have OXID eShop 6.3 or higher, to upgrade to OXID eShop v. 7.0, perform the following instructions.
-
-|prerequisites|
-
-* You have OXID eShop 6.3 or higher.
+To upgrade to OXID eShop v. 7.0, perform the following instructions.
 
 
 Ensuring the compatibility of third-party modules
@@ -22,7 +18,7 @@ To do so, check the following:
 
 * Do I need to do one or more incremental updates?
   |br|
-  Incremental update means: you do not make an update directly to OXID eShop version 7 but in a previous step you make an update to a version between your initial version and OXID eShop version 7.
+  Incremental update means: You do not make an update directly to OXID eShop version 7 but in a previous step you make an update to a version between your initial version and OXID eShop version 7.
   |br|
   Only in a following update you do the update from the intermediate version to OXID eShop version 7.
 * During the update or incremental update, do I have a version of :emphasis:`Composer` that supports both my respective source and target versions?
@@ -121,11 +117,10 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
 * You have Oxid eShop Version 6.5.
 
-  To get to Oxid eShop Version 6.5, you have performed the necessary incremental updates (see :ref:`update/upgrade-to-7.0:Ensuring the prerequisites`).
+  To get to Oxid eShop Version 6.5, you have performed the required incremental updates (see :ref:`update/upgrade-to-7.0:Ensuring the prerequisites`).
 
 
 |procedure|
-
 
 1. In the :file:`/source/var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|
@@ -322,14 +317,28 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
 #. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
 
-#. Optional: To use the Smarty template engine, do the following:
+#. Optional (not recommended): To use the Smarty template engine, do the following:
 
    a. Uninstall Twig.
-   b. Install the following components:
+      |br|
+      To do so, make sure to uninstall the following components in the following order:
 
-      * :technicalname:`smarty-component`
+      * :technicalname:`apex-theme`
+      * :technicalname:`twig-admin-theme`
+      * :technicalname:`twig-component`
+      * :technicalname:`twig-component-pe`
+      * :technicalname:`twig-component-ee`
+
+   b. Install Smarty.
+      |br|
+      To do so, install the following components in the following order:
+
       * :technicalname:`smarty-admin-theme`
-      * Depending on your installation: :technicalname:`smarty-component-pe`
-      * Depending on your installation: :technicalname:`smarty-component-ee`
+      * one of the following, depending on your OXID eShop installation:
+
+         * :technicalname:`smarty-component`
+         * :technicalname:`smarty-component-pe`
+         * :technicalname:`smarty-component-ee`
+
       * a smarty-compatible theme, :technicalname:`flow_theme` or :technicalname:`wave-theme`, for example
 
