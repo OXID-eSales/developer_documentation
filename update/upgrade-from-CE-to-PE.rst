@@ -1,5 +1,5 @@
-Upgrade from CE edition to PE edition
-=====================================
+Upgrading from CE edition to PE edition
+=======================================
 
 This page describes how you can upgrade from OXID eShop CE to PE edition.
 You need to perform all of the following actions step by step:

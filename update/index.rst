@@ -1,14 +1,14 @@
-Update
-======
+Updating
+========
+
+     .. Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/latest/installation/update/index.html>
 
 .. toctree::
    :maxdepth: 1
 
-   Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/latest/installation/update/index.html>
    eshop_from_65_to_7/index
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
-   update-versions
 
 .. important::
 

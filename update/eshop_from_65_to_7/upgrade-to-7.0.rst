@@ -1,124 +1,24 @@
-Upgrade to OXID eShop 7.0
-=========================
-
-To upgrade to OXID eShop v. 7.0, perform the following instructions.
-
-
-Ensuring the compatibility of third-party modules
--------------------------------------------------
-
-If you use third-party modules or themes, ask the third-party vendor if these themes and modules are compatible with version 7 of OXID eShop.
-
-Ensuring the prerequisites
---------------------------
-
-Before you upgrade to OXID eShop version 7, make sure that you meet the technical requirements for the update.
-
-To do so, check the following:
-
-* Do I need to do one or more incremental updates?
-  |br|
-  Incremental update means: You do not make an update directly to OXID eShop version 7 but in a previous step you make an update to a version between your initial version and OXID eShop version 7.
-  |br|
-  Only in a following update you do the update from the intermediate version to OXID eShop version 7.
-* During the update or incremental update, do I have a version of :emphasis:`Composer` that supports both my respective source and target versions?
-* When updating or incrementally updating, do I have a version of :emphasis:`PHP` that supports both my respective source and target versions?
-
-|procedure|
-
-Check step by step which incremental update you need to do to finally get to OXID eShop version 7.
-
-In doing so, before each update step, make sure that you have versions of Composer and PHP that are supported by both the source and target versions.
-
-1. If you have OXID eShop version 5.x or lower, follow the instructions at `docs.oxid-esales.com/developer/en/6.0/update/eshop_from_53_to_6/index.html <https://docs.oxid-esales.com/developer/en/6.0/update/eshop_from_53_to_6/index.html>`_.
-   |br|
-   Alternatively: install the latest version of OXID eShop and port only the important data.
-
-   .. note::
-
-      **Porting the modules**
-
-      Your modules do not work under OXID eShop version 6 anymore.
-
-      To learn how to port your modules to OXID eShop version 6, see https://docs.oxid-esales.com/developer/en/6.0/modules/tutorials/porting_tool.html.
-
-   .. note::
-
-      **Azure theme obsolete**
-
-      The Azure theme is still supported in OXID eShop version 6, but is no longer maintained.
-
-#. If you have OXID eShop version :emphasis:`6.0.x`, do the following:
-
-   a. Make sure you have Composer version 1.
-   #. Make sure you have PHP version 7.0.
-   #. Do an initial update from version 6.0.x to version 6.1.x.
-      |br|
-      For more information, visit https://docs.oxid-esales.com/eshop/de/6.1/installation/update-installation/update-installation.html
-
-#. If you have OXID eShop version :emphasis:`6.1.x`, do the following:
-
-   a. Make sure you have Composer version 1.
-   #. Make sure you have PHP version 7.1.
-   #. Update from version 6.1.x to version 6.2.4.
-      |br|
-      For more information, please visit https://docs.oxid-esales.com/eshop/de/6.2/installation/update/von-6.1.x-auf-6.2.0-aktualisieren.html
-
-#. If you have OXID eShop version :emphasis:`6.2.0`, :emphasis:`6.2.1` or :emphasis:`6.2.2`, do the following:
-
-   a. Make a patch update to OXID eShop version :emphasis:`6.2.4`.
-   #. Optional: Make an update to from PHP version 7.1 to version 7.4.
-      |br|
-      Alternatively: Make the update to PHP version 7.4 on the following OXID eShop updates.
-   #. Make an update from Composer version 1 to Composer version 2.
-
-#. If you have OXID eShop version :emphasis:`6.2.3` or :emphasis:`6.2.4`, do the following:
-
-   a. Make sure you have Composer version 2.0 to 2.2.x.
-
-      .. attention::
-
-         Composer version 2.3.x is not supported.
-
-         For example, if you have Composer version 2.3.x, install Composer version 2.2.x as follows:
-
-         .. code:: bash
-
-            composer selfupdate 2.2.12
-
-   #. Make sure you have PHP version 7.4.
-   #. Update from version 6.2.5 to version 6.5.
-
-      .. code:: bash
-
-         composer require --no-update oxid-esales/oxideshop-metapackage-ce:v6.5.2
-
-         composer update --no-plugins --no-scripts --no-dev
-
-#. If you have OXID eShop version 6.2.5 or higher, update to version 6.5:
-
-   a. Make sure you have Composer version 2.4.
-   #. Make sure you have PHP version 8.0.
-   #. Update to version 6.5:
-
-      .. code:: bash
-
-         composer require --no-update oxid-esales/oxideshop-metapackage-ce:v6.5.2
-
-         composer update --no-plugins --no-scripts --no-dev
-
-
-Executing the upgrade
----------------------
+Upgrading from OXID eShop 6.5 to OXID eShop 7.0
+===============================================
 
 Upgrade your OXID eShop to OXID eShop version 7.
 
+
 |prerequisites|
+
+Before you upgrade to OXID eShop version 7, you have make sure that you meet the technical requirements for the update:
 
 * You have Oxid eShop Version 6.5.
 
-  To get to Oxid eShop Version 6.5, you have performed the required incremental updates (see :ref:`update/upgrade-to-7.0:Ensuring the prerequisites`).
+  To get to Oxid eShop Version 6.5, you have performed the required incremental updates.
 
+  For more information, see :ref:`update/eshop_from_65_to_7/update-to-6.5:Updating to OXID eShop 6.5`.
+
+* If you use third-party modules or themes, you have ensured the compatibility of the third-party modules.
+
+  To do so, you have asked the third-party vendor if these themes and modules are compatible with version 7 of OXID eShop.
+
+  For updating existing modules from OXID eShop 6.5.x to OXID eShop 7, see :ref:`update/eshop_from_65_to_7/modules:Modules`.
 
 |procedure|
 
@@ -239,7 +139,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
       .. _upgrade7001:
 
-      .. figure:: ../media/screenshots/upgrade7001.png
+      .. figure:: ../../media/screenshots/upgrade7001.png
          :alt: Copying the moduleChains:classExtensions content
          :width: 650
          :class: with-shadow
@@ -250,7 +150,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
       .. _upgrade7002:
 
-      .. figure:: ../media/screenshots/upgrade7002.png
+      .. figure:: ../../media/screenshots/upgrade7002.png
          :alt: Indenting the pasted moduleChains:classExtensions content
          :width: 650
          :class: with-shadow
@@ -263,7 +163,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
          .. _upgrade7003:
 
-         .. figure:: ../media/screenshots/upgrade7003.png
+         .. figure:: ../../media/screenshots/upgrade7003.png
             :alt: Copying the moduleSettings block
             :width: 650
             :class: with-shadow
@@ -274,7 +174,7 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
          .. _upgrade7004:
 
-         .. figure:: ../media/screenshots/upgrade7004.png
+         .. figure:: ../../media/screenshots/upgrade7004.png
             :alt: Adjusting the module configuration file
             :width: 650
             :class: with-shadow

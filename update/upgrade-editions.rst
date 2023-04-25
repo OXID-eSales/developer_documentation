@@ -1,6 +1,6 @@
 :orphan:
-Upgrade editions
-================
+Upgrading editions
+==================
 
 .. toctree::
    :maxdepth: 1

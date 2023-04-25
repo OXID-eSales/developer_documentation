@@ -1,5 +1,5 @@
-Upgrade from PE edition to EE edition
-=====================================
+Upgrading from PE edition to EE edition
+=======================================
 
 This page describes how you can upgrade from OXID eShop PE to EE edition.
 You need to perform all of the following actions step by step:
