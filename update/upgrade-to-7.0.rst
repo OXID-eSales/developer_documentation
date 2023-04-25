@@ -321,24 +321,25 @@ Upgrade your OXID eShop to OXID eShop version 7.
 
    a. Uninstall Twig.
       |br|
-      To do so, make sure to uninstall the following components in the following order:
+      To do so, remove the following components in the following order:
 
       * :technicalname:`apex-theme`
       * :technicalname:`twig-admin-theme`
-      * :technicalname:`twig-component`
-      * :technicalname:`twig-component-pe`
-      * :technicalname:`twig-component-ee`
+
+      * depending on your OXID eShop installation:
+
+        * :technicalname:`twig-component`
+        * :technicalname:`twig-component-pe`
+        * :technicalname:`twig-component-ee`
 
    b. Install Smarty.
       |br|
       To do so, install the following components in the following order:
 
-      * :technicalname:`smarty-admin-theme`
-      * one of the following, depending on your OXID eShop installation:
-
-         * :technicalname:`smarty-component`
-         * :technicalname:`smarty-component-pe`
+      * depending on your OXID eShop installation:
          * :technicalname:`smarty-component-ee`
-
-      * a smarty-compatible theme, :technicalname:`flow_theme` or :technicalname:`wave-theme`, for example
+         * :technicalname:`smarty-component-pe`
+         * :technicalname:`smarty-component`
+      * :technicalname:`smarty-admin-theme`
+      * a smarty-compatible theme, the :technicalname:`wave-theme`, for example
 
