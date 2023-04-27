@@ -1,7 +1,7 @@
 Using Twig in module templates
 ==============================
 
-Just by following the directory structure conventions, the OXID support for the Twig template engine allows you to
+Just by following the directory structure conventions, the Twig template engine allows you to
 
  * register custom (original) module templates
  * extend existing templates
@@ -31,7 +31,7 @@ After module activation, the templates will be automatically registered with the
     @<module-id>/modules_own_template.html.twig
     @<module-id>/page/modules_own_template.html.twig
 
-.. attention::
+.. important::
 
    **Terminology**
 
@@ -58,8 +58,7 @@ In addition to the out-of-box Twig functionality for template inheritance and re
 (see `Twig documentation for extends tag <https://twig.symfony.com/doc/3.x/tags/extends.html>`__),
 OXID eSales supports :emphasis:`multiple inheritance` for Twig templates.
 
-This allows you to have more than one `{% extends %}`
-tag called per rendering.
+This allows you to have more than one `{% extends %}` tag called per rendering.
 
 :productname:`Multiple inheritance` is an advanced feature that you can use to combine modifications added to a certain template
 from multiple modules into an "inheritance chain".
@@ -72,14 +71,16 @@ from multiple modules into an "inheritance chain".
     `conditional inheritance <https://twig.symfony.com/doc/3.x/tags/extends.html#conditional-inheritance>`__
     is :emphasis:`not` implemented.
 
-    Do not use  these Twig features in OXID eShop templates.
+    Do not use these Twig features in OXID eShop templates.
 
 Depending on the type of the original template, a module template extension can be of one of the following types:
 
  * module extension for OXID eShop templates
  * module extension of OXID module templates
 
-Identify the template extension type easily by examining its  directory structure (see the examples under :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID eShop templates` and :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID module templates`).
+Identify the template extension type easily by examining its directory structure (see the examples under :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID eShop templates` and :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Module extensions for OXID module templates`).
+|br|
+In addition, under the :ref:`development/modules_components_themes/module/tutorials/index:Tutorials and recipes` section, find some practical examples.
 
 .. _extending-shop-templates:
 
@@ -102,9 +103,9 @@ This type of template extensions is located in the :file:`themes/` sub folder of
 
 In the example above, the result of rendering :file:`shop-template.html.twig` depends on the active theme's ID:
 
-* If :file:`some-twig-theme` theme is active, the extensions/themes/**some-twig-theme**/shop-template.html.twig template is used in the template chain.
+* If :file:`some-twig-theme` theme is active, the :technicalname:`extensions/themes/**some-twig-theme**/shop-template.html.twig` template is used in the template chain.
 
-* If the :file:`some-other-twig-theme` theme is active, the extensions/themes/**default**/shop-template.html.twig template is used in the template chain.
+* If the :file:`some-other-twig-theme` theme is active, the :technicalname:`extensions/themes/**default**/shop-template.html.twig template` is used in the template chain.
 
 .. attention::
     The following paths are reserved:
@@ -119,48 +120,9 @@ In the example above, the result of rendering :file:`shop-template.html.twig` de
 
 .. note::
 
-    Inheritance for **admin templates** is similar to the theme-specific inheritance, because admin is a theme as well.
+    Inheritance for **admin templates** is similar to the theme-specific inheritance, because :technicalname:`admin` is a theme as well.
 
     When creating admin template extensions (:technicalname:`twig_admin`, for example), just use a corresponding ID.
-
-|example|
-
-In this example let's extend the :technicalname:`widget_minibasket_total` block of the mini-basket widget.
-
-**Twig theme structure**
-::
-
-    ├── twig // Shop theme
-        └── tpl
-            └── twig
-                └── widget
-                    └── minibasket
-                        └── minibasket.html.twig // Location of the original widget
-
-**Module views structure**
-::
-
-    ├── module-1 // The module where we want to extend the block
-        └── views
-            └── twig
-                └── extensions
-                    └── themes
-                        └── twig
-                            └── widget
-                                └── minibasket
-                                    └── minibasket.html.twig
-
-**Extended minibasket.html.twig file**
-
-.. code::
-
-    {% extends 'widget/minibasket/minibasket.html.twig' %}
-
-    {% block widget_minibasket_total %}
-        <p>Useful note for customers</p>
-    {% endblock %}
-
-After the :technicalname:`module-1` (re)activation the given note should be visible in a not empty mini-basket drop-down.
 
 .. _extending-module-templates:
 
@@ -202,9 +164,9 @@ Controlling a template rendering engine that utilizes multiple inheritance can b
 The situation might get even more complicated if you face the necessity to control the order in which each module template
 joins the inheritance chain.
 
-By default, the module template loading order (template chain) depends on the order of module installation.
+By default, the module template loading order (template chain) depends on the order of the module installation.
 
-If the inheritance chain is not rendered as expected adjust it. To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
+If the inheritance chain is not rendered as expected, adjust it. To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
 
 
 |example|
