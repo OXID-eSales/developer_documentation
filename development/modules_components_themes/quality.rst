@@ -84,13 +84,40 @@ We strongly recommend using the following ones (or alternatives):
     * PHPStan: To ensure your code achieves level 5 or higher
     * Psalm: To ensure your code achieves level 4 or lower
 
+The mentioned technology can be easily used via composer, like described for example in our `module template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
+E.g. with
+
+.. code:: bash
+
+    composer static
+
+you could be able to run the PHP_CodeSniffer, PHPMess Detector and PHPStan with one single command with the associated configurations.
+
 Using nice-to-have tools
 ------------------------
 
 OXID eSales recommends the following productivity tools and best practices:
 
 * Use Sonarcloud as a final report point for psalm issues, code coverage reports, code duplications analysis.
-* Use Github Actions with all required tools integrated and running constantly during development.
+  Sonarcloud can also be integrated in your CI-process for example in Github Actions like in our `module-template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
+* Use Github Actions with all required tools integrated and running constantly during development. More details here
+
+Github Actions
+--------------
+
+For a better overview, it's good to split the .yml-files. A good example can be found in our `module-template <https://github.com/OXID-eSales/module-template/tree/b-7.0.x/.github/workflows>`_.
+The files can be splitted in trigger.yml, schedule.yml and development.yml.
+
+`trigger.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/trigger.yml> is used to trigger the process, for example in the development.yml on specific events, defined under
+.. code:: yaml
+
+    on:
+      pull_request:
+      push:
+
+After these events, the jobs will be triggered and run for example the jobs in the development.yml with specific parameters (defined in development.yml).
+
+The scheduled.yml is used for triggerin scheduled jobs
 
 Following best practices
 ------------------------
