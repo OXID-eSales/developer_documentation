@@ -191,7 +191,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
    .. code:: bash
 
-      vendor/bin/oe-shop-db_migrate migrations:migrate
+      vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 #. Regenerate the database views.
    |br|
@@ -242,4 +242,3 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
          * :technicalname:`smarty-component`
       * :technicalname:`smarty-admin-theme`
       * a smarty-compatible theme, the :technicalname:`wave-theme`, for example
-
