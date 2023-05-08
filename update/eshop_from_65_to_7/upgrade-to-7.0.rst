@@ -22,9 +22,9 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
 |procedure|
 
-1. In the :file:`/source/var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
+1. In the :file:`var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|
-   If you don't have subshops, there is only the :file:`source/var/configuration/shops/1.yaml` file to back up.
+   If you don't have subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
    |br|
    Store the folder/file where it cannot be overwritten by the following upgrade process.
 
@@ -45,9 +45,9 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
      (1.) Install the `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
      |br|
-     (2.) Execute the :code:`oe:oxideshop-update-component:decode-user-payment-values` command.
+     (2.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-user-payment-values` command.
      |br|
-     (3.) Execute the :code:`oe:oxideshop-update-component:decode-config-values` command.
+     (3.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-config-values` command.
      |br|
      (4.) To uninstall the OXID eShop update component, execute the following command:
 
@@ -55,7 +55,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
            composer remove --update-no-dev oxid-esales/oxideshop-update-component
 
-#. Delete the :file:`source/var/generated/generated_services.yaml` file.
+#. Delete the :file:`var/generated/generated_services.yaml` file.
 
 #. In the :file:`composer.json` file, update the metapackage version.
 
@@ -79,6 +79,10 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
    |br|
    To do so, run the following command.
    |br|
+
+   .. code:: bash
+
+      composer update --no-dev
 
    .. note::
 
@@ -110,9 +114,6 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
         |br|
         For a list of OXID certified partner agencies, visit `oxid-esales.com/partner/partner-find/ <https://www.oxid-esales.com/partner/partner-finden/>`_.
 
-   .. code:: bash
-
-      composer update --no-dev
 
 #. Adjust the module configuration files. To do so, for each subshop do the following:
 
@@ -159,7 +160,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
    d. For each module (GDPR Opt-in, in our following example), do the following:
 
-      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`upgrade7003`, item 2) and replace the corresponding block in the corresponding :file:`source/var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
+      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`upgrade7003`, item 2) and replace the corresponding block in the corresponding :file:`var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
 
          .. _upgrade7003:
 
@@ -214,6 +215,12 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
    .. code:: bash
 
       rm -rf source/tmp/*
+
+#. Activate your new Twig theme (APEX Theme) via:
+
+    Admin ‣ Extensions ‣ Themes
+
+to start using OXID eShop with the Twig template engine.
 
 #. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
 
