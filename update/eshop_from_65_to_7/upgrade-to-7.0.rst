@@ -76,13 +76,8 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
       composer update --no-plugins --no-scripts --no-dev
 
 #. To get the new compilation and run the update, run the scripts.
-   |br|
-   To do so, run the following command.
-   |br|
 
-   .. code:: bash
-
-      composer update --no-dev
+   To do so, execute the command given below the following notes.
 
    .. note::
 
@@ -96,7 +91,6 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
       * `Module skeleton: metadata, composer, and structure <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/module/skeleton/index.html>`_
       * `How to create a theme installable via composer? <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/theme/theme_via_composer.html>`_
-
 
    .. attention::
 
@@ -114,8 +108,13 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
         |br|
         For a list of OXID certified partner agencies, visit `oxid-esales.com/partner/partner-find/ <https://www.oxid-esales.com/partner/partner-finden/>`_.
 
+   .. code:: bash
 
-#. Adjust the module configuration files. To do so, for each subshop do the following:
+      composer update --no-dev
+
+#. Adjust the module configuration files.
+
+   To do so, for each subshop do the following:
 
    a. Open the project configuration ``yaml``-files located in the project directory ``var/shops/<shop-id>/`` where ``<shop-id`` stands for the subshop ID.
       |br|
@@ -216,11 +215,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
       rm -rf source/tmp/*
 
-#. Activate your new Twig theme (APEX Theme) via:
-
-    Admin ‣ Extensions ‣ Themes
-
-to start using OXID eShop with the Twig template engine.
+#. To use your OXID eShop with the Twig template engine, in the Admin panel, under :menuselection:`Extensions --> Themes`, activate your new Twig theme (APEX Theme).
 
 #. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
 
