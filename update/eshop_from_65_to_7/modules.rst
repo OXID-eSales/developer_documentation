@@ -62,9 +62,6 @@ After doctrine update, you need to adjust your module migrations to a new config
 Adjust removed functionality
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. todo: #II/#HR: Where can we reference to? Release Note? -- HR: Relasenotes mit changelog
-        Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
-        You can find a list of changes in `here <?????>`__.
    .. todo: #tbd: replace 7.0-prelim with 7.0
 
  * Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
