@@ -12,3 +12,6 @@ If you are using a different environment, this documentation might change slight
    :glob:
 
    phpstorm/index
+
+
+.. todo: clarify future of oxvm_eshop

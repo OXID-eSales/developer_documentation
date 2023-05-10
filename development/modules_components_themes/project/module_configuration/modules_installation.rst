@@ -1,7 +1,7 @@
 Modules installation
 ====================
 
-This document describes **what** is happening under the hood when module is being installed.
+This document describes **what** is happening under the hood when a module is being installed.
 To find out **how** to install a module, please have a look to
 :doc:`module installation documentation</development/modules_components_themes/module/installation_setup/installation>`.
 

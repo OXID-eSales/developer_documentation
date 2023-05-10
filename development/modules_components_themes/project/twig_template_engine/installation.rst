@@ -45,11 +45,16 @@ To access admin panel please install `the twig theme for the admin area <https:/
 
   rm -rf source/tmp/*
 
+  .. todo: use console oe:cache:clear instead
+
+
 **4. After twig engine installation**
 
 The twig engine is installed and you should be possible to access administration panel. The next step would be
 to install a twig theme for the frontend of your shop, for more information please read
 :doc:`Twig theme installation documentation </development/modules_components_themes/theme/twig/installation>`.
+
+.. todo: APEX theme is delivered with oxid 7, not the twig theme
 
 **Troubleshooting**
 
@@ -62,3 +67,5 @@ if the file exists:
 
     parameters:
       oxid_esales.theme.admin.name: 'admin_twig'
+
+.. todo: this section looks like only relevant for 6.5.x. twig admin theme is delivered with oxid 7 compilation

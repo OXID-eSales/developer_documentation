@@ -26,6 +26,8 @@ Possible structure of the module in the repository:
 
 .. _modules_structure_language_files:
 
+.. todo: structure is not up to date with what we recommend now (put code into src directory)
+
 Language files
 --------------
 
@@ -135,3 +137,5 @@ You can use something like this to include your scripts in to templates:
 .. code:: php
 
   [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]
+
+.. todo: change to twig template example

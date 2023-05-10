@@ -39,6 +39,8 @@ command line:
    #. Select :menuselection:`Scheme: Project`.
    #. Select :menuselection:`Set from --> Predefined Style --> PSR12` (PSR12 needs CodeSniffer >=3.3.0).
 
+ .. todo:  in this section PSR2 and PSR12 are both mentioned, PSR12 replaces the deprecated PSR2.
+
 3. Coding Style in Action
 -------------------------
 

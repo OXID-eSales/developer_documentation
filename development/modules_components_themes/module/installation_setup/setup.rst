@@ -22,6 +22,8 @@ To activate module you need to execute command:
 
     vendor/bin/oe-console oe:module:activate <module-id>
 
+.. todo: please add info about how to activate module in subshop via comandline (--shop-id parameter)
+
 For module deactivation you would need to execute this command:
 
 .. code:: bash
@@ -30,7 +32,7 @@ For module deactivation you would need to execute this command:
 
 .. note::
 
-    <module-id> is a module, which should be activated, ID. It can be found in module `metadata.php` file.
+    <module-id> is the ID of the module which should be activated, . It can be found in the module's `metadata.php` file.
 
 **3. Activate all configured modules at once:**
 

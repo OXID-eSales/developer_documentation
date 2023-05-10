@@ -32,6 +32,8 @@ Composer installation
 Module can be installed with regular composer installation. Composer performs all necessary installation steps.
 Example command how to install OXID eShop PayPal module with composer:
 
+.. todo: as the PP module used as example is not upated to work with 7, please rewrite example to gdpr-opt-in module
+
 .. code:: bash
 
     composer require oxid-esales/paypal-module

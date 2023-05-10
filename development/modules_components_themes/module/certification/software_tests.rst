@@ -127,3 +127,6 @@ Before sending module for certification to OXID eSales first follow these steps:
 * Install your module following the instructions delivered with the module.
 * Run all shop and module tests.
 * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
+
+
+.. todo: 'OXVM' is mentioned but not explained

@@ -1,6 +1,9 @@
 Terms, conditions and checklist
 ===============================
 
+
+.. todo: section needs to be updated
+
 General
 -------
 

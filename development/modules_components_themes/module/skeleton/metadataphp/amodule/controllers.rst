@@ -17,8 +17,8 @@ Example
     .. code:: php
 
            'controllers'  => [
-               'myvendor_mytestmodule_mymodulecontroller' => MyVendor\mytestmodule\MyModuleController::class,
-               'myvendor_mytestmodule_myothermodulecontroller' => MyVendor\mytestmodule\MyOtherModuleController::class,
+               'myvendor_mytestmodule_mymodulecontroller' => \MyVendor\mytestmodule\MyModuleController::class,
+               'myvendor_mytestmodule_myothermodulecontroller' => \MyVendor\mytestmodule\MyOtherModuleController::class,
            ],
 
     The key of this array
@@ -28,6 +28,8 @@ Example
        The value is the assigned class which should also be unique.
 
        Now you can route requests to the module controller e.g. in a template:
+
+.. todo: please use twig style template example instead of smarty
 
     .. code:: php
 
@@ -46,7 +48,7 @@ Example
 
 .. important::
 
-    If you want to have an endpoint in your module that can be accessed directly, You must use controllers to do it.
+    If you want to have an endpoint in your module that can be accessed directly, you must use controllers to do it.
 
     For example, in `GraphQL module <https://github.com/OXID-eSales/graphql-base-module>`_, we have `GraphQL` endpoint
     which has been created in `src/Component/Widget`, and also has been defined in the controller section in
@@ -56,7 +58,7 @@ Example
 
         'controllers' => [
             // Widget Controller
-            'graphql' => OxidEsales\GraphQL\Base\Component\Widget\GraphQL::class,
+            'graphql' => \OxidEsales\GraphQL\Base\Component\Widget\GraphQL::class,
         ]
 
     Now we can access it via the following URL:
