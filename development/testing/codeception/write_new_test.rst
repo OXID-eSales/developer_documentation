@@ -151,6 +151,8 @@ acceptance test suite :guilabel:`acceptance.suite.yml`.
 
 The general structure of the module's test folder looks as follows:
 
+.. todo: Tests or tests, what do we recommend?
+
 Example:
     ::
 
