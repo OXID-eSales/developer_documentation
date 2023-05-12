@@ -27,6 +27,8 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
    If you don't have subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
    |br|
    Store the folder/file where it cannot be overwritten by the following upgrade process.
+   |br|
+   Backup your shop installation as well as the database.
 
 #. Decode the values in the following data table columns:
 
@@ -44,6 +46,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
         Background: After executing the :code:`decode-config-values` command, the shop and console will be down.
 
      (1.) Install the `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
+.. todo: ensure update-component is tagged. Also after composer update you need cache clear to see the command, so better mention it here.
      |br|
      (2.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-user-payment-values` command.
      |br|
@@ -207,6 +210,8 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
    |br|
    Do not delete the :file:`functions.php.dist` file.
 
+.. todo: #Igor please doublecheck, if we also have to clean up Application/views
+
 #. To ensure that the cached items do not contain incompatibilities, empty the :file:`tmp` directory.
    |br|
    To do so, execute the following command.
@@ -233,6 +238,9 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
         * :technicalname:`twig-component`
         * :technicalname:`twig-component-pe`
         * :technicalname:`twig-component-ee`
+
+.. todo: #Igor: don't we have to uninstall first ee, then pe and then ce component?
+
 
    b. Install Smarty.
       |br|
