@@ -8,4 +8,4 @@ Twig Theme
     *
     twig_converter/index
 
-.. todo: we need documentation how to extend theme with child theme
+.. todo: #Igor: outline some  documentation how to extend theme with child theme

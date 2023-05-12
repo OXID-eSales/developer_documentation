@@ -116,17 +116,14 @@ Running tests
 
 See :doc:`testing sections </development/testing/index>`
 
-Run module tests before applying for certification
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. todo:  #HR: 'OXVM' is mentioned but not explained; clarify later
+    Run module tests before applying for certification
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    Before sending module for certification to OXID eSales first follow these steps:
+    * Generate a clean setup of the OXVM (with testing tools)
+    * Follow the instructions (see Readme file of the OXVM) to install the desired shop version and edition.
+      A clean instance will be created automatically on provision (by vagrant).
+    * Install your module following the instructions delivered with the module.
+    * Run all shop and module tests.
+    * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
 
-Before sending module for certification to OXID eSales first follow these steps:
-
-* Generate a clean setup of the OXVM (with testing tools)
-* Follow the instructions (see Readme file of the OXVM) to install the desired shop version and edition.
-  A clean instance will be created automatically on provision (by vagrant).
-* Install your module following the instructions delivered with the module.
-* Run all shop and module tests.
-* Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
-
-
-.. todo: 'OXVM' is mentioned but not explained

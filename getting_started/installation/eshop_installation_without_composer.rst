@@ -110,7 +110,7 @@ only work from a UNIX based system as your local development environment.
         "${dir}/oe-eshop-doctrine_migration" "$@"
         EOF
 
-   .. todo:  this section is not correct, we have no bin folders for migration and demodata installer anymore
+   .. todo:  #Support/#Igor Check: how urgent is to update it?: this section above is not correct, we have no bin folders for migration and demodata installer anymore
 
 Copy the files to the application server and continue installation
 ------------------------------------------------------------------

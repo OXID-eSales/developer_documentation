@@ -17,7 +17,7 @@ Let's take one of them, for example the ``Article`` model, and try to fetch the 
     echo $product->oxarticles__oxtitle->value;
     echo $product->oxarticles__oxshortdesc->value;
 
-.. todo: beware PHP 8 and trying to get a value on null. maybe we should also mention getFieldData method in this section?
+.. todo: #Igor: mention new method? -- beware PHP 8 and trying to get a value on null. maybe we should also mention getFieldData method in this section?
 
 Magic getters are used to get models attributes; they are constructed in this approach:
 

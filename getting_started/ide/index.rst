@@ -14,4 +14,4 @@ If you are using a different environment, this documentation might change slight
    phpstorm/index
 
 
-.. todo: clarify future of oxvm_eshop
+.. todo: #Igor: clarify future of oxvm_eshop later: #tbd: Setting Up Your IDE vorerst raus

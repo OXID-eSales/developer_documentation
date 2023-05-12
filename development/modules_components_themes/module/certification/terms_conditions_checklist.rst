@@ -2,7 +2,7 @@ Terms, conditions and checklist
 ===============================
 
 
-.. todo: section needs to be updated
+.. todo: #tbd: comment out, section needs to be updated later
 
 General
 -------

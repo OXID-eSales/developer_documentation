@@ -26,7 +26,7 @@ Possible structure of the module in the repository:
 
 .. _modules_structure_language_files:
 
-.. todo: structure is not up to date with what we recommend now (put code into src directory)
+.. todo: #AF: check: structure is not up to date with what we recommend now (put code into src directory): AF
 
 Language files
 --------------
@@ -138,4 +138,4 @@ You can use something like this to include your scripts in to templates:
 
   [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]
 
-.. todo: change to twig template example
+.. todo: #AF/Igor: change to twig template example

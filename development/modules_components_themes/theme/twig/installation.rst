@@ -3,7 +3,7 @@ Twig Theme Installation
 
 This tutorial explains how to install and activate twig theme on OXID eShop.
 
-.. todo: please mention that in oxid 7.0 twig engine comes with the compilation. So this section is only relevant when not using compilation
+.. todo: #Igor:  please mention that in oxid 7.0 twig engine comes with the compilation. So this section is only relevant when not using compilation: Note: Muss nich manuell: Twig automatisch mit 7: manual steps now apply for Smarty installation: shall we document smarty installation in detail?
 
 **1. Before you install twig theme**
 
@@ -11,8 +11,8 @@ First make sure, that the twig engine and the admin twig theme are installed on 
 :doc:`Twig Engine Installation </development/modules_components_themes/project/twig_template_engine/installation>`
 
 **2. Install OXID eSales twig theme**
-.. todo:  APEX is the official theme now
-Install `the twig theme <https://github.com/OXID-eSales/twig-theme>`__ for the frontend, for example:
+.. todo:  #Igor: as above: APEX is the official theme now Install `the twig theme <https://github.com/OXID-eSales/twig-theme>`__ for the frontend, for example:
+
 
     .. code:: bash
 
@@ -29,5 +29,5 @@ and click activation button.
 
       rm -rf source/tmp/*
 
-  .. todo:  use console oe:cache:clear instead
+  .. todo:  #tbd: use console oe:cache:clear instead: as above: standard dep. on installation
 

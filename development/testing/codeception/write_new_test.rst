@@ -3,7 +3,7 @@ Creating Codeception acceptance tests from scratch
 
 We will use a simple example module to explain how to write a Codeception acceptance test.
 
-.. todo: rewrite for twig template engine
+.. todo: #Igor: check whether to rewrite for twig template engine: now or later?
 
 .. _codeception_example_module:
 
@@ -151,7 +151,7 @@ acceptance test suite :guilabel:`acceptance.suite.yml`.
 
 The general structure of the module's test folder looks as follows:
 
-.. todo: Tests or tests, what do we recommend?
+.. todo: #Igor/#AF: Tests or tests, what do we recommend?
 
 Example:
     ::

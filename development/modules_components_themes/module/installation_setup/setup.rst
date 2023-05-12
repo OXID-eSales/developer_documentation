@@ -22,7 +22,7 @@ To activate module you need to execute command:
 
     vendor/bin/oe-console oe:module:activate <module-id>
 
-.. todo: please add info about how to activate module in subshop via comandline (--shop-id parameter)
+.. todo: #tbd (8:30): please add info about how to activate module in subshop via comandline (--shop-id parameter)
 
 For module deactivation you would need to execute this command:
 

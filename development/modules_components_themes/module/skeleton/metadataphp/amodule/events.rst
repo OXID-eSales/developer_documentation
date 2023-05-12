@@ -17,7 +17,7 @@ Example
             'onDeactivate' => '\OxidEsales\PayPalModule\Core\Events::onDeactivate'
           ],
 
-.. todo: please change from PayPal to generic example or oxid 7 compilation module
+.. todo: #Igor: please change from PayPal to generic example or oxid 7 compilation module
 
 .. important::
 

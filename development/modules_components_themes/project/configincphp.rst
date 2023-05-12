@@ -159,7 +159,7 @@ define 'Auth_OpenID_RAND_SOURCE' (filename for a source of   random bytes)
 
     $this->sAuthOpenIdRandSource  = '/dev/urandom';
 
-.. todo: cannot find this setting in shop code
+.. todo: #Igor: check setting: some settings mentioned which no longer exist; cannot find this setting in shop code
 
 blUseTimeCheck
 --------------
@@ -288,7 +288,7 @@ If active, CMS content (e.g. descriptions of products and categories, CMS pages,
 
     $this->deactivateSmartyForCmsContent = false;
 
-.. todo: cannot find this setting in shop code, it is possible to use but belongs to smarty component
+.. todo: #Igor: see above: cannot find this setting in shop code, it is possible to use but belongs to smarty component
 
 Modules
 -------
@@ -304,7 +304,7 @@ Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
 
     $this->blDoNotDisableModuleOnError = false;
 
-.. todo: setting was removed in OXID 7
+.. todo: #Igor: as above setting was removed in OXID 7
 
 
 aModules
@@ -318,7 +318,7 @@ Some classes can be overloaded, but only by setting up this information in confi
         'oxutilsobject' => 'my_oxutilsobject'
     );
 
-.. todo: setting was removed in OXID 7
+.. todo: #Igor: as above setting was removed in OXID 7
 
 
 Uploads and images

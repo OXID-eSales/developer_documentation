@@ -174,7 +174,7 @@ Extending views and frontend
 Blocks
 ^^^^^^
 
-.. todo: rewrite for twig instead of smarty
+.. todo: #Igor: rewrite for twig instead of smarty: do it now or later?
 
 Use block definitions in the templates. This is not an obligation. The naming convention for new blocks is:
 ``[vendor]_[module]_[blockname]``. In the templates, use blocks like that:

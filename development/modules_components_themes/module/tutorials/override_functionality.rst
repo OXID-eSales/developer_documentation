@@ -156,4 +156,4 @@ For overwriting the shop templates, or some parts of them (blocks), register you
 templates/blocks sections. Read more about the ``metadata.php`` under the link for the
 latest version here: :doc:`here </development/modules_components_themes/module/skeleton/metadataphp/index>`.
 
-.. todo: check if logger demo modules need to be adapted for OXID 7
+.. todo: #AF/#Igor: check if logger demo modules need to be adapted for OXID 7

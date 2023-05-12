@@ -29,7 +29,7 @@ Example
 
        Now you can route requests to the module controller e.g. in a template:
 
-.. todo: please use twig style template example instead of smarty
+.. todo: #Igor: provide twig style template example instead of smarty
 
     .. code:: php
 

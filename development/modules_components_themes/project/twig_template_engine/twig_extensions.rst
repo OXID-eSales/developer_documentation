@@ -124,7 +124,7 @@ First argument is array of values, and the second one is associative array of pa
 ``cycle`` plugin is implemented here as ``smarty_cycle`` is Twig has own ``cycle`` function but working differently:
 [[link to Twig cycle documentation]]
 
-.. todo: link is missing
+.. todo: #Igor: check link is missing: is it an external link?
 
 StyleExtension
 ^^^^^^^^^^^^^^
@@ -184,9 +184,8 @@ EncloseExtension
 
 This extension introduces ``enclose`` filter. Examples of use::
 
-    {{ article.oxarticles__oxartnum.value|enclose(encl) }}
+    {{ article.oxarticles__oxartnum.value|enclose("encl") }}
 
-.. todo: please doublecheck, in templates it is enclose("encl")
 
 FileSizeExtension
 ^^^^^^^^^^^^^^^^^
