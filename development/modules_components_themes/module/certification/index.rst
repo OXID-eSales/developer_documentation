@@ -17,4 +17,6 @@ for OXID eShop.
     software_quality
     inter_module_compatibility
     documentation
+
+..
     terms_conditions_checklist
