@@ -65,7 +65,7 @@ The twig engine is installed and you should be possible to access administration
 to install a twig theme for the frontend of your shop, for more information please read
 :doc:`Twig theme installation documentation </development/modules_components_themes/theme/twig/installation>`.
 
-.. todo: #tbd/#Igor: Schritt 4. entfernen: #Igor: check: can we remove the step?  APEX theme is delivered with oxid 7, not the twig theme
+.. todo: #Igor/#tbd: Schritt 4. entfernen: #Igor: check: can we remove the step?  APEX theme is delivered with oxid 7, not the twig theme
 .. todo: #Igor: can we remove Troubleshooting?: this section looks like only relevant for 6.5.x. twig admin theme is delivered with oxid 7 compilation
 
 **Troubleshooting**
