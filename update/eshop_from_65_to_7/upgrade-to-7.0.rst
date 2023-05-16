@@ -46,13 +46,14 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
         Background: After executing the :code:`decode-config-values` command, the shop and console will be down.
 
      (1.) Install the `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
-.. todo: ensure update-component is tagged. Also after composer update you need cache clear to see the command, so better mention it here.
-     |br|
-     (2.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-user-payment-values` command.
-     |br|
-     (3.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-config-values` command.
-     |br|
-     (4.) To uninstall the OXID eShop update component, execute the following command:
+
+     .. todo: #tbd: ensure update-component is tagged. Also after composer update you need cache clear to see the command, so better mention it here.
+          |br|
+          (2.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-user-payment-values` command.
+          |br|
+          (3.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-config-values` command.
+          |br|
+          (4.) To uninstall the OXID eShop update component, execute the following command:
 
         .. code:: bash
 
