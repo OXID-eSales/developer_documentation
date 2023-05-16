@@ -20,7 +20,7 @@ To activate the module execute the :code;`oe:module:activate` command.
 
 Use the ``shop-id`` parameter to activate the modules in the relevant subshop.
 |br|
-This parameter is optional for the shop with shop ID 1.:
+This parameter is optional for the shop with shop ID 1.
 
 The <module-id> is the ID of the module to be activated. You find it in the module's `metadata.php` file.
 
@@ -39,7 +39,7 @@ If you have installed the Community Edition as root package and upgraded to the 
 If you are not sure, try the standard path first.
 
 
-To deactivate the module, execute the following command:
+To deactivate a module, execute the following command:
 
 .. code:: bash
 

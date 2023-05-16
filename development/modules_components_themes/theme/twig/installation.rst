@@ -25,9 +25,21 @@ and click activation button.
 
 **4. Clean up the shop compile directory**
 
-   .. code:: bash
+.. todo: #Igor: verify: use console oe:cache:clear
 
-      rm -rf source/tmp/*
+To do so, in the root directory of the shop (``/oxideshop``), execute the console command depending on how you have installed the OXID eShop Edition:
 
-  .. todo:  #tbd: use console oe:cache:clear instead: as above: standard dep. on installation
+* If you have installed your OXID eShop Professional or Enterprise Edition with the metapackage, use the standard path:
+
+  .. code:: bash
+
+     vendor/bin/oe-console oe:cache:clear
+
+* If you have installed the Community Edition as root package and upgraded to the Professional or Enterprise Edition, use the following path:
+
+  .. code:: bash
+
+     bin/oe-console oe:cache:clear
+
+If you are not sure, try the standard path first.
 
