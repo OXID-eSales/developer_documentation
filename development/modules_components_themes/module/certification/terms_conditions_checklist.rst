@@ -3,7 +3,7 @@ Terms, conditions and checklist
 ===============================
 
 
-.. todo: #HR 7.x: section needs to be updated later
+.. todo: #tbd 7.x: section needs to be updated later
 
 General
 -------
