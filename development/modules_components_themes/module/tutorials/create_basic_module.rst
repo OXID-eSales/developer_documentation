@@ -14,5 +14,5 @@ setup for development can be found :doc:`here <module_setup>`.
 Demo Logger module could be used as a simple example
 `from GitHub repository. <https://github.com/OXID-eSales/logger-demo-module>`__
 
-PayPal module could be used as an advanced example
-`from GitHub repository. <https://github.com/OXID-eSales/PayPal>`__
+Module template module could be used as an advanced example
+`from GitHub repository. <https://github.com/OXID-eSales/module-template>`__

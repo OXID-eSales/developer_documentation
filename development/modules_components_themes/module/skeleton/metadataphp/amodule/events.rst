@@ -12,10 +12,10 @@ Mandatory
 Example
      .. code:: php
 
-         'events'       => [
-            'onActivate'   => '\OxidEsales\PayPalModule\Core\Events::onActivate',
-            'onDeactivate' => '\OxidEsales\PayPalModule\Core\Events::onDeactivate'
-          ],
+        'events'    => [
+            'onActivate' => '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onActivate',
+        'onDeactivate' => '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onDeactivate'
+        ],
 
 
 .. important::

@@ -251,7 +251,7 @@ containing information about enabled Codeception modules, Actor and so.
             depends: Db
         - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
             shop_path: '%SHOP_SOURCE_PATH%'
-            paths: 'Application/views/twig'
+            paths: 'Application/views/apex'
         - \OxidEsales\Codeception\Module\SelectTheme:
               depends:
                   - \OxidEsales\Codeception\Module\Database

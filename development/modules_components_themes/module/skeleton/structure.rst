@@ -108,6 +108,38 @@ Example:
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
     in your metadata.php.
 
+.. _modules_structure_language_files_module_options_file:
+
+Module options file
+"""""""""""""""""""
+
+The following format must be used for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_SHOP_MODULE_``.
+
+Example:
+
+.. code:: php
+
+        // name of the group
+        'SHOP_MODULE_GROUP_oemoduletemplate_main' => 'Settings',
+
+        'SHOP_MODULE_oemoduletemplate_GreetingMode' => 'Greeting mode',
+        'SHOP_MODULE_oemoduletemplate_GreetingMode_generic' => 'generic',
+        'SHOP_MODULE_oemoduletemplate_GreetingMode_personal' => 'personal',
+
+        'SHOP_MODULE_oemoduletemplate_BrandName' => 'Brand name',
+
+        'SHOP_MODULE_oemoduletemplate_LoggerEnabled' => 'Enable logger',
+
+        'SHOP_MODULE_oemoduletemplate_Timeout' => 'Set timeout',
+
+        'SHOP_MODULE_oemoduletemplate_Categories' => 'Add categories',
+
+        'SHOP_MODULE_oemoduletemplate_Channels' => 'Add channels',
+
+        'SHOP_MODULE_oemoduletemplate_Password' => 'Password',
+
+.. note::
+    While using 'module_options.php' for translation, the translations will only be loaded while being logged in as admin.
 
 Custom JavaScript / CSS / Images
 --------------------------------

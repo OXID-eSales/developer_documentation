@@ -102,11 +102,10 @@ where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.
   └── var
       └── configuration
           └── shops
-             └──1
-                      └──class_extension_chain.yaml
-                      └──modules
-                        └──oepaypal.yaml
-                        └──oegdproptin.yaml
+                └──1
+                    └──class_extension_chain.yaml
+                    └──modules
+                        └──oe_moduletemplate.yaml
 
 Configuration might be different in different environment (testing, staging or productive). To solve this problem
 OXID eShop uses another directory with configuration files located in `var/environment/<shop-id>/`.
@@ -133,57 +132,47 @@ Configuration files
 These files contains information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
 During the installation process all of the information from module `metadata.php` is being transferred to the
 configuration files. For example you have OXID eShop without any modules, so `var/configuration/shops/modules/` will be empty. When you will run
-installation let's say for OXID eShop PayPal module, files in `var/configuration/shops/` will be filled with information from
+installation let's say for OXID eShop Module Template module, files in `var/configuration/shops/` will be filled with information from
 `metadata.php`. An example of stripped down configuration file:
 
-Example: `var/configuration/shops/modules/1/oepaypal.yaml`
+Example: `var/configuration/shops/modules/1/oe_moduletemplate.yaml`
 
 .. code:: yaml
 
-        id: oepaypal
-        path: oe/oepaypal
-        version: 6.0.0
-        activated: false
-        title:
-          en: PayPal
-        description:
-          de: 'Modul für die Zahlung mit PayPal.'
-          en: 'Module for PayPal payment.'
-        lang: ''
-        thumbnail: logo.jpg
-        author: 'OXID eSales AG'
-        url: 'https://www.oxid-esales.com'
-        email: info@oxid-esales.com
-        templates:
-          order_paypal.tpl: views/admin/tpl/order_paypal.tpl
-        templateBlocks:
-          -
-            template: deliveryset_main.tpl
-            block: admin_deliveryset_main_form
-            file: /views/blocks/deliveryset_main.tpl
-          -
-            template: widget/sidebar/partners.tpl
-            block: partner_logos
-            file: /views/blocks/widget/sidebar/oepaypalpartnerbox.tpl
+    id: oe_moduletemplate
+    version: 1.0.0
+    activated: true
+    title:
+      en: 'OxidEsales Module Template (OEMT)'
+    description:
+      en: ''
+    lang: ''
+    thumbnail: pictures/logo.png
+    author: 'OXID eSales AG'
+    url: ''
+    email: ''
+    classExtensions:
+      OxidEsales\Eshop\Application\Model\User: OxidEsales\ModuleTemplate\Model\User
+      OxidEsales\Eshop\Application\Controller\StartController: OxidEsales\ModuleTemplate\Controller\StartController
+    controllers:
+      oemtgreeting: OxidEsales\ModuleTemplate\Controller\GreetingController
+    events:
+      onActivate: '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onActivate'
+      onDeactivate: '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onDeactivate'
+    moduleSettings:
+      oemoduletemplate_GreetingMode:
+        group: oemoduletemplate_main
+        type: select
+        value: generic
+        constraints:
+          - generic
+          - personal
+      oemoduletemplate_BrandName:
+        group: oemoduletemplate_main
+        type: str
+        value: Testshop
 
-        moduleSettings:
-          blOEPayPalStandardCheckout:
-            group: oepaypal_checkout
-            type: bool
-            value: true
-          blOEPayPalExpressCheckout:
-            group: oepaypal_checkout
-            type: bool
-            value: true
-        events:
-          onActivate: '\OxidEsales\PayPalModule\Core\Events::onActivate'
-          onDeactivate: '\OxidEsales\PayPalModule\Core\Events::onDeactivate'
-        controllers:
-          oepaypalexpresscheckoutdispatcher: OxidEsales\PayPalModule\Controller\ExpressCheckoutDispatcher
-          oepaypalstandarddispatcher: OxidEsales\PayPalModule\Controller\StandardDispatcher
-        classExtensions:
-          OxidEsales\Eshop\Core\ViewConfig: OxidEsales\PayPalModule\Core\ViewConfig
-          OxidEsales\Eshop\Application\Component\BasketComponent: OxidEsales\PayPalModule\Component\BasketComponent
+
 
 Also the file with the module class extension chain will be generated.
 
@@ -191,6 +180,7 @@ Example: `var/configuration/shops/1/class_extension_chain.yaml`
 
 .. code:: yaml
 
-        OxidEsales\Eshop\Core\ViewConfig:
-          - OxidEsales\PayPalModule\Core\ViewConfig
+        OxidEsales\Eshop\Application\Model\User:
+            - OxidEsales\ModuleTemplate\Model\User
+
 

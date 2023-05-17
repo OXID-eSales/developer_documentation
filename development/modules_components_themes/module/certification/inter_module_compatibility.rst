@@ -22,13 +22,13 @@ Namespaces
 ^^^^^^^^^^
 
 Also, your namespace (with the namespace of your module) should be used inside all of your classes.
-An example from the PayPal module:
+An example from the Module Template module:
 
 .. code:: php
 
-    namespace OxidEsales\PayPalModule\Controller;
+    namespace OxidEsales\ModuleTemplate\Controller;
 
-    class OrderController extends OrderController_parent
+    class GreetingController extends FrontendController
     {
         // ...
 
@@ -39,29 +39,39 @@ Parent calls
 ^^^^^^^^^^^^
 
 When writing extensions for methods that do variable assignments or execute other calls, be sure to add a parent call.
-This is an example from the oepaypal module class ``OrderController`` which is an extension for the shop's class with the
-namespace ``\OxidEsales\Eshop\Application\Controller\OrderController``.
+This is an example from the Demo logger module class ``Basket`` which is an extension for the shop's basket class with the
+namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
 
 .. code:: php
 
     /**
-     * Returns PayPal user
+     * Method overrides eShop method and adds logging functionality.
      *
-     * @return \OxidEsales\Eshop\Application\Model\User
+     * @param string      $productID
+     * @param int         $amount
+     * @param null|array  $sel
+     * @param null|array  $persParam
+     * @param bool|false  $shouldOverride
+     * @param bool|false  $isBundle
+     * @param null|string $oldBasketItemId
+     *
+     * @see \OxidEsales\Eshop\Application\Model\Basket::addToBasket()
+     *
+     * @return BasketItem|null
      */
-    public function getUser()
-    {
-        $user = parent::getUser();
+    public function addToBasket(
+        $productID,
+        $amount,
+        $sel = null,
+        $persParam = null,
+        $shouldOverride = false,
+        $isBundle = false,
+        $oldBasketItemId = null
+    ) {
+        $basketItemLogger = new BasketItemLogger(Registry::getConfig()->getLogsDir());
+        $basketItemLogger->logItemToBasket($productID);
 
-        $userId = $this->getSession()->getVariable("oepaypal-userId");
-        if ($this->isPayPal() && $userId) {
-            $payPalUser = oxNew(\OxidEsales\Eshop\Application\Model\User::class);
-            if ($payPalUser->load($userId)) {
-                $user = $payPalUser;
-            }
-        }
-
-        return $user;
+        return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
     }
 
 Method visibility

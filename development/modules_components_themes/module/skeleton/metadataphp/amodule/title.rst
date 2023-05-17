@@ -16,12 +16,12 @@ Example
     .. code:: php
 
         // single language
-        'title'        => 'PayPal',
+        'title'        => 'OxidEsales Module Template (OEMT)',
 
         // multiple languages
         'title'       => [
-            'de' => 'PayPal Zahlungen',
-            'en' => 'PayPal Payments',
+            'de' => 'OxidEsales Module Template (OEMT)',
+            'en' => 'OxidEsales Module Template (OEMT)',
         ],
 
 

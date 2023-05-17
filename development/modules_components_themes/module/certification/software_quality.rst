@@ -171,35 +171,12 @@ Modules with a CRAP index above 30 will not be accepted in the certification pro
 Extending views and frontend
 ----------------------------
 
-Blocks
-^^^^^^
-
-Use block definitions in the templates. This is not an obligation. The naming convention for new blocks is:
-``[vendor]_[module]_[blockname]``. In the templates, use blocks like that:
-
-.. code:: php
-
-    [{block name="thevendor_themodule_theblock"}][{/block}]
-
-All blocks information should be stored into :file:`views/blocks` directory:
-
-For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`,
-inside the module directory, the block file should be located in :file:`views/blocks/originalTemplateName_blockname.tpl`.
-
-When adding contents for blocks in the admin interface, blocks should be located in paths like
-:file:`views/blocks/admin/originalTemplateName_blockname.tpl`.
-
-Blocks should be used whenever the shop's functionality is extended to the frontend side and a requested function or method
-would not be available as long as the module is disabled. Using blocks allows you to move function calls into small snippet
-files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered
-a quality feature of a module.
-
 Module templates
 ^^^^^^^^^^^^^^^^
 
 All new templates must be registered in :file:`metadata.php` and should use naming convention:
 
-:file:`[vendor]_[module]_[templateName]`
+:file:`[module_id]_[template_name].html.twig`
 
 All templates should be stored in the same structure like shop templates are.
 
@@ -216,12 +193,96 @@ JavaScript files should be stored into:
 * :file:`assets/js/widgets` – all newly created widgets
 
 Naming convention for new widgets:
-:file:`[vendor]_[module]_[widgetName].js`
+:file:`[module_id]_[widget_name].js`
 
 .. important::
 
     All Javascript code must be in files in the widgets folder. Javascript code is not allowed directly in the template.
     In the template you are only allowed to do the assignment for widgets and do includes for the Javascript files you need.
+
+In order to include Javascript files in frontend, use:
+
+.. code:: php
+
+    {{ script({ include: oViewConf.getModuleUrl('[MODULE ID]', '[path where the needed file is]'), priority: 10 }) }}
+
+And for output:
+
+.. code:: php
+
+	{{ script() }}
+
+Assignment of a DOM element for a widget:
+
+.. code:: php
+
+    {{ script({ add: '$("dom element").neededWidget();' }) }}
+
+In this way Javascript files will be included correctly within the template.
+
+Using CSS and including .css files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CSS files should be stored in: :file:`assets/css/<filename>`
+
+CSS file naming convention is: :file:`[module_id]_[css_file_name].css`
+
+To include new CSS file from module needs to use:
+
+.. code:: php
+
+    {{ style({ include: oViewConf.getModuleUrl('module id', '[path where the needed file is]') }) }}
+
+
+And for output:
+
+.. code:: php
+
+    {{ style() }}
+
+.. important::
+
+    All needed styles must be stored into CSS file and must not be assigned directly in template.
+
+Language files and templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Individual language files and templates must be inside the module directory.
+
+Appendix for Smarty
+^^^^^^^^^^^^^^^^^^^
+
+Template files
+""""""""""""""
+
+Naming convention:
+:file:`[module_id]_[template_name].tpl`
+
+Blocks
+""""""
+
+Use block definitions in the templates. This is not an obligation. The naming convention for new blocks is:
+``[module_id]_[blockname]``. In the templates, use blocks like that:
+
+.. code:: php
+
+    [{block name="thevendor_themodule_theblock"}][{/block}]
+
+All blocks information should be stored into :file:`views/blocks` directory:
+
+For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`,
+inside the module directory, the block file should be located in :file:`views/blocks/module_id_blockname.tpl`.
+
+When adding contents for blocks in the admin interface, blocks should be located in paths like
+:file:`views/blocks/admin/module_id_blockname.tpl`.
+
+Blocks should be used whenever the shop's functionality is extended to the frontend side and a requested function or method
+would not be available as long as the module is disabled. Using blocks allows you to move function calls into small snippet
+files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered
+a quality feature of a module.
+
+Including .js files
+"""""""""""""""""""
 
 In order to include Javascript files in frontend, use:
 
@@ -235,20 +296,8 @@ And for output:
 
 	[{oxscript}]
 
-Assignment of a DOM element for a widget:
-
-.. code:: php
-
-    [{oxscript add="$('dom element').neededWidget();" priority=10}]
-
-In this way Javascript files will be included correctly within the template.
-
-Using CSS and including .css files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-CSS files should be stored in: :file:`assets/css/<filename>`
-
-CSS file naming convention is: :file:`[vendor]_[module]_[css file name].css`
+Including .css files
+""""""""""""""""""""
 
 To include new CSS file from module needs to use:
 
@@ -261,15 +310,6 @@ And for output:
 .. code:: php
 
     [{oxstyle}]
-
-.. important::
-
-    All needed styles must be stored into CSS file and must not be assigned directly in template.
-
-Language files and templates
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Individual language files and templates must be inside the module directory.
 
 Database access
 ---------------

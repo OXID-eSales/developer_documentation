@@ -41,7 +41,7 @@ There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket``
 .. note::
 
   You can also extend module classes, just like shop classes:
-  ``\OxidEsales\PayPalModule\Controller\OrderController::class => \ExampleVendor\ExampleModule\Controller\OrderController::class``
+  ``\OxidEsales\ModuleTemplate\Controller\GreetingController::class => \ExampleVendor\ExampleModule\Controller\GreetingController::class``
 
 The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
 

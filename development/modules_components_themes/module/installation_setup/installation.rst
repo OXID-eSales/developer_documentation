@@ -30,11 +30,11 @@ Composer installation
 ^^^^^^^^^^^^^^^^^^^^^
 
 Module can be installed with regular composer installation. Composer performs all necessary installation steps.
-Example command how to install OXID eShop PayPal module with composer:
+Example command how to install OXID eShop Module Template module with composer:
 
 .. code:: bash
 
-    composer require oxid-esales/paypal-module
+    composer require oxid-esales/module-template
 
 Manual installation
 ^^^^^^^^^^^^^^^^^^^

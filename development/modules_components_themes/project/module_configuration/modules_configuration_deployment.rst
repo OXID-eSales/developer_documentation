@@ -33,9 +33,9 @@ Let's say you are configuring modules on your local machine (how to do this plea
 Dealing with environment files
 ------------------------------
 
-Let's assume you have OXID eShop with PayPal module and you want to deploy your configuration from your development
-environment to staging environment. All settings in both environments are the same except ``sOEPayPalUsername``
-and ``sOEPayPalPassword``. So you would need all the time after deployment to change these values
+Let's assume you have OXID eShop with Module Template module and you want to deploy your configuration from your development
+environment to staging environment. All settings in both environments are the same except and ``oemoduletemplate_Password``.
+So you would need all the time after deployment to change these values
 as configuration files would be overwritten. To solve this problem, `environment` feature
 was introduced.
 
@@ -48,21 +48,19 @@ credentials for payment providers.
 
 So to solve the problem described in the beginning of the section follow these steps:
 
-1. On staging environment (assuming it's main shop with id `1` and the module id is `oepaypal`)
+1. On staging environment (assuming it's main shop with id `1` and the module id is `oe_moduletemplate`)
    file with the name of the module id inside the :file:`var/configuration/environment/shops/1/modules` directory.
-2. Copy and paste the part of your module settings from :file:`var/configuration/shops/1/modules/oepaypal.yaml`
-   to :file:`var/configuration/environment/shops/1/modules/oepaypal.yaml`.
-3. Write your new values  for ``sOEPayPalUsername`` and ``sOEPayPalPassword`` and save your file.
+2. Copy and paste the part of your module settings from :file:`var/configuration/shops/1/modules/oe_moduletemplate.yaml`
+   to :file:`var/configuration/environment/shops/1/modules/oe_moduletemplate.yaml`.
+3. Write your new value for ``oemoduletemplate_Password`` and save your file.
 
-Example of the environment file :file:`var/configuration/environment/shops/1/modules/oepaypal.yaml`:
+Example of the environment file :file:`var/configuration/environment/shops/1/modules/oe_moduletemplate.yaml`:
 
 .. code:: yaml
 
     moduleSettings:
-      sOEPayPalUsername:
-        value: 'staging_environment_username'
-      sOEPayPalPassword:
-        value: 'staging_environment_password'
+      oemoduletemplate_Password:
+        value: staging_environment_password
 
 Don't forget to clean module cache after updating yml files.
 
@@ -70,7 +68,7 @@ Don't forget to clean module cache after updating yml files.
 
     If you have environment configuration files in the OXID eShop you should not save settings via admin backend.
     If you do this, the environment specific values will be
-    merged into the base configuration and the environment configuration for the module will be renamed to `.bak` file like `oepaypal.yaml.bak`.
+    merged into the base configuration and the environment configuration for the module will be renamed to `.bak` file like `oe_moduletemplate.yaml.bak`.
     Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
 
 Next steps would be:
@@ -99,8 +97,7 @@ Example of the module yaml file:
 
 .. code:: yaml
 
-    id: oegdproptin
-    path: oe/gdproptin
+    id: oe_moduletemplate
     activated: true
     ...
 

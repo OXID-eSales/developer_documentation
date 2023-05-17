@@ -14,8 +14,10 @@ Generating docs locally
 Section describes how to generate documentation locally.
 
 #. First of all you'll need to install `sphinx <http://www.sphinx-doc.org/>`__
+#. Install the `sphinx_rtd_theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html>`__ (if it is missing)
 #. Install the `PHP highlighting extensions <https://github.com/fabpot/sphinx-php>`__
 #. Install the `plantuml extension <https://pypi.python.org/pypi/sphinxcontrib-plantuml>`__.
+    * In addition for mac you should install plantuml separately e.g. via `brew <https://formulae.brew.sh/formula/plantuml>`__.
    Either configure the path to the file `plantuml.jar` in the file `config.py` or put a wrapper script in your path
    like described in the link above.
 #. Clone documentation repository:

@@ -13,29 +13,64 @@ In order to install a module correctly, this plugin requires four fields to be d
 - :ref:`require <module_require-20170926>`
 - :ref:`autoload <module_autoload-20170926>`
 
-**PayPal module example:**
+**Template module example:**
 
 .. code:: json
 
     {
-        "name": "oxid-esales/paypal-module",
-        "description": "This is the PayPal module for the OXID eShop.",
+        "name": "oxid-esales/module-template",
+        "description": "",
         "type": "oxideshop-module",
-        "keywords": ["oxid", "modules", "eShop"],
-        "homepage": "https://www.oxid-esales.com/en/home.html",
-        "license": [
-            "GPL-3.0-only",
-            "proprietary"
+        "keywords": [
+            "oxid",
+            "modules",
+            "eShop"
         ],
+        "license": [
+            "GPL-3.0"
+        ],
+        "prefer-stable": true,
+        "prefer-dist": true,
         "require": {
-            "php": ">=8.0",
-            "ext-curl": "*",
-            "ext-openssl": "*",
-            "symfony/dotenv": "^5.1"
+            "php": "^8.0 | ^8.1"
+        },
+        "minimum-stability": "dev",
+        "require-dev": {
+            "phpstan/phpstan": "^1.9.14",
+            "squizlabs/php_codesniffer": "3.*",
+            "phpmd/phpmd": "^2.11",
+            "oxid-esales/oxideshop-ce": "dev-b-7.0.x"
+        },
+        "conflict": {
+            "oxid-esales/oxideshop-ce": "<7.0"
         },
         "autoload": {
             "psr-4": {
-                "OxidEsales\\PayPalModule\\": ""
+                "OxidEsales\\ModuleTemplate\\": "src/",
+                "OxidEsales\\ModuleTemplate\\Tests\\": "tests/"
+            }
+        },
+        "scripts": {
+            "phpcs": "phpcs --standard=tests/phpcs.xml",
+            "phpcbf": "phpcbf --standard=tests/phpcs.xml",
+
+            "phpstan": "phpstan -ctests/PhpStan/phpstan.neon analyse src/",
+            "phpstan-report": "phpstan -ctests/PhpStan/phpstan.neon analyse src/ --error-format=json > phpstan.report.json",
+
+            "phpmd": "phpmd src ansi tests/PhpMd/standard.xml",
+            "phpmd-excludestaticaccess": "phpmd src ansi tests/PhpMd/exclude-static-access-rule.xml",
+            "phpmd-report": "phpmd src json tests/PhpMd/standard.xml --reportfile tests/reports/phpmd.report.json",
+
+            "static": [
+                "@phpcs",
+                "@phpstan",
+                "@phpmd"
+            ]
+        },
+        "config": {
+            "allow-plugins": {
+                "oxid-esales/oxideshop-composer-plugin": true,
+                "oxid-esales/oxideshop-unified-namespace-generator": true
             }
         }
     }
@@ -51,7 +86,7 @@ E.g. in our example you could type
 
 .. code:: bash
 
-    composer require oxid-esales/paypal-module
+    composer require oxid-esales/module-template
 
 
 .. _module_type-20160524:

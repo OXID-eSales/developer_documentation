@@ -25,25 +25,13 @@ Example
 
     .. code:: php
 
-        'blocks' => [
+        'blocks'    => [
             [
-                'template' => 'widget/sidebar/partners.tpl',
-                'block'=>'partner_logos',
-                'file'=>'/views/blocks/oepaypalpartnerbox.tpl',
-                'position' => '2'
-            ],
-            [
-                'template' => 'page/checkout/basket.tpl',
-                'block'=>'basket_btn_next_top',
-                'file'=>'/views/blocks/oepaypalexpresscheckout.tpl',
-                'position' => '1'
-            ],
-            [
-                'template' => 'page/checkout/basket.tpl',
-                'block'=>'basket_btn_next_bottom',
-                'file'=>'/views/blocks/oepaypalexpresscheckout.tpl'
-            ],
-        ],
+                //It is possible to replace blocks by theme, to do so add 'theme' => '<theme_name>' key/value in here
+                'template' => 'page/shop/start.tpl',
+                'block' => 'start_welcome_text',
+                'file' => 'views/smarty/blocks/oemt_start_welcome_text.tpl'
+            ]
 
 Differences in block file definition per shop/metadata version.
 
