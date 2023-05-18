@@ -46,3 +46,23 @@ To generate diagrams using plantUml, use this command:
 */opt/plantuml.jar - path to your plantUml file.*
 
 PlantUml will generate .svg files, which can be used in documentation.
+
+Using OXID SDK for regenerating the documentation
+-------------------------------------------------
+
+By being in the root of the project (where Makefile is), install the documentation and required containers by using
+following commands:
+
+.. code:: bash
+
+    git clone https://github.com/OXID-eSales/developer_documentation docs
+    make addsphinxservice docpath='./docs'
+    docker-compose up --build -d sphinx
+
+To run documentation regeneration, use:
+
+.. code:: bash
+
+    make generate-docs
+
+Generated documentation will be available in `docs/build` folder
