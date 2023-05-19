@@ -83,7 +83,7 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       The update overwrites any changes you may have made to themes in the :file:`source` directory.
 
-      Background: During a update, Composer first loads the new data into the :file:`vendor` directory. Then the data is copied to the :file:`source` directory. This replaces the files of the store and the themes.
+      Background: During an update, Composer first loads the new data into the :file:`vendor` directory. Then the data is copied to the :file:`source` directory. This replaces the files of the store and the themes.
 
       Your individual customizations of the OXID store or changes to third-party modules are only safe from being overwritten by the update if you have made the changes through one of the OXID eShop's extension options (component, module, child theme).
 
