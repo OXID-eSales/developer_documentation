@@ -15,18 +15,34 @@ Possible structure of the module in the repository:
 
   .
    └── <module_directory>
-      ├── composer.json
-      ├── Controller
-      ├── metadata.php
-      ├── Model
       ├── assets
+      ├── migration
+      ├── src
+      .  ├── Controller
+      .  ├── Model
+      .  ├── orSomeDomain
+      .  .  └── ...
+      .  ...
+      ├── tests
+      .  ├── Codeception
+      .  ├── Integration
+      .  ├── Unit
+      .  ├── PhpStan
+      .  └── phpunit.xml
+      ├── translations
+      ├── views
+         └── admin_twig
+            └── ...
+         └── twig
+            └── ...
+      ├── composer.json
+      ├── CHANGELOG.md
+      ├── LICENSE
+      ├── metadata.php
       ├── README.md
-      ├── ...
-      └── tests
+      └── services.yaml
 
 .. _modules_structure_language_files:
-
-.. todo: #AF: check: structure is not up to date with what we recommend now (put code into src directory): AF
 
 Language files
 --------------
@@ -58,8 +74,8 @@ Frontend
 
 Translation files can be placed in the folders
 
-* ``Application/translations``
 * ``translations``
+* ``Application/translations`` (not recommended, deprecated but still supported way)
 
 inside your module directory.
 If you have a folder ``Application`` (first letter is capital) inside your module, translation files are searched
@@ -87,8 +103,7 @@ Admin
 
 Translation files can be placed in
 
-* ``Application/views/admin/``
-* ``views/admin/``
+* ``views/admin_twig/``
 
 Example:
 
@@ -96,15 +111,14 @@ Example:
 
   .
   └── <module_directory>
-      └── Application
-          └── views
-              └── admin
-                  └── de
-                      └── module_options.php
-                      └── myvendormymodule_admin_de_lang.php
-                  └── en
-                      └── module_options.php
-                      └── myvendormymodule_admin_en_lang.php
+      └── views
+          └── admin_twig
+              └── de
+                  └── module_options.php
+                  └── myvendormymodule_admin_de_lang.php
+              └── en
+                  └── module_options.php
+                  └── myvendormymodule_admin_en_lang.php
 
 .. note::
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
@@ -136,6 +150,5 @@ You can use something like this to include your scripts in to templates:
 
 .. code:: php
 
-  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]
-
-.. todo: #AF/Igor: change to twig template example
+  {{ script({ include: oViewConf.getModuleUrl("{moduleID}", "js/{js_fle_name}.js") }) }}
+  {{ style({ include: oViewConf.getModuleUrl('exampleModuleId', 'css/example.css') }) }}
