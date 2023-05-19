@@ -1,7 +1,7 @@
 Updating to OXID eShop 6.5
 ==========================
 
-If you have OXID eShop 6.4 or lower, before upgrading to version 7.0, update to OXID eShop 6.5 first.
+If you have OXID eShop 6.4 or lower, before updating to version 7.0, update to OXID eShop 6.5 first.
 
 To do so, check the following:
 
