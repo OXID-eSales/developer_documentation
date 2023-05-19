@@ -156,25 +156,25 @@ Example:
                 ├── composer.json
                 ├── metadata.php
                 ├── StartController.php
-                ├── Tests
-                │   ├── Codeception
-                │   │   ├── Acceptance
-                │   │   │   ├── _bootstrap.php
-                │   │   │   └── ExampleCest.php
-                │   │   ├── acceptance.suite.yml
-                │   │   ├── Config
-                │   │   │   └── params.php
-                │   │   ├── _data
-                │   │   │   ├── dump.sql
-                │   │   │   └── fixtures.php
-                │   │   ├── _output
-                │   │   └── _support
-                │   │       ├── AcceptanceTester.php
-                │   │       ├── _generated
-                │   │       │   └── AcceptanceTesterActions.php
-                │   │       └── Helper
-                │   │           └── Acceptance.php
-                │   └── codeception.yml
+                ├── tests
+                │  ├── Codeception
+                │  │  ├── Acceptance
+                │  │  │  ├── _bootstrap.php
+                │  │  │  └── ExampleCest.php
+                │  │  ├── acceptance.suite.yml
+                │  │  ├── Config
+                │  │  │  └── params.php
+                │  │  ├── _data
+                │  │  │  ├── dump.sql
+                │  │  │  └── fixtures.php
+                │  │  ├── _output
+                │  │  └── _support
+                │  │     ├── AcceptanceTester.php
+                │  │     ├── _generated
+                │  │     │  └── AcceptanceTesterActions.php
+                │  │     └── Helper
+                │  │        └── Acceptance.php
+                │  └── codeception.yml
                 └── views
                     └── blocks
                         └── mymodule_block.tpl
