@@ -1,5 +1,5 @@
-Install smarty template engine
-==============================
+Switch to legacy smarty template engine
+=======================================
 
 The Smarty template engine is not part of the OXID eShop Compilation Version 7. Nevertheless it is still
 possible to install the smarty template engine and use smarty compatible themes.
@@ -10,8 +10,8 @@ This section will explain how to install smarty template engine assuming you hav
 already installed from metapackage. Example will be shown for Enterprise Edition.
 
 
-Adapt root composer.json
-------------------------
+Build your own metapackage
+--------------------------
 
 We have a little shortcoming of composer with removing components via composer which are not required
 by root package. Composer cannot do that. Which means we first have to change our root composer.json
@@ -69,6 +69,9 @@ Ensure demodata is compatible with smarty theme:
     composer require --no-update oxid-esales/oxideshop-demodata-pe v7.1.0
     composer require --no-update oxid-esales/oxideshop-demodata-ee v7.1.0
 
+.. note:: In a shop installed from OXID eShop 7 metapackage, demodata for all editions will be included but only
+   metadata compatible with your edition will be installable by demodata-installer. Please decide if and which
+   demodata packages you would liek to install.
 
 Prepare installation of smarty template engine:
 
