@@ -1,111 +1,129 @@
-Switch to legacy smarty template engine
-=======================================
+Switching to the legacy Smarty template engine
+==============================================
 
-The Smarty template engine is not part of the OXID eShop Compilation Version 7. Nevertheless it is still
-possible to install the smarty template engine and use smarty compatible themes.
+If required, install the Smarty template engine.
 
-.. important:: We strongly recommend to update to twig template engine and twig compatible themes.
+We assume you have OXID eShop Version 7 already installed from the metapackage.
 
-This section will explain how to install smarty template engine assuming you have OXID eShop Version 7
-already installed from metapackage. Example will be shown for Enterprise Edition.
+We will give an example for the Enterprise Edition.
+
+|background|
+
+The Smarty template engine is not part of the OXID eShop Compilation Version 7.
+
+Nevertheless, you can install the Smarty template engine and use Smarty-compatible themes.
+
+.. important:: We strongly recommend using the Twig template engine and Twig-compatible themes.
 
 
-Build your own metapackage
---------------------------
+Building a custom metapackage
+-----------------------------
 
 We have a little shortcoming of composer with removing components via composer which are not required
-by root package. Composer cannot do that. Which means we first have to change our root composer.json
-from including metapackages to directly include all currently installed packages.
+by the root package. Composer cannot do that.
 
-Run the following command in shop root directory
+This means, you first have to change your root :file:`composer.json` file from including metapackages to directly including all packages currently installed.
 
-.. code:: shell
+|procedure|
 
-   composer show --locked
+.. todo: #tbd: add screenshots
 
-It will show all components currently installed with exact versions.
-Take this output and convert it into composer.json format
+1. In the OXID eShop`s root directory, run the following command:
 
-.. code:: shell
+   .. code:: shell
 
-   "oxid-esales/oxideshop-ce":"v7.0.1",
-   "oxid-esales/oxideshop-composer-plugin":"v7.1.0",
-   "oxid-esales/oxideshop-db-views-generator":"v2.1.0",
-   "oxid-esales/oxideshop-demodata-ce":"v8.0.0",
-   ....
+      composer show --locked
 
-Please remove all occurences of oxideshop metapackages from this list as their requirements are already included.
-Now replace  "require": { ...} section in your root composer.json with this content.
-Backup your current composer.lock file.
+   All components currently installed are displayed with their exact version numbers.
 
-Run composer update:
+#. Convert this output into :code:`composer.json` format:
 
-.. code:: shell
+   .. code:: shell
 
-   composer update
+      "oxid-esales/oxideshop-ce":"v7.0.1",
+      "oxid-esales/oxideshop-composer-plugin":"v7.1.0",
+      "oxid-esales/oxideshop-db-views-generator":"v2.1.0",
+      "oxid-esales/oxideshop-demodata-ce":"v8.0.0",
+      ....
 
-Compare current composer.lock file with the backupped one. Only difference should be the missing
-oxideshop-metapackage-* entries.
+#. Remove all occurrences of Oxid eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
+#. Replace the :code:`"require": { ...}` section in your root :file:`composer.json` file with this content.
+#. Backup your current :file:`composer.lock` file.
+#. Run composer update:
 
+   .. code:: shell
 
-Remove twig and add smarty components
--------------------------------------
+      composer update
 
-Next step is to remove the twig components
+#. Compare the current :file:`composer.lock` file with the one you have backed up.
 
-.. code:: shell
-
-    composer remove --no-update --update-with-dependencies oxid-esales/twig-admin-theme
-    composer remove --no-update --update-with-dependencies oxid-esales/twig-component-ee
-    composer remove --no-update --update-with-dependencies oxid-esales/twig-component-pe
-    composer remove --no-update --update-with-dependencies oxid-esales/twig-component
-    composer remove --no-update --update-with-dependencies twig/twig
-
-Ensure demodata is compatible with smarty theme:
-
-.. code:: shell
-
-    composer require --no-update oxid-esales/oxideshop-demodata-ce v7.1.0
-    composer require --no-update oxid-esales/oxideshop-demodata-pe v7.1.0
-    composer require --no-update oxid-esales/oxideshop-demodata-ee v7.1.0
-
-.. note:: In a shop installed from OXID eShop 7 metapackage, demodata for all editions will be included but only
-   metadata compatible with your edition will be installable by demodata-installer. Please decide if and which
-   demodata packages you would liek to install.
-
-Prepare installation of smarty template engine:
-
-.. code:: shell
-
-    composer config repositories.oxid-esales/smarty-component-pe \
-            --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-pe.git"}'
-
-    composer config repositories.oxid-esales/smarty-component-ee \
-            --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-ee.git"}'
-
-    composer require --no-update oxid-esales/smarty-component v1.0.0
-    composer require --no-update oxid-esales/smarty-component-pe v1.0.0
-    composer require --no-update oxid-esales/smarty-component-ee v1.0.0
+   Make sure the only difference is the missing :code:`oxideshop-metapackage-*` entries.
 
 
-Prepare installation of compatible themes:
+Removing Twig and adding Smarty components
+------------------------------------------
 
-.. code:: shell
+Remove Twig and add Smarty components.
 
-    composer require --no-update oxid-esales/smarty-admin-theme v1.0.0
-    composer require --no-update oxid-esales/wave-theme v3.0.0
+|procedure|
+
+1. Remove the Twig components:
+
+   .. code:: shell
+
+      composer remove --no-update --update-with-dependencies oxid-esales/twig-admin-theme
+      composer remove --no-update --update-with-dependencies oxid-esales/twig-component-ee
+      composer remove --no-update --update-with-dependencies oxid-esales/twig-component-pe
+      composer remove --no-update --update-with-dependencies oxid-esales/twig-component
+      composer remove --no-update --update-with-dependencies twig/twig
+
+#. Ensure that the demo data is compatible with the Smarty theme:
+
+   .. note:: In a shop installed from OXID eShop 7 metapackage, demo data for all editions will be included but only
+      metadata compatible with your edition will be installable by the demodata-installer.
+
+      Decide if and which demodata packages you wish to install.
+
+   .. code:: shell
+
+      composer require --no-update oxid-esales/oxideshop-demodata-ce v7.1.0
+      composer require --no-update oxid-esales/oxideshop-demodata-pe v7.1.0
+      composer require --no-update oxid-esales/oxideshop-demodata-ee v7.1.0
+
+#. Prepare the Smarty template engine installation:
+
+   .. code:: shell
+
+      composer config repositories.oxid-esales/smarty-component-pe \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-pe.git"}'
+
+      composer config repositories.oxid-esales/smarty-component-ee \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-ee.git"}'
+
+      composer require --no-update oxid-esales/smarty-component v1.0.0
+      composer require --no-update oxid-esales/smarty-component-pe v1.0.0
+      composer require --no-update oxid-esales/smarty-component-ee v1.0.0
+
+#. Prepare the installation of a compatible theme, Wave, for example:
+
+   .. code:: shell
+
+      composer require --no-update oxid-esales/smarty-admin-theme v1.0.0
+      composer require --no-update oxid-esales/wave-theme v3.0.0
 
 
-Now that everything is prepared, please run
+   The preparation is finished.
 
-.. code:: shell
+#. To install Smarty, execute the following command:
 
-   composer update
+   .. code:: shell
 
-Please clear the shop caches
+      composer update
 
-.. code:: shell
+#. Clear the shop caches:
 
-   ./vendor/bin/oe-console oe:cache:clear
+   .. code:: shell
 
-Then log in to admin backend and activate a smarty compatible theme (wave in our example).
+      ./vendor/bin/oe-console oe:cache:clear
+
+#. Log in to the admin backend and activate the Smarty-compatible theme (Wave, in our example).
