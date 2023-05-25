@@ -17,8 +17,6 @@ Example
             'onDeactivate' => '\OxidEsales\PayPalModule\Core\Events::onDeactivate'
           ],
 
-.. todo: #Igor: please change from PayPal to generic example or oxid 7 compilation module
-
 .. important::
 
     If you want to use your module services in the `onActivate` method the `ContainerFactory` should not be used for

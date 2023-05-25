@@ -13,8 +13,6 @@ In order to install a module correctly, this plugin requires four fields to be d
 - :ref:`require <module_require-20170926>`
 - :ref:`autoload <module_autoload-20170926>`
 
-.. todo: #Support/#Igor: provide up-to-date example; decide how urgent it is;  needs to be updated (theroretical module instead of PayPal, symfony 6)
-
 **PayPal module example:**
 
 .. code:: json

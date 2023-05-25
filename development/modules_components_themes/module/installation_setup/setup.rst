@@ -24,8 +24,6 @@ This parameter is optional for the shop with shop ID 1.
 
 The <module-id> is the ID of the module to be activated. You find it in the module's `metadata.php` file.
 
-.. todo: #Igor: verify --shop-id parameter -- tbd (8:30): please add info about how to activate module in subshop via comandline (--shop-id parameter)
-
 .. code:: bash
 
     vendor/bin/oe-console oe:module:activate <module-id> [--shop-id=<subshop-id>]

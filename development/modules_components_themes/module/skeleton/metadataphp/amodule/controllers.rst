@@ -29,8 +29,6 @@ Example
 
        Now you can route requests to the module controller e.g. in a template:
 
-.. todo: #Igor: provide twig style template example instead of smarty
-
     .. code:: php
 
            <form action="[{$oViewConf->getSelfActionLink()}]" name="MyModuleControllerAction" method="post" role="form">
