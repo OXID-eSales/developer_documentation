@@ -212,8 +212,7 @@ Module configuration and class chain
 .. important:: The default class extension chains are depending on the order in which composer installed those modules. In case you need a customized order
    for class extensions, you can use your customized class chains from :file:`<shop-id>.yaml` file that you have backed up in step 1 as an example.
 
-   b. Install Smarty.
-      |br|
-      To do so, install the following components in the following order:
+In case you would like to reuse modules settings from the :file:`<shop-id>.yaml` file that you have backed up in step 1, please refer to
+:ref:`Configuring modules via providing configuration files<configuring_module_via_configuration_files-20190829>`.
 
 
