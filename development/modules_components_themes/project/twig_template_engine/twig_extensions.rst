@@ -113,17 +113,6 @@ at the bottom of the page.. Example of use::
 
 All parameters are passed in associative array as first argument.
 
-SmartyCycleExtension
-^^^^^^^^^^^^^^^^^^^^
-
-This extension introduces ``smarty_cycle`` function which covers ``cycle`` Smarty plugin. Example of use::
-
-    {{ smarty_cycle(["val1", "val2", "val3"], { print: false, advance: false, reset: true }) }}
-
-First argument is array of values, and the second one is associative array of parameters. The reason why Smarty
-``cycle`` plugin is implemented here as ``smarty_cycle`` is Twig has own ``cycle`` function but working differently:
-[[link to Twig cycle documentation]]
-
 StyleExtension
 ^^^^^^^^^^^^^^
 
@@ -258,4 +247,3 @@ Escape is internal Twig filter but it can be extended and so is done in OXID. Cu
 be found under source\Internal\Twig\Escaper directory. Example of use::
 
     {{ 'example@me.com'|escape('mail') }}
-
