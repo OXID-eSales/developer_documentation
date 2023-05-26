@@ -22,52 +22,75 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
 |procedure|
 
+0. .. important:: Make a backup of your database. Make a backup of your current shop installation (all files etc.). We recommend to test the update procedure on a copy/development installation
+      of your shop first, in order to become familiar with the process.
+
+   .. note:: To execute commands via commandline, please open a shell  in the shop root directory and run commands in there.
+
 1. In the :file:`var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|
-   If you don't have subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
-   |br|
-   Store the folder/file where it cannot be overwritten by the following update process.
+   If your OXID eShop has no subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
+   Backup the folder/file to where it cannot be overwritten by the following update process.
 
 #. Decode the values in the following data table columns:
 
    * table :code:`oxuserpayments`: column :code:`oxvalue`
    * table :code:`oxconfig`: column :code:`oxvarvalue`
 
-   To do so, you have the following options:
-
-   * Do it manually via an SQL query.
-   * Recommended: Do it automatically as described in the following:
+   This can be done automatically as described in the following steps:
 
      .. important::
-        In the following, make sure that you follow the order of the steps.
+        **Make sure that you follow the order of the steps.**
 
-        Background: After executing the :code:`decode-config-values` command, the shop and console will be down.
+        Background: After executing the :code:`decode-config-values` command, the shop and console will be down until it is fully updated to OXID 7.
 
      (1.) Install the `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
+
+          .. code:: bash
+
+             composer require --no-interaction oxid-esales/oxideshop-update-component:^v2.0.0
+
+     (2.) Clean the shop cache by calling the appropriate console command from shop root directory. Please keep in mind, that the path to console command will be :code:`./bin/oe-console` in case shop was installed with CE as root package, and :code:`./vendor/bin/oe-console` in case shop was installed from metapackage.
+
+          .. code:: bash
+
+            ./vendor/bin/oe-console oe:cache:clear
+
      |br|
-     (2.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-user-payment-values` command.
+     (2.) Execute the :code:`oe:oxideshop-update-component:decode-user-payment-values` command:
+
+          .. code:: bash
+
+            ./vendor/bin/oe-console oe:oxideshop-update-component:decode-user-payment-values
+
      |br|
-     (3.) Execute the :code:`bin/oe-console oe:oxideshop-update-component:decode-config-values` command.
+     (3.) Execute the :code:`oe:oxideshop-update-component:decode-config-values` command:
+
+          .. code:: bash
+
+            ./vendor/bin/oe-console oe:oxideshop-update-component:decode-config-values
+
      |br|
      (4.) To uninstall the OXID eShop update component, execute the following command:
 
-        .. code:: bash
+          .. code:: bash
 
-           composer remove --update-no-dev oxid-esales/oxideshop-update-component
+            composer remove --update-no-dev --no-plugins --no-interaction oxid-esales/oxideshop-update-component
 
 #. Delete the :file:`var/generated/generated_services.yaml` file.
 
-#. In the :file:`composer.json` file, update the metapackage version.
+#. In the :file:`composer.json` file, update the metapackage version depending on your current Edition of OXID eShop
 
    .. code:: bash
 
-      composer require --no-update oxid-esales/oxideshop-metapackage-ce:v7.0.0
+      composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.0.0
+
+
+
 
 #. Update the dependencies.
    |br|
-   To do so, in the main store directory, open a shell and run the composer command below.
-   |br|
-   This will update all the required libraries.
+   Please run the composer command below to update all the required libraries.
    |br|
    Specify the :command:`--no-dev` parameter if you do not need the development-related files.
 
@@ -75,7 +98,9 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       composer update --no-plugins --no-scripts --no-dev
 
-#. To get the new compilation and run the update, run the scripts.
+   .. note:: This command will ensure all required libraries are updated by composer. The shop is not yet fully updated to OXID 7 at this point. For this we need to complete the next steps as well.
+
+#. To fully install the new compilation for OXID eShop 7, composer now also needs to run the scripts and plugins.
 
    To do so, execute the command given below the following notes.
 
@@ -85,7 +110,7 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       Background: During an update, Composer first loads the new data into the :file:`vendor` directory. Then the data is copied to the :file:`source` directory. This replaces the files of the store and the themes.
 
-      Your individual customizations of the OXID store or changes to third-party modules are only safe from being overwritten by the update if you have made the changes through one of the OXID eShop's extension options (component, module, child theme).
+      Your individual customizations of the OXID eShop or changes to third-party modules are only safe from being overwritten by the update if you have made the changes through one of the OXID eShop’s extension options (component, module, child theme).
 
       For more information, see the developer documentation under
 
@@ -103,14 +128,16 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       Recommendations:
 
-      * If you use the extension capabilities of OXID eShop, follow the instructions in the `developer documentation <https://docs.oxid-esales.com/developer/en/latest/>`_.
-      * To create modules or child themes, get support from an OXID partner agency. This will make any future updates easier for you.
-        |br|
-        For a list of OXID certified partner agencies, visit `oxid-esales.com/partner/partner-find/ <https://www.oxid-esales.com/partner/partner-finden/>`_.
+      * If you use the extension capabilities of OXID eShop, follow the instructions in the `developer documentation <https://docs.oxid-esales.com/developer/en/latest/development/modules_components_themes/>`_.
 
    .. code:: bash
 
       composer update --no-dev
+
+   .. important:: After this step, OXID eShop Compilation 7 and all modules delivered with the compilation will be installed but not yet activated.
+
+
+.. todo:: start todo
 
 #. Adjust the module configuration files.
 
@@ -131,7 +158,7 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
                      └──1
                               └──class_extension_chain.yaml
                               └──modules
-                                └──oepaypal.yaml
+                                └──oxps_usercentrics.yaml
                                 └──oegdproptin.yaml
 
    b. Open the corresponding :file:`<shop-id>.yaml` file that you have backed up in step 1.
@@ -185,62 +212,49 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
          |br|
          If the :code:`configured` parameter value in the :file:`<shop-id>.yaml` file  is :code:`true`/:code:`false` (:ref:`update7003`, item 1), ensure that the :code:`configured` parameter value in the :file:`<module name>.yaml` file is set to :code:`true`/:code:`false` correspondingly (:ref:`update7004`, item 1).
 
+
+.. todo:: stop todo
+
 #. Migrate the database.
    |br|
    To do so, execute the following command.
 
    .. code:: bash
 
-      vendor/bin/oe-eshop-db_migrate migrations:migrate
+      ./vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 #. Regenerate the database views.
    |br|
-   Background: Depending on the changes and store edition, the store may go into maintenance mode after the update.
+   Background: This is a safety precaution. After database changes like done in previous step by migrations, views need to be updated.
+   Otherwise you risk the shop going into Maintenance Mode.
    |br|
    To prevent this, regenerate the database views with the following command:
 
    .. code:: bash
 
-      vendor/bin/oe-eshop-db_views_generate
+      ./vendor/bin/oe-eshop-db_views_generate
+
+#. Doublecheck php error reporting settings. With OXID eShop 7 , error_reporting() calls have been removed from bootstrap.php.
+   We recomment to set
+
+   .. code:: bash
+
+      error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
+      ini_set('display_errors', '0');
 
 #. To clean up your system, from the :file:`source/modules` folder, remove the subfolders containing the previously installed, now unused module files.
    |br|
    Do not delete the :file:`functions.php.dist` file.
 
-#. To ensure that the cached items do not contain incompatibilities, empty the :file:`tmp` directory.
+#. To ensure that the cached items do not contain incompatibilities, clear the cache files in :file:`tmp` directory.
    |br|
    To do so, execute the following command.
 
    .. code:: bash
 
-      rm -rf source/tmp/*
+      ./vendor/bin/oe-console oe:cache:clear
 
-#. To use your OXID eShop with the Twig template engine, in the Admin panel, under :menuselection:`Extensions --> Themes`, activate your new Twig theme (APEX Theme).
+#. The OXID eShop Compilation 7 comes with the Twig template engine and the APEX theme. PLease ensure that you theme is compatible with twig engine.
+   In the Admin panel, under :menuselection:`Extensions --> Themes`, activate your Twig compatible theme (APEX Theme in default installation case).
 
 #. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
-
-#. Optional (not recommended): To use the Smarty template engine, do the following:
-
-   a. Uninstall Twig.
-      |br|
-      To do so, remove the following components in the following order:
-
-      * :technicalname:`apex-theme`
-      * :technicalname:`twig-admin-theme`
-
-      * depending on your OXID eShop installation:
-
-        * :technicalname:`twig-component`
-        * :technicalname:`twig-component-pe`
-        * :technicalname:`twig-component-ee`
-
-   b. Install Smarty.
-      |br|
-      To do so, install the following components in the following order:
-
-      * depending on your OXID eShop installation:
-         * :technicalname:`smarty-component-ee`
-         * :technicalname:`smarty-component-pe`
-         * :technicalname:`smarty-component`
-      * :technicalname:`smarty-admin-theme`
-      * a smarty-compatible theme, the :technicalname:`wave-theme`, for example
