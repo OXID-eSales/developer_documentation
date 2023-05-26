@@ -80,31 +80,13 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 #. Delete the :file:`var/generated/generated_services.yaml` file.
 
 #. In the :file:`composer.json` file, update the metapackage version depending on your current Edition of OXID eShop.
-   In case of Enterprise Edition, please register PE and EE metapackage repositories via composer.
-   In case of Professional Edition, only PE metapackage repository needs to be registered. For Community Edition,
-   packagist will automatically handle the requirement.
-
-   .. code:: bash
-
-      composer config repositories.oxid-esales/oxideshop-metapackage-pe \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_metapackage_pe.git"}'
-
-      composer config repositories.oxid-esales/oxideshop-metapackage-ee \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_metapackage_ee.git"}'
-
-      composer config repositories.oxid-esales/oxideshop-demodata-pe \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_demodata_pe.git"}'
-
-      composer config repositories.oxid-esales/oxideshop-demodata-ee \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_demodata_ee.git"}'
-
 
    .. code:: bash
 
       composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.0.0
 
    .. important:: Please remove or update the following packaged from require-devs section of your composer.json.
-      Those packages as given in OXID eSHop 6.5 metapackages are not compatible with OXID eShop 7.
+      Those packages as given in OXID eShop 6.5 metapackages are not compatible with OXID eShop 7.
 
    .. code::
 
