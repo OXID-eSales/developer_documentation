@@ -1,12 +1,12 @@
-Upgrading from OXID eShop 6.5 to OXID eShop 7.0
+Updating from OXID eShop 6.5 to OXID eShop 7.0
 ===============================================
 
-Upgrade your OXID eShop to OXID eShop version 7.
+Update your OXID eShop to OXID eShop version 7.
 
 
 |prerequisites|
 
-Before you upgrade to OXID eShop version 7, you have make sure that you meet the technical requirements for the update:
+Before you update to OXID eShop version 7, you have make sure that you meet the technical requirements for the update:
 
 * You have Oxid eShop Version 6.5.
 
@@ -26,6 +26,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
    |br|
    If you don't have subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
    |br|
+   Store the folder/file where it cannot be overwritten by the following update process.
    Store the folder/file where it cannot be overwritten by the following upgrade process.
    |br|
    Backup your shop installation as well as the database.
@@ -85,9 +86,9 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
    .. note::
 
-      The upgrade overwrites any changes you may have made to themes in the :file:`source` directory.
+      The update overwrites any changes you may have made to themes in the :file:`source` directory.
 
-      Background: During a store upgrade, Composer first loads the new data into the :file:`vendor` directory. Then the data is copied to the :file:`source` directory. This replaces the files of the store and the themes.
+      Background: During an update, Composer first loads the new data into the :file:`vendor` directory. Then the data is copied to the :file:`source` directory. This replaces the files of the store and the themes.
 
       Your individual customizations of the OXID store or changes to third-party modules are only safe from being overwritten by the update if you have made the changes through one of the OXID eShop's extension options (component, module, child theme).
 
@@ -100,7 +101,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
       **Confirming queries**.
 
-      During the upgrade you will be asked which packages may be overwritten.
+      During the update you will be asked which packages may be overwritten.
 
       To ensure that only compatible and tested packages are installed and to avoid inconsistencies and malfunctions caused by incorrectly implemented modules or themes, you must confirm the queries with :technicalname:`Yes`.
 
@@ -139,22 +140,22 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
                                 └──oegdproptin.yaml
 
    b. Open the corresponding :file:`<shop-id>.yaml` file that you have backed up in step 1.
-   c. From the :file:`<shop-id>.yaml` file, copy and paste the content below :code:`moduleChains:classExtensions` (:ref:`upgrade7001`) into the :file:`class_extension_chain.yaml` file.
+   c. From the :file:`<shop-id>.yaml` file, copy and paste the content below :code:`moduleChains:classExtensions` (:ref:`update7001`) into the :file:`class_extension_chain.yaml` file.
 
-      .. _upgrade7001:
+      .. _update7001:
 
-      .. figure:: ../../media/screenshots/upgrade7001.png
+      .. figure:: ../../media/screenshots/update7001.png
          :alt: Copying the moduleChains:classExtensions content
          :width: 650
          :class: with-shadow
 
          Fig.: Copying the moduleChains:classExtensions content
 
-      In the :file:`class_extension_chain.yaml` file, make sure the lines are indented correctly (:ref:`upgrade7002`).
+      In the :file:`class_extension_chain.yaml` file, make sure the lines are indented correctly (:ref:`update7002`).
 
-      .. _upgrade7002:
+      .. _update7002:
 
-      .. figure:: ../../media/screenshots/upgrade7002.png
+      .. figure:: ../../media/screenshots/update7002.png
          :alt: Indenting the pasted moduleChains:classExtensions content
          :width: 650
          :class: with-shadow
@@ -163,22 +164,22 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
    d. For each module (GDPR Opt-in, in our following example), do the following:
 
-      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`upgrade7003`, item 2) and replace the corresponding block in the corresponding :file:`var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
+      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`update7003`, item 2) and replace the corresponding block in the corresponding :file:`var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
 
-         .. _upgrade7003:
+         .. _update7003:
 
-         .. figure:: ../../media/screenshots/upgrade7003.png
+         .. figure:: ../../media/screenshots/update7003.png
             :alt: Copying the moduleSettings block
             :width: 650
             :class: with-shadow
 
             Fig.: Copying the moduleSettings block
 
-      In the :file:`<module name>.yaml` file, make sure the lines are indented correctly (:ref:`upgrade7004`, item 2).
+      In the :file:`<module name>.yaml` file, make sure the lines are indented correctly (:ref:`update7004`, item 2).
 
-         .. _upgrade7004:
+         .. _update7004:
 
-         .. figure:: ../../media/screenshots/upgrade7004.png
+         .. figure:: ../../media/screenshots/update7004.png
             :alt: Adjusting the module configuration file
             :width: 650
             :class: with-shadow
@@ -187,7 +188,7 @@ Before you upgrade to OXID eShop version 7, you have make sure that you meet the
 
       b. Verify the activation status.
          |br|
-         If the :code:`configured` parameter value in the :file:`<shop-id>.yaml` file  is :code:`true`/:code:`false` (:ref:`upgrade7003`, item 1), ensure that the :code:`configured` parameter value in the :file:`<module name>.yaml` file is set to :code:`true`/:code:`false` correspondingly (:ref:`upgrade7004`, item 1).
+         If the :code:`configured` parameter value in the :file:`<shop-id>.yaml` file  is :code:`true`/:code:`false` (:ref:`update7003`, item 1), ensure that the :code:`configured` parameter value in the :file:`<module name>.yaml` file is set to :code:`true`/:code:`false` correspondingly (:ref:`update7004`, item 1).
 
 #. Migrate the database.
    |br|
