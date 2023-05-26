@@ -8,9 +8,9 @@ Update your OXID eShop to OXID eShop version 7.
 
 Before you update to OXID eShop version 7, you have make sure that you meet the technical requirements for the update:
 
-* You have Oxid eShop Version 6.5.
+* You have OXID eShop Version 6.5.
 
-  To get to Oxid eShop Version 6.5, you have performed the required incremental updates.
+  To get to OXID eShop Version 6.5, you have performed the required incremental updates.
 
   For more information, see :ref:`update/eshop_from_65_to_7/update-to-6.5:Updating to OXID eShop 6.5`.
 
