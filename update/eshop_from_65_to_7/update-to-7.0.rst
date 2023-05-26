@@ -79,11 +79,33 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
 #. Delete the :file:`var/generated/generated_services.yaml` file.
 
-#. In the :file:`composer.json` file, update the metapackage version depending on your current Edition of OXID eShop
+#. In the :file:`composer.json` file, update the metapackage version depending on your current Edition of OXID eShop.
+   In case of Enterprise Edition, please register PE and EE metapackage repositories via composer.
+   In case of Professional Edition, only PE metapackage repository needs to be registered. For Community Edition,
+   packagist will automatically handle the requirement.
+
+   .. code:: bash
+
+      composer config repositories.oxid-esales/oxideshop-metapackage-pe \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_metapackage_pe.git"}'
+
+      composer config repositories.oxid-esales/oxideshop-metapackage-ee \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_metapackage_pe.git"}'
+
 
    .. code:: bash
 
       composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.0.0
+
+   .. important:: Please remove or update the following packaged from require-devs section of your composer.json.
+      Those packages as given in OXID eSHop 6.5 metapackages are not compatible with OXID eShop 7.
+
+   .. code::
+
+        "oxid-esales/testing-library": "^v8.2.0",
+        "incenteev/composer-parameter-handler": "^v2.0.0",
+        "oxid-esales/oxideshop-ide-helper": "^4.2.0",
+        "oxid-esales/azure-theme": "^v1.4.2"
 
 #. Update the dependencies.
    |br|
@@ -189,16 +211,15 @@ Module configuration and class chain
           └── var
               └── configuration
                   └── shops
-                     └──1
-                              └──class_extension_chain.yaml
-                              └──modules
-                                └──oxps_usercentrics.yaml
-                                └──oegdproptin.yaml
+                     └──1
+                        └──class_extension_chain.yaml
+                        └──modules
+                           └──oxps_usercentrics.yaml
+                           └──oegdproptin.yaml
 
 
 .. important:: Please keep in mind that in the current state of the Shop update only OXID eShop 7 compilation modules are installed.
    So now please install additionally needed compatible modules for OXID eShop 7 if necessary.
-   The modules will very likely have also been updated to a new major version with different additional settings and class chain extension.
 
 .. important:: The default class extension chains are depending on the order in which composer installed those modules. In case you need a customized order
    for class extensions, you can use you customized class chains from :file:`<shop-id>.yaml` file that you have backed up in step 1 as an example.
