@@ -210,7 +210,7 @@ Module configuration and class chain
    So now please install additionally needed compatible modules for OXID eShop 7 if necessary.
 
 .. important:: The default class extension chains are depending on the order in which composer installed those modules. In case you need a customized order
-   for class extensions, you can use you customized class chains from :file:`<shop-id>.yaml` file that you have backed up in step 1 as an example.
+   for class extensions, you can use your customized class chains from :file:`<shop-id>.yaml` file that you have backed up in step 1 as an example.
 
 In case you would like to reuse modules settings from the :file:`<shop-id>.yaml` file that you have backed up in step 1, please refer to
 :ref:`Configuring modules via providing configuration files<configuring_module_via_configuration_files-20190829>`.
