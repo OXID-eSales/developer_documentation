@@ -85,9 +85,6 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.0.0
 
-
-
-
 #. Update the dependencies.
    |br|
    Please run the composer command below to update all the required libraries.
@@ -136,85 +133,6 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
    .. important:: After this step, OXID eShop Compilation 7 and all modules delivered with the compilation will be installed but not yet activated.
 
-
-.. todo:: start todo
-
-#. Adjust the module configuration files.
-
-   To do so, for each subshop do the following:
-
-   a. Open the project configuration ``yaml``-files located in the project directory ``var/shops/<shop-id>/`` where ``<shop-id`` stands for the subshop ID.
-      |br|
-      If you don't use the subshop functionality, there is only one directory.
-
-      Example:
-
-      .. code::
-
-          .
-          └── var
-              └── configuration
-                  └── shops
-                     └──1
-                              └──class_extension_chain.yaml
-                              └──modules
-                                └──oxps_usercentrics.yaml
-                                └──oegdproptin.yaml
-
-   b. Open the corresponding :file:`<shop-id>.yaml` file that you have backed up in step 1.
-   c. From the :file:`<shop-id>.yaml` file, copy and paste the content below :code:`moduleChains:classExtensions` (:ref:`update7001`) into the :file:`class_extension_chain.yaml` file.
-
-      .. _update7001:
-
-      .. figure:: ../../media/screenshots/update7001.png
-         :alt: Copying the moduleChains:classExtensions content
-         :width: 650
-         :class: with-shadow
-
-         Fig.: Copying the moduleChains:classExtensions content
-
-      In the :file:`class_extension_chain.yaml` file, make sure the lines are indented correctly (:ref:`update7002`).
-
-      .. _update7002:
-
-      .. figure:: ../../media/screenshots/update7002.png
-         :alt: Indenting the pasted moduleChains:classExtensions content
-         :width: 650
-         :class: with-shadow
-
-         Fig.: Indenting the pasted moduleChains:classExtensions content
-
-   d. For each module (GDPR Opt-in, in our following example), do the following:
-
-      1. From the :file:`<shop-id>.yaml` file, copy the :code:`moduleSettings` block (:ref:`update7003`, item 2) and replace the corresponding block in the corresponding :file:`var/configuration/shops/<shop-ID>/modules/<module name>.yaml` module configuration file (:file:`oegdproptin.yaml`, in our example).
-
-         .. _update7003:
-
-         .. figure:: ../../media/screenshots/update7003.png
-            :alt: Copying the moduleSettings block
-            :width: 650
-            :class: with-shadow
-
-            Fig.: Copying the moduleSettings block
-
-      In the :file:`<module name>.yaml` file, make sure the lines are indented correctly (:ref:`update7004`, item 2).
-
-         .. _update7004:
-
-         .. figure:: ../../media/screenshots/update7004.png
-            :alt: Adjusting the module configuration file
-            :width: 650
-            :class: with-shadow
-
-            Fig.: Adjusting the module configuration file
-
-      b. Verify the activation status.
-         |br|
-         If the :code:`configured` parameter value in the :file:`<shop-id>.yaml` file  is :code:`true`/:code:`false` (:ref:`update7003`, item 1), ensure that the :code:`configured` parameter value in the :file:`<module name>.yaml` file is set to :code:`true`/:code:`false` correspondingly (:ref:`update7004`, item 1).
-
-
-.. todo:: stop todo
-
 #. Migrate the database.
    |br|
    To do so, execute the following command.
@@ -258,3 +176,34 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
    In the Admin panel, under :menuselection:`Extensions --> Themes`, activate your Twig compatible theme (APEX Theme in default installation case).
 
 #. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
+
+
+Module configuration and class chain
+------------------------------------
+
+.. important:: The structure of the :file:`./var` folder is different in OXID eShop 6.5 and 7. New structure example:
+
+    .. code::
+
+          .
+          └── var
+              └── configuration
+                  └── shops
+                     └──1
+                              └──class_extension_chain.yaml
+                              └──modules
+                                └──oxps_usercentrics.yaml
+                                └──oegdproptin.yaml
+
+
+.. important:: Please keep in mind that in the current state of the Shop update only OXID eShop 7 compilation modules are installed.
+   So now please install additionally needed compatible modules for OXID eShop 7 if necessary.
+   The modules will very likely have also been updated to a new major version with different additional settings and class chain extension.
+
+.. important:: The default class extension chains are depending on the order in which composer installed those modules. In case you need a customized order
+   for class extensions, you can use you customized class chains from :file:`<shop-id>.yaml` file that you have backed up in step 1 as an example.
+
+In case you would like to reuse modules settings from the :file:`<shop-id>.yaml` file that you have backed up in step 1, please refer to
+:ref:`Configuring modules via providing configuration files<configuring_module_via_configuration_files-20190829>`.
+
+
