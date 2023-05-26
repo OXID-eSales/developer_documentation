@@ -92,6 +92,12 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
       composer config repositories.oxid-esales/oxideshop-metapackage-ee \
                 --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_metapackage_ee.git"}'
 
+      composer config repositories.oxid-esales/oxideshop-demodata-pe \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_demodata_pe.git"}'
+
+      composer config repositories.oxid-esales/oxideshop-demodata-ee \
+                --json '{"type":"git", "url":"https://github.com/OXID-eSales/oxideshop_demodata_ee.git"}'
+
 
    .. code:: bash
 
