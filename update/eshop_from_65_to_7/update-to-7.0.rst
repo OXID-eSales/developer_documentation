@@ -176,16 +176,15 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
       ./vendor/bin/oe-eshop-db_views_generate
 
-#. In the :file:`bootstrap.php` file, doublecheck the PHP error reporting settings.
+#. Avoid receiving a large number of warnings. To do so, doublecheck your server's PHP error reporting settings.
    |br|
    Background: With OXID eShop 7 , :code:`error_reporting()` calls have been removed from the :file:`bootstrap.php` file.
 
-   We recommend to set the following:
+   We recommend setting the following:
 
    .. code:: bash
 
-      error_reporting(E_ALL & ~E_DEPRECATED & ~E_NOTICE);
-      ini_set('display_errors', '0');
+      error_reporting = E_ALL & ~E_NOTICE & ~E_WARNING & ~E_DEPRECATED;
 
 #. To clean up your system, from the :file:`source/modules` folder, remove the subfolders containing the previously installed, now unused module files.
    |br|
