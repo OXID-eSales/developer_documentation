@@ -62,10 +62,10 @@ After doctrine update, you need to adjust your module migrations to a new config
 Adjust removed functionality
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   .. todo: #tbd: replace 7.0-prelim with 7.0
+   .. todo: #tbd: verify URL OXID eShop 7.0 Release Notes <https://docs.oxid-esales.com/eshop/en/7.0/releases/releases-70/oxid-eshop-700.html>`_.
 
  * Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
-   You can find a list of changes in the `OXID eShop 7.0 Release Notes <https://docs.oxid-esales.com/eshop/en/7.0-prelim/releases/releases-70/oxid-eshop-700.html>`_.
+   You can find a list of changes in the `OXID eShop 7.0 Release Notes <https://docs.oxid-esales.com/eshop/en/7.0/releases/releases-70/oxid-eshop-700.html>`_.
  * Besides removed functionality, we also removed `deprecated methods and classes. <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.0.x/CHANGELOG.md#removed>`__.
  * Based on the psr-12 (`more info <https://www.php-fig.org/psr/psr-12>`__), all method names MUST NOT be prefixed with a
    single underscore to indicate protected or private visibility. So, we renamed all the underscore method by removing
