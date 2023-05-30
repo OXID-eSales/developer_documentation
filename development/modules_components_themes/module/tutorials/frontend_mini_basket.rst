@@ -1,7 +1,6 @@
 Extending an active theme block
 ===============================
 
-.. todo: #Igor: urgent: must be updated to APEX theme
 
 Learn how to extend or overwrite an active OXID eShop theme block.
 
