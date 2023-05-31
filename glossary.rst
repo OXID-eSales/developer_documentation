@@ -80,24 +80,18 @@ patch release.
 
 The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/latest/releases/index.html).
 
-.. _glossary-vendor_id:
-
-Vendor ID
-^^^^^^^^^
-
-For module developers it is necessary to use unique names for namespaces or classes in their OXID eShop extensions.
-
-.. todo: #MK/#HR: Folgende URL stimmt nicht mehr, wo geht das Registrieren?
-
-One way to achieve this is using a unique ID for your company, which you can register by making a pull request to
-`here <https://github.com/OXIDprojects/OXIDforge-pages/blob/master/extension_acronyms.md>`__.
-
-This is ID called a *Vendor ID*.
-
-.. todo: #MK/#HR: Ist folgende ZRL noch aktuell? https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381
-.. todo: SP: liste der IDs nicht mehr gepflegt, da in der Praxis keine Probleme, weil es namespaces gibt: Empfehlung: Module sinnvoll prefixen, als Modul-Entwicler nicht z.B oe für oxid, osc für OXID Solution Catalyst verwenden;
-
-For more information about the *Vendor ID*, see https://oxidforge.org/en/extension-acronyms.
+.. todo: #tbd: löschen, wenn in controllers.rst angepasst: Vendor ID obsolet
+    .. _glossary-vendor_id:
+    Vendor ID
+    ^^^^^^^^^
+    For module developers it is necessary to use unique names for namespaces or classes in their OXID eShop extensions.
+    .. todo: #HR: Folgende URL stimmt nicht mehr, wo geht das Registrieren?
+    One way to achieve this is using a unique ID for your company, which you can register by making a pull request to
+    `here <https://github.com/OXIDprojects/OXIDforge-pages/blob/master/extension_acronyms.md>`__.
+    This is ID called a *Vendor ID*.
+    .. todo: #HR: Ist folgende ZRL noch aktuell? https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381
+    .. todo: SP: liste der IDs nicht mehr gepflegt, da in der Praxis keine Probleme, weil es namespaces gibt: Empfehlung: Module sinnvoll prefixen, als Modul-Entwicler nicht z.B oe für oxid, osc für OXID Solution Catalyst verwenden;
+    For more information about the *Vendor ID*, see https://oxidforge.org/en/extension-acronyms.
 
 OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
