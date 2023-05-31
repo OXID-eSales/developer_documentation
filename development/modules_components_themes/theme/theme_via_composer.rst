@@ -8,8 +8,6 @@ To install theme correctly, this plugin requires two fields to be described in t
 - :ref:`type <theme_type-20160524>`
 - :ref:`extra <theme_extra-20160524>`
 
-.. todo: #Igor: check whether to be corrected instantly or later: should be changed to apex theme
-
 **Flow theme example:**
 
 .. code:: json

@@ -33,7 +33,6 @@ Let's say you are configuring modules on your local machine (how to do this plea
 Dealing with environment files
 ------------------------------
 
-.. todo:  #Igor/#AF: we do not deliver PayPal (old one) with OXID 7, so we should use another module as example
 
 Let's assume you have OXID eShop with PayPal module and you want to deploy your configuration from your development
 environment to staging environment. All settings in both environments are the same except ``sOEPayPalUsername``

@@ -11,8 +11,6 @@ First make sure, that the twig engine and the admin twig theme are installed on 
 :doc:`Twig Engine Installation </development/modules_components_themes/project/twig_template_engine/installation>`
 
 **2. Install OXID eSales twig theme**
-.. todo:  #Igor: as above: APEX is the official theme now Install `the twig theme <https://github.com/OXID-eSales/twig-theme>`__ for the frontend, for example:
-
 
     .. code:: bash
 
@@ -24,8 +22,6 @@ Open OXID eShop administration panel and go to :menuselection:`Extensions --> Th
 and click activation button.
 
 **4. Clean up the shop compile directory**
-
-.. todo: #Igor: verify: use console oe:cache:clear
 
 To do so, in the root directory of the shop (``/oxideshop``), execute the console command depending on how you have installed the OXID eShop Edition:
 

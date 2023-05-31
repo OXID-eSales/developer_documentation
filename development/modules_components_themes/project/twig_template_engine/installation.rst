@@ -41,8 +41,6 @@ To access admin panel please install `the twig theme for the admin area <https:/
 
 **3. Clean up the shop compile directory**
 
-.. todo: #Igor: verify: use console oe:cache:clear
-
 To do so, in the root directory of the shop (``/oxideshop``), execute the console command depending on how you have installed the OXID eShop Edition:
 
 * If you have installed your OXID eShop Professional or Enterprise Edition with the metapackage, use the standard path:

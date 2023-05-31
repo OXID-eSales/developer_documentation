@@ -3,8 +3,6 @@ Creating Codeception acceptance tests from scratch
 
 We will use a simple example module to explain how to write a Codeception acceptance test.
 
-.. todo: #Igor: check whether to rewrite for twig template engine: now or later?
-
 .. _codeception_example_module:
 
 Example module
