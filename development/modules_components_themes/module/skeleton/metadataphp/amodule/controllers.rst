@@ -4,7 +4,7 @@ controllers
 ===========
 
 Description
-    At this place, you can define, which controllers should be able to be called directly, e.g. from templates.
+    At this place, you can define which controllers should be able to be called directly, e.g. from templates.
     You can define a routing of ``controller keys`` to module classes.
 
 Type
