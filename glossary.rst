@@ -95,6 +95,7 @@ One way to achieve this is using a unique ID for your company, which you can reg
 This is ID called a *Vendor ID*.
 
 .. todo: #MK/#HR: Ist folgende ZRL noch aktuell? https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381
+.. todo: SP: liste der IDs nicht mehr gepflegt, da in der Praxis keine Probleme, weil es namespaces gibt: Empfehlung: Module sinnvoll prefixen, als Modul-Entwicler nicht z.B oe für oxid, osc für OXID Solution Catalyst verwenden;
 
 For more information about the *Vendor ID*, see https://oxidforge.org/en/extension-acronyms.
 
