@@ -3,8 +3,6 @@ Twig Theme Installation
 
 This tutorial explains how to install and activate twig theme on OXID eShop.
 
-.. todo: #Igor:  please mention that in oxid 7.0 twig engine comes with the compilation. So this section is only relevant when not using compilation: Note: Muss nich manuell: Twig automatisch mit 7: manual steps now apply for Smarty installation: shall we document smarty installation in detail?
-
 **1. Before you install twig theme**
 
 First make sure, that the twig engine and the admin twig theme are installed on your shop. If not, use the following tutorial:
