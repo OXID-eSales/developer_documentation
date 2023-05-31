@@ -43,7 +43,7 @@ Deactivation for a sub shop
 .. note::
 
     <module-id> is unique identifier for a module. It can be found in module `metadata.php` file.
-    <shop-id> is unique identifier for a module. It can be found in Admin / Master Settings / Core Settings page on the Main tab.
+    <shop-id> is unique identifier for a sub shop. It can be found in Admin / Master Settings / Core Settings page on the Main tab.
 
 **3. Activate all configured modules at once:**
 

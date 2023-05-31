@@ -30,7 +30,7 @@ Usage
 
     In templates you have to use the ``Config`` class:
     
-    .. code:: smarty
+    .. code:: twig
 
         {% set oConfig = oViewConf.getConfig() %}
         {{ oConfig.getConfigParam('nameOfSetting') }}

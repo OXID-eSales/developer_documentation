@@ -31,7 +31,7 @@ Example
 
     .. code:: php
 
-        <form action="{{ oViewConf.getSelfActionLink() }}}" name="MyModuleControllerAction" method="post" role="form">
+        <form action="{{ oViewConf.getSelfActionLink() }}" name="MyModuleControllerAction" method="post" role="form">
             <div>
                 {{ oViewConf.getHiddenSid()|raw() }}
                 <input type="hidden" name="cl" value="myvendor_mytestmodule_mymodulecontroller">

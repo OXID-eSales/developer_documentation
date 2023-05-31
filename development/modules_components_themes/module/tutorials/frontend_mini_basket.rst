@@ -8,7 +8,7 @@ Learn how to extend or overwrite an active OXID eShop theme block.
 * You have installed the module.
   |br|
   For more information about the module installation, see :ref:`development/modules_components_themes/module/tutorials/module_setup:Best practice module setup for development with composer`.
-* You have activated the `Apax theme <https://github.com/OXID-eSales/apex-theme>`__.
+* You have activated the `Apex theme <https://github.com/OXID-eSales/apex-theme>`__.
 
 
 Overwriting 'mini basket' actions

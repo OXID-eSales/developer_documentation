@@ -27,4 +27,4 @@ and click activation button.
 
    .. code:: bash
 
-      bin/oe-console oe:cache:clear
+      ./vendor/bin/oe-console oe:cache:clear
