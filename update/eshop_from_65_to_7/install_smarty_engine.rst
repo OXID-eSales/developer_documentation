@@ -94,12 +94,6 @@ Remove Twig and add Smarty components.
 
    .. code:: shell
 
-      composer config repositories.oxid-esales/smarty-component-pe \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-pe.git"}'
-
-      composer config repositories.oxid-esales/smarty-component-ee \
-                --json '{"type":"git", "url":"https://github.com/OXID-eSales/smarty-component-ee.git"}'
-
       composer require --no-update oxid-esales/smarty-component v1.0.0
       composer require --no-update oxid-esales/smarty-component-pe v1.0.0
       composer require --no-update oxid-esales/smarty-component-ee v1.0.0
