@@ -110,7 +110,7 @@ where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.
 Configuration might be different in different environment (testing, staging or productive). To solve this problem
 OXID eShop uses another directory with configuration files located in `var/environment/<shop-id>/`.
 
-Example structure you can see bellow:
+Example structure you can see below:
 
 .. code::
 

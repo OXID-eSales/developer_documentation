@@ -8,9 +8,10 @@ Vendor Prefixes
 ^^^^^^^^^^^^^^^
 
 .. todo: #VL: VL prüft mit Team und Support: brauchen wir es noch? -- Ziel-Seite fehlt; wie registriert man sein Kürzel?
+         #HR: makes still sense to have it but linked page needs to be updated
 
 A prefix and a vendor namespace should be used consistently, and they should
-be `registered at OXID eSales <https://oxidforge.org/en/extension-acronyms>`__
+be `registered at OXID eSales <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`__
 to prevent use by others. Use your prefix for your:
 
 #. database tables

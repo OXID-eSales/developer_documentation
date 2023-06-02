@@ -14,7 +14,7 @@ Example
 
         'events'    => [
             'onActivate' => '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onActivate',
-        'onDeactivate' => '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onDeactivate'
+            'onDeactivate' => '\OxidEsales\ModuleTemplate\Core\ModuleEvents::onDeactivate'
         ],
 
 
