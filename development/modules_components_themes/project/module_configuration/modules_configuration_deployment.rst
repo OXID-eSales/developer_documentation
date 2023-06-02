@@ -105,16 +105,22 @@ This option can be set manually by changing configuration file.
 Also the option will be set to ``true`` if you activate a module manually via console or admin backend
 or to false if you deactivate your module.
 
+.. todo: #Igor: this following section looks outdated, we have no more module settings in database missing: deploment tools
+
 To deploy configurations of all modules use the following command:
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:deploy-configurations
 
+ .. todo: #Igor: we need to mention https://github.com/OXID-eSales/deployment-tools to be installed
+
 Provide ``--shop-id`` option if you are using an OXID eShop Enterprise Edition and it is only for one shop.
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:deploy-configurations --shop-id=1
+
+ .. todo: #Igor check:
 
 .. important:: When command is executed module data in configuration files will overwrite data in database.
