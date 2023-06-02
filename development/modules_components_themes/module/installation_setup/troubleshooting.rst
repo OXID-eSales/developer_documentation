@@ -5,7 +5,8 @@ Troubleshooting
 
 Module does not install using composer
 --------------------------------------
-When you are using composer install or update module then you notice module is not :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`, there are two types of situation that you may encounter this issue:
+When you are using composer to install or update a module and you notice, that the module is not properly :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`,
+there are two types of situations in which you may encounter this issue:
 
 - Shop configuration file is removed from `var/configuration/shops/` directory or `/var` directory is removed.
 
