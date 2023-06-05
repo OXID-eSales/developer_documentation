@@ -5,5 +5,4 @@ Twig Theme
     :titlesonly:
     :glob:
 
-    *
     twig_converter/index

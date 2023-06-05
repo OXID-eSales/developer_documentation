@@ -174,15 +174,22 @@ Extending views and frontend
 Module templates
 ^^^^^^^^^^^^^^^^
 
-All new templates must be registered in :file:`metadata.php` and should use naming convention:
-
-:file:`[module_id]_[template_name].html.twig`
-
 All templates should be stored in the same structure like shop templates are.
 
 For example:
-	:file:`views/` - all frontend templates
-	:file:`views/admin/` - all admin templates
+
+*   :file:`views/` - all frontend templates
+*   :file:`views/admin_twig/` - all admin templates
+
+For smarty:
+
+*   :file:`views/admin_smarty/` - all admin templates
+
+Smarty only
+"""""""""""
+All new templates must be registered in :file:`metadata.php` and should use naming convention:
+
+:file:`[module_id]_[template_name].html.twig`
 
 Using JavaScript and including .js files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +223,7 @@ Assignment of a DOM element for a widget:
 
 .. code:: php
 
-    {{ script({ add: '$("dom element").neededWidget();' }) }}
+    {{ script({ add: "const myModal = new bootstrap.Modal('#isRootCatChanged');myModal.show();" }) }}
 
 In this way Javascript files will be included correctly within the template.
 
