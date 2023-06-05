@@ -51,15 +51,15 @@ Configuring modules via admin interface
 To configure modules via admin interface, open OXID eShop administration panel
 and go to :menuselection:`Extensions --> Modules`.
 
-You will see modules list.
+You will see a list of installed modules.
 
 Select the module you want to configure and choose :menuselection:`Settings`.
 
-You will see list of settings that you can change.
+You will see a list of settings that you can change.
 
 Entries in the settings list are loaded and saved in configuration files located in `var/configuration/shops`.
 
-For each shop id there is one directory with the complete configuration for the shop.
+For each shop id there is one directory with the complete configuration for this shop.
 
 So if the shop has id 1, a directory would be named 1. See the example below:
 
@@ -75,8 +75,8 @@ So if the shop has id 1, a directory would be named 1. See the example below:
 
 .. note::
 
-    If var directory has not found in the project directory.
-    ``composer update`` must be executed or it must created manually.
+    If var directory cannot be found in the project directory.
+    ``composer update`` must be executed or it must be created manually.
     Also, each shop must have their own separate directory.
 
 .. _configuring_module_via_configuration_files-20190829:

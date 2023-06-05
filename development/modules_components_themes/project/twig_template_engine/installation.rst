@@ -41,15 +41,30 @@ To access admin panel please install `the twig theme for the admin area <https:/
 
 **3. Clean up the shop compile directory**
 
-.. code:: bash
+To do so, in the root directory of the shop (``/oxideshop``), execute the console command depending on how you have installed the OXID eShop Edition:
 
-  rm -rf source/tmp/*
+* If you have installed your OXID eShop Professional or Enterprise Edition with the metapackage, use the standard path:
+
+  .. code:: bash
+
+     vendor/bin/oe-console oe:cache:clear
+
+* If you have installed the Community Edition as root package and upgraded to the Professional or Enterprise Edition, use the following path:
+
+  .. code:: bash
+
+     bin/oe-console oe:cache:clear
+
+If you are not sure, try the standard path first.
 
 **4. After twig engine installation**
 
 The twig engine is installed and you should be possible to access administration panel. The next step would be
 to install a twig theme for the frontend of your shop, for more information please read
 :doc:`Twig theme installation documentation </development/modules_components_themes/theme/twig/installation>`.
+
+.. todo: #Igor/#tbd: Schritt 4. entfernen: #Igor: check: can we remove the step?  APEX theme is delivered with oxid 7, not the twig theme
+.. todo: #Igor: can we remove Troubleshooting?: this section looks like only relevant for 6.5.x. twig admin theme is delivered with oxid 7 compilation
 
 **Troubleshooting**
 

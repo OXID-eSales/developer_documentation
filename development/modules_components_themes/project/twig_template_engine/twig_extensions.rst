@@ -142,6 +142,8 @@ Example::
 
 
 
+.. todo: #Igor: check link is missing: is it an external link?
+
 StyleExtension
 ^^^^^^^^^^^^^^
 
@@ -218,7 +220,8 @@ This extension introduces the ``enclose`` filter.
 
 Example::
 
-    {{ article.oxarticles__oxartnum.value|enclose(encl) }}
+    {{ article.oxarticles__oxartnum.value|enclose("encl") }}
+
 
 FileSizeExtension
 ^^^^^^^^^^^^^^^^^
