@@ -22,6 +22,8 @@ This directory structure has four levels, as follows:
 Level 0 (out)
 ^^^^^^^^^^^^^
 
+ .. todo: #CA: basic needs to be replaced by apex and structure doublechecked. basic theme has been gone for ages. /out/de/ and /out/en/
+
 * /out/de/
 * /out/en/
 * /out/img/
