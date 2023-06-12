@@ -65,7 +65,6 @@ use the theme ID as a key:
         'templates' => [
 
             //Module extends template:
-            'order_paypal.tpl' => 'path/to/admin/module/template/order_paypal.tpl',
             'ipnhandler.tpl'   => 'path/to/module/template/ipnhandler.tpl',
             'more.tpl'         => 'path/to/module/template/moreDefault.tpl',
 
@@ -82,7 +81,6 @@ Theme-specific templates can be customized by extending the theme they were crea
     .. code-block:: php
 
         'templates' => [
-            'order_paypal.tpl' => 'path/to/admin/module/template/order_paypal.tpl',
             'ipnhandler.tpl'   => 'path/to/module/template/ipnhandler.tpl',
             'more.tpl'         => 'path/to/module/template/moreDefault.tpl',
 

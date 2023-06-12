@@ -4,9 +4,16 @@ Interacting with the database
 Active records and magic getters
 --------------------------------
 
-The OXID eShop architecture is based on an MVC design pattern. To implement models, the Active Record pattern is used. In general, each model class is linked to a database
-table. For example, the ``Article`` model is linked to the ``oxarticles`` table, Order to the ``oxorders`` table etc.
+The OXID eShop architecture is based on an MVC design pattern.
+
+To implement models, the Active Record pattern is used.
+
+In general, each model class is linked to a database table.
+
+For example, the ``Article`` model is linked to the ``oxarticles`` table, Order to the ``oxorders`` table etc.
+
 All models are stored in the Application/Models directory.
+
 Let's take one of them, for example the ``Article`` model, and try to fetch the product (with the ID ``demoId``) data from database:
 
 .. code:: php
@@ -16,6 +23,8 @@ Let's take one of them, for example the ``Article`` model, and try to fetch the 
     //getting some information
     echo $product->oxarticles__oxtitle->value;
     echo $product->oxarticles__oxshortdesc->value;
+
+.. todo: #Igor: mention new method? -- beware PHP 8 and trying to get a value on null. maybe we should also mention getFieldData method in this section?
 
 Magic getters are used to get models attributes; they are constructed in this approach:
 
@@ -60,7 +69,7 @@ In this example there is a check to determine if this ID exists and if so, the r
 Making a query
 --------------
 
-In order to execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
+To execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
 
 Since it is a service, you can use the same methods as with every other service. Simply inject it into your class:
 

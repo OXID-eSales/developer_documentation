@@ -86,7 +86,7 @@ iDebug
      */
     $this->iDebug = 0; // default setting 0
 
-The different values do not reflect log levels but rather, which part of the OXID eShop functionality should logged.
+The different values do not reflect log levels but rather, which part of the OXID eShop functionality should be logged.
 
 .. note::
 
@@ -158,6 +158,8 @@ define 'Auth_OpenID_RAND_SOURCE' (filename for a source of   random bytes)
 .. code:: php
 
     $this->sAuthOpenIdRandSource  = '/dev/urandom';
+
+.. todo: #Igor: check setting: some settings mentioned which no longer exist; cannot find this setting in shop code
 
 blUseTimeCheck
 --------------
@@ -286,6 +288,8 @@ If active, CMS content (e.g. descriptions of products and categories, CMS pages,
 
     $this->deactivateSmartyForCmsContent = false;
 
+.. todo: #Igor: see above: cannot find this setting in shop code, it is possible to use but belongs to smarty component
+
 Modules
 -------
 
@@ -300,6 +304,9 @@ Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
 
     $this->blDoNotDisableModuleOnError = false;
 
+.. todo: #Igor: as above setting was removed in OXID 7
+
+
 aModules
 ^^^^^^^^
 
@@ -310,6 +317,8 @@ Some classes can be overloaded, but only by setting up this information in confi
     $this->aModules = array(
         'oxutilsobject' => 'my_oxutilsobject'
     );
+
+.. todo: #Igor: as above setting was removed in OXID 7
 
 
 Uploads and images

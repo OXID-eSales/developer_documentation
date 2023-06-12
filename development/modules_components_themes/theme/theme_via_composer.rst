@@ -1,5 +1,5 @@
-How to create a theme installable via composer
-==============================================
+Creating a theme installable via composer
+=========================================
 
 Install themes via Composer by using `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
@@ -8,31 +8,48 @@ To install theme correctly, this plugin requires two fields to be described in t
 - :ref:`type <theme_type-20160524>`
 - :ref:`extra <theme_extra-20160524>`
 
-**Flow theme example:**
+**Apex theme example**
 
 .. code:: json
 
     {
-       "name": "oxid-esales/flow-theme",
-       "description": "This is Flow theme for OXID eShop.",
-       "type": "oxideshop-theme",
-       "keywords": ["oxid", "themes", "eShop"],
-       "homepage": "https://www.oxid-esales.com/en/home.html",
-       "license": [
-           "GPL-3.0-only",
-           "proprietary"
-       ],
-       "extra": {
-         "oxideshop": {
-           "target-directory": "flow",
-           "assets-directory": "out/flow",
-           "blacklist-filter": [
-                "build/**/*",
-                "grunt/**/*",
-                "Gruntfile.js"
-           ]
-         }
-       }
+        "name": "oxid-esales/apex-theme",
+        "description": "APEX Theme",
+        "license": [
+            "proprietary"
+        ],
+        "type": "oxideshop-theme",
+        "keywords": [
+            "oxid",
+            "themes",
+            "eShop"
+        ],
+        "authors": [
+            {
+                "name": "Tino Favetto, c&c concepts and creations GmbH"
+            }
+        ],
+        "homepage": "https://github.com/OXID-eSales/apex-theme",
+        "require": {
+            "php": ">=8.0",
+            "oxid-esales/twig-component": "*"
+        },
+        "minimum-stability": "dev",
+        "extra": {
+            "oxideshop": {
+                "assets-directory": "out/apex",
+                "blacklist-filter": [
+                    "build/**/*",
+                    "grunt/**/*",
+                    ".gitignore",
+                    "CHANGELOG.md",
+                    "composer.json",
+                    "Gruntfile.js",
+                    "package.json"
+                ],
+                "target-directory": "apex"
+            }
+        }
     }
 
 .. _theme_type-20160524:

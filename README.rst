@@ -11,19 +11,22 @@ Generate the documentation locally in order to test your changes as described in
 Generating docs locally
 -----------------------
 
-Section describes how to generate documentation locally.
+To generate documentation locally, do the following:
 
-#. First of all you'll need to install `sphinx <http://www.sphinx-doc.org/>`__
-#. Install the `PHP highlighting extensions <https://github.com/fabpot/sphinx-php>`__
+#. Install `sphinx <http://www.sphinx-doc.org/>`__.
+#. Install the `sphinx_rtd_theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html>`__ (if it is missing).
+#. Install the `PHP highlighting extensions <https://github.com/fabpot/sphinx-php>`__.
 #. Install the `plantuml extension <https://pypi.python.org/pypi/sphinxcontrib-plantuml>`__.
-   Either configure the path to the file `plantuml.jar` in the file `config.py` or put a wrapper script in your path
-   like described in the link above.
-#. Clone documentation repository:
+
+   If you have a mac PC, install plantuml separately e.g. via `brew <https://formulae.brew.sh/formula/plantuml>`__.
+
+   Either configure the path to the file `plantuml.jar` in the file `config.py` or put a wrapper script in your path as described in the link above.
+#. Clone thw documentation repository:
     .. code:: bash
 
         git clone https://github.com/OXID-eSales/developer_documentation.git
 
-#. To generate documentation run:
+#. To generate documentation, run:
     .. code:: bash
 
         cd developer_documentation

@@ -7,5 +7,5 @@ Theme
     :titlesonly:
     :glob:
 
-    *
     twig/index
+    *

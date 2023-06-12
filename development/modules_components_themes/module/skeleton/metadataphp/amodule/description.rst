@@ -16,12 +16,12 @@ Example
     .. code:: php
 
         // single language
-        'description'  => 'Module for PayPal payment.',
+        'description'  => 'Template module.',
 
         // multiple languages
         'description'  => [
-            'de' => 'Modul für die Zahlung mit PayPal.',
-            'en' => 'Module for PayPal payment.',
+            'de' => 'Vorlagenmodul.',
+            'en' => 'Template module.',
         ],
 
 .. note::

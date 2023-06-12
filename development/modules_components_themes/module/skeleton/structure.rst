@@ -15,14 +15,32 @@ Possible structure of the module in the repository:
 
   .
    └── <module_directory>
-      ├── composer.json
-      ├── Controller
-      ├── metadata.php
-      ├── Model
       ├── assets
+      ├── migration
+      ├── src
+      .  ├── Controller
+      .  ├── Model
+      .  ├── orSomeDomain
+      .  .  └── ...
+      .  ...
+      ├── tests
+      .  ├── Codeception
+      .  ├── Integration
+      .  ├── Unit
+      .  ├── PhpStan
+      .  └── phpunit.xml
+      ├── translations
+      ├── views
+         └── admin_twig
+            └── ...
+         └── twig
+            └── ...
+      ├── composer.json
+      ├── CHANGELOG.md
+      ├── LICENSE
+      ├── metadata.php
       ├── README.md
-      ├── ...
-      └── tests
+      └── services.yaml
 
 .. _modules_structure_language_files:
 
@@ -56,13 +74,18 @@ Frontend
 
 Translation files can be placed in the folders
 
-* ``Application/translations``
 * ``translations``
+* ``Application/translations`` (not recommended, deprecated but still supported)
 
 inside your module directory.
+
 If you have a folder ``Application`` (first letter is capital) inside your module, translation files are searched
-inside this directory. Otherwise, they are searched inside the folder ``translations``.
-Inside these directory, you have to create a directory for the specific language, e.g. ``de`` or ``en``.
+inside this directory.
+
+Otherwise, they are searched inside the folder ``translations``.
+
+Inside these directories, you have to create a directory for the specific language, e.g. ``de`` or ``en``.
+
 Inside the language specific, directory, the filename has to be _lang.php.
 
 Example:
@@ -85,8 +108,7 @@ Admin
 
 Translation files can be placed in
 
-* ``Application/views/admin/``
-* ``views/admin/``
+* ``views/admin_twig/``
 
 Example:
 
@@ -94,26 +116,58 @@ Example:
 
   .
   └── <module_directory>
-      └── Application
-          └── views
-              └── admin
-                  └── de
-                      └── module_options.php
-                      └── myvendormymodule_admin_de_lang.php
-                  └── en
-                      └── module_options.php
-                      └── myvendormymodule_admin_en_lang.php
+      └── views
+          └── admin_twig
+              └── de
+                  └── module_options.php
+                  └── myvendormymodule_admin_de_lang.php
+              └── en
+                  └── module_options.php
+                  └── myvendormymodule_admin_en_lang.php
 
 .. note::
     In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
     in your metadata.php.
 
+.. _modules_structure_language_files_module_options_file:
+
+Module options file
+"""""""""""""""""""
+
+The following format must be used for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_SHOP_MODULE_``.
+
+Example:
+
+.. code:: php
+
+        // name of the group
+        'SHOP_MODULE_GROUP_oemoduletemplate_main' => 'Settings',
+
+        'SHOP_MODULE_oemoduletemplate_GreetingMode' => 'Greeting mode',
+        'SHOP_MODULE_oemoduletemplate_GreetingMode_generic' => 'generic',
+        'SHOP_MODULE_oemoduletemplate_GreetingMode_personal' => 'personal',
+
+        'SHOP_MODULE_oemoduletemplate_BrandName' => 'Brand name',
+
+        'SHOP_MODULE_oemoduletemplate_LoggerEnabled' => 'Enable logger',
+
+        'SHOP_MODULE_oemoduletemplate_Timeout' => 'Set timeout',
+
+        'SHOP_MODULE_oemoduletemplate_Categories' => 'Add categories',
+
+        'SHOP_MODULE_oemoduletemplate_Channels' => 'Add channels',
+
+        'SHOP_MODULE_oemoduletemplate_Password' => 'Password',
+
+.. note::
+    While using :file:`module_options.php` for translation, the translations will only be loaded while being logged in as admin.
 
 Custom JavaScript / CSS / Images
 --------------------------------
 
 Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
-all of your files in assets folder will be symlink to ``out/modules/<module-id>/``
+
+All of your files in assets folder will be symlink to ``out/modules/<module-id>/``.
 
 Example:
 
@@ -134,4 +188,5 @@ You can use something like this to include your scripts in to templates:
 
 .. code:: php
 
-  [{oxscript include=$oViewConf->getModuleUrl("{moduleID}", "js/{js_fle_name}.js")}]
+  {{ script({ include: oViewConf.getModuleUrl("{moduleID}", "js/{js_fle_name}.js") }) }}
+  {{ style({ include: oViewConf.getModuleUrl('exampleModuleId', 'css/example.css') }) }}

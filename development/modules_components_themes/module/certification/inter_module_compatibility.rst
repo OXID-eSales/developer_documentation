@@ -8,27 +8,31 @@ Vendor Prefixes
 ^^^^^^^^^^^^^^^
 
 .. todo: #VL: VL prüft mit Team und Support: brauchen wir es noch? -- Ziel-Seite fehlt; wie registriert man sein Kürzel?
+         #HR: makes still sense to have it but linked page needs to be updated -- how/who updted?
 
-A prefix and a vendor namespace should be used consistently, and they should
-be `registered at OXID eSales <https://oxidforge.org/en/extension-acronyms>`__
-to prevent use by others. Use your prefix for your:
+Use a prefix and a vendor namespace consistently.
 
-#. database tables
-#. additional fields
-#. config parameters
-#. language constants
+Use your prefix for your:
+
+* database tables
+* additional fields
+* config parameters
+* language constants
+
+Recommendation: To prevent use by others, reserve your prefix under `forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381 <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`_.
 
 Namespaces
 ^^^^^^^^^^
 
-Also, your namespace (with the namespace of your module) should be used inside all of your classes.
-An example from the PayPal module:
+Also, make sure to use your namespace (with the namespace of your module) inside all of your classes.
+
+An example from the Module Template module:
 
 .. code:: php
 
-    namespace OxidEsales\PayPalModule\Controller;
+    namespace OxidEsales\ModuleTemplate\Controller;
 
-    class OrderController extends OrderController_parent
+    class GreetingController extends FrontendController
     {
         // ...
 
@@ -39,35 +43,49 @@ Parent calls
 ^^^^^^^^^^^^
 
 When writing extensions for methods that do variable assignments or execute other calls, be sure to add a parent call.
-This is an example from the oepaypal module class ``OrderController`` which is an extension for the shop's class with the
-namespace ``\OxidEsales\Eshop\Application\Controller\OrderController``.
+
+This is an example from the Demo logger module class ``Basket`` which is an extension for the shop's basket class with the
+namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
 
 .. code:: php
 
     /**
-     * Returns PayPal user
+     * Method overrides eShop method and adds logging functionality.
      *
-     * @return \OxidEsales\Eshop\Application\Model\User
+     * @param string      $productID
+     * @param int         $amount
+     * @param null|array  $sel
+     * @param null|array  $persParam
+     * @param bool|false  $shouldOverride
+     * @param bool|false  $isBundle
+     * @param null|string $oldBasketItemId
+     *
+     * @see \OxidEsales\Eshop\Application\Model\Basket::addToBasket()
+     *
+     * @return BasketItem|null
      */
-    public function getUser()
-    {
-        $user = parent::getUser();
+    public function addToBasket(
+        $productID,
+        $amount,
+        $sel = null,
+        $persParam = null,
+        $shouldOverride = false,
+        $isBundle = false,
+        $oldBasketItemId = null
+    ) {
+        $basketItemLogger = new BasketItemLogger(Registry::getConfig()->getLogsDir());
+        $basketItemLogger->logItemToBasket($productID);
 
-        $userId = $this->getSession()->getVariable("oepaypal-userId");
-        if ($this->isPayPal() && $userId) {
-            $payPalUser = oxNew(\OxidEsales\Eshop\Application\Model\User::class);
-            if ($payPalUser->load($userId)) {
-                $user = $payPalUser;
-            }
-        }
-
-        return $user;
+        return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
     }
 
 Method visibility
 ^^^^^^^^^^^^^^^^^
 
-Do not change the visibility of methods that are extended. Visibilities can be ``public``, ``protected`` or ``private``.
+Do not change the visibility of methods that are extended.
+
+Visibilities can be ``public``, ``protected`` or ``private``.
+
 If you want to extend an original method, do not change your new method's visibility from ``protected`` to ``public`` or
 from ``private`` to ``protected``.
 

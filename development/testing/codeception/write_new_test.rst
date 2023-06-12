@@ -156,25 +156,25 @@ Example:
                 ├── composer.json
                 ├── metadata.php
                 ├── StartController.php
-                ├── Tests
-                │   ├── Codeception
-                │   │   ├── Acceptance
-                │   │   │   ├── _bootstrap.php
-                │   │   │   └── ExampleCest.php
-                │   │   ├── acceptance.suite.yml
-                │   │   ├── Config
-                │   │   │   └── params.php
-                │   │   ├── _data
-                │   │   │   ├── dump.sql
-                │   │   │   └── fixtures.php
-                │   │   ├── _output
-                │   │   └── _support
-                │   │       ├── AcceptanceTester.php
-                │   │       ├── _generated
-                │   │       │   └── AcceptanceTesterActions.php
-                │   │       └── Helper
-                │   │           └── Acceptance.php
-                │   └── codeception.yml
+                ├── tests
+                │  ├── Codeception
+                │  │  ├── Acceptance
+                │  │  │  ├── _bootstrap.php
+                │  │  │  └── ExampleCest.php
+                │  │  ├── acceptance.suite.yml
+                │  │  ├── Config
+                │  │  │  └── params.php
+                │  │  ├── _data
+                │  │  │  ├── dump.sql
+                │  │  │  └── fixtures.php
+                │  │  ├── _output
+                │  │  └── _support
+                │  │     ├── AcceptanceTester.php
+                │  │     ├── _generated
+                │  │     │  └── AcceptanceTesterActions.php
+                │  │     └── Helper
+                │  │        └── Acceptance.php
+                │  └── codeception.yml
                 └── views
                     └── blocks
                         └── mymodule_block.tpl
@@ -251,7 +251,7 @@ containing information about enabled Codeception modules, Actor and so.
             depends: Db
         - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
             shop_path: '%SHOP_SOURCE_PATH%'
-            paths: 'Application/views/twig'
+            paths: 'Application/views/apex'
         - \OxidEsales\Codeception\Module\SelectTheme:
               depends:
                   - \OxidEsales\Codeception\Module\Database

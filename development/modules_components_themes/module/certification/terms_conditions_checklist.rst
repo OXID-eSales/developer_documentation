@@ -1,5 +1,9 @@
+:orphan:
 Terms, conditions and checklist
 ===============================
+
+
+.. todo: #HR: #tbd 7.x: section needs to be updated later
 
 General
 -------

@@ -11,8 +11,8 @@ Steps for creating a basic module
 In case you set up your new module or have an existing one in your git repository and you want to introduce modifications, steps how to
 setup for development can be found :doc:`here <module_setup>`.
 
-Demo Logger module could be used as a simple example
+Use the Demo Logger module as a simple example
 `from GitHub repository. <https://github.com/OXID-eSales/logger-demo-module>`__
 
-PayPal module could be used as an advanced example
-`from GitHub repository. <https://github.com/OXID-eSales/PayPal>`__
+Use the Module template module as an advanced example
+`from GitHub repository. <https://github.com/OXID-eSales/module-template>`__

@@ -1,38 +1,53 @@
 Setup/Activation
 ================
 
-If module was :doc:`installed <installation>` successfully, next step is activating it.
+If module was :doc:`installed <installation>` successfully, the next step is activating it.
 
 There are 3 ways of activating a module:
 
 .. _modules_installation_activate_via_admin-20190917:
 
-**1. Activate a module through OXID eShop admin panel:**
+**1. Activating a module through the OXID eShop admin panel**
 
-Open OXID eShop administration panel and got to :menuselection:`Extensions --> Modules`,
-select a module and click activation button.
+1. Open OXID eShop administration panel and go to :menuselection:`Extensions --> Modules`.
+2. Choose the module and choose the :guilabel:`Activate` button.
 
 .. _modules_installation_activate_via_command-20190917:
 
-**2. Activate a module via OXID eShop command:**
+**2. Activating a module via OXID eShop command**
 
-To activate module you need to execute command:
+To activate module execute the following command:
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:activate <module-id>
 
-For module deactivation you would need to execute this command:
+To activate a module for a sub shop, use the following option:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:module:activate <module-id> --shop-id <shop-id>
+
+To deactivate a module, execute the following command:
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:deactivate <module-id>
 
+Deactivation for a sub shop:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:module:deactivate <module-id> --shop-id <shop-id>
+
 .. note::
 
-    <module-id> is a module, which should be activated, ID. It can be found in module `metadata.php` file.
+    :code:`<module-id>` is the unique identifier of a module. Find it in the module's  :file:`metadata.php` file.
 
-**3. Activate all configured modules at once:**
+    :code:`<shop-id>` is the unique identifier of a sub shop. Find it in the Admin panel under :menuselection:`Master Settings --> Core Settings --> Main`.
 
-All modules activation usually should be used during deployment phase. How to activate all modules at once please read
-:doc:`modules configuration and deployment document </development/modules_components_themes/project/module_configuration/modules_configuration_deployment>`.
+**3. Activating all configured modules at once**
+
+All modules activation usually should be used during deployment phase.
+
+For more information about how to activate all modules at once, see :doc:`modules configuration and deployment document </development/modules_components_themes/project/module_configuration/modules_configuration_deployment>`.

@@ -8,25 +8,24 @@ Learn how to extend or overwrite an active OXID eShop theme block.
 * You have installed the module.
   |br|
   For more information about the module installation, see :ref:`development/modules_components_themes/module/tutorials/module_setup:Best practice module setup for development with composer`.
-* You have activated the `Twig theme <https://github.com/OXID-eSales/twig-theme>`__.
+* You have activated the `Apex theme <https://github.com/OXID-eSales/apex-theme>`__.
 
 
 Overwriting 'mini basket' actions
 ---------------------------------
 
-In the following example, replace the original mini basket buttons with a new checkout button.
+In the following example, replace the original mini basket display button with a new checkout button.
 
 To accomplish this goal, extend :technicalname:`widget_minibasket_total.html.twig`.
 
-**Twig theme structure**
+**Apex theme structure**
 ::
 
-    ├── twig // eShop theme
+    ├── apex // eShop theme
         └── tpl
-            └── twig
-                └── widget
-                    └── minibasket
-                        └── minibasket.html.twig // Location of the original widget
+            └── widget
+                └── minibasket
+                    └── minibasket.html.twig // Location of the original widget
 
 **Module views structure**
 ::
@@ -36,7 +35,7 @@ To accomplish this goal, extend :technicalname:`widget_minibasket_total.html.twi
             └── twig
                 └── extensions
                     └── themes
-                        └── twig
+                        └── apex
                             └── widget
                                 └── minibasket
                                     └── minibasket.html.twig
@@ -59,9 +58,7 @@ To accomplish this goal, extend :technicalname:`widget_minibasket_total.html.twi
 
     {% block dd_layout_page_header_icon_menu_minibasket_functions %}
 
-        <p class="functions clear text-right">
-            <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-info">{{ translate({ ident: "CHECKOUT" }) }}</a>
-        </p>
+        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "CHECKOUT" }) }}
 
     {% endblock %}
 
@@ -70,13 +67,13 @@ To accomplish this goal, extend :technicalname:`widget_minibasket_total.html.twi
 
 |result|
 
-The new button appears instead of the original two.
+The new button appears instead of the original one.
 
 
 Extending 'mini basket' actions
 -------------------------------
 
-In the following example, based on the previous example, keep the original buttons with the newly added button.
+In the following example, based on the previous example, keep the original button with the newly added button.
 
 To do so, call the :technicalname:`parent()` method inside a block.
 
@@ -94,8 +91,6 @@ Add the :technicalname:`parent()` method to :technicalname:`minibasket.html.twig
 
         {{ parent() }}
 
-        <p class="functions clear text-right">
-            <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-info">{{ translate({ ident: "CHECKOUT" }) }}</a>
-        </p>
+        <a href="{{ seo_url({ ident: oViewConf.getSelfLink()|cat("cl=payment") }) }}" class="btn btn-outline-primary w-100">{{ translate({ ident: "CHECKOUT" }) }}
 
     {% endblock %}

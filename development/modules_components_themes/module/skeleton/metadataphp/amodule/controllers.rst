@@ -31,15 +31,15 @@ Example
 
     .. code:: php
 
-           <form action="[{$oViewConf->getSelfActionLink()}]" name="MyModuleControllerAction" method="post" role="form">
-                <div>
-                    [{$oViewConf->getHiddenSid()}]
-                    <input type="hidden" name="cl" value="myvendor_mytestmodule_mymodulecontroller">
-                    <input type="hidden" name="fnc" value="displayMessage">
-                    <input type="text" size="10" maxlength="200" name="mymodule_message" value="[{$the_module_message}]">
-                    <button type="submit" id="MyModuleControllerActionButton" class="submitButton">[{oxmultilang ident="SUBMIT"}]</button>
-                </div>
-           </form>
+        <form action="{{ oViewConf.getSelfActionLink() }}" name="MyModuleControllerAction" method="post" role="form">
+            <div>
+                {{ oViewConf.getHiddenSid()|raw() }}
+                <input type="hidden" name="cl" value="myvendor_mytestmodule_mymodulecontroller">
+                <input type="hidden" name="fnc" value="displayMessage">
+                <input type="text" size="10" maxlength="200" name="mymodule_message" value="{{ the_module_message }}">
+                <button type="submit" id="MyModuleControllerActionButton" class="submitButton">{{ translate({ ident: "SUBMIT" }) }}</button>
+            </div>
+        </form>
 
     If the controller key is not found within the shop or modules, it is assumed that the controller key is a class with this name.
     If there is no class with this name present, the OXID eShop will redirect to the shop front page.

@@ -26,7 +26,7 @@ be installed or deployed.
 Especially the PHP stack and the required system libraries should be identical to the stack of the application server.
 Keep in mind that even differences in patch versions may matter.
 So it is really important to keep the local environment and the application server in sync in order be able to copy files
-from one system to another. Failing to do so may lead to errors that might hard to detect during the runtime of OXID eShop.
+from one system to another. Failing to do so may lead to errors that are hard to detect during the runtime of OXID eShop.
 
 Make sure to have a working Composer installation on this local environment.
 You will find details how to install and use Composer `here <https://getcomposer.org/doc/00-intro.md>`__.
@@ -109,6 +109,8 @@ only work from a UNIX based system as your local development environment.
         dir=$(echo $dir | sed 's/ /\ /g')
         "${dir}/oe-eshop-doctrine_migration" "$@"
         EOF
+
+   .. todo:  #Support/#Igor Check: how urgent is to update it?: this section above is not correct, we have no bin folders for migration and demodata installer anymore
 
 Copy the files to the application server and continue installation
 ------------------------------------------------------------------

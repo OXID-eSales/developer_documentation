@@ -30,94 +30,65 @@ Usage
 
     In templates you have to use the ``Config`` class:
     
-    .. code:: smarty
-    
-        [{assign var="oConfig" value=$oViewConf->getConfig()}]
-        [{$oConfig->getConfigParam('nameOfSetting')}]
-    
-    Add **translations of your module's settings** into each copy of corresponding :file:`module_options.php` file
-    (see :ref:`File and Folder structure <modules_structure_language_files_admin>`)
-    using the following format for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_SHOP_MODULE_``.
+    .. code:: twig
 
-    .. code:: php
+        {% set oConfig = oViewConf.getConfig() %}
+        {{ oConfig.getConfigParam('nameOfSetting') }}
 
-        // name of the group
-        'SHOP_MODULE_GROUP_main'                          => 'Paypal settings',
-
-        // sOEPayPalBrandName
-        'SHOP_MODULE_sOEPayPalBrandName'                  => 'Name of the shop',
-        'HELP_SHOP_MODULE_sOEPayPalBrandName'             => 'Please enter the name of your shop ....',
-
-
-        // blOEPayPalLoggerEnabled
-        'SHOP_MODULE_blOEPayPalLoggerEnabled'             => 'Activate PayPal logging',
-
-        // aOEPayPalAlwaysOpenCats
-        'SHOP_MODULE_aOEPayPalAlwaysOpenCats'             => 'Categories available',
-
-        // aOEPayPalChannels
-        'SHOP_MODULE_aOEPayPalChannels'                   => 'Channels available',
-
-        // sOEPayPalLogoImageOption
-        'SHOP_MODULE_sOEPayPalCustomShopLogoImage'        => 'Custom shop logo for the PayPal payment page',
-        'HELP_SHOP_MODULE_sOEPayPalCustomShopLogoImage'   => 'Help text for ... ',
-        'SHOP_MODULE_sOEPayPalLogoImageOption_noLogo'     => 'Don\'t send any shop logo',
-        'SHOP_MODULE_sOEPayPalLogoImageOption_shopLogo'   => 'Send default shop logo ',
-        'SHOP_MODULE_sOEPayPalLogoImageOption_customLogo' => 'Send custom shop logo',
-
-        // sOEPayPalPassword
-        'SHOP_MODULE_sOEPayPalPassword'                   => 'Password',
+    Add **translations of your module's settings** in each copy of the corresponding :file:`module_options.php` file
+    (see details in :ref:`File and Folder structure <modules_structure_language_files_admin>`).
 
 Example
 
     .. code:: php
 
         'settings' => [
-            [
-                'group' => 'main',
-                'name' => 'sOEPayPalBrandName',
-                'type' => 'str',
-                'value' => 'PayPal Testshop'
-            ],
-            [
-                'group' => 'main',
-                'name' => 'blOEPayPalLoggerEnabled',
-                'type' => 'bool',
-                'value' => false
-            ],
-            [
-                'group' => 'main',
-                'name' => 'iOEPayPalTimeout',
-                'type' => 'num',
-                'value' => '30'
-                //'value' => '30.5'
-            ],
-            [
-                'group' => 'main',
-                'name' => 'aOEPayPalAlwaysOpenCats',
-                'type' => 'arr',
-                'value' => ['Price','Manufacturer']
-            ],
-            [
-                'group' => 'main',
-                'name' => 'aOEPayPalChannels',
-                'type' => 'aarr',
-                'value' => ['1' => 'de', '2' => 'en']
-            ],
+            /** Main */
 
             // If type equals select, the key constraints has to specify possible values.
             [
-                'group' => 'main',
-                'name' => 'sOEPayPalLogoImageOption',
-                'type' => 'select',
-                'value' => 'noLogo',
-                'constraints' => 'noLogo|shopLogo|customLogo',
+                'group'       => 'oemoduletemplate_main',
+                'name'        => 'oemoduletemplate_GreetingMode',
+                'type'        => 'select',
+                'constraints' => 'generic|personal',
+                'value'       => 'generic'
             ],
             [
-                'group' => 'main',
-                'name' => 'sOEPayPalPassword',
-                'type' => 'password',
-                'value' => 'changeMe',
+                'group' => 'oemoduletemplate_main',
+                'name'  => 'oemoduletemplate_BrandName',
+                'type'  => 'str',
+                'value' => 'Testshop'
+            ],
+            [
+                'group' => 'oemoduletemplate_main',
+                'name'  => 'oemoduletemplate_LoggerEnabled',
+                'type'  => 'bool',
+                'value' => false
+            ],
+            [
+                'group' => 'oemoduletemplate_main',
+                'name'  => 'oemoduletemplate_Timeout',
+                'type'  => 'num',
+                'value' => 30
+                //'value' => 30.5
+            ],
+            [
+                'group' => 'oemoduletemplate_main',
+                'name'  => 'oemoduletemplate_Categories',
+                'type'  => 'arr',
+                'value' => ['Sales', 'Manufacturers']
+            ],
+            [
+                'group' => 'oemoduletemplate_main',
+                'name'  => 'oemoduletemplate_Channels',
+                'type'  => 'aarr',
+                'value' => ['1' => 'de', '2' => 'en']
+            ],
+            [
+                'group'    => 'oemoduletemplate_main',
+                'name'     => 'oemoduletemplate_Password',
+                'type'     => 'password',
+                'value'    => 'changeMe',
                 'position' => 3
             ]
         ]
@@ -141,7 +112,7 @@ Example
 
         'settings' => [
             [
-                'name' => 'sOEPayPalBrandName',
-                'type' => 'str',
-                'value' => 'PayPal Testshop'
+                'name'  => 'oemoduletemplate_BrandName',
+                'type'  => 'str',
+                'value' => 'Testshop'
             ],
