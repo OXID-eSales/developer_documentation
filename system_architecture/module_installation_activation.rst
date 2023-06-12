@@ -6,4 +6,4 @@ To understand the data flow in OXID eShop functionality, have a look at the foll
 .. include:: resources/module_states.puml
 
 For more information about module installation and configuration, see
-:doc:`module preparation and deployment documents </development/modules_components_themes/project/module_configuration/index>`.
+:doc:`Module preparation and deployment </development/modules_components_themes/project/module_configuration/index>`.
