@@ -35,8 +35,8 @@ Usage
         {% set oConfig = oViewConf.getConfig() %}
         {{ oConfig.getConfigParam('nameOfSetting') }}
 
-    Add **translations of your module's settings** into each copy of corresponding :file:`module_options.php` file
-    (see details in :ref:`File and Folder structure <modules_structure_language_files_admin>`)
+    Add **translations of your module's settings** in each copy of the corresponding :file:`module_options.php` file
+    (see details in :ref:`File and Folder structure <modules_structure_language_files_admin>`).
 
 Example
 

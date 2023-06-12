@@ -2,7 +2,8 @@ Module configuration deployment
 ===============================
 
 This document describes possible deployment process which could be used for the application.
-Workflow can be seen in image below, schema steps are described in following sections.
+
+The workflow can be seen in image below, schema steps are described in the following sections.
 
 .. uml::
 
@@ -27,28 +28,32 @@ Configuration files preparation
 -------------------------------
 
 Let's say you are configuring modules on your local machine (how to do this please read the
-:ref:`modules configuration document <configuring_module-20190910>`). After your are done, you have prepared files in
-`var/configuration/shops/` directory.
+:ref:`modules configuration document <configuring_module-20190910>`).
+
+After your are done, you have prepared files in the :file:`var/configuration/shops/` directory.
 
 Dealing with environment files
 ------------------------------
 
 Let's assume you have OXID eShop with Module Template module and you want to deploy your configuration from your development
-environment to staging environment. All settings in both environments are the same except and ``oemoduletemplate_Password``.
-So you would need all the time after deployment to change these values
-as configuration files would be overwritten. To solve this problem, `environment` feature
-was introduced.
+environment to staging environment. All settings in both environments are the same, except ``oemoduletemplate_Password``.
+
+So you would need all the time after deployment to change these values as configuration files would be overwritten.
+
+To solve this problem, the `environment` feature was introduced.
 
 Environment files overwrite settings which are already described in configuration files located in
 :file:`var/configuration/shops/` directory.
 
-To use this feature you need to create the directory :file:`var/configuration/environment` and put stripped down contents
-of a module configuration file :file:`var/configuration/environment/shops/<shop-id>/modules/<module-id>.yaml` in there. Here you may configure environment specific values, for example
+To use this feature, create the :file:`var/configuration/environment` directory and put stripped down contents
+of a module configuration file :file:`var/configuration/environment/shops/<shop-id>/modules/<module-id>.yaml` in there.
+
+Here, you may configure environment specific values, for example
 credentials for payment providers.
 
-So to solve the problem described in the beginning of the section follow these steps:
+So to solve the problem described in the beginning of the section, follow the following steps:
 
-1. On staging environment (assuming it's main shop with id `1` and the module id is `oe_moduletemplate`)
+1. On the staging environment (assuming it's main shop with id `1` and the module id is `oe_moduletemplate`), create a
    file with the name of the module id inside the :file:`var/configuration/environment/shops/1/modules` directory.
 2. Copy and paste the part of your module settings from :file:`var/configuration/shops/1/modules/oe_moduletemplate.yaml`
    to :file:`var/configuration/environment/shops/1/modules/oe_moduletemplate.yaml`.
@@ -67,8 +72,10 @@ Don't forget to clean module cache after updating yml files.
 .. important::
 
     If you have environment configuration files in the OXID eShop you should not save settings via admin backend.
+
     If you do this, the environment specific values will be
     merged into the base configuration and the environment configuration for the module will be renamed to `.bak` file like `oe_moduletemplate.yaml.bak`.
+
     Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
 
 Next steps would be:
@@ -115,7 +122,7 @@ To deploy configurations of all modules use the following command:
 
  .. todo: #Igor: we need to mention https://github.com/OXID-eSales/deployment-tools to be installed
 
-Provide ``--shop-id`` option if you are using an OXID eShop Enterprise Edition and it is only for one shop.
+Provide ``--shop-id`` option if you use an OXID eShop Enterprise Edition and it is only for one shop.
 
 .. code:: bash
 
@@ -123,4 +130,4 @@ Provide ``--shop-id`` option if you are using an OXID eShop Enterprise Edition a
 
  .. todo: #Igor check:
 
-.. important:: When command is executed module data in configuration files will overwrite data in database.
+.. important:: When the command is executed, the module data in the configuration files will overwrite the database data.

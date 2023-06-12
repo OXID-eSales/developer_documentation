@@ -7,7 +7,7 @@ Testing standards
 Edge cases
 ^^^^^^^^^^
 
-You should test methods for proper input handling as well as for failure cases and for edge cases.
+Test the methods for proper input handling as well as for failure cases and for edge cases:
 
 * What happens on correct input?
 * What happens on incorrect input?
@@ -16,8 +16,11 @@ You should test methods for proper input handling as well as for failure cases a
 Atomic tests
 ^^^^^^^^^^^^
 
-Each method should be tested on its own. There shouldn’t be any dependencies between the tests. If there are, use stubs
-and dependency injection. See the PHPUnit Manual: Test Doubles.
+Test each method on its own.
+
+There shouldn’t be any dependencies between the tests.
+
+If there are, use stubs and dependency injection. For more informtion, see the PHPUnit Manual under `Test Doubles <https://docs.phpunit.de/en/10.2/test-doubles.html>`_..
 
 .. _testcreation-20180118:
 
@@ -77,8 +80,10 @@ An example
 Write at least one test per method
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For each method there should be at least one test in the test method respectively. Hint: The amount of tests for a
-method should be as high as the NPath complexity. NPath complexity=7 results in 7 tests.
+For each method there should be at least one test in the test method respectively.
+
+Hint: The amount of tests for a method should be as high as the NPath complexity. NPath complexity=7 results in 7 tests.
+
 Tests must be written only for public methods. All protected and private methods must be tested through public methods.
 
 Code coverage > 90 percent
@@ -89,9 +94,11 @@ The code coverage has to be greater than 90%. This refers to the code coverage f
 Minimal disturbance of eShop tests
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Your unit tests should interfere as little as possible with the shop tests. If you run all tests at once (e.g. eShop unit
-tests and module unit tests afterwards), no shop test should fail. Only shop tests of methods that are overloaded by your
-module(s) may fail, when a change of the return values was intended.
+Your unit tests should interfere as little as possible with the shop tests.
+
+If you run all tests at once (e.g. eShop unit tests and module unit tests afterwards), no shop test should fail.
+
+Only shop tests of methods that are overloaded by your module(s) may fail, when a change of the return values was intended.
 
 Directory structure
 -------------------
@@ -99,14 +106,16 @@ Directory structure
 Module directory structure
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The module structure basically must be like the example structure shown in the picture below. The test folder must be a
-subdirectory in the module directory. Please stick to the :ref:`structure example given in modules/structure <modules_structure-20170217>`.
+The module structure basically must be like the example structure shown in the picture below.
+
+The test folder must be a subdirectory in the module directory.
+
+Stick to the :ref:`structure example given in modules/structure <modules_structure-20170217>`.
 
 OXID test folder usage
 ^^^^^^^^^^^^^^^^^^^^^^
 
-* Sample tests can be found in the
-  `Module Template repository on GitHub <https://github.com/OXID-eSales/module-template>`__
+Find sample tests under `Module Template repository on GitHub <https://github.com/OXID-eSales/module-template>`_.
 
 Running tests, creating and reading reports
 -------------------------------------------

@@ -5,10 +5,14 @@ Troubleshooting
 
 Module does not install using composer
 --------------------------------------
-When you are using composer to install or update a module and you notice, that the module is not properly :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`,
-there are two types of situations in which you may encounter this issue:
 
-- Shop configuration file is removed from `var/configuration/shops/` directory or `/var` directory is removed.
+When you are using composer to install or update a module and you notice that the module is not properly :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`, there are two types of situations in which you may encounter this issue:
+
+* The OXID eShop configuration file is removed from the :file:`var/configuration/shops/` directory.
+
+  or
+
+* The :file:`/var` directory is removed.
 
 Solution
 ^^^^^^^^
@@ -49,8 +53,8 @@ Solution
 
 .. Note::
 
-    Please check :doc:`modules configuration and setup document </development/modules_components_themes/project/module_configuration/modules_configuration>`
-    for getting more information regarding shop configuration files ( `var/configuration/shops/` ) and how to generate them.
+    For more information about the shop configuration files (:file:`var/configuration/shops/`) and how to generate them, see :doc:`modules configuration and setup document </development/modules_components_themes/project/module_configuration/modules_configuration>`.
+    .
 
 .. Note::
 

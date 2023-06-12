@@ -75,12 +75,17 @@ Frontend
 Translation files can be placed in the folders
 
 * ``translations``
-* ``Application/translations`` (not recommended, deprecated but still supported way)
+* ``Application/translations`` (not recommended, deprecated but still supported)
 
 inside your module directory.
+
 If you have a folder ``Application`` (first letter is capital) inside your module, translation files are searched
-inside this directory. Otherwise, they are searched inside the folder ``translations``.
-Inside these directory, you have to create a directory for the specific language, e.g. ``de`` or ``en``.
+inside this directory.
+
+Otherwise, they are searched inside the folder ``translations``.
+
+Inside these directories, you have to create a directory for the specific language, e.g. ``de`` or ``en``.
+
 Inside the language specific, directory, the filename has to be _lang.php.
 
 Example:
@@ -155,13 +160,14 @@ Example:
         'SHOP_MODULE_oemoduletemplate_Password' => 'Password',
 
 .. note::
-    While using 'module_options.php' for translation, the translations will only be loaded while being logged in as admin.
+    While using :file:`module_options.php` for translation, the translations will only be loaded while being logged in as admin.
 
 Custom JavaScript / CSS / Images
 --------------------------------
 
 Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
-all of your files in assets folder will be symlink to ``out/modules/<module-id>/``
+
+All of your files in assets folder will be symlink to ``out/modules/<module-id>/``.
 
 Example:
 

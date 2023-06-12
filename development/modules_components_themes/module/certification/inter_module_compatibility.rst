@@ -8,21 +8,24 @@ Vendor Prefixes
 ^^^^^^^^^^^^^^^
 
 .. todo: #VL: VL prüft mit Team und Support: brauchen wir es noch? -- Ziel-Seite fehlt; wie registriert man sein Kürzel?
-         #HR: makes still sense to have it but linked page needs to be updated
+         #HR: makes still sense to have it but linked page needs to be updated -- how/who updted?
 
-A prefix and a vendor namespace should be used consistently, and they should
-be `registered at OXID eSales <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`__
-to prevent use by others. Use your prefix for your:
+Use a prefix and a vendor namespace consistently.
 
-#. database tables
-#. additional fields
-#. config parameters
-#. language constants
+Use your prefix for your:
+
+* database tables
+* additional fields
+* config parameters
+* language constants
+
+Recommendation: To prevent use by others, reserve your prefix under `forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381 <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`_.
 
 Namespaces
 ^^^^^^^^^^
 
-Also, your namespace (with the namespace of your module) should be used inside all of your classes.
+Also, make sure to use your namespace (with the namespace of your module) inside all of your classes.
+
 An example from the Module Template module:
 
 .. code:: php
@@ -40,6 +43,7 @@ Parent calls
 ^^^^^^^^^^^^
 
 When writing extensions for methods that do variable assignments or execute other calls, be sure to add a parent call.
+
 This is an example from the Demo logger module class ``Basket`` which is an extension for the shop's basket class with the
 namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
 
@@ -78,7 +82,10 @@ namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
 Method visibility
 ^^^^^^^^^^^^^^^^^
 
-Do not change the visibility of methods that are extended. Visibilities can be ``public``, ``protected`` or ``private``.
+Do not change the visibility of methods that are extended.
+
+Visibilities can be ``public``, ``protected`` or ``private``.
+
 If you want to extend an original method, do not change your new method's visibility from ``protected`` to ``public`` or
 from ``private`` to ``protected``.
 

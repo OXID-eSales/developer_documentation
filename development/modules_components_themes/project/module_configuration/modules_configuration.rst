@@ -75,8 +75,8 @@ So if the shop has id 1, a directory would be named 1. See the example below:
 
 .. note::
 
-    If var directory cannot be found in the project directory.
-    ``composer update`` must be executed or it must be created manually.
+    If the :file:`var` directory cannot be found in the project directory, execute ``composer update`` or create the :file:`var` directory manually.
+
     Also, each shop must have their own separate directory.
 
 .. _configuring_module_via_configuration_files-20190829:
@@ -107,10 +107,10 @@ where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.
                     └──modules
                         └──oe_moduletemplate.yaml
 
-Configuration might be different in different environment (testing, staging or productive). To solve this problem
+The configuration might be different in different environment (testing, staging or productive). To solve this problem,
 OXID eShop uses another directory with configuration files located in `var/environment/<shop-id>/`.
 
-Example structure you can see below:
+Example structure:
 
 .. code::
 
@@ -130,12 +130,15 @@ Configuration files
 """""""""""""""""""
 
 These files contains information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
-During the installation process all of the information from module `metadata.php` is being transferred to the
-configuration files. For example you have OXID eShop without any modules, so `var/configuration/shops/modules/` will be empty. When you will run
-installation let's say for OXID eShop Module Template module, files in `var/configuration/shops/` will be filled with information from
-`metadata.php`. An example of stripped down configuration file:
 
-Example: `var/configuration/shops/modules/1/oe_moduletemplate.yaml`
+During the installation process, all of the information from module `metadata.php` is being transferred to the
+configuration files.
+
+For example you have OXID eShop without any modules, so `var/configuration/shops/modules/` will be empty.
+
+When you will run the installation let's say for the OXID eShop Module Template module, the files in `var/configuration/shops/` will be filled with information from `metadata.php`.
+
+An example of stripped down configuration file :file:`var/configuration/shops/modules/1/oe_moduletemplate.yaml`:
 
 .. code:: yaml
 
@@ -174,9 +177,9 @@ Example: `var/configuration/shops/modules/1/oe_moduletemplate.yaml`
 
 
 
-Also the file with the module class extension chain will be generated.
+Also, the file with the module class extension chain will be generated.
 
-Example: `var/configuration/shops/1/class_extension_chain.yaml`
+Example: :file:`var/configuration/shops/1/class_extension_chain.yaml`:
 
 .. code:: yaml
 

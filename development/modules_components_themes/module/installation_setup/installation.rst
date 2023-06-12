@@ -30,7 +30,8 @@ Composer installation
 ^^^^^^^^^^^^^^^^^^^^^
 
 Module can be installed with regular composer installation. Composer performs all necessary installation steps.
-Example command how to install OXID eShop Module Template module with composer:
+
+Sample command how to install the OXID eShop Module Template module with composer:
 
 .. code:: bash
 

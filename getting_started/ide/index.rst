@@ -1,10 +1,11 @@
 Setting Up Your IDE
 ===================
 
-Working with an IDE (Integrated Development Environment) is highly recommended in order to develop with OXID eShop.
+To develop with OXID eShop, we highly recommend working with an IDE (Integrated Development Environment).
 
 These howtos rely on an :doc:`installed OXID eShop </getting_started/installation/index>` on a running
 `OXID eShop VM <https://github.com/OXID-eSales/oxvm_eshop>`__.
+
 If you are using a different environment, this documentation might change slightly.
 
 .. toctree::

@@ -16,7 +16,7 @@ Do not use global variables like
     $_SERVER
     // etc.
 
-In order to receive their represented values, use the methods provided by the shop framework, e.g.:
+To receive their represented values, use the methods provided by the shop framework, e.g.:
 
 .. code:: php
 
@@ -36,7 +36,8 @@ PHP code
 ^^^^^^^^
 
 Object-oriented programming is highly preferred.
-Your code should be compatible with the PHP versions described in the `system requirements <https://docs.oxid-esales.com/eshop/en/7.0/installation/new-installation/server-and-system-requirements.html>`__.
+
+Make sure your code is compatible with the PHP versions described under `Server and system requirements <https://docs.oxid-esales.com/eshop/en/7.0/installation/new-installation/server-and-system-requirements.html>`__.
 
 OXID standards
 --------------
@@ -174,7 +175,7 @@ Extending views and frontend
 Module templates
 ^^^^^^^^^^^^^^^^
 
-All templates should be stored in the same structure like shop templates are.
+Store all templates in the same structure as the shop templates are stored in.
 
 For example:
 
@@ -187,27 +188,32 @@ For smarty:
 
 Smarty only
 """""""""""
-All new templates must be registered in :file:`metadata.php` and should use naming convention:
+
+Register all new templates in :file:`metadata.php`, using the following naming convention:
 
 :file:`[module_id]_[template_name].html.twig`
 
 Using JavaScript and including .js files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-JavaScript files should be stored into:
+Store JavaScript files in the following directories:
 
 * :file:`assets/js/libs` – if needs to define some additional JS libraries
 * :file:`assets/js/widgets` – all newly created widgets
 
-Naming convention for new widgets:
+Use the following naming convention for new widgets:
+
 :file:`[module_id]_[widget_name].js`
 
 .. important::
 
-    All Javascript code must be in files in the widgets folder. Javascript code is not allowed directly in the template.
-    In the template you are only allowed to do the assignment for widgets and do includes for the Javascript files you need.
+    All Javascript code must be in files in the widgets folder.
 
-In order to include Javascript files in frontend, use:
+    Javascript code is not allowed directly in the template.
+
+    In the template, you are only allowed to do the assignment for widgets and do includes for the Javascript files you need.
+
+To include Javascript files in the frontend, use:
 
 .. code:: php
 
@@ -225,16 +231,16 @@ Assignment of a DOM element for a widget:
 
     {{ script({ add: "const myModal = new bootstrap.Modal('#isRootCatChanged');myModal.show();" }) }}
 
-In this way Javascript files will be included correctly within the template.
+In this way, Javascript files will be included correctly in the template.
 
 Using CSS and including .css files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-CSS files should be stored in: :file:`assets/css/<filename>`
+Store CSS files in: :file:`assets/css/<filename>`.
 
-CSS file naming convention is: :file:`[module_id]_[css_file_name].css`
+For CSS files, use the following naming convention: :file:`[module_id]_[css_file_name].css`
 
-To include new CSS file from module needs to use:
+To include a new CSS file from your module, use:
 
 .. code:: php
 
@@ -249,12 +255,12 @@ And for output:
 
 .. important::
 
-    All needed styles must be stored into CSS file and must not be assigned directly in template.
+    All required styles must be stored into CSS file and must not be assigned directly in the template.
 
 Language files and templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Individual language files and templates must be inside the module directory.
+Make sure that individual language files and templates are stored in the module directory.
 
 Appendix for Smarty
 ^^^^^^^^^^^^^^^^^^^
@@ -268,30 +274,35 @@ Naming convention:
 Blocks
 """"""
 
-Use block definitions in the templates. This is not an obligation. The naming convention for new blocks is:
-``[module_id]_[blockname]``. In the templates, use blocks like that:
+Use block definitions in the templates.
+
+This is not an obligation.
+
+The naming convention for new blocks is:
+``[module_id]_[blockname]``.
+
+In the templates, use blocks like the following:
 
 .. code:: php
 
     [{block name="thevendor_themodule_theblock"}][{/block}]
 
-All blocks information should be stored into :file:`views/blocks` directory:
+Store all blocks information in the :file:`views/blocks` directory.
 
-For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`,
-inside the module directory, the block file should be located in :file:`views/blocks/module_id_blockname.tpl`.
+For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`, inside the module directory, the block file should be located in :file:`views/blocks/module_id_blockname.tpl`.
 
 When adding contents for blocks in the admin interface, blocks should be located in paths like
 :file:`views/blocks/admin/module_id_blockname.tpl`.
 
-Blocks should be used whenever the shop's functionality is extended to the frontend side and a requested function or method
-would not be available as long as the module is disabled. Using blocks allows you to move function calls into small snippet
-files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered
-a quality feature of a module.
+Use blocks whenever the shop's functionality is extended to the frontend side and a requested function or method
+would not be available as long as the module is disabled.
+
+Using blocks allows you to move function calls into small snippet files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered a quality feature of a module.
 
 Including .js files
 """""""""""""""""""
 
-In order to include Javascript files in frontend, use:
+To include Javascript files in the frontend, use:
 
 .. code:: php
 
@@ -305,6 +316,8 @@ And for output:
 
 Including .css files
 """"""""""""""""""""
+
+.. todo: #HR: Was heißt der Satz? (siehe auch oben) "To include new CSS file from module needs to use:"
 
 To include new CSS file from module needs to use:
 
@@ -325,5 +338,6 @@ Database access compatibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Database access should be master-slave compatible.
-For details, see :ref:`Database: Master/Slave <modules-database-master_slave>`.
+
+For more information, see :ref:`Database: Master/Slave <modules-database-master_slave>`.
 

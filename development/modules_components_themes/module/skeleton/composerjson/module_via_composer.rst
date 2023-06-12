@@ -6,14 +6,14 @@ Composer.json for an OXID eShop Module
 OXID eShop modules with :doc:`metadata version greater 2.0 </development/modules_components_themes/module/skeleton/metadataphp/index>` are installed via Composer by using the
 `OXID eShop Composer Plugin <https://github.com/OXID-eSales/oxideshop_composer_plugin>`__.
 
-In order to install a module correctly, this plugin requires four fields to be described in module ``composer.json`` file:
+To install a module correctly, this plugin requires four fields to be described in module ``composer.json`` file:
 
 - :ref:`name <module_name-20170926>`
 - :ref:`type <module_type-20160524>`
 - :ref:`require <module_require-20170926>`
 - :ref:`autoload <module_autoload-20170926>`
 
-**Template module example:**
+**Template module example**
 
 .. code:: json
 
@@ -79,7 +79,7 @@ In order to install a module correctly, this plugin requires four fields to be d
 .. _module_name-20170926:
 
 name
-------------------
+----
 
 This is the name the OXID eShop module will be publicly known and installable.
 E.g. in our example you could type
@@ -100,9 +100,10 @@ This defines how the repository should be treated by the installer.
 .. _module_require-20170926:
 
 require
-------------------
+-------
 
 Here you must define all dependencies your module has.
+
 You must define:
 
 * a minimum PHP version. In the example PHP >=8.0 is required

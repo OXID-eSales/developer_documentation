@@ -14,15 +14,15 @@ You can easily uninstall module using composer and
 
 * Remove module source files
 
-then composer will remove module from autoloader and rebuild the autoloader.
+Then, composer will remove module from autoloader and rebuild the autoloader.
 
 Uninstall module without composer
 ---------------------------------
 
-In order to just uninstall the module without removing it via composer, following command has been provided.
+To just uninstall the module without removing it via composer, use the following command:
 
 .. code:: bash
 
     vendor/bin/oe-console oe:module:uninstall <module-id>
 
-Unless module is removed via composer, it still can be installed again via console.
+Unless a module is removed via composer, it still can be installed again via console.
