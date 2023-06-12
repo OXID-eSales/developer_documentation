@@ -80,7 +80,7 @@ patch release.
 
 The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/latest/releases/index.html).
 
-.. todo: #tbd: löschen, wenn in controllers.rst angepasst: Vendor ID obsolet
+.. todo: #HR/#tbd: löschen, wenn in controllers.rst angepasst: Vendor ID obsolet
     .. _glossary-vendor_id:
     Vendor ID
     ^^^^^^^^^

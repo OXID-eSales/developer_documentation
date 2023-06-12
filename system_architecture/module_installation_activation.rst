@@ -1,7 +1,7 @@
 Module installation and activation
 ==================================
 
-.. todo: #tbd: puml file not rendered: "WARNING: plantuml command 'plantuml' cannot be run"
+.. todo: #HR/#tbd: puml file not rendered: "WARNING: plantuml command 'plantuml' cannot be run"
 
 To understand data flow in OXID eShop functionality please have a look to the state diagram below:
 
