@@ -1,6 +1,8 @@
 Software quality
 ================
 
+.. todo: #HR: USe Twig instead of Smarty
+
 Basics
 ------
 
@@ -213,7 +215,7 @@ Use the following naming convention for new widgets:
 
     In the template, you are only allowed to do the assignment for widgets and do includes for the Javascript files you need.
 
-To include Javascript files in the frontend, use:
+To include Javascript files in the frontend, use the following expression:
 
 .. code:: php
 
@@ -240,7 +242,7 @@ Store CSS files in: :file:`assets/css/<filename>`.
 
 For CSS files, use the following naming convention: :file:`[module_id]_[css_file_name].css`
 
-To include a new CSS file from your module, use:
+To include a module's custom CSS file, use the following expression:
 
 .. code:: php
 
@@ -302,7 +304,7 @@ Using blocks allows you to move function calls into small snippet files for the 
 Including .js files
 """""""""""""""""""
 
-To include Javascript files in the frontend, use:
+To include Javascript files in the frontend, use the following expression:
 
 .. code:: php
 
@@ -317,9 +319,7 @@ And for output:
 Including .css files
 """"""""""""""""""""
 
-.. todo: #HR: Was heißt der Satz? (siehe auch oben) "To include new CSS file from module needs to use:"
-
-To include new CSS file from module needs to use:
+To include a module's custom CSS file, use the following expression:
 
 .. code:: php
 
