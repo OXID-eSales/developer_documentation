@@ -84,35 +84,49 @@ We strongly recommend using the following ones (or alternatives):
     * PHPStan: To ensure your code achieves level 5 or higher
     * Psalm: To ensure your code achieves level 4 or lower
 
-The mentioned technology can be easily used via composer, like described for example in our `module template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
-With :code:`composer static` you could easily be able to run the PHP_CodeSniffer, PHPMess Detector and PHPStan with one single command, with the associated configurations.
+You can use the mentioned technology easily via composer, as described, for example, in our `module template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
 
-Using nice-to-have tools
+With :code:`composer static`, run the PHP_CodeSniffer, PHPMess Detector and PHPStan with one single command, with the associated configurations.
+
+Using productivity tools
 ------------------------
 
-OXID eSales recommends the following productivity tools and best practices:
+OXID eSales recommends the following productivity tools:
 
-* Use Sonarcloud as a final report point for psalm issues, code coverage reports, code duplications analysis.
-  Sonarcloud can and should be also integrated in your CI-process for example in Github Actions like in our `module-template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
-* Use Github Actions with all required tools integrated to run them constantly during development.
+* Sonarcloud
+* Github Actions
+
+Sonarcloud
+^^^^^^^^^^
+
+Use Sonarcloud as a final report point for psalm issues, code coverage reports, code duplications analysis.
+
+Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `module-template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
 
 Github Actions
---------------
-All necessary files have to be stored in your repository in :code:`.github/workflows` folder.
-A good example can be found in our `module-template <https://github.com/OXID-eSales/module-template/tree/b-7.0.x/.github/workflows>`_.
-The files can be splitted in development.yml, trigger.yml and schedule.yml.
+^^^^^^^^^^^^^^
+
+Use Github Actions with all required tools integrated to run them constantly during development.
+
+Store all required files in your repository in the :file:`.github/workflows` folder.
+
+A good example can be found in our module template under `workflows <https://github.com/OXID-eSales/module-template/tree/b-7.0.x/.github/workflows>`_.
+
+Split the files in :file:`development.yml`, :file:`trigger.yml`, and :file:`schedule.yml`.
 
 The `development.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/development.yml>`_ defines the executable jobs and the possible options for them.
 
-If you want a reusable workflow, for example to use it in our trigger.yml or schedule.yml, :code:`on:` have to contain :code:`workflow_call:` with possible parameters.
-To be able to execute this workflow on Github under `Actions-tab <https://github.com/OXID-eSales/module-template/actions/workflows/development.yml>`_, :code:`on:` needs to contain :code:`workflow_dispatch:` with the values that must be passed.
-Both examples can be seen in the development.yml.
+If you want a reusable workflow, for example to use it in our :file:`trigger.yml` or :file:`schedule.yml, make sure that :code:`on:` contains :code:`workflow_call:` with the possible parameters.
+
+To be able to execute this workflow on Github on the `Actions tab <https://github.com/OXID-eSales/module-template/actions/workflows/development.yml>`_, make sure that :code:`on:` contains :code:`workflow_dispatch:` with the values to be passed.
+
+Both examples can be seen in the :file:`development.yml` file.
 
 .. important::
-    If you want to execute the workflow on the Actions-tab, the :code:`workflow_dispatch` value has to be added in the main-branch as well. Otherwise the development.yml isn't visible.
+    If you want to execute the workflow on the :guilabel:`Actions` tab, add the :code:`workflow_dispatch` value in the main-branch as well. Otherwise the :file:`development.yml` file isn't visible.
 
 
-`trigger.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/trigger.yml>`_ is used to trigger a process on specific events, defined under
+Use the `trigger.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/trigger.yml>`_ file to trigger a process on specific events, defined under
 
 .. code:: yaml
 
@@ -120,21 +134,22 @@ Both examples can be seen in the development.yml.
       pull_request:
       push:
 
-With these events, the jobs will be triggered and run for example the jobs in the development.yml with specific parameters. The possible parameters are defined in the development.yml and need to be passed in the jobs defined in the trigger.yml.
+With these events, the jobs will be triggered and execute, for example, the jobs in the :file:`development.yml` file with specific parameters. The possible parameters are defined in the :file:`development.yml` file and need to be passed in the jobs defined in the :file:`trigger.yml`.
 
-The `schedule.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/schedule.yml>`_ is used for triggering scheduled jobs. If you want to execute jobs every week or month, you should put them into the schedule.yml.
-To define different scheduled jobs, it's good to create multiple files, like monthly.yml and weekly.yml.
+Use the `schedule.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/schedule.yml>`_ file to trigger scheduled jobs. If you want to execute jobs every week or month, put them in the :file:`schedule.yml`.
 
-In our schedule.yml you can see how the execution time is defined:
+To define multiple scheduled jobs, create multiple files, fpr example :file:`monthly.yml` and :file:`weekly.yml`.
+
+In our :file:`schedule.yml` file, see how to define the execution time:
+
+.. note::
+    As cron syntax, use the `POSIX cron syntax <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07>`_.
 
 .. code:: yaml
 
     on:
       schedule:
         - cron: '0 0 */7 * *'
-
-.. note::
-    As cron syntax the `POSIX cron syntax <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07>`_ is used.
 
 
 Following best practices
@@ -145,7 +160,3 @@ Following best practices
 * Compose meaningful commit messages.
   |br|
   Good commit messages describe the changes applied in the commit, “ESDEV-1111 Fix the tracking system issue“, for example.
-
-
-
-
