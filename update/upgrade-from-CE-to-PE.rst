@@ -33,3 +33,10 @@ You need to perform all of the following actions step by step:
    .. code:: bash
 
      composer update
+     
+
+#. Clear Cache:
+
+   .. code:: bash
+
+     vendor/bin/oe-console oe:cache:clear  
