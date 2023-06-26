@@ -172,8 +172,12 @@ div.section img {
   
 .wy-side-nav-search {
     background: #fff;
-    color: #000;
 }
+
+.wy-side-nav-search>a {
+    color: #C02124;
+}
+
   
 .wy-side-nav-search > div.version {
     color: #000;
