@@ -1,7 +1,7 @@
 Software quality
 ================
 
-.. todo: #HR: USe Twig instead of Smarty
+.. todo: #HR: USe Twig instead of Smarty -- ist das schon umgesetzt im Folgenden?
 
 Basics
 ------
@@ -190,6 +190,8 @@ For smarty:
 
 Smarty only
 """""""""""
+
+.. todo: #HR: Warum twig im Smarty only-Kontext?
 
 Register all new templates in :file:`metadata.php`, using the following naming convention:
 

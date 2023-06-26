@@ -18,7 +18,7 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
   To do so, you have asked the third-party vendor if these themes and modules are compatible with version 7 of OXID eShop.
 
-  For updating existing modules from OXID eShop 6.5.x to OXID eShop 7, see :ref:`update/eshop_from_65_to_7/modules:Modules`.
+  For updating existing modules from OXID eShop 6.5.x to OXID eShop 7, see :ref:`update/eshop_from_65_to_7/modules:Updating modules`.
 
 |procedure|
 

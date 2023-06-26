@@ -1,7 +1,7 @@
 id
 ==
 
-.. todo #VL: wie todo oben: VL prüft; https://oxidforge.org/de/modulkurzel outdated? Wo liegt die Datei jetzt? "This file is outdated for we moved on to another system to display your acronyms, namespaces"
+.. todo #HR: wie todo oben: VL prüft; https://oxidforge.org/de/modulkurzel outdated? Wo liegt die Datei jetzt? "This file is outdated for we moved on to another system to display your acronyms, namespaces"
 
 Description
     The extension id must be unique.
