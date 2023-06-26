@@ -1,8 +1,9 @@
-Upgrading from PE edition to EE edition
-=======================================
+Upgrading from the Professional Edition Edition to the Enterprise Edition
+=========================================================================
 
-This page describes how you can upgrade from OXID eShop PE to EE edition.
-You need to perform all of the following actions step by step:
+Upgrading from the Professional Edition (PE) edition to the Enterprise Edition (EE).
+
+|procedure|
 
 #. Add `oxideshop-metapackage-ee` to your root :file:`composer.json`:
 
@@ -10,25 +11,25 @@ You need to perform all of the following actions step by step:
 
     composer config repositories.oxid-esales composer https://enterprise-edition.packages.oxid-esales.com
 
-#. install `oxideshop-metapackage-ee` using composer without executing any scripts:
+#. Install `oxideshop-metapackage-ee` using composer without executing any scripts:
 
    .. code:: bash
 
      composer require oxid-esales/oxideshop-metapackage-ee --no-plugins --no-scripts
 
-#. run shop migrations:
+#. Run the shop migrations:
 
    .. code:: bash
 
      vendor/bin/oe-eshop-db_migrate migrations:migrate
 
-#. Regenerate database views:
+#. Regenerate the database views:
 
    .. code:: bash
 
     vendor/bin/oe-eshop-db_views_generate
 
-#. Update your dependencies for EE shop and modules:
+#. Update the dependencies for your EE shop and modules:
 
    .. code:: bash
 
