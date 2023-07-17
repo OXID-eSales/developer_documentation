@@ -109,25 +109,27 @@ Example of the module yaml file:
     ...
 
 This option can be set manually by changing configuration file.
-Also the option will be set to ``true`` if you activate a module manually via console or admin backend
+
+Also, the option will be set to ``true`` if you activate a module manually via console or admin backend
 or to false if you deactivate your module.
 
-.. todo: #Igor: this following section looks outdated, we have no more module settings in database missing: deploment tools
+.. todo: #Igor: this following section looks outdated, we have no more module settings in database missing: deployment tools
+        to be added: composer require oxid-esales/deployment-tools -- but this requires the repo to be public
 
-To deploy configurations of all modules use the following command:
+    To deploy configurations of all modules use the following command:
 
-.. code:: bash
+    .. code:: bash
 
-    vendor/bin/oe-console oe:module:deploy-configurations
+        vendor/bin/oe-console oe:module:deploy-configurations
 
- .. todo: #Igor: we need to mention https://github.com/OXID-eSales/deployment-tools to be installed
+    .. todo: #Igor: we need to mention https://github.com/OXID-eSales/deployment-tools to be installed
 
-Provide ``--shop-id`` option if you use an OXID eShop Enterprise Edition and it is only for one shop.
+    Provide the ``--shop-id`` option if you use an OXID eShop Enterprise Edition and it is only for one shop.
 
-.. code:: bash
+    .. code:: bash
 
-    vendor/bin/oe-console oe:module:deploy-configurations --shop-id=1
+        vendor/bin/oe-console oe:module:deploy-configurations --shop-id=1
 
- .. todo: #Igor check:
+    .. todo: #Igor check:
 
-.. important:: When the command is executed, the module data in the configuration files will overwrite the database data.
+    .. important:: When the command is executed, the module data in the configuration files will overwrite the database data.
