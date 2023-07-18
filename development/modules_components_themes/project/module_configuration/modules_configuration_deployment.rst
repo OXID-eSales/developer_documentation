@@ -98,8 +98,6 @@ Deploying module configurations
 
 Make sure that module settings in different environments work the same.
 
-To do so, use the deployment tool to ensure that the module data in your configuration or environment files overwrite the database data.
-
 -----------------------------------------------------
 
 Example: You have activated and configured a module in a test environment. Then you install the module in the production environment and copy the module's configuration file from the test to the production environment.
