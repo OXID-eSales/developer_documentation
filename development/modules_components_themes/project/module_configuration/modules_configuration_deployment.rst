@@ -24,25 +24,25 @@ The workflow can be seen in image below, schema steps are described in the follo
     @enduml
 
 
-Configuration files preparation
--------------------------------
+Preparing configuration files
+-----------------------------
 
 Let's say you are configuring modules on your local machine (how to do this please read the
 :ref:`modules configuration document <configuring_module-20190910>`).
 
-After your are done, you have prepared files in the :file:`var/configuration/shops/` directory.
+After you are done, you have stored your files in the :file:`var/configuration/shops/` directory.
 
 Dealing with environment files
 ------------------------------
 
 Let's assume you have OXID eShop with Module Template module and you want to deploy your configuration from your development
-environment to staging environment. All settings in both environments are the same, except ``oemoduletemplate_Password``.
+environment to your staging environment. All settings in both environments are the same, except ``oemoduletemplate_Password``.
 
-So you would need all the time after deployment to change these values as configuration files would be overwritten.
+So, you would need all the time after deployment to change these values as configuration files would be overwritten.
 
 To solve this problem, the `environment` feature was introduced.
 
-Environment files overwrite settings which are already described in configuration files located in
+Environment files overwrite settings which are already described in configuration files located in the
 :file:`var/configuration/shops/` directory.
 
 To use this feature, create the :file:`var/configuration/environment` directory and put stripped down contents
@@ -51,9 +51,9 @@ of a module configuration file :file:`var/configuration/environment/shops/<shop-
 Here, you may configure environment specific values, for example
 credentials for payment providers.
 
-So to solve the problem described in the beginning of the section, follow the following steps:
+To solve the problem described in the beginning of the section, follow the following steps:
 
-1. On the staging environment (assuming it's main shop with id `1` and the module id is `oe_moduletemplate`), create a
+1. On the staging environment (assuming its main shop with id `1` and the module id is `oe_moduletemplate`), create a
    file with the name of the module id inside the :file:`var/configuration/environment/shops/1/modules` directory.
 2. Copy and paste the part of your module settings from :file:`var/configuration/shops/1/modules/oe_moduletemplate.yaml`
    to :file:`var/configuration/environment/shops/1/modules/oe_moduletemplate.yaml`.
@@ -67,69 +67,86 @@ Example of the environment file :file:`var/configuration/environment/shops/1/mod
       oemoduletemplate_Password:
         value: staging_environment_password
 
-Don't forget to clean module cache after updating yml files.
+Don't forget to clean the module cache after updating your yaml files.
 
 .. important::
 
-    If you have environment configuration files in the OXID eShop you should not save settings via admin backend.
+    If you have environment configuration files in the OXID eShop you should not save settings via the admin backend.
 
     If you do this, the environment specific values will be
     merged into the base configuration and the environment configuration for the module will be renamed to `.bak` file like `oe_moduletemplate.yaml.bak`.
 
-    Be aware that if there is already an environment backup file, it will be overridden if setting  will change again.
+    Be aware that if there is already an environment backup file, it will be overridden if the settings change again.
 
 Next steps would be:
 
-* **Upload** directories to the production server.
-* **Copy** testing, staging or production directory on top of main environment directory. Example command:
+* **Uploading** directories to the production server.
+* **Copying** testing, staging or production directory on top of main environment directory.
+
+  Example command:
 
     .. code:: bash
 
         cp var/configuration/environment/production/ var/configuration/environment/
 
-* **Deploy module configurations**. More information can be found in following section.
+* **Deploying module configurations**. For more information, see the following section.
 
 .. _apply_configuration_configured_modules-20190829:
 
-Deploy module configurations
-----------------------------
+Deploying module configurations
+-------------------------------
 
-Each module configuration file has a ``activated``
-option and It can have two states:
+Make sure that module settings in different environments work the same.
 
-* ``true`` means that the module is prepared for the activation or already active.
-* ``false`` means that the module is prepared for the deactivation or already inactive.
+To do so, use the deployment tool to ensure that the module data in your configuration or environment files overwrite the database data.
 
-Example of the module yaml file:
+-----------------------------------------------------
 
-.. code:: yaml
+Example: You have activated and configured a module in a test environment. Then you install the module in the production environment and copy the module's configuration file from the test to the production environment.
 
-    id: oe_moduletemplate
-    activated: true
-    ...
+To make sure the configuration in your production environment works the same as in you test environment, you execute the deployment tool.
 
-This option can be set manually by changing configuration file.
+------------------------------------------------------
 
-Also, the option will be set to ``true`` if you activate a module manually via console or admin backend
-or to false if you deactivate your module.
+|procedure|
 
-.. todo: #Igor: this following section looks outdated, we have no more module settings in database missing: deployment tools
-        to be added: composer require oxid-esales/deployment-tools -- but this requires the repo to be public
+1. Install the deployment tool.
 
-    To deploy configurations of all modules use the following command:
+   .. code:: bash
 
-    .. code:: bash
+      composer require oxid-esales/deployment-tools
+
+#. Edit the configuration file. Set, for example, the activation status.
+
+   Example of the module yaml file:
+
+   .. code:: yaml
+
+      id: oe_moduletemplate
+      activated: true
+      ...
+
+   Each module configuration file has an ``activated`` option, and it can have two states:
+
+   * ``true`` means that the module is prepared for the activation or already active.
+   * ``false`` means that the module is prepared for the deactivation or already inactive.
+
+   Also, the option will be set to ``true`` if you activate a module manually via console or admin backend or to false if you deactivate your module.
+
+#. Execute the following command depending on the intended scope.
+
+   * If you have the OXID eShop Professional Edition or want to configure all subshops of an Enterprise edition, omit the :technicalname:`shop-id` parameter.
+
+     .. code:: bash
 
         vendor/bin/oe-console oe:module:deploy-configurations
 
-    .. todo: #Igor: we need to mention https://github.com/OXID-eSales/deployment-tools to be installed
+   * If you use an OXID eShop Enterprise Edition and it is only for one shop, specify the :technicalname:`--shop-id` parameter.
 
-    Provide the ``--shop-id`` option if you use an OXID eShop Enterprise Edition and it is only for one shop.
-
-    .. code:: bash
+     .. code:: bash
 
         vendor/bin/oe-console oe:module:deploy-configurations --shop-id=1
 
-    .. todo: #Igor check:
 
-    .. important:: When the command is executed, the module data in the configuration files will overwrite the database data.
+
+
