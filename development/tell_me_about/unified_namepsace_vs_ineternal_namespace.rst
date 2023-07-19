@@ -53,17 +53,6 @@ Example:
         $this->moduleActivationBridge = $moduleActivationBridge;
     }
 
-or
-
-.. code:: php
-
-    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface
-    .
-    .
-    $containerFactory = ContainerFactory::getInstance();
-    $container = $containerFactory->getContainer();
-    $moduleActivationService = $container->get(ModuleActivationBridgeInterface::class);
-
 More information:
 
 - :ref:`Service Container <service_container_01>`
