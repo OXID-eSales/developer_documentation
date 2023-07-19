@@ -116,24 +116,26 @@ In this example a shop service with id 'Psr\Log\LoggerInterface' will be autowir
 no changes in the yaml file are needed, because the key of the logger service is the same as provided
 in the constructor argument type.
 
-Use services in standard classes
---------------------------------
+Use services in non-DI classes
+------------------------------
 
-Now you have a service and want to use it to extend already existing shop functionality.
-You can create own Article class where you overwrite the getPrice() method:
+What if you want to use your new service (or any eShop service) in one of the non-DI OXID eSales classes as well?
+You'll need to sacrifice the benefits of `Dependency Injection` and resort to `Service Locator` pattern for such scenario.
 
-.. code:: yaml
+For example, you can just create a subclass and use the service after fetching it directly in one of the method overrides:
+
+.. code:: php
 
     class ERPArticle extends Article_parent
     {
         public function getPrice($amount = 1)
         {
-            $container = ContainerFactory::getInstance()->getContainer();
+            $erpPriceCalculator = ContainerFacade::get(PriceCalculatorInterface::class);
 
-            $erpPriceCalculator = $container->get(PriceCalculatorInterface::class);
             return $erpPriceCalculator->getPrice($this->getId(), $amount)
         }
     }
 
-You just fetch the DI container via the ContainerFactory and then fetch your service.
-In order to obtain the service, it needs to be marked as public.
+.. note::
+    Each Symfony service is defined as `private` by default.
+    Services that need to be accessed directly from the container (via `Service Locator`) should have `public` visibility.

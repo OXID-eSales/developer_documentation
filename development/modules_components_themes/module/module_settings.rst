@@ -30,9 +30,7 @@ To save settings OXID eShop has settings service which allows to save them:
 
         use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface;
 
-        $moduleSettingService = ContainerFactory::getInstance()
-            ->getContainer()
-            ->get(ModuleSettingServiceInterface::class);
+        $moduleSettingService = ContainerFacade::get(ModuleSettingServiceInterface::class);
         $moduleSettingService->saveString('setting-name', 'value', 'module-id');
 
 ModuleSettingServiceInterface has multiple methods for different data types (string, bool, int, collection/array)
@@ -48,12 +46,10 @@ Receiving module setting
 In OXID eShop backend to receive module setting please use settings service. Example bellow:
 
 .. code:: php
-        
+
         use OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface;
 
-        $moduleSettingService = ContainerFactory::getInstance()
-            ->getContainer()
-            ->get(ModuleSettingServiceInterface::class);
+        $moduleSettingService = ContainerFacade::get(ModuleSettingServiceInterface::class);
         $moduleSettingService->getString('setting-name', 'module-id');
 
 The service will return cached value from the configuration file.
