@@ -93,17 +93,6 @@ The different values do not reflect log levels but rather, which part of the OXI
     This setting is for debugging purposes during development ONLY. It prints out a lot of information directly to the
     front page and is not suitable for a productive environment.
 
-blDebugTemplateBlocks
-^^^^^^^^^^^^^^^^^^^^^
-
-Should template blocks be highlighted in frontend?
-
-This is mainly intended for module writers in non productive environment
-
-.. code:: php
-
-    $this->blDebugTemplateBlocks = false;
-
 blSeoLogging
 ^^^^^^^^^^^^
 

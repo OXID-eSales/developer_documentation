@@ -164,41 +164,50 @@ Controlling a template rendering engine that utilizes multiple inheritance can b
 The situation might get even more complicated if you face the necessity to control the order in which each module template
 joins the inheritance chain.
 
-By default, the module template loading order (template chain) depends on the order of the module installation.
+.. note::
+    By default, the module template loading order (template chain) is defined by filesystem and is formed by sorting module IDs
+    in alphabetical order.
 
-If the inheritance chain is not rendered as expected, adjust it. To do so, in your shop configuration file (:file:`var/configuration/shops/1.yaml`), use the :technicalname:`templateExtensions` key.
 
+|example|
+
+For 3 modules with IDs: `module-1`, `module-2`, `module-3`, all extending the same shop template `page/some-template.html.twig`,
+the chain will be rendered as:
+
+::
+
+  get the "PARENT" template: shop/page/some-template.html.twig
+    extended it by module-3/page/some-template.html.twig
+      extended it by module-2/page/some-template.html.twig
+        extended it by template module-1/page/some-template.html.twig
+
+The template that closes the inheritance chain has highest priority because it can go as far as to stop the contents of "parent" templates from being displayed.
+
+
+
+If the inheritance chain is not rendered as expected, adjust it in the corresponding `template_extension_chain.yaml` file.
 
 |example|
 
 ::
 
-    modules: {  }
-    moduleChains:
-        classExtensions: {  }
-        templateExtensions: //configuration key
-            'page/some-template.html.twig': //name of the extended template
-            - module-id-3 //highest-priority module ID (the template will be loaded last in the chain)
-            - module-id-2
-            - module-id-4 //lowest-priority module ID (the template will be loaded earlier in the chain)
+    # Values in var/configuration/shops/<shop-id>/template_extension_chain.yaml file
+    'page/some-template.html.twig': //name of the extended template
+        - module-id-3 //highest-priority module ID (the template will be loaded last in the chain)
+        - module-id-2
+        - module-id-4 //lowest-priority module ID (the template will be loaded earlier in the chain)
 
-In our example,
+For this example, having an OXID eShop application with 4 modules active and extending the same eShop template :file:`page/some-template.html.twig` results in the following template chain:
 
-* module-id-3 is the highest-priority module ID (the template will be loaded last in the chain)
-* module-id-4 is the lowest-priority module ID (the template will be loaded earlier in the chain)
+::
 
-So, in our example, having an OXID eShop application with 4 modules active and extending the same eShop template :file:`page/some-template.html.twig` results in the following template chain:
+    * CHAIN START
+    * shop-template
+    * module-1-template
+    * module-4-template
+    * module-2-template
+    * module-3-template*
+    * CHAIN END
 
-* CHAIN START
-* shop-template
-* module-1-template
-* module-4-template
-* module-2-template
-* module-3-template*
-* CHAIN END
-
-Templates for modules whose IDs are not specified in the `templateExtensions` (:technicalname:`module-1-template`, in our example) will be put to the chain start.
-|br|
+Templates for modules whose IDs are not specified in the `template_extension_chain` (:technicalname:`module-1-template`, in our example) will be put to the chain start.
 They have the lowest priority.
-
-The template that closes the inheritance chain has highest priority because it can go as far as to stop the contents of "parent" templates from being displayed.
