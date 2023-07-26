@@ -11,7 +11,10 @@ Generate the documentation locally in order to test your changes as described in
 Generating docs locally
 -----------------------
 
-To generate documentation locally, do the following:
+To generate documentation locally, our SDK with preconfigured Sphinx container can be used. Please refer to `SDK README file Sphinx usage section <https://github.com/OXID-eSales/docker-eshop-sdk#using-sphinx-container-for-documentation-generation>`_.
+
+The Old way:
+~~~~~~~~~~~~
 
 #. Install `sphinx <http://www.sphinx-doc.org/>`__.
 #. Install the `sphinx_rtd_theme <https://sphinx-rtd-theme.readthedocs.io/en/stable/installing.html>`__ (if it is missing).
