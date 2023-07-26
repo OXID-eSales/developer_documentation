@@ -15,40 +15,41 @@ This page describes how to override default OXID eShop functionality.
 Extending 'add to basket' functionality
 ---------------------------------------
 
-In this section the existing `"loggerdemo" module <https://github.com/OXID-eSales/logger-demo-module>`__ will be used which logs
+In this section the existing `"moduletemplate" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
 a product's id when it is added to the basket.
 
 Override functionality
 ^^^^^^^^^^^^^^^^^^^^^^
 
 To override functionality there is a need to create a module class.
-Here, the "loggerdemo" module will be used as an example.
+Here, the "moduletemplate" module will be used as an example.
 
-There is a need to create a child class - ``OxidEsales\LoggerDemo\Model\Basket`` - which should override OXID eShop class
+There is a need to create a child class - ``OxidEsales\ModuleTemplate\Model\Basket`` - which should override OXID eShop class
 ``OxidEsales\EshopCommunity\Application\Model\Basket`` method ``addToBasket``:
 
 .. code::
 
   .
-         └──loggerdemo
+         └──moduletemplate
             └── Model
                 └── Basket.php
 
 .. note::
 
-  ``loggerdemo`` - module name.
+  ``moduletemplate`` - module name.
 
 .. note::
 
   You can also extend module classes, just like shop classes:
   ``\OxidEsales\ModuleTemplate\Controller\GreetingController::class => \ExampleVendor\ExampleModule\Controller\GreetingController::class``
 
-The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
+The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like this:
 
 .. code:: php
 
-  namespace OxidEsales\LoggerDemo\Model;
-  use OxidEsales\EventLoggerDemo\BasketItemLogger;
+  namespace OxidEsales\ModuleTemplate\Model;
+  use OxidEsales\ModuleTemplate\Service\BasketItemLoggerInterface;
+  use OxidEsales\ModuleTemplate\Traits\ServiceContainer;
 
   class Basket extends Basket_parent
   {
@@ -61,8 +62,9 @@ The class ``OxidEsales\LoggerDemo\Model\Basket`` could have contents like this:
           $bundle = false,
           $oldBasketItemId = null
       ) {
-          $basketItemLogger = new BasketItemLogger($this->getConfig()->getLogsDir());
+          $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
           $basketItemLogger->logItemToBasket($productID);
+
           return parent::addToBasket($productID, $amount, $sel, $persParam, $override, $bundle, $oldBasketItemId);
       }
   }
@@ -92,8 +94,8 @@ The `composer.json` file in module root directory could look like this:
 .. code:: json
 
   {
-    "name": "oxid-esales/logger-demo-module",
-    "description": "This package contains demo module for OXID eShop.",
+    "name": "oxid-esales/module-template",
+    "description": "This package contains module template for OXID eShop.",
     "type": "oxideshop-module",
     "keywords": ["oxid", "modules", "eShop", "demo"],
     "homepage": "https://www.oxid-esales.com/en/home.html",
@@ -102,32 +104,18 @@ The `composer.json` file in module root directory could look like this:
       "proprietary"
     ],
     "require": {
-      "oxid-esales/event_logger_demo": "dev-master"
+      "php": "^8.0 | ^8.1",
+      "symfony/filesystem": "^6.0"
     },
     "autoload": {
       "psr-4": {
-        "OxidEsales\\LoggerDemo\\": ""
+        "OxidEsales\\ModuleTemplate\\": "src/",
+        "OxidEsales\\ModuleTemplate\\Tests\\": "tests/"
       }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
   }
-
-The project `composer.json` file should have entries looking like this:
-
-.. code:: json
-
-    {
-      "repositories": {
-          "oxid-esales/logger-demo-module": {
-              "type": "path",
-              "url": "loggerdemo-source-path"
-          }
-      },
-      "require": {
-          "oxid-esales/logger-demo-module": "dev-master"
-      }
-    }
 
 To register a namespace and download dependencies there is a need to run composer update command in project root directory:
 
@@ -151,6 +139,15 @@ file:
   'extend' => [
     \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
   ],
+
+Your GitHub test job might failed due to exception (Basket extends unknown class Basket_parent). To avoid this failure create alias for basket class as shown below.
+
+.. code:: php
+
+  class_alias(
+    \OxidEsales\Eshop\Application\Model\Basket::class,
+    \OxidEsales\ModuleTemplate\Model\Basket_parent::class
+  );
 
 For overwriting the shop templates, or some parts of them (blocks), register your module templates in the
 templates/blocks sections. Read more about the ``metadata.php`` under the link for the
