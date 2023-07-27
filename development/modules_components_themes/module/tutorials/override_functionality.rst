@@ -15,13 +15,13 @@ This page describes how to override default OXID eShop functionality.
 Extending 'add to basket' functionality
 ---------------------------------------
 
-In this section the existing `"moduletemplate" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
+In this section the existing `"module-template" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
 a product's id when it is added to the basket.
 
 Override functionality
 ^^^^^^^^^^^^^^^^^^^^^^
 
-To override functionality there is a need to create a module class.
+To override functionality there is a need to create a class in model.
 Here, the "moduletemplate" module will be used as an example.
 
 There is a need to create a child class - ``OxidEsales\ModuleTemplate\Model\Basket`` - which should override OXID eShop class
@@ -29,14 +29,14 @@ There is a need to create a child class - ``OxidEsales\ModuleTemplate\Model\Bask
 
 .. code::
 
-  .
          └──moduletemplate
-            └── Model
-                └── Basket.php
+            └── src
+               └── Model
+                       └── Basket.php
 
 .. note::
 
-  ``moduletemplate`` - module name.
+  ``moduletemplate`` - This is the root directory of the module-template.
 
 .. note::
 
@@ -53,6 +53,12 @@ The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like th
 
   class Basket extends Basket_parent
   {
+      use ServiceContainer;
+
+     /**
+      * Method overrides eShop method and adds logging functionality.
+      * {@inheritDoc}
+      */
       public function addToBasket(
           $productID,
           $amount,
@@ -137,17 +143,8 @@ file:
 .. code:: php
 
   'extend' => [
-    \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\LoggerDemo\Model\Basket::class,
+    \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\ModuleTemplate\Model\Basket::class,
   ],
-
-Your GitHub test job might failed due to exception (Basket extends unknown class Basket_parent). To avoid this failure create alias for basket class as shown below.
-
-.. code:: php
-
-  class_alias(
-    \OxidEsales\Eshop\Application\Model\Basket::class,
-    \OxidEsales\ModuleTemplate\Model\Basket_parent::class
-  );
 
 For overwriting the shop templates, or some parts of them (blocks), register your module templates in the
 templates/blocks sections. Read more about the ``metadata.php`` under the link for the

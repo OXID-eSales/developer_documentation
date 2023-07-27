@@ -18,7 +18,7 @@ register path in project ``composer.json`` file.
     composer config repositories.<package-name> path <module sourcecode path>
     composer require <package-name>:*
 
-  * ``<package-name>`` - Is your module name, which is being used in ``composer.json`` file, for example "oxid-esales/logger-demo-module".
+  * ``<package-name>`` - Is your module name, which is being used in ``composer.json`` file, for example "oxid-esales/module-template".
 
 If all steps have been completed, module files will be autoloaded and you will be able to introduce
 modifications to the module in ``<module sourcecode path>`` directory.

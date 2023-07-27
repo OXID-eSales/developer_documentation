@@ -31,6 +31,8 @@ when the OXID eShop method is being called.
      */
     class Basket extends Basket_parent
     {
+        use ServiceContainer;
+
         /**
          * Method overrides eShop method and adds logging functionality.
          * {@inheritDoc}
@@ -69,8 +71,7 @@ This test has to be run:
 - Within the OXID eShop
 - With all relevant modules activated
 
-The BasketItemLogger service is received by mocking function getServiceFromContainer. We are expecting logItemToBasket to be called once while overriding addToBasket method.
-
+Using the ``ServiceContainer`` trait method ``getServiceFromContainer`` will allow us to mock the BasketItemLoggerInterface and write a simple integration test for our new functionality later. In the test, we check if our logger functionality is called during the addToBasket method call. While it is not yet possible to inject our services via constructor for Models and Controllers we will use the trait which returns us our desired service. Doing so allows us to mock the ``getServiceFromContainer`` method and ask for the desired service. This in the future, makes possible testing our new functionality easier.
 ::
 
     public function testAddToBasket(): void
@@ -92,14 +93,14 @@ The BasketItemLogger service is received by mocking function getServiceFromConta
   objects must be created not from module class, but from OXID eShop class.
 
   **Use case:**
-  module class `\\OxidEsales\\LoggerDemo\\Model\\Basket` extends OXID eShop class `\\OxidEsales\\Eshop\\Application\\Model\\Basket`,
+  module class `\\OxidEsales\\ModuleTemplate\\Model\\Basket` extends OXID eShop class `\\OxidEsales\\Eshop\\Application\\Model\\Basket`,
   new object must be created from `\\OxidEsales\\Eshop\\Application\\Model\\Basket`.
 
   **Good example:**
   `$basket = oxNew(\\OxidEsales\\Eshop\\Application\\Model\\Basket::class);`
 
   **Bad example:**
-  `$basket = oxNew(\\OxidEsales\\LoggerDemo\\Model\\Basket::class);`
+  `$basket = oxNew(\\OxidEsales\\ModuleTemplate\\Model\\Basket::class);`
 
 Example module
 --------------
