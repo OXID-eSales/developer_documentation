@@ -1,56 +1,35 @@
-Unified Namespace vs Internal Namespace
-=======================================
+Unified or Concrete Class names - which to use and when?
+========================================================
 
-In OXID framework, there is a possibility to overwrite classes from lower editions. For example in PE or EE edition, we can
-overwrite CE classes. To do that, we need to have the edition specific namespaces, which means PE edition has a different
-namespace than CE, for the same class.
+Historically, after the introduction of the
+`Symfony DependencyInjection Component (DIC) <https://symfony.com/doc/current/components/dependency_injection.html>`__,
+OXID eShop code “diverged” into 2 application areas:
 
-This possibility leads us to make a chain between these classes to ensure we have all the functionalities from all the editions.
-Our approach to do that is totally different between the traditional code and Internal Namespace. We will explain them below.
+- New, “DI” namespaces (e.g. `Internal`)
+- “Non-DI”, aka “Traditional” namespaces (e.g. `Core`, `Application`).
 
-Traditional Code
-----------------
+DI Namespaces
+-------------
 
-In traditional code, we provided edition independent namespaces with introducing chain extending classes via Unified Namespace.
-We created a tool (`unified namespace generator <https://github.com/OXID-eSales/oxideshop-unified-namespace-generator>`__) to generate a unified namespace for each class that is overwritten between editions.
-So instead of an edition specific namespace, we must use its generated unified namespace, which is totally independent of editions.
+.. note::
 
-To create an instance of these classes, we must use `oxnew` function to build the whole chain, for example:
+    Always use concrete class names with DIC!
 
-.. code:: php
+The Symfony DIC can manage all the "newer" namespaces
+(such namespaces can be identified by the presence of `services.yaml` file in their root directory,
+see `source/Internal/services.yaml` or similar).
 
-    $basketComponent = oxNew(\OxidEsales\Eshop\Application\Component\BasketComponent::class);
-    $basketComponent->toBasket();
+Because DIC functionality "supersedes" the Inheritance Chain there,
+we should never use `oxNew()` and Unified Namespaces and stick only to the concrete class names for all classes in DI Namespaces.
 
-More information:
-
-- :ref:`Unified Namespace Generator <unified_namespace_generator_01>`
-- :ref:`Inheritance chain of unified namespace classes <system_architecture-namespaces-inheritiance_chain>`
-
-Internal Namespace
-------------------
-
-Starting with version 6, the OXID framework incorporates the Symfony dependency injection (DI) container (`More information about service container <https://symfony.com/doc/current/service_container.html>`__).
-And it harbors a new namespace:
-
-.. code::
-
-    OxidEsales\EshopCommunity\Internal
-
-DI container is responsible to access to internal namespace services, and we do not need to use `oxnew` function and unified namespaces anymore.
-Because we use the class interface name as key for the DI container and even if the PE or EE edition overwrites a service, the interface remains the same.
-And if there is a service that only exists in the EE edition, then the interface obviously has an EE namespace,
-but this is also okay because there is no corresponding CE or PE service.
-
-Example:
+  |example| *using the concrete interface name for the injected service*
 
 .. code:: php
 
-    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface
-    .
-    .
-    public function __contruct(ModuleActivationBridgeInterface $moduleActivationBridge) {
-        $this->moduleActivationBridge = $moduleActivationBridge;
+    public function __contruct(
+        \OxidEsales\EshopCommunity\Internal\ServiceInterface $service
+    ) {
+        $this->service = $service;
     }
 
 More information:
@@ -58,10 +37,24 @@ More information:
 - :ref:`Service Container <service_container_01>`
 - :ref:`Services <services_01>`
 
-Conclusion
-----------
 
-In traditional code, we can not use the edition specific namespaces.
-Instead of it, we have unified namespaces and to access to the classes we need to use `oxnew` function.
+Non-Di Namespaces
+-----------------
 
-In the Internal namespace, we have a DI container to use the edition specific namespaces.
+.. note::
+    Never use concrete class names with oxNew()!
+
+In the "Traditional" code, using the concrete class names instead of the Unified Namespaces, will circumvent the creation
+of the Inheritance Chain and oxNew functionality.
+Therefore, using the "real" class names for extendable classes in Non-Di Namespaces is discouraged.
+
+  |example| *using the Unified Namespace for model instantiation*
+
+.. code:: php
+
+    $myModel = oxNew(\OxidEsales\Eshop\Application\Model\MyModel::class);
+
+More information:
+
+- :ref:`Unified Namespace Generator <unified_namespace_generator_01>`
+- :ref:`Inheritance chain of Unified Namespace classes <system_architecture-namespaces-inheritiance_chain>`
