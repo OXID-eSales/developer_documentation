@@ -57,4 +57,4 @@ Therefore, using the "real" class names for extendable classes in Non-Di Namespa
 More information:
 
 - :ref:`Unified Namespace Generator <unified_namespace_generator_01>`
-- :ref:`Inheritance chain of Unified Namespace classes <system_architecture-namespaces-inheritiance_chain>`
+- :ref:`Inheritance chain of Unified Namespace classes <system_architecture-namespaces-inheritance_chain>`
