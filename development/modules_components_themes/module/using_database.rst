@@ -71,31 +71,32 @@ Making a query
 
 To execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
 
-Since it is defined as a service, you can just inject it into your class:
+Since it is a service, you can use the same methods as with every other service. Simply inject it into your class:
 
-   .. code:: php
+   .. code:: bash
 
         public function __constructor(QueryBuilderFactoryInterface $queryBuilderFactory)
         {
             $this->queryBuilderFactory = $queryBuilderFactory;
         }
 
-or access it with `Service Locator` if `Dependency Injection` is not possible:
+If you want to access it outside of the services where injecting is not possible, make use of the `ContainerFactory` (:ref:`more information <inject_services-20191111>`):
 
-   .. code:: php
+   .. code:: bash
 
-      $queryBuilderFactory = ContainerFacade::get(QueryBuilderFactoryInterface::class);
+      $container = ContainerFactory::getInstance()->getContainer();
+      $queryBuilderFactory = $container->get(QueryBuilderFactoryInterface::class);
 
 At this point the database connection is ready and the ``create`` method must be called to create a ``queryBuilder``.
 
-   .. code:: php
+   .. code:: bash
 
       $queryBuilder = $queryBuilderFactory->create();
 
 Now all types of SQL queries can be generated, based on the `Doctrine DBAL Documentation <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.5/reference/query-builder.html#sql-query-builder>`__.
 
 Sample:
-   .. code:: php
+   .. code:: bash
 
       $queryBuilder
             ->select('*')
@@ -161,3 +162,5 @@ Different API methods for read and write
 There is a difference between the methods ``DatabaseInterface::select()`` and ``DatabaseInterface::execute()``
 The method ``DatabaseInterface::select()`` can only be used for read methods (SELECT, SHOW) that return a result set.
 The method ``DatabaseInterface::execute()`` must be used for write methods (INSERT, UPDATE, DELETE) in OXID eShop 6.
+
+

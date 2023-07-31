@@ -32,6 +32,17 @@ we should never use `oxNew()` and Unified Namespaces and stick only to the concr
         $this->service = $service;
     }
 
+or
+
+.. code:: php
+
+    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Bridge\ModuleActivationBridgeInterface
+    .
+    .
+    $containerFactory = ContainerFactory::getInstance();
+    $container = $containerFactory->getContainer();
+    $moduleActivationService = $container->get(ModuleActivationBridgeInterface::class);
+
 More information:
 
 - :ref:`Service Container <service_container_01>`

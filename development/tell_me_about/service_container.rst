@@ -35,7 +35,9 @@ Getting services
 
     .. code:: php
 
-        $moduleActivationService = ContainerFacade::get(ModuleActivationBridgeInterface::class);
+        $containerFactory = ContainerFactory::getInstance();
+        $container = $containerFactory->getContainer();
+        $moduleActivationService = $container->get(ModuleActivationBridgeInterface::class);
 
 .. important::
     Please consider the hints in the section :ref:`Stable OXID eShop Core Services <stable_core_services-20191111>`.
