@@ -1,82 +1,97 @@
 Twig Engine Installation
 ========================
 
-This tutorial explains how to install twig template engine and twig admin theme on OXID eShop.
+This tutorial explains how to install Twig template engine and OXID eShop Twig themes.
 
-**1. Install OXID eSales twig components**
+1. Install OXID eSales Twig components (PE/EE only)
+---------------------------------------------------
 
-* Installation of the component for OXID eShop Community Edition
-
-    You have to install `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__ which
-    includes twig engine:
+Run one of the following commands to install the corresponding version of Twig Component:
 
     .. code:: bash
 
-        composer require oxid-esales/twig-component
-
-* Installation of the component for OXID eShop Professional Edition
-
-    If you are using Professional Edition, please install twig component for OXID eShop Professional Edition:
-
-    .. code:: bash
-
+        # For OXID eShop Professional Edition (PE)
         composer require oxid-esales/twig-component-pe
 
-* Installation of the component for OXID eShop Enterprise Edition
-
-    If you are using Enterprise Edition, please install twig component for OXID eShop Enterprise Edition:
-
-    .. code:: bash
-
+        # For OXID eShop Enterprise Edition (EE)
         composer require oxid-esales/twig-component-ee
 
-**2. Install admin twig theme**
+2. Install Twig admin theme
+---------------------------
 
-To access admin panel please install `the twig theme for the admin area <https://github.com/OXID-eSales/twig-admin-theme>`__:
+To access admin panel please install `the Twig theme for the admin area <https://github.com/OXID-eSales/twig-admin-theme>`__:
 
 .. code:: bash
 
     composer require oxid-esales/twig-admin-theme
 
+3. Install Twig frontend theme
+------------------------------
 
-**3. Clean up the shop compile directory**
+To access shop's frontend, please install `OXID's default Twig theme for the frontend area <https://github.com/OXID-eSales/apex-theme>`__:
 
-To do so, in the root directory of the shop (``/oxideshop``), execute the console command depending on how you have installed the OXID eShop Edition:
+.. code:: bash
 
-* If you have installed your OXID eShop Professional or Enterprise Edition with the metapackage, use the standard path:
+    composer require oxid-esales/apex-theme
+
+
+4. Clean up the shop compile directory
+--------------------------------------
+
+Run one of the following console commands in the shop's root:
+
+.. code:: bash
+
+        # "Standard path" when installed via OXID eShop PE/EE metapackage
+        vendor/bin/oe-console oe:cache:clear
+
+        # When upgraded to the PE/EE after installing the OXID eShop Community Edition Core Component
+        bin/oe-console oe:cache:clear
+
+If not sure, try the standard path first.
+
+5. After Twig engine installation
+---------------------------------
+
+- **Activate frontend theme:**
+
++ via admin:
+
+After the Twig engine is installed, you should be able to access administration panel and activate installed Twig frontend theme (e.g. APEX) for your shop.
+
++ via console command:
 
   .. code:: bash
 
-     vendor/bin/oe-console oe:cache:clear
+     vendor/bin/oe-console oe:theme:activate apex
 
-* If you have installed the Community Edition as root package and upgraded to the Professional or Enterprise Edition, use the following path:
+.. note::
 
-  .. code:: bash
+        See `OXID Developer Tools component <https://github.com/OXID-eSales/developer-tools>`__ if the above command's not available.
 
-     bin/oe-console oe:cache:clear
+- **Configure optional Twig engine parameters:**
 
-If you are not sure, try the standard path first.
+OXID Twig Component can be customized by overriding the default values from the Symfony container configuration:
 
-**4. After twig engine installation**
+  .. code:: yaml
 
-The twig engine is installed and you should be possible to access administration panel.
+        parameters:
+        # Admin theme ID
+          oxid_esales.theme.admin.name: 'admin_twig'
+        # Template engine file extension - value is bound to the current template engine
+          oxid_esales.templating.engine_template_extension: 'html.twig'
+        # Delegate HTML-escaping to the template engine - is "true" for Twig
+          oxid_esales.templating.engine_autoescapes_html: true
+        # Template caching control
+          oxid_esales.templating.disable_twig_template_caching: false
 
-In the next step, install a twig theme for the frontend of your shop.
+For example, you can **disable template caching** (during development) by defining:
+
+  .. code:: yaml
+
+    # Values in var/configuration/configurable_services.yaml file
+    parameters:
+      oxid_esales.templating.disable_twig_template_caching: true
 
 .. todo: Igor: the following doc doesn't exist:
         For more information, see :doc:`Twig theme installation documentation </development/modules_components_themes/theme/twig/installation>`.
-
-.. todo: #Igor/#tbd: Schritt 4. entfernen: #Igor: check: can we remove the step?  APEX theme is delivered with oxid 7, not the twig theme
-.. todo: #Igor: can we remove Troubleshooting?: this section looks like only relevant for 6.5.x. twig admin theme is delivered with oxid 7 compilation
-
-**Troubleshooting**
-
-If you are having some issues, that the wrong Admin theme is loaded or you cannot access it, please check
-if the `oxid_esales.theme.admin.name` parameter is set correctly in installed component service yaml file
-`vendor/oxid-esales/twig-component/services.yaml` or in `var/configuration/configurable_services.yaml`,
-if the file exists:
-
-.. code:: yaml
-
-    parameters:
-      oxid_esales.theme.admin.name: 'admin_twig'

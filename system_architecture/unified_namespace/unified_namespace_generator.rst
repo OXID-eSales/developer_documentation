@@ -69,9 +69,8 @@ If you get either errors
 Then, you should read the following steps in order to find the reason for the error:
 
 1. Have a look at the directory :file:`vendor/oxid-esales/oxideshop-unified-namespace-generator/generated`
-2. Are the unified namespace classes inside this directory, have the correct namespace and :ref:`extend the correct edition class <system_architecture-namespaces-inheritiance_chain>`?
+2. Are the unified namespace classes inside this directory, have the correct namespace and :ref:`extend the correct edition class <system_architecture-namespaces-inheritance_chain>`?
 3. Be sure, the directory has write permissions
 4. Execute the command :command:`vendor/bin/oe-eshop-unified_namespace_generator` manually and look for errors
 5. Be sure, the requirements as stated in :ref:`Mode Of Operation <oxid_eshop_core_unified_namespace_generator-mode_of_operation>`
    are fulfilled
-

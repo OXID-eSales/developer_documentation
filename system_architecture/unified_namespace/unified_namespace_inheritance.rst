@@ -1,4 +1,4 @@
-.. _system_architecture-namespaces-inheritiance_chain:
+.. _system_architecture-namespaces-inheritance_chain:
 
 Inheritance chain of unified namespace classes
 ==============================================
@@ -63,7 +63,3 @@ Example OXID eShop Enterprise Edition with 2 modules activated
 
     // returns Vendor1\Module2\Application\Model\Article in this example
     get_class(oxNew(OxidEsales\Eshop\Application\Model\Article::class));
-
-
-
-
