@@ -93,7 +93,7 @@ Instead, use
 
 .. code:: php
 
-    $this->setViewData('someVar', 'some Value');
+    $this->addTplParam('someVar', 'some Value');
 
 In general, keep in mind that :ref:`setters and getters <modules_certification_getters_setters>` should be used whenever
 values are assigned to protected variables.
