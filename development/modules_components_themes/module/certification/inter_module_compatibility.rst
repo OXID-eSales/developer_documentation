@@ -44,8 +44,8 @@ Parent calls
 
 When writing extensions for methods that do variable assignments or execute other calls, be sure to add a parent call.
 
-This is an example from the Demo logger module class ``Basket`` which is an extension for the shop's basket class with the
-namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
+This is an example from the template module's class ``Basket`` which is an extension for the shop's basket class with the
+namespace ``\\OxidEsales\Eshop\Application\Model\Basket``. Detailed documentation regarding it can be found :doc:`here </development/modules_components_themes/module/tutorials/extend_shop_class>`.
 
 .. code:: php
 
@@ -73,7 +73,7 @@ namespace ``\\OxidEsales\Eshop\Application\Model\Basket``.
         $isBundle = false,
         $oldBasketItemId = null
     ) {
-        $basketItemLogger = new BasketItemLogger(Registry::getConfig()->getLogsDir());
+        $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
         $basketItemLogger->logItemToBasket($productID);
 
         return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
