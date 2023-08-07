@@ -122,7 +122,7 @@ In the example above, the result of rendering :file:`shop-template.html.twig` de
 
     Inheritance for **admin templates** is similar to the theme-specific inheritance, because :technicalname:`admin` is a theme as well.
 
-    When creating admin template extensions (:technicalname:`twig_admin`, for example), just use a corresponding ID.
+    When creating admin template extensions (:technicalname:`admin_twig`, for example), just use a corresponding ID.
 
 .. _extending-module-templates:
 
