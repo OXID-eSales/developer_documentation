@@ -48,7 +48,6 @@ The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like th
 .. code:: php
 
   namespace OxidEsales\ModuleTemplate\Model;
-  use OxidEsales\ModuleTemplate\Service\BasketItemLoggerInterface;
   use OxidEsales\ModuleTemplate\Traits\ServiceContainer;
 
   class Basket extends Basket_parent
@@ -60,18 +59,19 @@ The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like th
       * {@inheritDoc}
       */
       public function addToBasket(
-          $productID,
-          $amount,
-          $sel = null,
-          $persParam = null,
-          $override = false,
-          $bundle = false,
-          $oldBasketItemId = null
+            $productID,
+            $amount,
+            $sel = null,
+            $persParam = null,
+            $override = false,
+            $bundle = false,
+            $oldBasketItemId = null
       ) {
-          $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
-          $basketItemLogger->logItemToBasket($productID);
+            $logger = $this->getServiceFromContainer(LoggerInterface::class);
+            $message = sprintf(BasketItemLogger::MESSAGE, $productID);
+            $logger->log($message);
 
-          return parent::addToBasket($productID, $amount, $sel, $persParam, $override, $bundle, $oldBasketItemId);
+            return parent::addToBasket($productID, $amount, $sel, $persParam, $override, $bundle, $oldBasketItemId);
       }
   }
 

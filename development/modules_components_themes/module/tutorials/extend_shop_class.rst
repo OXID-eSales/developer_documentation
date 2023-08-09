@@ -46,8 +46,9 @@ when the OXID eShop method is being called.
             $isBundle = false,
             $oldBasketItemId = null
         ) {
-            $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
-            $basketItemLogger->logItemToBasket($productID);
+            $logger = $this->getServiceFromContainer(LoggerInterface::class);
+            $message = sprintf(BasketItemLogger::MESSAGE, $productID);
+            $logger->log($message);
 
             return parent::addToBasket(
                 $productID,
@@ -71,17 +72,22 @@ This test has to be run:
 - Within the OXID eShop
 - With all relevant modules activated
 
-Using the ``ServiceContainer`` trait method ``getServiceFromContainer`` will allow us to mock the BasketItemLoggerInterface and write a simple integration test for our new functionality later. In the test, we check if our logger functionality is called during the addToBasket method call. While it is not yet possible to inject our services via constructor for Models and Controllers we will use the trait which returns us our desired service. Doing so allows us to mock the ``getServiceFromContainer`` method and ask for the desired service. This in the future, makes possible testing our new functionality easier.
+Using the ``ServiceContainer`` trait method ``getServiceFromContainer`` will allow us to mock the LoggerInterface and write a simple integration test for our new functionality later. In the test, we check if our logger functionality is called during the addToBasket method call. While it is not yet possible to inject our services via constructor for Models and Controllers we will use the trait which returns us our desired service. Doing so allows us to mock the ``getServiceFromContainer`` method and ask for the desired service. This in the future, makes possible testing our new functionality easier.
 ::
 
     public function testAddToBasket(): void
     {
-        $basketLoggerMock = $this->createMock(BasketItemLoggerInterface::class);
-        $basketLoggerMock->expects($this->once())->method('logItemToBasket')->with(self::TEST_PRODUCT_ID);
+        $loggerMock = $this->createMock(LoggerInterface::class);
+        $loggerMock
+            ->expects($this->once())
+            ->method('log')
+            ->with(
+                sprintf(BasketItemLogger::MESSAGE, self::TEST_PRODUCT_ID)
+            );
 
         $basket = $this->createPartialMock(Basket::class, ['getServiceFromContainer']);
         $basket->method('getServiceFromContainer')->willReturnMap([
-            [BasketItemLoggerInterface::class, $basketLoggerMock]
+            [LoggerInterface::class, $loggerMock]
         ]);
 
         $basket->addToBasket(self::TEST_PRODUCT_ID, 1, null, null, false, false, null);
