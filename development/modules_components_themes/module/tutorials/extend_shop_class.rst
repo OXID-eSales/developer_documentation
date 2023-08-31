@@ -31,20 +31,11 @@ when the OXID eShop method is being called.
      */
     class Basket extends Basket_parent
     {
+        use ServiceContainer;
+
         /**
          * Method overrides eShop method and adds logging functionality.
-         *
-         * @param string      $productID
-         * @param int         $amount
-         * @param null|array  $sel
-         * @param null|array  $persParam
-         * @param bool|false  $shouldOverride
-         * @param bool|false  $isBundle
-         * @param null|string $oldBasketItemId
-         *
-         * @see \OxidEsales\Eshop\Application\Model\Basket::addToBasket()
-         *
-         * @return BasketItem|null
+         * {@inheritDoc}
          */
         public function addToBasket(
             $productID,
@@ -55,7 +46,7 @@ when the OXID eShop method is being called.
             $isBundle = false,
             $oldBasketItemId = null
         ) {
-            $basketItemLogger = new BasketItemLogger($this->getConfig()->getLogsDir());
+            $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
             $basketItemLogger->logItemToBasket($productID);
 
             return parent::addToBasket(
@@ -80,32 +71,20 @@ This test has to be run:
 - Within the OXID eShop
 - With all relevant modules activated
 
-OXID eShop class is created with function oxNew. This assures that extension chain is build form all relevant modules.
-At the end assertion is done that module functionality works as expected. This method will break if:
-
-- OXID eShop introduces backward incompatibility with the module.
-- Other module within a compilation change OXID eShop in incompatible way.
-
+Using the ``ServiceContainer`` trait method ``getServiceFromContainer`` will allow us to mock the BasketItemLoggerInterface and write a simple integration test for our new functionality later. In the test, we check if our logger functionality is called during the addToBasket method call. While it is not yet possible to inject our services via constructor for Models and Controllers we will use the trait which returns us our desired service. Doing so allows us to mock the ``getServiceFromContainer`` method and ask for the desired service. This in the future, makes possible testing our new functionality easier.
 ::
 
-    public function testLoggingWhenCustomerAddsToBasket()
+    public function testAddToBasket(): void
     {
-        $rootPath = $this->mockFileSystemForShop();
+        $basketLoggerMock = $this->createMock(BasketItemLoggerInterface::class);
+        $basketLoggerMock->expects($this->once())->method('logItemToBasket')->with(self::TEST_PRODUCT_ID);
 
-        $productId = 'testArticleId';
+        $basket = $this->createPartialMock(Basket::class, ['getServiceFromContainer']);
+        $basket->method('getServiceFromContainer')->willReturnMap([
+            [BasketItemLoggerInterface::class, $basketLoggerMock]
+        ]);
 
-        /**
-            Create Shop class which uses module class.
-            Use oxNew() to build whole chain to assure that module work
-            in a project - when other modules are activated.
-         **/
-        $basketComponent = oxNew(\OxidEsales\Eshop\Application\Component\BasketComponent::class);
-        $this->setRequestParameter('aid', $productId);
-        $basketComponent->tobasket();
-
-        $fileContents = $this->getLogFileContent($rootPath);
-
-        $this->assertLogContentCorrect($fileContents, $productId);
+        $basket->addToBasket(self::TEST_PRODUCT_ID, 1, null, null, false, false, null);
     }
 
 .. important::
@@ -114,17 +93,16 @@ At the end assertion is done that module functionality works as expected. This m
   objects must be created not from module class, but from OXID eShop class.
 
   **Use case:**
-  module class `\\OxidEsales\\LoggerDemo\\Model\\Basket` extends OXID eShop class `\\OxidEsales\\Eshop\\Application\\Model\\Basket`,
+  module class `\\OxidEsales\\ModuleTemplate\\Model\\Basket` extends OXID eShop class `\\OxidEsales\\Eshop\\Application\\Model\\Basket`,
   new object must be created from `\\OxidEsales\\Eshop\\Application\\Model\\Basket`.
 
   **Good example:**
   `$basket = oxNew(\\OxidEsales\\Eshop\\Application\\Model\\Basket::class);`
 
   **Bad example:**
-  `$basket = oxNew(\\OxidEsales\\LoggerDemo\\Model\\Basket::class);`
+  `$basket = oxNew(\\OxidEsales\\ModuleTemplate\\Model\\Basket::class);`
 
 Example module
 --------------
 
-- https://github.com/OXID-eSales/logger-demo-module
-- https://github.com/OXID-eSales/event_logger_demo
+- https://github.com/OXID-eSales/module-template
