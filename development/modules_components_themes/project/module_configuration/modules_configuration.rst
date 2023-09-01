@@ -89,12 +89,12 @@ VCS repository of your project and deploy it to your testing, staging and produc
 systems and deploy through the command line as described below in the
 section :ref:`deploy module configurations<apply_configuration_configured_modules-20190829>`.
 
-Project configuration files are located in project directory `var/shops/<shop-id>/`, here "<shop-id>" represents
+Project configuration files are located in project directory `var/configuration/shops/<shop-id>/`, where "<shop-id>" represents
 Sub-shop ID. In case you don't use Sub-shop functionality, it will always be only one directory.
 
-Each directory with a shop configuration has `class_extension_chain.yaml` file with the module class extension chain
-and a separate subdirectory `modules` for module configurations, configuration for every module is in a separate file
-where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.yaml`
+Each directory with a shop configuration has a `class_extension_chain.yaml` file with the module class extension chains
+and a separate subdirectory `modules` for module configurations. Configuration for every module is in a separate file
+where filename is the module id: `var/configuration/shops/<shop-id>/modules/<module-id>.yaml`
 
 .. code::
 
@@ -103,12 +103,13 @@ where filename is the module id: `var/environment/<shop-id>/modules/<module-id>.
       └── configuration
           └── shops
                 └──1
-                    └──class_extension_chain.yaml
                     └──modules
                         └──oe_moduletemplate.yaml
+                        └── ...
+                    └──class_extension_chain.yaml
 
-The configuration might be different in different environment (testing, staging or productive). To solve this problem,
-OXID eShop uses another directory with configuration files located in `var/environment/<shop-id>/`.
+The configuration might be different in different environments (testing, staging or productive). To solve this problem,
+OXID eShop can use another directory with configuration files located in `var/environment/shops/<shop-id>/`.
 
 Example structure:
 
@@ -117,11 +118,12 @@ Example structure:
   .
   └── var
       └── configuration
-          └── shops
-             └──1
-             └──2
-             └── ...
           └── environment
+             └── shops
+               └──1
+               └──2
+               └── ...
+          └── shops
              └──1
              └──2
              └── ...
@@ -129,16 +131,16 @@ Example structure:
 Configuration files
 """""""""""""""""""
 
-These files contains information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
+These files contain information of all modules which are :doc:`installed </development/modules_components_themes/module/installation_setup/installation>`.
 
 During the installation process, all of the information from module `metadata.php` is being transferred to the
 configuration files.
 
-For example you have OXID eShop without any modules, so `var/configuration/shops/modules/` will be empty.
+For example you have OXID eShop without any modules, so `var/configuration/shops/<shop-id>/modules/` will be empty.
 
-When you will run the installation let's say for the OXID eShop Module Template module, the files in `var/configuration/shops/` will be filled with information from `metadata.php`.
+When you will run the installation let's say for the OXID eShop Module Template module, the files in `var/configuration/shops/<shop-id>/` will be filled with information from `metadata.php`.
 
-An example of stripped down configuration file :file:`var/configuration/shops/modules/1/oe_moduletemplate.yaml`:
+An example of stripped down configuration file :file:`var/configuration/shops/1/modules/oe_moduletemplate.yaml`:
 
 .. code:: yaml
 

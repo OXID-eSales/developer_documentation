@@ -1,7 +1,7 @@
 Module configuration deployment
 ===============================
 
-This document describes possible deployment process which could be used for the application.
+This document describes a possible deployment process which could be used for the application.
 
 The workflow can be seen in image below, schema steps are described in the following sections.
 
@@ -133,7 +133,7 @@ To make sure the configuration in your production environment works the same as 
 
 #. Execute the following command depending on the intended scope.
 
-   * If you have the OXID eShop Professional Edition or want to configure all subshops of an Enterprise edition, omit the :technicalname:`shop-id` parameter.
+   * If you have the OXID eShop Professional Edition or want to configure all subshops of an Enterprise Edition, omit the :technicalname:`shop-id` parameter.
 
      .. code:: bash
 
