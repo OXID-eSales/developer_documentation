@@ -46,9 +46,8 @@ when the OXID eShop method is being called.
             $isBundle = false,
             $oldBasketItemId = null
         ) {
-            $logger = $this->getServiceFromContainer(LoggerInterface::class);
-            $message = sprintf(BasketItemLogger::MESSAGE, $productID);
-            $logger->log($message);
+            $basketItemLogger = $this->getServiceFromContainer(BasketItemLogger::class);
+            $basketItemLogger->log($productID);
 
             return parent::addToBasket(
                 $productID,
@@ -77,17 +76,14 @@ Using the ``ServiceContainer`` trait method ``getServiceFromContainer`` will all
 
     public function testAddToBasket(): void
     {
-        $loggerMock = $this->createMock(LoggerInterface::class);
+        $loggerMock = $this->createMock(BasketItemLogger::class);
         $loggerMock
             ->expects($this->once())
-            ->method('log')
-            ->with(
-                sprintf(BasketItemLogger::MESSAGE, self::TEST_PRODUCT_ID)
-            );
+            ->method('log');
 
         $basket = $this->createPartialMock(Basket::class, ['getServiceFromContainer']);
         $basket->method('getServiceFromContainer')->willReturnMap([
-            [LoggerInterface::class, $loggerMock]
+            [BasketItemLogger::class, $loggerMock]
         ]);
 
         $basket->addToBasket(self::TEST_PRODUCT_ID, 1, null, null, false, false, null);
