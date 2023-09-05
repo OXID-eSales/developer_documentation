@@ -73,8 +73,8 @@ namespace ``\\OxidEsales\Eshop\Application\Model\Basket``. Detailed documentatio
         $isBundle = false,
         $oldBasketItemId = null
     ) {
-        $basketItemLogger = $this->getServiceFromContainer(BasketItemLoggerInterface::class);
-        $basketItemLogger->logItemToBasket($productID);
+        $basketItemLogger = $this->getServiceFromContainer(BasketItemLogger::class);
+        $basketItemLogger->log($productID);
 
         return parent::addToBasket($productID, $amount, $sel, $persParam, $shouldOverride, $isBundle, $oldBasketItemId);
     }
