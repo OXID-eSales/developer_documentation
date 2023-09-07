@@ -145,7 +145,8 @@ An example of stripped down configuration file :file:`var/configuration/shops/1/
 .. code:: yaml
 
     id: oe_moduletemplate
-    version: 1.0.0
+    moduleSource: vendor/oxid-esales/module-template
+    version: 2.0.0
     activated: true
     title:
       en: 'OxidEsales Module Template (OEMT)'
