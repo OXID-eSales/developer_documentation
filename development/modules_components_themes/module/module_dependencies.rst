@@ -1,16 +1,17 @@
 .. _dependencies_01:
 
-<<<<<<< HEAD
 Defining dependencies between modules
 =====================================
 
-Define dependencies between modules, if required.
+Define dependencies between modules.
 
-Use this option if you have a base module with core functionalities which are mandatory to be active for other modules to work.
+.. todo: #DK/#HR: What is the use case? What problem does the option solve? "Use this option if ..."
 
 This means that the module with dependencies cannot be activated until the dependent modules are activated.
 
 Conversely, an active module cannot be deactivated if it depends on an active module.
+
+.. todo: #DK/#HR: "the module with dependencies can not be activated until the dependencies are activated" sounds circular. Do we mean (in the example below), I have to activate module-2-id before I can activate module-1-id, so module-1-id is the "depending module"? Somehow, I have to begin activating one module or the other, correct?
 
 .. note::
     We recommend developing independent modules and using dependencies between modules as a last resort only.
@@ -19,55 +20,13 @@ Conversely, an active module cannot be deactivated if it depends on an active mo
 
 To define dependencies between modules, perform the following steps:
 
-#. Add a ``dependencies.yaml`` file to the root directory of the module.
+1. Add a ``dependencies.yaml`` file to the root directory of the module.
+#. In the yaml file, define the dependency as follows.
 
-    ::
+   In our example, <module-1-id> is the depending module that can only be activated or deactivated if <module-2-id> has been activated or deactivated before.
 
-        └── <module-with-dependencies>
-            └── dependencies.yaml
-
-#. In the yaml file, define the dependency(s) as follows.
-
-    .. code:: yaml
+   .. code:: yaml
 
       modules:
         - <module-1-id>
         - <module-2-id>
-
-    In our example, ``<module-with-dependencies>`` has 2 dependencies:
-
-        * <module-1-id>
-        * <module-2-id>
-
-|result|
-
-To be able to activate ``<module-with-dependencies>``, you must first activate <module-1> and <module-2>.
-
-To be able to deactivate <module-1> and/or <module-2>, you must first deactivate <module-with-dependencies>.
-=======
-Dependencies between modules
-============================
-
-OXID eShop module is provided an option to define dependencies between modules. This means the module with dependencies
-can not be activated until the dependencies are activated and vice versa, an active module can not be deactivated if it is a
-dependency of an ``active`` module.
-
-.. note::
-    Note that, our recommendation is to stick with independent module development and using dependencies between
-    modules as a last resort.
-
-Define dependency
------------------
-
-Defining dependencies between module is quite easy, just follow the following steps:
-
-1. Add ``dependencies.yaml`` file to the root directory of the module
-
-2. Use the following structure in the yaml file:
-
-.. code:: yaml
-
-    modules:
-      - <module-1-id>
-      - <module-2-id>
->>>>>>> 4efe594 (OXDEV-7338 Add module dependencies)
