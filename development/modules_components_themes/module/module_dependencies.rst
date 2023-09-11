@@ -11,8 +11,6 @@ This means that the module with dependencies cannot be activated until the depen
 
 Conversely, an active module cannot be deactivated if it depends on an active module.
 
-.. todo: #DK/#HR: "the module with dependencies can not be activated until the dependencies are activated" sounds circular. Do we mean (in the example below), I have to activate module-2-id before I can activate module-1-id, so module-1-id is the "depending module"? Somehow, I have to begin activating one module or the other, correct?
-
 .. note::
     We recommend developing independent modules and using dependencies between modules as a last resort only.
 
@@ -20,13 +18,29 @@ Conversely, an active module cannot be deactivated if it depends on an active mo
 
 To define dependencies between modules, perform the following steps:
 
-1. Add a ``dependencies.yaml`` file to the root directory of the module.
-#. In the yaml file, define the dependency as follows.
+#. Add a ``dependencies.yaml`` file to the root directory of the module.
 
-   In our example, <module-1-id> is the depending module that can only be activated or deactivated if <module-2-id> has been activated or deactivated before.
+    ::
 
-   .. code:: yaml
+        └── <module-with-dependencies>
+            └── dependencies.yaml
+
+#. In the yaml file, define the dependency(s) as follows.
+
+    .. code:: yaml
 
       modules:
         - <module-1-id>
         - <module-2-id>
+
+    In our example, ``<module-with-dependencies>`` has 2 dependencies:
+
+        * <module-1-id>
+        * <module-2-id>
+
+#. Activating ``<module-with-dependencies>``
+
+    <module-1> and <module-2> should be activated, then <module-with-dependencies> can be activated.
+
+.. note::
+    Deactivating <module-1> and/or <module-2>, <module-with-dependencies> should be deactivated firstly
