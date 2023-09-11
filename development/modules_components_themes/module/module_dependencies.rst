@@ -3,9 +3,9 @@
 Defining dependencies between modules
 =====================================
 
-Define dependencies between modules.
+Define dependencies between modules, if required.
 
-.. todo: #DK/#HR: What is the use case? What problem does the option solve? "Use this option if ..."
+Use this option if you have a base module with core functionalities which are mandatory to be active for other modules to work.
 
 This means that the module with dependencies cannot be activated until the dependent modules are activated.
 
