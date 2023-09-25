@@ -38,9 +38,8 @@ To define dependencies between modules, perform the following steps:
         * <module-1-id>
         * <module-2-id>
 
-#. Activating ``<module-with-dependencies>``
+|result|
 
-    <module-1> and <module-2> should be activated, then <module-with-dependencies> can be activated.
+To be able to activate ``<module-with-dependencies>``, you must first activate <module-1> and <module-2>.
 
-.. note::
-    Deactivating <module-1> and/or <module-2>, <module-with-dependencies> should be deactivated firstly
+To be able to deactivate <module-1> and/or <module-2>, you must first deactivate <module-with-dependencies>.
