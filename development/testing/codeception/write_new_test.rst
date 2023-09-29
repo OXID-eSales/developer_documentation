@@ -122,140 +122,22 @@ Creating test structure in a module
 -----------------------------------
 
 To start with acceptance tests using Codeception in your module for the first time, you have to initialize
-it by running the following command once:
+it by running the following command:
 ::
 
   cd <shop_dir>
-  vendor/bin/codecept init ModuleAcceptance --path <module_source_directory>/<tests_folder>
+  vendor/bin/codecept init Acceptance --path <module_source_directory>/<tests_folder>
 
-Example:
-::
-
-  cd <shop_dir>
-  vendor/bin/codecept init ModuleAcceptance --path <module_source_directory>/Tests
-
-
-
-When prompted, confirm :guilabel:`Codeception` as test folder's name and :guilabel:`chrome` as a webdriver or change to
-better suited values in case you need it.
+When prompted, you can use :guilabel:`Codeception` as test folder's name and :guilabel:`chrome` as a webdriver.
 
 This command creates basic structure for starting with Codeception Acceptance tests for your module: tests directory (in
-our current case :guilabel:`Tests/Codeception`), a configuration file :guilabel:`codeception.yml` and a preconfigured
-acceptance test suite :guilabel:`acceptance.suite.yml`.
+our current case :guilabel:`<tests_folder>/Codeception`), a configuration file :guilabel:`codeception.yml` and default
+acceptance test suite :guilabel:`Acceptance.suite.yml`.
 
-.. Important::
-    The ``ModuleAcceptance`` keyword in command is responsible for triggering usage of template for
-    generating the preconfigured starting tests directory structure prepared by OXID.
+For quick Codeception info please refer to the
+`Codeception documentation <https://codeception.com/docs/GettingStarted>`__.
+The next step would be to check one of our repositories to get a hands-on information
+about how OXID configures and tests with Codeception:
 
-The general structure of the module's test folder looks as follows:
-
-Example:
-    ::
-
-            └── mymodule
-                ├── composer.json
-                ├── metadata.php
-                ├── StartController.php
-                ├── tests
-                │  ├── Codeception
-                │  │  ├── Acceptance
-                │  │  │  ├── _bootstrap.php
-                │  │  │  └── ExampleCest.php
-                │  │  ├── acceptance.suite.yml
-                │  │  ├── Config
-                │  │  │  └── params.php
-                │  │  ├── _data
-                │  │  │  ├── dump.sql
-                │  │  │  └── fixtures.php
-                │  │  ├── _output
-                │  │  └── _support
-                │  │     ├── AcceptanceTester.php
-                │  │     ├── _generated
-                │  │     │  └── AcceptanceTesterActions.php
-                │  │     └── Helper
-                │  │        └── Acceptance.php
-                │  └── codeception.yml
-                └── views
-                    └── blocks
-                        └── mymodule_block.tpl
-
-An example Cest named ``ExampleCest`` is created automatically which verifies that the shop frontend is working.
-We'll come to actually writing tests in the next section.
-
-Codeception configuration
--------------------------
-
-The codeception main configuration file for the newly created module tests is the **codeception.yml** which is
-located in the ``<vendor_name>/<module_name>/Tests`` directory:
-
-::
-
-    namespace: MyVendor\MyModule\Tests\Codeception
-    params:
-      - Codeception/Config/params.php
-    paths:
-      tests: Codeception
-      output: Codeception/_output
-      data: Codeception/_data
-      support: Codeception/_support
-      envs: Codeception/_envs
-      actor_suffix: Tester
-
-    settings:
-      colors: true
-      log: true
-      bootstrap: _bootstrap.php
-
-    extensions:
-      enabled:
-        - Codeception\Extension\RunFailed
-
-
-There is an additional configuration file for each suite (we only have **Acceptance.suite.yml** for now)
-containing information about enabled Codeception modules, Actor and so.
-
-::
-
-    # suite config
-    actor: AcceptanceTester
-    modules:
-      enabled:
-        - Asserts
-        - WebDriver:
-            url: '%SHOP_URL%'
-            browser: '%BROWSER%'
-            port: '%SELENIUM_SERVER_PORT%'
-            host: '%SELENIUM_SERVER_HOST%'
-            window_size: 1920x1080
-            clear_cookies: true
-        - \OxidEsales\Codeception\Module\ShopSetup:
-            dump: '%DUMP_PATH%'
-            fixtures: '%FIXTURES_PATH%'
-        - Db:
-            dsn: 'mysql:host=%DB_HOST%;dbname=%DB_NAME%;charset=utf8'
-            user: '%DB_USERNAME%'
-            password: '%DB_PASSWORD%'
-            port: '%DB_PORT%'
-            dump: '%DUMP_PATH%'
-            mysql_config: '%MYSQL_CONFIG_PATH%'
-            populate: true # run populator before all tests
-            cleanup: true # run populator before each test
-            populator: 'mysql --defaults-file=$mysql_config --default-character-set=utf8 $dbname < $dump'
-            initial_queries:
-                - 'SET @@SESSION.sql_mode=""'
-        - \OxidEsales\Codeception\Module\Oxideshop:
-            depends:
-              - WebDriver
-              - Db
-        - \OxidEsales\Codeception\Module\Database:
-            depends: Db
-        - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
-            shop_path: '%SHOP_SOURCE_PATH%'
-            paths: 'Application/views/apex'
-        - \OxidEsales\Codeception\Module\SelectTheme:
-              depends:
-                  - \OxidEsales\Codeception\Module\Database
-              theme_id: '%THEME_ID%'
-
-For further details regarding the configuration of Codeception tests please refer to the
-`Codeception documentation <https://codeception.com/docs/reference/Configuration>`__.
+    - `OXID eShop Module Template <https://github.com/OXID-eSales/module-template>`__
+    - `OXID eShop <https://github.com/OXID-eSales/oxideshop_ce>`__.
