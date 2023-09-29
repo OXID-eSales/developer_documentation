@@ -5,23 +5,23 @@ The acceptance (Codeception) tests are even more complicated then integration te
 shop database, but also some data fixtures. For the database population and for the cleaning up we use by the
 codeception framework provided standard tools and best practice.
 
-To run all storefront tests:
+To run all tests:
 
 .. code::
 
-  vendor/bin/codecept run acceptance -c tests/codeception.yml
+  vendor/bin/codecept run Acceptance -c tests/codeception.yml
 
 To run all admin area tests:
 
 .. code::
 
-  vendor/bin/codecept run acceptanceAdmin -c tests/codeception.yml
+  vendor/bin/codecept run Acceptance -c tests/codeception.yml -g admin
 
 To run with activated module:
 
 .. code::
 
-  MODULE_IDS= vendor/bin/codecept run acceptance -c tests/codeception.yml
+  MODULE_IDS= vendor/bin/codecept run Acceptance -c tests/codeception.yml
 
 Populating test data
 --------------------

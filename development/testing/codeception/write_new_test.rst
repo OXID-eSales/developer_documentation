@@ -211,7 +211,7 @@ located in the ``<vendor_name>/<module_name>/Tests`` directory:
         - Codeception\Extension\RunFailed
 
 
-There is an additional configuration file for each suite (we only have **acceptance.suite.yml** for now)
+There is an additional configuration file for each suite (we only have **Acceptance.suite.yml** for now)
 containing information about enabled Codeception modules, Actor and so.
 
 ::

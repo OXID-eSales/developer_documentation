@@ -14,7 +14,7 @@ You can create a Cest by running the following command from inside the module ``
 
 .. code:: php
 
-    <shop_dir>/vendor/bin/codecept generate:cest acceptance CheckShopFrontend
+    <shop_dir>/vendor/bin/codecept generate:cest Acceptance CheckShopFrontend
 
 The empty ``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/CheckShopFrontendCest.php`` Cest will be
 automatically created.
@@ -70,8 +70,8 @@ Running the test should look like
 
 ::
 
-    vagrant@oxideshop:/var/www/oxideshop$ MODULE_IDS=<module_id> vendor/bin/codecept run acceptance -c tests/codeception.yml
-    Building Actor classes for suites: acceptance
+    vagrant@oxideshop:/var/www/oxideshop$ MODULE_IDS=<module_id> vendor/bin/codecept run Acceptance -c tests/codeception.yml
+    Building Actor classes for suites: Acceptance
      -> AcceptanceTesterActions.php generated successfully. 150 methods added
     \AcceptanceTester includes modules: Asserts, WebDriver, Db, \OxidEsales\Codeception\Module\Oxideshop, \OxidEsales\Codeception\Module\Database, \OxidEsales\Codeception\Module\Translation\TranslationsModule
     Codeception PHP Testing Framework v2.5.6

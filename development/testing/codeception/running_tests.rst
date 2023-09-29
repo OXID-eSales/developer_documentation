@@ -5,9 +5,11 @@ Running Codeception Tests
 
 To run all Codeception tests of your module:
 
-.. code::
+.. code:: bash
 
-  MODULE_IDS=<moduleId-1>,<moduleId-2> vendor/bin/codecept run acceptance -c <vendor_name>/<module_name>/tests/codeception.yml
+  MODULE_IDS=<moduleId-1>,<moduleId-2> \
+    vendor/bin/codecept run Acceptance \
+    -c <vendor_name>/<module_name>/tests/codeception.yml
 
 
 Run with PHPStorm

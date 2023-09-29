@@ -83,15 +83,18 @@ are used in templates and are translated when the shop renders the output. Withe
 language independent by supplying the expected OXID language constant rather than the final translation.
 The Translator Module needs the shop path and the theme as parameters.
 
-.. code::
+.. code:: yaml
 
         modules:
             enabled:
                 - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
                     shop_path: '%SHOP_SOURCE_PATH%'
-                    paths: 'Application/views/flow'
+                    paths:
+                        - 'Application/views/shop-theme-dir'
+                    paths_admin:
+                        - 'Application/views/admin_theme-dir'
 
-For example the following piece of test code would only work in german language
+For example the following piece of test code would only work in German language
 
 .. code:: php
 
