@@ -80,35 +80,37 @@ Adjust removed functionality
    Your module also has to be updated accordingly.
 
    We also recommend making your module
-   compatible with psr-12 by renaming the modules underscore methods too.
+   compatible with PSR-12 by renaming the modules underscore methods too.
    |br|
    You can do so either manually or via
-   `rector <https://github.com/OXID-eSales/rector>`_ which helps us to do it faster.
+   `rector <https://github.com/rectorphp/rector>`_ which helps us to do it faster.
    |br|
    We already have provided a rector
-   for this purpose.
+   for this purpose available via `OXID eShop update component <https://github.com/OXID-eSales/oxideshop-update-component>`_.
    To run it, perform the following steps:
 
-    1. Update composer with adding ``rector/rector`` package:
+    1. Update composer with adding ``rector/rector`` and ``oxid-esales/oxideshop-update-component``:
 
-       .. code::
+       .. code:: bash
 
-            "require-dev": {
-                "rector/rector": "dev-master"
-            },
-            "repositories": {
-                "rector/rector": {
-                    "type": "vcs",
-                    "url": "https://github.com/OXID-eSales/rector"
-                }
-            }
+            composer require rector/rector --dev
+            composer require oxid-esales/oxideshop-update-component --dev
+
+
 
     2. Rename the underscore methods:
 
-       .. code::
+       .. code:: bash
 
-            # for the oxid-esales/paypal-module, for example
-            cp vendor/rector/rector/templates/oxidEsales/oxid_V7_underscored_methods_renamer_rector.php.dist  ./rector.php && sed -i 's/MODULE_VENDOR_PATH/<module-vendor>\/<module-ID>/g' rector.php && vendor/bin/rector process
+            cp vendor/oxid-esales/oxideshop-update-component/src/Rector/templates/oxid_V7_underscored_methods_renamer_rector.php.dist ./rector.php
+            sed -i 's/MODULE_VENDOR_PATH/<module-vendor>\/<module-ID>/g' rector.php
+            vendor/bin/rector process
+
+            # the same commands for the oxid-esales/paypal-module, for example
+            cp vendor/oxid-esales/oxideshop-update-component/src/Rector/templates/oxid_V7_underscored_methods_renamer_rector.php.dist ./rector.php
+            sed -i 's/MODULE_VENDOR_PATH/oxid-esales\/paypal-module/g' rector.php
+            vendor/bin/rector process
+
 
 .. _port_to_v7-add-namespaces-20221123:
 
