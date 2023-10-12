@@ -59,9 +59,9 @@ You will see a list of settings that you can change.
 
 Entries in the settings list are loaded and saved in configuration files located in `var/configuration/shops`.
 
-For each shop id there is one directory with the complete configuration for this shop.
+For each shop ID there is one directory with the complete configuration for this shop.
 
-So if the shop has id 1, a directory would be named 1. See the example below:
+So if the shop has ID 1, a directory would be named 1. See the example below:
 
 .. code::
 
@@ -69,9 +69,9 @@ So if the shop has id 1, a directory would be named 1. See the example below:
   └── var
       └── configuration
           └── shops
-             └──1
-             └──2
-             └── ...
+              └── 1
+              └── 2
+              └── ...
 
 .. note::
 
@@ -90,7 +90,7 @@ systems and deploy through the command line as described below in the
 section :ref:`deploy module configurations<apply_configuration_configured_modules-20190829>`.
 
 Project configuration files are located in project directory `var/configuration/shops/<shop-id>/`, where "<shop-id>" represents
-Sub-shop ID. In case you don't use Sub-shop functionality, it will always be only one directory.
+sub-shop ID. In case you don't use sub-shop functionality, it will always be only one directory.
 
 Each directory with a shop configuration has a `class_extension_chain.yaml` file with the module class extension chains
 and a separate subdirectory `modules` for module configurations. Configuration for every module is in a separate file
@@ -102,11 +102,11 @@ where filename is the module id: `var/configuration/shops/<shop-id>/modules/<mod
   └── var
       └── configuration
           └── shops
-                └──1
-                    └──modules
-                        └──oe_moduletemplate.yaml
-                        └── ...
-                    └──class_extension_chain.yaml
+              └── 1
+                  └── modules
+                      └── oe_moduletemplate.yaml
+                      └── ...
+                  └── class_extension_chain.yaml
 
 The configuration might be different in different environments (testing, staging or productive). To solve this problem,
 OXID eShop can use another directory with configuration files located in `var/environment/shops/<shop-id>/`.
@@ -119,14 +119,14 @@ Example structure:
   └── var
       └── configuration
           └── environment
-             └── shops
-               └──1
-               └──2
-               └── ...
+              └── shops
+                  └── 1
+                  └── 2
+                  └── ...
           └── shops
-             └──1
-             └──2
-             └── ...
+              └── 1
+              └── 2
+              └── ...
 
 Configuration files
 """""""""""""""""""
@@ -145,7 +145,8 @@ An example of stripped down configuration file :file:`var/configuration/shops/1/
 .. code:: yaml
 
     id: oe_moduletemplate
-    version: 1.0.0
+    moduleSource: vendor/oxid-esales/module-template
+    version: 2.0.0
     activated: true
     title:
       en: 'OxidEsales Module Template (OEMT)'
