@@ -211,7 +211,7 @@ Converter name: ``oxcontent``
 | ``[{oxcontent ident='oxregisteremail'}]``
 |
 | Twig:
-| ``{% include 'content::ident::oxregisteremail' %}``
+| ``{% include_content 'oxregisteremail' ignore missing %}``
 |
 
 oxeval => include(template_from_string())
