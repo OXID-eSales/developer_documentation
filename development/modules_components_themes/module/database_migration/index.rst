@@ -6,9 +6,6 @@ Database Migration
 Modules can have their own migrations. To get comprehensive information about migrations in OXID eShop,
 check :doc:`database migrations documentation <../../../tell_me_about/migrations>`.
 
-Also you need to know that module migrations can be generated and executed by using
-`OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
-
 Configuration
 -------------
 Put the migration configuration file into the `migration` folder inside the module's root directory:
@@ -29,6 +26,22 @@ Example of `migrations.yml`:
 
 .. tip::
     To prevent database table name conflicts, include your module's ID in `table_name`.
+
+Migration Classes
+-----------------
+
+Most recent info on requirements and structure of Migration Classes can be found in
+`Doctrine Migrations documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/reference/migration-classes.html>`__.
+
+Module migrations can also be generated and executed via
+`OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
+
+.. warning::
+    When planning your Migration's structure, remember that certain
+    `SQL statements <https://mariadb.com/kb/en/sql-statements-that-cause-an-implicit-commit>`__
+    will issue
+    `Implicit commits <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/explanation/implicit-commits.html>`__
+    which will affect the transaction functionality and may have unexpected side-effects.
 
 Usage
 -----

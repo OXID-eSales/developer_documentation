@@ -70,6 +70,23 @@ For that you can use `DatabaseTrait`:
 
 Also there is a base class for integration tests `IntegrationTestCase` which does all the cleanup work for you.
 
+.. warning::
+    The mentioned approach might not work in certain circumstances. You might need to resort to using much slower
+    `oe:database:reset` (see `DatabaseTrait::setupShopDatabase()` in cases when:
+
+    1. DDL statements are executed during the test
+
+        Because both MySQL and MariaDB do not support DDL statements
+        (`CREATE TABLE`, `ALTER TABLE`, `CREATE VIEW` etc.) in transactions, issuing such
+        `SQL statements <https://mariadb.com/kb/en/sql-statements-that-cause-an-implicit-commit>`__
+        will commit any existing transaction implicitly.
+        This means that test database restoration will not work properly and your test data may leak into your DB.
+        If any DDL statement is executed between running `$this->beginTransaction()` and `$this->rollBackTransaction()`,
+        your transaction will be committed before you roll it back, and you may get an PDO error:
+        `There is no active transaction` as a result.
+
+    2. Test initiates DB changes in a separate DB connection (e.g. via shell command)
+
 Clearing shop cache
 -------------------
 
