@@ -1,5 +1,5 @@
-Updating to OXID eShop 7.0.0
-=============================
+Updating to OXID eShop 7.0
+==========================
 
 Perform an update from OXID eShop 6.5.x to version 7.0.
 
