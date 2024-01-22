@@ -42,13 +42,8 @@ Run one of the following console commands in the shop's root:
 
 .. code:: bash
 
-        # "Standard path" when installed via OXID eShop PE/EE metapackage
-        vendor/bin/oe-console oe:cache:clear
-
-        # When upgraded to the PE/EE after installing the OXID eShop Community Edition Core Component
-        bin/oe-console oe:cache:clear
-
-If not sure, try the standard path first.
+   # "Standard path" when installed via OXID eShop PE/EE metapackage
+   vendor/bin/oe-console oe:cache:clear
 
 5. After Twig engine installation
 ---------------------------------
