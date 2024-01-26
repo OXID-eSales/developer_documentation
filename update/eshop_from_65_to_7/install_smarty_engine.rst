@@ -46,7 +46,7 @@ This means, you first have to change your root :file:`composer.json` file from i
       "oxid-esales/oxideshop-demodata-ce":"v8.0.0",
       ....
 
-#. Remove all occurrences of Oxid eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
+#. Remove all occurrences of OXID eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
 #. Replace the :code:`"require": { ...}` section in your root :file:`composer.json` file with this content.
 #. Backup your current :file:`composer.lock` file.
 #. Run composer update:
