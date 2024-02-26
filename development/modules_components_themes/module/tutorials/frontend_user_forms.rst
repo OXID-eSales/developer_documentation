@@ -19,42 +19,7 @@ In our example, we use a database table column called ``EXTENDUSER_ADDITIONALCON
 Extending the template
 ----------------------
 
-.. attention::
-
-    Our example applies to :emphasis:`Smarty` templates only.
-
     To find out how to extend :emphasis:`Twig` blocks, see :ref:`development/modules_components_themes/module/using_twig_in_module_templates:Using Twig in module templates`.
-
-
-Find the block to be extended in the :file:`form/fieldset/user_billing.tpl` template file.
-
-To extend it, create a template file and describe it in the :file:`metadata.php` file:
-
-.. code:: php
-
-  'blocks' => array(
-      array('template' => 'form/fieldset/user_billing.tpl', 'block'=>'form_user_billing_country', 'file'=>'/views/user.tpl'),
-  ),
-
-The :file:`/views/user.tpl` template content could look like this:
-
-.. code:: smarty
-
-  [{$smarty.block.parent}]
-
-  <div class="form-group">
-      <label class="control-label col-lg-3">Additional contact info</label>
-      <div class="col-lg-9">
-          <input class="form-control" type="text" maxlength="128"
-                 name="invadr[oxuser__extenduser_additionalcontactinfo]"
-                 value="[{$oxcmp_user->oxuser__extenduser_additionalcontactinfo->value}]"
-                 required=""
-          >
-      </div>
-  </div>
-
-The most important thing here is the input field with the name attribute ``name="invadr[oxuser__extenduser_additionalcontactinfo]"``
-which says for OXID eShop to try to write the provided value into the ``EXTENDUSER_ADDITIONALCONTACTINFO`` column of the ``oxuser`` table.
 
 Modifying white-listed fields
 -----------------------------

@@ -58,11 +58,7 @@ The array ``$aModule`` can contain multiple sub keys:
 
        amodule/controllers
 
-       amodule/blocks
-
        amodule/settings
-
-       amodule/templates
 
        amodule/events
 
@@ -95,8 +91,4 @@ Here is an example of a module metadata file:
             'myvendor_mytestmodule_MyModuleController' => MyVendor\mytestmodule\MyModuleController::class,
             'myvendor_mytestmodule_MyOtherModuleController' => MyVendor\mytestmodule\MyOtherModuleController::class,
         ],
-        'templates' => [
-            'mytestmodule.tpl' => 'mytestmodule.tpl',
-            'mytestmodule_other.tpl' => 'test_module_controller_routing_other.tpl'
-        ]
     );

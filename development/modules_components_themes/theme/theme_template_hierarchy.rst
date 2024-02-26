@@ -114,7 +114,7 @@ Figure :ref:`Template_override` illustrates the process:
 
    Fig.: Template override
 
-To explain further, assume that the name of your custom theme is ``custom``. To activate this theme, make a new directory with the same name (``custom``) and structure it as per the ``basic`` theme. Modify the template (``.tpl``) files and copy them to this location.
+To explain further, assume that the name of your custom theme is ``custom``. To activate this theme, make a new directory with the same name (``custom``) and structure it as per the ``basic`` theme. Modify the template (``.html.twig``) files and copy them to this location.
 
 The shop will now check if there is a modified template file in your ``custom`` theme folder and use it if present.
 
@@ -129,7 +129,7 @@ Templates
 
 The OXID eShop framework searches for specific template files (file-based) and renders them as needed.
 
-For internal Smarty includes ``[{include file=”_header.tpl”}]``, OXID eShop uses a specific callback function, which acts as a generic file-based template getter.
+OXID eShop uses a specific callback function, which acts as a generic file-based template getter.
 
 .. code:: bash
 

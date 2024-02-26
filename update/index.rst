@@ -6,7 +6,6 @@ Updating
 .. toctree::
    :maxdepth: 1
 
-   eshop_from_65_to_7/index
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
 

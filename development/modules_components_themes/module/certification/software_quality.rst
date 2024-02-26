@@ -29,11 +29,6 @@ No global functions
 
 Avoid creating new global functions (e.g. in the :file:`modules/functions.php` file).
 
-No business logic in smarty functions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Use smarty only for design purposes. Business logic belongs to the PHP level.
-
 PHP code
 ^^^^^^^^
 
@@ -184,15 +179,6 @@ For example:
 *   :file:`views/` - all frontend templates
 *   :file:`views/admin_twig/` - all admin templates
 
-For smarty:
-
-*   :file:`views/admin_smarty/` - all admin templates
-
-Smarty only
-"""""""""""
-
-.. todo: #HR: Warum twig im Smarty only-Kontext?
-
 Register all new templates in :file:`metadata.php`, using the following naming convention:
 
 :file:`[module_id]_[template_name].html.twig`
@@ -266,73 +252,6 @@ Language files and templates
 
 Make sure that individual language files and templates are stored in the module directory.
 
-Appendix for Smarty
-^^^^^^^^^^^^^^^^^^^
-
-Template files
-""""""""""""""
-
-Naming convention:
-:file:`[module_id]_[template_name].tpl`
-
-Blocks
-""""""
-
-Use block definitions in the templates.
-
-This is not an obligation.
-
-The naming convention for new blocks is:
-``[module_id]_[blockname]``.
-
-In the templates, use blocks like the following:
-
-.. code:: php
-
-    [{block name="thevendor_themodule_theblock"}][{/block}]
-
-Store all blocks information in the :file:`views/blocks` directory.
-
-For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`, inside the module directory, the block file should be located in :file:`views/blocks/module_id_blockname.tpl`.
-
-When adding contents for blocks in the admin interface, blocks should be located in paths like
-:file:`views/blocks/admin/module_id_blockname.tpl`.
-
-Use blocks whenever the shop's functionality is extended to the frontend side and a requested function or method
-would not be available as long as the module is disabled.
-
-Using blocks allows you to move function calls into small snippet files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered a quality feature of a module.
-
-Including .js files
-"""""""""""""""""""
-
-To include Javascript files in the frontend, use the following expression:
-
-.. code:: php
-
-    [{oxscript include=$oViewConf->getModuleUrl("[MODULE ID]", "js/[path where the needed file is] ") priority=10}]
-
-And for output:
-
-.. code:: php
-
-	[{oxscript}]
-
-Including .css files
-""""""""""""""""""""
-
-To include a module's custom CSS file, use the following expression:
-
-.. code:: php
-
-    [{oxstyle include=$oViewConf->getModuleUrl("module id", "css/{FileName}.css")}]
-
-And for output:
-
-.. code:: php
-
-    [{oxstyle}]
-
 Database access
 ---------------
 
@@ -342,4 +261,3 @@ Database access compatibility
 Database access should be master-slave compatible.
 
 For more information, see :ref:`Database: Master/Slave <modules-database-master_slave>`.
-

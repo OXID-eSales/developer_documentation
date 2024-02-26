@@ -266,19 +266,6 @@ Control removal of the Setup directory. It will be removed right after the setup
 
     $this->blDelSetupDir = false;
 
-deactivateSmartyForCmsContent
------------------------------
-
-Deactivate Smarty for CMS content.
-
-If active, CMS content (e.g. descriptions of products and categories, CMS pages, etc.) will not be processed by Smarty.
-
-.. code:: php
-
-    $this->deactivateSmartyForCmsContent = false;
-
-.. todo: #Igor: see above: cannot find this setting in shop code, it is possible to use but belongs to smarty component
-
 Modules
 -------
 

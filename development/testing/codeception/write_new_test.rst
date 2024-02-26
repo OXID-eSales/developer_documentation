@@ -17,9 +17,6 @@ Let's assume we have a simple test module ``myvendor/mymodule`` with the followi
         ├── composer.json
         ├── metadata.php
         ├── StartController.php
-        └── views
-            └── blocks
-                └── mymodule_block.tpl
 
 
 Example module's composer.json
@@ -72,16 +69,7 @@ Example module's metadata.php
         ],
         'controllers' => [],
         'events' => [],
-        'templates' => [],
-        'blocks' => [
-            [
-                'template' => 'page/shop/start.tpl',
-                'block'    => 'start_welcome_text',
-                'file'     => 'views/blocks/mymodule_block.tpl'
-            ],
-        ],
         'settings' => [],
-        'smartyPluginDirectories' => []
         ];
 
 The module chain extends the StartController class and adds a greeting message.
@@ -107,13 +95,6 @@ The module chain extends the StartController class and adds a greeting message.
             return $message;
         }
     }
-
-Example module template ``mymodule_block.tpl``:
-
-.. code:: php
-
-    [{$oView->getMyModuleGreeting()}]
-    [{$smarty.block.parent}]
 
 
 .. _codeception_initialization:

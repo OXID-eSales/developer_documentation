@@ -94,7 +94,7 @@ help text.
 
 Example::
 
-    {% include "inputhelp.tpl" with {'sHelpId': get_help_id("foo"), 'sHelpText': get_help_text("foo")} %}
+    {% include "inputhelp.html.twig" with {'sHelpId': help_id("HELP_GENERAL_NAME"), 'sHelpText': help_text("HELP_GENERAL_NAME")} %}
 
 MailtoExtension
 ^^^^^^^^^^^^^^^

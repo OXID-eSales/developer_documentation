@@ -80,8 +80,6 @@ OXID Twig Component can be customized by overriding the default values from the 
           oxid_esales.theme.admin.name: 'admin_twig'
         # Template engine file extension - value is bound to the current template engine
           oxid_esales.templating.engine_template_extension: 'html.twig'
-        # Delegate HTML-escaping to the template engine - is "true" for Twig
-          oxid_esales.templating.engine_autoescapes_html: true
         # Template caching control
           oxid_esales.templating.disable_twig_template_caching: false
 
