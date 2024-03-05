@@ -18,15 +18,8 @@ Prior to v3.0, Doctrine Migrations was not able to collect migrations from multi
 But there was a need to run migration for one or all the projects and modules (CE, PE, EE, PR and a specific module).
 For this reason, we have created the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
 
-The Doctrine Migration Wrapper needs some information about the OXID eShop installation like:
+The Doctrine Migration Wrapper will utilize the database connection that is configured in the active environment
 
-- what edition is active
-- what are credentials for database
-
-This information is gathered from `OXID eShop Facts <https://github.com/OXID-eSales/oxideshop-facts>`__.
-
-OXID eShop Facts has a class which can provide an information about OXID eShop and its environment.
-This component is shop-independent and can be used without bootstrap. The only restriction is to have the `config.inc.php` file configured.
 
 Using migrations
 ----------------

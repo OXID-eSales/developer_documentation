@@ -1,5 +1,5 @@
-Acceptance (Codeception) tests
-==============================
+Acceptance tests
+================
 
 The acceptance (Codeception) tests are even more complicated then integration tests. Here we need not only an existing
 shop database, but also some data fixtures. For the database population and for the cleaning up we use by the
@@ -56,11 +56,11 @@ Manual shop setup
 
 Of course you can setup shop with testing data manually:
 
-- To setup shop database with initial data use `oe:database:reset` command from the oxid-esales/developer-tools package:
+- Use the database reset command to bring your shop database into its initial state:
 
-.. code::
+    .. code:: bash
 
-  vendor/bin/oe-console oe:database:reset --db-host= --db-port= --db-name= --db-user= --db-password= --force
+        vendor/bin/oe-console oe:database:reset
 
 - Insert data fixtures
 - Create a dump file

@@ -41,4 +41,4 @@ If order notification e-mails are disabled, in ``source/log/oxideshop.log`` the 
 .. note::
 
     The default log level is *error*. To have the notice messages logged, it's necessary to set the log level
-    parameter ``$this->sLogLevel`` in the file *config.inc.php* to *notice*.
+    parameter to *notice*.

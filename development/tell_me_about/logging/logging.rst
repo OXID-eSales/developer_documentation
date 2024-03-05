@@ -17,13 +17,31 @@ In a nutshell, you would log something in your code like this:
 Configuration and extension
 ---------------------------
 
-All messages of log level ``error`` or higher will be written to :file:`source/log/oxideshop.log`.
-The log level is :ref:`configurable in the file source/config.inc.php via the variables sLogLevel and iDebug <configincphp_sLogLevel>`.
+Active logging level can be defined:
 
-.. note::
+- globally, via environment variable: ``OXID_LOG_LEVEL``
+- as a Symfony Service Container parameter: ``oxid_esales.log_level``
 
-    Keep in mind that in OXID eShop there is also done some logging at ``warning`` level and in order to see those messages
-    in your log file, you would have to set the level to ``warning`` in the file :file:`source/config.inc.php`.
+Changing logging level value allows to log system messages selectively, by ignoring less critical ones
+(see `PSR-3 log level hierarchy <https://www.php-fig.org/psr/psr-3/#5-psrlogloglevel>`__).
+
+
+  |example| *setting log level as an environment variable*
+
+.. code:: bash
+
+    export OXID_LOG_LEVEL=warning
+
+
+setting logging level to ``warning`` will make logging system process events with the following levels:
+
+- ``warning``
+- ``error``
+- ``critical``
+- ``alert``
+- ``emergency``
+
+at the same time, ``debug``, ``info`` and ``notice`` events will be ignored.
 
 
 When operating an OXID eShop, there may be very specific requirements to the logging mechanism.

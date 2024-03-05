@@ -9,6 +9,7 @@ In order to implement the following things, you need an entry point such like
     :maxdepth: 2
     :glob:
 
+    dic/index
     caching/index
     event/index
     logging/index
