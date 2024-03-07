@@ -1,8 +1,9 @@
-Updating from OXID eShop 6.5 to OXID eShop 7.0
-===============================================
+Updating from OXID eShop 6.5 to OXID eShop 7
+============================================
 
-Update your OXID eShop to OXID eShop version 7.
+Update your OXID eShop to OXID eShop version 7.1.
 
+.. todo: #HR: Wir ändern hier 7.0 -> 7.1, sonst generisch "7", <ce/pe/ee>:v7.1.0
 
 |prerequisites|
 
@@ -96,7 +97,9 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
    .. code:: bash
 
-      composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.0.0
+      .. todo: #HR: <ce/pe/ee>:v7.1.0
+
+      composer require --no-update oxid-esales/oxideshop-metapackage-<ce/pe/ee>:v7.1.0
 
 #. Remove or update the following packages from the :code:`require-devs` section of your composer.json.
 

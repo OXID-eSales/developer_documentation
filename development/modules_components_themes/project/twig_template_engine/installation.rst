@@ -59,6 +59,8 @@ If not sure, try the standard path first.
 
 After the Twig engine is installed, you should be able to access administration panel and activate installed Twig frontend theme (e.g. APEX) for your shop.
 
+.. todo: #HR/#DK: "Command bin/oe-console oe:theme:activate <theme> to activate a theme from CLI" -- ist das hier ausr. dokumentiert?
+
 + via console command:
 
   .. code:: bash
