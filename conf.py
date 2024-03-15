@@ -135,18 +135,19 @@ html_theme = 'sphinx_rtd_theme'
 html_context = {
     'current_version': '7.0',
     'versions':
-        [('6.2', 'https://docs.oxid-esales.com/developer/en/6.2/'),
+        [
+         ('6.2', 'https://docs.oxid-esales.com/developer/en/6.2/'),
          ('6.3', 'https://docs.oxid-esales.com/developer/en/6.3/'),
          ('6.4', 'https://docs.oxid-esales.com/developer/en/6.4/'),
          ('6.5', 'https://docs.oxid-esales.com/developer/en/6.5/'),
-         ('7.0', 'https://docs.oxid-esales.com/developer/en/7.0'),
+         ('7.0', 'https://docs.oxid-esales.com/developer/en/7.0/'),
         ],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
     'show_sphinx': False,
 
     'display_github': True,
-    # Set the following variables to generate the resulting github URL for each page. 
+    # Set the following variables to generate the resulting github URL for each page.
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
@@ -213,7 +214,7 @@ html_static_path = ['_static']
 html_show_sourcelink = False
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-html_show_sphinx = False 
+html_show_sphinx = False
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True

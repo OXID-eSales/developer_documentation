@@ -266,16 +266,66 @@ Control removal of the Setup directory. It will be removed right after the setup
 
     $this->blDelSetupDir = false;
 
+PHP handling in Smarty
+----------------------
+
+If you use Smarty, avoid using PHP, if possible.
+
+If PHP is enabled in Smarty, anyone with admin rights can do anything, and can, for example, bypass security measures.
+
+To disable PHP in Smarty, you have the following options:
+
+* Recommended: To achieve maximum security, disable Smarty with the :code:`deactivateSmartyForCmsContent` parameter (see :ref:`deactivateSmartyForCmsContent <deactivateSmartyForCmsContent>`.
+
+  With this option, Smarty is applied only in templates, not in content blocks.
+
+* Disable PHP execution with the :code:`iSmartyPhpHandling` parameter (see :ref:`iSmartyPhpHandling <iSmartyPhpHandling>`.
+
+  With this option, Smarty is applied, but PHP code cannot be executed in content blocks.
+
+  The remaining risks that a content editor would be able to display variables and values and to modify data.
+
+.. _deactivateSmartyForCmsContent:
+
 deactivateSmartyForCmsContent
------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Deactivate Smarty for CMS content.
+If possible, deactivate Smarty for CMS content.
 
-If active, CMS content (e.g. descriptions of products and categories, CMS pages, etc.) will not be processed by Smarty.
+To deactivate Smarty and make sure that CMS content (descriptions of products and categories, CMS pages, for example) is not processed by Smarty, set the :code:`deactivateSmartyForCmsContent` parameter to :code:`true`.
+
+By default, Smarty is active (parameter value = :code:`false`).
+
+Example:
 
 .. code:: php
 
-    $this->deactivateSmartyForCmsContent = false;
+    $this->deactivateSmartyForCmsContent = true;
+
+.. _iSmartyPhpHandling:
+
+iSmartyPhpHandling
+^^^^^^^^^^^^^^^^^^
+
+Deactivate PHP execution in Smarty without deactivating Smarty.
+
+By default, PHP code is executed in Smarty (in the following options, value = :code:`3`).
+
+To deactivate PHP execution, choose one of the following options:
+
+* Value = :code:`0`: Recommended: Output code in HTML source (not displayed)
+* Value = :code:`1`: Display code with PHP tags
+* Value = :code:`2`: Display code without PHP tags
+
+.. code:: php
+
+    $this->iSmartyPhpHandling = <value>;
+
+Example:
+
+.. code:: php
+
+    $this->iSmartyPhpHandling = 0;
 
 .. todo: #Igor: see above: cannot find this setting in shop code, it is possible to use but belongs to smarty component
 
