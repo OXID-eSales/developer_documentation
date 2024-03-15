@@ -60,3 +60,36 @@ e.g. by setting:
 
         php_admin_value[error_log] = /var/log/fpm-php.www.log
         php_admin_flag[log_errors] = on
+
+
+Installing or updating a module fails
+-------------------------------------
+
+If you have installed the :productname:`OXID eShop Enterprise Edition` using the metapackage, to install a module, you use the default path.
+
+Example (graphql):
+
+   .. code:: bash
+
+      vendor/bin/oe-console oe:module:install-configuration source/modules/oe/graphql-base
+      vendor/bin/oe-console oe:module:install-configuration source/modules/oe/graphql-storefront
+
+However, if installing a module (graphql, in the following example) fails, you might have, for example, installed the Community Edition as a root package and later upgraded to the Enterprise Edition.
+
+In this case, try the following path:
+
+.. code:: bash
+
+   bin/oe-console oe:module:install-configuration source/modules/oe/graphql-base
+   bin/oe-console oe:module:install-configuration source/modules/oe/graphql-storefront
+
+
+Analogously, when updating modules, perform the commands to migrate the database and clear the cache as follows:
+
+.. code:: bash
+
+   bin/oe-eshop-db_migrate migrations:migrate
+
+.. code:: bash
+
+   bin/oe-console oe:cache:clear

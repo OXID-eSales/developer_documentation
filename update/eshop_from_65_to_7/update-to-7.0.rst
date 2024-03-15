@@ -62,11 +62,6 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
      (2.) Clean the shop cache by calling the appropriate console command from shop root directory.
 
-          Keep in mind that the path to console command will be as follows:
-
-          * if the shop was installed from metapackage: :code:`./vendor/bin/oe-console`
-          * if the shop was installed with CE as root package: :code:`./bin/oe-console`
-
           |br|
 
           .. code:: bash

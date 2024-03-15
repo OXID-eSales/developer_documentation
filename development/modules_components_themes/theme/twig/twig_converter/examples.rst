@@ -211,8 +211,12 @@ Converter name: ``oxcontent``
 | ``[{oxcontent ident='oxregisteremail'}]``
 |
 | Twig:
-| ``{% include 'content::ident::oxregisteremail' %}``
+| ``{% include_content 'oxregisteremail' ignore missing %}``
 |
+
+To ensure that Twig ignores the include statement if the template to be included does not exist, mark the include with ``ignore missing``.
+
+For more information, see the Twig documentation under `twig.symfony.com/doc/2.x/tags/include.html <https://twig.symfony.com/doc/2.x/tags/include.html>`_.
 
 oxeval => include(template_from_string())
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
