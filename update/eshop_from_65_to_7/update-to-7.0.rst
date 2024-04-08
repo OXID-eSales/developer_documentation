@@ -4,6 +4,7 @@ Updating from OXID eShop 6.5 to OXID eShop 7
 Update your OXID eShop to OXID eShop version 7.1.
 
 .. todo: #HR: Wir ändern hier 7.0 -> 7.1, sonst generisch "7", <ce/pe/ee>:v7.1.0
+.. todo: #tbd #Steven: sollte von 7.0 auf 71 sein, 6.5 nicht, dazu Verweis auf 7.0-Doku
 
 |prerequisites|
 
