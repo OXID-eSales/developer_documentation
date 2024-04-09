@@ -136,7 +136,9 @@ html_context = {
          ('6.3', 'https://docs.oxid-esales.com/developer/en/6.3/'),
          ('6.4', 'https://docs.oxid-esales.com/developer/en/6.4/'),
          ('6.5', 'https://docs.oxid-esales.com/developer/en/6.5/'),
-         ('7.0', 'https://docs.oxid-esales.com/developer/en/7.0/'),],
+         ('7.0', 'https://docs.oxid-esales.com/developer/en/7.0/'),
+         ('7.1', 'https://docs.oxid-esales.com/developer/en/7.1/'),
+        ],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
     'show_sphinx': False,
@@ -146,7 +148,7 @@ html_context = {
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
-    'github_version': 'b-6.2/'
+    'github_version': 'b-6.2.x/'
 
 }
 
