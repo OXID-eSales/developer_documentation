@@ -172,7 +172,7 @@ Before you update to OXID eShop version 7.1, you have make sure that you meet th
 
 #. Avoid receiving a large number of warnings. To do so, doublecheck your server's PHP error reporting settings.
    |br|
-   Background: With OXID eShop 7.1 , :code:`error_reporting()` calls have been removed from the :file:`bootstrap.php` file.
+   Background: With OXID eShop 7, :code:`error_reporting()` calls have been removed from the :file:`bootstrap.php` file.
 
    We recommend setting the following:
 
