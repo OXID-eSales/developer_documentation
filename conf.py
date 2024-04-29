@@ -141,6 +141,7 @@ html_context = {
          ('6.4', 'https://docs.oxid-esales.com/developer/en/6.4/'),
          ('6.5', 'https://docs.oxid-esales.com/developer/en/6.5/'),
          ('7.0', 'https://docs.oxid-esales.com/developer/en/7.0/'),
+         ('7.1', 'https://docs.oxid-esales.com/developer/en/7.1/'),
          ('8.0', 'https://docs.oxid-esales.com/developer/en/8.0/'),
         ],
     'css_files': [('_static/oxid.css')],
@@ -152,7 +153,7 @@ html_context = {
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
-    'github_version': '8.0'
+    'github_version': 'b-8.0.x/'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

@@ -181,7 +181,7 @@ For example:
 
 Register all new templates in :file:`metadata.php`, using the following naming convention:
 
-:file:`[module_id]_[template_name].html.twig`
+:file:`[module_id]_[template_name].tpl`
 
 Using JavaScript and including .js files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
