@@ -179,10 +179,6 @@ For example:
 *   :file:`views/` - all frontend templates
 *   :file:`views/admin_twig/` - all admin templates
 
-Register all new templates in :file:`metadata.php`, using the following naming convention:
-
-:file:`[module_id]_[template_name].tpl`
-
 Using JavaScript and including .js files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
