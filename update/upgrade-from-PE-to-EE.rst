@@ -14,7 +14,7 @@ You need to perform all of the following actions step by step:
 
    .. code:: bash
 
-     composer require oxid-esales/oxideshop-metapackage-ee --no-plugins --no-scripts
+     composer require oxid-esales/oxideshop-metapackage-ee:^6 --no-plugins --no-scripts
 
 #. run shop migrations:
 
