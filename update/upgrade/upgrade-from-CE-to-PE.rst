@@ -15,7 +15,7 @@ Upgrade your OXID eShop from the Community Edition (CE) to the Professional Edit
 
    .. code:: bash
 
-     composer require oxid-esales/oxideshop-metapackage-pe --no-plugins --no-scripts
+        composer require oxid-esales/oxideshop-metapackage-pe:^7 --no-plugins --no-scripts
 
 #. Run the shop migrations:
 
@@ -34,10 +34,10 @@ Upgrade your OXID eShop from the Community Edition (CE) to the Professional Edit
    .. code:: bash
 
      composer update
-     
+
 
 #. Clear the cache:
 
    .. code:: bash
 
-     vendor/bin/oe-console oe:cache:clear  
+     vendor/bin/oe-console oe:cache:clear
