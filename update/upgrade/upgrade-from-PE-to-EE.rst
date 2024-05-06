@@ -15,7 +15,7 @@ Upgrading from the Professional Edition (PE) edition to the Enterprise Edition (
 
    .. code:: bash
 
-     composer require oxid-esales/oxideshop-metapackage-ee:^7 --no-plugins --no-scripts
+     composer require oxid-esales/oxideshop-metapackage-ee:^8 --no-plugins --no-scripts
 
 #. Run the shop migrations:
 
