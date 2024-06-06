@@ -3,45 +3,32 @@ Integration tests
 
 Integration tests are a bit more complicated:
 
- 1. Setup: it interacts with other units (components) and with the database. Therefore we need to create database and
-    bootstrap the shop.
- 2. Tear down: Tests must do not affect each other. When tests interact with a database,
-    they may change the data inside it, which would eventually lead to data inconsistency.
-    To avoid test failures, the database should be brought back to its initial state before each test.
+- they might interact with multiple system components:
 
-Before running integration tests please setup shop:
+    - we are required to prepare the database and bootstrap the shop.
 
-.. code::
+- they need be isolated and should not alter the state of the system:
 
-  vendor/bin/oe-console oe:database:reset --db-host= --db-port= --db-name= --db-user= --db-password= --force
+    - database, global variables, configuration files should be brought to their initial states on test tear-down.
 
-To run shop integration tests call:
+Running integration tests
+-------------------------
 
-.. code::
+To run shop integration tests, execute:
 
-  vendor/bin/phpunit -c phpunit.xml --bootstrap tests/bootstrap.php tests/Integration
-
-To run shop integration tests with an active module, first activate it:
-
-.. code::
-
-  vendor/bin/oe-console oe:module:activate <module-id>
-
-And later run integration tests:
-
-.. code::
+.. code:: bash
 
   vendor/bin/phpunit -c phpunit.xml --bootstrap tests/bootstrap.php tests/Integration
 
-Populating shop database for tests
-----------------------------------
+Preparing the database for integration tests
+--------------------------------------------
 
-You can setup the shop with initial data using oe:database:reset command from the developer-tools package.
-It installs shop and adds the initial data to run the shop:
+Use the database reset command to bring your shop database into its initial state before starting with testing:
 
-.. code::
+.. code:: bash
 
-  vendor/bin/oe-console oe:database:reset --db-host= --db-port= --db-name= --db-user= --db-password= --force
+  vendor/bin/oe-console oe:database:reset
+
 
 Cleaning up the database automatically before each test
 -------------------------------------------------------
@@ -90,38 +77,30 @@ Also there is a base class for integration tests `IntegrationTestCase` which doe
 Clearing shop cache
 -------------------
 
-There is quite a lot of caching going on:
- - Compile directory
- - Registry
- - var directory
- - and more…
+PHPUnit has in-built mechanisms to prevent tests interfering with each other, that can be activated either
 
-If cache has to be cleared after the tests are run, you can use the `CachingTrait` trait:
+- globally with :file:`phpunit.xml` configuration file (recommended):
 
-.. code::
+.. code:: xml
 
-    use CachingTrait;
+    <phpunit
+     backupGlobals="true"
+     backupStaticProperties="true"
+     processIsolation="true">
 
-    public function setUp(): void
-    {
-        parent::setUp();
-        $this->cleanupCaching();
-    }
+- or individually, per-test/per-test-case with PHP attributes:
 
-    public function tearDown(): void
-    {
-        $this->cleanupCaching();
-        parent::tearDown();
-    }
+.. code:: php
 
-Or you can extend `IntegrationTestCase` class which does it for you.
+    #[backupGlobals]
+    #[backupStaticProperties]
+    #[RunTestsInSeparateProcesses]
 
-At the moment it cleans compile directory, `Registry` and some classes,
-like `DatabaseProvider` and `ModuleVariablesLocator`.
+If the built-in functionality is not sufficient for your case, you can extend it with custom cleaners
+(have a look at existing traits in the ``OxidEsales\EshopCommunity\Tests`` namespace).
 
-
-(Test-) Container
------------------
+Test Container
+--------------
 
 When running integration tests we won't be able to use the normal DI container because
 most of the services are private, so we can't access them. And also in some integration

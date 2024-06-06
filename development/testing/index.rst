@@ -19,25 +19,28 @@ OXID uses few standard testing frameworks:
 
 .. note::
 
-        The following development tools have to be installed to run all OXID eShop tests:
+        The following development tools have to be installed to run OXID eShop tests:
 
-        * `Codeception framework <https://github.com/Codeception/Codeception>`__ for Codeception tests
-        * `Codeception asserts module <https://github.com/Codeception/module-asserts>`__ for Codeception test
-        * `Codeception db module <https://github.com/Codeception/module-db>`__ for Codeception test
-        * `Codeception file system module <https://github.com/Codeception/module-filesystem>`__ for Codeception test
-        * `Codeception webdriver module <https://github.com/Codeception/module-webdriver>`__ for Codeception test
-        * `OXID eShop Codeception Modules <https://github.com/oxid-esales/codeception-modules>`__ for Codeception test
-        * `OXID eShop Codeception Page Objects <https://github.com/oxid-esales/codeception-page-objects>`__ for Codeception test
-        * `Developer Tools component <https://github.com/Codeception/oxid-esales/developer-tools>`__ for Codeception test
-        * `PHPUnit framework <https://github.com/sebastianbergmann/phpunit>`__ for unit/integration tests
-        * `vfsStream <https://github.com/bovigo/vfsStream>`__ for unit/integration tests
-        * `PHPUnit Prophecy <https://github.com/phpspec/prophecy-phpunit>`__ for unit/integration tests
+        * `Developer Tools component <https://github.com/OXID-eSales/developer-tools>`__
+        * For unit/integration tests
+            * `PHPUnit framework <https://github.com/sebastianbergmann/phpunit>`__
+            * `Prophecy <https://github.com/phpspec/prophecy-phpunit>`__
+            * `vfsStream <https://github.com/bovigo/vfsStream>`__
+        * For Codeception tests
+            * `Codeception framework <https://github.com/Codeception/Codeception>`__
+            * `Codeception Module Asserts <https://github.com/Codeception/module-asserts>`__
+            * `Codeception Module DB <https://github.com/Codeception/module-db>`__
+            * `Codeception Module Filesystem <https://github.com/Codeception/module-filesystem>`__
+            * `Codeception Module WebDriver <https://github.com/Codeception/module-webdriver>`__
+            * `OXID eShop Codeception Modules <https://github.com/oxid-esales/codeception-modules>`__
+            * `OXID eShop Codeception Page Objects <https://github.com/oxid-esales/codeception-page-objects>`__
+
 
 
 .. toctree::
    :titlesonly:
    :glob:
-   :maxdepth: 2
+   :maxdepth: 1
 
    unit
    integration

@@ -1,9 +1,8 @@
-Acceptance tests with Codeception
-=================================
+In-depth Codeception testing
+============================
 
-OXID eShop supports `Codeception acceptance tests <https://codeception.com/>`__ which this is the recommended way to
-write (module) acceptance tests based on OXID's `flow <https://github.com/OXID-eSales/flow_theme/>`__
-or `wave <https://github.com/OXID-eSales/wave_theme/>`__ theme.
+OXID eShop provides easy-to-use integration with the `Codeception framework <https://codeception.com/>`__.
+Codeception runs acceptance tests in OXID core and is recommended for writing acceptance tests in external OXID modules.
 
 .. toctree::
     :titlesonly:
@@ -17,7 +16,3 @@ or `wave <https://github.com/OXID-eSales/wave_theme/>`__ theme.
     oxid_codeception_step_objects
     oxid_codeception_modules
     running_tests
-
-
-
-

@@ -5,6 +5,9 @@ Project
     :titlesonly:
     :glob:
 
+    dotenv
+    db_config
+
     *
     configuration/index
     module_configuration/index
