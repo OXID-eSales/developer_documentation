@@ -6,4 +6,3 @@ Upgrading editions
 
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
-
