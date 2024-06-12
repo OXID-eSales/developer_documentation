@@ -7,9 +7,9 @@ Updating
    :maxdepth: 1
 
    eshop_from_65_to_7/index
+   patch-update
    upgrade/index
 
-.. important::
+..
+   minor-update
 
-    You can not directly upgrade from CE to EE edition. you must first upgrade from CE to PE then from PE to EE based
-    on above documentations.
