@@ -1,3 +1,4 @@
+:orphan:
 Installing a minor update
 =========================
 
