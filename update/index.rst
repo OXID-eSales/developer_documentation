@@ -7,9 +7,10 @@ Updating
    :maxdepth: 1
 
    eshop_from_65_to_7/index
-   patch-update
+
    upgrade/index
 
 ..
+   patch-update
    minor-update
 
