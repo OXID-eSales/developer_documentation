@@ -9,7 +9,7 @@ Updating
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
 
-.. important::
+..
+   patch-update
 
-    You can not directly upgrade from CE to EE edition. you must first upgrade from CE to PE then from PE to EE based
-    on above documentations.
+
