@@ -1,7 +1,7 @@
 Installing a minor update
 =========================
 
-Update the compilation from an existing version 7.0.x to version 7.1.x.
+Update the compilation from an existing version 7.1.x to version 7.2.x.
 
 .. include:: /_static/reuse/note_dataloss.rst
 
@@ -21,7 +21,7 @@ Update your OXID eShop to the latest version.
 
 |prerequisites|
 
-You have :productname:`OXID eShop` 7.0.x.
+You have :productname:`OXID eShop` 7.1.x.
 
 |procedure|
 
@@ -38,11 +38,11 @@ You have :productname:`OXID eShop` 7.0.x.
    |br|
    To do this, match the name of the metapackage to the desired store edition, as in the following example.
    |br|
-   Example for an update of a community edition with the metapackage name ``7.1.0``:
+   Example for an update of a community edition with the metapackage name ``7.2.0``:
 
    .. code:: bash
 
-      composer require --no-update oxid-esales/oxideshop-metapackage-ce:v7.1.0
+      composer require --no-update oxid-esales/oxideshop-metapackage-ce:v7.2.0
 
 #. Update the dependencies.
    |br|
