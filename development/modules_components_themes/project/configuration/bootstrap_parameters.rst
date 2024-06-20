@@ -45,3 +45,8 @@ This level will be used by the default PSR-3 logging implementation of OXID eSho
 
     Like this you are able to change the log level temporarily even in productive environments to see more information in
     your log file.
+
+OXID_DEBUG_MODE
+^^^^^^^^^^^^^^^
+
+This parameter allows you to enable or disable debugging using `true` and `false` values. Please set this parameter to false in production mode.
