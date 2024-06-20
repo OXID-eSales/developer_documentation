@@ -39,7 +39,7 @@ Path to source directory.
 oxid_debug_mode
 ^^^^^^^^^^^^^^^
 
-By default, this parameter will take the value of the environment variable `OXID_DEBUG_MODE` to enable or disable debugging.
+By default, this parameter will take the value of the environment variable :ref:`OXID_DEBUG_MODE` to enable or disable debugging.
 
 oxid_smtp_debug_mode
 ^^^^^^^^^^^^^^^^^^^^
