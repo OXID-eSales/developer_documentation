@@ -35,3 +35,13 @@ oxid_shop_source_directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Path to source directory.
+
+oxid_debug_mode
+^^^^^^^^^^^^^^^
+
+This parameter allows debugging to be enabled or disabled using `true` and `false` values. It should be set to false in production mode.
+
+oxid_smtp_debug_mode
+^^^^^^^^^^^^^^^^^^^^
+
+This parameter assists in identifying and fixing problems that arise when sending emails via an SMTP server.
