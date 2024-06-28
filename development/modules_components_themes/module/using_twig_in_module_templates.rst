@@ -54,6 +54,9 @@ After module activation, the templates will be automatically registered with the
 Extending existing templates
 ----------------------------
 
+.. note::
+    Watch a short video tutorial on YouTube: `Template Extensions <https://www.youtube.com/watch?v=oE7Jrz0eC8k>`_.
+
 In addition to the out-of-box Twig functionality for template inheritance and reuse
 (see `Twig documentation for extends tag <https://twig.symfony.com/doc/3.x/tags/extends.html>`__),
 OXID eSales supports :emphasis:`multiple inheritance` for Twig templates.

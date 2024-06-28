@@ -5,6 +5,9 @@ Modules configuration and setup
     :local:
     :depth: 2
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Installation & Configuration <https://www.youtube.com/watch?v=WGeHtJCHmyA>`_.
+    
 Overview
 --------
 
