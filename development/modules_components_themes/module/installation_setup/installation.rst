@@ -1,6 +1,9 @@
 Installation
 ============
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Installation & Configuration <https://www.youtube.com/watch?v=WGeHtJCHmyA>`_.
+
 This section describes module installation process in OXID eShop.
 
 Installing module

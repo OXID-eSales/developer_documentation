@@ -1,6 +1,9 @@
 extend
 ======
 
+.. note::
+    Watch a short video tutorial on YouTube: `Shop Class Extensions <https://www.youtube.com/watch?v=hMClX5pAC-A>`_.
+
 Description:
     On this place shall be defined which shop classes are extended by this module.
 Type:

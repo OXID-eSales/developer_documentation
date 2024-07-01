@@ -1,6 +1,9 @@
 General information
 ===================
 
+.. note::
+    Watch a short video tutorial on YouTube: `Event Subscribers <https://www.youtube.com/watch?v=53oAt0mGH9U>`_.
+
 Events are an additional way to enhance the functionality of the
 shop. On certain occasions - for example, when a model
 object is stored to the database - an event is sent out.

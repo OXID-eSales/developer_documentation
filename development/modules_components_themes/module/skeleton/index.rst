@@ -1,6 +1,9 @@
 Module skeleton: metadata, composer and structure
 =================================================
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Installation & Configuration <https://www.youtube.com/watch?v=WGeHtJCHmyA>`_.
+
 In order to create a working OXID eShop module, you have to create a certain file structure inside your module
 and use certain metadata files.
 

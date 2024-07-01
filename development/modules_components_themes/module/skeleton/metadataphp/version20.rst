@@ -3,6 +3,9 @@
 Version 2.0
 ===========
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Installation & Configuration <https://www.youtube.com/watch?v=WGeHtJCHmyA>`_.
+
 Changes compared to version 1.1
 -------------------------------
 

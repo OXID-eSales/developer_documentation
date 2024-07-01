@@ -1,6 +1,9 @@
 How to use events
 =================
 
+.. note::
+    Watch a short video tutorial on YouTube: `Event Subscribers <https://www.youtube.com/watch?v=53oAt0mGH9U>`_.
+
 There are three steps:
 
 1. Choosing the event(s) you want to subscribe to
