@@ -1,6 +1,9 @@
 Installation and Activation
 ===========================
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Installation & Configuration <https://www.youtube.com/watch?v=WGeHtJCHmyA>`_.
+
 To have a working module, you need to pass installation, configuration and setup steps which are described bellow.
 If you have any problem during these three steps, take a look at :ref:`troubleshooting <troubleshooting>` section.
 

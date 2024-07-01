@@ -4,6 +4,9 @@ Interacting with the database
 Active records and magic getters
 --------------------------------
 
+.. note::
+    Watch a short video tutorial on YouTube: `Active Records <https://www.youtube.com/watch?v=JSOlVnMcgSs>`_.
+
 The OXID eShop architecture is based on an MVC design pattern.
 
 To implement models, the Active Record pattern is used.
@@ -68,6 +71,9 @@ In this example there is a check to determine if this ID exists and if so, the r
 
 Making a query
 --------------
+
+.. note::
+    Watch a short video tutorial on YouTube: `SQL Statements with the Query Builder <https://www.youtube.com/watch?v=i1_omW8iXJE>`_.
 
 To execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
 

@@ -3,6 +3,9 @@
 Service Container
 =================
 
+.. note::
+    Watch a short video tutorial on YouTube: `Components & Services <https://www.youtube.com/watch?v=tgopDKPiUZE>`_.
+
 The OXID eShop uses the Symfony DI Container to handle services.
 
 For more information about the DI Container, see the `Symfony DI Container documentation <https://symfony.com/doc/current/components/dependency_injection.html>`_.
