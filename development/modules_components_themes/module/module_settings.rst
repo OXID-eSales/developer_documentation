@@ -1,6 +1,9 @@
 Module settings
 ===============
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Settings <https://www.youtube.com/watch?v=2gLrhrEZ83M>`_.
+
 OXID eShop module functionality has a feature which allows easily configure module settings via admin web interface.
 
 Using module settings

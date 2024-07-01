@@ -3,6 +3,9 @@
 settings
 ========
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Settings <https://www.youtube.com/watch?v=2gLrhrEZ83M>`_.
+
 Description
     In this section all module configuration options are registered. In the eShop admin, users can configure
     modules according these settings.

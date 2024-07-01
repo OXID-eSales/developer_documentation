@@ -47,6 +47,9 @@ Possible structure of the module in the repository:
 Language files
 --------------
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Translations <https://www.youtube.com/watch?v=a4hz54TIsLM>`_.
+
 Language files are not specified inside the metadata.php but searched by naming conventions inside the module directory.
 
 Example language file:
@@ -134,6 +137,9 @@ Example:
 Module options file
 """""""""""""""""""
 
+.. note::
+    Watch a short video tutorial on YouTube: `Module Settings <https://www.youtube.com/watch?v=2gLrhrEZ83M>`_.
+
 The following format must be used for language constants ``SHOP_MODULE_GROUP_``, ``SHOP_MODULE_`` and ``HELP_SHOP_MODULE_``.
 
 Example:
@@ -164,6 +170,9 @@ Example:
 
 Custom JavaScript / CSS / Images
 --------------------------------
+
+.. note::
+    Watch a short video tutorial on YouTube: `Custom Styles in Modules <https://www.youtube.com/watch?v=RouvOeQpCFE>`_.
 
 Create an ``assets`` directory in your module root directory and put all your JS, CSS and images in this ``assets`` directory.
 

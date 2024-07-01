@@ -34,6 +34,9 @@ Some other commands examples:
 Creating custom CLI commands
 ----------------------------
 
+.. note::
+    Watch a short video tutorial on YouTube: `Custom Console Commands <https://www.youtube.com/watch?v=7CvBUpR44YM>`_.
+
 Commands can be created for OXID eShop modules or for OXID eShop components.
 
 Module commands
