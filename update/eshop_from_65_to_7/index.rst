@@ -17,3 +17,4 @@ To ensure the module compatibility with the OXID eShop version 7.0, read the **m
     update-to-6.5
     Updating modules <modules>
     install_smarty_engine
+    update-to-7-strategies

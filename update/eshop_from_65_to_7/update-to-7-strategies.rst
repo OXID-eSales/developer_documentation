@@ -31,47 +31,48 @@ The following changes can be applied in 6.5 as well as 7.
   it is possible to directly invoke a script residing in this directory.
 
   .. code:: php
+
      https://myoxideshop.com/modules/moduledir/moduleendpoint.php
 
   Please change this into a shop controller, which then can be invoked like
 
   .. code:: php
+
      https://myoxideshop.com/index.php?cl=moduleendpoint
 
-  See `:ref:_module-controllers-20170427`
+  See :ref:`Module Controllers <module-controllers-20170427>` for details.
 
-* From OXID eShop 7.0 on, only metadata version 2.0 is supported, see `:ref:update/eshop_from_65_to_7/modules.html#port-to-v7-metadata-20221123`
+* From OXID eShop 7.0 on, only :ref:`metadata version 2.0<port_to_v7-metadata-20221123>` is supported.
   This means: the module must have namespaces, namespace needs to point to vendor directory.
   Move module sourcecode into src folder and adapt namespace pointer. This is not strictly necessary, but we recommend a clean structure.
 
-  Example
-  .. code:: php
-     "autoload": {
-        "psr-4": {
-            "OxidEsales\\ModuleTemplate\\": "src/",
-            "OxidEsales\\ModuleTemplate\\Tests\\": "tests/"
-        }
-      },
+  Example:
+        .. code:: json
+
+             "autoload": {
+                "psr-4": {
+                    "OxidEsales\\ModuleTemplate\\": "src/",
+                    "OxidEsales\\ModuleTemplate\\Tests\\": "tests/"
+                }
+              },
 
 * Clean up module settings handling. Older shops were not very strictly distinguishing where a config variable originated from
   (shop, theme, module), it was usually accessed via
 
-  .. code:: php
+      .. code:: php
 
-     \OxidEsales\Eshop\Core\Registry::getConfig()->getConfigParam('someConfigParam')
+         \OxidEsales\Eshop\Core\Registry::getConfig()->getConfigParam('someConfigParam')
 
   There's an interface in Shop 6.5
-  .. code:: php
 
-     OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface
+      .. code:: php
 
-    The recommended and future proof way here is to implement a ModuleSettingsService in the module and retrieve/save
-    settings only through it. You'll find an example in our module template for OXID 6.5
-    `https://github.com/OXID-eSales/module-template/blob/v2.1.0/src/Service/ModuleSettings.php`
-    We did improve this part for OXID 7 (as module template gets regular best practices updates)
-    `https://github.com/OXID-eSales/module-template/blob/v3.0.0/src/Settings/Service/ModuleSettingsServiceInterface.php`
-    but the service itself did not change. Neither do the places the settings get actually used need a change as
-    the module's logic only need to access the shop settings logic in one central place in this example.
+        \OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface
+
+  The recommended and future proof way here is to implement a ModuleSettingsService in the module and retrieve resp. save
+  settings only through it. You'll find an example in our module template for OXID 6.5 `module template for OXID 6.5 <https://github.com/OXID-eSales/module-template/blob/v2.1.0/src/Service/ModuleSettings.php>`__
+  We did improve `this part <https://github.com/OXID-eSales/module-template/blob/v3.0.0/src/Settings/Service/ModuleSettingsServiceInterface.php>`__ for OXID 7 (as module template gets regular best practices updates) but the service itself did not change.
+  Neither do the places the settings get actually used need a change as the module's logic only need to access the shop settings logic in one central place in this example.
 
 * Clean up the module's source code. In case of module grown from the early OXID 6 versions have a tendency to have a
   lot of their business logic  built into what we call 'chain extended' classes.
@@ -84,15 +85,18 @@ The following changes can be applied in 6.5 as well as 7.
   your new code in a service, call logic from that service, then call perent method.
   Please refer to our module template for detailed examples.
 
+
 * Do not access module assets (css, js, images) directly in templates like you would the odl fashioned module endpoint,
   rather make use of OxidEsales\Eshop\Core\ViewConfig::getModuleUrl()
+
   .. code:: php
 
     $oViewConf->getModuleUrl('mymodule','relative/path/to/some.css')
 
 * Whichever of the above points you changed: make your tests pass again. Regarding acceptance tests, rewrite them to use
   codeception, make as much use as possible of OXID's codeception-modules and codeception-page-objects.
-  .. todo:
+
+ .. todo: HR
 
 The 'last minute switch' strategy
 ---------------------------------
@@ -100,6 +104,16 @@ The 'last minute switch' strategy
 Stay on latest Shop version 6 for as long as possible and prepare shop, theme and modules to fit as good a possible
 for OXID 7 with the new Twig engine. In case you insist on staying with Smarty engine (which we will not support beyond OXID 7.0)
 please switch to next section and proceed with OXID eShop 7.0.
+
+* And here's the good news about Twig Engine: we got a (not production ready) version of Twig template Engine that
+  works with OXID 6.5 and a twig based theme as well.
+  Installing twig engine on 6.5 is dead easy: just add twig components via composer, add twig admin theme and twig theme and
+  it will work. Just be aware that it's not production ready. The shop only has one interface where the template engine gets hooked in.
+  Installing twig components into 6.5 shop load twig component's services.yaml after the original yaml file and so overrides
+  the shop's originally registered template engine interface.
+
+//Let's assume you got your working module which only contains smarty templates activated
+
 
 * Do not use jquery, use vanilla Javascript, it makes the change from smarty to twig engine easier.
 
@@ -138,7 +152,7 @@ See Checklist `:ref:_make_the_module_fit-20240709` for nesessary preparation ste
 * In OXID 7, module settings are no longer stored in the oxconfig table, they are fetched by a service from yaml files
   (cache first, files second) and are written into yaml files. Keep this in mind when working with settings.
 * The module already comes with migrations? Beware, the migrations need a little update, see
-   :ref:`update/eshop_from_65_to_7/modules.html#port-to-v7-migrations-20221123`
+   `:ref:update/eshop_from_65_to_7/modules.html#port-to-v7-migrations-20221123`
 * About module settings:
   The interface we recommended to use in `:ref:_make_the_module_fit-20240709`
   `OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface`
