@@ -1,10 +1,10 @@
-Updating modules and shop to work with OXID 7
-=============================================
+Updating modules to work with OXID 7
+====================================
 
 There are multiple ways how to to update shop version 6 code to be compatible with version 7,
 depending on your current situation one way might work better than the other.
 
-In this section we'll point out different ideas, but in the end you need to decide which approach fits best for you.
+In this section we'll point out different ideas for modules, but in the end you need to decide which approach fits best for you.
 
 Before we come to this, we put a section of changes that need to be applied to a module in order to fit for OXID 7,
 but it can already be done for a OXID 6.5 compatible module. Please first read the whole section here and then decide
@@ -13,8 +13,8 @@ which way to start.
 
 .. _make_the_module_fit-20240709:
 
-The 'make the module fit' steps
--------------------------------
+Steps to make the module fit
+----------------------------
 
 The following changes can be applied in 6.5 as well as 7.
 
@@ -85,8 +85,7 @@ The following changes can be applied in 6.5 as well as 7.
   your new code in a service, call logic from that service, then call perent method.
   Please refer to our module template for detailed examples.
 
-
-* Do not access module assets (css, js, images) directly in templates like you would the odl fashioned module endpoint,
+* Do not access module assets (css, js, images) directly in templates like you would the old fashioned module endpoint,
   rather make use of OxidEsales\Eshop\Core\ViewConfig::getModuleUrl()
 
   .. code:: php
@@ -98,12 +97,14 @@ The following changes can be applied in 6.5 as well as 7.
 
  .. todo: HR
 
-The 'last minute switch' strategy
----------------------------------
+Last minute switch strategy
+---------------------------
 
 Stay on latest Shop version 6 for as long as possible and prepare shop, theme and modules to fit as good a possible
 for OXID 7 with the new Twig engine. In case you insist on staying with Smarty engine (which we will not support beyond OXID 7.0)
 please switch to next section and proceed with OXID eShop 7.0.
+
+* Do not use jquery, use vanilla Javascript, it makes the change from smarty to twig engine easier.
 
 * And here's the good news about Twig Engine: we got a (not production ready) version of Twig template Engine that
   works with OXID 6.5 and a twig based theme as well.
@@ -112,17 +113,37 @@ please switch to next section and proceed with OXID eShop 7.0.
   Installing twig components into 6.5 shop load twig component's services.yaml after the original yaml file and so overrides
   the shop's originally registered template engine interface.
 
-//Let's assume you got your working module which only contains smarty templates activated
+* Let's assume you got your working module (with smarty templates) installed in a 6.5. shop with twig engine.
 
+  - Copy admin translations folder views/admin as views/admin_twig.
 
-* Do not use jquery, use vanilla Javascript, it makes the change from smarty to twig engine easier.
+  - Use OXID's `Smarty to Twig Converter <https://github.com/OXID-eSales/smarty-to-twig-converter>`__ to convert
+    the module's templates from smarty to twig. Read the converter repo's README.md, it contains information aboout
+    differences between OXID's smarty and twig templates.
+
+  - After conversion, you will have the converted twig templates beside the smarty ones.
+    For module own templates, you need to register them in the module's metadata.php for now. Keep in mind that this is only
+    valid for OXID 6.5.
+
+        .. code:: php
+
+           'templates'   => [
+                'greetingtemplate.tpl' => 'oe/moduletemplate/views/templates/greetingtemplate.tpl',
+                'greetingtemplate.html.twig' => 'oe/moduletemplate/views/templates/greetingtemplate.html.twig',
+            ],
+
+   Go through module's own templates, fix step by step as the converter tool does not yet catch all cases.
+   .. todo: explain how to restructure template location
+
+* Now about blocks, which are used to extend shop templates with smarty.
+
+http://localhost.local/index.php?cl=oemtgreeting
 
 Only then run the update process as described in :ref:`update/eshop_from_65_to_7/update-to-7.0:Updating from OXID eShop 6.5 to OXID eShop 7.0`.
 
 
-
-The 'early bird' strategy
--------------------------
+Early bird strategy
+-------------------
 
 This was the approach we used in OXID internally to update our modules to work with OXID eShop 7.
 In order for this to work, the module to be updated needs to have a decent test coverage. Without unit, integration
@@ -130,13 +151,15 @@ and acceptance tests in place for the 6.5 compatible module version this will be
 
 So we rig up a fresh OXID 7.0 with Smarty template engine and first ensure that the module in question can be
 installed in the new shop.
-* Which means the dependencies listed in the module's composer.json need to fit OXID eShop 7.0 system requirements
-  like PHP version, Symfony components etc.
-* Also from OXID eShop 7.0 on, only metadata version 2.0 is supported, see `:ref:update/eshop_from_65_to_7/modules.html#port-to-v7-metadata-20221123`
+
+* Which means the dependencies listed in the module's composer.json need to fit OXID eShop 7.0 system requirements like PHP version, Symfony components etc.
+
+* Also from OXID eShop 7.0 on, as already mentioned above, only :ref:`metadata version 2.0<port_to_v7-metadata-20221123>` is supported.
   The module code is no longer duplicated into source/modules, so the 'extra' section part in composer.json
   specifying the target directory can be removed now. See example below, it can just be removed from metadata.php now.
 
   .. code:: php
+
           "extra": {
                 "oxideshop": {
                     "target-directory": "oe/moduletemplate",
@@ -147,23 +170,33 @@ installed in the new shop.
                 }
             },
 
-Once the module is installed, the next step is to make it activatable.
-See Checklist `:ref:_make_the_module_fit-20240709` for nesessary preparation steps.
-* In OXID 7, module settings are no longer stored in the oxconfig table, they are fetched by a service from yaml files
-  (cache first, files second) and are written into yaml files. Keep this in mind when working with settings.
-* The module already comes with migrations? Beware, the migrations need a little update, see
-   `:ref:update/eshop_from_65_to_7/modules.html#port-to-v7-migrations-20221123`
-* About module settings:
-  The interface we recommended to use in `:ref:_make_the_module_fit-20240709`
-  `OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface`
-  is still around in OXID 7 but it's deprecated. Please update to use the newest one
-  `OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface`.
+  Once the module is installed, the next step is to make it activatable.
+  See :ref:`make_the_module_fit-20240709` for nesessary preparation steps.
+
+* In OXID 7, module settings are no longer stored in the oxconfig table, they are fetched by a service from yaml files (cache first, files second) and are written into yaml files. Use the dedicated service to handle moduel settings.
+
+* The module already comes with migrations? Beware, the migrations need a little update, see :ref:`port_to_v7-migrations-20221123`.
+
+* About module settings: The interface we recommended to use in :ref:`make_the_module_fit-20240709`
+
+  .. code:: php
+
+      OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface
+
+  is still around in OXID 7 but it's deprecated. Please update to use the newest interface
+
+  .. code:: php
+
+     OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface
+
 * Move assets into assets directory. As module code is no longer duplicated, another way to make images, css and js
   available is to move them in the assets folder. Please access them in templates via oViewCon::getModuleUrl() method
   as stated earlier.
+
 * Check for usages of deprecated, removed or changed shop classes in your module and udpate those places.
-  See `:ref:_port_to_v7-removed-functions-20221123` for more information. Try out the mentioned rector tool, it's
-  a big help.
+  See :ref:`port_to_v7-removed-functions-20221123` for more information. Try out the mentioned rector and update tools,
+  it's a big help.
+
 * Run your unit and integration tests, they should point out the most urgend problems. Fix those places.
 * Try activating the module via console-command until you get an ok response.
 
@@ -171,10 +204,10 @@ Now it's time for taking care of the frontend. We recommend you switch to the Tw
 the best approach in case you are not yet fully familiar with twig might be to first make the module work with
 smarty engine, You should have smarty templates for the 6.5 version so we can go from there.
 Installation of smarty engine is described in
-`:ref:update/eshop_from_65_to_7/install_smarty_engine:Switching to the legacy Smarty template engine`.
+:ref:`update/eshop_from_65_to_7/install_smarty_engine:Switching to the legacy Smarty template engine`.
 Smarty templates are registered in the module's metadata.php, you need to adapt the paths to be relative to
 the module's root directory.
-Now it's time to have a look into frontend, whether your module is working as expected.
+Have a look at the shop frontend and check whether your module is working as expected.
 Run your aceptance tests. OXID's Testing Library is deprecated but still usable for version 7.
 
 .. todo: #HR: this section needs some more explanation. Also need to try out if it's even possible to run 6.5 tests on 7.0 without major changes.
@@ -185,12 +218,14 @@ Two things necessary to start the conversion:
 * Do not use jquery, use vanilla Javascript, it makes the change from smarty to twig engine easier.
 * Use the https://github.com/OXID-eSales/smarty-to-twig-converter, it does not catch all places but it makes conversion
   way easier.
-* Now have a look at how twig inheritance is working and adapt templates accordingly
+* Now have a look at how twig inheritance is working and adapt templates accordingly, see
   :doc:`Twig Template Engine </development/modules_components_themes/module/using_twig_in_module_templates>`.
- The templates are no longer registred in metadata.php, but now they need to follow the twig theme structure in case
+  The templates are no longer registered in metadata.php, but now they need to follow the twig theme structure in case
   of extending theme templates.
 
-* Adjust you tests
+.. todo: #HR add explanation about tests
+
+.. todo: #HR check more ideas for shop updates
 
 
 
