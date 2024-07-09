@@ -29,7 +29,7 @@ Parameters can be set under
 oxid_build_directory
 ^^^^^^^^^^^^^^^^^^^^
 
-Directory will be used to compile shop files is set from environment parameter :ref:`OXID_BUILD_DIRECTORY`.
+Directory will be used to compile shop files is set from environment parameter `OXID_BUILD_DIRECTORY`.
 
 oxid_shop_source_directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -82,7 +82,7 @@ For example, you can **disable template caching** (during development) by defini
 
   .. code:: yaml
 
-    # Values in var/configuration/configurable_services.yaml file
+    # Values in var/configuration/parameters.yaml file
     parameters:
       oxid_esales.templating.disable_twig_template_caching: true
 

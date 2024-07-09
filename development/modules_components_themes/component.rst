@@ -6,7 +6,7 @@ OXID eShop Component
 
 OXID eShop component is a simple way for a project to add reusable code to the application via composer packages.
 You can write classes that have new or extended functionality and you may wire these classes together in your
-composer package :doc:`by using the Service Container </development/tell_me_about/service_container>`.
+composer package :doc:`by using the Service Container </development/tell_me_about/dic/index>`.
 
 In contrast to modules, components do not need to be activated but just installed by composer.
 
