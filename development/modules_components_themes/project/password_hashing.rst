@@ -44,7 +44,7 @@ Configure the options to require as much computing time as possible but not so m
 An example how to change the algorithm to Argon2I and configure its options:
 
 .. code-block:: php
-   :caption: var/configuration/configurable_services.yaml
+   :caption: var/configuration/services.yaml
 
     parameters:
       oxid_esales.authentication.service.password_hash.argon2.memory_cost: 1024
