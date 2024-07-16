@@ -36,5 +36,39 @@ Example structure:
               └── ...
 
 
-The environment files can be used to overrride module settings in for example `var/configuration/shops/<shop-id>/<mymodule.yaml>`
-with `var/environment/shops/<shop-id>/<mymodule.yaml>`
+The environment files can be used to overrride module settings in for example `var/configuration/shops/<shop-id>/modules/oe_moduletemplate.yaml`
+with `var/environment/shops/<shop-id>/modules/oe_moduletemplate.yaml`
+
+.. note:: Only module settings can be overwritten via environment files.
+
+Original file:
+
+.. code:: yaml
+
+    id: oe_moduletemplate
+    moduleSource: vendor/oxid-esales/module-template
+    version: 2.0.0
+    activated: true
+    ...
+    moduleSettings:
+      oemoduletemplate_GreetingMode:
+        group: oemoduletemplate_main
+        type: select
+        value: personal
+        constraints:
+          - generic
+          - personal
+
+Environment overrides:
+
+.. code:: yaml
+
+        moduleSettings:
+          oemoduletemplate_GreetingMode:
+            group: oemoduletemplate_main
+            type: select
+            value: personal
+            constraints:
+              - generic
+              - personal
+        ...
