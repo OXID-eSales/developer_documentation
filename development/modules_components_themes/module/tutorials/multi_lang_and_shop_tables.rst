@@ -6,7 +6,7 @@ The OXID eShop Enterprise Edition can handle multiple shops and languages. If yo
 Registration
 ------------
 
-Imagine a custom table ``oxexample``. To register this table as a multilanguage table you need to add it to the array ``aMultiLangTables`` in the file ``config.inc.php``:
+Create a custom table ``oxexample``. To register this table as a multilanguage table you need to add it to the array ``aMultiLangTables`` in the file ``config.inc.php``:
 
 .. code:: php
 
