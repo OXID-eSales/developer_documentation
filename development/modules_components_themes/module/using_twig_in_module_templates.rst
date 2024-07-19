@@ -1,3 +1,5 @@
+.. _using-twig-in-module-templates:
+
 Using Twig in module templates
 ==============================
 
