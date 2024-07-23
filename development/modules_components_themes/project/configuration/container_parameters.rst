@@ -101,3 +101,94 @@ oxid_max_product_picture_count
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Specifies the maximum number of images a model can have.
+
+Session and cookies
+-------------------
+
+oxid_force_session_start
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Force session start on first page view and for users whose browsers do not accept cookies, append
+sid parameter to URLs. By default it is turned off.
+
+.. code:: yaml
+
+    oxid_force_session_start: false
+
+oxid_cookies_session
+^^^^^^^^^^^^^^^^^^^^
+
+Use browser cookies to store session id (no sid parameter in URL)
+
+.. code:: yaml
+
+    oxid_cookies_session: true
+
+oxid_cookie_domains
+^^^^^^^^^^^^^^^^^^^
+
+In case you setup different subdomain for SSL/non-SSL pages cookies may not be shared between them.
+This setting allows to define the domain that the cookie is available in format: `array(_SHOP_ID_ => _DOMAIN_)`
+
+.. code:: yaml
+
+    oxid_cookie_domains:
+        1: mydomainexample.com
+
+oxid_cookie_paths
+^^^^^^^^^^^^^^^^^
+
+The path on the server in which the cookie will be available on: `array(_SHOP_ID_ => _PATH_)`
+
+.. code:: yaml
+
+    oxid_cookie_paths:
+        1: /var/www/path
+
+.. note::
+
+    Check `setcookie() <https://php.net/manual/de/function.setcookie.php>`__ documentation for more details.
+
+oxid_trusted_ips
+^^^^^^^^^^^^^^^^
+
+Defines IP addresses, for which session + cookie ID match and user agent change checks are off.
+
+oxid_session_init_params
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+This configuration array specifies additional request parameters, which, if received, forces a new session being started.
+
+This is the default array with the request parameters and their values, which forces a new session:
+
+.. code:: php
+
+    [
+        'cl' => [
+            'register' => true,
+            'account'  => true,
+        ],
+        'fnc' => [
+            'tobasket' => true,
+            'login_noredirect' => true,
+            'tocomparelist'    => true,
+        ],
+        '_artperpage' => true,
+        'ldtype'      => true,
+        'listorderby' => true,
+    ];
+
+If you want to extend this array, add to :file:`parameters.yaml`:
+
+.. code:: yaml
+
+    oxid_session_init_params:
+        fnc:
+            login_noredirect: true
+        new_sid: true
+
+oxid_disallow_force_session_id
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This parameter can be set to `true` to safeguard against session ID appearing in the URL parameters in case of unintentional
+misconfiguration in the session management mechanism.
