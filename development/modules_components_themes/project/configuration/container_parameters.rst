@@ -87,3 +87,22 @@ oxid_show_update_views_button
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Enable the `Update Views` button in the admin settings dashboard.
+
+oxid_alternative_image_url
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use an external CDN path to construct image URLs for all models containing images, such as Products, Categories, Promotions, Vendors, Manufacturers, and others.
+
+.. code:: yaml
+
+    oxid_alternative_image_url: 'https://www.mycdn-server.com/myshop-data/'
+
+oxid_shop_logo
+^^^^^^^^^^^^^^
+
+Path for shop Image file.
+
+oxid_max_product_picture_count
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Specifies the maximum number of images a model can have.
