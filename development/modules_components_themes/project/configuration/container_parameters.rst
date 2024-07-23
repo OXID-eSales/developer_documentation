@@ -55,3 +55,35 @@ oxid_shop_admin_url
 ^^^^^^^^^^^^^^^^^^^
 
 This parameter defines the URL for the administrative interface of the OXID eShop, It is used by administrators to manage products, orders, customers, and other shop settings.
+
+oxid_multilingual_tables
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here you can define additional multilanguage table lists.
+
+oxid_skip_database_views_usage
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you can't log in to the admin panel, try setting the `oxid_skip_database_views_usage` parameter to "true" temporarily.
+
+.. warning::
+
+    This may affect shop functionality and is recommended only for admin access when view tables are broken.
+
+oxid_multishop_article_fields
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Define the Article model fields that can be edited individually in subshops.
+
+.. code:: yaml
+
+    oxid_multishop_article_fields: ['OXPRICE', 'OXPRICEA', 'OXPRICEB', 'OXPRICEC', 'OXUPDATEPRICE', 'OXUPDATEPRICEA', 'OXUPDATEPRICEB', 'OXUPDATEPRICEC', 'OXUPDATEPRICETIME']
+
+.. warning::
+
+    Specify the Article model fields that can be edited individually in subshops. Add these fields to the `oxfield2shop` table, noting that the field names are case-sensitive.
+
+oxid_show_update_views_button
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enable the `Update Views` button in the admin settings dashboard.
