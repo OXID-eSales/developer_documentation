@@ -29,7 +29,7 @@ Parameters can be set under
 oxid_build_directory
 ^^^^^^^^^^^^^^^^^^^^
 
-Directory will be used to compile shop files is set from environment parameter :ref:`OXID_BUILD_DIRECTORY`.
+Directory will be used to compile shop files is set from environment parameter `OXID_BUILD_DIRECTORY`.
 
 oxid_shop_source_directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,9 +39,19 @@ Path to source directory.
 oxid_debug_mode
 ^^^^^^^^^^^^^^^
 
-By default, this parameter will take the value of the environment variable :ref:`OXID_DEBUG_MODE` to enable or disable debugging.
+By default, this parameter will take the value of the environment variable `OXID_DEBUG_MODE` to enable or disable debugging.
 
 oxid_smtp_debug_mode
 ^^^^^^^^^^^^^^^^^^^^
 
 If you encounter issues when sending emails through an SMTP server, this parameter will assist you in diagnosing and resolving the errors.
+
+oxid_shop_url
+^^^^^^^^^^^^^
+
+This parameter specifies the URL of the OXID eShop's front-end that customers will visit. It is essential for setting up the shop's public-facing web address.
+
+oxid_shop_admin_url
+^^^^^^^^^^^^^^^^^^^
+
+This parameter defines the URL for the administrative interface of the OXID eShop, It is used by administrators to manage products, orders, customers, and other shop settings.
