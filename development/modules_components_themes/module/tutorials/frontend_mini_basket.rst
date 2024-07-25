@@ -1,3 +1,5 @@
+.. _extending-an-active-theme-block:
+
 Extending an active theme block
 ===============================
 

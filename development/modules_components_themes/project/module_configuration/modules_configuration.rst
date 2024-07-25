@@ -111,26 +111,6 @@ where filename is the module id: `var/configuration/shops/<shop-id>/modules/<mod
                       └── ...
                   └── class_extension_chain.yaml
 
-The configuration might be different in different environments (testing, staging or productive). To solve this problem,
-OXID eShop can use another directory with configuration files located in `var/environment/shops/<shop-id>/`.
-
-Example structure:
-
-.. code::
-
-  .
-  └── var
-      └── configuration
-          └── environment
-              └── shops
-                  └── 1
-                  └── 2
-                  └── ...
-          └── shops
-              └── 1
-              └── 2
-              └── ...
-
 Configuration files
 """""""""""""""""""
 
