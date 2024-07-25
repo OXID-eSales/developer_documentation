@@ -4,11 +4,14 @@ Uninstall
 Uninstall module
 ---------------------------------
 
-To uninstall a module without removing the files from the vendor directory, use the following command:
+To uninstall a module, use the following command:
 
 .. code:: bash
 
     ./vendor/bin/oe-console oe:module:uninstall <module-id>
+
+.. note::
+    Uninstall command does not remove files from the vendor directory.
 
 Unless a module is removed via Composer, it can be installed via :doc:`oe-console </development/tell_me_about/console>` again.
 
