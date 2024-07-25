@@ -44,6 +44,7 @@ Database Views
 After you created the structure and registered the table you need to regenerate the views:
 
 .. code:: bash
+
     ./vendor/bin/oe-eshop-db_views_generate
 
 The OXID Framework then creates all the necessary database views for languages, shops and the combination of both (e.g. ``oxv_oxexample_1_en``). Now you can create your corresponding model, fill the table with data and use your dedicated getters or method ``getFieldData`` to always retrieve the correct value regarding language and shop of the current active user.
