@@ -9,4 +9,5 @@ Module preparation and deployment can be achieved by executing steps which are d
 
     modules_installation
     modules_configuration
+    modules_environment_configuration
     modules_configuration_deployment

@@ -1,8 +1,8 @@
 Console
 =======
 
-OXID eShop uses Symfony console component to register or execute command, so it's possible to use
-it's features. More information about Symfony console can be found `here <https://symfony.com/doc/current/console.html>`__.
+OXID eShop uses `Symfony console component <https://symfony.com/doc/current/console.html>`__ to register or execute command, so it's possible to use
+it's features.
 
 Executing CLI Commands
 ----------------------
@@ -11,13 +11,13 @@ To get list of commands, execute:
 
 .. code:: bash
 
-    vendor/bin/oe-console
+    ./vendor/bin/oe-console
 
 In case you are using Enterprise Edition subshops feature, to get list of specific subshop commands, execute:
 
 .. code:: bash
 
-    vendor/bin/oe-console --shop-id=<shop-id>
+    ./vendor/bin/oe-console --shop-id=<shop-id>
 
 .. note::
 
@@ -27,9 +27,9 @@ Some other commands examples:
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:activate <module-id>
-    vendor/bin/oe-console oe:module:activate <module-id> --shop-id=<shop-id>
-    vendor/bin/oe-console oe:module:deactivate <module-id> --shop-id=<shop-id>
+    ./vendor/bin/oe-console oe:module:activate <module-id>
+    ./vendor/bin/oe-console oe:module:activate <module-id> --shop-id=<shop-id>
+    ./vendor/bin/oe-console oe:module:deactivate <module-id> --shop-id=<shop-id>
 
 Creating custom CLI commands
 ----------------------------
@@ -37,12 +37,12 @@ Creating custom CLI commands
 .. note::
     Watch a short video tutorial on YouTube: `Custom Console Commands <https://www.youtube.com/watch?v=7CvBUpR44YM>`_.
 
-Commands can be created for OXID eShop modules or for OXID eShop components.
+Commands can be created for :doc:`OXID eShop modules </development/modules_components_themes/module/index>` and for :doc:`OXID eShop components </development/modules_components_themes/component>`.
 
 Module commands
 ^^^^^^^^^^^^^^^
 
-OXID eShop allows to create commands for modules. Commands will appear in the list only when a module is going to be activated.
+OXID eShop allows to create commands for modules. Commands will appear in the list only when a module is active.
 
 Creating a command class
 """"""""""""""""""""""""
@@ -54,6 +54,7 @@ First of all it's necessary to create a command class.
 .. code:: php
 
     <?php declare(strict_types=1);
+
     namespace OxidEsales\DemoModule\Command;
 
     use Symfony\Component\Console\Command\Command;
@@ -62,18 +63,18 @@ First of all it's necessary to create a command class.
 
     class HelloWorldCommand extends Command
     {
-        protected function configure()
+        protected function configure(): void
         {
             $this->setName('demo-module:say-hello')
-            ->setDescription('"Hello world" command.')
-            ->setHelp('Command says "Hello world".');
+                ->setDescription('"Hello world" command.')
+                ->setHelp('Command says "Hello world".');
         }
 
-        protected function execute(InputInterface $input, OutputInterface $output)
+        protected function execute(InputInterface $input, OutputInterface $output): int
         {
             $output->writeln('Hello world!');
 
-            return 0;
+            return Command::SUCCESS;
         }
     }
 
@@ -97,13 +98,13 @@ create it in your module root directory.
       OxidEsales\DemoModule\Command\HelloWorld:
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
-        - { name: 'console.command' }
+          - { name: 'console.command' }
 
 Now after module activation, command will be available in commands list and it can be executed via:
 
 .. code:: bash
 
-    vendor/bin/oe-console demo-module:say-hello
+    ./vendor/bin/oe-console demo-module:say-hello
 
 In case you need to change command name, it can be done also via `services.yaml` file by adding `command` entry:
 
@@ -113,15 +114,15 @@ In case you need to change command name, it can be done also via `services.yaml`
       OxidEsales\DemoModule\Command\HelloWorld:
         class: OxidEsales\DemoModule\Command\HelloWorldCommand
         tags:
-        - { name: 'console.command', command: 'demo-module:say-hello-another-command' }
+          - { name: 'console.command', command: 'demo-module:say-hello-another-command' }
 
 And again after module activation command can be called via:
 
 .. code:: bash
 
-    vendor/bin/oe-console demo-module:say-hello-another-command
+    ./vendor/bin/oe-console demo-module:say-hello-another-command
 
-Demo module with command example can be found `here <https://github.com/OXID-eSales/logger-demo-module>`__.
+Demo module with command example can be found `here <https://github.com/OXID-eSales/module-template/blob/b-7.1.x/src/Logging/Command/ReadLogsCommand.php>`__.
 
 OXID eShop component commands
 -----------------------------
@@ -138,6 +139,7 @@ Component command example:
 .. code:: php
 
     <?php declare(strict_types=1);
+
     namespace OxidEsales\DemoComponent\Command;
 
     use Symfony\Component\Console\Command\Command;
@@ -146,24 +148,24 @@ Component command example:
 
     class HelloWorldCommand extends Command
     {
-        protected function configure()
+        protected function configure(): void
         {
             $this->setName('demo-component:say-hello')
-            ->setDescription('Says hello.')
-            ->setHelp('This command welcomes you.');
+                ->setDescription('Says hello.')
+                ->setHelp('This command welcomes you.');
         }
 
-        protected function execute(InputInterface $input, OutputInterface $output)
+        protected function execute(InputInterface $input, OutputInterface $output): int
         {
             $output->writeln('Hello World!');
 
-            return 0;
+            return Command::SUCCESS;
         }
     }
 
 .. important::
 
-    Component command must extend `\\Symfony\\Component\\Console\\Command\\Command`.
+    Component command must extend `Symfony\\Component\\Console\\Command\\Command`.
 
 Command file registration
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -177,7 +179,7 @@ create it in your component root directory.
       OxidEsales\DemoComponent\Command\HelloWorld:
         class: OxidEsales\DemoComponent\Command\HelloWorldCommand
         tags:
-        - { name: 'console.command' }
+          - { name: 'console.command' }
 
 Command testing
 ---------------
@@ -190,27 +192,30 @@ Example for executing your command within command tester:
 
 .. code:: php
 
-	class TestCommand extends Command
-	{
-	    protected function configure()
-	    {
-		$this->setName('oe:tests:test-command');
-	    }
+    class TestCommand extends Command
+    {
+        protected function configure(): void
+        {
+            $this->setName('oe:tests:test-command');
+        }
 
-	    protected function execute(InputInterface $input, OutputInterface $output)
-	    {
-		$output->writeln('Command has been executed!');
-		return 0;
-	    }
-	}
+        protected function execute(InputInterface $input, OutputInterface $output): int
+        {
+            $output->writeln('Command has been executed!');
 
-	public function testCommandExecution()
-	{
-	    $commandTester = new CommandTester(new TestCommand());
+            return Command::SUCCESS;
+        }
+    }
 
-	    $commandTester->execute([]);
+.. code:: php
 
-	    $output = $commandTester->getDisplay();
+    public function testCommandExecution(): void
+    {
+        $commandTester = new CommandTester(new TestCommand());
 
-	    $this->assertSame('Command has been executed!' . PHP_EOL, $output);
-	}
+        $commandTester->execute([]);
+
+        $output = $commandTester->getDisplay();
+
+        $this->assertSame('Command has been executed!' . PHP_EOL, $output);
+    }
