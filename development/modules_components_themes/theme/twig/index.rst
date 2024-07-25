@@ -5,4 +5,5 @@ Twig Theme
     :titlesonly:
     :glob:
 
-.. todo: #Igor: outline some  documentation how to extend theme with child theme
+    twig_converter/index
+    twig_child_theme
