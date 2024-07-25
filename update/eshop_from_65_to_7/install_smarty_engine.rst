@@ -16,10 +16,12 @@ OXID eShop Version 7.0 and 7.1.
 
 .. important:: We strongly recommend using the Twig template engine and Twig-compatible themes.
 
-.. important:: The modules provided by OXID eSales (for compilation and otherwise) which are explicitly compatible with
-OXID eShop 7.1 do not contain smarty templates. For example our new Visual CMS Bundle delivered with OXID
-eShop 7.1 PE and EE Compilation is not compatible with Smarty Engine. You might resort to manually installing
-7.0 compatible modules which still support the Smarty Engine on the 7.1 Core Components at your own risk.
+.. important::
+
+    The modules provided by OXID eSales (for compilation and otherwise) which are explicitly compatible with
+    OXID eShop 7.1 do not contain smarty templates. For example our new Visual CMS Bundle delivered with OXID
+    eShop 7.1 PE and EE Compilation is not compatible with Smarty Engine. You might resort to manually installing
+    7.0 compatible modules which still support the Smarty Engine on the 7.1 Core Components at your own risk.
 
 
 Building a custom metapackage
@@ -57,8 +59,9 @@ This means, you first have to change your root :file:`composer.json` file from i
 #. Backup your current :file:`composer.lock` file.
 #. Run composer update:
 
-   .. code:: shell
-      composer update
+    .. code:: shell
+
+        composer update
 
 #. Compare the current :file:`composer.lock` file with the one you have backed up.
 
