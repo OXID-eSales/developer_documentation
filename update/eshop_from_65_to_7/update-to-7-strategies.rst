@@ -76,14 +76,17 @@ The following changes can be applied in 6.5 as well as 7.
 
 * Clean up the module's source code. In case of module grown from the early OXID 6 versions have a tendency to have a
   lot of their business logic  built into what we call 'chain extended' classes.
+
   We recommend to disentangle the module's business logic from the places where it's hooked into the shop.
   This is a recommendation not a must, but it will help to make your code future proof and easier to maintain in the long run.
+
   The idea is to build your module logic as far separated from the shop as possible and only in an infrastructure layer access the shop core.
   This is not so easy in case you extend shop models or controller, but still you should evaluate the possibility of encapsulating
-  your logic in a service and have the extended class call that service. Get some ideas from what we started doing with Dependency Injection.
-  Even in case you need to chain extend a shop class in order to hook into an existing method and change that method's logic, put
-  your new code in a service, call logic from that service, then call perent method.
-  Please refer to our module template for detailed examples.
+  your logic in a service and have the extended class call that service.
+
+  Get some ideas from what we started doing with Dependency Injection. Even in case you need to chain extend a shop class in order to hook
+  into an existing method and change that method's logic, put your new code in a service, call logic from that service, then call parent method.
+  Please refer to our module template for detailed examples. Add interfaes and implement them. Learn about S.O.L.I.D principles.
 
 * Do not access module assets (css, js, images) directly in templates like you would the old fashioned module endpoint,
   rather make use of OxidEsales\Eshop\Core\ViewConfig::getModuleUrl()
@@ -103,7 +106,7 @@ The following changes can be applied in 6.5 as well as 7.
 Converting templates from smarty to twig
 ----------------------------------------
 
-Two points to keep in mind when vonverting marty templates to twig:
+Two points to keep in mind when converting smarty templates to twig:
 
 * Do not use jquery, use vanilla Javascript, it makes the change from smarty to twig engine easier.
 
@@ -124,11 +127,16 @@ Stay on latest Shop version 6 for as long as possible and prepare shop, theme an
 for OXID 7 with the new Twig engine. In case you insist on staying with Smarty engine (which we will not support beyond OXID 7.0)
 please switch to next section and proceed with OXID eShop 7.0.
 
-* We got a (not production ready and only proof of concept state) version of Twig template Engine that
+.. important:: This is currently an experimental approach, especially the module tool mentioned below for generating a child theme.
+   We need feedback whether tools like this provide help.
+
+* We got a (not production ready and only proof of concept state) version of Twig Template Engine that
   works with OXID 6.5 and a twig based theme as well.
+
   Installing twig engine on 6.5 is dead easy: just add twig components via composer, add twig admin theme and twig theme and
-  it will work. Just be aware that it's not production ready. The shop only has one interface where the template engine gets hooked in.
-  Installing twig components into 6.5 shop load twig component's services.yaml after the original yaml file and so overrides
+  it will work.
+  Just be aware that it's not production ready. The shop only has one interface where the template engine gets hooked in.
+  Installing twig components into 6.5 shop loads twig component's services.yaml after the original yaml file and so overrides
   the shop's originally registered template engine interface.
 
 * Let's assume you got your working module (with smarty templates) installed in a 6.5. shop with twig engine.
@@ -136,7 +144,7 @@ please switch to next section and proceed with OXID eShop 7.0.
   - Copy admin translations folder views/admin as views/admin_twig.
 
   - Use OXID's `Smarty to Twig Converter <https://github.com/OXID-eSales/smarty-to-twig-converter>`__ to convert
-    the module's templates from smarty to twig.
+    all the module's templates from smarty to twig.
 
   - After conversion, you will have the converted twig templates beside the smarty ones.
     For module own templates, you need to register them in the module's metadata.php for now. Keep in mind that this is only
@@ -149,13 +157,13 @@ please switch to next section and proceed with OXID eShop 7.0.
                 'greetingtemplate.html.twig' => 'oe/moduletemplate/views/templates/greetingtemplate.html.twig',
             ],
 
-   Go through module's own templates, fix step by step as the converter tool does not yet catch all cases.
-   .. todo: explain how to restructure template location
+.. todo: explain how to restructure template location for OXID 7
 
 * Now about blocks, which are used to extend shop templates. The prototype twig engine does yet work with
   module template blocks and template extensions.
   Still there is a possibility to test converted block templates:
-  - in the module's metadata.php block section, select a block entry, for example from module template:
+
+    - in the module's metadata.php block section, select a block entry, for example from module template:
 
     .. code:: php
 
@@ -169,7 +177,7 @@ please switch to next section and proceed with OXID eShop 7.0.
     page/shop/original_start.html.twig
   - replace original file with the converted block template in 'file' location
   - move the block template's content into a template block. At the top of the file put extends information
-    pointing to the original template.
+    pointing to the renamed original template.
 
    .. code:: php
 
@@ -182,15 +190,41 @@ please switch to next section and proceed with OXID eShop 7.0.
 
    - clean the template cache.
 
- Now you can have a look how your module block template looks like in the frontend, fix possible issues. Proceed with
+ Now you can have a look how your module block template looks like in the frontend and fix possible issues. Proceed with
  next template block until you are done. Put blocks extending the same template into the same extension template.
 
- When you are done, copy the finished template back into the module
+
+For the block template conversion you can try out our
+`experimental converter tool <https://github.com/OXID-eSales/module-twig-converter>`__ to create a child theme
+from a module's twig-translated block templates:
+
+.. code:: bash
+
+    bin/converter-console moduleconverter:childtheme:create \
+       --module-path=<path to module that needs to work with twig> \
+       --parent-theme-path=<path to shop theme to test module templates with> \
+       --target-path=<target path the generated child theme will be created in>
+
+.. code:: bash
+
+    bin/converter-console moduleconverter:childtheme:create \
+     --module-path=/var/www/source/modules/oe/moduletemplate \
+     --parent-theme-path=/var/www/source/Application/views/twig \
+     --target-path=/var/www/OUTPATH
+
+
+When you are done, copy the finished extension templates back into the module
 
    .. code:: php
 
-       views/twig/extensions/<template>/page/shop/start.tpl
+       views/twig/extensions/<theme-id>/page/shop/start.tpl
 
+ and fix extend sections to point to the actual extended template
+
+  .. code:: php
+
+    {% extends 'page/shop/start.html.twig' %}
+    ...
 
 Your module now is prepared as far as possible with OXID 6.5 and you will be able to finish porting to OXID 7
 in an installation with default twig engine. In this approach, we switch to OXID 7 at the latest possible moment.
