@@ -54,7 +54,7 @@ Uninstallation
 
 .. _component-uninstallation:
 
-To uninstall the OXID eShop component, it's necessary to execute Composer's remove command:
+To uninstall a OXID eShop component, it's necessary to execute Composer's remove command:
 
 .. code:: bash
 
