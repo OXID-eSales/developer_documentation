@@ -26,19 +26,7 @@ To activate a module for a sub shop, use the following option:
 
 .. code:: bash
 
-    vendor/bin/oe-console oe:module:activate <module-id> --shop-id <shop-id>
-
-To deactivate a module, execute the following command:
-
-.. code:: bash
-
-    vendor/bin/oe-console oe:module:deactivate <module-id>
-
-Deactivation for a sub shop:
-
-.. code:: bash
-
-    vendor/bin/oe-console oe:module:deactivate <module-id> --shop-id <shop-id>
+    vendor/bin/oe-console oe:module:activate <module-id> --shop-id=<shop-id>
 
 .. note::
 
