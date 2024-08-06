@@ -23,6 +23,8 @@ In case you are using Enterprise Edition subshops feature, to get list of specif
 
     If <shop-id> will not be defined: shop 1, going to be used.
 
+.. _cli-commands-example:
+
 Some other commands examples:
 
 .. code:: bash
