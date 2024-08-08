@@ -34,7 +34,9 @@ Before you update to OXID eShop version 7.1, you have make sure that you meet th
 
    To execute commands via the command line, open a shell in the shop root directory and run commands in there.
 
-1. In the :file:`var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
+1. Deactivate all modules.
+
+#. In the :file:`var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|
    If your OXID eShop has no subshops, there is only the :file:`var/configuration/shops/1.yaml` file to back up.
    |br|
