@@ -106,3 +106,49 @@ oxid_max_product_picture_count
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Specifies the maximum number of images a model can have.
+
+oxid_basket_reservation_cleanup_rate
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This value determines how many expired basket reservations are cleaned per
+request (to the eShop). Cleaning a reservation essentially means returning the
+reserved stock to the articles.
+
+.. note::
+    Works only if basket reservations feature is enabled in admin.
+
+.. warning::
+    Keeping this number too low may cause article stock to be returned too slowly,
+    while too high a value may have a spiking impact on performance.
+
+oxid_cron_enabled
+^^^^^^^^^^^^^^^^^
+
+It informs the shop that price updates are performed by cron (a time-based job
+scheduler).
+
+oxid_user_rights_roles_mode
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Enables Rights and Roles Engine. Possible values:
+
+* 0 - Disable
+* 1 - Enable in admin
+* 2 - Enable in shop
+* 3 - Enable in admin and shop
+
+oxid_mall_shared_basket
+^^^^^^^^^^^^^^^^^^^^^^^
+
+It enables shared shopping basket across multiple sub-shops.
+
+oxid_seo_mode
+^^^^^^^^^^^^^
+
+SEO URL feature can be turned off by setting it to false. It is turned on by
+default.
+
+oxid_shop_credit_rating
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Initial value of credit rating.
