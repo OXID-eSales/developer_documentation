@@ -1,4 +1,4 @@
-Database Configuration
+Database configuration
 ======================
 
 .. _Singe DB:

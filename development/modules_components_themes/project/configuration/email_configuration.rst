@@ -1,21 +1,8 @@
-Configuration parameters
-========================
-
-.. note::
-
-    The container cache must be rebuilt after changing the value of a parameter.
-
-    Use the following command to easily and safely clear the cache:
-
-    .. code:: bash
-
-       ./vendor/bin/oe-console oe:cache:clear
-
 E-mail configuration
---------------------
+====================
 
 Disabling order notification e-mails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 By default, when a new order is received, the system sends an e-mail to the customer and the shop owner.
 

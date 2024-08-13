@@ -1,5 +1,5 @@
-Configuration Environments
-==========================
+Environment configuration
+=========================
 
 OXID eShop utilizes Configuration Environments functionality provided by the
 `Symfony Dotenv Component <https://github.com/symfony/dotenv>`__.
