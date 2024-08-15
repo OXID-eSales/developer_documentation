@@ -1,7 +1,7 @@
 Creating a Child Theme
 ======================
 
-Besides completely custom themes you can also create child themes that inherit from a parent theme. This gives you the opportunity to modify only the parts you desire to, while the rest stays the same.
+Besides completely custom themes you can also create child themes that inherit from a parent theme. This gives you the opportunity to modify only the parts you desire to, while the rest stays the same. Please keep in mind that there's only one layer of inheritance with child themes. This means you can extend one installed parent theme with a child but not the child with another child again.
 
 composer.json
 -------------
