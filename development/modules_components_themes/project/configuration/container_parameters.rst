@@ -192,3 +192,63 @@ oxid_disallow_force_session_id
 
 This parameter can be set to `true` to safeguard against session ID appearing in the URL parameters in case of unintentional
 misconfiguration in the session management mechanism.
+
+
+oxid_allowed_uploaded_types
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+File type whitelist for file uploads.
+
+oxid_log_admin_queries
+^^^^^^^^^^^^^^^^^^^^^^
+
+Log all modifications performed in Admin. The log can be found in ``oxadmin.log``,
+in the shop log directory.
+
+oxid_log_not_seo_urls
+^^^^^^^^^^^^^^^^^^^^^
+
+Configure whether requests coming via ``stdurl`` and not redirected to SEO URL
+should be logged to the ``seologs`` database table.
+
+.. note::
+
+    This is only active in production mode, as the eShop in non-production mode
+    will always log such URLs.
+
+OXID_OFFLINE_WARNING_EMAIL
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Force admin email. Offline warnings are sent with high priority to this address.
+
+OXID_OFFLINE_WARNING_DELAY
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Defines the time interval, in seconds, at which warnings are sent while the shop
+is offline.
+
+oxid_search_engine_list
+^^^^^^^^^^^^^^^^^^^^^^^
+
+List of all Search-Engine Robots.
+
+oxid_cacheable_user_components
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To override FrontendController::$_aUserComponentNames, use this array option:
+array keys are component (class) names, and array values define if the component
+is cacheable (true/false). For example: ['user_class' => false];
+
+oxid_custom_theme_id
+^^^^^^^^^^^^^^^^^^^^
+
+This is a global configuration parameter that activates a template override system
+for easier design customization and defines the custom theme directory name in
+the ``views`` folder. The structure of this custom theme must be the same as the
+main theme. The shop will check if there is an adapted file in your custom folder;
+if not, it will revert to the main folder.
+
+oxid_demo_shop_mode
+^^^^^^^^^^^^^^^^^^
+
+Enables shop demo mode.
