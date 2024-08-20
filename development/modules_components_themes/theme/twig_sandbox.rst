@@ -1,9 +1,10 @@
-Possibility to use Twig Sandbox extension
-=========================================
+Using the Twig Sandbox Extension
+================================
 
-Twig provides `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sandbox-extension>`__ that allows usage of
-`{% sandbox %} tag <https://twig.symfony.com/doc/3.x/tags/sandbox.html>`__ with ``{% include %}`` and
-``{% include_content %}`` tags. To configure it for OXID eShop you can follow the steps below.
+Twig offers a `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sandbox-extension>`__ that enables the use
+of the ``{% sandbox %}`` tag with the ``{% include %}`` and ``{% include_content %}`` tags. This extension is
+particularly useful for controlling which tags, filters, and functions are allowed within templates, enhancing security
+in dynamic template rendering. Below are the steps to configure and use the Twig Sandbox extension in OXID eShop.
 
 1. Create a sandbox extension factory
 
@@ -22,24 +23,24 @@ Twig provides `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sand
         }
     }
 
-2. Register the sandbox extension using the factory
+2. Register the sandbox extension
 
 .. code:: yaml
 
-  ACME\Twig\Extensions\SandboxExtensionFactory:
-    class: ACME\Twig\Extensions\SandboxExtensionFactory
+    ACME\Twig\Extensions\SandboxExtensionFactory:
+      class: ACME\Twig\Extensions\SandboxExtensionFactory
 
-  Twig\Extension\SandboxExtension:
-    factory: ['ACME\Twig\Extensions\SandboxExtensionFactory', 'getExtension']
-    tags: [ 'twig.extension' ]
+    Twig\Extension\SandboxExtension:
+      factory: ['ACME\Twig\Extensions\SandboxExtensionFactory', 'getExtension']
+      tags: [ 'twig.extension' ]
 
-3. Clean up the cache
+3. Clear the cache
 
 .. code:: bash
 
     vendor/bin/oe-console oe:cache:clear
 
-4. Wrap template includes with the ``{% sandbox %}`` tag
+4. Wrap template includes with the ``{% sandbox %}`` tag to enforce the sandbox policy
 
 .. code:: twig
 
@@ -47,10 +48,10 @@ Twig provides `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sand
         {% include 'user.html.twig' %}
     {% endsandbox %}
 
-    # or
+    # Or
 
     {% sandbox %}
         {% include_content "sandbox_test" %}
     {% endsandbox %}
 
-5. Sandboxed templates that don't follow policy restrictions should throw a ``Twig\Sandbox\SecurityError`` exception
+5. Templates that do not comply with the defined sandbox policy will trigger a ``Twig\Sandbox\SecurityError`` exception
