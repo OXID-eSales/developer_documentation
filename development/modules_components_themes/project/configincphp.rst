@@ -3,6 +3,11 @@ Configuration file config.inc.php
 
 .. _configincphp_sloglevel:
 
+.. warning::
+
+    The ``config.inc.php`` file and its related static options are deprecated
+    and will be removed in the next major version, 8.0.
+
 Database connection
 -------------------
 
