@@ -27,11 +27,12 @@ Use the highest supported PHP version for the OXID 6.5 installation.
 
   .. todo: #HR: we should add tutorial how to write tests, how to use OXID's codeception modules and objects, how to run tests, ...
 
-* Does the module use OnActivate/OnDeativate methods to update the database schema? Please extract this part into a migration and run
-  migrations command after composer install or update. All migrations are tracked in the database and only executed once,
-  so it's totally safe to use them. Only thing to keep in mind: never ever change a migration after it was released.
-  In case your module needs further database changes, add a new migration but never change you module's migrations
-  once they belong to a tagged version.
+* Does the module use OnActivate/OnDeactivate methods to update the database schema? Please extract this part into a migration 
+  and run the migration command after composer install or composer update. All migrations are tracked in the database and executed only once, so it's safe to use them.
+
+  Please keep in mind: once a migration is applied, it won't run again. So, never change a migration after it's been released unless there's 
+  a critical issue. In that case, create a new migration to fix the problem for those who already applied the original one. If your module 
+  needs further database changes, add new migrations instead of modifying the old ones.
 
 * Refactor module entry points into controllers. In OXID eShop up to latest version 6, as module code is duplicated into source/modules folder,
   it is possible to directly invoke a script residing in this directory.
@@ -49,7 +50,7 @@ Use the highest supported PHP version for the OXID 6.5 installation.
   See :ref:`Module Controllers <module-controllers-20170427>` for details.
 
 * From OXID eShop 7.0 on, only :ref:`metadata version 2.0<port_to_v7-metadata-20221123>` is supported.
-  This means: the module must have namespaces, namespace needs to point to vendor directory.
+  This means: the module must have namespaces. Namespace should point to the code in the vendor directory.
   Move module sourcecode into src folder and adapt namespace pointer. This is not strictly necessary, but we recommend a clean structure.
 
   Example:
@@ -62,7 +63,7 @@ Use the highest supported PHP version for the OXID 6.5 installation.
                 }
               },
 
-* Clean up module settings handling. Older shops were not very strictly distinguishing where a config variable originated from
+* Update the module settings handling. Older shops were not very strictly distinguishing where a config variable originated from
   (shop, theme, module), it was usually accessed via
 
       .. code:: php
@@ -75,26 +76,29 @@ Use the highest supported PHP version for the OXID 6.5 installation.
 
         \OxidEsales\EshopCommunity\Internal\Framework\Module\Configuration\Bridge\ModuleSettingBridgeInterface
 
-  The recommended and future proof way here is to implement a ModuleSettingsService in the module and retrieve resp. save
-  settings only through it. You'll find an example in our module template for OXID 6.5 `module template for OXID 6.5 <https://github.com/OXID-eSales/module-template/blob/v2.1.0/src/Service/ModuleSettings.php>`__
-  We did improve `this part <https://github.com/OXID-eSales/module-template/blob/v3.0.0/src/Settings/Service/ModuleSettingsServiceInterface.php>`__ for OXID 7 (as module template gets regular best practices updates) but the service itself did not change.
-  Neither do the places the settings get actually used need a change as the module's logic only need to access the shop settings logic in one central place in this example.
+  We recommend to implement a ModuleSettingsService in the module and retrieve/save settings only through it. You'll find an example in our 
+  module template for OXID 6.5 `module template for OXID 6.5 <https://github.com/OXID-eSales/module-template/blob/v2.1.0/src/Service/ModuleSettings.php>`__
+
+  We did improve `this part <https://github.com/OXID-eSales/module-template/blob/v3.0.0/src/Settings/Service/ModuleSettingsServiceInterface.php>`__ for 
+  OXID 7 (as module template gets regular best practices updates) but the service itself did not change, neither do places where settings get actually used 
+  need a change as the module's logic only need to access the shop settings logic in one central place in this example.
 
 * Clean up the module's source code. In case of module grown from the early OXID 6 versions have a tendency to have a
   lot of their business logic  built into what we call 'chain extended' classes.
 
-  We recommend to disentangle the module's business logic from the places where it's hooked into the shop.
-  This is a recommendation not a must, but it will help to make your code future proof and easier to maintain in the long run.
+  We recommend disentangling the module's business logic from places where it's hooked into the shop.
+  This is a recommendation not a must, but it will help to make your code easier to maintain in the long run.
 
   The idea is to build your module logic as far separated from the shop as possible and only in an infrastructure layer access the shop core.
-  This is not so easy in case you extend shop models or controller, but still you should evaluate the possibility of encapsulating
-  your logic in a service and have the extended class call that service.
+  This is not so easy in case you extend shop models or controllers, but still you should evaluate the possibility of encapsulating
+  your logic in small and easily testable services and have the extended classes use those services.
 
   Get some ideas from what we started doing with Dependency Injection. Even in case you need to chain extend a shop class in order to hook
-  into an existing method and change that method's logic, put your new code in a service, call logic from that service, then call parent method.
-  Please refer to our module template for detailed examples. Add interfaes and implement them. Learn about S.O.L.I.D principles.
+  into an existing method and change that method's logic, put your new code in a service, call logic from that service, and then call the parent method.
+  
+  Please refer to our module template for detailed examples. Add interfaces and implement them. Learn about S.O.L.I.D principles.
 
-* Do not access module assets (css, js, images) directly in templates like you would the old fashioned module endpoint,
+* Do not access module assets (css, js, images) directly in templates like you would the old-fashioned module endpoint,
   rather make use of OxidEsales\Eshop\Core\ViewConfig::getModuleUrl()
 
   .. code:: php
@@ -119,11 +123,11 @@ smarty engine. You should have smarty templates for the 6.5 version so you we ca
 Steps to take on OXID 7
 -----------------------
 
-Install OXID eShop 7 with Smarty engine, add your module. Installation of smarty engine is described in
+Install OXID eShop 7 with Smarty engine, and add your module. Installation of smarty engine is described in
 :ref:`update/eshop_from_65_to_7/install_smarty_engine:Switching to the legacy Smarty template engine`.
 
 * Ensure that the module in question can be installed via composer in OXID eShop 7.0. Dependencies listed in the module's composer.json need to fit OXID eShop 7.0 system requirements like PHP version, Symfony components etc.
-  Please make sure that the packages your module depemnds on are listed in that module's composer.json. Do not rely on some otehr cojponent in the metapackage requiring it for your module.
+  Please make sure that the packages your module depends on are listed in that module's composer.json, even if some other component in the metapackage already requires that component too.
 
 * Also from OXID eShop 7.0 on, as already mentioned above, only :ref:`metadata version 2.0<port_to_v7-metadata-20221123>` is supported.
   The module code is no longer duplicated into source/modules, so the 'extra' section part in composer.json
@@ -144,11 +148,10 @@ Install OXID eShop 7 with Smarty engine, add your module. Installation of smarty
   Once the module is installed, the next step is to make it activatable.
   See :ref:`make_the_module_fit-20240709` for nesessary preparation steps.
 
-* In OXID 7, module settings are no longer stored in the oxconfig table, they are fetched by a service from yaml files (cache first, files second) and are written into yaml files. Use the dedicated service to handle moduel settings.
+* In OXID 7, module settings are no longer stored in the oxconfig table (they are fetched by a service from yaml 
+  files (cache first, files second) and are written into yaml files). Use the dedicated service to handle module settings.
 
-* The module already comes with migrations? Beware, the migrations need a little update, see :ref:`port_to_v7-migrations-20221123`.
-
-* About module settings: The interface we recommended to use in :ref:`make_the_module_fit-20240709`
+  The interface we recommended to use in :ref:`make_the_module_fit-20240709`
 
   .. code:: php
 
@@ -160,17 +163,21 @@ Install OXID eShop 7 with Smarty engine, add your module. Installation of smarty
 
      OxidEsales\EshopCommunity\Internal\Framework\Module\Facade\ModuleSettingServiceInterface
 
-* Move assets into assets directory. As module code is no longer duplicated, another way to make images, css and js
-  available is to move them in the assets folder. Please access them in templates via oViewCon::getModuleUrl() method
+* The module already comes with migrations? Beware, the migrations need a little update, see :ref:`port_to_v7-migrations-20221123`.
+
+* Move assets into the assets directory. 
+
+  As module code is no longer duplicated to modules directory, you will no longer have direct access there anymore. Assets folder is automatically 
+  linked to out directory during module installation. Please access them in templates via oViewCon::getModuleUrl() method
   as stated earlier.
 
-* Check for usages of deprecated, removed or changed shop classes in your module and udpate those places.
+* Check for usages of deprecated, removed, or changed shop classes in your module and update those places.
   See :ref:`port_to_v7-removed-functions-20221123` for more information. Try out the mentioned rector and update tools,
   it's a big help.
 
 * Run your unit and integration tests, they should point out the most urgent problems. Fix those places.
 
-* Try activating the module via console-command until you get an ok response.
+* Try activating the module via console command, and fix reported issues.
 
 * Smarty templates are registered in the module's metadata.php, you need to adapt the paths to be relative to the module's root directory and add the module's template namespace. See examples below for comparison.
 
@@ -221,17 +228,17 @@ Install OXID eShop 7 with Smarty engine, add your module. Installation of smarty
             protected $_sThisTemplate = '@oe_moduletemplate/templates/greetingtemplate';
 
     Check the shop frontend/admin backend to verify whether your module is working as expected.
-    Run your aceptance tests. OXID's Testing Library is deprecated but still usable for version 7.
+    Run your aceptance tests. OXID's Testing Library is deprecated but still usable for version 7.0.
 
 .. _converting_smarty_to_twig-20240710:
 
 Converting templates from smarty to twig
 ----------------------------------------
 
-Prerequisites is that you have a theme that supports the twig template engine. Use APEX in case you want
-to stick to the standard, convert your own theme to twig otherwise.
+The prerequisite - you should have a theme that supports the twig template engine. Use APEX in case you want
+to stick to the standard or convert your own theme to twig otherwise.
 
-* Have a look at how twig inheritance is working in OXID 7
+* Have a look at how twig template inheritance is working in OXID 7
   :doc:`Twig Template Engine </development/modules_components_themes/module/using_twig_in_module_templates>`.
   The templates are no longer registered in metadata.php, but now they need to follow the twig theme structure in case
   of extending theme templates.
