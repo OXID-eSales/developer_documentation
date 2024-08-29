@@ -207,7 +207,7 @@ Install OXID eShop 7 with Smarty engine, and add your module. Installation of sm
 
     .. code:: php
 
-        //OXID 7.0 example for Smarty mdoule templates
+        //OXID 7.0 example for Smarty module templates
        'templates'   => [
             '@oe_moduletemplate/templates/greetingtemplate.tpl' => 'views/smarty/templates/greetingtemplate.tpl'
         ],
