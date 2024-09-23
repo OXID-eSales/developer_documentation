@@ -22,17 +22,23 @@ Before you update to OXID eShop version 7.1, you have make sure that you meet th
 |procedure|
 
 .. important::
-   **Data loss**
+   **Avoid data loss**
 
-   Avoid data loss.
+   * Make a backup of the database.
+   * Make a backup of the shop files.
 
-   Make a backup of your database. Make a backup of your current shop installation (all files etc.).
+   We strongly recommend to test the update procedure on a copy/development installation of your shop first, to become familiar with the process.
 
-   We recommend to test the update procedure on a copy/development installation of your shop first, to become familiar with the process.
+.. important::
+   **Disable modules and components**
 
+   * :doc:`Deactivate all modules </development/modules_components_themes/module/deactivation/index>`.
+   * :ref:`Uninstall all custom components <component-uninstallation>`.
+
+   Modules and Components can have impact on the framework functionality, which could break the update process. Also they might not be compatible with the updated shop framework and cause issues.
 .. note::
 
-   To execute commands via the command line, open a shell in the shop root directory and run commands in there.
+ To execute commands via the command line, open a shell in the shop root directory and run commands in there.
 
 1. In the :file:`var/configuration` folder, make a backup of the :file:`shops` folder that contains a :file:`<shop-id>.yaml` file for each subshop.
    |br|

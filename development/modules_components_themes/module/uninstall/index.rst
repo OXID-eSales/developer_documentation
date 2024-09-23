@@ -1,8 +1,11 @@
-Uninstall
-=========
+Uninstallation
+==============
 
 Uninstall module
----------------------------------
+----------------
+
+.. _modules_uninstall_uninstall_20240806:
+
 
 To uninstall a module, use the following command:
 
@@ -16,7 +19,9 @@ To uninstall a module, use the following command:
 Unless a module is removed via Composer, it can be installed via :doc:`oe-console </development/tell_me_about/console>` again.
 
 Remove module
----------------------------
+--------------
+
+.. _modules_uninstall_remove_20240806:
 
 .. code:: bash
 
