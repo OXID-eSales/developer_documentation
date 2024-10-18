@@ -28,12 +28,6 @@ You have :productname:`OXID eShop` 7.1.x.
 1. Deactivate all modules.
 #. Update Composer to version 2.7.
 
-   Install Composer 2.7 as follows, for example:
-
-   .. code:: bash
-
-      composer selfupdate 2.7.1
-
 #. Update the metapackage version in the :file:`composer.json` file.
    |br|
    To do this, match the name of the metapackage to the desired store edition, as in the following example.
