@@ -1,30 +1,40 @@
 .. _override_eshop_functionality-20170227:
 
-Override existing OXID eShop functionality
-==========================================
+Overriding existing OXID eShop functionality
+============================================
 
-This page describes how to override default OXID eShop functionality.
-
+Override default OXID eShop functionality.
 
 .. note::
 
-  Examples described here are made in the already installed module. Module installation procedure is described :doc:`here <module_setup>`.
+   The examples described here assume that the module is already installed.
+
+   The module installation procedure is described under :doc:`Best practice module setup for development with composer <module_setup>`.
+
+.. note::
+
+   **Alternative: Loading dynamic content via AJAX**
+
+   Consider adjusting themes with dynamic content.
+
+   For more information, see :ref:`development/modules_components_themes/theme/twig/loading-dynamic-content:Loading dynamic content via AJAX`.
 
 .. _extending-add-to-basket-functionality-20170228:
 
 Extending 'add to basket' functionality
 ---------------------------------------
 
-In this section the existing `"module-template" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
-a product's id when it is added to the basket.
+In this section, the existing `"module-template" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
+a product's ID when it is added to the basket.
 
-Override functionality
-^^^^^^^^^^^^^^^^^^^^^^
+Overriding functionality
+^^^^^^^^^^^^^^^^^^^^^^^^
 
-To override functionality there is a need to create a class in model.
-Here, the "moduletemplate" module will be used as an example.
+To override functionality, create a class in the model.
 
-There is a need to create a child class - ``OxidEsales\ModuleTemplate\Model\Basket`` - which should override OXID eShop class
+In the following, we use the "moduletemplate" module as an example.
+
+Create a child class - ``OxidEsales\ModuleTemplate\Model\Basket`` - which should override OXID eShop class
 ``OxidEsales\EshopCommunity\Application\Model\Basket`` method ``addToBasket``:
 
 .. code::
@@ -43,7 +53,7 @@ There is a need to create a child class - ``OxidEsales\ModuleTemplate\Model\Bask
   You can also extend module classes, just like shop classes:
   ``\OxidEsales\ModuleTemplate\Controller\GreetingController::class => \ExampleVendor\ExampleModule\Controller\GreetingController::class``
 
-The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like this:
+The ``OxidEsales\ModuleTemplate\Model\Basket`` class could have contents like this:
 
 .. code:: php
 
@@ -75,27 +85,28 @@ The class ``OxidEsales\ModuleTemplate\Model\Basket`` could have contents like th
       }
   }
 
-In this example method ``addToBasket`` is overridden and it adds logging functionality.
+In this example, the ``addToBasket`` method is overridden and it adds logging functionality.
+
 To override the method one needs to:
 
 - Extend a :ref:`Unified Namespace <modules-unified_namespaces-20170526>` class - ``<className>_parent``, in this case it is ``Basket_parent``.
 - Call parent method, so the chain would not be broken.
 
-Override templates or blocks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Overriding templates or blocks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-For some example how to add/modify the template, check our Tutorials and recipes section
-:doc:`here</development/modules_components_themes/module/tutorials/frontend_user_forms>`
+For examples of how to add/modify the template, see our Tutorials and recipes section under
+:doc:`Extending a frontend user form</development/modules_components_themes/module/tutorials/frontend_user_forms>`.
 
-Don't forget to register the files to the ``metadata.php`` like described :ref:`here<add_entry_to_module_metadata-20220211>`.
+Don't forget to register the files to the ``metadata.php`` as described under :ref:`development/modules_components_themes/module/tutorials/override_functionality:Adding an entry to the module metadata file`.
 
-Autoload module classes
-^^^^^^^^^^^^^^^^^^^^^^^
+Autoloading module classes
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The file `composer.json` in module root directory must be created,
+The `composer.json`file in the module's root directory must be created,
 :ref:`the modules namespace and autoloading must be defined <module_autoload-20170926>`.
 
-The `composer.json` file in module root directory could look like this:
+The `composer.json` file in module's root directory could look like this:
 
 .. code:: json
 
@@ -123,21 +134,19 @@ The `composer.json` file in module root directory could look like this:
     "prefer-stable": true
   }
 
-To register a namespace and download dependencies there is a need to run composer update command in project root directory:
+To register a namespace and download dependencies, in the project root directory, run the ``composer update`` command:
 
 .. code:: bash
 
   composer update
 
-Composer will generate the PSR-4 autoload file with included module. So at this point OXID eShop will be able to autoload
+Composer will generate the PSR-4 autoload file with included module. At this point OXID eShop will be able to autoload
 classes.
 
-.. _add_entry_to_module_metadata-20220211:
+Adding an entry to the module metadata file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add entry to module metadata file
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-OXID eShop needs to know which class should be extended, to do this there is a need to add a record in `metadata.php`
+OXID eShop needs to know which class should be extended. To do this, add a record in the `metadata.php`
 file:
 
 .. code:: php
@@ -147,5 +156,6 @@ file:
   ],
 
 For overwriting the shop templates, or some parts of them (blocks), register your module templates in the
-templates/blocks sections. Read more about the ``metadata.php`` under the link for the
-latest version here: :doc:`here </development/modules_components_themes/module/skeleton/metadataphp/index>`.
+templates/blocks sections.
+
+For more informtion about the ``metadata.php`` file, see :doc:`metadata.php </development/modules_components_themes/module/skeleton/metadataphp/index>`.
