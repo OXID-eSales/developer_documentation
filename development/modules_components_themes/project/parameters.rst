@@ -1,6 +1,16 @@
 Configuration parameters
 ========================
 
+.. note::
+
+    The container cache must be rebuild after changing the value of a parameter.
+
+    Use the following command to easily and safely clear the cache:
+
+    .. code::
+
+        ./vendor/bin/oe-console o:c:c
+
 Email configuration
 -------------------
 
