@@ -17,3 +17,8 @@ Example Configuration (Enabled):
 .. code:: yaml
 
     oxid_esales.email.disable_order_emails = false;
+
+.. note::
+
+    The default log level is *error*. To have the notice messages logged, it's necessary to set the log level
+    parameter ``$this->sLogLevel`` in the file *config.inc.php* to *notice*.
