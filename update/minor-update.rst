@@ -1,6 +1,8 @@
 Installing a minor update
 =========================
 
+.. todo: #MK: verifizieren
+
 Update the compilation from an existing version 7.1.x to version 7.2.x.
 
 .. include:: /_static/reuse/note_dataloss.rst

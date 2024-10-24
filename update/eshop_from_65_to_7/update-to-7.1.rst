@@ -1,6 +1,8 @@
 Updating from OXID eShop 6.5 to OXID eShop 7.1
 ==============================================
 
+.. todo: #MK: klären
+
 Update your OXID eShop to OXID eShop version 7.1.
 
 |prerequisites|
