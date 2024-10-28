@@ -13,12 +13,6 @@ Use the following steps to update the compilation from an existing version 7.0.2
 
 1. Upgrade Composer to version 2.7.
 
-   Install Composer 2.7 as follows, for example:
-
-   .. code:: bash
-
-      composer selfupdate 2.7.1
-
 #. Change to the main store directory (in our example `/var/www/oxideshop/`).
 
    .. code:: bash
