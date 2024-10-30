@@ -114,7 +114,7 @@ You have performed the necessary incremental updates (see :ref:`update/minor-upd
 
    .. code:: bash
 
-      composer selfupdate 2.7.1
+      composer selfupdate 2.7.7
 
 #. Update the metapackage version in the :file:`composer.json` file.
    |br|

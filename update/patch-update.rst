@@ -16,7 +16,7 @@ Use the following steps to update the compilation from an existing version 7.0.2
 
    .. code:: bash
 
-      composer selfupdate 2.7.1
+      composer selfupdate 2.7.7
 
 #. Change to the main store directory (in our example `/var/www/oxideshop/`).
 
