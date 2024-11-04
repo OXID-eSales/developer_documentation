@@ -17,9 +17,11 @@ The following sections all refer to implementing, understanding or using modules
     :glob:
 
     installation_setup/index
-    uninstall/index
     skeleton/index
     *
     database_migration/index
     certification/index
     tutorials/index
+    deactivation/index
+    uninstall/index
+

@@ -1,16 +1,11 @@
 Updating
 ========
 
-     .. Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/latest/installation/update/index.html>
-
 .. toctree::
    :maxdepth: 1
 
-   eshop_from_65_to_7/index
-   minor-update
+   standard-update
    upgrade/index
 
-..
-   patch-update
-
-
+.. note::
+   If you are updating from version 6.x, please go to `this site <https://docs.oxid-esales.com/developer/en/7.0/update/eshop_from_65_to_7/update-to-7.0.html>`_.
