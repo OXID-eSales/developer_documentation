@@ -32,7 +32,7 @@ You have :productname:`OXID eShop` 7.0.x.
 
    .. code:: bash
 
-      composer selfupdate 2.7.1
+      composer selfupdate 2.7.7
 
 #. Update the metapackage version in the :file:`composer.json` file.
    |br|
