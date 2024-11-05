@@ -1,19 +1,33 @@
 Configuration parameters
 ========================
 
-Email configuration
--------------------
+E-mail configuration
+--------------------
 
-oxid_esales.email.disable_order_emails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disabling order notification e-mails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This parameter controls whether emails are sent for new orders to user and owner within the shop.
+By default, when a new order is received, the system sends an e-mail to the customer and the shop owner.
 
-    - Enabled (default): Emails are sent to both the user who placed the order and the shop owner.
-    - Disabled: Emails are not sent. A notice message is logged to the system for informational purposes.
+If required, deactivate the sending of these e-mail notifications.
 
-Example Configuration (Enabled):
+.. todo: #HR/#AB: Verify the use case:
+
+Disabling e-mail notifications can be useful, for example, if you use an ERP system or if you have a test system. In this case, a log entry is created.
+
+|procedure|
+
+.. todo: #HR/#AB: Verify the following: is it done in ``config.inc.php`` file?
+
+To disable order e-mail notifications, in the ``config.inc.php`` file, set the ``oxid_esales.email.disable_order_emails`` to ``true``.
 
 .. code:: yaml
 
-    oxid_esales.email.disable_order_emails = false;
+    $this->oxid_esales.email.disable_order_emails = true;
+
+|result|
+
+Order notification e-mails are not sent. A notice message is logged to the system for informational purposes.
+
+.. todo: #HR/#AB: Where do I find the log, how does it look like?
+
