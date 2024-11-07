@@ -11,9 +11,7 @@ By default, when a new order is received, the system sends an e-mail to the cust
 
 If required, deactivate the sending of these e-mail notifications.
 
-.. todo: #HR: Verify the use case:
-
-Disabling e-mail notifications can be useful, for example, if you use an ERP system or if you have a test system. In this case, a log entry is created.
+Disabling e-mail notifications can be useful, for example, if your ERP is responsible for sending out order confirmations. In this case, a log entry is created.
 
 |procedure|
 
