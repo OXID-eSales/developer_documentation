@@ -70,7 +70,7 @@ need to confirm that the update will overwrite the existing files.
 
 .. code:: bash
 
-   vendor/bin/oe-eshop-db_migrate migrations:migrate
+   ./vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 |schritt| Optional: Generating views
 ------------------------------------
@@ -79,7 +79,7 @@ generated again.
 
 .. code:: bash
 
-   vendor/bin/oe-eshop-db_views_generate
+   ./vendor/bin/oe-eshop-db_views_generate
 
 .. hint::
 
