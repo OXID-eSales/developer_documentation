@@ -17,11 +17,7 @@ an existing version to a newer version.
 
 |schritt| Optional: Update Composer
 -----------------------------------------------------
-Example of an update for Composer 2.7 is as follows:
-
-.. code:: bash
-
-    composer selfupdate 2.7.7
+Please read the `Composer documentation <https://getcomposer.org/doc/03-cli.md#self-update-selfupdate>`_ for more information.
 
 .. hint::
 
