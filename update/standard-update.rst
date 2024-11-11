@@ -6,7 +6,7 @@ an existing version to a newer version.
 
 .. note::
     Updates should always be installed in a test or development environment. Backup the shop files and the database
-    before updating. Disable all modules and check whether the shop works in general. After updating, test the shop
+    before updating. :doc:`Disable all modules </development/modules_components_themes/module/deactivation/index>` and check whether the shop works in general. After updating, test the shop
     again, paying special attention to the ordering process as well as payment and shipping methods.
 
 .. note::
