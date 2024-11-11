@@ -1,7 +1,7 @@
 Standard update
 ===============
 
-This document describes patches and minor updates of OXID eShop. Follow the steps below to upgrade the compilation from
+This document describes patches and minor updates of OXID eShop. Follow the steps below to update the compilation from
 an existing version to a newer version.
 
 .. note::
