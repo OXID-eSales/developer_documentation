@@ -56,7 +56,7 @@ Overwrite Templates
 To overwrite templates you follow the same structure as the parent theme and simply put the same template into your child theme. Let's say we want to overwrite the template ``header.html.twig``. The APEX (parent) theme follows this structure:
 
 .. code::
-    
+
     apex
       ├── de
       ├── en
@@ -71,7 +71,7 @@ To overwrite templates you follow the same structure as the parent theme and sim
 This means we must copy the exact same structure in our child theme fot the template ``header.html.twig``:
 
 .. code::
-    
+
     child
       ├── de
       ├── en
@@ -88,7 +88,7 @@ Overwrite Assets
 Overwriting assets follows the same principle. Let's take the image ``logo.svg`` as an example in APEX:
 
 .. code::
-    
+
     apex
       ├── de
       ├── en
@@ -102,7 +102,7 @@ Overwriting assets follows the same principle. Let's take the image ``logo.svg``
 And so we use the same structure for CHILD:
 
 .. code::
-    
+
     child
       ├── de
       ├── en
@@ -120,7 +120,7 @@ Overwrite Translations
 Last thing you can overwrite are translations but this time you must use a little bit different structure. The original parent theme uses ``lang.php`` files in corresponding language directories like ``en`` for english or ``de`` for german.
 
 .. code::
-    
+
     apex
       ├── de
       .  └── lang.php
@@ -131,7 +131,7 @@ Last thing you can overwrite are translations but this time you must use a littl
 You now use the same directory structure again but name the files ``cust_lang.php``.
 
 .. code::
-    
+
     child
       ├── de
       .  └── cust_lang.php
@@ -144,10 +144,10 @@ Inside the ``cust_lang.php`` files you can change single translations. So the fi
 .. code:: php
 
     $sLangName = 'English';
-    
+
     $aLang = [
         'charset' => 'UTF-8'
-        
+
         'TRUST_BADGES' => 'Our Trust Badges',
         'SOCIAL_MEDIA' => 'Social Platforms',
     ];
@@ -155,11 +155,11 @@ Inside the ``cust_lang.php`` files you can change single translations. So the fi
 .. important::
 
     If some changes do not take effect directly, take care to update the template cache:
-    
+
     .. code:: bash
 
         ./vendor/bin/oe-console oe:cache:clear
 
 .. important::
 
-    If you are in development phase and run ``composer update`` remember to answer the questions to overwrite files in ``source`` with yes. Otherwise your changes from your child theme will not be transfered die ``Application/views`` and ``out`` directory.
+    If you are in development phase and run ``composer update`` remember to answer the questions to overwrite files in ``source`` with yes. Otherwise your changes from your child theme will not be transfered to ``Application/views`` and ``out`` directory.
