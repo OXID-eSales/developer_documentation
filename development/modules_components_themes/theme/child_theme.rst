@@ -82,6 +82,34 @@ This means we must copy the exact same structure in our child theme fot the temp
 
 If we activate our child theme now, the template ``header.html.twig`` from CHILD is taken while the template ``footer.html.twig`` is still taken from APEX. This means we only copy and modify the templates we desire so.
 
+Example of start.html.twig overwrite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The child theme's `start.html.twig` template might, for example, get an additional block.
+
+.. _childtheme_template-20240717:
+
+.. code:: twig
+
+    {% capture append = "oxidBlock_content" %}
+
+    {% block child_theme_block %}
+        <div>
+            This is APEX child theme!!!!
+        </div>
+    {% endblock %}
+
+    {% include_content 'oxstartslot1' ignore missing  %}
+
+     ...
+
+The template engine renders the child theme's `start.html.twig` file while using all other templates from the parent theme.
+
+.. image:: ../../../media/screenshots/twig_child_theme_001.png
+   :alt: Twig child theme example
+   :height: 228
+   :width: 400
+
 Overwrite Assets
 ----------------
 
@@ -163,3 +191,23 @@ Inside the ``cust_lang.php`` files you can change single translations. So the fi
 .. important::
 
     If you are in development phase and run ``composer update`` remember to answer the questions to overwrite files in ``source`` with yes. Otherwise your changes from your child theme will not be transfered to ``Application/views`` and ``out`` directory.
+
+Extend a theme via module
+-------------------------
+
+All you can achieve with a child theme can also be done with a module. In all OXID eShop Version 7 installations,
+module settings fully reside in YAML configuration files, which are much easier to deploy than theme configurations that are
+still stored in the database (oxconfig table).
+
+.. note:: With the twig extension mechanism you can only extend existing template blocks.
+        Regarding the 'I want to completely exchange a template by child theme' case. That's also possible via module,
+        you need to add a module own template and chain extend the shop controller in question using the module's template
+        instead of the original theme template.
+
+A module can extend templates for each theme, but we also have a 'one size fits all' approach by using the special directory name `default`.
+
+To learn more about theme extensions for modules, check the following documentation:
+
+* :ref:`extending-existing-templates`
+* :ref:`using-twig-in-module-templates`
+* :ref:`extending-an-active-theme-block`
