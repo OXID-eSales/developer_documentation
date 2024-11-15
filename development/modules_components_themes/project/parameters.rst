@@ -9,7 +9,7 @@ Configuration parameters
 
     .. code::
 
-        ./vendor/bin/oe-console o:c:c
+        ./vendor/bin/oe-console oe:cache:clear
 
 E-mail configuration
 --------------------
