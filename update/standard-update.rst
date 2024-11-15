@@ -6,7 +6,7 @@ an existing version to a newer version.
 
 .. note::
     Updates should always be installed in a test or development environment. Backup the shop files and the database
-    before updating. Disable all modules and check whether the shop works in general. After updating, test the shop
+    before updating. :doc:`Disable all modules </development/modules_components_themes/module/deactivation/index>` and check whether the shop works in general. After updating, test the shop
     again, paying special attention to the ordering process as well as payment and shipping methods.
 
 .. note::
@@ -17,11 +17,7 @@ an existing version to a newer version.
 
 |schritt| Optional: Update Composer
 -----------------------------------------------------
-Example of an update for Composer 2.7 is as follows:
-
-.. code:: bash
-
-    composer selfupdate 2.7.7
+Please read the `Composer documentation <https://getcomposer.org/doc/03-cli.md#self-update-selfupdate>`_ for more information.
 
 .. hint::
 
@@ -70,7 +66,7 @@ need to confirm that the update will overwrite the existing files.
 
 .. code:: bash
 
-   vendor/bin/oe-eshop-db_migrate migrations:migrate
+   ./vendor/bin/oe-eshop-db_migrate migrations:migrate
 
 |schritt| Optional: Generating views
 ------------------------------------
@@ -79,7 +75,7 @@ generated again.
 
 .. code:: bash
 
-   vendor/bin/oe-eshop-db_views_generate
+   ./vendor/bin/oe-eshop-db_views_generate
 
 .. hint::
 
