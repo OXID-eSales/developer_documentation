@@ -8,4 +8,5 @@ Theme
     :glob:
 
     twig/index
-    *
+    theme_via_composer
+    child_theme
