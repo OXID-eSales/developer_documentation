@@ -11,19 +11,31 @@ Configuration parameters
 
         ./vendor/bin/oe-console o:c:c
 
-Email configuration
--------------------
+E-mail configuration
+--------------------
 
-oxid_esales.email.disable_order_emails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disabling order notification e-mails
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This parameter controls whether emails are sent for new orders to user and owner within the shop.
+By default, when a new order is received, the system sends an e-mail to the customer and the shop owner.
 
-    - Enabled (default): Emails are sent to both the user who placed the order and the shop owner.
-    - Disabled: Emails are not sent. A notice message is logged to the system for informational purposes.
+If required, deactivate the sending of these e-mail notifications.
 
-Example Configuration (Enabled):
+Disabling e-mail notifications can be useful, for example, if your ERP is responsible for sending out order confirmations. In this case, a log entry is created.
+
+|procedure|
+
+To disable order e-mail notifications, in the ``source/Internal/Utility/Email/services.yaml`` file, set the ``oxid_esales.email.disable_order_emails`` to ``true``.
 
 .. code:: yaml
 
-    oxid_esales.email.disable_order_emails = false;
+   oxid_esales.email.disable_order_emails: true
+
+|result|
+
+If order notification e-mails are disabled, in ``source/log/oxideshop.log`` the following notice messages are logged to the system for informational purposes:
+
+* "Order email not sent to user due to disabled configuration option."
+* "Order email not sent to owner due to disabled configuration option."
+
+
