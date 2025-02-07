@@ -1,4 +1,4 @@
-Modules configuration and setup
+Module configuration and setup
 ===============================
 
 .. contents ::
@@ -89,8 +89,8 @@ Configuring modules via providing configuration files
 
 Since the complete configuration is in configuration files, you can make it part of the
 VCS repository of your project and deploy it to your testing, staging and productive
-systems and deploy through the command line as described below in the
-section :ref:`deploy module configurations<apply_configuration_configured_modules-20190829>`.
+systems and deploy through the command line as described in the
+:doc:`Module configuration deployment <modules_configuration_deployment>` section.
 
 Project configuration files are located in project directory `var/configuration/shops/<shop-id>/`, where "<shop-id>" represents
 sub-shop ID. In case you don't use sub-shop functionality, it will always be only one directory.

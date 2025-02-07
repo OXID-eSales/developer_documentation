@@ -1,4 +1,4 @@
-Modules installation
+Module installation
 ====================
 
 This document describes **what** is happening under the hood when module is being installed.
