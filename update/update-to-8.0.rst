@@ -4,47 +4,38 @@ Update to 8.0
 This document provides the steps to update your shop from version 7.x to the new version 8.0.
 
 .. note::
-    To avoid any issues during the update process, please back up your shop files and data.
+    Before starting the update process, consider :doc:`modernizing your modules <module-modernization>` for better compatibility with OXID eShop 8.0.
 
 .. note::
-    To execute commands via the command line, open a shell in the shop root directory and run the commands from there.
+    To avoid any issues during the update process, please back up your shop files and data.
 
+Prerequisites
+-------------
 
-Install the `oxideshop-update-component`
-----------------------------------------
+Ensure you have installed the :doc:`OXID Update Component <update-component>`.
 
-Many update tasks require the `oxideshop-update-component`. Install it using Composer:
+Update Configuration Files
+--------------------------
 
-.. code-block:: bash
+The configuration system has been updated in OXID eShop 8. You need to migrate your existing configuration
+from `config.inc.php` to the new `.env` and `parameters.yaml` files:
 
-    composer require oxid-esales/oxideshop-update-component:^v3.0.0
+.. code:: bash
 
+    bin/oe-console oe:update:config-file
 
-Update Twig Templates
----------------------
+This command will:
 
-To update your Twig templates to meet the latest shop requirements, use the `oxideshop-update-component` installed earlier.
+* Convert your existing configuration to the new format
+* Create/update the `.env` file with environment-specific settings
+* Create/update `var/configuration/shops/parameters.yaml` with shop parameters
+* Preserve your existing configuration values
 
-1. Run the migration command with the `target-templates-path` parameter. This specifies the path to the templates that need to be updated. Note that the default OXID templates are already updated.
-
-   .. code-block:: bash
-
-       php bin/oe-console oe:update:update-templates {target-templates-path}
-
+.. note::
+    After verifying that the migration was successful, you can remove the `config.inc.php` file.
 
 Migrate Database Configurations to Container Parameters
 -------------------------------------------------------
-
-This section explains how to migrate database configurations to container parameters using the ``oxideshop-update-component``.
-
-Prerequisites
-^^^^^^^^^^^^^
-
-- Ensure you have Composer installed.
-- The OXID eShop environment must be set up and running.
-
-Configuration Parameters to Migrate
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The following database configuration parameters will be migrated to their corresponding container parameters:
 
@@ -59,38 +50,58 @@ The following database configuration parameters will be migrated to their corres
    * - ``blUseContentCaching``
      - ``oxid_esales.enable_content_cache``
 
-Running the Migration Command
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-After installing the component (see the "Install the `oxideshop-update-component`" section), you can run the migration command. The command includes an optional parameter, ``remove-old-configuration``, which determines whether the old configuration options should be deleted from the database after migration.
-
-Command Syntax
-^^^^^^^^^^^^^^
+Command Syntax:
 
 .. code-block:: bash
 
-    php bin/oe-console oe:update:database-config {remove-old-configuration}
+    bin/oe-console oe:update:database-config {remove-old-configuration}
 
-Parameters
-^^^^^^^^^^
+Parameters:
 
-* ``remove-old-configuration`` (optional):
+* `remove-old-configuration` (optional):
+  - Accepts ``true`` or ``false``
+  - Default: ``false``
+  - If set to ``true``, the old configuration parameters will be deleted from the database after migration
 
-  - Accepts ``true`` or ``false``.
-  - Default: ``false``.
-  - If set to ``true``, the old configuration parameters will be deleted from the database after migration.
+Example:
 
-Examples
-^^^^^^^^
+.. code-block:: bash
 
-1. Migrate configurations without deleting old parameters:
+    bin/oe-console oe:update:database-config true
 
-   .. code-block:: bash
+Update Twig Templates
+---------------------
 
-       php bin/oe-console oe:update:database-config
+To update your Twig templates to meet the latest shop requirements, run:
 
-2. Migrate configurations and delete old parameters:
+.. code:: bash
 
-   .. code-block:: bash
+    bin/oe-console oe:update:update-templates {target-templates-path}
 
-       php bin/oe-console oe:update:database-config true
+The parameter `target-templates-path` specifies the path to the templates that need to be updated.
+Note that the default OXID templates are already updated.
+
+Update Module Code
+------------------
+
+This command updates specific aspects of your module code to be compatible with OXID eShop 8:
+
+.. code:: bash
+
+    bin/oe-console oe:update:update-module {module-path} [options]
+
+Available options:
+
+* ``-c, --config``: Update configuration parameter calls to new format
+* ``-f, --facts``: Update Facts and Edition related code
+* ``-t, --transaction``: Update database transaction handling code to use new connection factory
+
+Example:
+
+.. code:: bash
+
+    bin/oe-console oe:update:update-module source/modules/mymodule -c -f
+
+.. note::
+    It's recommended to run all update commands on a test system first and thoroughly test the results
+    before applying them to your production environment.

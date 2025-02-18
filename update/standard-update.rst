@@ -27,11 +27,11 @@ Please read the `Composer documentation <https://getcomposer.org/doc/03-cli.md#s
 -----------------------------------------------------
 In the :file:`composer.json` file, the version of the metapackage must be updated.
 
-Example of an update for a Community Edition 7.0.0 to 7.1.0:
+Example of an update for a Community Edition 7.3.0 to 8.0.0:
 
 .. code:: bash
 
-   composer require --no-update oxid-esales/oxideshop-metapackage-ce:v7.1.0
+   composer require --no-update oxid-esales/oxideshop-metapackage-ce:v8.0.0
 
 .. hint::
 

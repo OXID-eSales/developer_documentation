@@ -2,8 +2,10 @@ Updating
 ========
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
    standard-update
+   update-component
+   module-modernization
    update-to-8.0
    upgrade/index
