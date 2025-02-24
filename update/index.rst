@@ -4,7 +4,7 @@ Update
 .. toctree::
    :maxdepth: 1
 
-   Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/latest/installation/update/index.html>
+   Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/6.5/installation/update/index.html>
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
 
