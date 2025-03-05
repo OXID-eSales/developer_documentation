@@ -98,7 +98,7 @@ Following this example, we should be able to call our controller via the followi
 
     Bad example:
 
-    .. todo: The "bad example" uses ContainerFacade, which is discouraged, but the text doesn’t explain why (e.g., tight coupling, testing issues). This could be expanded for clarity.
+    .. todo: #HR: The "bad example" uses ContainerFacade, which is discouraged, but the text doesn’t explain why (e.g., tight coupling, testing issues). This could be expanded for clarity.
 
     .. code:: php
 
