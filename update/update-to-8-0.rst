@@ -1,5 +1,5 @@
-Standard update
-===============
+Update to 8.0
+=============
 
 This document describes patches and minor updates of OXID eShop. Follow the steps below to update the compilation from
 an existing version to a newer version.
@@ -27,7 +27,7 @@ Please read the `Composer documentation <https://getcomposer.org/doc/03-cli.md#s
 -----------------------------------------------------
 In the :file:`composer.json` file, the version of the metapackage must be updated.
 
-Example of an update for a Community Edition 7.3.0 to 8.0.0:
+Example of an update for a Community Edition 7.x.y to 8.0.0:
 
 .. code:: bash
 
@@ -59,7 +59,9 @@ need to confirm that the update will overwrite the existing files.
 
 .. code:: bash
 
-   rm -rf source/tmp/*
+    rm -rf source/tmp/*
+
+    bin/oe-console oe:cache:clear
 
 |schritt| Migrating database
 -----------------------------

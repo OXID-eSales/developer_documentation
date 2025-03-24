@@ -76,4 +76,4 @@ Best Practices
 * Test thoroughly after each step
 * Keep changes small and focused
 
-After completing these modernization steps, proceed with the :doc:`update to OXID eShop 8.0 <update-to-8.0>`.
+After completing these modernization steps, proceed with the :doc:`update to OXID eShop 8.0 <update-to-8-0>`.

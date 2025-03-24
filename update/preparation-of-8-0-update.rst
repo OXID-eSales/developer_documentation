@@ -1,13 +1,18 @@
-Update to 8.0
-=============
+Preparation of 8.0 update
+=========================
 
 This document provides the steps to update your shop from version 7.x to the new version 8.0.
 
 .. note::
-    Before starting the update process, consider :doc:`modernizing your modules <module-modernization>` for better compatibility with OXID eShop 8.0.
+    Before starting the update process, consider :doc:`modernizing your modules <module-modernization>` for better
+    compatibility with OXID eShop 8.0.
 
 .. note::
     To avoid any issues during the update process, please back up your shop files and data.
+
+.. note::
+    The ``config.inc.php`` file was removed; here is the list of configuration parameters:
+    :ref:`See details <configIncParamsChanges>`
 
 Prerequisites
 -------------
@@ -34,40 +39,41 @@ This command will:
 .. note::
     After verifying that the migration was successful, you can remove the `config.inc.php` file.
 
-Migrate Database Configurations to Container Parameters
--------------------------------------------------------
+Migrate dynamic configurations
+------------------------------
 
-The following database configuration parameters will be migrated to their corresponding container parameters:
+The following configuration parameters will be migrated from the database to their corresponding container parameters:
 
 .. list-table::
-   :header-rows: 1
-   :widths: 50 50
+    :header-rows: 1
+    :width: 100%
+    :widths: 50 50
 
-   * - **Database Configuration Parameter**
-     - **Container Parameter**
-   * - ``blCacheActive``
-     - ``oxid_esales.enable_data_cache``
-   * - ``blUseContentCaching``
-     - ``oxid_esales.enable_content_cache``
+    * - Dynamic Configuration
+      - Container Parameter
+    * - ``blCacheActive``
+      - ``oxid_esales.enable_data_cache``
+    * - ``blUseContentCaching``
+      - ``oxid_esales.enable_content_cache``
 
 Command Syntax:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:database-config {remove-old-configuration}
+    bin/oe-console oe:update:config-database {remove-old-configuration}
 
 Parameters:
 
 * `remove-old-configuration` (optional):
   - Accepts ``true`` or ``false``
   - Default: ``false``
-  - If set to ``true``, the old configuration parameters will be deleted from the database after migration
+  - If set to ``true``, the old configuration parameters will be deleted from the database
 
 Example:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:database-config true
+    bin/oe-console oe:update:config-database true
 
 Update Twig Templates
 ---------------------

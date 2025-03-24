@@ -27,8 +27,8 @@ Shop Update
 ``oe:update:config-file``
     Migrate config.inc.php to new format
 
-``oe:update:database-config``
-    Migrate database configurations
+``oe:update:config-database``
+    Migrate configurations from the database
 
 ``oe:update:update-templates``
     Update Twig templates
@@ -39,5 +39,5 @@ Shop Update
 For detailed usage instructions, see:
 
 * :doc:`Module Modernization <module-modernization>`
-* :doc:`Update to 8.0 <update-to-8.0>`
+* :doc:`Update to 8.0 <update-to-8-0>`
 
