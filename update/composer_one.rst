@@ -1,7 +1,7 @@
 Update from Compilation below 6.2.3
 ===================================
 
-OXID Cbe shut downompilations below 6.2.3 are still using composer 1 which will
+OXID Compilations below 6.2.3 are still using composer 1 which will
 be shut down in two steps starting 2025-02-01.
 
 From 2025-02-01 on, composer 1.x metadata will be readonly. No new packages will be shipped by packagist via composer 1. Means
@@ -58,12 +58,15 @@ This means, you first have to change your root :file:`composer.json` file from i
       ....
 
 #. Remove all occurrences of OXID eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
+#. Remove all packages from require-dev section of the original composer.json (like "oxid-esales/testing-library" and ""incenteev/composer-parameter-handler")
 #. Replace the :code:`"require": { ...}` section in your root :file:`composer.json` file with this content.
 #. Backup your current :file:`composer.lock` file.
 #. Now we need to change the composer-plugin-api 1 components to a branch supporting composer 1 as well as composer 2.
    .. code:: shell
-       composer require --no-update oxid-esales/oxideshop-composer-plugin dev-b-2.x-OXDEV-9162
-       composer require --no-update oxid-esales/oxideshop-unified-namespace-generator dev-b-1.x-OXDEV-9162
+     composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin.git
+     composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator.git
+     composer require --no-update oxid-esales/oxideshop-composer-plugin dev-b-2.x-OXDEV-9162
+     composer require --no-update oxid-esales/oxideshop-unified-namespace-generator dev-b-1.x-OXDEV-9162
 
 #. Run composer update:
    Please keep in mind that we expect this no longer to be possible with composer 1 after 2025-08-01.
@@ -75,6 +78,6 @@ This means, you first have to change your root :file:`composer.json` file from i
 
 #. Compare the current :file:`composer.lock` file with the one you have backed up.
 
-   Make sure the only difference is the missing :code:`oxideshop-metapackage-*` entries and the changes in unified-namespace-generator and the composer-plugin.
+   Make sure the only difference is the missing :code:`oxideshop-metapackage-*` and require-dev entries and the changes in unified-namespace-generator and the composer-plugin.
 
 
