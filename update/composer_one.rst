@@ -59,6 +59,7 @@ This means, you first have to change your root :file:`composer.json` file from i
 
 #. Remove all occurrences of OXID eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
 #. Remove all packages from require-dev section of the original composer.json (like "oxid-esales/testing-library" and ""incenteev/composer-parameter-handler")
+#. Remove "scripts" and "extra" section from he new composer.json
 #. Replace the :code:`"require": { ...}` section in your root :file:`composer.json` file with this content.
 #. Backup your current :file:`composer.lock` file.
 #. Now we need to change the composer-plugin-api 1 components to a branch supporting composer 1 as well as composer 2.
