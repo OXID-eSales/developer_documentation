@@ -57,7 +57,6 @@ You need to update your system to use the highest compatible PHP version
      OXID never tested OXID eShop 6.1.6 on PHP 7.4 for a release but locally it looks working.
 
    * for OXID eShop 6.2.2 please use PHP 7.4
-     ... to be continued
 
 
 Manually assemble the composer.json
@@ -105,6 +104,14 @@ Now we need to change the composer-plugin-api 1 components to a branch supportin
 or immediately go the 'full way' and switch to composer 2.
 
 .. important::
+   For OXID eShop 6.0.6, please ensure the following packages are used
+   .. code:: shell
+     composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
+     composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
+     composer require --no-update oxid-esales/oxideshop-composer-plugin dev-b-2.x-OXDEV-9162
+     composer require --no-update oxid-esales/oxideshop-unified-namespace-generator dev-b-1.x-OXDEV-9162
+
+.. important::
      As stated before, OXID eShop 6.1.6 can be made to work with composer 2, when updating to PHP 7.4 and switching to
      .. code:: shell
        composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
@@ -125,12 +132,12 @@ or immediately go the 'full way' and switch to composer 2.
        composer require --no-update ocramius/package-versions "dev-b-1.x-OXDEV-9162 as 1.2.0"
 
 .. important::
-   For OXID eShop 6.0.6, please ensure the following packages are used
+   For OXID eShop 6.2.2, please ensure the following packages are used
    .. code:: shell
-     composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
-     composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
-     composer require --no-update oxid-esales/oxideshop-composer-plugin dev-b-2.x-OXDEV-9162
-     composer require --no-update oxid-esales/oxideshop-unified-namespace-generator dev-b-1.x-OXDEV-9162
+       composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
+       composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
+       composer require --no-update oxid-esales/oxideshop-composer-plugin dev-b-2.x-OXDEV-9162
+       composer require --no-update oxid-esales/oxideshop-unified-namespace-generator dev-b-2.x-OXDEV-9162
 
 #. Run composer update:
    Please keep in mind that we expect this no longer to be possible with composer 1 after 2025-08-01.
