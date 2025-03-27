@@ -7,6 +7,7 @@ Update
    Installing updates (user documentation) <https://docs.oxid-esales.com/eshop/en/6.5/installation/update/index.html>
    upgrade-from-CE-to-PE
    upgrade-from-PE-to-EE
+   composer_one
 
 .. important::
 
