@@ -68,7 +68,7 @@ Manually assemble the composer.json
 
    .. code:: shell
 
-      composer show --installed --format=json
+      composer show --installed --format=json --no-dev
 
    All components currently installed are displayed with their exact version numbers.
 
@@ -83,8 +83,7 @@ Manually assemble the composer.json
       ....
 
 #. Remove all occurrences of OXID eShop metapackages (:code:`oxideshop-metapackage-*`) from this list, as their requirements are already included.
-#. Remove all packages from require-dev section of the original composer.json (like :code:`oxid-esales/testing-library` and :code:`incenteev/composer-parameter-handler`)
-#. Remove "scripts" and "extra" section from the new composer.json
+#. Remove "require-dev", "scripts" and "extra" section from the new composer.json
 #. Replace the :code:`"require": { ...}` section in your root :file:`composer.json` file with this content.
 #. Backup your current :file:`composer.lock` file.
 
