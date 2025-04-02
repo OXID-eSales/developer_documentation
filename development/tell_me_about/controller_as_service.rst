@@ -24,7 +24,7 @@ Controller Class
 
 New service controllers are very similar to standard controllers; they must extend
 `OxidEsales\EshopCommunity\Core\Controller\BaseController` or
-implement `OxidEsales\EshopCommunity\Internal\Framework\Controller\ControllerInterface`.
+implement `OxidEsales\EshopCommunity\Internal\Framework\Controller\ViewControllerInterface`.
 
 |example|
 
@@ -53,7 +53,7 @@ Register your controller in a :file:`service.yaml` file of your module, componen
 
 Controller service visibility must be declared as public and its description must contain special controller tags:
 
-    - `name: "oxid.controller"`
+    - `name: "oxid.view_controller"`
     - `controller_key: "some-unique-controller-key"`
 
 `controller_key` must contain a unique value because it will be used to identify your controller by the `cl` parameter in the URL,
@@ -65,7 +65,7 @@ similar to other OXID controllers.
 
       MyModule\MyModuleController:
         tags:
-          - { name: 'oxid.controller', controller_key: 'my_controller_key' }
+          - { name: 'oxid.view_controller', controller_key: 'my_controller_key' }
         public: true
 
 Following this example, we should be able to call our controller via the following URL:
@@ -121,7 +121,7 @@ But you can decorate them like any other service. For more information, see the 
 .. note::
 
     Because each Controller Decorator must implement
-    `OxidEsales\EshopCommunity\Internal\Framework\Controller\ControllerInterface`,
+    `OxidEsales\EshopCommunity\Internal\Framework\Controller\ViewControllerInterface`,
     you may find yourself creating a lot of boilerplate code when trying to change only one method's behavior.
 
     Instead, make your decorator inherit from
@@ -139,11 +139,11 @@ For example, if you want to decorate only the `init()` function:
     namespace MyModule;
 
     use OxidEsales\EshopCommunity\Internal\Framework\Controller\AbstractControllerDecorator;
-    use OxidEsales\EshopCommunity\Internal\Framework\Controller\ControllerInterface;
+    use OxidEsales\EshopCommunity\Internal\Framework\Controller\ViewControllerInterface;
 
     class ControllerAsServiceDecorator extends AbstractControllerDecorator
     {
-        public function __construct(protected readonly ControllerInterface $originalController)
+        public function __construct(protected readonly ViewControllerInterface $originalController)
         {
         }
 
