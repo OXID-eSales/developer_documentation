@@ -42,6 +42,10 @@ The variables listed will be transferred to container parameters:
 * blUseRightsRoles -> **new**: ``oxid_esales.user_rights_roles_mode``
 * aMultishopArticleFields -> **new**: ``oxid_esales.multi_shop_article_fields``
 * blMallSharedBasket -> **new**: ``oxid_esales.mall_shared_basket``
+* passwordHashingBcryptCost -> **new**: ``oxid_esales.utility.hash.service.password_hash.bcrypt.cost``
+* passwordHashingArgon2MemoryCost -> **new**: ``oxid_esales.utility.hash.service.password_hash.argon2.memory_cost``
+* passwordHashingArgon2TimeCost -> **new**: ``oxid_esales.utility.hash.service.password_hash.argon2.time_cost``
+* passwordHashingArgon2Threads -> **new**: ``oxid_esales.utility.hash.service.password_hash.argon2.threads``
 
 Removed variables
 -----------------
@@ -70,3 +74,4 @@ Removed variables
 * blUseTimeCheck
 * blUseStock
 * blEnterNetPrice
+* passwordHashingAlgorithm

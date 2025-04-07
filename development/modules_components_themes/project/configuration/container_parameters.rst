@@ -234,3 +234,6 @@ oxid_esales.cacheable_user_components
 
 oxid_esales.demo_shop_mode
     Enables shop demo mode.
+
+oxid_esales.utility.hash.service.password_hash.bcrypt.cost, oxid_esales.utility.hash.service.password_hash.argon2.memory_cost, oxid_esales.utility.hash.service.password_hash.argon2.time_cost, oxid_esales.utility.hash.service.password_hash.argon2.threads
+    Configurations for the password hashing algorithm (see  `password_hash() <https://php.net/manual/en/function.password-hash.php>`__ documentation)
