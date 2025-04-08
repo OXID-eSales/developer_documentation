@@ -32,26 +32,20 @@
   {# Usercentrics CMP Script Tag #}
   <script type="application/javascript" src="https://app.usercentrics.eu/latest/main.js" id="FTseB8ZRL" ></script>
 
-
   {%- block scripts %}
   <!--[if lt IE 9]>
-    <script src="{{ pathto('_static/js/html5shiv.min.js', 1) }}"></script>
+  <script src="{{ pathto('_static/js/html5shiv.min.js', 1) }}"></script>
   <![endif]-->
-
-  {% endif %}
-
-    {# OPENSEARCH #}
-    {%- if use_opensearch %}
-    <link rel="search" type="application/opensearchdescription+xml"
-          title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}"
-          href="{{ pathto('_static/opensearch.xml', 1) }}"/>
-    {%- endif %}
-  {%- endif %}
   {%- endblock %}
+
+  {%- if use_opensearch %}
+  <link rel="search" type="application/opensearchdescription+xml"
+        title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}"
+        href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+  {%- endif %}
 
   {# CSS #}
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
-  {% endif %}
 
   {% for cssfile in css_files %}
   <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
@@ -63,12 +57,10 @@
 
   {%- block linktags %}
   {%- if hasdoc('about') %}
-  <link rel="author" title="{{ _('About these documents') }}"
-        href="{{ pathto('about') }}"/>
+  <link rel="author" title="{{ _('About these documents') }}" href="{{ pathto('about') }}"/>
   {%- endif %}
   {%- if hasdoc('genindex') %}
-  <link rel="index" title="{{ _('Index') }}"
-        href="{{ pathto('genindex') }}"/>
+  <link rel="index" title="{{ _('Index') }}" href="{{ pathto('genindex') }}"/>
   {%- endif %}
   {%- if hasdoc('search') %}
   <link rel="search" title="{{ _('Search') }}" href="{{ pathto('search') }}"/>
@@ -152,19 +144,6 @@
 
   <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
-    <!--
-    <div class="alert wy-text-center cookiealert show" role="alert">
-
-      This is the developer documentation for OXID eShop 6.5, which has reached End of Life (EOL) and is no longer supported.
-
-      <button type="button" class="btn btn-primary btn-sm acceptcookies" style="background-color:#C02124" aria-label="Close">
-        Ich habe verstanden
-      </button>
-
-    </div>
-    -->
-
-    {# MOBILE NAV, TRIGGLES SIDE NAV ON TOGGLE #}
     <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
       {% block mobile_nav %}
       <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
@@ -192,10 +171,10 @@
   </section>
 
 </div>
+
 {% include "versions.html" %}
 
 {% if not embedded %}
-
 <script type="text/javascript">
   var DOCUMENTATION_OPTIONS = {
     URL_ROOT:'{{ url_root }}',
@@ -210,7 +189,6 @@
 {%- for scriptfile in script_files %}
 <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
 {%- endfor %}
-
 {% endif %}
 
 {# RTD hosts this file, so just load on non RTD builds #}
