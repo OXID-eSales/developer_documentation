@@ -3,13 +3,13 @@ Configuration parameters
 
 .. note::
 
-    The container cache must be rebuild after changing the value of a parameter.
+    The container cache must be rebuilt after changing the value of a parameter.
 
     Use the following command to easily and safely clear the cache:
 
-    .. code::
+    .. code:: bash
 
-        ./vendor/bin/oe-console oe:cache:clear
+       ./vendor/bin/oe-console oe:cache:clear
 
 E-mail configuration
 --------------------
@@ -40,5 +40,7 @@ If order notification e-mails are disabled, in ``source/log/oxideshop.log`` the 
 
 .. note::
 
-    The default log level is *error*. To have the notice messages logged, it's necessary to set the log level
-    parameter to *notice*.
+    The default log level is *error*.
+
+    To have the notice messages logged, in the :file:`config.inc.php` file, set the log level
+    parameter ``$this->sLogLevel``  to ``notice``.

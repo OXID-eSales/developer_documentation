@@ -1,63 +1,60 @@
 Environment variables
 =====================
 
-OXID eShop now supports loading environment variables via a `.env` file. This feature simplifies the management of sensitive configuration values and environment-specific settings.
+OXID eShop supports loading environment variables via a `.env` file.
 
-**Feature Overview**
---------------------
+This feature simplifies the management of sensitive configuration values and environment-specific settings.
 
-Define environment variables in a `.env` file located in the root directory of your project. These variables can then be accessed using:
+Feature Overview
+----------------
 
-- The `getenv()` PHP function.
-- Injection into container parameters.
+Define environment variables in a `.env` file located in the root directory of your project.
 
-**How to Use**
---------------
+These variables can then be accessed using:
 
-### Step 1: Create a `.env` File
+* The `getenv()` PHP function
+* Injection into container parameters
 
-Create a `.env` file in the root directory of your project. Define your environment variables in the following format:
+Using environment variables
+---------------------------
 
-.. code-block:: ini
+1. Create a `.env` file in the root directory of your project. Define your environment variables in the following format:
 
-    # .env
-    OXID_ENV=production
-    DATABASE_URL=mysql://user:password@127.0.0.1:3306/db_name
-    API_KEY=your_api_key_here
+   .. code-block:: ini
 
-### Step 2: Access Environment Variables
+      # .env
+      OXID_ENV=production
+      DATABASE_URL=mysql://user:password@127.0.0.1:3306/db_name
+      API_KEY=your_api_key_here
 
-You can access the loaded environment variables in two ways:
+#. Access the loaded environment variables in one of the following two ways:
 
-1. **Using `getenv()` in your PHP code:**
+   * Use `getenv()` in your PHP code:
 
-.. code-block:: php
+     .. code-block:: php
 
-    <?php
+        <?php
 
-    $environment = getenv('OXID_ENV');
-    echo "Current environment: $environment";
+        $environment = getenv('OXID_ENV');
+        echo "Current environment: $environment";
 
-2. **Injecting Variables into `services.yaml`:**
+   * Define the environment variables in your `services.yaml` configuration file to be used in services:
 
-Define the environment variables in your `services.yaml` configuration file for use in services:
+     .. code-block:: yaml
 
-.. code-block:: yaml
+        parameters:
+            app.env: '%env(OXID_ENV)%'
+            database.url: '%env(DATABASE_URL)%'
+            api.key: '%env(API_KEY)%'
 
-    parameters:
-        app.env: '%env(OXID_ENV)%'
-        database.url: '%env(DATABASE_URL)%'
-        api.key: '%env(API_KEY)%'
+        services:
+            App\Service\SomeService:
+                arguments:
+                    $env: '%app.env%'
+                    $dbUrl: '%database.url%'
 
-    services:
-        App\Service\SomeService:
-            arguments:
-                $env: '%app.env%'
-                $dbUrl: '%database.url%'
+Implementing Best Practices
+---------------------------
 
-**Best Practices**
-------------------
-
-1. **Do not commit the `.env` file**: Add the `.env` file to your `.gitignore` to prevent sensitive data from being pushed to version control.
-
-2. **Use `.env.dist` for defaults**: Provide a `.env.dist` file with default values to help other developers set up their local environment.
+* To prevent sensitive data from being pushed to version control, do not commit the `.env` file. Instead, add it to your `.gitignore` file.
+* To help other developers set up their local environment, provide a `.env.dist` file with default values.

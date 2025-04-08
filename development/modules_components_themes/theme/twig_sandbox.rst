@@ -1,57 +1,69 @@
 Using the Twig Sandbox Extension
 ================================
 
+.. todo: #HR: ist there a reason while the file was not included in the toctree?
+
 Twig offers a `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sandbox-extension>`__ that enables the use
-of the ``{% sandbox %}`` tag with the ``{% include %}`` and ``{% include_content %}`` tags. This extension is
-particularly useful for controlling which tags, filters, and functions are allowed within templates, enhancing security
-in dynamic template rendering. Below are the steps to configure and use the Twig Sandbox extension in OXID eShop.
+of the ``{% sandbox %}`` tag with the ``{% include %}`` and ``{% include_content %}`` tags.
 
-1. Create a sandbox extension factory
+This extension is particularly useful for controlling which tags, filters, and functions are allowed within templates, enhancing security during dynamic template rendering.
 
-.. code:: php
+To configure and use the Twig Sandbox extension in your OXID eShop, perform the following steps.
 
-    class SandboxExtensionFactory
-    {
-        public static function getExtension(): Twig\Extension\SandboxExtension
+|procedure|
+
+1. Create a sandbox extension factory.
+
+   .. todo: #HR: Reichen die Beispiele so roh, oder wären erklärungen nötig/hilfreich, warum bestimmte Tags, Filter und Funktionen erlaubt sind, warum in unserem Beispiel escape und raw erlaubt sind oder warum for als Tag zugelassen ist?
+
+   .. code:: php
+
+        class SandboxExtensionFactory
         {
-            $policy = new Twig\Sandbox\SecurityPolicy(
-                allowedTags: ['for'],
-                allowedFilters: ['escape', 'raw'],
-                allowedFunctions: ['range'],
-            );
-            return new Twig\Extension\SandboxExtension($policy);
+            public static function getExtension(): Twig\Extension\SandboxExtension
+            {
+                $policy = new Twig\Sandbox\SecurityPolicy(
+                    allowedTags: ['for'],
+                    allowedFilters: ['escape', 'raw'],
+                    allowedFunctions: ['range'],
+                );
+                return new Twig\Extension\SandboxExtension($policy);
+            }
         }
-    }
 
-2. Register the sandbox extension
+#. Register the sandbox extension.
 
-.. code:: yaml
+   .. todo: #HR: Wo registriere ich? in services.yml oder service.yml?
 
-    ACME\Twig\Extensions\SandboxExtensionFactory:
-      class: ACME\Twig\Extensions\SandboxExtensionFactory
+   .. code:: yaml
 
-    Twig\Extension\SandboxExtension:
-      factory: ['ACME\Twig\Extensions\SandboxExtensionFactory', 'getExtension']
-      tags: [ 'twig.extension' ]
+        ACME\Twig\Extensions\SandboxExtensionFactory:
+          class: ACME\Twig\Extensions\SandboxExtensionFactory
 
-3. Clear the cache
+        Twig\Extension\SandboxExtension:
+          factory: ['ACME\Twig\Extensions\SandboxExtensionFactory', 'getExtension']
+          tags: [ 'twig.extension' ]
 
-.. code:: bash
+#. Clear the cache.
 
-    vendor/bin/oe-console oe:cache:clear
+   .. code:: bash
 
-4. Wrap template includes with the ``{% sandbox %}`` tag to enforce the sandbox policy
+      vendor/bin/oe-console oe:cache:clear
 
-.. code:: twig
+#. To enforce the sandbox policy, wrap template includes with the ``{% sandbox %}`` tag.
 
-    {% sandbox %}
-        {% include 'user.html.twig' %}
-    {% endsandbox %}
+   .. code:: twig
 
-    # Or
+        {% sandbox %}
+            {% include 'user.html.twig' %}
+        {% endsandbox %}
 
-    {% sandbox %}
-        {% include_content "sandbox_test" %}
-    {% endsandbox %}
+        # Or
 
-5. Templates that do not comply with the defined sandbox policy will trigger a ``Twig\Sandbox\SecurityError`` exception
+        {% sandbox %}
+            {% include_content "sandbox_test" %}
+        {% endsandbox %}
+
+#. Templates that do not comply with the defined sandbox policy will trigger a ``Twig\Sandbox\SecurityError`` exception.
+
+   .. todo: #HR: Könnte es nützlich sein, ein Beispiel zu geben, was genau eine Ausnahme auslöst, wie zum Beispiel das Verwenden eines nicht erlaubten Tags oder einer nicht erlaubten Funktion?
