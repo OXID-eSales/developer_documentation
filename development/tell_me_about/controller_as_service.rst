@@ -48,6 +48,7 @@ Service Registration
 --------------------
 
 .. todo: #HR: Is the file called :file:`services.yaml` as above) or :file:`service.yaml`?
+         #HR 2025-04-08: services.yaml
 
 Register your controller in a :file:`services.yaml` file of your module, component or project.
 
@@ -161,6 +162,7 @@ Then register your decorator in a :file:`service.yaml`, remember that decorators
 |example|
 
 .. todo: #HR: must it be: "decorates: MyModule\MyModuleController" instead of "decorates: Oxid\ControllerAsService" in the following, according to the above definition:     class MyModuleController extends BaseController
+         #HR: this is not meant as example to decorate the above module controller, it just decorates a theoretical Oxid\ControllerAsService
 
 .. code:: yaml
 

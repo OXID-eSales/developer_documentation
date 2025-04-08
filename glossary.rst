@@ -93,6 +93,8 @@ The components and their version are specified in the user documentation in the 
     .. todo: SP: liste der IDs nicht mehr gepflegt, da in der Praxis keine Probleme, weil es namespaces gibt: Empfehlung: Module sinnvoll prefixen, als Modul-Entwicler nicht z.B oe für oxid, osc für OXID Solution Catalyst verwenden;
     For more information about the *Vendor ID*, see https://oxidforge.org/en/extension-acronyms.
 
+    .. todo: #HR 2025-04-08: see related comments about this topic
+
 OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
 
