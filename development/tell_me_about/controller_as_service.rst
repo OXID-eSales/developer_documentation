@@ -49,7 +49,7 @@ Service Registration
 
 .. todo: #HR: Is the file called :file:`services.yaml` as above) or :file:`service.yaml`?
 
-Register your controller in a :file:`service.yaml` file of your module, component or project.
+Register your controller in a :file:`services.yaml` file of your module, component or project.
 
 Controller service visibility must be declared as public and its description must contain special controller tags:
 
@@ -99,6 +99,7 @@ Following this example, we should be able to call our controller via the followi
     Bad example:
 
     .. todo: #HR: The "bad example" uses ContainerFacade, which is discouraged, but the text doesn’t explain why (e.g., tight coupling, testing issues). This could be expanded for clarity.
+             #HR 2025-04-08: Guess no need to explicitly mention that using ContainerFacade only is your last resort. Testing issues, coupling etc. Should be clear from information already.
 
     .. code:: php
 

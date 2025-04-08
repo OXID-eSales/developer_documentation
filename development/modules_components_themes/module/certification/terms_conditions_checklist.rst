@@ -4,6 +4,7 @@ Terms, conditions and checklist
 
 
 .. todo: #HR: #tbd 7.x: section needs to be updated later
+         #HR 2025-04-11: new module certification process needs to be decided first and then it ca be documented.
 
 General
 -------

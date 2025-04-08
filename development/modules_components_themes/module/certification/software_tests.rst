@@ -135,3 +135,5 @@ See :doc:`testing sections </development/testing/index>`
     * Install your module following the instructions delivered with the module.
     * Run all shop and module tests.
     * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
+
+.. todo: #HR 2025-04-08: OXVM is not used for a long time, please verif that docker sdk is mentioned in this documentation
