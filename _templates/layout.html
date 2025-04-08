@@ -89,6 +89,27 @@
   <!-- EOL note based on cookie note https://github.com/Wruczek/Bootstrap-Cookie-Alert -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
 
+  <!-- EOL note: Sicherstellen, dass das Banner nicht die Navigation verdeckt -->
+  <style>
+    .cookiealert {
+      position: fixed;
+      bottom: 0;
+      left: 300px;
+      width: calc(100% - 300px);
+      margin: 0 !important;
+      padding: 0.75rem 1.25rem;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 0;
+      transform: translateY(100%);
+      transition: all 500ms ease-out;
+      color: #ecf0f1;
+      background: #212327;
+    }
+  </style>
+
+
 </head>
 
 <body class="wy-body-for-nav" role="document">
