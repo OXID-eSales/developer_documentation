@@ -18,7 +18,8 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
   To do so, you have asked the third-party vendor if these themes and modules are compatible with version 7 of OXID eShop.
 
-  For updating existing modules from OXID eShop 6.5.x to OXID eShop 7, see :ref:`update/eshop_from_65_to_7/modules:Updating modules`.
+  For updating existing modules from OXID eShop 6.5.x to OXID eShop 7, see :ref:`update/eshop_from_65_to_7/modules/modules:Updating modules`.
+
 
 |procedure|
 
@@ -199,7 +200,7 @@ Before you update to OXID eShop version 7, you have make sure that you meet the 
 
    Background: The OXID eShop Compilation 7 comes with the Twig template engine and the APEX theme.
 
-#. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules:Adjust removed functionality`.
+#. If the shop doesn't work, update your code and modules according to the information under :ref:`update/eshop_from_65_to_7/modules/modules:Adjust removed functionality`.
 
 
 Module configuration and class chain
