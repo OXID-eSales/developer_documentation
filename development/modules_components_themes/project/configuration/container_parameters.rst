@@ -249,6 +249,6 @@ main theme. The shop will check if there is an adapted file in your custom folde
 if not, it will revert to the main folder.
 
 oxid_demo_shop_mode
-^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^
 
 Enables shop demo mode.
