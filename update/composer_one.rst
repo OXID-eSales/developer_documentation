@@ -117,8 +117,8 @@ or immediately go the 'full way' and switch to composer 2.
 
    .. code:: shell
 
-       composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
-       composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
+       composer config repositories.oxideshop/composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
+       composer config repositories.oxideshop/unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
        composer require --no-update oxid-esales/oxideshop-composer-plugin v2.0.5
        composer require --no-update oxid-esales/oxideshop-unified-namespace-generator v2.0.2
 
