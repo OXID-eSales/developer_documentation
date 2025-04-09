@@ -126,8 +126,8 @@ or immediately go the 'full way' and switch to composer 2.
 
      .. code:: shell
 
-       composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
-       composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
+       composer config repositories.oxideshop/composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
+       composer config repositories.oxideshop/unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
        composer require --no-update oxid-esales/oxideshop-composer-plugin v2.0.5
        composer require --no-update oxid-esales/oxideshop-unified-namespace-generator v2.0.2
        composer require --no-update ocramius/package-versions 1.8.0
@@ -138,9 +138,9 @@ or immediately go the 'full way' and switch to composer 2.
 
      .. code:: shell
 
-       composer config repositories.oxideshop_composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
-       composer config repositories.oxideshop-unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
-       composer config repositories.package-versions git https://github.com/OXID-eSales/PackageVersionsOxid
+       composer config repositories.oxideshop/composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
+       composer config repositories.oxideshop/unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
+       composer config repositories.ocramius/package-versions git https://github.com/OXID-eSales/PackageVersionsOxid
        composer require --no-update oxid-esales/oxideshop-composer-plugin v2.0.5
        composer require --no-update oxid-esales/oxideshop-unified-namespace-generator v2.0.2
        composer require --no-update ocramius/package-versions "v1.1.4 as 1.2.0"
