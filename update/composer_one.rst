@@ -1,5 +1,5 @@
-Switch OXID eShop Compilation 6.1.x  from Composer 1 to Composer 2
-==================================================================
+Switch OXID eShop Compilation 6.2.0-6.2.2  from Composer 1 to Composer 2
+========================================================================
 
 OXID Compilations below 6.2.3 are still using composer 1 which will
 be shut down in two steps starting 2025-02-01.
@@ -36,16 +36,7 @@ then replace composer 1 with composer 2 and then verify, that the installation c
 Preparations
 ^^^^^^^^^^^^
 
-#. For OXID eShop 6.1.6 we have two alternatives to switch from composer 1 to composer 2.
-   It is possible to use PHP 7.0 or 7.1, but then a forked version of ocramius/package-versions is needed
-   or the shop will have to be run on PHP 7.4 which is not officially supported with this OXID eShop version.
-   The ocramius/package-versions is required by ocramius/proxy-manager which in turn is
-   needed because of doctrine migrations. The lowest official version compatible with composer 1 and 2 is
-   ocramius/package-versions 1.8.0 and that one is only compatible with PHP 7.4 and up.
-   So either a forked ocramius version that supports Composer-plugin.api 1 and 2 and PHP 7.0 has to be used (provided by OXID), or
-   you try to run OXID eShop 6.1.6 on PHP 7.4.
-   OXID never tested OXID eShop 6.1.6 on PHP 7.4 for a release but we saw it working in a local development setup.
-
+#. Please update your system to use the highest compatible PHP version, which is PHP 7.4 for OXID eShop Compilation 6.2.2.
 #. Backup your existing composer.json and composer.lock files residing in the shop's root directory.
 
 Building a custom metapackage and switching to composer 2
@@ -122,28 +113,14 @@ Now we need to change the composer-plugin-api 1 components to a branch supportin
 or immediately go the 'full way' and switch to composer 2.
 
 .. important::
-     As stated before, OXID eShop 6.1.6 can be made to work with composer 2, when updating to PHP 7.4 and switching to
+   For OXID eShop 6.2.2, please ensure the following packages are used
 
-     .. code:: shell
+   .. code:: shell
 
        composer config repositories.oxideshop/composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
        composer config repositories.oxideshop/unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
        composer require --no-update oxid-esales/oxideshop-composer-plugin v2.0.5
        composer require --no-update oxid-esales/oxideshop-unified-namespace-generator v2.0.2
-       composer require --no-update ocramius/package-versions 1.8.0
-       composer require --no-update ocramius/proxy-manager 2.1.1
-
-.. important::
-     Alternatively OXID eShop 6.1.6 can be made to work with composer 1 and 2 when using PHP 7.0 or 7.1 and using a fork of ocramius/package-versions
-
-     .. code:: shell
-
-       composer config repositories.oxideshop/composer_plugin git https://github.com/OXID-eSales/oxideshop_composer_plugin
-       composer config repositories.oxideshop/unified-namespace-generator git https://github.com/OXID-eSales/oxideshop-unified-namespace-generator
-       composer config repositories.ocramius/package-versions git https://github.com/OXID-eSales/PackageVersionsOxid
-       composer require --no-update oxid-esales/oxideshop-composer-plugin v2.0.5
-       composer require --no-update oxid-esales/oxideshop-unified-namespace-generator v2.0.2
-       composer require --no-update ocramius/package-versions "v1.1.4 as 1.2.0"
 
 #. Run composer update:
    Please keep in mind that we expect this no longer to be possible with composer 1 after 2025-08-01.
