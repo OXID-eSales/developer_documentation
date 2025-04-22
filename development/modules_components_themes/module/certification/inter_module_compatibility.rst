@@ -9,7 +9,7 @@ Vendor Prefixes
 
 .. todo: #VL: VL prüft mit Team und Support: brauchen wir es noch? -- Ziel-Seite fehlt; wie registriert man sein Kürzel?
          #HR: makes still sense to have it but linked page needs to be updated -- how/who updted?
-         #HR 2025-04-08: we need to find that mentioned new target page
+         #HR 2025-04-08: we need to find that mentioned new target page -- z.Z. kein Ersatz
 
 Use a prefix and a vendor namespace consistently.
 
@@ -20,7 +20,8 @@ Use your prefix for your:
 * config parameters
 * language constants
 
-Recommendation: To prevent use by others, reserve your prefix under `forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381 <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`_.
+.. todo: OXDEV-9255: Seite gelegentlich ersetzen: Folgendes wird nicht mehr gepflegt:
+    Recommendation: To prevent use by others, reserve your prefix under `forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381 <https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381>`_.
 
 Namespaces
 ^^^^^^^^^^

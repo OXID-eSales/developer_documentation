@@ -136,4 +136,4 @@ See :doc:`testing sections </development/testing/index>`
     * Run all shop and module tests.
     * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
 
-.. todo: #HR 2025-04-08: OXVM is not used for a long time, please verif that docker sdk is mentioned in this documentation
+.. todo: OXDEV-9255: #HR 2025-04-08: OXVM is not used for a long time, please verify that docker sdk is mentioned in this documentation: zum Testen recipes benutzen; reuse blogpost text;

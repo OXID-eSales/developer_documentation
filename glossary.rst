@@ -89,11 +89,11 @@ The components and their version are specified in the user documentation in the 
     One way to achieve this is using a unique ID for your company, which you can register by making a pull request to
     `here <https://github.com/OXIDprojects/OXIDforge-pages/blob/master/extension_acronyms.md>`__.
     This is ID called a *Vendor ID*.
-    .. todo: #HR: Ist folgende ZRL noch aktuell? https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381
+    .. todo: #HR: Ist folgende URL noch aktuell? https://forum.oxid-esales.com/t/modulkurzel-fur-namespaces-extension-acronyms-for-namespaces/98381
     .. todo: SP: liste der IDs nicht mehr gepflegt, da in der Praxis keine Probleme, weil es namespaces gibt: Empfehlung: Module sinnvoll prefixen, als Modul-Entwicler nicht z.B oe für oxid, osc für OXID Solution Catalyst verwenden;
     For more information about the *Vendor ID*, see https://oxidforge.org/en/extension-acronyms.
 
-    .. todo: #HR 2025-04-08: see related comments about this topic
+    .. todo: OXDEV-9255: #HR 2025-04-08: see related comments about this topic: siehe auch Vendor Prefixes: development/modules_components_themes/module/certification/inter_module_compatibility.rst
 
 OXID eShop component
 ^^^^^^^^^^^^^^^^^^^^
