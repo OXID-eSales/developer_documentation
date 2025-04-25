@@ -133,7 +133,7 @@ html_theme = 'sphinx_rtd_theme'
 #html_theme_options = {}
 
 html_context = {
-    'current_version': '8.0',
+    'current_version': '8.0-alpha.1',
     'versions':
         [
          ('6.0', 'https://docs.oxid-esales.com/developer/en/6.0/'),
@@ -146,7 +146,7 @@ html_context = {
          ('7.1', 'https://docs.oxid-esales.com/developer/en/7.1/'),
          ('7.2', 'https://docs.oxid-esales.com/developer/en/7.2/'),
          ('7.3', 'https://docs.oxid-esales.com/developer/en/7.3/'),
-         ('8.0', 'https://docs.oxid-esales.com/developer/en/8.0/'),
+         ('8.0-alpha.1', 'https://docs.oxid-esales.com/developer/en/8.0-alpha.1/')
         ],
     'css_files': [('_static/oxid.css')],
     'theme_logo_only': True,
@@ -157,7 +157,7 @@ html_context = {
     # Format Template: https://{{ github_host|default("github.com") }}/{{ github_user }}/{{ github_repo }}/blob/{{ github_version }}{{ conf_py_path }}{{ pagename }}{{ suffix }}
     'github_user': 'OXID-eSales',
     'github_repo': 'developer_documentation',
-    'github_version': 'b-8.0.x/'
+    'github_version': 'b-8.0-alpha.1/'
 }
 
 # Add any paths that contain custom themes here, relative to this directory.

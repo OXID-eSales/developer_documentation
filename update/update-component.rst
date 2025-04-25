@@ -6,11 +6,15 @@ The OXID Update Component provides tools for modernizing modules and updating yo
 Installation
 ------------
 
+The component currently needs to be installed into an OXID eShop 8.0-alpha.1 installation to provide
+the 7 to 8 migration features. Please put modules you'd like to modernize in a local repository beside the shop
+installation. Modules do not need to be installed via composer in order to be converted.
+
 Install the component using Composer:
 
 .. code:: bash
 
-    composer require oxid-esales/oxideshop-update-component:^v3.0.0
+    composer require oxid-esales/oxideshop-update-component dev-b-8.0.x
 
 Available Commands
 ------------------

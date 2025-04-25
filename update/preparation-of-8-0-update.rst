@@ -17,17 +17,22 @@ This document provides the steps to update your shop from version 7.x to the new
 Prerequisites
 -------------
 
-Ensure you have installed the :doc:`OXID Update Component <update-component>`.
+You will need a (local development) installation of OXID eShop 8.0-alpha.1. Please refer to your
+OXID eShop Docker SDK resp. our SDK recipes.
+
+Ensure you have installed the :doc:`OXID Update Component <update-component>` into your OXID eShop 8.0-alpha.1.
 
 Update Configuration Files
 --------------------------
 
-The configuration system has been updated in OXID eShop 8. You need to migrate your existing configuration
-from `config.inc.php` to the new `.env` and `parameters.yaml` files:
+The configuration system has been updated in OXID eShop 8. You need to migrate any existing 7.x configuration
+from `config.inc.php` to the new `.env` and `parameters.yaml` files.
+In order to achieve this, please copy any config.in.php you'd like to convert into your 8.0-alpha.1 development
+installation's source path. Then run below listed command:
 
 .. code:: bash
 
-    bin/oe-console oe:update:config-file
+    vendor/bin/oe-console oe:update:config-file
 
 This command will:
 
@@ -38,11 +43,13 @@ This command will:
 
 .. note::
     After verifying that the migration was successful, you can remove the `config.inc.php` file.
+    PLease verify that you do not have parameter duplications in .env.
 
 Migrate dynamic configurations
 ------------------------------
 
-The following configuration parameters will be migrated from the database to their corresponding container parameters:
+The following configuration parameters will be migrated from the database to their corresponding container parameters.
+In order to do so, you need to update your alpha.1 installation's database table `oxconfig` with the actual 7.x data you need to convert.
 
 .. list-table::
     :header-rows: 1
@@ -60,7 +67,7 @@ Command Syntax:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:config-database {remove-old-configuration}
+    vendor/bin/oe-console oe:update:config-database {remove-old-configuration}
 
 Parameters:
 
@@ -73,7 +80,7 @@ Example:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:config-database true
+    vendor/bin/oe-console oe:update:config-database true
 
 Update Twig Templates
 ---------------------
@@ -82,10 +89,12 @@ To update your Twig templates to meet the latest shop requirements, run:
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-templates {target-templates-path}
+    vendor/bin/oe-console oe:update:update-templates {target-templates-path}
 
 The parameter `target-templates-path` specifies the path to the templates that need to be updated.
 Note that the default OXID templates are already updated.
+
+.. todo: #HR Add information what is migrated in templates
 
 Update Module Code
 ------------------
@@ -94,7 +103,7 @@ This command updates specific aspects of your module code to be compatible with 
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-module {module-path} [options]
+    vendor/bin/oe-console oe:update:update-module {module-path} [options]
 
 Available options:
 
@@ -106,7 +115,7 @@ Example:
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-module source/modules/mymodule -c -f
+    vendor/bin/oe-console oe:update:update-module source/modules/mymodule -c -f
 
 .. note::
     It's recommended to run all update commands on a test system first and thoroughly test the results
