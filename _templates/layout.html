@@ -2,7 +2,7 @@
 {%- set url_root = pathto('', 1) %}
 {%- if url_root == '#' %}{% set url_root = '' %}{% endif %}
 {%- if not embedded and docstitle %}
-{%- set titlesuffix = " &mdash; "|safe + docstitle|e %}
+{%- set titlesuffix = " — "|safe + docstitle|e %}
 {%- else %}
 {%- set titlesuffix = "" %}
 {%- endif %}
@@ -45,7 +45,19 @@
   {%- endif %}
 
   {# CSS #}
+  {# OPENSEARCH #}
+  {% if not embedded %}
+  {% if use_opensearch %}
+  <link rel="search" type="application/opensearchdescription+xml" title="{% trans docstitle=docstitle|e %}Search within {{ docstitle }}{% endtrans %}" href="{{ pathto('_static/opensearch.xml', 1) }}"/>
+  {% endif %}
+  {% endif %}
+
+  {# RTD hosts this file, so just load on non RTD builds #}
+  {% if not READTHEDOCS %}
   <link rel="stylesheet" href="{{ pathto('_static/' + style, 1) }}" type="text/css" />
+
+  {# Add pygments.css for syntax highlighting and search result styling #}
+  <link rel="stylesheet" href="{{ pathto('_static/pygments.css', 1) }}" type="text/css" />
 
   {% for cssfile in css_files %}
   <link rel="stylesheet" href="{{ pathto(cssfile, 1) }}" type="text/css" />
@@ -80,6 +92,72 @@
   {%- endif %}
   {%- endblock %}
   {%- block extrahead %} {% endblock %}
+
+  {# Usercentrics CMP Script Tag #}
+  <script type="application/javascript" src="https://app.usercentrics.eu/latest/main.js" id="FTseB8ZRL" ></script>
+
+  {# Keep modernizr in head - http://modernizr.com/docs/#installing #}
+  <script src="{{ pathto('_static/js/modernizr.min.js', 1) }}"></script>
+
+  {# Moved scripts from body to head for search functionality #}
+  {% block scripts %}
+  {% if not embedded %}
+  {% if sphinx_version >= "1.8.0" %}
+  <script type="text/javascript" id="documentation_options" data-url_root="{{ pathto('', 1) }}" src="{{ pathto('_static/documentation_options.js', 1) }}"></script>
+  {%- for scriptfile in script_files %}
+  {{ js_tag(scriptfile) }}
+  {%- endfor %}
+  {% else %}
+  <script type="text/javascript">
+    var DOCUMENTATION_OPTIONS = {
+      URL_ROOT:'{{ url_root }}',
+      VERSION:'{{ release|e }}',
+      LANGUAGE:'{{ language }}',
+      COLLAPSE_INDEX:false,
+      FILE_SUFFIX:'{{ '' if no_search_suffix else file_suffix }}',
+      HAS_SOURCE:  {{ has_source|lower }},
+    SOURCELINK_SUFFIX: '{{ sourcelink_suffix }}'
+    };
+  </script>
+  {%- for scriptfile in script_files %}
+  <script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
+  {%- endfor %}
+  {% endif %}
+  {% if not READTHEDOCS %}
+  <script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
+  {% endif %}
+  {% if theme_sticky_navigation %}
+  <script type="text/javascript">
+    jQuery(function () {
+      SphinxRtdTheme.StickyNav.enable();
+    });
+  </script>
+  {% endif %}
+  {% endif %}
+  {% endblock %}
+
+  <!-- EOL note based on cookie note https://github.com/Wruczek/Bootstrap-Cookie-Alert -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Wruczek/Bootstrap-Cookie-Alert@gh-pages/cookiealert.css">
+  <!-- EOL note: Sicherstellen, dass das Banner nicht die Navigation verdeckt -->
+  <style>
+    .cookiealert {
+      position: fixed;
+      bottom: 0;
+      left: 300px;
+      width: calc(100% - 300px);
+      margin: 0 !important;
+      padding: 0.75rem 1.25rem;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      border-radius: 0;
+      transform: translateY(100%);
+      transition: all 500ms ease-out;
+      color: #ecf0f1;
+      background: #212327;
+    }
+  </style>
+
 </head>
 
 <body class="wy-body-for-nav" role="document">
@@ -151,7 +229,6 @@
       {% endblock %}
     </nav>
 
-
     {# PAGE CONTENT #}
     <div class="wy-nav-content">
       <div class="rst-content">
@@ -173,37 +250,6 @@
 </div>
 
 {% include "versions.html" %}
-
-{% if not embedded %}
-<script type="text/javascript">
-  var DOCUMENTATION_OPTIONS = {
-    URL_ROOT:'{{ url_root }}',
-    VERSION:'{{ release|e }}',
-    LANGUAGE:'{{ language }}',
-    COLLAPSE_INDEX:false,
-    FILE_SUFFIX:'{{ '' if no_search_suffix else file_suffix }}',
-    HAS_SOURCE:  {{ has_source|lower }},
-  SOURCELINK_SUFFIX: '{{ sourcelink_suffix }}'
-  };
-</script>
-{%- for scriptfile in script_files %}
-<script type="text/javascript" src="{{ pathto(scriptfile, 1) }}"></script>
-{%- endfor %}
-{% endif %}
-
-{# RTD hosts this file, so just load on non RTD builds #}
-{% if not READTHEDOCS %}
-<script type="text/javascript" src="{{ pathto('_static/js/theme.js', 1) }}"></script>
-{% endif %}
-
-{# STICKY NAVIGATION #}
-{% if theme_sticky_navigation %}
-<script type="text/javascript">
-  jQuery(function () {
-    SphinxRtdTheme.StickyNav.enable();
-  });
-</script>
-{% endif %}
 
 {%- block footer %} {% endblock %}
 </body>
