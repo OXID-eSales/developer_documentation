@@ -101,6 +101,7 @@ Available options:
 * ``-c, --config``: Update configuration parameter calls to new format
 * ``-f, --facts``: Update Facts and Edition related code
 * ``-t, --transaction``: Update database transaction handling code to use new connection factory
+* ``-d, --database``: Update database access code to new Doctrine DBAL standards
 
 Example:
 
