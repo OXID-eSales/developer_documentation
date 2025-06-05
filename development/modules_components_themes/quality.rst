@@ -11,10 +11,12 @@ Goals
     * our customers’ data integrity being compromised, and sensitive information being exposed
     * lawsuits
     * harm to our credibility and brand
+
 * Minimize downtimes, bugs and issues to avoid that customers
 
     * develop mistrust in our product
     * search for more reliable solutions from competitors
+
 * Improve productivity by writing clean code that
 
     * avoids the accumulation of technical obstacles
@@ -24,6 +26,7 @@ Main requirements
 -----------------
 
 Ensure your solution meets the following requirements:
+
 * Your code supports all PHP versions listed for the used OXID eShop version.
 * You have properly structured your code:
 
@@ -32,7 +35,7 @@ Ensure your solution meets the following requirements:
     * Split services into easy to understand, small testable units.
 
 * You have thoroughly tested your code.
-* All files use ``strict_types`` flag.
+* All class files use ``strict_types`` flag.
 * A Readme file in the root directory of your solution describes:
 
     * which requirements and compatibilities are to be met
@@ -66,6 +69,7 @@ Observe the following quality criteria:
     * Test service units by performing unit tests with PHPUnit.
     * Test the component integration by performing integration tests with PHPUnit in a separate directory.
     * Test the frontend workflow chains by performing acceptance tests using a User Acceptance Test Framework.
+
 * Your code’s C.R.A.P index is below 30.
 * Your code’s methods cyclomatic complexity is below 10.
 * Your code style meets the PSR-12 standard (for more information, see `php-fig.org/psr/psr-12 <https://www.php-fig.org/psr/psr-12/>`_).
@@ -99,7 +103,7 @@ OXID eSales recommends the following productivity tools:
 Sonarcloud
 ^^^^^^^^^^
 
-Use Sonarcloud as a final report point for psalm issues, code coverage reports, code duplications analysis.
+Use Sonarcloud as a final report point for psalm/phpstan issues, code coverage reports, code duplications analysis.
 
 Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `module-template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
 
