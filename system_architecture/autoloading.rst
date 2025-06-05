@@ -76,3 +76,17 @@ extension of any active module, as modules can extend other module
 classes. This is also the case when extension is created via
 ``new ExtendedClass`` instead of ``oxNew``, and as ExtendedClass\_parent
 class does not exist, it has to be created at this point.
+
+Troubleshooting autoloaders
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+    When running ``composer remove <some_package>`` command in OXID eShop Compilation, composer might end up in a
+    state during excecution of this command where the standard autoloader is not available. The command then fails
+    with class not found error although the class should be present. This issue wil be prevented by adding following
+    configuration option into the root compopser.json file:
+
+    .. code:: bash
+
+        "config": {
+            "prepend-autoloader": false,
