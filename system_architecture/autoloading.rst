@@ -81,7 +81,7 @@ Troubleshooting autoloaders
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-    When running ``composer remove <some_package>`` command in OXID eShop Compilation 7.3, composer might end up in a
+    When running ``composer remove <some_package>`` command in OXID eShop Compilation, composer might end up in a
     state during excecution of this command where the standard autoloader is not available. The command then fails
     with class not found error although the class should be present. This issue wil be prevented by adding following
     configuration option into the root compopser.json file:
