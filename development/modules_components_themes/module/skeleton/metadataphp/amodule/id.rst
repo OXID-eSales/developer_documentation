@@ -1,14 +1,12 @@
 id
 ==
 
-.. todo #HR: wie todo oben: VL prüft; https://oxidforge.org/de/modulkurzel outdated? Wo liegt die Datei jetzt? "This file is outdated for we moved on to another system to display your acronyms, namespaces"
-        #HR 2025-04-08: looks like no new information is to be found. For now please just state that doublecheck the old list of taken modulkürzel and pick one that does not copy an existing one.
-
-
 Description
     The extension id must be unique.
 
-    It is recommended to use `vendor prefix <https://oxidforge.org/de/modulkurzel>`_ + the module root directory name.
+    It is recommended to use the vendor prefix + the module root directory name.
+
+    For more information, see :ref:`development/modules_components_themes/module/certification/inter_module_compatibility:Vendor Prefixes`.
 
     The module ID is used for getting all needed information about extension.
 
