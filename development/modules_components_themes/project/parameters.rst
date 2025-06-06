@@ -27,9 +27,11 @@ Disabling e-mail notifications can be useful, for example, if your ERP is respon
 
 To disable order e-mail notifications, in the ``source/Internal/Utility/Email/services.yaml`` file, set the ``oxid_esales.email.disable_order_emails`` to ``true``.
 
-.. code:: yaml
+.. code-block:: yaml
+   :caption: var/configuration/configurable_services.yaml
 
-   oxid_esales.email.disable_order_emails: true
+    parameters:
+      oxid_esales.email.disable_order_emails: true
 
 |result|
 

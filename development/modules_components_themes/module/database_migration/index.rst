@@ -4,7 +4,7 @@ Database Migration
 ==================
 
 Modules can have their own migrations. To get comprehensive information about migrations in OXID eShop,
-check :doc:`database migrations documentation <../../../tell_me_about/migrations>`.
+check the database migrations documentation under :doc:`Migrations <../../../tell_me_about/migrations>`.
 
 Configuration
 -------------
