@@ -211,7 +211,7 @@ into ``fixtures.php`` file.
                 'oxcreate' => date("Y-m-d"),
                 'OXREGISTER' => date("Y-m-d"),
                 'OXBIRTHDATE' => date("Y-m-d"),
-                'oxpassword' => md5('myuser'),
+                'oxpassword' => password_hash('myuser', PASSWORD_DEFAULT),
                 'OXRIGHTS' => 'user'
             ],
             'myUserPassword' => [

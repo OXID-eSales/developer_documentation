@@ -98,7 +98,7 @@ At this point the database connection is ready and the ``create`` method must be
 
       $queryBuilder = $queryBuilderFactory->create();
 
-Now all types of SQL queries can be generated, based on the `Doctrine DBAL Documentation <https://www.doctrine-project.org/projects/doctrine-dbal/en/2.5/reference/query-builder.html#sql-query-builder>`__.
+Now all types of SQL queries can be generated, based on the `Doctrine DBAL Documentation <https://www.doctrine-project.org/projects/doctrine-dbal/en/4.2/reference/query-builder.html#sql-query-builder>`__.
 
 Sample:
    .. code:: php
@@ -113,7 +113,7 @@ Sample:
                 'name'      => $name,
             ]);
 
-      $blocksData = $queryBuilder->execute();
+      $blocksData = $queryBuilder->executeQuery();
       $blocksData = $blocksData->fetchAllAssociative();
 
 
