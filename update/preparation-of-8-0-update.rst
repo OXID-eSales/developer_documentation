@@ -14,6 +14,11 @@ This document provides the steps to update your shop from version 7.x to the new
     The ``config.inc.php`` file was removed; here is the list of configuration parameters:
     :ref:`See details <configIncParamsChanges>`
 
+.. note::
+    Modules in OXID eShop are heavily reliant on the `Facts` component being removed in version 8.0.
+    To ensure backward compatibility and ease the transition process, `BC-Facts` has been introduced.
+    It provides a temporary replacement for the `Facts` component, allowing modules to continue working during the update. Note that `BC-Facts` will depend on the Community Edition (CE).
+
 Prerequisites
 -------------
 
