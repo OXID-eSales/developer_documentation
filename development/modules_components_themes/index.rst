@@ -18,13 +18,10 @@ features that are described in the section :doc:`Tell Me Something About Topic X
     component
 
 
-What you need to consider if you want to contribute to the development can be found under
-
 .. toctree::
     :titlesonly:
     :maxdepth: 2
     :glob:
 
-    contribution
     quality
     licenses

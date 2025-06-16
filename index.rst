@@ -18,6 +18,7 @@ Table of Contents
    development/index
    system_architecture/index
    update/index
+   contributing
    Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
 
 
@@ -38,8 +39,7 @@ can be found :doc:`here <conventions>`.
 Help improving OXID eShop
 -------------------------
 
-Please read the `documentation how to contribute via pull
-requests <https://github.com/OXID-eSales/oxideshop_ce/blob/master/CONTRIBUTING.md>`__
+Please read the :doc:`contributing guide <contributing>` to learn how to contribute via pull requests.
 
 
 Useful links
