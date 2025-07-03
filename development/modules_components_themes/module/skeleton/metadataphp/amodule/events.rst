@@ -22,13 +22,14 @@ Example
 
     If you want to use your module services in the `onActivate` method the `ContainerFactory` should not be used for
     getting your services, because they aren't included in the container from the `ContainerFactory` during the activation
-    process. You have to get a new container from the `ContainerBuilderFactory`. See an example below:
+    process. You have to get a new container from the `ContainerBuilder`. See an example below:
 
 .. code:: php
 
     public static function onActivate(): void
     {
-        $container = (new ContainerBuilderFactory())->create()->getContainer();
+        $containerBuilder = new ContainerBuilder(new BasicContext(), (new ShopIdCalculator(new UtilsServer()))->getShopId());
+        $container = $containerBuilder->getContainer();
         $container->compile();
 
         $myService = $container->get('<service-id>');
