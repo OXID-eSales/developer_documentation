@@ -24,7 +24,7 @@ Using environment variables
 
       # .env
       OXID_ENV=production
-      DATABASE_URL=mysql://user:password@127.0.0.1:3306/db_name
+      AI_EMBEDDINGS_DATABASE=mysql://user:password@127.0.0.1:3306/db_name
       API_KEY=your_api_key_here
 
 #. Access the loaded environment variables in one of the following two ways:
@@ -44,14 +44,14 @@ Using environment variables
 
         parameters:
             app.env: '%env(OXID_ENV)%'
-            database.url: '%env(DATABASE_URL)%'
+            embeddings.db: '%env(AI_EMBEDDINGS_DATABASE)%'
             api.key: '%env(API_KEY)%'
 
         services:
             App\Service\SomeService:
                 arguments:
                     $env: '%app.env%'
-                    $dbUrl: '%database.url%'
+                    $dbUrl: '%embeddings.db%'
 
 Implementing Best Practices
 ---------------------------
