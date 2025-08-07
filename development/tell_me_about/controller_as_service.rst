@@ -47,9 +47,7 @@ implement `OxidEsales\EshopCommunity\Internal\Framework\Controller\ViewControlle
 Service Registration
 --------------------
 
-.. todo: #HR: Is the file called :file:`services.yaml` as above) or :file:`service.yaml`?
-
-Register your controller in a :file:`service.yaml` file of your module, component or project.
+Register your controller in a :file:`services.yaml` file of your module, component or project.
 
 Controller service visibility must be declared as public and its description must contain special controller tags:
 
@@ -96,9 +94,7 @@ Following this example, we should be able to call our controller via the followi
             }
         }
 
-    Bad example:
-
-    .. todo: #HR: The "bad example" uses ContainerFacade, which is discouraged, but the text doesn’t explain why (e.g., tight coupling, testing issues). This could be expanded for clarity.
+    Bad example (using ContainerFacade which is not recommended due to testing issues, for example):
 
     .. code:: php
 
@@ -155,11 +151,9 @@ For example, if you want to decorate only the `init()` function:
         }
     }
 
-Then register your decorator in a :file:`service.yaml`, remember that decorators must be `public`:
+Then register your decorator in a :file:`services.yaml`, remember that decorators must be `public`.
 
 |example|
-
-.. todo: #HR: must it be: "decorates: MyModule\MyModuleController" instead of "decorates: Oxid\ControllerAsService" in the following, according to the above definition:     class MyModuleController extends BaseController
 
 .. code:: yaml
 

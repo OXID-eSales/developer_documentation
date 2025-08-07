@@ -1,8 +1,6 @@
 Using the Twig Sandbox Extension
 ================================
 
-.. todo: #HR: ist there a reason while the file was not included in the toctree?
-
 Twig offers a `Sandbox extension <https://twig.symfony.com/doc/3.x/api.html#sandbox-extension>`__ that enables the use
 of the ``{% sandbox %}`` tag with the ``{% include %}`` and ``{% include_content %}`` tags.
 
@@ -13,8 +11,6 @@ To configure and use the Twig Sandbox extension in your OXID eShop, perform the 
 |procedure|
 
 1. Create a sandbox extension factory.
-
-   .. todo: #HR: Reichen die Beispiele so roh, oder wären erklärungen nötig/hilfreich, warum bestimmte Tags, Filter und Funktionen erlaubt sind, warum in unserem Beispiel escape und raw erlaubt sind oder warum for als Tag zugelassen ist?
 
    .. code:: php
 
@@ -31,9 +27,7 @@ To configure and use the Twig Sandbox extension in your OXID eShop, perform the 
             }
         }
 
-#. Register the sandbox extension.
-
-   .. todo: #HR: Wo registriere ich? in services.yml oder service.yml?
+#. To register the sandbox extension, define the necessary services in your component's or module's ``services.yaml`` file as follows:
 
    .. code:: yaml
 
@@ -66,4 +60,3 @@ To configure and use the Twig Sandbox extension in your OXID eShop, perform the 
 
 #. Templates that do not comply with the defined sandbox policy will trigger a ``Twig\Sandbox\SecurityError`` exception.
 
-   .. todo: #HR: Könnte es nützlich sein, ein Beispiel zu geben, was genau eine Ausnahme auslöst, wie zum Beispiel das Verwenden eines nicht erlaubten Tags oder einer nicht erlaubten Funktion?

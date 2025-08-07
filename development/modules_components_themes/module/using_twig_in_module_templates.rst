@@ -197,7 +197,7 @@ If the inheritance chain is not rendered as expected, adjust it in the correspon
 ::
 
     # Values in var/configuration/shops/<shop-id>/template_extension_chain.yaml file
-    'page/some-template.html.twig': //name of the extended template
+    page/some-template.html.twig: //name of the extended template
         - module-id-3 //highest-priority module ID (the template will be loaded last in the chain)
         - module-id-2
         - module-id-4 //lowest-priority module ID (the template will be loaded earlier in the chain)

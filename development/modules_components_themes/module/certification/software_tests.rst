@@ -125,13 +125,18 @@ Running tests
 
 See :doc:`testing sections </development/testing/index>`
 
-.. todo:  #HR: 'OXVM' is mentioned but not explained; clarify later
-    Run module tests before applying for certification
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-    Before sending module for certification to OXID eSales first follow these steps:
-    * Generate a clean setup of the OXVM (with testing tools)
-    * Follow the instructions (see Readme file of the OXVM) to install the desired shop version and edition.
-      A clean instance will be created automatically on provision (by vagrant).
-    * Install your module following the instructions delivered with the module.
-    * Run all shop and module tests.
-    * Check whether all tests are working and do not fail (prepare explanations for failing shop tests).
+
+Run module tests before applying for certification
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Before submitting a module for certification to OXID eSales, make sure to complete the following steps:
+
+Use the `OXID eShop Docker SDK <https://github.com/OXID-eSales/docker-eshop-sdk>`_ to generate a clean OXID eShop environment (with testing tools).
+
+1. Install the desired shop version and edition (see, for example, the recipes under `github.com/OXID-eSales/docker-eshop-sdk-recipes <https://github.com/OXID-eSales/docker-eshop-sdk-recipes>`_).
+#. Install your module according to its installation instructions.
+#. Run all shop and module tests.
+#. Ensure that all tests pass. If any shop tests fail, be prepared to provide explanations.
+
+.. todo: OXDEV-9255: #HR: check the revided instruction above --HR 2025-04-08: OXVM is not used for a long time, please verify that docker sdk is mentioned in this documentation: zum Testen recipes benutzen; reuse blogpost text;
+.. todo: OXDEV-9255: #HR: where do I find "reuse blogpost text"

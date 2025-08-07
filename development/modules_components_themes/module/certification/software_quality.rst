@@ -2,6 +2,7 @@ Software quality
 ================
 
 .. todo: #HR: USe Twig instead of Smarty -- ist das schon umgesetzt im Folgenden?
+         #HR 2025-04-08: as below mentions smarty looks very much like no, needs to be updated
 
 Basics
 ------
