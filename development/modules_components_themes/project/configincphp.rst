@@ -620,35 +620,6 @@ Show "Update Views" button in admin
     $this->blShowUpdateViews = true;
 
 
-Password hashing
-----------------
-
-passwordHashingAlgorithm
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Supported values are the strings PASSWORD_BCRYPT, PASSWORD_ARGON2I and PASSWORD_ARGON2ID.
-Some of the hashing algorithms may not be available on your system depending on your PHP version.
-
-.. code:: php
-
-    $this->passwordHashingAlgorithm = 'PASSWORD_BCRYPT';
-
-Algorithm configuration
-^^^^^^^^^^^^^^^^^^^^^^^
-
-See https://php.net/manual/en/function.password-hash.php for options and values
-
-Examples:
-
-.. code:: php
-
-    $this->passwordHashingBcryptCost =  10; // Minimum cost is 4, maximum cost is 31
-    $this->passwordHashingArgon2MemoryCost =  1024;
-    $this->passwordHashingArgon2TimeCost =  2;
-    $this->passwordHashingArgon2Threads =  2;
-
-
-
 Enterprise Edition options
 --------------------------
 
