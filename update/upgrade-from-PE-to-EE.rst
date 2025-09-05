@@ -10,13 +10,13 @@ You need to perform all of the following actions step by step:
 
     composer config repositories.oxid-esales composer https://enterprise-edition.packages.oxid-esales.com
 
-#. install `oxideshop-metapackage-ee` using composer without executing any scripts:
+#. Install `oxideshop-metapackage-ee` using composer without executing any scripts:
 
    .. code:: bash
 
-     composer require oxid-esales/oxideshop-metapackage-ee --no-plugins --no-scripts
+     composer require oxid-esales/oxideshop-metapackage-ee:^6 --no-plugins --no-scripts
 
-#. run shop migrations:
+#. Run shop migrations:
 
    .. code:: bash
 
