@@ -1,9 +1,6 @@
 Software quality
 ================
 
-.. todo: #HR: USe Twig instead of Smarty -- ist das schon umgesetzt im Folgenden?
-         #HR 2025-04-08: as below mentions smarty looks very much like no, needs to be updated
-
 Basics
 ------
 
@@ -30,10 +27,10 @@ No global functions
 
 Avoid creating new global functions (e.g. in the :file:`modules/functions.php` file).
 
-No business logic in smarty functions
+No business logic in Twig functions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use smarty only for design purposes. Business logic belongs to the PHP level.
+Use Twig only for design purposes. Business logic belongs to the PHP level.
 
 PHP code
 ^^^^^^^^
@@ -185,17 +182,6 @@ For example:
 *   :file:`views/` - all frontend templates
 *   :file:`views/admin_twig/` - all admin templates
 
-For smarty:
-
-*   :file:`views/admin_smarty/` - all admin templates
-
-Smarty only
-"""""""""""
-
-Register all new templates in :file:`metadata.php`, using the following naming convention:
-
-:file:`[module_id]_[template_name].tpl`
-
 Using JavaScript and including .js files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -265,15 +251,6 @@ Language files and templates
 
 Make sure that individual language files and templates are stored in the module directory.
 
-Appendix for Smarty
-^^^^^^^^^^^^^^^^^^^
-
-Template files
-""""""""""""""
-
-Naming convention:
-:file:`[module_id]_[template_name].tpl`
-
 Blocks
 """"""
 
@@ -288,19 +265,16 @@ In the templates, use blocks like the following:
 
 .. code:: php
 
-    [{block name="thevendor_themodule_theblock"}][{/block}]
+    {% block moduleid_blockname %}{% endblock %}
 
-Store all blocks information in the :file:`views/blocks` directory.
+Store all blocks information in the :file:`views/twig/extensions/themes/[theme name]` directory.
 
-For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.tpl`, inside the module directory, the block file should be located in :file:`views/blocks/module_id_blockname.tpl`.
-
-When adding contents for blocks in the admin interface, blocks should be located in paths like
-:file:`views/blocks/admin/module_id_blockname.tpl`.
+For example, if a block is intended for a certain file of a theme, like :file:`Application/views/[theme name]/tpl/page/details/details.html.twig`, inside the module directory, the block extension must be located in :file:`views/twig/extensions/themes/[theme name]/page/details.html.twig`.
 
 Use blocks whenever the shop's functionality is extended to the frontend side and a requested function or method
 would not be available as long as the module is disabled.
 
-Using blocks allows you to move function calls into small snippet files for the frontend that are only included when the modules is set active. Therefore, using blocks can be considered a quality feature of a module.
+Using blocks allows you to move function calls into small snippet files for the frontend that are only included when the module is set active. Therefore, using blocks can be considered a quality feature of a module.
 
 Including .js files
 """""""""""""""""""

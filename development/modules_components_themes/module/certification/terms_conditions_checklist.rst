@@ -40,7 +40,7 @@ Software quality
 ^^^^^^^^^^^^^^^^
 * No globals
 * No global functions
-* No business logic in smarty functions
+* No business logic in Twig functions
 * PHP5/7 Code
 * Extensions of ``Base``
 * Getters & Setters
