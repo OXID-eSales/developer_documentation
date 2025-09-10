@@ -16,8 +16,8 @@ In order to provide an admin menu entry, you need to add a menu.xml in the root 
 
 This will be automatically loaded and added. The order for the admin menu structure:
 
-#. source/Application/views/admin/menu.xml
-#. source/Application/views/admin/user.xml
+#. source/Application/views/admin_twig/menu.xml
+#. source/Application/views/admin_twig/user.xml
 #. Module menu.xml
 
 Menu.xml Examples
