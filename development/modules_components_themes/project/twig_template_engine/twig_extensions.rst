@@ -116,8 +116,8 @@ This extension introduces math functions that do not exist by default: cos, sin,
 
     {{ cos(2*pi())/log(3) }}
 
-PhpFunctionExtension
-^^^^^^^^^^^^^^^^^^^^
+PhpFunctionsExtension
+^^^^^^^^^^^^^^^^^^^^^
 
 This extension introduces PHP functions that do not exist by default: count, empty, isset.
 
