@@ -70,15 +70,7 @@ The next example also adds a new list within one submenu:
 Menu translation
 ----------------
 
-There are 2 ways of providing the translation for the menu entries added through the menu.xml.
-
-Translation files
-^^^^^^^^^^^^^^^^^
-Either add it to the admin lang files :ref:`Admin modules translation<modules_structure_language_files_admin>`
-
-Module options
-^^^^^^^^^^^^^^
-It could also be added using `module_options.php` :ref:`Admin modules translation<modules_structure_language_files_admin>`
+There are two ways of providing the translation for the menu entries added through the menu.xml. Either add it to the admin lang files :ref:`Admin modules translation<modules_structure_language_files_admin>` or it could also be added using `module_options.php` :ref:`Admin modules translation<modules_structure_language_files_admin>`.
 
 .. note::
     While using 'module_options.php' for translation, the translations will only be loaded while being logged in as admin.
