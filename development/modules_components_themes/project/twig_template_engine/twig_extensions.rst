@@ -55,7 +55,8 @@ The syntax is similar to the Twig ``{% include %}`` tag::
 
 Example::
 
-    {% include_dynamic "widget/product/compare_links.html.twig" with {type: "compare", anid: altproduct } %}
+    {% include_dynamic "page/details/inc/compare_links.html.twig" with {type: "compare", anid: altproduct } %}
+
 
 Functions
 ---------
@@ -94,7 +95,7 @@ help text.
 
 Example::
 
-    {% include "inputhelp.tpl" with {'sHelpId': get_help_id("foo"), 'sHelpText': get_help_text("foo")} %}
+    {% include "inputhelp.html.twig" with {'sHelpId': get_help_id("foo"), 'sHelpText': get_help_text("foo")} %}
 
 MailtoExtension
 ^^^^^^^^^^^^^^^
@@ -138,11 +139,9 @@ All parameters are passed in an associative array as the first argument.
 
 Example::
 
-    {{ script({ include: "js/pages/details.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
+    {{ script({ include: "js/changeaddress.min.js", priority: 10, dynamic: __oxid_include_dynamic }) }}
 
 
-
-.. todo: #Igor: check link is missing: is it an external link?
 
 StyleExtension
 ^^^^^^^^^^^^^^
