@@ -56,13 +56,7 @@ The array ``$aModule`` can contain multiple sub keys:
 
        amodule/controllers
 
-       amodule/blocks
-
        amodule/settings
-
-       amodule/smartyPluginDirectories
-
-       amodule/templates
 
        amodule/events
 
