@@ -119,23 +119,3 @@ A comment should give additional information and not only repeat the name. See t
         $this->numberOfCups -= $amount = max( $this->numberOfCups, $amount );
         return $amount;
     }
-
-Get rid of old standards
-------------------------
-
-No :file:`copy_this` directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-As the modules must be installable via Composer, an additional directory structure would make it complicated to install
-them. Your module package should have the vendor directory on top.
-
-No :file:`changed_full` directory
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-This directory is no longer needed.
-
-No install.sql
-^^^^^^^^^^^^^^
-
-Unlike in previous shop versions, the database setup should not happen with a SQL file, but rather using an installer with
-an ``onActivate()`` method as well as configurations in the ``settings`` array on the :file:`metadata.php` file.
