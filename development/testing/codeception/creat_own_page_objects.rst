@@ -4,18 +4,18 @@ Create own PageObject
 =====================
 
 As a simple example we will create a PageObject for the contact page.
-Run the following command from inside the module ``Tests`` directory (``<vendor_name>/<module_name>/Tests``):
+Run the following command from inside the module ``tests`` directory (``<vendor_name>/<module_name>/tests``):
 
 .. code:: php
 
     <shop_dir>/vendor/bin/codecept generate:pageobject ContactPage
 
-The empty ``<vendor_name>/<module_name>/Tests/Codeception/_support/Page/ContactPage.php`` PageObject will be created.
+The empty ``<vendor_name>/<module_name>/tests/Codeception/_support/Page/ContactPage.php`` PageObject will be created.
 
 .. code:: php
 
     <?php
-    namespace MyVendor\MyModule\Tests\Codeception\Page;
+    namespace ExampleVendor\ExampleModule\Tests\Codeception\Page;
 
     class ContactPage
     {
@@ -48,7 +48,7 @@ and returns the contact page in the state from after contact form is sent.
 
     <?php
 
-    namespace MyVendor\MyModule\Tests\Codeception\Page;
+    namespace ExampleVendor\ExampleModule\Tests\Codeception\Page;
 
     use OxidEsales\Codeception\Page\Page;
     use OxidEsales\Codeception\Module\Translation\Translator;
@@ -122,7 +122,7 @@ Here we use this Contact PageObject in a test. Contact form is sent and test ass
     {
         $I->wantToTest('sending a contact message');
 
-        $contactPage = new \MyVendor\MyModule\Tests\Codeception\Page\ContactPage($I);
+        $contactPage = new \ExampleVendor\ExampleModule\Tests\Codeception\Page\ContactPage($I);
         $I->amOnPage($contactPage->URL);
         $contactPage->sendContactForm('Max', 'Muster',  'user@oxid-esales.com', 'subject', 'body');
 
