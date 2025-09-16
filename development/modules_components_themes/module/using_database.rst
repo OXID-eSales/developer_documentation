@@ -7,43 +7,27 @@ Active records and magic getters
 .. note::
     Watch a short video tutorial on YouTube: `Active Records <https://www.youtube.com/watch?v=JSOlVnMcgSs>`_.
 
-The OXID eShop architecture is based on an MVC design pattern.
+The OXID eShop architecture is based on an MVC design pattern. To implement models, the Active Record pattern is used. In general, each model class is linked to a database table. For example, the ``Article`` model is linked to the ``oxarticles`` table, Order to the ``oxorders`` table etc. All models are stored in the Application/Models directory.
 
-To implement models, the Active Record pattern is used.
-
-In general, each model class is linked to a database table.
-
-For example, the ``Article`` model is linked to the ``oxarticles`` table, Order to the ``oxorders`` table etc.
-
-All models are stored in the Application/Models directory.
-
-Let's take one of them, for example the ``Article`` model, and try to fetch the product (with the ID ``demoId``) data from database:
+Let's take one of them, for example the ``Article`` model, and try to fetch the product with the ID ``demoId`` from the database:
 
 .. code:: php
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class); // creating model's object
-    $product->load( 'demoId' ); // loading data
+    $product->load('demoId'); // loading data
     //getting some information
-    echo $product->oxarticles__oxtitle->value;
-    echo $product->oxarticles__oxshortdesc->value;
+    echo $product->getFieldData('oxtitle');
+    echo $product->getFieldData('oxshortdesc');
 
-.. todo: #Igor: mention new method? -- beware PHP 8 and trying to get a value on null. maybe we should also mention getFieldData method in this section?
+After loading the model by its ID, you can retrieve its data using the method ``getFieldData`` which can be called on all model objects. As an argument you simply pass the corresponding fieldname from the model's database table.
 
-Magic getters are used to get models attributes; they are constructed in this approach:
-
-.. code:: php
-
-    $model->tablename__columnname->value;
-    'tablename' is the name of the database table where the model data is stored
-    'columnname' is the name of the column of this table containing the data you want to fetch
-
-To set data to a model and store it, database magic setters (with the same approach as magic getters) are used:
+To set data to a model and store it, you use method ``setFieldData`` followed by method ``save``.
 
 .. code:: php
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
-    $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field ( 'productTitle' );
-    $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
+    $product->setFieldData('oxtitle', 'Example Title');
+    $product->setFieldData('oxshortdesc', 'This is an example short description.');
     $product->save();
 
 In this example the new record will be inserted into the table. To update information, we load the model, set the new data and call the save() method:
@@ -51,9 +35,9 @@ In this example the new record will be inserted into the table. To update inform
 .. code:: php
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
-    $product->load( 'demoId' );
-    $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field ( 'productTitle' );
-    $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
+    $product->load('demoId');
+    $product->setFieldData('oxtitle', 'Example Title');
+    $product->setFieldData('oxshortdesc', 'This is an example short description.');
     $product->save();
 
 There are other ways to do the same - without loading the data - just by simply setting the ID with the setId()-method:
@@ -61,9 +45,9 @@ There are other ways to do the same - without loading the data - just by simply 
 .. code:: php
 
     $product = oxNew(\OxidEsales\Eshop\Application\Model\Article::class);
-    $product->setId( 'demoId' );
-    $product->oxarticles__oxtitle = new \OxidEsales\Eshop\Core\Field( 'productTitle' );
-    $product->oxarticles__oxshortdesc = new \OxidEsales\Eshop\Core\Field( 'shortdescription' );
+    $product->setId('demoId');
+    $product->setFieldData('oxtitle', 'Example Title');
+    $product->setFieldData('oxshortdesc', 'This is an example short description.');
     $product->save();
 
 In this example there is a check to determine if this ID exists and if so, the record in the database will be updated with the new record.
@@ -75,9 +59,7 @@ Making a query
 .. note::
     Watch a short video tutorial on YouTube: `SQL Statements with the Query Builder <https://www.youtube.com/watch?v=i1_omW8iXJE>`_.
 
-To execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder.
-
-Since it is defined as a service, you can just inject it into your class:
+To execute a query, an instance of ``QueryBuilderFactoryInterface`` is required to create the Query Builder. Since it is defined as a service, you can just inject it into your class if you are inside another service:
 
    .. code:: php
 
@@ -86,7 +68,7 @@ Since it is defined as a service, you can just inject it into your class:
             $this->queryBuilderFactory = $queryBuilderFactory;
         }
 
-or access it with `Service Locator` if `Dependency Injection` is not possible:
+or access it with `Service Locator` if `Dependency Injection` is not possible (traditional classes, no service class):
 
    .. code:: php
 
@@ -127,8 +109,7 @@ Sample:
 Transactions
 ------------
 
-If one transaction fails, the whole chain of nested transactions is rolled back
-completely. In some cases it might not be evident that your transaction is already running within an other transaction.
+If one transaction fails, the whole chain of nested transactions is rolled back completely. In some cases it might not be evident that your transaction is already running within another transaction.
 
 An example how to catch exceptions inside a database transaction:
 
@@ -144,26 +125,3 @@ An example how to catch exceptions inside a database transaction:
             throw $exception;
         }
     }
-
-
-.. _modules-database-master_slave:
-
-MySQL master slave
-------------------
-
-Doctrine DBAL handles the master slave replication for the OXID eShop on each request. OXID eShop 6
-follows these rules:
-
-* once the request is routed to the master, it stays on the master.
-* writes and transactions go to master.
-
-Care must be taken when using the OXID eShop database API as this can cause the execution of more
-requests than necessary against the MySQL master server and underutilize the MySQL slave server.
-
-
-Different API methods for read and write
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-There is a difference between the methods ``DatabaseInterface::select()`` and ``DatabaseInterface::execute()``
-The method ``DatabaseInterface::select()`` can only be used for read methods (SELECT, SHOW) that return a result set.
-The method ``DatabaseInterface::execute()`` must be used for write methods (INSERT, UPDATE, DELETE) in OXID eShop 6.
