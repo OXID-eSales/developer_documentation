@@ -17,6 +17,7 @@ On the top level of the PHP file metadata.php, there have to be exactly two vari
     <?php
 
     $sMetadataVersion = '2.1';
+
     $aModule = [
         'id' => ...
         ...
@@ -63,33 +64,47 @@ Here is an example of a module metadata file:
 
 .. code:: php
 
-    Example for module using namespaces
-
     <?php
+
     /**
-     * Metadata version
-     */
+    * Metadata version
+    */
     $sMetadataVersion = '2.1';
+
     /**
-     * Module information
-     */
+    * Module information
+    */
     $aModule = [
-        'id'           => 'myvendor_mytestmodule',
-        'title'        => 'Test metadata controllers feature',
-        'description'  => '',
-        'thumbnail'    => 'picture.png',
-        'version'      => '2.0',
-        'author'       => 'OXID eSales AG',
-        'controllers'  => [
-            'myvendor_mytestmodule_MyModuleController' => MyVendor\mytestmodule\MyModuleController::class,
-            'myvendor_mytestmodule_MyOtherModuleController' => MyVendor\mytestmodule\MyOtherModuleController::class,
+        'id'          => 'oe_examples_module',
+        'title'       => 'OXID eSales Examples Module',
+        'description' => 'Module with examples for the most common use cases',
+        'thumbnail'   => 'pictures/logo.png',
+        'version'     => '1.0.0',
+        'author'      => 'OXID eSales AG',
+        'url'         => 'http://www.oxid-esales.com',
+        'email'       => 'info@oxid-esales.com',
+        'extend'      => [
+            \OxidEsales\Eshop\Application\Controller\StartController::class => \OxidEsales\ExamplesModule\Extension\Controller\StartController::class,
+            \OxidEsales\Eshop\Application\Model\User::class => \OxidEsales\ExamplesModule\Extension\Model\User::class,
         ],
-        'templates' => [
-            'mytestmodule.tpl' => 'mytestmodule.tpl',
-            'mytestmodule_other.tpl' => 'test_module_controller_routing_other.tpl'
+        'events' => [
+            'onActivate' => '\OxidEsales\ExamplesModule\Core\ModuleEvents::onActivate',
+            'onDeactivate' => '\OxidEsales\ExamplesModule\Core\ModuleEvents::onDeactivate'
         ],
-        'smartyPluginDirectories' => [
-            'Smarty/PluginDirectory'
+        'settings' => [
+            [
+                'group'       => 'oeexamplesmodule_main',
+                'name'        => 'oeexamplesmodule_GreetingMode',
+                'type'        => 'select',
+                'constraints' => 'generic|personal',
+                'value'       => 'generic'
+            ],
+            [
+                'group' => 'oeexamplesmodule_main',
+                'name'  => 'oeexamplesmodule_BrandName',
+                'type'  => 'str',
+                'value' => 'Testshop'
+            ],
         ],
     ];
 
