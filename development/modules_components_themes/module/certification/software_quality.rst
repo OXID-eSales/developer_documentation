@@ -281,30 +281,27 @@ Including .js files
 
 To include Javascript files in the frontend, use the following expression:
 
-.. code:: php
+.. code:: twig
 
-    [{oxscript include=$oViewConf->getModuleUrl("[MODULE ID]", "js/[path where the needed file is] ") priority=10}]
+    {{ script({ include: oViewConf.getModuleUrl('example_module_id', 'js/example.js') }) }}
 
-And for output:
 
-.. code:: php
+Or with more parameters:
 
-	[{oxscript}]
+.. code:: twig
+
+    {{ script({ include: oViewConf.getModuleUrl('example_module_id', 'js/example.js'), priority: 10, dynamic: __oxid_include_dynamic }) }}
+
 
 Including .css files
 """"""""""""""""""""
 
 To include a module's custom CSS file, use the following expression:
 
-.. code:: php
+.. code:: twig
 
-    [{oxstyle include=$oViewConf->getModuleUrl("module id", "css/{FileName}.css")}]
+    {{ style({ include: oViewConf.getModuleUrl('example_module_id', 'css/example.css') }) }}
 
-And for output:
-
-.. code:: php
-
-    [{oxstyle}]
 
 Database access
 ---------------
