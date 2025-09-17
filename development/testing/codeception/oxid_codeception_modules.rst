@@ -31,7 +31,7 @@ waiting for ajax etc.
 .. NOTE::
     This codeception module needs the WebDriver and the Db module to be enabled as well.
     WebDriver and Db module are standard Codeception modules. They need some parameters like the shop url or database
-    credentials to work. Parameters can be supplied in ``<myvendor>/<mymodule>/Tests/Codeception/Config/params.php``.
+    credentials to work. Parameters can be supplied in ``examplevendor/examplemodule/tests/Codeception/Config/params.php``.
 
 .. code::
 
@@ -171,7 +171,7 @@ Fixtures Helper
 With this helper class, test fixtures can be loaded during test bootstrap and used later while testing.
 Please register the bootstrap file in the ``codeception.yml`` file.
 In our :ref:`example  <codeception_example_module>` the  ``_bootstrap.php`` is located in
-``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/_bootstrap.php``.
+``<vendor_name>/<module_name>/tests/Codeception/Acceptance/_bootstrap.php``.
 
 .. code::
 
@@ -195,14 +195,14 @@ into ``fixtures.php`` file.
 
         <?php
         return [
-            'myUser' => [
-                'oxid' => '_myuser',
+            'exampleUser' => [
+                'oxid' => '_exampleuser',
                 'oxfname' => 'Milo',
-                'oxlname' => 'MyUser',
-                'oxusername' => 'myuser@myvendor.com',
+                'oxlname' => 'ExampleUser',
+                'oxusername' => 'exampleuser@example.com',
                 'oxactive' => 1,
                 'oxshopid' => 1,
-                'oxstreet' => 'MeineStrasse',
+                'oxstreet' => 'Beispielstr.',
                 'oxstreetnr' => '56',
                 'oxzip' => '79098',
                 'oxcity' => 'Freiburg',
@@ -211,11 +211,11 @@ into ``fixtures.php`` file.
                 'oxcreate' => date("Y-m-d"),
                 'OXREGISTER' => date("Y-m-d"),
                 'OXBIRTHDATE' => date("Y-m-d"),
-                'oxpassword' => md5('myuser'),
+                'oxpassword' => md5('exampleuser'),
                 'OXRIGHTS' => 'user'
             ],
-            'myUserPassword' => [
-                'password' => 'myuser'
+            'exampleUserPassword' => [
+                'password' => 'exampleuser'
             ]
         ];
 
@@ -224,10 +224,10 @@ During test bootstrap, the fixture data is loaded and ready to be used. Either w
 
 .. code:: php
 
-   $I->haveInDatabase('oxuser', \Codeception\Util\Fixtures::get('myUser'));
+   $I->haveInDatabase('oxuser', \Codeception\Util\Fixtures::get('exampleUser'));
 
 or access the data like
 
 .. code:: php
 
-   $password = \Codeception\Util\Fixtures::get('myUserPassword')['password'];
+   $password = \Codeception\Util\Fixtures::get('exampleUserPassword')['password'];

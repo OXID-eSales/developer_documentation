@@ -8,46 +8,42 @@ We will use a simple example module to explain how to write a Codeception accept
 Example module
 --------------
 
-Let's assume we have a simple test module ``myvendor/mymodule`` with the following structure:
+The example module has the following directory structure:
 
-::
+.. code::
 
-    myvendor
-    └── mymodule
-        ├── composer.json
-        ├── metadata.php
-        ├── StartController.php
-        └── views
-            └── blocks
-                └── mymodule_block.tpl
+    examplemodule
+    ├── src
+    .   └── Controller
+    .        └── StartController.php
+    ├── views
+    .   └── twig
+    .        └── extensions
+    .            └── themes
+    .                └── default
+    .                    └── layout
+    .                        └── header.html.twig
+    ├── composer.json
+    └── metadata.php
 
 
-Example module's composer.json
-::
+The module is named **examplevendor/examplemodule** which leads to the following **composer.json** file:
+
+.. code:: json
 
     {
-        "name": "myvendor/mymodule",
-        "description": "This package contains myvendor/mymodule source code.",
+        "name": "examplevendor/examplemodule",
+        "description": "This package contains example code.",
         "type": "oxideshop-module",
-        "keywords": [
-            "oxid",
-            "modules",
-            "eShop"
-        ],
-        "license": "GPL-3.0-only",
-        "require": {
-            "php": ">=7.0"
-        },
         "autoload": {
             "psr-4": {
-                "MyVendor\\MyModule\\": ""
+                "ExampleVendor\\ExampleModule\\": "src/"
             }
         }
     }
 
 
-Example module's metadata.php
-
+It extends the **StartController** which results in the following **metadata.php** file:
 
 .. code:: php
 
@@ -56,64 +52,64 @@ Example module's metadata.php
     $sMetadataVersion = '2.1';
 
     $aModule = [
-        'id'           => 'myvendor/mymodule',
-        'title'        => 'MyModule',
-        'description'  => [
-            'de' => 'OXID Example Modul.',
-            'en' => 'OXID Example Module.',
+        'id' => 'examplevendor_examplemodule',
+        'title' => 'Example Module',
+        'description' => 'An OXID example module.',
+        'extend' => [
+            \OxidEsales\Eshop\Application\Controller\StartController::class => \ExampleVendor\ExampleModule\Controller\StartController::class,
         ],
-        'thumbnail'    => 'logo.png',
-        'version'      => '0.0.1',
-        'author'       => 'myvendor',
-        'url'          => 'https://github.com/myvendor',
-        'email'        => 'myvendor@mymodule.com',
-        'extend'       => [
-            \OxidEsales\Eshop\Application\Controller\StartController::class => \MyVendor\MyModule\StartController::class,
-        ],
-        'controllers' => [],
-        'events' => [],
-        'templates' => [],
-        'blocks' => [
-            [
-                'template' => 'page/shop/start.tpl',
-                'block'    => 'start_welcome_text',
-                'file'     => 'views/blocks/mymodule_block.tpl'
-            ],
-        ],
-        'settings' => [],
-        'smartyPluginDirectories' => []
-        ];
+    ];
 
-The module chain extends the StartController class and adds a greeting message.
+
+Its own **StartController** builds the greeting message and sets it as a template parameter. To implement a little bit logic, it adds the user's name to the message if a user is logged in:
 
 .. code:: php
 
     <?php
 
-    namespace MyVendor\MyModule;
+    declare(strict_types=1);
+
+    namespace ExampleVendor\ExampleModule\Controller;
+
+    use OxidEsales\Eshop\Core\Registry;
 
     class StartController extends StartController_parent
     {
-        public function getMyModuleGreeting()
+        public function init()
         {
-            $message = 'Hello, my shopid is ' . \OxidEsales\Eshop\Core\Registry::getConfig()->getShopId();
-            $user = \OxidEsales\Eshop\Core\Registry::getSession()->getUser();
-            if ($user && $user->getId()) {
-                $message .= ' and you are ' . $user->getFieldData('oxusername') . ' ;) ';
-            } else {
-                $message .= '! ';
-            }
+            parent::init();
+            
+            $this->addTplParam('greeting', $this->getGreetingMessage());
+        }
 
-            return $message;
+        private function getGreetingMessage(): string
+        {
+            $user = Registry::getSession()->getUser();
+
+            if ($user && $user->getId()) {
+                return 'Hello ' . $user->getFieldData('oxusername') . '!';
+            } else {
+                return 'Hello customer!';
+            }
         }
     }
 
-Example module template ``mymodule_block.tpl``:
 
-.. code:: php
+It extends the template block **layout_header_bottom** from the template **layout/header.html.twig** to output the greeting message if available:
 
-    [{$oView->getMyModuleGreeting()}]
-    [{$smarty.block.parent}]
+.. code:: twig
+
+    {% extends 'layout/header.html.twig' %}
+
+    {% block layout_header_bottom %}
+
+        {% if greeting %}
+            {{ greeting }}
+        {% endif %}
+
+        {{ parent() }}
+
+    {% endblock %}
 
 
 .. _codeception_initialization:
@@ -123,21 +119,32 @@ Creating test structure in a module
 
 To start with acceptance tests using Codeception in your module for the first time, you have to initialize
 it by running the following command:
-::
 
-  cd <shop_dir>
-  vendor/bin/codecept init Acceptance --path <module_source_directory>/<tests_folder>
+.. code:: shell
+    
+    cd <shop_dir>
+    ./vendor/bin/codecept init Acceptance --path <module_directory>/<tests_directory>
 
-When prompted, you can use :guilabel:`Codeception` as test folder's name and :guilabel:`chrome` as a webdriver.
+**Example**
 
-This command creates basic structure for starting with Codeception Acceptance tests for your module: tests directory (in
-our current case :guilabel:`<tests_folder>/Codeception`), a configuration file :guilabel:`codeception.yml` and default
-acceptance test suite :guilabel:`Acceptance.suite.yml`.
+.. code:: shell
+    
+    cd /var/www/oxideshop
+    ./vendor/bin/codecept init Acceptance --path examplemodule/tests
+
+When prompted, you should use **Codeception** as test directory's name and **chrome** as a webdriver.
+
+This command creates basic structure for starting with Codeception Acceptance tests for your module:
+
+* A tests directory: In our case **tests/Codeception**.
+* A configuration file **codeception.yml**.
+* And a default acceptance test suite **Acceptance.suite.yml**.
 
 For quick Codeception info please refer to the
 `Codeception documentation <https://codeception.com/docs/GettingStarted>`__.
-The next step would be to check one of our repositories to get a hands-on information
-about how OXID configures and tests with Codeception:
 
-    - `OXID eShop Module Template <https://github.com/OXID-eSales/module-template>`__
-    - `OXID eShop <https://github.com/OXID-eSales/oxideshop_ce>`__.
+The next step would be to check one of our repositories to get a hands-on information about how OXID configures and tests with Codeception:
+
+* `OXID Module Template <https://github.com/OXID-eSales/module-template>`__
+* `OXID Example Module <https://github.com/OXID-eSales/examples-module>`__
+* `OXID eShop <https://github.com/OXID-eSales/oxideshop_ce>`__

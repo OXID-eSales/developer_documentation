@@ -69,7 +69,7 @@ target-directory
 ^^^^^^^^^^^^^^^^
 
 ``target-director`` value will be used to create a folder inside the Shop ``Application/views`` directory.
-This folder will be used to place all files of the module.
+This folder will be used to place all files of the theme.
 
 assets-directory
 ^^^^^^^^^^^^^^^^

@@ -3,21 +3,18 @@ Example Module test
 
 Let's assume the :ref:`example module <codeception_example_module>` is installed in your shop,
 :ref:`Codeceptions initialization <codeception_initialization>`
-is done as described and you'd like to write a Codeception acceptance test verifying that
-you see a "Hello, my shopid is 1" on the shop's start page with activated module.
-
+is done as described and you'd like to write a Codeception acceptance test verifying that you see the greeting message "Hello customer!" on the shop's start page with activated module.
 
 Create a Cest
 -------------
 
-You can create a Cest by running the following command from inside the module ``Tests`` directory (``<vendor_name>/<module_name>/Tests``):
+You can create a Cest by running the following command from inside the module's **tests** directory:
 
 .. code:: php
 
     <shop_dir>/vendor/bin/codecept generate:cest Acceptance CheckShopFrontend
 
-The empty ``<vendor_name>/<module_name>/Tests/Codeception/Acceptance/CheckShopFrontendCest.php`` Cest will be
-automatically created.
+The empty ``tests/Codeception/Acceptance/CheckShopFrontendCest.php`` Cest will be automatically created.
 
 .. code:: php
 
@@ -48,8 +45,9 @@ Let us add test code to check the front page.
 
     <?php
 
-    namespace MyVendor\MyModule\Tests\Codeception;
-    use MyVendor\MyModule\Tests\Codeception\AcceptanceTester;
+    namespace ExampleVendor\ExampleModule\Tests\Codeception;
+    
+    use ExampleVendor\ExampleModule\Tests\Codeception\AcceptanceTester;
 
     class CheckShopFrontendCest
     {
@@ -62,7 +60,7 @@ Let us add test code to check the front page.
         {
             $I->wantToTest('message for not logged in user');
             $I->amOnPage('/');
-            $I->see('Hello, my shopid is 1!');
+            $I->see('Hello customer!');
         }
     }
 
@@ -70,7 +68,7 @@ Running the test should look like
 
 ::
 
-    vagrant@oxideshop:/var/www/oxideshop$ MODULE_IDS=<module_id> vendor/bin/codecept run Acceptance -c tests/codeception.yml
+    user@oxideshop:/var/www/oxideshop$ MODULE_IDS=<module_id> vendor/bin/codecept run Acceptance -c tests/codeception.yml
     Building Actor classes for suites: Acceptance
      -> AcceptanceTesterActions.php generated successfully. 150 methods added
     \AcceptanceTester includes modules: Asserts, WebDriver, Db, \OxidEsales\Codeception\Module\Oxideshop, \OxidEsales\Codeception\Module\Database, \OxidEsales\Codeception\Module\Translation\TranslationsModule
@@ -87,7 +85,7 @@ Running the test should look like
     Time: 55.12 seconds, Memory: 12.00MB
 
     OK (1 test, 1 assertion)
-    - XML report generated in file:///var/www/oxideshop/vendor/myvendor/mymodule/tests/Codeception/_output/report.xml
+    - XML report generated in file:///var/www/oxideshop/vendor/examplevendor/examplemodule/tests/Codeception/_output/report.xml
 
 
 Add test for logged in user case
@@ -117,11 +115,11 @@ Let's just add the next test:
 
         $homePage = new \OxidEsales\Codeception\Page\Home($I);
         $I->amOnPage($homePage->URL);
-        $I->see('Hello, my shopid is 1!');
+        $I->see('Hello customer!');
 
         $homePage->loginUser('user@oxid-esales.com', 'useruser');
         $I->dontSee(\OxidEsales\Codeception\Module\Translation\Translator::translate('LOGIN'));
-        $I->see('Hello, my shopid is 1 and you are ' . 'user@oxid-esales.com' . ' ;)');
+        $I->see('Hello user@oxid-esales.com!');
     }
 
 

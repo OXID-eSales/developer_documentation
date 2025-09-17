@@ -62,4 +62,4 @@ Solution
 
      .. code:: bash
 
-        vendor/bin/oe-console oe:module:install <module sourcecode path>
+        ./vendor/bin/oe-console oe:module:install <module sourcecode path>

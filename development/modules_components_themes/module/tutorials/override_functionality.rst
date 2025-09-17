@@ -24,18 +24,17 @@ Override default OXID eShop functionality.
 Extending 'add to basket' functionality
 ---------------------------------------
 
-In this section, the existing `"module-template" module <https://github.com/OXID-eSales/module-template>`__ will be used which logs
-a product's ID when it is added to the basket.
+In this section, the existing `module-template module <https://github.com/OXID-eSales/module-template>`__ will be used which logs a product's ID when it is added to the basket.
 
 Overriding functionality
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-To override functionality, create a class in the model.
+To override functionality, create a custom Model class in the module.
 
-In the following, we use the "moduletemplate" module as an example.
+In the following, we use the module-template module as an example.
 
 Create a child class - ``OxidEsales\ModuleTemplate\Model\Basket`` - which should override OXID eShop class
-``OxidEsales\EshopCommunity\Application\Model\Basket`` method ``addToBasket``:
+``OxidEsales\Eshop\Application\Model\Basket`` method ``addToBasket``:
 
 .. code::
 
@@ -58,6 +57,7 @@ The ``OxidEsales\ModuleTemplate\Model\Basket`` class could have contents like th
 .. code:: php
 
   namespace OxidEsales\ModuleTemplate\Model;
+
   use OxidEsales\ModuleTemplate\Service\BasketItemLogger;
   use OxidEsales\ModuleTemplate\Traits\ServiceContainer;
 
@@ -103,8 +103,7 @@ Don't forget to register the files to the ``metadata.php`` as described under :r
 Autoloading module classes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The `composer.json`file in the module's root directory must be created,
-:ref:`the modules namespace and autoloading must be defined <module_autoload-20170926>`.
+The `composer.json` file in the module's root directory must be created and the :ref:`modules namespace and autoloading <module_autoload-20170926>` must be defined.
 
 The `composer.json` file in module's root directory could look like this:
 
@@ -155,7 +154,6 @@ file:
     \OxidEsales\Eshop\Application\Model\Basket::class => \OxidEsales\ModuleTemplate\Model\Basket::class,
   ],
 
-For overwriting the shop templates, or some parts of them (blocks), register your module templates in the
-templates/blocks sections.
+For overwriting the shop templates, or some parts of them (blocks), register your module templates or block extensions using Twig.
 
 For more informtion about the ``metadata.php`` file, see :doc:`metadata.php </development/modules_components_themes/module/skeleton/metadataphp/index>`.

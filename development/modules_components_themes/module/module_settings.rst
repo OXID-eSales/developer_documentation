@@ -56,8 +56,3 @@ In OXID eShop backend to receive module setting please use settings service. Exa
         $moduleSettingService->getString('setting-name', 'module-id');
 
 The service will return cached value from the configuration file.
-
-.. important::
-
-  Since v7.0 shop doesn't store module settings in the database. You can't receive a module setting
-  from Config class or oxconfig table.
