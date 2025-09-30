@@ -1,7 +1,7 @@
 Controller as a Service
 =======================
 
-As of OXID eShop version 7.3, you can register OXID controllers as services in the Dependency Injection Container (DIC).
+OXID controllers can be registered as services in the Dependency Injection Container (DIC).
 
 The registration occurs in :file:`services.yaml`, similarly to other services, and it is possible to register
 such controller services for components, modules or projects.
