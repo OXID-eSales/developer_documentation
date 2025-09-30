@@ -88,7 +88,7 @@ We strongly recommend using the following ones (or alternatives):
     * PHPStan: To ensure your code achieves level 5 or higher
     * Psalm: To ensure your code achieves level 4 or lower
 
-You can use the mentioned technology easily via composer, as described, for example, in our `module template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
+You can use the mentioned technology easily via composer, as described, for example, in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
 
 With :code:`composer static`, run the PHP_CodeSniffer, PHPMess Detector and PHPStan with one single command, with the associated configurations.
 
@@ -105,7 +105,7 @@ Sonarcloud
 
 Use Sonarcloud as a final report point for psalm/phpstan issues, code coverage reports, code duplications analysis.
 
-Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `module-template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
+Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
 
 Github Actions
 ^^^^^^^^^^^^^^
@@ -114,23 +114,21 @@ Use Github Actions with all required tools integrated to run them constantly dur
 
 Store all required files in your repository in the :file:`.github/workflows` folder.
 
-A good example can be found in our module template under `workflows <https://github.com/OXID-eSales/module-template/tree/b-7.0.x/.github/workflows>`_.
+A good example can be found in our Module Template under `workflows <https://github.com/OXID-eSales/module-template/tree/b-7.3.x/.github/workflows>`_.
 
-Split the files in :file:`development.yml`, :file:`trigger.yml`, and :file:`schedule.yml`.
+Split the files in :file:`dispatch_module.yaml`, :file:`trigger.yaml`, and :file:`scheduled.yaml`.
 
-The `development.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/development.yml>`_ defines the executable jobs and the possible options for them.
+The `dispatch_module.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/dispatch_module.yaml>`_ defines the executable jobs and the possible options for them.
 
-If you want a reusable workflow, for example to use it in our :file:`trigger.yml` or :file:`schedule.yml, make sure that :code:`on:` contains :code:`workflow_call:` with the possible parameters.
+If you want a reusable workflow, for example to use it in our :file:`trigger.yaml` or :file:`scheduled.yaml`, make sure that :code:`on:` contains :code:`workflow_call:` with the possible parameters.
 
-To be able to execute this workflow on Github on the `Actions tab <https://github.com/OXID-eSales/module-template/actions/workflows/development.yml>`_, make sure that :code:`on:` contains :code:`workflow_dispatch:` with the values to be passed.
-
-Both examples can be seen in the :file:`development.yml` file.
+To be able to execute this workflow on Github on the `Actions tab <https://github.com/OXID-eSales/module-template/actions/workflows/dispatch_module.yaml>`_, make sure that :code:`on:` contains :code:`workflow_dispatch:` with the values to be passed. You find an example in the :file:`dispatch_module.yaml` file of our `Module Template <https://github.com/OXID-eSales/module-template/>`__.
 
 .. important::
-    If you want to execute the workflow on the :guilabel:`Actions` tab, add the :code:`workflow_dispatch` value in the main-branch as well. Otherwise the :file:`development.yml` file isn't visible.
+    If you want to execute the workflow on the :guilabel:`Actions` tab, add the :code:`workflow_dispatch` value in the main-branch as well. Otherwise the :file:`dispatch_module.yaml` file isn't visible.
 
 
-Use the `trigger.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/trigger.yml>`_ file to trigger a process on specific events, defined under
+Use the `trigger.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/trigger.yaml>`_ file to trigger a process on specific events, defined under
 
 .. code:: yaml
 
@@ -138,13 +136,11 @@ Use the `trigger.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.
       pull_request:
       push:
 
-With these events, the jobs will be triggered and execute, for example, the jobs in the :file:`development.yml` file with specific parameters. The possible parameters are defined in the :file:`development.yml` file and need to be passed in the jobs defined in the :file:`trigger.yml`.
+With these events, the jobs will be triggered and execute, for example, the jobs in the :file:`dispatch_module.yaml` file with specific parameters. The possible parameters are defined in the :file:`dispatch_module.yaml` file and need to be passed in the jobs defined in the :file:`trigger.yaml`.
 
-Use the `schedule.yml <https://github.com/OXID-eSales/module-template/blob/b-7.0.x/.github/workflows/schedule.yml>`_ file to trigger scheduled jobs. If you want to execute jobs every week or month, put them in the :file:`schedule.yml`.
+Use the `scheduled.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/scheduled.yaml>`_ file to trigger scheduled jobs. Usually we suggest to use one file :file:`scheduled.yaml` but feel free to split it into separate files, for example :file:`weekly.yaml` and :file:`monthly.yaml`, according to your needs.
 
-To define multiple scheduled jobs, create multiple files, fpr example :file:`monthly.yml` and :file:`weekly.yml`.
-
-In our :file:`schedule.yml` file, see how to define the execution time:
+In our :file:`scheduled.yaml` file, see how to define the execution time:
 
 .. note::
     As cron syntax, use the `POSIX cron syntax <https://pubs.opengroup.org/onlinepubs/9699919799/utilities/crontab.html#tag_20_25_07>`_.
@@ -152,8 +148,9 @@ In our :file:`schedule.yml` file, see how to define the execution time:
 .. code:: yaml
 
     on:
-      schedule:
-        - cron: '0 0 */7 * *'
+    schedule:
+        # This cron job runs at 1:16 AM every 7th day of the month, every month of the year.
+        - cron: '16 1 */7 * *'
 
 
 Following best practices
