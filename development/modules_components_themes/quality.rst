@@ -114,11 +114,11 @@ Use Github Actions with all required tools integrated to run them constantly dur
 
 Store all required files in your repository in the :file:`.github/workflows` folder.
 
-A good example can be found in our Module Template under `workflows <https://github.com/OXID-eSales/module-template/tree/b-7.3.x/.github/workflows>`_.
+A good example can be found in our Module Template under `workflows <https://github.com/OXID-eSales/module-template/tree/b-7.4.x/.github/workflows>`_.
 
 Split the files in :file:`dispatch_module.yaml`, :file:`trigger.yaml`, and :file:`scheduled.yaml`.
 
-The `dispatch_module.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/dispatch_module.yaml>`_ defines the executable jobs and the possible options for them.
+The `dispatch_module.yaml <https://github.com/OXID-eSales/module-template/blob/b-4.x/.github/workflows/dispatch_module.yaml>`_ defines the executable jobs and the possible options for them.
 
 If you want a reusable workflow, for example to use it in our :file:`trigger.yaml` or :file:`scheduled.yaml`, make sure that :code:`on:` contains :code:`workflow_call:` with the possible parameters.
 
@@ -128,7 +128,7 @@ To be able to execute this workflow on Github on the `Actions tab <https://githu
     If you want to execute the workflow on the :guilabel:`Actions` tab, add the :code:`workflow_dispatch` value in the main-branch as well. Otherwise the :file:`dispatch_module.yaml` file isn't visible.
 
 
-Use the `trigger.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/trigger.yaml>`_ file to trigger a process on specific events, defined under
+Use the `trigger.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.4.x/.github/workflows/trigger.yaml>`_ file to trigger a process on specific events, defined under
 
 .. code:: yaml
 
@@ -138,7 +138,7 @@ Use the `trigger.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3
 
 With these events, the jobs will be triggered and execute, for example, the jobs in the :file:`dispatch_module.yaml` file with specific parameters. The possible parameters are defined in the :file:`dispatch_module.yaml` file and need to be passed in the jobs defined in the :file:`trigger.yaml`.
 
-Use the `scheduled.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.3.x/.github/workflows/scheduled.yaml>`_ file to trigger scheduled jobs. Usually we suggest to use one file :file:`scheduled.yaml` but feel free to split it into separate files, for example :file:`weekly.yaml` and :file:`monthly.yaml`, according to your needs.
+Use the `scheduled.yaml <https://github.com/OXID-eSales/module-template/blob/b-7.4.x/.github/workflows/scheduled.yaml>`_ file to trigger scheduled jobs. Usually we suggest to use one file :file:`scheduled.yaml` but feel free to split it into separate files, for example :file:`weekly.yaml` and :file:`monthly.yaml`, according to your needs.
 
 In our :file:`scheduled.yaml` file, see how to define the execution time:
 
