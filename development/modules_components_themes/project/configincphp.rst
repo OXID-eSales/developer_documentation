@@ -5,8 +5,9 @@ Configuration file config.inc.php
 
 .. warning::
 
-    The ``config.inc.php`` file and its related static options are deprecated
-    and will be removed in the next major version, 8.0.
+    The ``config.inc.php`` file and its static options are deprecated and will be removed in the next major version (OXID eShop 8).
+    
+    While deprecated, this file remains the supported configuration method throughout the entire OXID eShop 7 series.
 
 Database connection
 -------------------
@@ -14,7 +15,7 @@ Database connection
 dbType
 ^^^^^^
 
-The built-in Doctrine DBAL driver implementation to use. Default is "pdo_mysql": A MySQL driver that uses the pdo_mysql PDO extension.
+The built-in Doctrine DBAL driver implementation to use. Default is ``pdo_mysql``: A MySQL driver that uses the pdo_mysql PDO extension.
 
 .. code:: php
 
@@ -201,8 +202,6 @@ blUseCron
 
 Enables or disables the use of cron jobs in config.inc.php
 
-Implemented with OXID eShop version 4.6.0
-
 .. code:: php
 
     $this->blUseCron = true;
@@ -211,8 +210,6 @@ iCreditRating
 -------------
 
 Sets the default value of credit rating
-
-Implemented with OXID eShop version 4.7.3
 
 .. code:: php
 
@@ -277,9 +274,7 @@ Modules
 blDoNotDisableModuleOnError
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Disable module auto deactivation
-
-Implemented with OXID eShop versions 5.1.2/4.8.2 and 5.0.11/4.7.11
+Disable module auto deactivation.
 
 .. code:: php
 
@@ -317,9 +312,7 @@ File type whitelist for file uploads
 sShopLogo
 ^^^^^^^^^
 
-Add your own logo image file, upload it to /out/az ure/img/.
-
-Implemented with OXID eShop version 4.8
+Add your own logo image file. Upload it to ``source/out/apex/img``.
 
 .. code:: php
 
@@ -539,9 +532,7 @@ Views
 blSkipViewUsage
 ^^^^^^^^^^^^^^^
 
-If you can't log in to the admin panel, try setting the parameter blSkipViewUsage temporarily to "true".
-
-Implemented with OXID eShop version 4.7
+If you can't log in to the admin panel, try setting the parameter ``blSkipViewUsage`` temporarily to ``true``.
 
 .. code:: php
 
@@ -555,7 +546,7 @@ Implemented with OXID eShop version 4.7
 blShowUpdateViews
 ^^^^^^^^^^^^^^^^^
 
-Show "Update Views" button in admin
+Show "Update Views" button in admin.
 
 .. code:: php
 
