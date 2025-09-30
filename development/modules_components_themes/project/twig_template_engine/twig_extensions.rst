@@ -312,7 +312,7 @@ Escape is internal Twig filter but it can be extended and so it is done in OXID.
 The following custom escapers have been introduced:
 ``decentity``, ``hexentity``, ``hex``, ``htmlall``, ``mail``, ``nonstd``, ``quotes``, ``urlpathinfo``.
 
-All escapers can be found in the :file:`source\Internal\Twig\Escaper` directory.
+All escapers can be found in ``src/Escaper`` directory of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__
 
 Example::
 
