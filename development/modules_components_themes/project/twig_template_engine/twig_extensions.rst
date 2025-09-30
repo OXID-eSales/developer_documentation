@@ -1,7 +1,7 @@
 Custom OXID extensions
 ======================
 
-All extensions can be found in ``src\Extensions`` directory of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__
+All extensions can be found in ``src\Extensions`` directory of the `OXID eShop Twig Component <https://github.com/OXID-eSales/twig-component>`__.
 
 .. contents::
    :depth: 2
@@ -307,12 +307,12 @@ Example::
 Escape
 ^^^^^^
 
-Escape is internal Twig filter but it can be extended and so it is done in OXID.
+Escape is an internal Twig filter but it can be extended and so it is done in OXID.
 
 The following custom escapers have been introduced:
 ``decentity``, ``hexentity``, ``hex``, ``htmlall``, ``mail``, ``nonstd``, ``quotes``, ``urlpathinfo``.
 
-All escapers can be found in ``src/Escaper`` directory of the `OXID eShop twig component <https://github.com/OXID-eSales/twig-component>`__
+All escapers can be found in ``src/Escaper`` directory of the `OXID eShop Twig Component <https://github.com/OXID-eSales/twig-component>`__.
 
 Example::
 
