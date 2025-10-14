@@ -317,3 +317,20 @@ All escapers can be found in ``src/Escaper`` directory of the `OXID eShop Twig C
 Example::
 
     {{ 'example@me.com'|escape('mail') }}
+
+SanitizeHtmlExtension
+^^^^^^^^^^^^^^^^^^^^^
+
+This extension introduces the ``sanitize_html`` filter which sanitizes HTML content based on the configured HTML sanitizer service.
+
+The filter uses the same configuration provided by ``HtmlSanitizerConfigFactoryInterface`` — including any custom configuration you define (see :doc:`Replace the HTML Sanitizer Service <../../../customization/html_sanitizer_replacement>`).
+
+Example::
+
+    {{ userInput|sanitize_html }}
+
+Behavior:
+
+- When ``oxid_esales.html_sanitizer_enabled`` is ``true``, HTML content is sanitized according to the configured rules (custom or default).
+- When disabled, the filter passes the input through unchanged.
+- The filter ensures that template-level content sanitation matches the backend HTML sanitation logic.

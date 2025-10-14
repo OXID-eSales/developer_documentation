@@ -33,3 +33,14 @@ Those are the entry points for the use of all other features:
 
     tell_me_about/index
 
+
+This section provides comprehensive guides and references to help developers extend, customize, and integrate with OXID eShop:
+
+
+.. toctree::
+    :titlesonly:
+    :maxdepth: 2
+    :glob:
+
+    customization/index
+
