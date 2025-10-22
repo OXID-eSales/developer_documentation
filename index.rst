@@ -17,7 +17,7 @@ Table of Contents
    getting_started/index
    development/index
    system_architecture/index
-   update/index
+   upgrade/index
    Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
 
 
