@@ -74,7 +74,7 @@ Create a block extension according to the :doc:`Extending existing templates </d
     {% endblock %}
 
 
-When extending the block is successfully, implement the necessary contents to add a new input field. You can simply copy an input field from the original template :file:`form/fieldset/user_billing.tpl` and adapt it to your needs. The result may look like this:
+When extending the block is successfully, implement the necessary contents to add a new input field. You can simply copy an input field from the original template :file:`form/fieldset/user_billing.html.twig` and adapt it to your needs. The result may look like this:
 
 .. code:: twig
 
@@ -106,7 +106,7 @@ When extending the block is successfully, implement the necessary contents to ad
 
 The most important thing here is to adapt the input field to the selected field name **OE_EXTENDUSERFORM_FLOOR** by setting the name to ``name="invadr[oxuser__oe_extenduserform_floor]"`` as well as the ID, value and all other contents accordingly. This tells the OXID Framework to link the input field to our **OE_EXTENDUSERFORM_FLOOR** column of the **oxuser** database table.
 
-Please pay attention that in this example we only add contents for a basic form field and omit any input validation as well as translations for multi-language pages. In a real-world scenario you would add a translation to your module for the label and not just write *Floor Number* into the template direclty. You also should take care about the user input by adding input validation like it's done for existing input fields. Please see the contents of the original template file :file:`form/fieldset/user_billing.tpl` and adapt your custom implementation in accordance to that.
+Please pay attention that in this example we only add contents for a basic form field and omit any input validation as well as translations for multi-language pages. In a real-world scenario you would add a translation to your module for the label and not just write *Floor Number* into the template direclty. You also should take care about the user input by adding input validation like it's done for existing input fields. Please see the contents of the original template file :file:`form/fieldset/user_billing.html.twig` and adapt your custom implementation in accordance to that.
 
 Modifying allowed fields
 ------------------------
