@@ -70,8 +70,11 @@ Command Syntax:
 Parameters:
 
 * `remove-old-configuration` (optional):
+
   - Accepts ``true`` or ``false``
+
   - Default: ``false``
+
   - If set to ``true``, the old configuration parameters will be deleted from the database
 
 Example:

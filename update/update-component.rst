@@ -36,6 +36,9 @@ Shop Update
 ``oe:update:update-module``
     Update module code
 
+``oe:update:migrate-product-images``
+    Migrate product images to new tables
+
 For detailed usage instructions, see:
 
 * :doc:`Module Modernization <module-modernization>`

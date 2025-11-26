@@ -70,6 +70,25 @@ need to confirm that the update will overwrite the existing files.
 
    ./vendor/bin/oe-eshop-db_migrate migrations:migrate
 
+|schritt| Migrating product images
+----------------------------------
+
+After migrating the database, an additional step is required to migrate product image data to the new structure using the ``update-component`` command.
+
+.. code:: bash
+
+    ./vendor/bin/oe-console oe:update:migrate-product-images 5000
+
+parameters:
+
+* `batch-size` (optional):
+
+  - Accepts an integer value
+
+  - Default: ``5000``
+
+  - Controls the number of products migrated per transaction
+
 |schritt| Optional: Generating views
 ------------------------------------
 Depending on changes and shop edition you might see the maintenance mode in the shop as long as the views are not
