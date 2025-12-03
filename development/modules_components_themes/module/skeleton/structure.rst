@@ -128,10 +128,6 @@ Example:
                   └── module_options.php
                   └── myvendormymodule_admin_en_lang.php
 
-.. note::
-    In order to use translation files in your module, you have to specify at least one class inside the section ``extend``
-    in your metadata.php.
-
 .. _modules_structure_language_files_module_options_file:
 
 Module options file
