@@ -16,12 +16,12 @@ The finished module adds an additional input field to the billing address user f
 Creating the module base
 ------------------------
 
-First we need to create a new module with files **composer.json** and **metadata.php**. All necessary information can be found in our documentation. Please see :doc:`Module skeleton: metadata, composer and structure </development/modules_components_themes/module/skeleton>`.
+First we need to create a new module with files **composer.json** and **metadata.php**. All necessary information can be found in our documentation. Please see :doc:`Module skeleton: metadata, composer and structure <../skeleton/index>`.
 
 Adjusting the user table
 ------------------------
 
-Database schema changes are always done using migrations. Therefore we create a migration to add a new column to the **oxuser** table. If you don't know how to create a migration, please see :doc:`Database Migration </development/modules_components_themes/module/database_migration>`.
+Database schema changes are always done using migrations. Therefore we create a migration to add a new column to the **oxuser** table. If you don't know how to create a migration, please see :doc:`Database Migration <../database_migration/index>`.
 
 We decided for **oe_extenduserform** as our module ID and so we name the column **OE_EXTENDUSERFORM_FLOOR** since it must be prefixed to be unique. The method **up** from our migration looks like this:
 
