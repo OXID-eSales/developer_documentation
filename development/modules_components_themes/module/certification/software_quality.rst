@@ -310,6 +310,3 @@ Database access compatibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Database access should be master-slave compatible.
-
-For more information, see :ref:`Database: Master/Slave <modules-database-master_slave>`.
-
