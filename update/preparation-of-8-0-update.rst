@@ -32,7 +32,7 @@ from `config.inc.php` to the new `.env` and `parameters.yaml` files:
 
 .. code:: bash
 
-    bin/oe-console oe:update:config-file
+    bin/oe-console oe:update:migrate-config-file
 
 This command will:
 
@@ -65,7 +65,7 @@ Command Syntax:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:config-database {remove-old-configuration}
+    bin/oe-console oe:update:migrate-config-database {remove-old-configuration}
 
 Parameters:
 
@@ -81,7 +81,7 @@ Example:
 
 .. code-block:: bash
 
-    bin/oe-console oe:update:config-database true
+    bin/oe-console oe:update:migrate-config-database true
 
 Update Twig Templates
 ---------------------
@@ -90,7 +90,7 @@ To update your Twig templates to meet the latest shop requirements, run:
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-templates {target-templates-path}
+    bin/oe-console oe:update:migrate-template-filters {target-templates-path}
 
 The parameter `target-templates-path` specifies the path to the templates that need to be updated.
 Note that the default OXID templates are already updated.
@@ -102,7 +102,7 @@ This command updates specific aspects of your module code to be compatible with 
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-module {module-path} [options]
+    bin/oe-console oe:update:upgrade-module {module-path} [options]
 
 Available options:
 
@@ -115,7 +115,7 @@ Example:
 
 .. code:: bash
 
-    bin/oe-console oe:update:update-module source/modules/mymodule -c -f
+    bin/oe-console oe:update:upgrade-module source/modules/mymodule -c -f
 
 .. note::
     It's recommended to run all update commands on a test system first and thoroughly test the results

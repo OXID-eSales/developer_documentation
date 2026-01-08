@@ -19,25 +19,28 @@ Module Modernization
 ~~~~~~~~~~~~~~~~~~~~
 
 ``oe:update:refactor-module``
-    Modernize module code
+    Applies general code refactoring to a module
+
+``oe:update:upgrade-module``
+    Upgrades module code to be compatible with OXID eShop 8
 
 Shop Update
 ~~~~~~~~~~~
 
-``oe:update:config-file``
-    Migrate config.inc.php to new format
+``oe:update:migrate-config-file``
+    Migrates config.inc.php to .env and parameters.yaml files
 
-``oe:update:config-database``
-    Migrate configurations from the database
+``oe:update:migrate-config-database``
+    Migrates configuration values from the database to parameters.yaml files
 
-``oe:update:update-templates``
-    Update Twig templates
-
-``oe:update:update-module``
-    Update module code
+``oe:update:migrate-template-filters``
+    Migrates Twig filter usage in template files (e.g. date_format() to date())
 
 ``oe:update:migrate-product-images``
-    Migrate product images to new tables
+    Migrates product images data from oxarticles to the new tables
+
+``oe:update:drop-legacy-oxarticles-image-columns``
+    Drops legacy image columns (OXPIC1-12, OXTHUMB, OXICON) from oxarticles table
 
 For detailed usage instructions, see:
 

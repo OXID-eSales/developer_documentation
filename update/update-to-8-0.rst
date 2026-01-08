@@ -89,6 +89,26 @@ parameters:
 
   - Controls the number of products migrated per transaction
 
+|schritt| Optional: Dropping legacy image columns
+-------------------------------------------------
+
+After successfully migrating product images, you can optionally remove the legacy image columns from the ``oxarticles`` table:
+
+.. code:: bash
+
+    ./vendor/bin/oe-console oe:update:drop-legacy-oxarticles-image-columns
+
+.. warning::
+
+    This operation is **irreversible**! Only run this command after verifying that the image migration was successful.
+    The command will drop columns: OXPIC1-12, OXTHUMB, OXICON.
+
+Use the ``--force`` option to skip the confirmation prompt:
+
+.. code:: bash
+
+    ./vendor/bin/oe-console oe:update:drop-legacy-oxarticles-image-columns --force
+
 |schritt| Optional: Generating views
 ------------------------------------
 Depending on changes and shop edition you might see the maintenance mode in the shop as long as the views are not
