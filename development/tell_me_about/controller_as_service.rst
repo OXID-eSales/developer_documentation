@@ -22,9 +22,10 @@ Instead, consider using service decoration as described below.
 Controller Class
 ----------------
 
-New service controllers are very similar to standard controllers; they must extend
-`OxidEsales\EshopCommunity\Core\Controller\BaseController` or
-implement `OxidEsales\EshopCommunity\Internal\Framework\Controller\ViewControllerInterface`.
+New service controllers are very similar to standard controllers; they must either extend
+`OxidEsales\\EshopCommunity\\Core\\Controller\\BaseController`   
+or implement   
+`OxidEsales\\EshopCommunity\\Internal\\Framework\\Controller\\ViewControllerInterface`.
 
 |example|
 

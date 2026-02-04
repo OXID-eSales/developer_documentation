@@ -18,7 +18,6 @@ Table of Contents
    development/index
    system_architecture/index
    upgrade/index
-   Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
 
 
 .. toctree::
