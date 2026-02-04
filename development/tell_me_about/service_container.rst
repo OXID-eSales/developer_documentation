@@ -34,7 +34,7 @@ Getting services
 
 * Getting services using service locator.
 
-  You can use the :file:`ContainerFactory` class to get a service. The service you want to get must be marked as public.
+  You can use the :file:`ContainerFacade` class to get a service. The service you want to get must be marked as public.
 
   Example:
 
