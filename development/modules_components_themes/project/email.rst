@@ -3,11 +3,55 @@
 E-mail transport
 ================
 
-OXID eShop uses PHPMailer by default, but supports Symfony Mailer as an alternative email transport layer. This section explains how to extend the transport layer and implement asynchronous mail sending.
+OXID eShop uses PHPMailer by default, but supports Symfony Mailer as an alternative email transport layer. This section explains how to configure, extend the transport layer and implement asynchronous mail sending.
 
 .. contents::
     :local:
     :depth: 2
+
+
+Configuration
+-------------
+
+Enabling Symfony Mailer
+^^^^^^^^^^^^^^^^^^^^^^^
+
+By default, the legacy PHPMailer is used. To enable Symfony Mailer, use one of the following methods:
+
+**Via environment variable** (see :doc:`environment`):
+
+.. code-block:: ini
+   :caption: .env
+
+    OXID_MAILING_SYMFONY_MAILER=true
+
+**Via configuration parameter:**
+
+.. code-block:: yaml
+
+    parameters:
+      oxid_esales.mailing.use_symfony_mailer: true
+
+Configuring the transport DSN
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The transport DSN defines how emails are delivered. The default value is ``native://default``, which uses PHP's native ``mail()`` function.
+
+**Via environment variable:**
+
+.. code-block:: ini
+   :caption: .env
+
+    OXID_MAILING_DSN=smtp://user:password@smtp.example.com:587
+
+**Via configuration parameter:**
+
+.. code-block:: yaml
+
+    parameters:
+      oxid_esales.mailing.dsn: 'smtp://user:password@smtp.example.com:587'
+
+For more information on DSN formats and available transports, refer to the `Symfony Mailer documentation <https://symfony.com/doc/current/mailer.html>`__.
 
 
 Extending the transport
@@ -26,38 +70,4 @@ Asynchronous mail sending
 
 For high-traffic shops, sending emails asynchronously improves performance by offloading delivery to a background process.
 
-Using Symfony Messenger
-^^^^^^^^^^^^^^^^^^^^^^^
-
-Symfony Mailer integrates with Symfony Messenger for async delivery. To enable this:
-
-1. Install Symfony Messenger:
-
-   .. code-block:: bash
-
-       composer require symfony/messenger
-
-2. Configure the ``MailerInterface`` service to use a message bus by passing a ``MessageBusInterface`` instance as the ``$bus`` argument.
-
-3. Create a message handler for ``Symfony\Component\Mailer\Messenger\SendEmailMessage``.
-
-4. Configure a transport (database, Redis, RabbitMQ) for the messenger queue.
-
-5. Run the worker to process queued emails:
-
-   .. code-block:: bash
-
-       ./vendor/bin/oe-console messenger:consume async
-
-For more details, refer to the `Symfony Messenger documentation <https://symfony.com/doc/current/messenger.html>`_.
-
-Custom queue implementation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Alternatively, implement your own queue solution:
-
-1. Create a ``TransportInterface`` implementation that stores emails in a queue (database table, Redis, etc.) instead of sending immediately.
-
-2. Create a console command or cron job to process the queue and send emails via the actual transport.
-
-3. Register your queued transport as the default transport in ``services.yaml``.
+Symfony Mailer integrates with `Symfony Messenger <https://symfony.com/doc/current/messenger.html>`__ for async delivery. Once configured, run the worker to process queued emails.
