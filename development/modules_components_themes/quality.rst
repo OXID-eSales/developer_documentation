@@ -88,7 +88,7 @@ We strongly recommend using the following ones (or alternatives):
     * PHPStan: To ensure your code achieves level 5 or higher
     * Psalm: To ensure your code achieves level 4 or lower
 
-You can use the mentioned technology easily via composer, as described, for example, in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`_.
+You can use the mentioned technology easily via composer, as described, for example, in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/composer.json#L45>`__.
 
 With :code:`composer static`, run the PHP_CodeSniffer, PHPMess Detector and PHPStan with one single command, with the associated configurations.
 
@@ -105,7 +105,7 @@ Sonarcloud
 
 Use Sonarcloud as a final report point for psalm/phpstan issues, code coverage reports, code duplications analysis.
 
-Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`_.
+Integrate Sonarcloud in your CI-process, for example in Github Actions, as described in our `Module Template <https://github.com/OXID-eSales/module-template/blob/3f9b27d99bfb327521db8282bba92631ea103deb/.github/workflows/development.yml#L493>`__.
 
 Github Actions
 ^^^^^^^^^^^^^^

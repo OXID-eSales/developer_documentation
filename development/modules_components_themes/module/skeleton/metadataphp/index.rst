@@ -115,4 +115,3 @@ Here is an example of a module metadata file:
     :maxdepth: 1
 
     amodule/index
-    *

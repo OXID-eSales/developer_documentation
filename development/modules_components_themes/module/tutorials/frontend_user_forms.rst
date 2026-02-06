@@ -47,6 +47,7 @@ We decided for **oe_extenduserform** as our module ID and so we name the column 
 We do it simple here and add the instructions to run the migration on module installation with command:
 
 .. code:: shell
+
     ./vendor/bin/oe-eshop-db_migrate migrations:migrate oe_extenduserform
 
 
@@ -149,6 +150,7 @@ Then you must create the module class ``\OxidEsales\ExtendUser\Model\UserUpdatab
 
             return array_merge($updatableFields, $this->fieldsToAdd);
         }
+
 }
 
 In this way, the new database column ``OE_EXTENDUSERFORM_FLOOR`` is added to the updatable fields array. Now it is allowed to be submitted and passed by a user form.

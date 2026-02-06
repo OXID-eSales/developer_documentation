@@ -17,7 +17,7 @@ Override default OXID eShop functionality.
 
    Consider adjusting themes with dynamic content.
 
-   For more information, see :ref:`development/modules_components_themes/theme/twig/loading-dynamic-content:Loading dynamic content via AJAX`.
+   For more information, see :doc:`/development/modules_components_themes/theme/loading-dynamic-content`.
 
 .. _extending-add-to-basket-functionality-20170228:
 
