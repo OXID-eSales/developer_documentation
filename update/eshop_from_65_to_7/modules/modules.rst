@@ -94,7 +94,7 @@ Adjust removed functionality
        .. code:: bash
 
             composer require rector/rector --dev
-            composer require oxid-esales/oxideshop-update-component --dev
+            composer require oxid-esales/oxideshop-update-component:dev-b-7.0.x --dev
 
 
 
