@@ -17,8 +17,7 @@ Table of Contents
    getting_started/index
    development/index
    system_architecture/index
-   update/index
-   Source Code Documentation <https://docs.oxid-esales.com/sourcecodedocumentation/>
+   Source Code Documentation <https://sourcecodedocu.oxid-esales.com/>
 
 
 .. toctree::
