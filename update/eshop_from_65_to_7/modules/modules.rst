@@ -71,7 +71,7 @@ Adjust removed functionality
  * Make sure your module does not use any of the functionality that has been removed in OXID eShop 7.0.
 
    You can find a list of changes in the `OXID eShop 7.0 Release Notes <https://docs.oxid-esales.com/eshop/en/7.0/releases/releases-70/oxid-eshop-700.html>`_.
- * Besides removed functionality, we have also removed `deprecated methods and classes <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.0.x/CHANGELOG.md#removed>`_.
+ * Besides removed functionality, we have also removed `deprecated methods and classes <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.0.x/CHANGELOG-7.0.md#removed>`_.
  * Based on the `PSR-12: Extended Coding Style <https://www.php-fig.org/psr/psr-12>`_, all method names MUST NOT be prefixed with a single underscore to indicate protected or private visibility.
 
    So, we renamed all the underscore method by removing
