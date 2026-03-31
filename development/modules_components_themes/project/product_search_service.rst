@@ -3,7 +3,9 @@ Custom Product Search
 
 By default, OXID eShop uses its built-in SQL-based product search. You can replace it with
 a custom implementation (e.g. Meilisearch, Elasticsearch) by providing a service that
-implements ``ProductSearchServiceInterface``.
+implements ``ProductSearchServiceInterface``. The implementation can be shipped as part of
+a :doc:`module </development/modules_components_themes/module/index>` or a
+:doc:`component </development/modules_components_themes/component>`.
 
 When the custom search is enabled and the service is not registered or throws any exception,
 the shop automatically falls back to the built-in SQL search so the storefront remains functional.
@@ -42,6 +44,11 @@ Create a class implementing ``ProductSearchServiceInterface``:
 
 .. code:: php
 
+    namespace MySearchComponentExample\Search;
+
+    use OxidEsales\EshopCommunity\Internal\Domain\Product\Search\ProductSearchCriteria;
+    use OxidEsales\EshopCommunity\Internal\Domain\Product\Search\ProductSearchResult;
+    use OxidEsales\EshopCommunity\Internal\Domain\Product\Search\ProductSearchServiceInterface;
     use OxidEsales\EshopCommunity\Internal\Framework\Database\Id;
 
     class CustomProductSearchService implements ProductSearchServiceInterface
@@ -73,6 +80,12 @@ Use ``Id::fromString()`` to wrap each product oxid string.
     in the shop. If the result contains IDs that the shop cannot load (e.g. inactive,
     deleted, or out-of-scope products), the total count will not match the number of
     products actually rendered, causing incorrect pagination.
+
+.. warning::
+
+    The shop does not apply subshop scope filtering to results returned by the custom search.
+    Your implementation is solely responsible for restricting results to the correct subshop.
+    Returning IDs from other subshops might lead to unexpected search results shown in the frontend.
 
 The ``context`` parameter is an arbitrary key-value array passed through from the caller
 (e.g. locale, shop ID, customer group). Its contents are defined by the module that
@@ -124,7 +137,19 @@ Retrieve all active sorting instructions from the criteria via ``$criteria->getS
 Registering the service
 -----------------------
 
-Register your implementation under the interface ID in ``var/configuration/configurable_services.yaml``
+Register your implementation under the interface ID in the ``services.yaml`` file of your
+module or component:
+
+.. code-block:: yaml
+   :caption: services.yaml
+
+    services:
+      OxidEsales\EshopCommunity\Internal\Domain\Product\Search\ProductSearchServiceInterface:
+        class: MySearchComponentExample\Search\CustomProductSearchService
+        autowire: true
+        public: true
+
+Then enable the custom search by setting the parameter in ``var/configuration/configurable_services.yaml``
 (or in ``var/configuration/shops/<shopId>/configurable_services.yaml`` for a specific shop):
 
 .. code-block:: yaml
@@ -132,12 +157,6 @@ Register your implementation under the interface ID in ``var/configuration/confi
 
     parameters:
       oxid_esales.product_search_enabled: true
-
-    services:
-      OxidEsales\EshopCommunity\Internal\Domain\Product\Search\ProductSearchServiceInterface:
-        class: CustomProductSearchService
-        autowire: true
-        public: true
 
 .. note::
 
@@ -149,7 +168,7 @@ Register your implementation under the interface ID in ``var/configuration/confi
 Events
 ------
 
-The shop dispatches two events around every product search **when the custom search path is active**,
+The shop dispatches two events for every product search **when the custom search path is active**,
 allowing modules to inspect or modify the search without touching the controller.
 These events are not dispatched when the built-in SQL search is used.
 
@@ -175,7 +194,7 @@ Dispatched before the search runs. Listeners may replace the criteria or context
 **AfterProductSearchEvent**
 
 Dispatched after the search runs. The criteria and context that produced the
-result are available read-only. The result itself may be replaced by listeners:
+result are available as read-only. The result itself may be replaced by listeners:
 
 .. code:: php
 
