@@ -78,7 +78,7 @@ The components of an OXID Compilation are defined in a `Meta Package`_.
 To ensure the best stability and interoperability, in a compilation the versions of all components are pinned to a specific
 patch release.
 
-The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/latest/releases/index.html).
+The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/7.5/releases/index.html).
 
 Vendor Prefix
 ^^^^^^^^^^^^^

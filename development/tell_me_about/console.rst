@@ -124,7 +124,7 @@ And again after module activation command can be called via:
 
     ./vendor/bin/oe-console demo-module:say-hello-another-command
 
-Demo module with command example can be found `here <https://github.com/OXID-eSales/module-template/blob/b-7.1.x/src/Logging/Command/ReadLogsCommand.php>`__.
+Demo module with command example can be found `here <https://github.com/OXID-eSales/examples-module/blob/b-7.5.x/src/Logging/Command/ReadLogsCommand.php>`__.
 
 OXID eShop component commands
 -----------------------------
