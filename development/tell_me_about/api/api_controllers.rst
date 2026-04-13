@@ -313,7 +313,7 @@ The component includes:
 - Role-based access control
 - Ready-to-use login and profile endpoints
 
-For complete documentation, see :doc:`JWT Authentication </development/tell_me_about/jwt_authentication>`.
+For complete documentation, see :doc:`JWT Authentication </development/tell_me_about/api/jwt_authentication>`.
 
 **3. OAuth 2.0**
 
