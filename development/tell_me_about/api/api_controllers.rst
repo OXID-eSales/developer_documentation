@@ -261,6 +261,12 @@ Route compilation happens during container build, not on every request. This mea
 - Production environments benefit from persistent container cache
 - Development environments may need frequent cache clearing
 
+Rate Limiting
+-------------
+
+All ``/api/*`` requests are rate-limited by default. See :doc:`Rate Limiting <rate_limiting>`
+for configuration, response headers, and how to exclude specific routes.
+
 Security and Authentication
 ---------------------------
 

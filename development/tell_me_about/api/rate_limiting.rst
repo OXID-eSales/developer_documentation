@@ -4,6 +4,9 @@ API Rate Limiting
 As of OXID eShop version 7.5, the API includes built-in rate limiting to protect against
 abuse and ensure fair resource usage.
 
+Rate limiting applies to requests handled by the :doc:`API entrypoint <api_controllers>`
+(paths starting with ``/api/``). Other shop traffic is not affected.
+
 Rate limiting restricts the number of API requests a client can make within a specified
 time window, helping to prevent denial-of-service attacks and ensuring service availability.
 
