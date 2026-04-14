@@ -11,4 +11,5 @@ In order to implement the following things, you need an entry point such like
 
     event/index
     logging/index
+    api/index
     *
