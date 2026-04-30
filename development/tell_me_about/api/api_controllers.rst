@@ -91,10 +91,20 @@ Create a simple API controller that returns a list of active products:
 
     All API routes must start with ``/api/`` prefix.
 
+    This is enforced by two runtime layers, not by the ``#[Route]`` attribute syntax:
+
+    - The shop's :file:`source/.htaccess` contains
+      ``RewriteRule ^api/(.*)$ api.php/$1 [QSA,NC,L]`` — this is what routes
+      incoming HTTP requests to the :file:`api.php` entry point in the first place.
+      Without this rewrite, the URL never reaches Symfony's routing.
+    - The API rate limiter (see :doc:`rate_limiting`) treats only requests whose path
+      starts with ``/api/`` as API requests. Routes outside this prefix bypass rate
+      limiting entirely.
+
 Service Registration
 ^^^^^^^^^^^^^^^^^^^^
 
-Register your API controller as a public service in :file:`services.yaml`:
+Register your API controller as a public service in any :file:`services.yaml` that the DI container loads — module-level, an imported sub-file, or a component file.
 
 |example|
 
@@ -103,7 +113,17 @@ Register your API controller as a public service in :file:`services.yaml`:
     MyVendor\MyModule\Controller\Api\ProductApiController:
         public: true
 
-The controller must be public so that the RoutePass compiler can discover its routes.
+The controller must be public so that the ``RoutePass`` compiler pass can discover its routes.
+
+.. note::
+
+    Do not place overrides for shared API parameters (for example
+    ``oxid_esales.rate_limiter.excluded_routes``) into a module's
+    :file:`services.yaml`. Symfony does not deep-merge parameter arrays, so two
+    modules each setting the same parameter would silently overwrite each other.
+    Put such overrides into the project-level
+    :file:`var/configuration/configurable_services.yaml`, where a single source of
+    truth controls the value. See :doc:`rate_limiting` for a concrete example.
 
 
 Accessing the Endpoint
