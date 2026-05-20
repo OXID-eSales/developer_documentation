@@ -206,12 +206,23 @@ Step 5 — Remove old metapackage and require Core Edition
 Use ``--no-update`` on every command to prepare all changes
 without triggering an install in between.
 
-.. note::
+.. important::
 
-   Only add the modules your shop actually uses. You do not
-   need to re-add modules you want to remove. This is your
-   opportunity to clean up unused modules. However, always
-   pin the transitive dependencies for the modules you keep.
+   Re-add **every** module your shop currently has
+   installed, even those you eventually want to remove.
+   The metapackage swap in Step 6 runs an initial
+   ``--no-plugins`` pass; any module that is not in your
+   ``composer.json`` at that point is silently dropped
+   from ``vendor/`` without the OXID Composer plugin's
+   uninstall hook firing, which leaves an orphaned
+   ``source/modules/<vendor>/<module>`` directory and
+   crashes the next hook run. Once the migration is
+   complete (Step 7), drop unwanted modules cleanly with
+   ``composer remove`` — see
+   :ref:`module-management-after-migration` below.
+
+   Also pin the transitive dependencies of the modules
+   you keep to prevent version drift during the swap.
 
 **CE:**
 
@@ -310,6 +321,19 @@ would otherwise fail if the container cache references
 packages that are being removed. The second pass runs the
 plugin hooks to finalize the installation.
 
+.. note::
+
+   The ``composer update`` from Step 6 may end with a
+   footer such as ``Found N security vulnerability
+   advisories affecting M packages.`` On Composer 2.7/2.8
+   this is purely informational and does not indicate a
+   failed update — the relevant CVEs are the ones
+   documented in the
+   :ref:`composer-2.9-security-audit` section below. On
+   Composer 2.9+ the update will refuse to proceed unless
+   the ``audit.ignore`` block from that section is in
+   place.
+
 .. code:: bash
 
    composer update --no-plugins --no-scripts
@@ -364,6 +388,8 @@ If anything goes wrong, restore from backup:
    composer install --no-plugins --no-scripts
    composer install
 
+.. _composer-2.9-security-audit:
+
 Composer 2.9 security audit
 -----------------------------
 
@@ -402,6 +428,7 @@ block to the ``config`` section of your ``composer.json``:
                "PKSA-wws7-mr54-jsny",
                "PKSA-1gck-s111-yq7g",
                "PKSA-hjpv-ct4c-8fq5",
+               "PKSA-pwvr-3754-v57r",
                "PKSA-t5r2-p5q9-mtpn",
                "PKSA-6bp1-9hfj-2cgv"
            ]
@@ -412,28 +439,24 @@ These advisories affect the following packages:
 
 .. list-table::
    :header-rows: 1
-   :widths: 30 15 55
+   :widths: 35 65
 
    * - Package
-     - Count
      - Context
    * - ``smarty/smarty`` v2.6.33
-     - 13
-     - Legacy template engine used by OXID 6.x.
-       Smarty 2.x is end-of-life and does not receive
-       fixes. OXID 7.x replaced Smarty with Twig.
+     - Legacy template engine used by OXID 6.x. Smarty 2.x
+       is end-of-life and does not receive fixes. The
+       majority of the listed advisories apply here. OXID
+       7.x replaced Smarty with Twig.
    * - ``composer/composer`` 2.7.7
-     - 3
      - Composer itself, pinned at 2.7.7 by the
        compilation. The CVEs affect Perforce source
        handling and ANSI injection — not relevant for
        normal shop operation.
    * - ``oxid-esales/oxideshop-ce`` v6.14.4
-     - 1
      - Addressed in OXID eShop 7.x. The fix cannot be
        backported to 6.x without breaking changes.
    * - ``symfony/process``
-     - 1
      - Windows-only command execution issue
        (CVE-2024-51736). Not relevant for Linux-hosted
        shops.
@@ -447,18 +470,21 @@ These advisories affect the following packages:
    to OXID eShop 7.4.1 or later with the Twig template
    engine resolves all of them.
 
+.. _module-management-after-migration:
+
 Module management after migration
 -----------------------------------
 
 After the migration, you manage modules directly via
-Composer:
+Composer. The OXID Composer plugin handles activation and
+filesystem cleanup automatically:
 
 .. code:: bash
 
    # Update a module
    composer update vendor/module-name
 
-   # Remove a module
+   # Remove a module (cleans up source/modules/ automatically)
    composer remove vendor/module-name
 
    # Install a new module
@@ -471,3 +497,26 @@ After any module change:
    vendor/bin/oe-console oe:cache:clear
    vendor/bin/oe-console oe:module:activate module-id
    vendor/bin/oe-console oe:database:generateviews
+
+Dropping unused modules
+^^^^^^^^^^^^^^^^^^^^^^^
+
+If you re-added modules in Step 5 only to keep the
+migration clean and you do not actually use them, drop
+them now with ``composer remove``. We recommend reviewing
+the following modules for removal if they are not in use:
+
+* Klarna Checkout and Klarna Payments
+* Makaira Connect Essential
+* PAYONE Payment für OXID eShop
+* PayPal
+* Unzer Payment für OXID
+
+.. tip::
+
+   After running ``composer remove`` for any module, take a
+   quick look at ``source/modules/`` and confirm that no
+   leftover ``<vendor>/<module>`` directories from the
+   removed modules remain. The OXID Composer plugin cleans
+   these up automatically, but it never hurts to verify —
+   an orphaned ``metadata.php`` will crash later hook runs.
