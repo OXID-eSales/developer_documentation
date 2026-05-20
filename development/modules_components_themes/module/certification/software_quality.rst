@@ -37,7 +37,7 @@ PHP code
 
 Object-oriented programming is highly preferred.
 
-Make sure your code is compatible with the PHP versions described under `Server and system requirements <https://docs.oxid-esales.com/eshop/en/7.0/installation/new-installation/server-and-system-requirements.html>`__.
+Make sure your code is compatible with the PHP versions described under `Server and system requirements <https://docs.oxid-esales.com/eshop/en/7.5/installation/new-installation/server-and-system-requirements.html>`__.
 
 OXID standards
 --------------

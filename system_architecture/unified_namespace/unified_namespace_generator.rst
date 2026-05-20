@@ -39,9 +39,7 @@ Given the example you run the following command:
 
 .. code::
 
-   composer create-project --no-dev oxid-esales/oxideshop-project my_oxid_eshop_project dev-b-6.0-ce
-
-.. todo: #Igor: What is the correct expression? update to oxid 7: "dev-b-7.0-ce"?
+   composer create-project --no-dev oxid-esales/oxideshop-project my_oxid_eshop_project dev-b-7.5.x
 
 By triggering the generation with other commands the steps 1 and 2 can be different.
 

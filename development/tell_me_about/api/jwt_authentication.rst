@@ -2,7 +2,7 @@ JWT Authentication
 ==================
 
 As of OXID eShop version 7.5, you can use the JWT Authenticator component to add token-based
-authentication to your API endpoints.
+authentication to API endpoints exposed via the :doc:`API entrypoint <api_controllers>`.
 
 The component provides a complete authentication solution including user validation,
 token generation, role-based access control, and ready-to-use API controllers.
