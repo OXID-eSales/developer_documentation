@@ -156,6 +156,23 @@ Best Practices
                 - '/api/health'
                 - '/api/ping'
 
+**Configure trusted proxies**
+    If OXID eShop runs behind a reverse proxy or load balancer, configure trusted proxy IPs so clients are identified by their real IP address rather than the proxy IP:
+
+    .. code-block:: ini
+       :caption: .env
+
+        OXID_REQUEST_TRUSTED_PROXIES=127.0.0.1,10.0.0.0/8
+
+    Or via configuration parameter:
+
+    .. code-block:: yaml
+
+        parameters:
+          oxid_esales.request.trusted_proxies:
+            - '127.0.0.1'
+            - '10.0.0.0/8'
+
 **Monitor rate limit hits**
     Track 429 responses in your monitoring to identify potential issues or attacks.
 
