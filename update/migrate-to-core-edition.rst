@@ -53,29 +53,6 @@ The shop core remains at the same version. Both the standard
 and Core Edition metapackages pin the same
 ``oxid-esales/oxideshop-ce v6.14.4``. This is not an upgrade.
 
-.. todo::
-
-   **Remove this section before publishing.** The following
-   steps are only needed while the Core Edition metapackages
-   are not yet tagged on Packagist/Satis. Once tagged as
-   ``v6.5.5``, drop these steps and change the version
-   constraint in Step 5 from ``dev-b-6.5-release`` to
-   ``v6.5.5``.
-
-   **Pre-release setup (remove after tagging):**
-
-   .. code:: bash
-
-      composer config minimum-stability dev
-      composer config prefer-stable true
-      composer config repositories.metapackage-ce-core vcs https://github.com/OXID-eSales/metapackage-ce-core
-      composer config repositories.metapackage-pe-core vcs https://github.com/OXID-eSales/metapackage-pe-core
-      composer config repositories.metapackage-ee-core vcs https://github.com/OXID-eSales/metapackage-ee-core
-
-   And use ``dev-b-6.5-release`` instead of ``v6.5.5`` as
-   the version constraint for the Core Edition metapackage
-   in Step 5.
-
 Step 1 — Backup
 ----------------
 
@@ -232,7 +209,7 @@ without triggering an install in between.
 
    composer require oxid-esales/metapackage-ce-core:v6.5.5 --no-update
 
-   # Modules (add only those your shop uses)
+   # Modules (add every module currently installed in your shop)
    composer require ddoe/wysiwyg-editor-module:v2.4.2 --no-update
    composer require fatchip-gmbh/oxid-klarna-6:v5.5.3 --no-update
    composer require makaira/oxid-connect-essential:1.4.5 --no-update
@@ -368,8 +345,6 @@ Step 7 — Verify
   plus the CE and PE metapackages for PE/EE installations)
 * Lines added: the Core Edition metapackage(s)
   (e.g. ``oxid-esales/metapackage-ee-core v6.5.5``)
-* Lines removed for modules you intentionally did not
-  re-add
 
 If you pinned all transitive dependencies, there should be
 **no version changes** in the remaining packages. Any
