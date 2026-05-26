@@ -18,7 +18,6 @@ Table of Contents
    development/index
    system_architecture/index
    upgrade/index
-   components/index
 
 
 .. toctree::
