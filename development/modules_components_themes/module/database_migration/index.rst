@@ -33,8 +33,13 @@ Migration Classes
 Most recent info on requirements and structure of Migration Classes can be found in
 `Doctrine Migrations documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/reference/migration-classes.html>`__.
 
-Module migrations can also be generated and executed via
-`OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
+To generate a blank migration class for your module, call the Doctrine Migrations CLI directly
+with your module's configuration (see also :ref:`doctrine_migrations_directly`):
+
+.. code:: bash
+
+    vendor/bin/doctrine-migrations migrations:generate \
+        --configuration=<path-to-module>/migration/migrations.yml
 
 .. warning::
     When planning your Migration's structure, remember that certain
@@ -43,16 +48,50 @@ Module migrations can also be generated and executed via
     `Implicit commits <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/explanation/implicit-commits.html>`__
     which will affect the transaction functionality and may have unexpected side-effects.
 
+Registration
+------------
+
+Module migrations can be generated and executed via the deprecated
+`OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
+The recommended way is to register migrations through the Symfony service container using the
+``oxid_esales.migration_path_provider`` DI tag. Implement ``MigrationPathProviderInterface``
+and register the service in the module's ``services.yaml``:
+
+.. code:: php
+
+    <?php
+
+    use OxidEsales\EshopCommunity\Internal\Framework\Migration\MigrationPathProviderInterface;
+
+    class MyModuleMigrationPathProvider implements MigrationPathProviderInterface
+    {
+        public function getMigrationConfigPath(): string
+        {
+            return __DIR__ . '/../migration/migrations.yml';
+        }
+    }
+
+.. code:: yaml
+
+    # services.yaml
+    services:
+      MyVendor\MyModule\MyModuleMigrationPathProvider:
+        tags:
+          - { name: 'oxid_esales.migration_path_provider' }
+
+.. note::
+
+    Module services are only loaded after the module is activated. The migration path provider
+    will therefore only be picked up by ``oe:database:migrate`` once the module has been
+    activated via ``oe:module:activate``.
+
 Usage
 -----
 
-To generate migration versions for a specific module, we must use module_id for `<Suite_Type>` parameter.
-Then all the module migration versions will be generated based on the configuration from migrations.yml file in migration folder of the given module.
-
-Example:
+To apply all pending migrations including module migrations, run:
 
 .. code:: bash
 
-   vendor/bin/oe-eshop-db_migrate migrations:generate ddoewysiwyg
+   vendor/bin/oe-console oe:database:migrate
 
-In this case it will be generated only for WYSIWYG module.
+For more details on how the migration system works, see :doc:`Migrations <../../../tell_me_about/migrations>`.

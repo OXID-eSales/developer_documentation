@@ -59,3 +59,85 @@ To uninstall a OXID eShop component, it's necessary to execute Composer's remove
 .. code:: bash
 
     composer remove vendor/package
+
+Database Migration
+------------------
+
+.. _component-database-migration:
+
+Components can provide their own Doctrine database migrations by registering their migration
+configuration through the Symfony service container using the ``oxid_esales.migration_path_provider``
+DI tag.
+
+Configuration
+^^^^^^^^^^^^^
+
+Place the Doctrine migration configuration file inside a ``migration`` folder in your component:
+
+.. code:: bash
+
+    ├── migration
+    │    ├── migrations.yml
+    │    └── data
+    │         └── Version20240101000000.php
+
+Example ``migrations.yml``:
+
+.. code:: yaml
+
+    table_storage:
+      table_name: myvendor_mycomponent_migrations
+    migrations_paths:
+      'MyVendor\MyComponent\Migrations': data
+
+.. tip::
+    To prevent database table name conflicts, include your component's name in ``table_name``.
+
+Creating a migration version
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To generate a blank migration class, call the Doctrine Migrations CLI directly with your
+component's configuration (see also :ref:`doctrine_migrations_directly`):
+
+.. code:: bash
+
+    vendor/bin/doctrine-migrations migrations:generate \
+        --configuration=<path-to-component>/migration/migrations.yml
+
+Migration path provider
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Implement ``MigrationPathProviderInterface`` to point the executor at your configuration file:
+
+.. code:: php
+
+    <?php
+
+    use OxidEsales\EshopCommunity\Internal\Framework\Migration\MigrationPathProviderInterface;
+
+    class MyComponentMigrationPathProvider implements MigrationPathProviderInterface
+    {
+        public function getMigrationConfigPath(): string
+        {
+            return __DIR__ . '/../migration/migrations.yml';
+        }
+    }
+
+Register the provider in your component's ``services.yaml`` with the
+``oxid_esales.migration_path_provider`` tag:
+
+.. code:: yaml
+
+    services:
+      MyVendor\MyComponent\MyComponentMigrationPathProvider:
+        tags:
+          - { name: 'oxid_esales.migration_path_provider' }
+
+Running migrations
+^^^^^^^^^^^^^^^^^^
+
+All registered component migrations run together with the shop migrations via:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:database:migrate
