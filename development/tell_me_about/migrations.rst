@@ -6,8 +6,8 @@ Migrations can be provided by:
 
 - eShop editions (CE, PE, EE)
 - Project-specific code
-- :ref:`Modules <module_migrations>`
 - :ref:`Components <component-database-migration>`
+- :ref:`Modules <module_migrations>`
 
 .. _migrations_running:
 
@@ -24,8 +24,8 @@ This runs migrations from all sources in a single pass:
 
 - eShop edition migrations (CE, and PE/EE when applicable)
 - Project-specific migrations
+- Component migrations registered via the :ref:`tagged provider system <tagged_migrations>`
 - Module migrations via the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__
-- Module and component migrations registered via the :ref:`tagged provider system <tagged_migrations>`
 
 .. note::
 
@@ -33,6 +33,18 @@ This runs migrations from all sources in a single pass:
     ``oe:database:migrate``, during shop setup, and when the deprecated
     ``oe-eshop-db_migrate migrations:migrate`` script runs without a suite argument.
     They do not run when the deprecated ``Migrations`` class is used programmatically.
+
+``oe:database:migrate`` supports the common options of the underlying Doctrine
+``migrations:migrate`` command, such as ``--dry-run``, and forwards them to every migration
+source. Check the `Doctrine Migrations documentation
+<https://www.doctrine-project.org/projects/doctrine-migrations/en/current/reference/managing-migrations.html>`__
+for the available options.
+
+Example:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:database:migrate --dry-run
 
 .. _doctrine_migrations_directly:
 
@@ -54,9 +66,10 @@ This places a new ``Version<YYYYMMDDHHMMSS>.php`` class in the directory configu
 Tagged migrations
 -----------------
 
-Modules and components register their migrations through the Symfony service container using the
+Migrations can be registered through the Symfony service container using the
 ``oxid_esales.migration_path_provider`` DI tag. The shop collects all tagged providers and runs
-their migrations as part of ``oe:database:migrate``.
+their migrations as part of ``oe:database:migrate``. This is how components provide their
+migrations; project-specific code can register migration paths the same way.
 
 To register a migration path provider, implement ``MigrationPathProviderInterface`` and tag the
 service in ``services.yaml``.
@@ -94,6 +107,10 @@ See :ref:`component-database-migration` for the full component migration setup i
 
 Registration for a module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Modules can also register tagged migrations. This is an alternative to the standard module
+migration setup described in :ref:`module_migrations`, which discovers module migrations
+automatically.
 
 .. note::
 

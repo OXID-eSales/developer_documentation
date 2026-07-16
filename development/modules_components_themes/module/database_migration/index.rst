@@ -51,11 +51,13 @@ with your module's configuration (see also :ref:`doctrine_migrations_directly`):
 Registration
 ------------
 
-Module migrations can be generated and executed via the deprecated
-`OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__.
-The recommended way is to register migrations through the Symfony service container using the
-``oxid_esales.migration_path_provider`` DI tag. Implement ``MigrationPathProviderInterface``
-and register the service in the module's ``services.yaml``:
+Module migrations placed in the ``migration`` folder as described above are discovered
+automatically: the shop finds the ``migrations.yml`` of every installed module and executes the
+migrations via ``oe:database:migrate``.
+
+Alternatively, module migrations can be registered through the Symfony service container using
+the ``oxid_esales.migration_path_provider`` DI tag (see :ref:`tagged_migrations`). Implement
+``MigrationPathProviderInterface`` and register the service in the module's ``services.yaml``:
 
 .. code:: php
 
