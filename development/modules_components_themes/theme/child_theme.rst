@@ -24,27 +24,25 @@ A child theme is an extension like a normal theme, module or component and must 
 
 We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. As ``target-directory`` we also use our theme's name and the ``assets-directory`` begins with ``out`` followed by the name again. Currently it's just a normal theme installable via Composer.
 
-theme.php
----------
+metadata.yaml
+-------------
 
-The ``theme.php`` is now where the configuration as a child theme takes place.
+The ``metadata.yaml`` is now where the configuration as a child theme takes place.
 
-.. code:: php
+.. code:: yaml
 
-    declare(strict_types=1);
+    id: child
+    title: 'CHILD'
+    description: 'A child theme from APEX.'
+    parentTheme: apex
+    parentVersions:
+        - '1.2.0'
+        - '1.3.0'
 
-    $aTheme = [
-        'id' => 'child',
-        'title' => 'CHILD',
-        'description' => 'A child theme from APEX.',
-        'parentTheme' => 'apex',
-        'parentVersions' => ['1.2.0','1.3.0'],
-    ];
-
-As ``id``, ``title`` and ``description`` you set the usual things but what's new now are the keys ``parentTheme`` and ``parentVersions``. These two array keys make the theme a child theme.
+As ``id``, ``title`` and ``description`` you set the usual things but what's new now are the keys ``parentTheme`` and ``parentVersions``. These two keys make the theme a child theme.
 
 - ``parentTheme`` is a string and must contain the ``id`` of the parent theme.
-- ``parentVersions`` is an array and must contain at least one compatible version of the corresponding parent theme.
+- ``parentVersions`` is a list and must contain at least one compatible version of the corresponding parent theme.
 
 In this example we use our current APEX theme and support versions 1.2.0 as well as 1.3.0.
 
