@@ -51,9 +51,9 @@ the database are added. A theme that has no YAML configuration yet (step 1 was n
 for it) is skipped, and the command prints a warning listing those themes — run step 1
 for them first, then repeat this command.
 
-Settings are migrated under their existing names; the commands do not rename them. If
-your theme extends the OXID standard theme, see `Renamed theme settings`_ for the names
-that changed in OXID's own theme.
+OXID's standard theme settings are renamed to their modernized names in every migration
+step, for example ``sLogoFile`` becomes ``logoFile``. Custom settings keep their names.
+See `Renamed theme settings`_ for the full list.
 
 Step 3 — Migrate templates to the theme setting service
 -------------------------------------------------------
@@ -122,11 +122,10 @@ once per theme directory, including child themes.
 Renamed theme settings
 ----------------------
 
-OXID renamed the theme settings of its own standard theme to remove Hungarian notation
-and outdated terms. This is a reference for that change: the migration commands do not
-rename anything, and your own settings are yours to manage. If your theme extends or
-overrides OXID's standard settings, use the new names below in your ``config.yaml``,
-templates and code.
+OXID's standard theme settings were renamed to remove Hungarian notation and outdated
+terms. The migration commands apply these renames automatically to the theme
+configuration, the theme's ``config.yaml`` and its templates. Settings that are not in
+this list — including custom settings you added — keep their names.
 
 .. csv-table::
     :header: "Old name", "New name"
