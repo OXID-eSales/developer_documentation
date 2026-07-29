@@ -8,6 +8,5 @@ Updating
     update-to-8-0
     update-component
     module-modernization
-    theme-configuration-migration
     upgrade/index
     config-inc/deprecation-overview
