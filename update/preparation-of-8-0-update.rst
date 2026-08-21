@@ -19,6 +19,18 @@ This document provides the steps to update your shop from version 7.x to the new
     To ensure backward compatibility and ease the transition process, `BC-Facts` has been introduced.
     It provides a temporary replacement for the `Facts` component, allowing modules to continue working during the update. Note that `BC-Facts` will depend on the Community Edition (CE).
 
+.. note::
+    The backwards-compatibility autoloader for legacy class names (e.g. ``oxarticle``, ``oxorder``) has been
+    removed, with no replacement. Update any remaining legacy class name usage - in PHP code,
+    ``metadata.php`` ``extend`` keys, and request parameters carrying class names - to the fully qualified
+    class name instead (e.g. ``OxidEsales\Eshop\Application\Model\Article``).
+
+.. note::
+    Module components that do not implement ``ViewDataKeyProviderInterface`` now appear in the template
+    view data under their fully qualified class name instead of their old ``oxcmp_*`` key. If your module
+    provides a component and its template still references the old key (e.g. ``{$oxcmp_mycomponent}``),
+    implement ``ViewDataKeyProviderInterface::getViewDataKey()`` on the component to restore it.
+
 Prerequisites
 -------------
 
