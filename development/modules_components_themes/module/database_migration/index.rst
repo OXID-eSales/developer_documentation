@@ -57,7 +57,7 @@ migrations via ``oe:database:migrate``.
 
 Alternatively, module migrations can be registered through the Symfony service container using
 the ``oxid_esales.migration_path_provider`` DI tag (see :ref:`tagged_migrations`). Implement
-``MigrationPathProviderInterface`` and register the service in the module's ``services.yaml``:
+``MigrationPathProviderInterface`` and register the service in the module:
 
 .. code:: php
 
@@ -75,7 +75,6 @@ the ``oxid_esales.migration_path_provider`` DI tag (see :ref:`tagged_migrations`
 
 .. code:: yaml
 
-    # services.yaml
     services:
       MyVendor\MyModule\MyModuleMigrationPathProvider:
         tags:
@@ -83,9 +82,12 @@ the ``oxid_esales.migration_path_provider`` DI tag (see :ref:`tagged_migrations`
 
 .. note::
 
-    Module services are only loaded after the module is activated. The migration path provider
-    will therefore only be picked up by ``oe:database:migrate`` once the module has been
-    activated via ``oe:module:activate``.
+    Where you register the provider decides when it is available:
+
+    - In ``services.yaml`` it is only picked up by ``oe:database:migrate`` once the module has
+      been activated via ``oe:module:activate``.
+    - In :ref:`bootstrap-services.yaml <module_bootstrap_services>` it is available for every
+      installed module, so the migrations can be run before the module is activated.
 
 Usage
 -----
