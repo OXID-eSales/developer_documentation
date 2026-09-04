@@ -3,6 +3,12 @@
 events
 ======
 
+.. note::
+
+    The metadata.php ``events`` (``onActivate`` / ``onDeactivate``) are **deprecated**. They
+    continue to work, but new modules should react to module activation and deactivation with DI
+    event subscribers instead. See :ref:`Module Events <module_setup_events>`.
+
 Description
     The specified event handler class should be registered in medatata files array.
 Type
