@@ -35,8 +35,8 @@ Register the subscriber in :ref:`bootstrap-services.yaml <module_bootstrap_servi
 
     namespace MyVendor\MyModule\Setup;
 
+    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Event\BeforeModuleDeactivationEvent;
     use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Event\FinalizingModuleActivationEvent;
-    use OxidEsales\EshopCommunity\Internal\Framework\Module\Setup\Event\FinalizingModuleDeactivationEvent;
     use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
     final class ModuleLifecycleSubscriber implements EventSubscriberInterface
@@ -47,7 +47,7 @@ Register the subscriber in :ref:`bootstrap-services.yaml <module_bootstrap_servi
         {
             return [
                 FinalizingModuleActivationEvent::class => 'onActivate',
-                FinalizingModuleDeactivationEvent::class => 'onDeactivate',
+                BeforeModuleDeactivationEvent::class => 'onDeactivate',
             ];
         }
 
@@ -60,7 +60,7 @@ Register the subscriber in :ref:`bootstrap-services.yaml <module_bootstrap_servi
             // your activation logic for $event->getShopId()
         }
 
-        public function onDeactivate(FinalizingModuleDeactivationEvent $event): void
+        public function onDeactivate(BeforeModuleDeactivationEvent $event): void
         {
             if ($event->getModuleId() !== self::MODULE_ID) {
                 return;
@@ -95,6 +95,13 @@ Before (metadata.php):
 
 After: remove the ``events`` entry from metadata.php and register the subscriber shown above in
 :ref:`bootstrap-services.yaml <module_bootstrap_services>`.
+
+.. note::
+
+    Subscribe ``onDeactivate`` to ``BeforeModuleDeactivationEvent`` to keep the timing of the
+    legacy metadata handler, which ran *before* the module was set inactive.
+    ``FinalizingModuleDeactivationEvent`` is dispatched afterwards — once the module is already
+    inactive and its :file:`services.yaml` import has been removed.
 
 
 .. toctree::
