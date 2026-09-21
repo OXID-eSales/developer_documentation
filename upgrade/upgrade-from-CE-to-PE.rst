@@ -21,7 +21,7 @@ Upgrade your OXID eShop from the Community Edition (CE) to the Professional Edit
 
    .. code:: bash
 
-     vendor/bin/oe-eshop-db_migrate migrations:migrate
+     vendor/bin/oe-console oe:database:migrate
 
 #. Regenerate the database views:
 

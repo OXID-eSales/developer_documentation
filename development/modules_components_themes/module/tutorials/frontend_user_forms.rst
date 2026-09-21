@@ -48,7 +48,7 @@ We do it simple here and add the instructions to run the migration on module ins
 
 .. code:: shell
 
-    ./vendor/bin/oe-eshop-db_migrate migrations:migrate oe_extenduserform
+    ./vendor/bin/oe-console oe:database:migrate
 
 
 However, we may also consider to run the migrations automatically on module activation. To achieve this, we can use the **onActivate** event. If you want to know more about that, please see :doc:`onActivate event </development/modules_components_themes/module/skeleton/metadataphp/amodule/events>`.
