@@ -122,6 +122,6 @@ To apply all pending migrations including module migrations, run:
 
     ``oe:database:migrate`` is the supported entry point. The older doctrine-migration wrapper
     (``vendor/bin/oe-eshop-doctrine_migration``, backed by the ``Migrations`` / ``MigrationsBuilder``
-    classes) is deprecated in favour of it.
+    classes) has been removed.
 
 For more details on how the migration system works, see :doc:`Migrations <../../../tell_me_about/migrations>`.
