@@ -22,17 +22,12 @@ The standard command to apply all pending migrations is:
 
 This runs migrations from all sources in a single pass:
 
-- eShop edition migrations (CE, and PE/EE when applicable)
-- Project-specific migrations
-- Component migrations registered via the :ref:`tagged provider system <tagged_migrations>`
-- Module migrations via the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__
-
-.. note::
-
-    Migrations registered via ``oxid_esales.migration_path_provider`` execute through
-    ``oe:database:migrate``, during shop setup, and when the deprecated
-    ``oe-eshop-db_migrate migrations:migrate`` script runs without a suite argument.
-    They do not run when the deprecated ``Migrations`` class is used programmatically.
+- eShop edition migrations (CE, and PE/EE when applicable), registered via the
+  :ref:`tagged provider system <tagged_migrations>`
+- Project-specific migrations and component migrations, also registered via the tagged provider
+  system
+- Module migrations, discovered automatically from every installed module's ``migration``
+  folder
 
 ``oe:database:migrate`` supports the common options of the underlying Doctrine
 ``migrations:migrate`` command, such as ``--dry-run``, and forwards them to every migration
@@ -72,7 +67,11 @@ their migrations as part of ``oe:database:migrate``. This is how components prov
 migrations; project-specific code can register migration paths the same way.
 
 To register a migration path provider, implement ``MigrationPathProviderInterface`` and tag the
-service in ``services.yaml``.
+service in ``services.yaml``. Providers run in descending ``priority`` order. The eShop editions
+use the highest priorities (CE ``300``, PE ``200``, EE ``100``), so their migrations always run
+first. Leave ``priority`` unset for your own providers; the default ``0`` runs them after all
+edition migrations. Only set a priority if migrations of your components or modules depend on each
+other, and keep it below ``100``.
 
 Registration for a component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -128,7 +127,7 @@ automatically.
     {
         public function getMigrationConfigPath(): string
         {
-            return __DIR__ . '/../migration/migrations.yml';
+            return __DIR__ . '/../di_migrations/migrations.yaml';
         }
     }
 
@@ -140,16 +139,23 @@ automatically.
         tags:
           - { name: 'oxid_esales.migration_path_provider' }
 
-The ``migrations.yml`` file is placed in the ``migration`` folder of the module:
+.. warning::
+
+    Do not register the same migrations through both mechanisms. Migrations from an installed
+    module's auto-discovered ``migration/migrations.yml`` are already registered automatically.
+    Adding a DI tag for the same path registers them twice.
+
+The ``migrations.yaml`` file is placed in a folder that is **not** the auto-discovered
+``migration`` one, for example ``di_migrations``:
 
 .. code:: bash
 
-    ├── migration
-    │    ├── migrations.yml
+    ├── di_migrations
+    │    ├── migrations.yaml
     │    └── data
     │         └── Version20240101000000.php
 
-Example ``migrations.yml``:
+Example ``migrations.yaml``:
 
 .. code:: yaml
 

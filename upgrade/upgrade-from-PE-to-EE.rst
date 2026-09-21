@@ -21,7 +21,7 @@ Upgrading from the Professional Edition (PE) edition to the Enterprise Edition (
 
    .. code:: bash
 
-     vendor/bin/oe-eshop-db_migrate migrations:migrate
+     vendor/bin/oe-console oe:database:migrate
 
 #. Regenerate the database views:
 
