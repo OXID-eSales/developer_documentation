@@ -24,31 +24,33 @@ A child theme is an extension like a normal theme, module or component and must 
 
 We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. As ``target-directory`` we also use our theme's name and the ``assets-directory`` begins with ``out`` followed by the name again. Currently it's just a normal theme installable via Composer.
 
-theme.php
----------
+metadata.yaml
+-------------
 
-The ``theme.php`` is now where the configuration as a child theme takes place.
+The configuration as a child theme takes place in ``metadata.yaml``, next to the theme's
+``config.yaml``.
 
-.. code:: php
+.. code:: yaml
 
-    declare(strict_types=1);
+    id: child
+    title: 'CHILD'
+    description: 'A child theme from APEX.'
+    parentTheme: apex
+    parentVersions:
+        - '1.2.0'
+        - '1.3.0'
 
-    $aTheme = [
-        'id' => 'child',
-        'title' => 'CHILD',
-        'description' => 'A child theme from APEX.',
-        'parentTheme' => 'apex',
-        'parentVersions' => ['1.2.0','1.3.0'],
-    ];
-
-As ``id``, ``title`` and ``description`` you set the usual things but what's new now are the keys ``parentTheme`` and ``parentVersions``. These two array keys make the theme a child theme.
+As ``id``, ``title`` and ``description`` you set the usual things but what's new now are the keys ``parentTheme`` and ``parentVersions``. These two keys make the theme a child theme.
 
 - ``parentTheme`` is a string and must contain the ``id`` of the parent theme.
 - ``parentVersions`` is an array and must contain at least one compatible version of the corresponding parent theme.
 
 In this example we use our current APEX theme and support versions 1.2.0 as well as 1.3.0.
 
-If you wish, you can also add theme setting as usual.
+A child theme's settings are declared in its own ``config.yaml`` the same way as for any
+other theme (see :doc:`theme_settings`). You only need to declare settings that differ
+from the parent: any setting a child theme does not declare itself is inherited from the
+parent theme's resolved configuration.
 
 Overwrite Templates
 -------------------
@@ -195,9 +197,7 @@ Inside the ``cust_lang.php`` files you can change single translations. So the fi
 Extend a theme via module
 -------------------------
 
-All you can achieve with a child theme can also be done with a module. In all OXID eShop Version 7 installations,
-module settings fully reside in YAML configuration files, which are much easier to deploy than theme configurations that are
-still stored in the database (oxconfig table).
+All you can achieve with a child theme can also be done with a module.
 
 .. note:: With the twig extension mechanism you can only extend existing template blocks.
         Regarding the 'I want to completely exchange a template by child theme' case. That's also possible via module,
