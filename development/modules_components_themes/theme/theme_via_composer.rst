@@ -52,6 +52,16 @@ To install theme correctly, this plugin requires two fields to be described in t
         }
     }
 
+Activating a theme
+-------------------
+
+Installing a theme via Composer does not make it the shop's active theme. Activate it
+either in the admin area, or via console command:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:theme:activate <themeId>
+
 .. _theme_type-20160524:
 
 type
