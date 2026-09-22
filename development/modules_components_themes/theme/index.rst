@@ -9,5 +9,6 @@ Theme
 
     twig/index
     theme_via_composer
+    theme_settings
     child_theme
     twig_sandbox

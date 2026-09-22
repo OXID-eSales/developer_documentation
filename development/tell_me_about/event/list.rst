@@ -7,6 +7,7 @@ Available events
     :maxdepth: 2
 
     ModuleEvents/index
+    ThemeEvents/index
     DatabaseEvents/index
     DIContainerEvents/index
     ViewEvents/index

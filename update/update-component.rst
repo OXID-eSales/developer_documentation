@@ -55,7 +55,7 @@ Theme Configuration
     Rewrites getViewThemeParam() template calls to the typed getThemeSettings() theme setting service
 
 ``oe:update:remove-theme-configuration``
-    Removes theme configuration data from the oxconfig table
+    Removes theme configuration data from the oxconfig and oxconfigdisplay tables
 
 Migrating a Theme Step by Step
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,7 +111,8 @@ repeated safely. Replace ``<theme-id>`` with the theme directory name (e.g. ``ap
        bin/oe-console oe:update:remove-theme-configuration
 
    Run this only after step 4 succeeds; it permanently deletes the theme configuration
-   (all ``theme:<theme-id>`` entries plus ``sTheme``/``sCustomTheme``) from ``oxconfig``.
+   (all ``theme:<theme-id>`` entries plus ``sTheme``/``sCustomTheme``) from ``oxconfig`` and the
+   ``theme:<theme-id>`` entries from ``oxconfigdisplay``.
 
 6. Finally, delete the now-redundant legacy ``theme.php`` from the theme directory:
 
