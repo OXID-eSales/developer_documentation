@@ -86,10 +86,12 @@ example ``di_migrations``), implement ``MigrationPathProviderInterface`` and reg
 
 .. warning::
 
-    Do not register the same migrations through both mechanisms. If the provider points at the
-    auto-discovered ``migration/migrations.yml`` of an installed module, its migrations are
-    registered twice — once by auto-discovery, once by the tag. Use the DI tag **either** for a
-    path outside ``migration/`` **or** for a component, never for the auto-discovered module path.
+    Do not register the same migrations through both mechanisms. Migrations from an installed
+    module's auto-discovered ``migration/migrations.yml`` are already registered automatically.
+    Adding a DI tag for the same path registers them twice.
+
+    Use the DI tag only for paths outside ``migration/`` or for components, never for an
+    auto-discovered module path.
 
 .. code:: yaml
 
