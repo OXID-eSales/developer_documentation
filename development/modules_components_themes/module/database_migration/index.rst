@@ -34,7 +34,7 @@ Most recent info on requirements and structure of Migration Classes can be found
 `Doctrine Migrations documentation <https://www.doctrine-project.org/projects/doctrine-migrations/en/current/reference/migration-classes.html>`__.
 
 To generate a blank migration class for your module, call the Doctrine Migrations CLI directly
-with your module's configuration:
+with your module's configuration (see also :ref:`doctrine_migrations_directly`):
 
 .. code:: bash
 
@@ -52,12 +52,23 @@ Registration
 ------------
 
 Module migrations placed in the ``migration`` folder as described above are discovered
-automatically: the shop finds the ``migrations.yml`` of every installed module and executes the
-migrations via ``oe:database:migrate``.
+automatically: the shop scans the ``migration/migrations.yml`` of every installed module and
+executes the migrations via ``oe:database:migrate``.
 
-Alternatively, module migrations can be registered through the Symfony service container using
-the ``oxid_esales.migration_path_provider`` DI tag. Implement ``MigrationPathProviderInterface``
-and register the service in the module:
+.. note::
+
+    Auto-discovery only covers installed **modules**, and only at the fixed path
+    ``migration/migrations.yml``. A :doc:`component <../../component>` is never scanned, and a
+    module that keeps its migration configuration elsewhere is not discovered either — both must
+    register their migrations through the DI tag shown below.
+
+Migrations can also be registered explicitly through the Symfony service container using the
+``oxid_esales.migration_path_provider`` DI tag (see :ref:`tagged_migrations`). This is the way to
+expose migrations that auto-discovery does not cover — those of a component, or of a module whose
+migration configuration lives outside the auto-discovered ``migration/migrations.yml`` path.
+
+Place the configuration in a folder that is **not** the auto-discovered ``migration`` one (for
+example ``di_migrations``), implement ``MigrationPathProviderInterface`` and register the service:
 
 .. code:: php
 
@@ -69,9 +80,18 @@ and register the service in the module:
     {
         public function getMigrationConfigPath(): string
         {
-            return __DIR__ . '/../migration/migrations.yml';
+            return __DIR__ . '/../di_migrations/migrations.yaml';
         }
     }
+
+.. warning::
+
+    Do not register the same migrations through both mechanisms. Migrations from an installed
+    module's auto-discovered ``migration/migrations.yml`` are already registered automatically.
+    Adding a DI tag for the same path registers them twice.
+
+    Use the DI tag only for paths outside ``migration/`` or for components, never for an
+    auto-discovered module path.
 
 .. code:: yaml
 
@@ -97,5 +117,11 @@ To apply all pending migrations including module migrations, run:
 .. code:: bash
 
    vendor/bin/oe-console oe:database:migrate
+
+.. note::
+
+    ``oe:database:migrate`` is the supported entry point. The older doctrine-migration wrapper
+    (``vendor/bin/oe-eshop-doctrine_migration``, backed by the ``Migrations`` / ``MigrationsBuilder``
+    classes) is deprecated in favour of it.
 
 For more details on how the migration system works, see :doc:`Migrations <../../../tell_me_about/migrations>`.
