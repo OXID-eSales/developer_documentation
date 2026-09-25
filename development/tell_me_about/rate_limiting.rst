@@ -229,3 +229,145 @@ Register your implementation in :file:`services.yaml`:
 
     OxidEsales\EshopCommunity\Internal\Framework\RateLimiter\ClientIdentifierProviderInterface:
         class: MyVendor\MyModule\RateLimiter\ApiKeyClientIdentifier
+
+Storefront Rate Limiting
+========================
+
+Since OXID eShop version 7.6, the storefront request path has its own optional rate limiter,
+independent of the API limiter above. It is **disabled by default** and is enabled and tuned
+entirely through DI parameters.
+
+The storefront limiter is **rule-driven**: you define a list of rules, each matching some requests
+and applying its own limit. One blanket rule can cover every request; additional rules protect
+sensitive actions such as login, password reset and registration.
+
+Configuration
+-------------
+
+Configure the storefront limiter in your project's :file:`services.yaml`:
+
+|example|
+
+.. code:: yaml
+
+    parameters:
+        oxid_esales.rate_limiter.storefront.enabled: true
+        oxid_esales.rate_limiter.storefront.excluded_routes: []
+        oxid_esales.rate_limiter.storefront.excluded_ips: []
+        oxid_esales.rate_limiter.storefront.rules:
+            - { id: global, key: user, limit: 100, interval: '60 seconds' }
+
+Parameters
+^^^^^^^^^^
+
+``oxid_esales.rate_limiter.storefront.enabled``
+    Enable or disable the storefront limiter. Default: ``false``
+
+``oxid_esales.rate_limiter.storefront.rules``
+    The list of rate-limiting rules (see below). Default: a single ``global`` rule.
+
+``oxid_esales.rate_limiter.storefront.excluded_routes``
+    Route patterns (exact or ``*`` wildcard, matched against the request path) exempt from all rules. Default: ``[]``
+
+``oxid_esales.rate_limiter.storefront.excluded_ips``
+    Client IP addresses exempt from all rules. Default: ``[]``
+
+Rules
+-----
+
+Each rule is a map with the following keys:
+
+``id``
+    A unique identifier for the rule.
+
+``cl`` / ``fnc`` (optional)
+    The controller key and function the rule applies to. A rule with neither ``cl`` nor ``fnc``
+    matches **every** request (a blanket limit). ``fnc`` may be a single value or a list.
+
+``key``
+    How the client is identified for this rule:
+
+    - ``user`` — the logged-in user id, falling back to the client IP for anonymous requests
+    - ``ip`` — the client IP
+    - ``email`` — the submitted login name (the ``lgn_usr`` request parameter) combined with the
+      client IP, so requests from other sources cannot exhaust an account's bucket; requests
+      without ``lgn_usr`` are not counted by ``email`` rules
+
+``limit`` / ``interval``
+    Maximum number of requests per interval, where ``interval`` is a relative time string such as
+    ``'60 seconds'`` or ``'5 minutes'``.
+
+Several rules may target the same action; a request is rejected as soon as any matching rule is
+exceeded. Matching rules are enforced in the order ``ip``, ``user``, ``email``, regardless of
+their configuration order. Bucket keys are stored as hashes — raw IP addresses, user ids and
+login names never reach the storage.
+
+Protecting sensitive actions
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Add rules for the login, password-reset, registration and form endpoints. For login, combine a
+per-IP rule with a per-email rule, so a single account stays protected even across changing IP
+addresses:
+
+|example|
+
+.. code:: yaml
+
+    parameters:
+        oxid_esales.rate_limiter.storefront.rules:
+            - { id: global,          key: user,                                       limit: 100, interval: '60 seconds' }
+            - { id: login_ip,        fnc: ['login', 'login_noredirect'], key: ip,     limit: 30,  interval: '5 minutes' }
+            - { id: login_email,     fnc: ['login', 'login_noredirect'], key: email,  limit: 5,   interval: '1 minute' }
+            - { id: forgotpwd_email, cl: forgotpwd,  fnc: forgotpassword, key: email, limit: 3,   interval: '15 minutes' }
+            - { id: register_ip,     cl: register,   fnc: registeruser,   key: ip,    limit: 5,   interval: '10 minutes' }
+            - { id: contact_ip,      cl: contact,    fnc: send,           key: ip,    limit: 5,   interval: '10 minutes' }
+
+Response
+--------
+
+When a rule is exceeded, the storefront returns a ``429 Too Many Requests`` response with a
+``Retry-After`` header and the ``X-RateLimit-Limit``, ``X-RateLimit-Remaining`` and
+``X-RateLimit-Reset`` headers.
+
+If the limiter's storage is unavailable, the request is allowed and the failure is logged —
+a broken backend never blocks the storefront.
+
+Blocked-Request Event
+---------------------
+
+Whenever a request is blocked, the limiter dispatches
+``OxidEsales\EshopCommunity\Internal\Framework\RateLimiter\Storefront\Event\RateLimitExceededEvent``
+carrying the rule id, the (hashed) bucket key and the retry-after seconds. Subscribe to it for
+monitoring or alerting by registering an event subscriber with the ``kernel.event_subscriber`` tag.
+
+Storage Backend
+---------------
+
+By default the limiter stores its counters on the local filesystem, which is per-node. For a
+clustered setup, override the cache pool and lock store with shared implementations (for example
+Redis) in your project's :file:`services.yaml`:
+
+With the filesystem backend, expired bucket files accumulate under the cache directory until they
+are pruned. Schedule the ``oe:rate-limiter:prune`` console command (for example daily, via cron)
+to delete them; the Redis backend evicts expired entries automatically.
+
+|example|
+
+.. code:: yaml
+
+    services:
+        oxid_esales.rate_limiter.storefront.cache:
+            class: Symfony\Component\Cache\Adapter\RedisAdapter
+            arguments: [ '@my_redis_client', 'rate_limiter', 0 ]
+
+        oxid_esales.rate_limiter.storefront.lock_store:
+            class: Symfony\Component\Lock\Store\RedisStore
+            arguments: [ '@my_redis_client' ]
+
+Custom Keying
+-------------
+
+Key resolution is provided by the ``ThrottleKeyProvider`` service. To change how clients are
+identified, override the registration of
+``OxidEsales\EshopCommunity\Internal\Framework\RateLimiter\Storefront\Service\ThrottleKeyProviderInterface``
+in your :file:`services.yaml` with your own implementation.
