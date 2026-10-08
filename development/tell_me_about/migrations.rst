@@ -24,15 +24,10 @@ This runs migrations from all sources in a single pass:
 
 - eShop edition migrations (CE, and PE/EE when applicable)
 - Project-specific migrations
-- Component migrations registered via the :ref:`tagged provider system <tagged_migrations>`
-- Module migrations via the `OXID eShop Doctrine Migration Wrapper <https://github.com/OXID-eSales/oxideshop-doctrine-migration-wrapper>`__
+- Component and module migrations
 
-.. note::
-
-    Migrations registered via ``oxid_esales.migration_path_provider`` execute through
-    ``oe:database:migrate``, during shop setup, and when the deprecated
-    ``oe-eshop-db_migrate migrations:migrate`` script runs without a suite argument.
-    They do not run when the deprecated ``Migrations`` class is used programmatically.
+All of them are registered via the :ref:`tagged provider system <tagged_migrations>`. The same
+migrations are also executed during shop setup.
 
 ``oe:database:migrate`` supports the common options of the underlying Doctrine
 ``migrations:migrate`` command, such as ``--dry-run``, and forwards them to every migration
@@ -72,7 +67,11 @@ their migrations as part of ``oe:database:migrate``. This is how components prov
 migrations; project-specific code can register migration paths the same way.
 
 To register a migration path provider, implement ``MigrationPathProviderInterface`` and tag the
-service in ``services.yaml``.
+service in ``services.yaml``. Providers run in descending ``priority`` order. The eShop editions
+use the highest priorities (CE ``300``, PE ``200``, EE ``100``), so their migrations always run
+first. Leave ``priority`` unset for your own providers; the default ``0`` runs them after all
+edition migrations. Only set a priority if migrations of your components or modules depend on each
+other, and keep it below ``100``.
 
 Registration for a component
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -105,14 +104,13 @@ Component services are always active, so their migrations are available immediat
 Registration for a module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Modules can also register tagged migrations. This is an alternative to the standard module
-migration setup described in :ref:`module_migrations`, which discovers module migrations
-automatically.
+Modules register their migrations the same way. Register the provider in the module's
+:ref:`bootstrap-services.yaml <module_bootstrap_services>`, so the migrations are executed as soon
+as the module is installed, whether it is activated or not.
 
 .. note::
 
-    Module services are only loaded after the module is activated. A migration path provider
-    registered in a module's ``services.yaml`` will therefore only be picked up by
+    A provider registered in the module's ``services.yaml`` is only picked up by
     ``oe:database:migrate`` once the module has been activated via ``oe:module:activate``.
 
 .. code:: php
@@ -131,7 +129,7 @@ automatically.
 
 .. code:: yaml
 
-    # services.yaml
+    # bootstrap-services.yaml
     services:
       MyVendor\MyModule\MyModuleMigrationPathProvider:
         tags:

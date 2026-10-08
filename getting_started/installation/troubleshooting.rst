@@ -88,7 +88,7 @@ Analogously, when updating modules, perform the commands to migrate the database
 
 .. code:: bash
 
-   bin/oe-eshop-db_migrate migrations:migrate
+   bin/oe-console oe:database:migrate
 
 .. code:: bash
 

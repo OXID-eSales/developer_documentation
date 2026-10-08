@@ -101,16 +101,7 @@ only work from a UNIX based system as your local development environment.
         "${dir}/oe-eshop-demodata_install" "$@"
         EOF
 
-        cat << 'EOF' >> vendor/bin/oe-eshop-doctrine_migration
-        #!/usr/bin/env sh
-
-        dir=$(d=${0%[/\\]*}; cd "$d" > /dev/null; cd "../oxid-esales/oxideshop-doctrine-migration-wrapper/bin" && pwd)
-
-        dir=$(echo $dir | sed 's/ /\ /g')
-        "${dir}/oe-eshop-doctrine_migration" "$@"
-        EOF
-
-   .. todo:  #Support/#Igor Check: how urgent is to update it?: this section above is not correct, we have no bin folders for migration and demodata installer anymore
+   .. todo:  #Support/#Igor Check: how urgent is to update it?: this section above is not correct, we have no bin folder for the demodata installer anymore
 
 Copy the files to the application server and continue installation
 ------------------------------------------------------------------

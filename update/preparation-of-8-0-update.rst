@@ -31,6 +31,11 @@ This document provides the steps to update your shop from version 7.x to the new
     provides a component and its template still references the old key (e.g. ``{$oxcmp_mycomponent}``),
     implement ``ViewDataKeyProviderInterface::getViewDataKey()`` on the component to restore it.
 
+.. note::
+    Module migrations are no longer discovered automatically. A module with migrations has to
+    register a migration path provider in its ``bootstrap-services.yaml``, otherwise its migrations
+    are not executed by ``oe:database:migrate``. See :ref:`Database Migration <module_migrations>`.
+
 Prerequisites
 -------------
 
