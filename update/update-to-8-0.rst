@@ -68,7 +68,7 @@ need to confirm that the update will overwrite the existing files.
 
 .. code:: bash
 
-   ./vendor/bin/oe-eshop-db_migrate migrations:migrate
+   ./vendor/bin/oe-console oe:database:migrate
 
 |schritt| Migrating product images
 ----------------------------------
