@@ -39,7 +39,7 @@ Given the example you run the following command:
 
 .. code::
 
-   composer create-project --no-dev oxid-esales/oxideshop-project my_oxid_eshop_project dev-b-7.5.x
+   composer create-project --no-dev oxid-esales/oxideshop-project my_oxid_eshop_project dev-b-7.6.x
 
 By triggering the generation with other commands the steps 1 and 2 can be different.
 

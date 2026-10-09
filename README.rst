@@ -3,9 +3,9 @@ OXID eShop developer documentation
 
 This is the OXID eShop developer documentation.
 
-The generated documentation can be found here: https://docs.oxid-esales.com/developer/en/7.5/
+The generated documentation can be found here: https://docs.oxid-esales.com/developer/en/7.6/
 
-If you want to contribute, please read https://docs.oxid-esales.com/developer/en/7.5/index.html#help-improving-this-documentation.
+If you want to contribute, please read https://docs.oxid-esales.com/developer/en/7.6/index.html#help-improving-this-documentation.
 Generate the documentation locally in order to test your changes as described in the following section.
 
 Generating docs locally

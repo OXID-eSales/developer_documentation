@@ -54,7 +54,7 @@ Meta Package
 
 A *meta package* defines the kind and the exact version of components of a `OXID Compilation`_.
 
-See the `composer.json <https://github.com/OXID-eSales/oxideshop_metapackage_ce/blob/b-7.5/composer.json>`__
+See the `composer.json <https://github.com/OXID-eSales/oxideshop_metapackage_ce/blob/b-7.6/composer.json>`__
 file of the OXID eShop Community Edition meta package for an example.
 
 .. _glossary-oxid_compilation:
@@ -64,13 +64,13 @@ OXID Compilation
 
 The OXID eShop *compilation* consists of a certain edition of OXID eShop, which is bundled with modules and themes.
 
-For example, the OXID eShop 7.5 contains, among others, the following eShop edition, modules and themes:
+For example, the OXID eShop 7.6 contains, among others, the following eShop edition, modules and themes:
 
-* `OXID eShop CE 7.5.0 <https://github.com/OXID-eSales/oxideshop_ce/blob/v7.5.0/CHANGELOG-7.5.md>`_
-* `Apex theme 3.1.0 <https://github.com/OXID-eSales/apex-theme/blob/v3.1.0/CHANGELOG-3.x.md>`_
+* `OXID eShop CE 7.6.0 <https://github.com/OXID-eSales/oxideshop_ce/blob/v7.6.0/CHANGELOG-7.6.md>`_
+* `Apex theme 3.2.0 <https://github.com/OXID-eSales/apex-theme/blob/v3.2.0/CHANGELOG-3.x.md>`_
 * `OXID eShop composer plugin 7.4.0 <https://github.com/OXID-eSales/oxideshop_composer_plugin/blob/v7.4.0/CHANGELOG-7.x.md>`_
-* `Media Library 5.0.0 <https://github.com/OXID-eSales/media-library-module/blob/v5.0.0/CHANGELOG.md>`_
-* `WYSIWYG Editor 7.0.0 <https://github.com/OXID-eSales/ddoe-wysiwyg-editor-module/blob/v7.0.0/CHANGELOG.md>`_
+* `Media Library 6.0.0 <https://github.com/OXID-eSales/media-library-module/blob/v6.0.0/CHANGELOG.md>`_
+* `WYSIWYG Editor 8.0.0 <https://github.com/OXID-eSales/ddoe-wysiwyg-editor-module/blob/v8.0.0/CHANGELOG.md>`_
 
 Professional Edition and Enterprise Edition compilations additionally contain the Visual CMS module for easy management of CMS content via drag and drop functionality.
 
@@ -79,7 +79,7 @@ The components of an OXID Compilation are defined in a `Meta Package`_.
 To ensure the best stability and interoperability, in a compilation the versions of all components are pinned to a specific
 patch release.
 
-The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/7.5/releases/index.html).
+The components and their version are specified in the user documentation in the respective release note (see https://docs.oxid-esales.com/eshop/en/7.6/releases/index.html).
 
 Vendor Prefix
 ^^^^^^^^^^^^^
