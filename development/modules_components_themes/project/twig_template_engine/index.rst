@@ -15,3 +15,4 @@ Twig Template Engine
 
     extending
     twig_extensions
+    twig_debugging

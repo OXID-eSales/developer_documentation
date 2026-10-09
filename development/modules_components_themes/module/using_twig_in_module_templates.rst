@@ -164,6 +164,11 @@ the :file:`modules/` sub folder of the :file:`extensions/` folder:
 Fine-tuning the template inheritance process
 --------------------------------------------
 
+Most modules do not need this file. The default alphabetical order works for the common case where
+modules don't fight over priority on the same template. Use ``template_extension_chain.yaml`` only
+when you need a specific override order — for example, when two modules extend the same template
+and you need a specific one to win.
+
 Controlling a template rendering engine that utilizes multiple inheritance can be a daunting task by itself.
 
 The situation might get even more complicated if you face the necessity to control the order in which each module template

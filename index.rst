@@ -18,7 +18,6 @@ Table of Contents
    development/index
    system_architecture/index
    upgrade/index
-   components/index
 
 
 .. toctree::
@@ -39,7 +38,7 @@ Help improving OXID eShop
 -------------------------
 
 Please read the `documentation how to contribute via pull
-requests <https://github.com/OXID-eSales/oxideshop_ce/blob/master/CONTRIBUTING.md>`__
+requests <https://github.com/OXID-eSales/oxideshop_ce/blob/b-7.5.x/CONTRIBUTING.md>`__
 
 
 Useful links
