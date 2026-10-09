@@ -44,16 +44,24 @@ We decided for **oe_extenduserform** as our module ID and so we name the column 
     }
 
 
-We do it simple here and add the instructions to run the migration on module installation with command:
+We do it simple here and run the migration after installing the module. Once the module is
+installed, its migrations are discovered automatically and applied together with all other
+pending migrations:
 
 .. code:: shell
 
-    ./vendor/bin/oe-eshop-db_migrate migrations:migrate oe_extenduserform
+    vendor/bin/oe-console oe:database:migrate
+
+.. note::
+
+    ``oe:database:migrate`` runs all migration sources in a single pass; there is no per-module
+    argument. See :doc:`database migration </development/modules_components_themes/module/database_migration/index>`
+    for how module migrations are discovered and registered.
 
 
-However, we may also consider to run the migrations automatically on module activation. To achieve this, we can use the **onActivate** event. If you want to know more about that, please see :doc:`onActivate event </development/modules_components_themes/module/skeleton/metadataphp/amodule/events>`.
+However, we may also run the migration automatically when the module is activated. The supported way is a DI event subscriber reacting to ``FinalizingModuleActivationEvent``, registered in :ref:`bootstrap-services.yaml <module_bootstrap_services>`. The metadata.php ``onActivate`` event is deprecated and should no longer be used. See :ref:`Module setup events <module_setup_events>` for details.
 
-If the data can be forgotten after module deactivation, you should add a migration to remove the column again and run it by the **onDeactivate** event. We skip this part in our example.
+If the data can be forgotten after module deactivation, you should add a migration to remove the column again and run it from a subscriber to ``BeforeModuleDeactivationEvent`` (the replacement for the deprecated ``onDeactivate`` event). We skip this part in our example.
 
 Extending the template
 ----------------------
