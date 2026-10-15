@@ -95,3 +95,6 @@ Only ``value`` may be set here — the setting must already be declared (with it
 ``group``, etc.) in the theme's ``config.yaml``. An override for a setting that is not
 declared is ignored (a warning is logged). A declared setting overridden this way cannot
 be changed through the admin area; attempting to save it shows an error instead.
+
+For a child theme, the parent theme's environment overrides also apply to the settings the
+child inherits. The child theme's own overrides take precedence over those of its parent.
