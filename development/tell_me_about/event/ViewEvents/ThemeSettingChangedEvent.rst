@@ -1,6 +1,10 @@
 ThemeSettingChangedEvent
 ========================
 
+.. note::
+
+    This event is deprecated and will be removed in OXID eShop 8.0, where ``ThemeConfigurationChangedEvent`` replaces it.
+
 Namespace:
 
 .. code-block:: php
