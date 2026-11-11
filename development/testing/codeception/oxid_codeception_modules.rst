@@ -92,7 +92,7 @@ The Translator Module needs the shop path and the theme as parameters.
                     paths:
                         - 'Application/views/shop-theme-dir'
                     paths_admin:
-                        - 'Application/views/admin_theme-dir'
+                        - '../vendor/oxid-esales/twig-admin-theme'
 
 For example the following piece of test code would only work in German language
 

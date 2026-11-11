@@ -71,8 +71,10 @@ OXID Twig Component can be customized by overriding the default values from the 
   .. code:: yaml
 
         parameters:
-        # Admin theme ID
-          oxid_esales.theme.admin.name: 'admin_twig'
+        # Composer package the admin UI is read from
+          oxid_esales.admin_ui.package_name: 'oxid-esales/twig-admin-theme'
+        # Admin UI name, used for its assets in `out` and for admin files of modules
+          oxid_esales.admin_ui.name: 'admin_twig'
         # Template engine file extension - value is bound to the current template engine
           oxid_esales.templating.engine_template_extension: 'html.twig'
         # Template caching control

@@ -125,9 +125,10 @@ In the example above, the result of rendering :file:`shop-template.html.twig` de
 
 .. note::
 
-    Inheritance for **admin templates** is similar to the theme-specific inheritance, because :technicalname:`admin` is a theme as well.
+    Inheritance for **admin templates** works like the theme-specific inheritance.
 
-    When creating admin template extensions (:technicalname:`admin_twig`, for example), just use a corresponding ID.
+    Put admin template extensions into the folder named after the admin UI, :technicalname:`extensions/themes/admin_twig`
+    by default (DI parameter ``oxid_esales.admin_ui.name``).
 
 .. _extending-module-templates:
 

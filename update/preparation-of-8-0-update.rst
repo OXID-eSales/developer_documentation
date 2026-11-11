@@ -32,6 +32,15 @@ This document provides the steps to update your shop from version 7.x to the new
     implement ``ViewDataKeyProviderInterface::getViewDataKey()`` on the component to restore it.
 
 .. note::
+    The admin UI is read directly from the package ``vendor/oxid-esales/twig-admin-theme`` instead of
+    ``source/Application/views/admin_twig``. Changes to files in ``source/Application/views/admin_twig`` have no
+    effect anymore, and the ``cust_lang.php`` file of the admin is no longer loaded. Use module translations and
+    module template extensions (``views/twig/extensions/themes/admin_twig``) to customize the admin. Additional
+    directories with admin files can be registered as services tagged ``oxid_esales.admin_ui.directory_provider``;
+    a file is read from the directory with the highest priority that contains it. The DI parameter
+    ``oxid_esales.theme.admin.name`` was renamed to ``oxid_esales.admin_ui.name``.
+
+.. note::
     Module migrations are no longer discovered automatically. A module with migrations has to
     register a migration path provider in its ``bootstrap-services.yaml``, otherwise its migrations
     are not executed by ``oe:database:migrate``. See :ref:`Database Migration <module_migrations>`.
