@@ -14,15 +14,39 @@ A child theme is an extension like a normal theme, module or component and must 
         "name": "oxid-esales/child",
         "description": "This is a child theme",
         "type": "oxideshop-theme",
+        "require": {
+            "oxid-esales/apex-theme": "v8.0.0 || v8.0.1"
+        },
         "extra": {
             "oxideshop": {
-                "target-directory": "child"
-                "assets-directory": "out/child",
+                "target-directory": "child",
+                "assets-directory": "out/child"
             }
         }
     }
 
-We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. As ``target-directory`` we also use our theme's name and the ``assets-directory`` begins with ``out`` followed by the name again. Currently it's just a normal theme installable via Composer.
+We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. As ``target-directory`` we also use our theme's name and the ``assets-directory`` begins with ``out`` followed by the name again.
+
+Use a version constraint in ``require`` that allows exactly the versions listed in ``parentVersions``
+of the child theme's ``metadata.yaml`` (see below). ``parentVersions`` is compared with the ``version`` in
+the parent theme's ``metadata.yaml``, while Composer checks the package version, so both must be the same
+for every parent theme release.
+
+The compatibility with the parent theme is only checked when the child theme is activated. With a wider
+constraint such as ``*``, ``composer update`` can install a parent theme version the child theme does not
+support: activating the child theme then fails, and a child theme that is already active is not checked again.
+
+.. important::
+
+    Always require the parent theme package in the child theme's ``composer.json``. This prevents the parent
+    theme from being removed via Composer as long as the child theme is installed.
+
+.. note::
+
+    If you run ``composer remove`` for the parent theme, Composer keeps it installed because the child theme
+    requires it, and reports that it is still present. The parent theme is nevertheless removed from the
+    project's ``composer.json``, so it is removed together with the child theme later. To keep the parent
+    theme, require it again with ``composer require``.
 
 metadata.yaml
 -------------
@@ -37,15 +61,15 @@ The configuration as a child theme takes place in ``metadata.yaml``, next to the
     description: 'A child theme from APEX.'
     parentTheme: apex
     parentVersions:
-        - '1.2.0'
-        - '1.3.0'
+        - 'v8.0.0'
+        - 'v8.0.1'
 
 As ``id``, ``title`` and ``description`` you set the usual things but what's new now are the keys ``parentTheme`` and ``parentVersions``. These two keys make the theme a child theme.
 
 - ``parentTheme`` is a string and must contain the ``id`` of the parent theme.
 - ``parentVersions`` is a list and must contain at least one compatible version of the corresponding parent theme.
 
-In this example we use our current APEX theme and support versions 1.2.0 as well as 1.3.0.
+In this example we use our current APEX theme and support versions v8.0.0 as well as v8.0.1.
 
 A child theme's settings are declared in its own ``config.yaml`` the same way as for any
 other theme (see :doc:`theme_settings`). You only need to declare settings that differ
