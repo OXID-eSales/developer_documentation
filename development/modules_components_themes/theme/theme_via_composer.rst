@@ -100,3 +100,30 @@ Below is a list of **non-valid** entries:
 * ``/an/absolute/path`` - absolute paths are not allowed, only relative paths are accepted;
 * ``some/path/`` - ambiguous description of directory to filter, it's not clear if only the files are needed to be filtered or directories have to be included as well;
 * ``docs/*.txt`` - using wildcard character * within subdirectories is not allowed.
+
+Updating a theme
+----------------
+
+``composer update`` only copies the theme files. The theme settings stored in the database are not updated.
+
+After updating the active theme, run the theme activation again with the ``--force`` option to install new and remove
+obsolete theme settings:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:theme:activate <theme-id> --force
+
+Values of existing settings are kept. If the type of a setting has changed, its value is replaced with the one from
+``theme.php`` and the change is written to the shop log.
+
+If a child theme is active and its parent theme was updated, activate the parent theme first and then the child theme
+again. Activating the child theme only synchronizes the settings of the child theme:
+
+.. code:: bash
+
+    vendor/bin/oe-console oe:theme:activate <parent-theme-id>
+    vendor/bin/oe-console oe:theme:activate <child-theme-id> --force
+
+.. note::
+
+    Check the theme settings in the shop administration after updating a theme.
