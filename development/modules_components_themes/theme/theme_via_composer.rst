@@ -62,6 +62,19 @@ either in the admin area, or via console command:
 
     vendor/bin/oe-console oe:theme:activate <theme-id>
 
+Updating a theme
+----------------
+
+``composer update`` installs the theme settings from the theme's ``config.yaml`` for each shop. New settings are
+added and settings no longer declared in ``config.yaml`` are removed.
+
+Values of existing settings are kept. If the type of a setting has changed, its value is replaced with the one from
+``config.yaml`` and the change is written to the shop log.
+
+.. note::
+
+    Check the theme settings in the shop administration after updating a theme.
+
 .. _theme_type-20160524:
 
 type
