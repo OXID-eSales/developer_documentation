@@ -41,6 +41,13 @@ This document provides the steps to update your shop from version 7.x to the new
     ``oxid_esales.theme.admin.name`` was renamed to ``oxid_esales.admin_ui.name``.
 
 .. note::
+    Theme packages are no longer copied into the shop. The shop reads theme files directly from the
+    package in the ``vendor`` directory, and the ``assets`` directory of the theme is linked to
+    ``source/out/<theme-id>``. Files in ``source/Application/views/<theme>`` are not used anymore, and
+    ``source/out/<theme-id>`` is replaced by the link during the update. If you changed files in one of
+    these directories, back them up before updating.
+
+.. note::
     Module migrations are no longer discovered automatically. A module with migrations has to
     register a migration path provider in its ``bootstrap-services.yaml``, otherwise its migrations
     are not executed by ``oe:database:migrate``. See :ref:`Database Migration <module_migrations>`.

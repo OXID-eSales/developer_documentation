@@ -90,7 +90,7 @@ The Translator Module needs the shop path and the theme as parameters.
                 - \OxidEsales\Codeception\Module\Translation\TranslationsModule:
                     shop_path: '%SHOP_SOURCE_PATH%'
                     paths:
-                        - 'Application/views/shop-theme-dir'
+                        - '../vendor/<vendor>/<theme-package>'
                     paths_admin:
                         - '../vendor/oxid-esales/twig-admin-theme'
 

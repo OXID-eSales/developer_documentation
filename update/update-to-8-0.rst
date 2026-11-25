@@ -47,8 +47,9 @@ Specify the :command:`--no-dev` parameter if the development-related files are n
 
 |schritt| Obtaining new compilation
 -----------------------------------
-The following command executes all scripts to obtain the new compilation. For shop files, themes and modules, you will
-need to confirm that the update will overwrite the existing files.
+The following command executes all scripts to obtain the new compilation. For shop files, you will need to confirm
+that the update will overwrite the existing files. Theme packages are not copied, their ``assets`` directory is linked
+to ``source/out/<theme-id>`` without asking.
 
 .. code:: bash
 

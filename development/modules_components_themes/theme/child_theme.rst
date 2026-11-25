@@ -13,16 +13,11 @@ A child theme is an extension like a normal theme, module or component and must 
     {
         "name": "oxid-esales/child",
         "description": "This is a child theme",
-        "type": "oxideshop-theme",
-        "extra": {
-            "oxideshop": {
-                "target-directory": "child"
-                "assets-directory": "out/child",
-            }
-        }
+        "type": "oxideshop-theme"
     }
 
-We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. As ``target-directory`` we also use our theme's name and the ``assets-directory`` begins with ``out`` followed by the name again. Currently it's just a normal theme installable via Composer.
+We name our child theme simply *child*. The ``type`` stays the same as with a standard theme. Currently it's just a
+normal theme installable via Composer.
 
 metadata.yaml
 -------------
@@ -120,13 +115,12 @@ Overwriting assets follows the same principle. Let's take the image ``logo.svg``
 .. code::
 
     apex
+      ├── assets
+      .  └── img
+      .     ├── logo.svg
+      .     └── ...
       ├── de
       ├── en
-      ├── out
-      .  └── apex
-      .     └── img
-      .        ├── logo.svg
-      .        └── ...
       └── tpl
 
 And so we use the same structure for CHILD:
@@ -134,12 +128,11 @@ And so we use the same structure for CHILD:
 .. code::
 
     child
+      ├── assets
+      .  └── img
+      .     └── logo.svg
       ├── de
       ├── en
-      ├── out
-      .  └── child
-      .     └── img
-      .        └── logo.svg
       └── tpl
 
 While ``logo.svg`` is now loading from CHILD all other assets still coming from APEX.
@@ -189,10 +182,6 @@ Inside the ``cust_lang.php`` files you can change single translations. So the fi
     .. code:: bash
 
         ./vendor/bin/oe-console oe:cache:clear
-
-.. important::
-
-    If you are in development phase and run ``composer update`` remember to answer the questions to overwrite files in ``source`` with yes. Otherwise your changes from your child theme will not be transfered to ``Application/views`` and ``out`` directory.
 
 Extend a theme via module
 -------------------------
